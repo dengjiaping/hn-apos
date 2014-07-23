@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 卡充值流程 -->
+<flow-diagram version="1.0" begin-node="start">
+    <flow-node node-name ="start" ref-activity="me.andpay.apos.vas.activity.deposite.SvcDepositeCardInputActivity">
+        <node-complete-success  next-node="priceInput" />
+   	</flow-node>
+   	<!-- 选择支付方式 -->
+   	<flow-node node-name ="priceInput" ref-activity="me.andpay.apos.vas.activity.deposite.SvcDepositePriceSelectActivity">
+        <node-complete identity = "cash_payment"  sub-flow="vas_cash_payment_flow" sub-finish-cpl="next_setup" transfer="Vas.SvcDeposite.TxnTransfer" />
+        <node-complete identity = "card_payment" sub-flow="com_txn_flow" sub-finish-cpl="next_setup" transfer="Vas.SvcDeposite.TxnTransfer"/>
+        <node-complete identity = "next_setup" next-node = "afterPayProcess" transfer="Vas.SvcDeposite.AfterTxnTransfer"/>
+   	</flow-node>
+	<flow-node node-name ="afterPayProcess" ref-activity="me.andpay.apos.vas.activity.deposite.SvcDepositeAfterPayActivity">
+        <node-complete-success  next-node = "depositeSucc" />
+        <node-complete-finish  flush-context = "true" finish-flow = "true" />
+   	</flow-node>
+   	<flow-node node-name ="depositeSucc" ref-activity="me.andpay.apos.vas.activity.deposite.SvcDepositeSuccActivity">
+        <node-complete identity = "success"  flush-context = "true" finish-flow = "true" />
+   	</flow-node>
+</flow-diagram>

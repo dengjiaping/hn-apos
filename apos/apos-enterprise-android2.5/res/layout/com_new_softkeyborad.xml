@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/com_pur_softkeyborad_top_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/com_no_color"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_weight="1"
+        android:background="@color/com_no_color"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/com_one_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+
+            <!--
+                <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:src="@drawable/com_keyboard_1_img" />
+            -->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/com_two_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+            <!--
+                 <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:src="@drawable/com_keyboard_2_img" />
+            -->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/com_three_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="3"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+
+            <!--
+                 <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:src="@drawable/com_keyboard_3_img" />
+            -->
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_weight="1"
+        android:background="@color/com_no_color"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/com_four_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="4"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+
+            <!--
+                 <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:src="@drawable/com_keyboard_4_img" />
+            -->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/com_five_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="5"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+
+            <!--
+                 <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:src="@drawable/com_keyboard_5_img" />
+            -->
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/com_six_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+
+            <!--
+                 <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:src="@drawable/com_keyboard_6_img" />
+            -->
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_weight="1"
+        android:background="@color/com_no_color"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/com_seven_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/com_eight_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="8"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/com_nine_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="9"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_weight="1"
+        android:background="@color/com_no_color"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/com_dzero_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_delete_selector"
+            android:gravity="center" >
+
+            <TextView
+                android:id="@+id/com_dzero_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="C"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/com_dzero_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:src="@drawable/com_new_keyboard_icon_calculator_img" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/com_zero_lay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_img"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/lam_button_entrue_col"
+                android:textSize="44dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/com_delete_imgbt"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/com_new_keyboard_button_delete_img"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/com_no_color"
+                android:src="@drawable/com_new_keyboard_icon_delete_img" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_weight="1"
+        android:background="@color/com_no_color"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/com_sure_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/com_new_keyboard_button_blue_disabled_img"
+            android:text="请刷卡"
+            android:textColor="#a4cbe5"
+            android:textSize="21dp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="@string/lam_risk_title_str"
+            android:textColor="#444444"
+            android:textSize="21dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/lam_risk_cotent_str"
+            android:textColor="#666666"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/lam_call_phone_btn"
+            style="@style/com_button_left_style"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_below="@+id/textView2"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/scm_help_telephone_str" />
+        
+        
+         <Button
+            android:id="@+id/lam_sure_use_btn"
+            style="@style/com_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_below="@+id/lam_call_phone_btn"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/lam_sure_user_str" />
+    </RelativeLayout>
+
+</RelativeLayout>

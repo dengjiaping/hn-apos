@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:alwaysDrawnWithCache="false"
+    android:background="#f5f5f5"
+    android:persistentDrawingCache="none" >
+
+    <RelativeLayout
+        android:id="@+id/scm_top_lay"
+        style="@style/com_native_top_style"
+        android:persistentDrawingCache="none" >
+
+        <TextView
+            android:id="@+id/scm_main_title_tv"
+            style="@style/com_top_text_style"
+            android:text="@string/scm_main_title_str" />
+
+        <ImageView
+            android:id="@+id/com_show_silder_btn"
+            style="@style/com_slider_button_style" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scm_main_sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/scm_top_lay"
+        android:alwaysDrawnWithCache="false"
+        android:background="#00000000" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/scm_main_set_layout"
+                style="@style/scm_layout_style" >
+
+                <ImageView
+                    android:id="@+id/scm_cardread_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_set_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_toRightOf="@id/scm_cardread_icon_img"
+                    android:text="@string/scm_main_set_str" />
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+
+            <RelativeLayout
+                android:id="@+id/scm_party_limit_layout"
+                style="@style/scm_layout_style" >
+
+                <ImageView
+                    android:id="@+id/scm_cardread_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_merchants_limit_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_toRightOf="@id/scm_cardread_icon_img"
+                    android:text="@string/scm_main_merchant_limit_str" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+
+            <RelativeLayout
+                android:id="@+id/scm_settle_layout"
+                style="@style/scm_layout_style" >
+
+                <ImageView
+                    android:id="@+id/scm_settle_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_accounts_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_toRightOf="@+id/scm_settle_icon_img"
+                    android:text="@string/ssm_main_title_str" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView android:id="@+id/scm_settle_img" style="@style/scm_line_image_style" />
+
+            <RelativeLayout
+                android:id="@+id/scm_main_pwd_layout"
+                style="@style/scm_layout_style" >
+
+                <ImageView
+                    android:id="@+id/scm_cardread_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_cipher_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_toRightOf="@id/scm_cardread_icon_img"
+                    android:text="@string/scm_pwd_title_str" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+
+            <RelativeLayout
+                android:id="@+id/scm_main_update_layout"
+                style="@style/scm_layout_style" >
+
+                <ImageView
+                    android:id="@+id/scm_cardread_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_update_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_toRightOf="@id/scm_cardread_icon_img"
+                    android:text="@string/scm_main_update_str" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="26dp"
+                android:background="@drawable/scm_table_title_bg_img" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="7dp"
+                    android:background="#00000000"
+                    android:text="@string/scm_main_product_explain_str"
+                    android:textColor="#666666"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+
+            <RelativeLayout
+                android:id="@+id/scm_main_help_layout"
+                style="@style/scm_layout_style" >
+
+                <ImageView
+                    android:id="@+id/scm_cardread_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_help_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/scm_cardread_icon_img"
+                    android:text="@string/scm_main_help_str" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+
+            <RelativeLayout
+                android:id="@+id/scm_main_about_layout"
+                style="@style/scm_layout_style" >
+
+                <ImageView
+                    android:id="@+id/scm_cardread_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_about_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_toRightOf="@id/scm_cardread_icon_img"
+                    android:text="@string/scm_main_about_str" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

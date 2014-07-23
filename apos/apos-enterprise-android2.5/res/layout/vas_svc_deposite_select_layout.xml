@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.andpay.apos.cmview.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:id="@+id/vas_content_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+            android:id="@+id/com_root_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:id="@+id/com_top_lay"
+                style="@style/com_native_top_style"
+                android:persistentDrawingCache="none" >
+
+                <ImageView
+                    android:id="@+id/vas_top_back_btn"
+                    style="@style/com_top_return_button_style" >
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/vas_top_title_tv"
+                    style="@style/com_top_text_style"
+                    android:text="充值金额" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tam_content_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/com_top_lay"
+                android:background="#ffffff"
+                android:visibility="visible" >
+
+                <RelativeLayout
+                    android:id="@+id/tam_content_query_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:visibility="visible" >
+
+                    <RelativeLayout
+                        android:id="@+id/tam_issuer_query_lay"
+                        style="@style/com_txn_detail_lay_style"
+                        android:layout_alignParentTop="true" >
+
+                        <TextView
+                            android:id="@+id/tam_issuername_query_txnview"
+                            style="@style/com_txn_detail_left_text_style"
+                            android:text="卡号" />
+
+                        <TextView
+                            android:id="@+id/vas_deposite_cardNo_tv"
+                            style="@style/com_txn_detail_right_text_style" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/tam_issuer_imgview"
+                        style="@style/com_txn_detail_dotted_img_style"
+                        android:layout_below="@id/tam_issuer_query_lay" />
+
+                    <RelativeLayout
+                        android:id="@+id/tam_card_query_lay"
+                        style="@style/com_txn_detail_lay_style"
+                        android:layout_below="@id/tam_issuer_imgview"
+                        android:visibility="visible" >
+
+                        <TextView
+                            android:id="@+id/tam_cardname_query_txnview"
+                            style="@style/com_txn_detail_left_text_style"
+                            android:text="卡名称" />
+
+                        <TextView
+                            android:id="@+id/vas_deposite_cardName_tv"
+                            style="@style/com_txn_detail_right_text_style" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/tam_issuer2_imgview"
+                        style="@style/com_txn_detail_dotted_img_style"
+                        android:layout_below="@id/tam_card_query_lay" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tam_card_query2_lay"
+                style="@style/com_txn_detail_lay_style"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tam_content_lay"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/tam_cardname_query_txnview"
+                    style="@style/com_txn_detail_left_text_style"
+                    android:text="卡余额" />
+
+                <TextView
+                    android:id="@+id/vas_deposite_balance_tv"
+                    style="@style/com_txn_detail_right_text_style" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/tam_bottom_pur_imgview"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tam_card_query2_lay"
+                android:background="@drawable/tam_list_bottom_img"
+                android:contentDescription="@string/tam_covert_browser_srt"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:id="@+id/vas_card_price_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_below="@+id/tam_bottom_pur_imgview"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="13dp" >
+
+                <me.andpay.apos.cmview.TiSpinner
+                    android:id="@+id/vas_deposite_price_sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="49dp"
+                    android:drawableRight="@drawable/com_icon_pulldown_img"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:hint="@string/vas_svc_deposite_select_str"
+                    android:singleLine="true"
+                    android:textColor="@color/com_title_normal_col"
+                    android:textColorHint="#cccccc" />
+=
+
+                <RelativeLayout
+                    android:id="@+id/vas_amt_input_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/com_input_1_line_disable_img"
+                    android:visibility="gone" >
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/com_icon_cash_img" />
+
+                    <me.andpay.apos.cmview.AmtEditTextView
+                        android:id="@+id/vas_amt_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/imageView1"
+                        android:background="#00000000"
+                        android:inputType="numberDecimal"
+                        android:singleLine="true"
+                        android:textSize="26dp"
+                        apos:amtHitColor="#999999"
+                        apos:amtHitText="@string/com_amt_str" >
+
+                        <requestFocus />
+                    </me.andpay.apos.cmview.AmtEditTextView>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/vas_card_payment_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_below="@+id/vas_card_price_lay"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/com_button_gray_selector" >
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="7dp"
+                    android:background="@drawable/com_icon_swipe_img" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/imageView1"
+                    android:background="#00000000"
+                    android:text="@string/vas_swipe_payment_str"
+                    android:textColor="#666666"
+                    android:textSize="18dp" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/vas_cash_payment_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_below="@+id/vas_card_payment_lay"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/com_button_gray_selector" >
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="7dp"
+                    android:background="@drawable/com_icon_cash_img" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/imageView1"
+                    android:background="#00000000"
+                    android:text="@string/vas_cash_payment_str"
+                    android:textColor="#666666"
+                    android:textSize="18dp" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</me.andpay.apos.cmview.ResizeLayout>

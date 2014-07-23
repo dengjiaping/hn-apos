@@ -1,0 +1,314 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>me.andpay</groupId>
+	<version>1.0.0</version>
+	<artifactId>apos-enterprise-android</artifactId>
+	<description>apos for Enterprise</description>
+	<!-- <packaging>apk</packaging> -->
+	<dependencies>
+		<dependency>
+			<groupId>com.jackson</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jackson</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jackson</groupId>
+			<artifactId>jackson-dataformat-smile</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
+			<classifier>no_aop</classifier>
+
+
+		</dependency>
+
+
+		<dependency>
+			<groupId>me.andpay.ti.mobile</groupId>
+			<artifactId>ti-moible-orderpay-api</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>me.andpay.ac.ac-term</groupId>
+			<artifactId>ac-term-api</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-jdk14</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>locationapi</artifactId>
+					<groupId>com.baidu.location</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.easymock</groupId>
+					<artifactId>easymock</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>me.andpay.ti.ti-lnk</groupId>
+					<artifactId>ti-lnk-inter-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti</groupId>
+			<artifactId>ti-moible-framework</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>reflections</artifactId>
+					<groupId>org.reflections</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.inject</groupId>
+					<artifactId>guice</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti</groupId>
+			<artifactId>ti-moible-framework-android</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<exclusions>
+			    <exclusion>
+					<artifactId>android</artifactId>
+					<groupId>com.google.android</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.android</groupId>
+					<artifactId>android-support-v4</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.inject</groupId>
+					<artifactId>guice</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+
+			<groupId>me.andpay.ti.ti-lnk</groupId>
+			<artifactId>ti-lnk-rpc</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>commons-beanutils</artifactId>
+					<groupId>commons-beanutils</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jcl-over-slf4j</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>lo	gback-classic</artifactId>
+					<groupId>ch.qos.logback</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-jdk14</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.easymock</groupId>
+					<artifactId>easymock</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>cglib</groupId>
+					<artifactId>cglib-nodep</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<version>1</version>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-websocket</artifactId>
+			<version>7.6.7.v20120910</version>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jetty-http</artifactId>
+					<groupId>org.eclipse.jetty</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jetty-util</artifactId>
+					<groupId>org.eclipse.jetty</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jetty-io</artifactId>
+					<groupId>org.eclipse.jetty</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti.ti-s3</groupId>
+			<artifactId>ti-s3-client</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ac</groupId>
+			<artifactId>ac-const</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.baidu.mapapi</groupId>
+			<artifactId>baidumapapi</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>pl.droidsonroids.gif</groupId>
+			<artifactId>droid-gif</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>me.andpay.ti.mobile</groupId>
+			<version>1.0.0</version>
+			<artifactId>apos-cardreader-driver</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>junit</artifactId>
+					<groupId>junit</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- <dependency> <groupId>com.baidu.location</groupId> <artifactId>locationapi</artifactId> 
+			<version>3.1</version> </dependency> -->
+
+		<!-- <dependency> <groupId>com.google.zxing</groupId> <artifactId>zxing-integration</artifactId> 
+			<version>2.1</version> </dependency> -->
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.baidu.location</groupId>
+			<artifactId>locSDK</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-android</artifactId>
+			<version>1.6.1-RC1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android-support-v4</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.tencent.stat</groupId>
+			<artifactId>mtaSDK</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.dolby.dap</groupId>
+			<artifactId>dolby-audio</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.crashlytics.android</groupId>
+			<artifactId>crashlytics</artifactId>
+			<version>1.1.10</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>11.0.1</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>com.google.inject</groupId> <artifactId>guice</artifactId> 
+			<version>4.0-beta</version> <classifier>no_aop</classifier> </dependency> -->
+		<!-- <dependency> <groupId>me.andpay.ti</groupId> <artifactId>ti-mobile-dexlib-api</artifactId> 
+			<version>1.0.0</version> </dependency> -->
+
+		<dependency>
+			<groupId>me.andpay.ti.ti-lnk</groupId>
+			<artifactId>ti-lnk-protocol</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jackson</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.0.5</version>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	<!-- <build> <sourceDirectory>src</sourceDirectory> <finalName>${project.artifactId}</finalName> 
+		<pluginManagement> <plugins> <plugin> <groupId>com.jayway.maven.plugins.android.generation2</groupId> 
+		<artifactId>android-maven-plugin</artifactId> <version>3.6.0</version> <extensions>true</extensions> 
+		</plugin> </plugins> </pluginManagement> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId> 
+		<artifactId>maven-resources-plugin</artifactId> <version>2.2</version> <configuration> 
+		<encoding>UTF-8</encoding> </configuration> </plugin> <plugin> <groupId>com.jayway.maven.plugins.android.generation2</groupId> 
+		<artifactId>android-maven-plugin</artifactId> <configuration> <sdk> platform 
+		as api level (api level 16 = platform 4.1) <platform>16</platform> </sdk> 
+		</configuration> </plugin> </plugins> </build> -->
+</project>

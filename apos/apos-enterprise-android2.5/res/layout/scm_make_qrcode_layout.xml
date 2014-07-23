@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/com_title_tv"
+            style="@style/com_top_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="生成二维码" />
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        style="@style/cardreader_set_layout_style"
+        android:layout_below="@+id/com_top_layout" >
+
+        <ImageView
+            android:id="@+id/scm_cardread_open_img"
+            style="@style/cardreader_set_img_style"
+            android:src="@drawable/open_device_5_qr_img" />
+
+        
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/scm_text_view"
+        style="@style/cardreader_set_textview_style"
+        android:layout_below="@+id/relativeLayout1"
+        android:text="请根据图示，点击退格键生成二维码" />
+
+    <Button
+        android:id="@+id/scm_next_btn"
+        style="@style/com_button_style"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/scm_text_view"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="25dp"
+        android:text="扫 描" />
+
+</RelativeLayout>

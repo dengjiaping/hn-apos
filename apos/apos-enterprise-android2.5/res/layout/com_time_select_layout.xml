@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/com_bgroud_common_col"
+    android:orientation="vertical" >
+
+ 
+          <DatePicker
+        android:id="@+id/com_time_select_date_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="#00000000" 
+
+        /> 
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/com_time_select_cancel_btn"
+            style="@style/com_button_left_style"
+            android:text="@string/com_cancel_str" />
+
+        <Button
+            android:id="@+id/com_time_select_sure_btn"
+            style="@style/com_button_right_style"
+            android:layout_marginLeft="13dp"
+            android:text="@string/com_sure_str" />
+    </LinearLayout>
+
+</LinearLayout>

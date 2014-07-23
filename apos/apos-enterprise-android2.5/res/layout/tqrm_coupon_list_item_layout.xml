@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        layout="@layout/vas_purchaseorder_section_layout" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/com_list_f0f0f0_item_selector"
+        android:descendantFocusability="blocksDescendants" >
+
+        <TextView
+            android:id="@+id/tqrm_coupon_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="7dp"
+            android:background="@android:color/transparent"
+            android:gravity="right|center_vertical"
+            android:text="优惠劵"
+            android:textColor="@color/tqm_list_item_amount_col"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/tqrm_coupin_redeem_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="7dp"
+            android:background="@android:color/transparent"
+            android:gravity="right|center_vertical"
+            android:text="23:23:23"
+            android:textColor="@color/tqm_list_item_amount_col"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+</LinearLayout>

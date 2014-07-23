@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/com_title_tv"
+        style="@style/com_update_text_style"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:text="@string/com_update_title_str" />
+
+    <LinearLayout
+        android:id="@+id/com_update_version_lay"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_below="@id/com_title_tv"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp" >
+
+        <TextView
+            android:id="@+id/com_update_version_title_str"
+            style="@style/com_update_text_style"
+            android:layout_gravity="center_vertical"
+            android:text="@string/com_update_version_str" />
+
+        <TextView
+            android:id="@+id/com_update_version_tv"
+            style="@style/com_update_text_style"
+            android:layout_gravity="center_vertical"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/com_update_size_title_lay"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_below="@id/com_update_version_lay"
+        android:orientation="horizontal"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp" >
+
+        <TextView
+            android:id="@+id/com_update_size_title_str"
+            style="@style/com_update_text_style"
+            android:layout_gravity="center_vertical"
+            android:text="@string/com_update_size_str" />
+
+        <TextView
+            android:id="@+id/com_update_size_tv"
+            style="@style/com_update_text_style"
+            android:layout_gravity="center_vertical"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/com_update_time_title_lay"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_below="@id/com_update_size_title_lay"
+        android:orientation="horizontal"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp" >
+
+        <TextView
+            android:id="@+id/com_update_time_title_tv"
+            style="@style/com_update_text_style"
+            android:layout_gravity="center_vertical"
+            android:text="@string/com_update_time_str" />
+
+        <TextView
+            android:id="@+id/com_update_time_tv"
+            style="@style/com_update_text_style"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/com_update_info_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_update_time_title_lay"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:visibility="visible" >
+
+        <TextView
+            android:id="@+id/com_update_info_tv"
+            style="@style/com_update_text_style"
+            android:layout_gravity="center_vertical"
+            android:singleLine="false"
+            android:text="123asdasdasdasdasdasd112313123123123123123" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/com_update_info_lay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="#00000000"
+        android:paddingBottom="7dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp" >
+
+        <Button
+            android:id="@+id/com_sure_btn"
+            style="@style/com_button_right_style"
+            android:text="@string/com_sure_str" />
+
+        <Button
+            android:id="@+id/com_cancel_btn"
+            style="@style/com_button_left_style"
+            android:layout_marginLeft="13dp"
+            android:text="@string/com_cancel_str" />
+    </LinearLayout>
+
+</RelativeLayout>

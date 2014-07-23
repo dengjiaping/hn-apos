@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/table_border" >
+
+        <Button
+            android:id="@+id/ssm_settledetail_back_btn"
+            android:layout_width="0dip"
+            android:layout_height="80px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="2"
+            android:text="@string/ssm_main_back_str" />
+
+        <TextView
+            android:id="@+id/ssm_main_title_tv"
+            android:layout_width="0dip"
+            android:layout_height="80px"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="8"
+            android:gravity="center"
+            android:text="@string/ssm_main_title_str" />
+
+        <Button
+            android:id="@+id/ssm_settledetail_home_btn"
+            android:layout_width="0dip"
+            android:layout_height="80px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="2"
+            android:text="@string/com_home_str" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/_blank2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="   " />
+
+    <me.andpay.apos.cmview.TiXListView
+        android:id="@+id/ssm_settle_detail_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000" >
+    </me.andpay.apos.cmview.TiXListView>
+
+    <TextView
+        android:id="@+id/ssm_settledetail_batchno_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/ssm_settle_info_batchno_str" />
+
+    <TextView
+        android:id="@+id/_blank2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="   " />
+
+</LinearLayout>

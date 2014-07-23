@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/com_navleft_bg_img" >
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000" >
+
+        <LinearLayout
+            android:id="@+id/com_menu_linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/com_memu_title_lay"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/com_left_menu_navtop_img" >
+
+                <TextView
+                    android:id="@+id/com_memu_title_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="13dp"
+                    android:layout_toLeftOf="@+id/com_memu_more_set_img"
+                    android:background="#00000000"
+                    android:ellipsize="marquee"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:shadowColor="#000000"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+                    android:singleLine="true"
+                    android:textColor="#999999"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:id="@+id/com_memu_more_set_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/com_icon_more_set_img" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_pur_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_pur_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_menu_purchase_icon_selector" />
+
+                <TextView
+                    android:id="@+id/com_memu_pur_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_pur_img"
+                    android:text="@string/com_pur_str" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_pur_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+            <!--
+            <RelativeLayout
+                android:id="@+id/com_menu_transfer_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_transfer_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_icon_transfer_img" />
+
+                <TextView
+                    android:id="@+id/com_memu_transfer_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_toRightOf="@+id/com_memu_transfer_img"
+                    android:paddingTop="5dp"
+                    android:text="转账" />
+            </RelativeLayout>
+			 
+			 
+            <ImageView
+                android:id="@+id/com_memu_transfer_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+            -->
+
+            <RelativeLayout
+                android:id="@+id/com_menu_order_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_order_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_menu_order_icon_selector" />
+
+                <TextView
+                    android:id="@+id/com_memu_order_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_toRightOf="@+id/com_memu_order_img"
+                    android:paddingTop="5dp"
+                    android:text="@string/opm_tab_name" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_order_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_query_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_query_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_menu_query_icon_selector" />
+
+                <TextView
+                    android:id="@+id/com_memu_query_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_toRightOf="@+id/com_memu_query_img"
+                    android:text="@string/com_query_str" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_query_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_refund_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_refund_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_menu_refund_icon_selector" />
+
+                <TextView
+                    android:id="@+id/com_memu_refund_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_toRightOf="@+id/com_memu_refund_img"
+                    android:text="@string/com_refund_str" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_refund_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+            <!--
+            <RelativeLayout
+                android:id="@+id/com_menu_vaserivce_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_vaservice_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_icon_appreciation_img" />
+
+                <TextView
+                    android:id="@+id/com_memu_vaservice_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_toRightOf="@+id/com_memu_vaservice_img"
+                    android:text="增值服务" />
+            </RelativeLayout>
+            -->
+
+            <ImageView
+                android:id="@+id/com_memu_vaservice_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <!--
+            <RelativeLayout
+                android:id="@+id/com_menu_more_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_more_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_menu_more_icon_selector" />
+
+                <TextView
+                    android:id="@+id/com_memu_more_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_more_img"
+                    android:text="@string/com_more_str" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_more_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+            -->
+            <!--
+            <RelativeLayout
+                android:id="@+id/com_menu_coupon_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_coupon_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_icon_coupons_img" />
+
+                <TextView
+                    android:id="@+id/com_memu_coupon_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_toRightOf="@+id/com_memu_coupon_img"
+                    android:text="@string/tam_coupon_query_str" />
+            </RelativeLayout>
+            -->
+
+            <ImageView
+                android:id="@+id/com_memu_coupon_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_balance_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_balance_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_menu_balance_icon_selector" />
+
+                <TextView
+                    android:id="@+id/com_memu_balance_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_balance_img"
+                    android:text="@string/tam_balance_query_str" />
+
+                <TextView
+                    android:id="@+id/com_memu_balance_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:text="" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_balance_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_settle_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_settle_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_icon_settle_img" />
+
+                <TextView
+                    android:id="@+id/com_memu_settle_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_settle_img"
+                    android:text="到账查询" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_settle_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_left_serve_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_left_serve_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/com_icon_settle_img" />
+
+                <TextView
+                    android:id="@+id/com_memu_left_serve_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_left_serve_img"
+                    android:text="便民服务" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_settle_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_last_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="#00000000" >
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/com_left_menu_navbottom_img" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/com_left_menu_solid_line_img" />
+
+        <ImageView
+            android:id="@+id/com_logout_imgview"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/com_icon_quit_img" />
+
+        <TextView
+            android:id="@+id/com_menu_text"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignTop="@+id/com_logout_imgview"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/com_logout_imgview"
+            android:background="#00000000"
+            android:gravity="center_vertical"
+            android:shadowColor="#000000"
+            android:shadowDx="0"
+            android:shadowDy="-1"
+            android:shadowRadius="1"
+            android:text="15921279827"
+            android:textColor="#999999"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

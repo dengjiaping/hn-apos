@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.andpay.apos.cmview.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scm_top_lay"
+        style="@style/com_native_top_style"
+        android:persistentDrawingCache="none" >
+
+        <TextView
+            android:id="@+id/scm_main_title_tv"
+            style="@style/com_top_text_style"
+            android:text="@string/vas_user_register_str" />
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/vas_open_card_btn"
+            style="@style/com_top_right_button_style"
+            android:layout_width="46dp"
+            android:enabled="true"
+            android:text="@string/vas_sure_str" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scm_top_lay"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/vas_telno_text"
+            style="@style/com_edit_text_style"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/vas_tel_no_str"
+            android:inputType="number" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/vas_repeat_telno_text"
+            style="@style/com_edit_text_style"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/vas_repeat_tel_no_str"
+            android:inputType="phone" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/vas_user_text"
+            style="@style/com_edit_text_style"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/vas_user_str" >
+        </EditText>
+
+        <me.andpay.apos.cmview.tispinner.TiNewSpinner
+            android:id="@+id/vas_id_type_spinner"
+            style="@style/com_edit_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/com_input_1_line_img"
+            android:drawableRight="@drawable/com_icon_pulldown_img"
+            android:gravity="center_vertical"
+            android:hint="@string/vas_id_type_str"
+            android:singleLine="true"
+            android:textColor="#666666"
+            android:textColorHint="#cccccc" />
+
+        <EditText
+            android:id="@+id/vas_id_NO_text"
+            style="@style/com_edit_text_style"
+            android:layout_marginTop="10dp"
+            android:hint="@string/vas_id_NO_str" >
+        </EditText>
+    </LinearLayout>
+
+</me.andpay.apos.cmview.ResizeLayout>

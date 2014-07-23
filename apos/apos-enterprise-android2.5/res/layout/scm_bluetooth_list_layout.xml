@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/com_title_tv"
+            style="@style/com_top_text_style"
+            android:text="请选择蓝牙设备" />
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" />
+
+        <ProgressBar
+            android:id="@+id/scm_title_processing_pb"
+            style="@style/com_top_refresh_style"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/scm_search_btn"
+            style="@style/com_top_right_button_style"
+            android:layout_width="60dp"
+            android:text="重新搜索" >
+        </Button>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/scm_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/com_top_layout" >
+    </ListView>
+
+   <RelativeLayout
+        android:id="@+id/scm_progress_lay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/com_top_layout"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left" >
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="14dp"
+                android:gravity="center"
+                android:text="蓝牙设备搜索中..."
+                android:textColor="#666666"
+                android:textSize="16dp" />
+        </LinearLayout>
+    </RelativeLayout>
+    
+    
+ 	<RelativeLayout
+        android:id="@+id/scm_no_device"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/com_top_layout"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                android:text="没有找到蓝牙设备，请确定设备开机后，点击重新搜索按钮。"
+                android:textColor="#666666"
+                android:background="#00000000"
+                android:textSize="16dp" />
+    </RelativeLayout> 
+    
+
+</RelativeLayout>

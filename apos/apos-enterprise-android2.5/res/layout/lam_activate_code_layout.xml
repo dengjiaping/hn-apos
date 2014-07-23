@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" 
+   android:background="#E0E3E4">
+	
+    <RelativeLayout
+        android:id="@+id/lam_top_layout"
+        style="@style/com_native_top_style" 
+         
+      >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/lam_user_activate_str" />
+        
+        <me.andpay.apos.cmview.TiTimeButton
+            android:id="@+id/tam_retry_code_btn"
+            style="@style/com_top_left_button_style"
+            android:text="@string/lam_time_second_str" />
+    
+    </RelativeLayout>
+    
+    
+    <TextView 
+        android:id="@+id/lam_code_prompt"
+        android:layout_below="@+id/lam_top_layout"
+   		android:layout_marginTop="13dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:textColor="#999999"
+        android:textSize="16dp"
+		android:text="@string/lam_activate_code_prompt_str"
+        />
+    
+    <LinearLayout
+        android:id="@+id/lam_contract_code_lay"
+        style="@style/tam_edittext_icon_lay_style"
+        android:layout_below="@id/lam_code_prompt"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/com_input_1_line_img" >
+
+        
+        <EditText
+            android:id="@+id/lam_activate_code_edit"
+            style="@style/com_edittext_style"
+            android:hint="@string/lam_input_activate_code_str"
+            android:maxLength="6"
+            android:layout_margin="10dp"
+            android:textSize="18dp"
+          
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/lam_activate_btn"
+        style="@style/com_button_style"
+        android:layout_width="match_parent"
+        android:layout_below="@id/lam_contract_code_lay"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:text="@string/com_sure_str" />
+    
+     <RelativeLayout
+         android:layout_marginTop="20dp"
+        android:id="@+id/tam_foot_lay"
+        android:layout_below="@id/lam_activate_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000" >
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/com_dynamic_dialog_shape" >
+
+    <RelativeLayout
+        android:id="@+id/com_dialog_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/com_search_nav_img"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/com_top_dialog_text_style"
+            android:text="填写备注" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/com_prompt_dialog_orderid_tv"
+        style="@style/com_edittext_style"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/com_dialog_top_layout"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="left|center_vertical"
+        android:hint="订单号"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp" />
+
+    <ImageView
+        android:id="@+id/solid_img"
+        style="@style/scm_line_image_style"
+        android:layout_below="@+id/com_prompt_dialog_orderid_tv" />
+
+    <EditText
+        android:id="@+id/com_prompt_dialog_memo_tv"
+        style="@style/com_edittext_style"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/solid_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="left|center_vertical"
+        android:hint="备注"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp" />
+
+    <ImageView
+        android:id="@+id/solid1_img"
+        style="@style/scm_line_image_style"
+        android:layout_below="@+id/com_prompt_dialog_memo_tv" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_below="@+id/solid1_img"
+        android:layout_centerHorizontal="true"
+        android:background="@color/com_no_color"
+        android:orientation="horizontal"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp" >
+
+        <RelativeLayout
+            android:id="@+id/com_dialog_cancel_layout"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:background="@color/com_no_color"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/com_top_dialog_text_style"
+                android:text="@string/com_cancel_str" />
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/solid2_img"
+			android:layout_width="1dp"
+			android:layout_height="match_parent"
+            android:src="@drawable/scm_solid_line_vertical_img" />
+
+        <RelativeLayout
+            android:id="@+id/com_dialog_sure_layout"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:background="@color/com_no_color"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/com_dialog_sure_tv"
+                style="@style/com_top_dialog_text_style"
+                android:text="@string/com_sure_str" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

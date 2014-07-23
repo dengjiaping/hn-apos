@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0E3E4"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/lam_top_layout"
+        style="@style/com_native_top_style" >
+
+        <ImageView
+            android:id="@+id/com_show_silder_btn"
+            style="@style/com_slider_button_style" />
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="订单号输入" />
+    </RelativeLayout>
+
+    <!--
+    <LinearLayout
+        android:id="@+id/lam_contract_code_lay"
+        style="@style/tam_edittext_icon_lay_style"
+        android:layout_below="@id/lam_code_prompt"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/com_input_1_line_img" >
+
+        <EditText
+            android:id="@+id/opm_order_no_edit"
+            style="@style/com_edittext_style"
+            android:layout_margin="10dp"
+            android:ems="10"
+            android:hint="请输入订单号"
+            android:maxLength="30"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ~!@%()_-=+*,.、"
+            android:inputType="number"  
+            android:lines="1"  
+            android:text="12345678901234"      
+            android:textSize="28dp" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+    -->
+
+    <RelativeLayout
+        android:id="@+id/lam_contract_code_lay"
+        style="@style/tam_edittext_icon_lay_style"
+        android:layout_below="@id/lam_code_prompt"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/com_input_1_line_img" >
+
+        <ImageView
+            android:id="@+id/tam_post_phone_img"
+            style="@style/tam_edittext_icon_style"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/com_icon_input_order_img" />
+
+        <EditText
+            android:id="@+id/opm_order_no_edit"
+            style="@style/com_post_edittext_style"
+            android:layout_marginLeft="48dp"
+            android:layout_toLeftOf="@+id/tam_post_sendsms_btn"
+            android:ems="10"
+              android:hint="请输入订单号"
+            android:maxLength="30"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLIMNOPQRSTUVWXYZ~!@%()_-=+*,.、"
+            android:inputType="number"  
+			android:singleLine="true"            
+            android:textSize="25dp"/>
+
+    </RelativeLayout>
+    
+    <TextView 
+        android:id="@+id/opm_help_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lam_contract_code_lay"
+        android:text="关于订单格式"
+        android:textColor="@color/tqm_amount_col"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        />
+
+    <Button
+        android:id="@+id/opm_query_btn"
+        style="@style/com_button_style"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/opm_help_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:text="查询" />
+
+</RelativeLayout>

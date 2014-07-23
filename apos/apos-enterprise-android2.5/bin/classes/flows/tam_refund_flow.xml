@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="swipe">
+    <!--退货输入 -->
+    <flow-node node-name ="swipe" ref-activity="me.andpay.apos.trm.activity.RefundInputActivity">
+        <node-complete  identity = "success"  next-node="txnSuccess" />
+        <node-complete  identity = "faild"  next-node="txnfaild"  />
+         <node-complete  identity = "faild_step1"  next-node="txnTimeout"  />
+    </flow-node>
+     <!-- 交易超时 -->  
+   	<flow-node node-name ="txnTimeout" ref-activity="me.andpay.apos.tam.activity.TxnTimeoutActivity">
+   	  <node-complete  identity = "success3"  next-node="txnSuccess" />
+      <node-complete  identity = "faild"  next-node="txnfaild" remove-node="true" />
+ 	  <node-complete  identity = "finish" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+   </flow-node>
+   	<!-- 交易失败 -->  
+   	<flow-node node-name ="txnfaild" ref-activity="me.andpay.apos.tam.activity.TxnFaildActivity">
+         <node-complete  identity = "finish" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+   </flow-node>
+      	<!--退货交易成功-->  
+   	<flow-node node-name ="txnSuccess" ref-activity="me.andpay.apos.trm.activity.RefundSuccessActivity">
+         <node-complete  identity = "finish" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+   </flow-node>
+    
+</flow-diagram>

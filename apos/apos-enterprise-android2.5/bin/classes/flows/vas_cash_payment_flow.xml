@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 现金支付流程 -->
+<flow-diagram version="1.0" begin-node="start">
+    <!-- 现金支付 -->
+    <flow-node node-name ="start" ref-activity="me.andpay.apos.vas.activity.CashPaymentActivity">
+        <node-complete  identity = "success"    finish-flow = "true" />
+        <node-complete  identity = "faild"     next-node="purchaseOrderfaild"  transfer="Vas.CashPayment.PurchaseOrderFaildTransfer" />
+    </flow-node>
+    <!-- 订单提交失败 --> 
+    <flow-node node-name ="purchaseOrderfaild" ref-activity="me.andpay.apos.vas.activity.PurchaseOrderFaildActivity">
+        <node-complete identity = "finish"  flush-context = "true" finish-flow ="true"  hold-sub-finish="true"/>
+        <node-complete identity = "success"  finish-flow = "true" />
+    </flow-node>
+</flow-diagram>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_sign_lay"
+        style="@style/com_native_top_style"
+         >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/tam_sign_title_str" />
+
+        <Button
+            android:id="@+id/tam_sign_next_btn"
+            style="@style/com_next_button_right_style"
+            android:enabled="false"
+            android:text="@string/com_next_str" />
+        
+          <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style"
+            android:visibility="gone" />
+        
+         <Button
+            android:id="@+id/tam_skip_sign_btn"
+            style="@style/com_next_button_left_style"
+            android:text="@string/tam_skip_sign_str"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tam_sign_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_top_sign_lay" >
+
+        <me.andpay.apos.cmview.signature.SignatureView
+            android:id="@+id/tam_sign_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:fadeOffset="3600000"
+            android:gestureColor="#000000"
+            android:gestureStrokeType="multiple" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/tam_foot_img_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/tam_folding_img" />
+
+    <RelativeLayout
+        android:id="@+id/tam_sign_foot_lay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tam_foot_img_view"
+        android:gravity="center" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_marginLeft="7dp"
+            android:enabled="false"
+            android:gravity="center_vertical"
+            android:shadowColor="#ffffff"
+            android:shadowDx="0"
+            android:shadowDy="-1"
+            android:shadowRadius="1"
+            android:text="@string/tam_sign_bottom_str"
+            android:textColor="#999999"
+            android:textSize="10dp" />
+
+        <Button
+            android:id="@+id/tam_sign_clear_btn"
+            android:layout_width="65dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/com_button_clear_button_selector"
+            android:shadowColor="#ffffff"
+            android:shadowDx="0"
+            android:shadowDy="-1"
+            android:shadowRadius="1"
+            android:text="@string/tam_sign_clean_str"
+            android:textColor="#666666"
+            android:textSize="12dp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/tam_sign_dot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tam_sign_foot_lay1"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:src="@drawable/tam_dot_img" />
+
+    <TextView
+        android:id="@+id/tam_sign_amt_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tam_sign_dot"
+        android:layout_marginBottom="3dp"
+        android:layout_marginLeft="4dp"
+        android:shadowColor="#ffffff"
+        android:shadowDx="0"
+        android:shadowDy="-1"
+        android:shadowRadius="1"
+        android:textColor="#666666"
+        android:textSize="21dp" />
+
+    <RelativeLayout
+        android:id="@+id/tam_sign_prompt_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="49dp"
+        android:background="#00000000"
+        android:gravity="center" > 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:background="#00000000"
+            android:gravity="center"
+            android:shadowColor="#ffffff"
+            android:shadowDx="0"
+            android:shadowDy="1"
+            android:shadowRadius="1"
+            android:text="@string/tam_sign_txn_success_str"
+            android:textColor="#cccccc"
+            android:textSize="24dp" >
+        </TextView>
+    </RelativeLayout>
+
+</RelativeLayout>

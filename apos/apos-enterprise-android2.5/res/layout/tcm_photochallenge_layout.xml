@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/tcm_photochallenge_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/tam_photochallenge_title"
+            style="@style/com_top_text_style"
+            android:text="@string/tcm_infochallenge_str" />
+
+        <Button
+            android:id="@+id/tam_photochallenge_quit_btn"
+            style="@style/com_top_button_style"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:text="@string/com_login_out_str" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tcm_photochallenge_content_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tcm_photochallenge_top_layout" >
+
+        <TextView
+            android:id="@+id/tcm_photochallenge_info_txtView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="您的交易存在风险,\n 请拍摄您的【银行卡】完成验证"
+            android:textColor="#999999"
+            android:textSize="16dp" />
+
+        <RelativeLayout
+            android:id="@+id/tcm_photochallenge_input_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="270dp"
+            android:layout_below="@id/tcm_photochallenge_info_txtView"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/com_input_1_line_img" >
+
+            <RelativeLayout
+                android:id="@+id/tcm_photochallenge_before_shoot_layout"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:background="@color/transparent">
+                <ImageView
+                    android:id="@+id/tcm_photochallenge_shoot_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:background="@color/transparent"
+                    android:src="@drawable/com_icon_photo_img" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tcm_photochallenge_shoot_img"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/transparent"
+                    android:text="点击拍照"
+                    android:textSize="14dp"
+                    android:textColor="#000000" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tcm_photochallenge_after_shoot_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@color/transparent"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/tcm_photochallenge_show_photo_img"
+                    android:layout_width="280dp"
+                    android:layout_height="210dp"
+                    android:background="@color/transparent" />
+
+                <Button
+                    android:id="@+id/tcm_photochallenge_retake_photo_btn"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@id/tcm_photochallenge_show_photo_img"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="6dp"
+                    android:background="@color/transparent"
+                    android:text="点击重新拍照"
+                    android:textSize="14dp"
+                    android:textColor="#000000" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tcm_photochallenge_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/tcm_photochallenge_content_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/scm_bottom_layout_selector"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/tcm_photochallenge_next_btn"
+            style="@style/com_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="false"
+            android:text="@string/com_next_str" />
+    </RelativeLayout>
+
+</RelativeLayout>

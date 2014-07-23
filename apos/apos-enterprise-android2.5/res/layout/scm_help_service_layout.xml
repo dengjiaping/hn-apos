@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="gone" >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scm_help_card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@drawable/hgm_table_title_bg_img" >
+
+        <TextView
+            style="@style/scm_main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="7dp"
+            android:background="@color/com_no_color"
+            android:text="@string/scm_help_service_introduce_str"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/scm_help_card_one_gview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/scm_help_service_introduce_text_str"
+        android:textColor="@color/com_title_normal_col"
+        android:textSize="14dp"
+        android:lineSpacingExtra="5dp"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/hgm_table_title_bg_img" >
+
+        <TextView
+            style="@style/scm_main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="7dp"
+            android:background="@color/com_no_color"
+            android:text="@string/scm_help_service_product_str"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/scm_help_card_one_gview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        android:lineSpacingExtra="5dp"
+        android:text="@string/scm_help_service_product_text_str"
+        android:textColor="@color/com_title_normal_col"
+        android:textSize="14dp"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/hgm_table_title_bg_img" >
+
+        <TextView
+            style="@style/scm_main_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="7dp"
+            android:background="@color/com_no_color"
+            android:text="@string/scm_help_service_fee_str"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/scm_help_card_one_gview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        android:lineSpacingExtra="5dp"
+        android:text="@string/scm_help_service_fee_text_str"
+        android:textColor="@color/com_title_normal_col"
+        android:textSize="14dp"
+        android:visibility="visible" />
+
+</LinearLayout>

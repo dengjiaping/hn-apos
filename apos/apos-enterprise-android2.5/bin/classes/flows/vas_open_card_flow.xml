@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 开卡流程 -->
+<flow-diagram version="1.0" begin-node="openCard">
+     <!-- 开卡 -->
+    <flow-node node-name ="openCard"  ref-activity="me.andpay.apos.vas.activity.OpenCardRegisterMainActivity" >
+        <node-complete  identity = "success"  next-node="register" remove-node="true"/>
+        <node-complete  identity = "faild"  next-node="openCardFaild"/>
+    </flow-node>
+    <flow-node node-name ="register"  ref-activity="me.andpay.apos.vas.activity.OpenCardRegisterActivity" >
+        <node-complete  identity = "success"  next-node="openCardSuccess"/>
+        <node-complete  identity = "faild"  next-node="openCardFaild"/>
+    </flow-node>
+    <!-- 开卡成功 -->
+     <flow-node node-name ="openCardSuccess" ref-activity="me.andpay.apos.vas.activity.OpenCardSuccessActivity">
+          <node-complete  identity = "success"  finish-flow = "true" />
+    </flow-node>
+     <!-- 开卡失败 -->
+     <flow-node node-name ="openCardFaild" ref-activity="me.andpay.apos.vas.activity.OpenCardFaildActivity">
+          <node-complete  identity = "finish"  finish-flow = "true" />
+    </flow-node>
+</flow-diagram>
+
+

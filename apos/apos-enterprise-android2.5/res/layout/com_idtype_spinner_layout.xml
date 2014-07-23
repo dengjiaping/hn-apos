@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/id_no_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="身份证"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/id_no_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_cash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/military_officer_cert_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="军官证"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/military_officer_cert_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_cash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/passport_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="护照"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/passport_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_cash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/home_visiting_cert_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="回乡证"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/home_visiting_cert_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_cash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/taiwan_comp_cert_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="台胞证"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/taiwan_comp_cert_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_cash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/police_officer_cert_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="警官证"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/police_officer_cert_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_cash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/soldier_cert_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="士兵证"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/soldier_cert_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_cash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/other_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="其他证件"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/other_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+</LinearLayout>

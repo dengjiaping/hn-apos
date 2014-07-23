@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/com_native_top_style" 
+        android:id="@+id/com_top_lay">
+
+        <TextView
+            android:id="@+id/com_title_tv"
+            style="@style/com_top_text_style"
+            android:text="商户限额" />
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:background="#00000000" >
+
+        <ImageView
+            android:id="@+id/com_hasuse_image"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:background="#cccccc" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:layout_toRightOf="@+id/com_hasuse_image"
+            android:text="已用"
+            android:textColor="#666666" />
+
+        <ImageView
+            android:id="@+id/ImageView01"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/textView1"
+            android:background="#7ca74b" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/ImageView01"
+            android:text="未用"
+            android:textColor="#666666" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/scm_cd_month_limit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="@drawable/scm_table_title_bg_img" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:paddingLeft="7dp"
+                android:text="商户信用卡月交易限额"
+                android:textColor="#666666" />
+
+            <TextView
+                android:id="@+id/scm_cd_month_total_limit_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:paddingRight="7dp"
+                android:text="总额"
+                android:textColor="#666666" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="#00000000" >
+
+            <TextView
+                android:id="@+id/scm_cd_month_use_limit_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#cccccc"
+                android:gravity="center_vertical"
+                android:paddingLeft="6dp"
+                android:text="￥8000"
+                android:textColor="#666666" />
+
+            <TextView
+                android:id="@+id/scm_cd_month_remain_limit_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="#7ca74b"
+                android:gravity="center_vertical|right"
+                android:paddingRight="7dp"
+                android:text="￥100000000"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scm_day_limit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:background="#00000000"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="@drawable/scm_table_title_bg_img" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:paddingLeft="7dp"
+                android:text="商户当日交易限额"
+                android:textColor="#666666" />
+
+            <TextView
+                android:id="@+id/scm_day_total_limit_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:paddingRight="7dp"
+                android:text="总额"
+                android:textColor="#666666" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="#00000000" >
+
+            <TextView
+                android:id="@+id/scm_day_use_limit_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#cccccc"
+                android:gravity="center_vertical"
+                android:paddingLeft="6dp"
+                android:text="￥8000"
+                android:textColor="#666666" />
+
+            <TextView
+                android:id="@+id/scm_day_remain_limit_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="#7ca74b"
+                android:gravity="center_vertical|right"
+                android:paddingRight="7dp"
+                android:text="￥100000000"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scm_month_limit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:background="#00000000"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="@drawable/scm_table_title_bg_img" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:paddingLeft="7dp"
+                android:text="商户月交易限额"
+                android:textColor="#666666" />
+
+            <TextView
+                android:id="@+id/scm_month_total_limit_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:paddingRight="7dp"
+                android:text="总额"
+                android:textColor="#666666" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="#00000000" >
+
+            <TextView
+                android:id="@+id/scm_month_use_limit_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#cccccc"
+                android:gravity="center_vertical"
+                android:paddingLeft="6dp"
+                android:text="￥8000"
+                android:textColor="#666666" />
+
+            <TextView
+                android:id="@+id/scm_month_remain_limit_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:background="#7ca74b"
+                android:gravity="center_vertical|right"
+                android:paddingRight="7dp"
+                android:text="￥100000000"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scm_daily_txn_quota_sign_card_limit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:background="#00000000"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="@drawable/scm_table_title_bg_img" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:paddingLeft="7dp"
+                android:text="单信用卡日限额"
+                android:textColor="#666666" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="#00000000" >
+
+            <TextView
+                android:id="@+id/scm_daily_txn_quota_sign_card_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:background="#7ca74b"
+                android:gravity="center_vertical|right"
+                android:paddingRight="7dp"
+                android:text="￥100000000"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scm_month_txn_quota_sign_card_limit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:background="#00000000"
+        android:orientation="vertical" 
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="@drawable/scm_table_title_bg_img" >
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:background="#00000000"
+                android:gravity="center_vertical"
+                android:paddingLeft="7dp"
+                android:text="单信用卡月限额"
+                android:textColor="#666666" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="#00000000" >
+
+            <TextView
+                android:id="@+id/scm_month_txn_quota_sign_card_tv"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:background="#7ca74b"
+                android:gravity="center_vertical|right"
+                android:paddingRight="7dp"
+                android:text="￥100000000"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scm_processing_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@style/com_native_top_style"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <ProgressBar
+            android:id="@+id/com_processing_pb"
+            android:layout_width="18dp"
+            android:layout_height="18dp" />
+
+        <TextView
+            android:id="@+id/com_processing_info_tv"
+            style="@style/com_non_str_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="@string/com_progress_prompt_str" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/scm_no_data_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/com_top_lay"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/com_non_data_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/com_icon_none_img" />
+
+        <TextView
+            android:id="@+id/ssm_info_non_tv"
+            style="@style/com_non_str_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/com_non_data_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="该商户未设置限额" />
+    </RelativeLayout>
+
+</LinearLayout>

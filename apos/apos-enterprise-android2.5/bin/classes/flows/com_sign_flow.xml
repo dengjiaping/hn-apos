@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="start">
+    <!-- 启动 -->
+    <flow-node node-name ="start" ref-activity="me.andpay.apos.tam.activity.SignActivity" >
+      	 <node-complete  identity = "success" finish-flow = "true" />
+    </flow-node>
+  
+</flow-diagram>

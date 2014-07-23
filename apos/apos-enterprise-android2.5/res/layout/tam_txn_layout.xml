@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tam_txn_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_pur_lay"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/tam_next_top_textview"
+            style="@style/com_top_text_style"
+            android:text="@string/tam_top_connet_cardreader_str" />
+
+        <ImageView
+            android:id="@+id/tam_top_back_btn"
+            style="@style/com_top_return_button_style" >
+        </ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tam_content_query_show_lay"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_below="@id/com_top_pur_lay"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/com_tips_box_img"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/tam_query_balance_image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/com_icon_tips_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="56dp"
+            android:background="#00000000"
+            android:text="@string/tam_query_balance_tips_str"
+            android:textColor="#666666"
+            android:textSize="13dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tam_content_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_top_pur_lay"
+        android:background="#ffffff"
+        android:visibility="visible" >
+
+        <RelativeLayout
+            android:id="@+id/tam_content_query_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:visibility="visible" >
+
+            <RelativeLayout
+                android:id="@+id/tam_issuer_query_lay"
+                style="@style/com_txn_detail_lay_style"
+                android:layout_alignParentTop="true" >
+
+                <TextView
+                    android:id="@+id/tam_issuername_query_txnview"
+                    style="@style/com_txn_detail_left_text_style"
+                    android:text="@string/tqm_txn_detail_issuer_title_str" />
+
+                <TextView
+                    android:id="@+id/tam_issuer_query_txnview"
+                    style="@style/com_txn_detail_right_text_style" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/tam_issuer_imgview"
+                style="@style/com_txn_detail_dotted_img_style"
+                android:layout_below="@id/tam_issuer_query_lay" />
+
+            <RelativeLayout
+                android:id="@+id/tam_card_query_lay"
+                style="@style/com_txn_detail_lay_style"
+                android:layout_below="@id/tam_issuer_imgview"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/tam_cardname_query_txnview"
+                    style="@style/com_txn_detail_left_text_style"
+                    android:text="@string/tqm_txn_detail_cardNo_title_str" />
+
+                <TextView
+                    android:id="@+id/tam_card_query_txnview"
+                    style="@style/com_txn_detail_right_text_style" />
+
+                <ImageView
+                    android:id="@+id/tam_card_query_imgview"
+                    android:layout_width="30dp"
+                    android:layout_height="19dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="7dp"
+                    android:layout_toLeftOf="@id/tam_card_query_txnview"
+                    android:contentDescription="@string/com_image_content_desc" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tam_content_pur_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:visibility="gone" >
+
+            <RelativeLayout
+                android:id="@+id/tam_amt_pur_lay"
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:layout_marginLeft="6dp"
+                android:background="#ffffff" >
+
+                <RelativeLayout
+                    android:id="@+id/tam_goods_lay"
+                    android:layout_width="69dp"
+                    android:layout_height="69dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="13dp"
+                    android:background="@drawable/com_photo_frame_img"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:id="@+id/tam_goods_img"
+                        android:layout_width="62dp"
+                        android:layout_height="62dp"
+                        android:background="#000000"
+                        android:contentDescription="@string/com_image_content_desc" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tam_amt_txnview"
+                    style="@style/com_txn_detail_amt_style"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@+id/tam_goods_lay"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tam_goods_lay"
+                    android:gravity="center_vertical"
+                    android:text="￥-123123" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/tam_amt_pur_imgview"
+                style="@style/com_txn_detail_dotted_img_style"
+                android:layout_below="@id/tam_amt_pur_lay"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:id="@+id/tam_card_pur_lay"
+                style="@style/com_txn_detail_lay_style"
+                android:layout_height="36dp"
+                android:layout_below="@id/tam_amt_pur_imgview"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/tam_cardname_pur_txnview"
+                    style="@style/com_txn_detail_left_text_style"
+                    android:text="@string/tqm_txn_detail_cardNo_title_str" />
+
+                <TextView
+                    android:id="@+id/tam_card_txnview"
+                    style="@style/com_txn_detail_right_text_style"
+                    android:text="123123" />
+
+                <TextView
+                    android:id="@+id/tam_issuer_txnview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="4dp"
+                    android:layout_toLeftOf="@+id/tam_card_txnview"
+                    android:background="#00000000"
+                    android:gravity="center_vertical"
+                    android:text="按时大大"
+                    android:textColor="#444444" />
+
+                <ImageView
+                    android:id="@+id/tam_card_pur_imgview"
+                    android:layout_width="30dp"
+                    android:layout_height="19dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="7dp"
+                    android:layout_toLeftOf="@+id/tam_issuer_txnview"
+                    android:contentDescription="@string/com_image_content_desc" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/tam_bottom_pur_imgview"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_below="@id/tam_content_lay"
+        android:background="@drawable/tam_list_bottom_img"
+        android:contentDescription="@string/tam_covert_browser_srt"
+        android:visibility="visible" />
+    
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/tam_gif_view"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/tam_phoneinput_txnview"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/tam_content_lay"
+        android:background="#ffffff"
+        android:hint="@string/tam_phone_hint_str"
+        android:textColor="#666666"
+        android:textSize="18dp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/tam_input_password_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_below="@+id/tam_bottom_pur_imgview"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/tam_password_input_img"
+        android:gravity="center_vertical"
+        android:inputType="textPassword"
+        android:maxLength="6"
+        android:paddingLeft="12dp"
+        android:singleLine="true"
+        android:textColorHint="#cccccc"
+        android:textSize="40dp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/tam_input_password_hit"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_below="@+id/tam_bottom_pur_imgview"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/tam_password_input_img"
+        android:gravity="center_vertical"
+        android:hint="@string/lam_input_pwd_hit_str"
+        android:inputType="textPassword"
+        android:maxLength="6"
+        android:paddingLeft="12dp"
+        android:singleLine="true"
+        android:textColorHint="#cccccc"
+        android:textSize="18dp"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/tam_txn_foot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/tam_input_password_edittext"
+        android:layout_marginTop="25dp" >
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.andpay.apos.cmview.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/tom_top_repost_lay"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/tam_top_repost_textview"
+            style="@style/com_top_text_style"
+            android:text="@string/tam_resend_credentials_str" />
+        
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tom_top_repost_lay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp" >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/com_input_1_line_img" >
+
+            <ImageView
+                android:id="@+id/tam_post_phone_img"
+                style="@style/tam_edittext_icon_style"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/com_icon_phone_img" />
+
+            <EditText
+                android:id="@+id/tam_repost_phone_edit"
+                style="@style/com_post_edittext_style"
+                android:layout_marginLeft="48dp"
+                android:ems="10"
+                android:hint="@string/lam_holder_phone_hit_str"
+                android:inputType="phone"
+                android:maxLength="11" />
+
+
+        </RelativeLayout>
+
+        <Button    
+            android:id="@+id/tam_repost_send_btn"
+            style="@style/com_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/relativeLayout1"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="13dp"
+            android:enabled="false"
+            android:text="确 定" />
+    </RelativeLayout>
+
+</me.andpay.apos.cmview.ResizeLayout>

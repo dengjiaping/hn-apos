@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flow-diagram version="1.0" begin-node="photoChallenge">
+    <!-- 提示拍照 -->
+    <flow-node node-name ="photoChallenge" ref-activity="me.andpay.apos.tcm.activity.PhotoChallengeActivity" >
+        <node-complete  identity = "success"  next-node="viewfinder" />
+        <node-complete  identity = "finish" finish-flow = "true" />
+    </flow-node>
+    <!-- 拍照 -->
+   	<flow-node node-name ="viewfinder" ref-activity="me.andpay.apos.tcm.activity.ViewfinderActivity">
+          <node-complete  identity ="success"  next-node="showPicture" />
+    </flow-node>
+ 	<!-- 预览照片 -->  
+   	<flow-node node-name ="showPicture" ref-activity="me.andpay.apos.tcm.activity.ShowPictureActivity">
+   	     <node-complete  identity = "success"  next-node="photoChallenge"/>
+  </flow-node>
+   	
+</flow-diagram>

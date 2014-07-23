@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 卡销售流程 -->
+<flow-diagram version="1.0" begin-node="start">
+    <!-- 选择支付方式 -->
+    <flow-node node-name ="start" ref-activity="me.andpay.apos.vas.activity.SalesCardMainActivity">
+        <node-complete  identity = "cash_payment"  sub-flow="vas_cash_payment_flow" sub-finish-cpl="cashfinished" transfer="VAS.CARDSALES.CardSalesCashPaymentTransfer" />
+        <node-complete-cashfinished  sub-flow="vas_open_card_flow"  transfer="Vas.CardSales.CashPaymentOpenCardTransfer"/>
+        <node-complete  identity = "card_payment"  sub-flow="com_txn_flow" sub-finish-cpl="cardfinished" transfer="Vas.PrudctSales.SwipeTxnTransfer"  />
+        <node-complete-cardfinished  sub-flow="vas_open_card_flow"  transfer="Vas.SwipeTxn.OpenCardTransfer" />
+   </flow-node>
+
+
+</flow-diagram>

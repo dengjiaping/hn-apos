@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:background="@color/com_bgroud_common_col"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/tqm_txn_list_title_layout"
+        style="@style/com_native_top_style"
+         >
+
+        <TextView
+            android:id="@+id/tqm_txn_list_title_tv"
+            style="@style/com_top_text_style"
+            android:text="@string/tqm_txn_list_condition_str"/>
+
+      
+        <Button
+            android:id="@+id/tqm_clear_cond_btn"
+            style="@style/com_top_right_button_style"
+            android:layout_width="46dp"
+            android:text="@string/tqm_clear_cond_str" />
+         <ImageView
+            android:id="@+id/tqm_hascondition_image"
+            android:layout_marginRight="51dp"
+            style="@style/com_top_dot_img_style"
+            android:visibility="gone"/>
+        
+
+        <ImageView
+            android:id="@+id/tqm_txn_list_back_btn"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+ <RelativeLayout
+        android:id="@+id/tqm_txn_list_date_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/tqm_txn_list_title_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp" >
+
+        <me.andpay.apos.cmview.TiDatePickerView
+            android:id="@+id/tqm_txn_list_condition_date_begin_ev"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:drawableRight="@drawable/com_icon_date_img"
+            android:editable="false"
+            android:hint="@string/tqm_txn_start_str"
+            android:textColor="@color/com_title_normal_col"
+            android:textColorHint="#cccccc"
+             />
+
+        <me.andpay.apos.cmview.TiDatePickerView
+            android:id="@+id/tqm_txn_list_condition_date_end_ev"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/com_icon_date_img"
+            android:editable="false"
+            android:hint="@string/tqm_txn_end_str"
+            android:textColorHint="#cccccc" />
+
+        <TextView
+            android:id="@+id/tqm_txn_list_condition_date_blank_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/com_and_title_str"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tqm_txn_list_amount_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/tqm_txn_list_date_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp" >
+
+        <me.andpay.apos.cmview.AmtEditTextView
+            android:id="@+id/tqm_txn_list_condition_amount_ev"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:inputType="phone"
+            android:singleLine="true"
+	        android:textColor="#999999" 
+            apos:amtHitColor="#cccccc"
+            apos:amtHitText= "@string/com_amt_str" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tqm_txn_list_cardno_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/tqm_txn_list_amount_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp" >
+
+        <me.andpay.apos.cmview.CardNoEditText
+            android:id="@+id/tqm_txn_list_condition_cardno_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:hint="@string/com_cardno_title_str"
+            android:inputType="phone"
+            android:singleLine="true"
+            android:textColorHint="#cccccc" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tqm_txn_list_refno_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/tqm_txn_list_cardno_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp" >
+
+        <me.andpay.apos.cmview.TiTxnIdEditText
+            android:id="@+id/tqm_txn_list_condition_refno_ev"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:hint="@string/com_refno_title_str"
+            android:singleLine="true"
+            android:maxLength="13"
+            android:inputType="number"
+            android:textColorHint="#cccccc" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tqm_txn_list_orderid_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/tqm_txn_list_refno_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp" >
+
+        <EditText
+            android:id="@+id/tqm_txn_list_condition_orderid_ev"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:hint="@string/com_orderno_title_str"
+            android:singleLine="true"
+            android:textColor="@color/com_title_normal_col"
+            android:textColorHint="#cccccc" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tqm_txn_list_txntype_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/tqm_txn_list_orderid_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp" >
+
+        <me.andpay.apos.cmview.TiSpinner
+            android:id="@+id/tqm_txn_list_condition_txntype_sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@drawable/com_icon_pulldown_img"
+            android:editable="false"
+            android:hint="@string/com_txntype_title_str"
+            android:singleLine="true"
+            android:textColor="@color/com_title_normal_col"
+            android:textColorHint="#cccccc" />
+    </RelativeLayout>
+
+    
+     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp" >
+
+        <Button
+            android:id="@+id/tqm_txn_list_condition_cancel_btn"
+            style="@style/com_button_left_style"
+             android:text="@string/com_cancel_str" />
+
+        <Button
+            android:id="@+id/tqm_txn_list_condition_sure_btn"
+            style="@style/com_button_right_style"
+            android:layout_marginLeft="13dp"
+          android:text="@string/com_sure_str" />
+    </LinearLayout>
+    
+
+    <RelativeLayout
+        android:id="@+id/com_softkeyborad_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/tqm_txn_list_refno_layout" >
+    </RelativeLayout>
+
+</RelativeLayout>

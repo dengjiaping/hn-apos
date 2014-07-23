@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>me.andpay.ti</groupId>
+	<artifactId>ti-mobile-dexlib</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0.0</version>
+	<name> Ti Mobile Dexlib</name>
+
+	<!-- 设置版本和其他信息 -->
+	<properties>
+		<jdk.version>1.6</jdk.version>
+		<project.name>ti-mobile-dexlib</project.name>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<!-- Jar依赖 -->
+		<httpclient.version>4.2.1</httpclient.version>
+		<httpmime.version>4.2.1</httpmime.version>
+		<ti-base.version>1.0.0</ti-base.version>
+		
+	</properties>
+
+	<dependencies>
+	    
+	    <dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>${httpmime.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti</groupId>
+			<artifactId>ti-base</artifactId>
+			<version>${ti-base.version}</version>
+		</dependency>
+	</dependencies>
+	
+	
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>http://172.19.30.105:8081/nexus/content/repositories/releases</url>
+			<layout>default</layout>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshots</name>
+			<url>http://172.19.30.105:8081/nexus/content/repositories/snapshots</url>
+			<layout>default</layout>
+		</snapshotRepository>
+	</distributionManagement>
+	
+	
+</project>

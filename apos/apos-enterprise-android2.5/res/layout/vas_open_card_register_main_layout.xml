@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.andpay.apos.cmview.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:id="@+id/vas_content_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:id="@+id/scm_top_lay"
+                style="@style/com_native_top_style"
+                android:layout_width="match_parent"
+                android:persistentDrawingCache="none" >
+
+                <ImageView
+                    android:id="@+id/vas_opencard_back_btn"
+                    android:visibility="gone"
+                    style="@style/com_top_return_button_style" />
+
+                <TextView
+                    android:id="@+id/scm_main_title_tv"
+                    style="@style/com_top_text_style"
+                    android:text="@string/vas_user_register_str" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/vas_virtual_card_imgview"
+                android:layout_width="wrap_content"
+                android:layout_height="173dp"
+                android:layout_below="@+id/scm_top_lay"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/com_virtual_card_img" />
+
+            <me.andpay.apos.cmview.CardNoEditText
+                android:id="@+id/vas_cardNo_text"
+                style="@style/com_edit_text_style"
+                android:layout_below="@+id/vas_virtual_card_imgview"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:textSize="16dp"
+                android:visibility="visible"
+                apos:maxSize="9" />
+
+            <me.andpay.apos.cmview.CardNoEditText
+                android:id="@+id/vas_recardNo_text"
+                style="@style/com_edit_text_style"
+                android:layout_below="@+id/vas_cardNo_text"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="14dp"
+                android:ems="10"
+             	android:textSize="16dp"
+                android:visibility="visible"
+                apos:maxSize="9" />
+
+            <Button
+                android:id="@+id/vas_submit_btn"
+                style="@style/com_button_left_style"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/vas_recardNo_text"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="17dp"
+                android:text="提交" />
+        </RelativeLayout>
+    </ScrollView>
+
+</me.andpay.apos.cmview.ResizeLayout>

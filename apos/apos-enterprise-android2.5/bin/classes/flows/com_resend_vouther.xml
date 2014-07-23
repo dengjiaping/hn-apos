@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="sendVoucher">
+    <!-- 重发交易 -->
+    <flow-node node-name ="sendVoucher" ref-activity="me.andpay.apos.tam.activity.RepostVoucherActivity">
+        <node-complete  identity = "go_home"  flush-context = "true" finish-flow = "true"/>
+    </flow-node>
+</flow-diagram>

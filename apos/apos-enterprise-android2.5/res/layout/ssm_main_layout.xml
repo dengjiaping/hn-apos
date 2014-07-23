@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_navigator_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/tqm_txn_list_title_tv"
+            style="@style/com_top_text_style"
+            android:text="@string/ssm_main_title_str" />
+
+        <ProgressBar
+            android:id="@+id/com_title_processing_pb"
+            style="@style/com_top_refresh_style"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" />
+
+        <ImageView
+            android:id="@+id/ssm_settle_refresh_img"
+            android:layout_width="51dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:background="#00000000"
+            android:src="@drawable/com_icon_refresh_img"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+
+    <include
+        android:id="@+id/com_net_error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/com_navigator_layout"
+        android:layout_marginBottom="80dp"
+        layout="@layout/com_net_error" />
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ssm_has_data_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/com_navigator_layout"
+        android:layout_marginBottom="80dp"
+        android:orientation="vertical"
+        android:visibility="visible" >
+
+        <LinearLayout
+            android:id="@+id/ssm_main_unsettle_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@drawable/ssm_table_title_bg_img" >
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle1_tv"
+                style="@style/ssm_info_title_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="2"
+                android:text="@string/ssm_main_infotitle1_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle2_tv"
+                style="@style/ssm_info_title_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:text="@string/ssm_main_infotitle3_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle3_tv"
+                style="@style/ssm_info_title_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="@string/ssm_main_infotitle2_str" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@color/com_bgroud_col" >
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle4_tv"
+                style="@style/ssm_main_content2_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="2"
+                android:text="@string/ssm_main_infotitle4_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_txnamount_tv"
+                style="@style/ssm_main_content2_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:text="@string/ssm_main_settle_amount_default_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_txncount_tv"
+                style="@style/ssm_main_content_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/ssm_main_settle_count_default_str" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/com_solid_line_img" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@color/com_bgroud_col" >
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle5_tv"
+                style="@style/ssm_main_content2_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="2"
+                android:text="@string/ssm_main_infotitle5_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_cancelamount_tv"
+                style="@style/ssm_main_content2_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:text="@string/ssm_main_settle_amount_default_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_cancelcount_tv"
+                style="@style/ssm_main_content_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/ssm_main_settle_count_default_str" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/com_solid_line_img" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@color/com_bgroud_col" >
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle8_tv"
+                style="@style/ssm_main_content2_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="2"
+                android:text="@string/ssm_main_infotitle8_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_voidamount_tv"
+                style="@style/ssm_main_content2_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:text="@string/ssm_main_settle_amount_default_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_voidcount_tv"
+                style="@style/ssm_main_content_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/ssm_main_settle_count_default_str" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/com_solid_line_img" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:background="@color/com_bgroud_col" >
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle6_tv"
+                style="@style/ssm_main_content2_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="2"
+                android:text="@string/ssm_main_infotitle6_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_amount_tv"
+                style="@style/ssm_main_content2_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:text="@string/ssm_main_settle_amount_default_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_count_tv"
+                style="@style/ssm_main_content_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="@string/ssm_main_settle_count_default_str" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/com_solid_line_img" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp" >
+
+            <TextView
+                android:id="@+id/ssm_main_time_tv"
+                style="@style/ssm_main_time_style"
+                android:layout_weight="1"
+                android:text="" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/_blank4"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="   " />
+    </LinearLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp" >
+
+        <Button
+            android:id="@+id/ssm_main_history_btn"
+            style="@style/com_button_left_style"
+            android:text="@string/ssm_main_detail_str" />
+
+        <Button
+            android:id="@+id/ssm_main_settle_btn"
+            style="@style/com_button_right_style"
+            android:layout_marginLeft="13dp"
+            android:text="@string/ssm_main_settle_str" />
+    </LinearLayout>
+
+</RelativeLayout>

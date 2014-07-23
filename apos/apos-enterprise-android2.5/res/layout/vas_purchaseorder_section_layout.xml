@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/section_header"
+    android:layout_width="match_parent"
+    android:layout_height="34dp"
+    android:background="@drawable/scm_table_title_bg_img"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/vas_purchase_order_section_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="7dp"
+        android:background="#00000000"
+        android:text=""
+        android:textColor="#666666"
+        android:textSize="14dp" />
+
+</RelativeLayout>

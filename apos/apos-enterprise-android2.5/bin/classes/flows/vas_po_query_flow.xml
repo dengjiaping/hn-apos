@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="poList">
+    <flow-node node-name = "poList" ref-activity="me.andpay.apos.vas.activity.PurchaseOrderListActivity">
+        <node-complete-cond  next-node = "cond"/>
+        <node-complete-detail next-node = "detail"/>
+    </flow-node>
+    <flow-node node-name = "cond" ref-activity="me.andpay.apos.vas.activity.PurchaseQueryCondActivity">
+        <node-complete identity = "success" ref-activity = "me.andpay.apos.vas.activity.PurchaseOrderListActivity"/>
+    </flow-node>
+     <flow-node node-name = "detail" ref-activity="me.andpay.apos.vas.activity.PurchaseOrderDetailActivity">
+         <!-- 预付费卡履约子流程 -->
+        <node-complete identity = "next-steup-01" sub-flow = "vas_open_card_flow"/>
+        <node-complete identity = "next-steup-02" sub-flow = "vas_open_card_flow"/>
+        <node-complete identity = "next-steup-03" next-node = "afterPayProcess" transfer="Vas.Query.SvcDepFulfillTransfer" />
+    </flow-node>
+    <flow-node node-name ="afterPayProcess" ref-activity="me.andpay.apos.vas.activity.deposite.SvcDepositeAfterPayActivity">
+        <node-complete-success  next-node = "depositeSucc"/>
+        <node-complete-finish  flush-context = "true" finish-flow = "true" />
+   	</flow-node>
+   	<flow-node node-name ="depositeSucc" ref-activity="me.andpay.apos.vas.activity.deposite.SvcDepositeSuccActivity">
+        <node-complete identity = "success"  flush-context = "true" finish-flow = "true" />
+   	</flow-node>
+</flow-diagram>

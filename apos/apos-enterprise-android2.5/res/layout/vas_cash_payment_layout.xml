@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+    android:id="@+id/com_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_lay"
+        style="@style/com_native_top_style"
+        
+        android:persistentDrawingCache="none" >
+
+        <ImageView
+            android:id="@+id/vas_top_back_btn"
+            style="@style/com_top_return_button_style" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/vas_top_title_tv"
+            style="@style/com_top_text_style"
+            android:text="￥120.00元" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lam_contract_code_lay"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/com_top_lay"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/com_input_1_line_disable_img"
+         >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/com_icon_cash_img" />
+
+     <me.andpay.apos.cmview.AmtEditTextView
+            android:id="@+id/vas_amt_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/imageView1"
+            android:background="#00000000"
+            android:singleLine="true"
+            android:textSize="26dp"
+            apos:amtHitColor="#999999"
+            apos:amtHitText="@string/com_amt_str" >
+
+            <requestFocus />
+        </me.andpay.apos.cmview.AmtEditTextView> 
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/vas_pay_btn"
+        style="@style/com_button_style"
+        android:layout_width="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/lam_contract_code_lay"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/com_sure_str" />
+
+</RelativeLayout>

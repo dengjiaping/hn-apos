@@ -1,0 +1,1222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.andpay.apos"
+    android:versionCode="16"
+    android:versionName="2.5" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="17" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"/>
+    <!---->
+    <application
+        android:name="me.andpay.timobileframework.mvc.support.TiApplication"
+        android:icon="@drawable/app"
+        android:label="@string/app_name"
+        android:theme="@style/aposTheme" >
+        
+         <!-- 挑战模块 --> 
+         <!--  
+        <activity
+            android:name=".tcm.activity.InfoChallengeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.InfoChallengeActivity" />
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".tcm.activity.ShowCVV2Activity"
+            android:theme="@style/Theme_picture_dialog_style"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.ShowCVV2Activity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name=".tcm.activity.InfoChallengeFailedActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.InfoChallengeFailedActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name=".tcm.activity.SmsChallengeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.SmsChallengeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name=".tcm.activity.PhotoChallengeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.PhotoChallengeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        -->
+        
+        <!-- 首页 -->
+        <activity
+            android:name=".lam.activity.FirstPageActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lam.activity.firstpage.activity" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- app加载 -->
+        <activity
+            android:name=".lam.activity.StartAppActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lam.startapp.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 风险提示页面 -->
+        <activity
+            android:name=".lam.activity.RiskPromptActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lam.riskPrompt.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 登录界面 -->
+        <activity
+            android:name=".lam.activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="lam.login.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 产品介绍 -->
+        <activity
+            android:name=".lam.activity.IntroduceStartActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lam.introduceStart.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 首次修改页面 -->
+        <activity
+            android:name=".lam.activity.ChangePasswordActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lam.firstChangePassword.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 系统主页 -->
+        <activity
+            android:name=".common.activity.HomePageActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" 
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustNothing|adjustUnspecified" >
+            <intent-filter>
+                <action android:name="com.homePage.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 读卡器设置 -->
+        <activity
+            android:name=".lam.activity.CardReaderSetActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lam.cardReaderSet.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 消费首页 -->
+        <activity
+            android:name=".tam.activity.PurchaseFirstActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tam.purchase.first.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 刷卡交易 -->
+        <activity
+            android:name=".tam.activity.TxnAcitivty"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|stateUnchanged|adjustUnspecified" >
+            <intent-filter>
+                <action android:name="tam.txn.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+      
+        <!-- 转账模块 -->
+        <activity
+            android:name=".trf.activity.PayeeInfomationActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="trf.activity.PayeeInfomationActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 查询模块 -->
+        <activity
+            android:name=".tqm.activity.TxnBatchQueryActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tqm.list.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tqm.activity.TxnDetailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tqm.detail.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tqm.activity.TxnMapActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tqm.detail.map.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tqm.activity.TxnQueryConditionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="tqm.list.condition.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 激活码 -->
+        <activity
+            android:name=".lam.activity.ActivateCodeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden|stateUnchanged|adjustUnspecified" >
+            <intent-filter>
+                <action android:name="lam.activate.code.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 结账统计 -->
+        <activity
+            android:name=".ssm.activity.SettleMainActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="ssm.main.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ssm.activity.SettleInfoActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="ssm.info.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ssm.activity.SettleInfoSendActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="ssm.send.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 退款模块 -->
+        <activity
+            android:name=".trm.activity.RefundBatchQueryActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|stateAlwaysVisible" >
+            <intent-filter>
+                <action android:name="trm.list.activity" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".trm.activity.RefundQueryConditionActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="trm.list.condition.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".trm.activity.RefundInputActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="trm.refund.input.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- mds管理网页 -->
+        <activity
+            android:name=".scm.activity.MdsWebViewActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.mds.webView.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 系统设置模块 -->
+        <activity
+            android:name=".scm.activity.ScmMainActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="scm.config.main.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".scm.activity.ScmChangePwdActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="scm.config.pwd.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".scm.activity.ScmCardReaderSetActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.config.set.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".scm.activity.ScmWeiboActivity" >
+            <intent-filter>
+                <action android:name="scm.config.weibo.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".scm.activity.ScmHelpActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.config.help.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".scm.activity.ScmHelpApplyActivity" >
+            <intent-filter>
+                <action android:name="scm.config.help.apply.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".scm.activity.ScmHelpQuestionActivity" >
+            <intent-filter>
+                <action android:name="scm.config.help.question.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".scm.activity.ScmHelpServiceActivity" >
+            <intent-filter>
+                <action android:name="scm.config.help.service.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".scm.activity.ScmHelpCardActivity" >
+            <intent-filter>
+                <action android:name="scm.config.help.card.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".scm.activity.ScmFeedbackActivity" >
+            <intent-filter>
+                <action android:name="scm.config.feedback.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".scm.activity.ScmAboutActivity" >
+            <intent-filter>
+                <action android:name="scm.config.about.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".scm.activity.MakeQRCodeActivity" >
+            <intent-filter>
+                <action android:name="scm.config.make.qrcode.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 签名 -->
+        <activity android:name=".tam.activity.SignActivity" >
+            <intent-filter>
+                <action android:name="tam.sign.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 交易恢复失败 -->
+        <activity android:name=".tam.activity.recover.RecoverTxnFaildActivity" >
+            <intent-filter>
+                <action android:name="tam.recover.RecoverTxnFaildActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 发送凭证 -->
+        <activity
+            android:name=".tam.activity.PostVoucherActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="tam.postVoucher.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 重新发送凭证 -->
+        <activity
+            android:name=".tam.activity.RepostVoucherActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysVisible" >
+            <intent-filter>
+                <action android:name="tam.repostVoucher.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 结算规则 -->
+        <activity
+            android:name=".tam.activity.SettlementRulesActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" >
+            <intent-filter>
+                <action android:name="tam.activity.PostVoucherActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 交易明细 -->
+        <activity
+            android:name=".tam.activity.TxnDetailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tam.txnDetail.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 挑战模块 -->
+
+        <activity
+            android:name=".tcm.activity.InfoChallengeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.InfoChallengeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tcm.activity.ShowCVV2Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_picture_dialog_style" >
+            <intent-filter>
+                <action android:name="tcm.activity.ShowCVV2Activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tcm.activity.InfoChallengeFailedActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.InfoChallengeFailedActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tcm.activity.SmsChallengeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.SmsChallengeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tcm.activity.PhotoChallengeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.PhotoChallengeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tcm.activity.ViewfinderActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.ViewfinderActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tcm.activity.ShowPictureActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tcm.activity.ShowPictureActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 余额查询明细 -->
+        <activity
+            android:name=".tam.activity.BalanceDetailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tam.balanceDetail.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 订单支付 -->
+        <activity
+            android:name=".opm.activity.OrderPayListActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="opm.orderPayList.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 订单明细 -->
+        <activity
+            android:name=".opm.activity.OrderDetailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="opm.orderDetail.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 帮助页面 -->
+        <activity
+            android:name=".lam.activity.HelpActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lam.help.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 商户限额 -->
+        <activity
+            android:name=".scm.activity.ScmPartyLimitActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.partyLimit.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".common.activity.AposCameraActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.camera.activity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 商户订单支付 -->
+        <activity
+            android:name=".mopm.activity.MerchantOrderPayActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="mopm.activity.MerchantOrderPayAcitivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 商户订单支付 -->
+        <activity
+            android:name=".mopm.activity.MerchantOrderRealPayActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="mopm.activity.MerchantOrderRealPayActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 商户订单支付 -->
+        <activity
+            android:name=".scm.activity.CardReaderHelperActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.activity.CardReaderHelperActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 二维码扫描器 -->
+        <activity
+            android:name=".common.activity.AposQRActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="common.activity.AposQRActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 普通二维码结果显示 -->
+        <activity
+            android:name=".common.activity.ShowQrResultActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="common.activity.ShowQrResultActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 二维码明细 -->
+        <activity
+            android:name=".tam.activity.CouponDeailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tam.activity.CouponDeailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 储值卡交易输入金额 -->
+        <activity
+            android:name=".tam.activity.InputValueCardTxnAmtActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tam.activity.InputValueCardTxnAmtActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 优惠?兑换列表查询 -->
+        <activity
+            android:name=".tqrm.activity.CouponListActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tqrm.activity.CouponListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 优惠?兑换成功 -->
+        <activity
+            android:name=".tqrm.activity.RedeemCouponSuccessActivty"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tqrm.activity.RedeemCouponSuccessActivty" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 增值服务首页 -->
+        <activity
+            android:name=".vas.activity.VasMainActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.VasMainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 售卡主页 -->
+        <activity
+            android:name=".vas.activity.SalesCardMainActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.SalesCardMainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 产品销售列表 -->
+        <activity
+            android:name=".vas.activity.ProductSalesActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.ProductSalesActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 产品编辑 -->
+        <activity
+            android:name=".vas.activity.ProductEditActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.ProductEditActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 支付方式的选择 -->
+        <activity
+            android:name=".vas.activity.ProductPaymentModeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.ProductPaymentModeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 订单支付失败 -->
+        <activity
+            android:name=".vas.activity.PurchaseOrderFaildActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.PurchaseOrderFaildActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 现金收款 -->
+        <activity
+            android:name=".vas.activity.CashPaymentActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.CashPaymentActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 现金支付失败 -->
+        <activity
+            android:name=".vas.activity.CashPaymentFaildActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.CashPaymentFaildActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 开卡用户登记 -->
+        <activity
+            android:name="me.andpay.apos.vas.activity.OpenCardRegisterActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.OpenCardUserRegisterActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 销售订单列表 -->
+        <activity
+            android:name=".vas.activity.PurchaseOrderListActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.PurchaseOrderListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 销售条件查询 -->
+        <activity
+            android:name=".vas.activity.PurchaseQueryCondActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.PurchaseQueryCondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 销售详细 -->
+        <activity
+            android:name=".vas.activity.PurchaseOrderDetailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.PurchaseOrderDetailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 产品明细列表 -->
+        <activity
+            android:name=".vas.activity.ProductDetailListActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.ProductDetailListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 现金支付 -->
+        <activity
+            android:name=".vas.activity.ProductCashPayActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.ProductCashPayActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 现金支付 -->
+        <activity
+            android:name=".vas.activity.OpenCardSuccessActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.OpenCardSuccessActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 现金支付成功 -->
+        <activity
+            android:name=".vas.activity.CashPaymentSuccessActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.CashPaymentSuccessActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 开卡失败 -->
+        <activity
+            android:name=".vas.activity.OpenCardFaildActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="vas.activity.OpenCardFaildActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 交易超时处理 -->
+        <activity
+            android:name=".tam.activity.TxnTimeoutActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tam.activity.TxnTimeoutActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 交易失败处理 -->
+        <activity
+            android:name=".tam.activity.TxnFaildActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="tam.activity.TxnFaildActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 交易失败处理 -->
+        <activity
+            android:name=".trm.activity.RefundSuccessActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="trm.activity.RefundSuccessActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 开卡注册主页 -->
+        <activity
+            android:name=".vas.activity.OpenCardRegisterMainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|stateUnchanged" >
+            <intent-filter>
+                <action android:name="vas.activity.OpenCardRegisterMainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".vas.activity.deposite.SvcDepositeCardInputActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|stateUnchanged" >
+            <intent-filter>
+                <action android:name="vas.activity.SvcDepositeCardInputActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".vas.activity.deposite.SvcDepositePriceSelectActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|stateUnchanged" >
+            <intent-filter>
+                <action android:name="vas.activity.SvcDepositePriceSelectActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".vas.activity.deposite.SvcDepositeAfterPayActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|stateUnchanged" >
+            <intent-filter>
+                <action android:name="vas.activity.SvcDepositeAfterPayActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".vas.activity.deposite.SvcDepositeSuccActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|stateUnchanged" >
+            <intent-filter>
+                <action android:name="vas.activity.SvcDepositeSuccActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".stl.activity.SettleListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|stateUnchanged" >
+            <intent-filter>
+                <action android:name="stl.activity.SettleListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".common.activity.AposCleanAppDataActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|stateUnchanged" >
+            <intent-filter>
+                <data android:scheme="aposcleanappdataactivity" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".stl.activity.SettleDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|stateUnchanged" >
+            <intent-filter>
+                <action android:name="stl.activity.SettleDetailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".stl.activity.StlTxnQueryActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden|stateUnchanged" >
+            <intent-filter>
+                <action android:name="stl.activity.StlTxnQueryActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".opm.activity.InputOrderNoActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="opm.activity.InputOrderNoActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".opm.activity.InputOrderNoHelpActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="opm.activity.InputOrderNoHelpActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".scm.activity.ScmCardReaderSelectActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.activity.ScmCardReaderSelectActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".scm.activity.OpenDevicePowerActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.activity.OpenPowerActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".scm.activity.PromptDeviceInsertActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.activity.PromptDeviceInsertActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".scm.activity.CardReaderAdapterSuccessActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.activity.CardReaderAdapterSuccessActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".scm.activity.BluetoothListActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="scm.activity.BluetoothListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".cmview.calculator.TiCalculatorActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="cmview.calculator.TiCalculatorActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+        <!--
+        <service
+            android:name="me.andpay.apos.common.service.AposMainService"
+            android:persistent="true" >
+        </service>
+        -->
+
+        <receiver android:name="me.andpay.apos.common.receiver.AposMainBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="me.andpay.AposMainBroadcastReceiver" />
+
+                <data android:mimeType="vnd.android.cursor.item/calendar-alert" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="7d5241616a224f38d24266d4970efa3de0bb56cf" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="kyYVjTydh4iXPjOBN389Qduf" />
+
+        <!-- 腾讯监控 -->
+        <meta-data
+            android:name="TA_APPKEY"
+            android:value="A6YF7MG82WAT" />
+        <meta-data
+            android:name="InstallChannel"
+            android:value="andpay" />
+    </application>
+
+    <!-- 百度地图 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <!-- 手机设备读取 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 允许读写扩展存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 允许调用音频设备进行录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 允许修改音频设置,以将音频输出调到最大 -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- 允许读取电话状态。每当电话进来时将暂停刷卡程序,结束电话后将重新唤醒刷卡程序 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 允许访问互联网 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <!-- 获取wifi权限 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 获取GPS权限 -->
+    <!-- 连接互联网Internet权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- GPS定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 获取摄像头和闪光灯权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <!-- 允许调用系统电话簿 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+</manifest>

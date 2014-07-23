@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_pur_lay"
+        style="@style/com_native_top_style"
+         >
+
+        <TextView
+            android:id="@+id/tam_next_top_textview"
+            style="@style/com_top_text_style"
+            android:text="@string/scm_feedback_title_str" />
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" >
+        </ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/scm_feedback_layout"
+        style="@style/com_input_out_background_style"
+        android:layout_below="@id/com_top_pur_lay"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginTop="9dp" >
+
+        <EditText
+            android:id="@+id/scm_feedback_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/com_no_color"
+            android:gravity="top"
+            android:hint="@string/scm_feedback_hint_str"
+            android:lines="7"
+            android:maxLength="200"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:singleLine="false"
+            android:textColor="@color/tqm_list_item_amount_col"
+            android:textColorHint="#cccccc"
+            android:textSize="18dp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/com_send_btn"
+        style="@style/com_button_style"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_below="@id/scm_feedback_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:text="@string/com_send_str" />
+
+</RelativeLayout>

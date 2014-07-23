@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="selectPaymethod">
+    <!-- 选择支付方式 -->
+    <flow-node node-name ="selectPaymethod" ref-activity="me.andpay.apos.vas.activity.ProductPaymentModeActivity">
+        <node-complete  identity = "cash_payment"  next-node="cashPayment"/>
+         <node-complete  identity = "card_payment"  sub-flow="com_txn_flow" sub-finish-cpl="finished" transfer="Vas.PrudctSales.SwipeTxnTransfer"/>
+         <node-complete-finished  next-node="cashPaySuccess"  transfer="Vas.SwipeTxn.OpenCardTransfer" />
+   </flow-node>
+    <flow-node node-name ="cashPayment" ref-activity="me.andpay.apos.vas.activity.CashPaymentActivity">
+        <node-complete  identity = "success"   next-node="cashPaySuccess" />
+    </flow-node>
+   	<!-- 现金支付成功 --> 
+     <flow-node node-name ="cashPaySuccess" ref-activity="me.andpay.apos.vas.activity.CashPaymentSuccessActivity">
+        <node-complete identity = "success"   transfer="Vas.PrudctSales.OpenCardTransfer" sub-flow = "vas_open_card_flow" sub-finish-cpl="finished"/>
+        <node-complete-finished  ref-activity="me.andpay.apos.vas.activity.ProductSalesActivity" flush-context = "true" finish-flow = "true"/>
+    </flow-node>
+
+</flow-diagram>

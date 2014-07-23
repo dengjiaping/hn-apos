@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_order_lay"
+        style="@style/com_native_top_style"
+         >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/tqrm_coupon_title_str" />
+
+        <ImageView
+            android:id="@+id/com_show_silder_btn"
+            style="@style/com_slider_button_style" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/com_processing_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/com_top_order_lay"
+        android:layout_marginBottom="75dp"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <ProgressBar
+            android:id="@+id/com_processing_pb"
+            android:layout_width="18dp"
+            android:layout_height="18dp" />
+
+        <TextView
+            android:id="@+id/com_processing_info_tv"
+            style="@style/com_non_str_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="@string/com_progress_prompt_str" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/com_no_data_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/com_top_order_lay"
+        android:layout_marginBottom="75dp"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/com_non_data_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/com_icon_none_img" />
+
+        <TextView
+            android:id="@+id/ssm_info_non_tv"
+            style="@style/com_non_str_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/com_non_data_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/com_non_str" />
+    </RelativeLayout>
+
+    <!--
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/com_list_info_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_top_order_lay" >
+
+        <RelativeLayout
+            android:id="@+id/com_list_count_layout"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:background="@color/com_bgroud_common_col" >
+
+            <TextView
+                android:id="@+id/opm_txn_list_count_tv"
+                style="@style/com_native_count_bold_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true" />
+
+            <TextView
+                android:id="@+id/opm_txn_list_count_title_tv"
+                style="@style/com_native_count_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@+id/opm_txn_list_count_tv"
+                android:text="@string/tqrm_coupon_list_count_title_str" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/com_list_count_border_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/com_list_count_layout"
+            android:src="@drawable/com_solid_line_img" />
+    </RelativeLayout>
+    -->
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+        android:id="@+id/com_list_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/com_top_order_lay"
+        android:layout_marginBottom="75dp"
+        android:visibility="visible" >
+
+        <me.andpay.apos.cmview.PullToRefreshLayout
+            android:id="@+id/pull_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadingEdge="none"
+            android:scrollingCache="false"
+            apos:actionViewId="@id/action_view" >
+
+            <include
+                android:id="@id/action_view"
+                layout="@layout/com_refresh_layout" />
+
+            <TextView
+                style="@style/com_top_text_style"
+                android:text="@string/tqrm_redeem_query_str" />
+
+            <me.andpay.apos.cmview.TiSectionListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:cacheColorHint="@color/com_translucent_col"
+                android:divider="@drawable/scm_solid_line_img"
+                android:dividerHeight="1dp"
+                android:fadingEdge="none" />
+        </me.andpay.apos.cmview.PullToRefreshLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="13dp"
+        android:src="@drawable/scm_solid_line_img" />
+
+    <RelativeLayout
+        android:id="@+id/tqrm_scan_coupon_relay"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:background="@drawable/com_button_gray_selector" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="7dp"
+            android:background="@drawable/com_icon_scanning_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/imageView1"
+            android:background="#00000000"
+            android:text="@string/tqrm_coupon_scan_button_str"
+             android:textColor="#666666"
+            android:textSize="18dp"/>
+
+        <ImageView style="@style/scm_right_icon_style" />
+    </RelativeLayout>
+
+</RelativeLayout>

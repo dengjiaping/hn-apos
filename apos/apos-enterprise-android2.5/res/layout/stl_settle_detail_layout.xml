@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/com_list_f0f0f0_item_selector"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_stl_lay"
+        style="@style/com_native_top_style" >
+
+        <ImageView
+            android:id="@+id/com_top_back_btn"
+            style="@style/com_top_return_button_style" >
+        </ImageView>
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="到账查询" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_top_stl_lay"
+        android:background="#00000000"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/scm_main_set_layout"
+            style="@style/stl_detail_layout_style" >
+
+            <TextView
+                style="@style/stl_text_left_style"
+                android:text="结算金额"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/stl_settle_amt_tv"
+                style="@style/stl_text_right_style"
+                android:text="￥2000.00"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <RelativeLayout
+            android:id="@+id/scm_main_set_layout"
+            style="@style/stl_detail_layout_style" >
+
+            <TextView
+                style="@style/stl_text_left_style"
+                android:text="结算日期" />
+
+            <TextView
+                android:id="@+id/stl_settle_time_tv"
+                style="@style/stl_text_right_style"
+                android:text="2013-8-13" />
+        </RelativeLayout>
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <RelativeLayout
+            android:id="@+id/scm_main_set_layout"
+            style="@style/stl_detail_layout_style" >
+
+            <TextView
+                style="@style/stl_text_left_style"
+                android:text="消费" />
+
+            <TextView
+                android:id="@+id/stl_sales_amt_tv"
+                style="@style/stl_text_right_style"
+                android:text="￥2000.00" />
+        </RelativeLayout>
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <RelativeLayout
+            android:id="@+id/scm_main_set_layout"
+            style="@style/stl_detail_layout_style" >
+
+            <TextView
+                style="@style/stl_text_left_style"
+                android:text="退款" />
+
+            <TextView
+                android:id="@+id/stl_refund_amt_tv"
+                style="@style/stl_text_right_style"
+                android:text="￥2000.00" />
+        </RelativeLayout>
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <RelativeLayout
+            android:id="@+id/scm_main_set_layout"
+            style="@style/stl_detail_layout_style" >
+
+            <TextView
+                style="@style/stl_text_left_style"
+                android:text="手续费" />
+
+            <TextView
+                android:id="@+id/stl_txn_fee_tv"
+                style="@style/stl_text_right_style"
+                android:text="￥2000.00" />
+        </RelativeLayout>
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <RelativeLayout
+            android:id="@+id/scm_main_set_layout"
+            style="@style/stl_detail_layout_style" >
+
+            <TextView
+                style="@style/stl_text_left_style"
+                android:text="交易笔数" />
+
+            <TextView
+                android:id="@+id/stl_txn_count_tv"
+                style="@style/stl_text_right_style"
+                android:text="10笔" />
+        </RelativeLayout>
+
+        <ImageView style="@style/scm_line_image_style" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/stl_txn_list_btn"
+        style="@style/com_button_left_style"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:text="交易明细" />
+
+</RelativeLayout>

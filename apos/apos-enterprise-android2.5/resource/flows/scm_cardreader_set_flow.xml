@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="start">
+    <!-- 启动 -->
+    <flow-node node-name ="start" ref-activity="me.andpay.apos.scm.activity.ScmCardReaderSelectActivity" >
+        <node-complete  identity = "success"     next-node="openDevicePower"   />
+        <node-complete  identity = "success2"     next-node="deviceInsert"  />
+        <node-complete  identity = "success3"     next-node="adapterSuccess"     />
+        <node-complete  identity = "success4"     next-node="adapterSuccess"    remove-node="true"   />
+        <node-complete  identity = "success5"     next-node="makeQRCode"  />
+        <node-complete  identity = "finish"  flush-context = "true" finish-flow = "true"/>
+    </flow-node>
+    <!-- 打开设备电源 -->
+   <flow-node node-name ="openDevicePower" ref-activity="me.andpay.apos.scm.activity.OpenDevicePowerActivity">
+   		<node-complete  identity = "success"     next-node="deviceInsert"   />
+   		<node-complete  identity = "success2"     next-node="bluetoothList"   />
+   		<node-complete  identity = "success3"     next-node="makeQRCode"  />
+   </flow-node>
+   <!-- 提示设备是否插入 -->
+    <flow-node node-name ="deviceInsert" ref-activity="me.andpay.apos.scm.activity.PromptDeviceInsertActivity">
+        <node-complete  identity = "success"   next-node="adapterSuccess"    />
+   </flow-node>
+      <!-- 匹配 -->
+    <flow-node node-name ="adapterSuccess" ref-activity="me.andpay.apos.scm.activity.CardReaderAdapterSuccessActivity">
+        <node-complete  identity = "success"     next-node="start"   remove-node="true"/>
+        <node-complete  identity = "finish"  next-node="go_home"   flush-context = "true" finish-flow = "true"/>
+        <node-complete  identity = "success2"  sub-flow="tam_balance_query_flow" transfer = "Scm.CardReaderSet.BalanceTransfer" hold-sub-finish="true" />
+   </flow-node>
+   <!-- 蓝牙列表 -->
+    <flow-node node-name ="bluetoothList" ref-activity="me.andpay.apos.scm.activity.BluetoothListActivity">
+        <node-complete  identity = "success"   next-node="adapterSuccess"    />
+   </flow-node>
+   <!-- 提示生成二维码 -->
+    <flow-node node-name ="makeQRCode" ref-activity="me.andpay.apos.scm.activity.MakeQRCodeActivity">
+   		<node-complete  identity = "success"     next-node="scanQRCode"  />
+   </flow-node>
+   <!-- 扫描二维码 -->
+    <flow-node node-name ="scanQRCode" ref-activity="me.andpay.apos.common.activity.AposQRActivity">
+   		<node-complete  identity = "success"  next-node="adapterSuccess"  remove-node="true"/>
+   </flow-node>
+   <flow-node node-name ="go_home" ref-activity="me.andpay.apos.common.activity.HomePageActivity">
+        <node-complete identity = "go_home"   ref-activity="me.andpay.apos.common.activity.HomePageActivity"/>
+    </flow-node>
+
+</flow-diagram>

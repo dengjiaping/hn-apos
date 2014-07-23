@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flow-diagram version="1.0" begin-node="infoChallenge">
+   <!-- 信息健全 -->
+    <flow-node node-name ="infoChallenge" ref-activity="me.andpay.apos.tcm.activity.InfoChallengeActivity" >
+        <node-complete  identity = "success"  next-node="smsChallenge" />
+    </flow-node>
+    <!-- 验证码健全 -->
+   	<flow-node node-name ="smsChallenge" ref-activity="me.andpay.apos.tcm.activity.SmsChallengeActivity">
+        <node-complete  identity = "finish" finish-flow = "true" />
+        <node-complete  identity = "faild"  next-node="infoChallengeFailed" />
+    </flow-node>
+    <!-- 信息健全失败 -->
+   	 <flow-node node-name ="infoChallengeFailed" ref-activity="me.andpay.apos.tcm.activity.InfoChallengeFailedActivity" >
+         <node-complete  identity = "faild"  next-node="infoChallenge" />
+         <node-complete  identity = "faild_step1"  next-node="smsChallenge" />
+         <node-complete  identity = "faild_step2"  sub-flow="tcm_photo_challenge_flow"  hold-sub-finish="true"/>
+    </flow-node>
+   	
+</flow-diagram>

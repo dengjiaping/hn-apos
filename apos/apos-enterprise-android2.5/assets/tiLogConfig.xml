@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	    <string-array name="roboguice_modules">
+	    	<item>me.andpay.timobileframework.config.TiMobileRoboGuiceBaseModule</item>
+	    	<item>me.andpay.apos.config.CommonModule</item>
+	    	<item>me.andpay.apos.config.LamModule</item>
+	    	<item>me.andpay.apos.config.CardReaderModule</item>
+	    	<item>me.andpay.apos.config.SsmModule</item>
+			<item>me.andpay.apos.config.TqmModule</item>
+			<item>me.andpay.apos.config.TamModule</item>
+			<item>me.andpay.apos.config.ScmModule</item>
+			<item>me.andpay.apos.config.OpmModule</item>
+			<item>me.andpay.apos.config.TqrmModule</item>
+	    </string-array>
+</resources>

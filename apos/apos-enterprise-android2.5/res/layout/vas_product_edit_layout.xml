@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/scm_top_lay"
+        style="@style/com_native_top_style"
+        
+        android:persistentDrawingCache="none" >
+
+        <ImageView
+            android:id="@+id/vas_top_back_btn"
+            style="@style/com_top_return_button_style" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/vas_title_tv"
+            style="@style/com_top_text_style"
+            android:text="电子卡￥120.00元" />
+    </RelativeLayout>
+
+    <LinearLayout
+        
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/scm_top_lay"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/vas_sub_product_imgview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/com_button_gray_selector"
+            android:padding="17dp"
+            android:src="@drawable/com_icon_reduction_img" />
+
+        <RelativeLayout
+            android:layout_width="7dp"
+            android:layout_height="match_parent" >
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/vas_product_quantity_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/com_input_1_line_img"
+            android:gravity="center"
+            android:text="1"
+            android:inputType="number"
+            android:textColor="#666666"
+            android:maxLength="2"
+            android:textSize="30dp" />
+
+        <RelativeLayout
+            android:layout_width="7dp"
+            android:layout_height="match_parent" >
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/vas_add_product_imgview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/com_button_gray_selector"
+            android:padding="17dp"
+            android:src="@drawable/com_icon_plus_img" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/vas_delete_product_bt"
+        style="@style/com_button_left_style"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp"
+        android:text="@string/vas_delete_product_str" />
+
+</RelativeLayout>

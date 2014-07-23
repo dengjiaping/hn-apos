@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/trf_payee_top_lay"
+        style="@style/com_native_top_style"
+        android:persistentDrawingCache="none" >
+
+        <TextView
+            android:id="@+id/trf_payee_title_textview"
+            style="@style/com_top_text_style"
+            android:layout_width="wrap_content"
+            android:text="收款人信息" />
+
+        <ImageView
+            android:id="@+id/com_show_silder_btn"
+            style="@style/com_slider_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/trf_payee_amount_layout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/trf_payee_top_lay"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/com_input_1_line_img" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="13dp"
+            android:background="@color/transparent"
+            android:paddingTop="13dp"
+            android:text="手续费1%"
+            android:textColor="@color/com_666666_col"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="13dp"
+            android:background="@color/transparent"
+            android:paddingTop="13dp"
+            android:text="金额"
+            android:textColor="@color/com_666666_col"
+            android:textSize="12dp" />
+
+        <RelativeLayout
+            android:id="@+id/trf_payee_amount_editText_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="13dp"
+            android:background="@color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="4dp" >
+
+            <EditText
+                android:id="@+id/trf_payee_amount_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:digits="0123456789"
+                android:gravity="right"
+                android:hint="@string/com_amt_str"
+                android:inputType="number"
+                android:maxLength="15"
+                android:singleLine="true"
+                android:textColor="@color/tqm_list_item_amount_col"
+                android:textColorHint="@color/trf_info_amt_col"
+                android:textSize="40dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/trf_payee_info_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/trf_payee_amount_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp" >
+
+        <RelativeLayout
+            android:id="@+id/trf_payee_info_name_layout"
+            style="@style/tam_edittext_icon_lay_style"
+            android:background="@drawable/com_input_topline_img" >
+
+            <TextView
+                android:id="@+id/trf_payee_info_name_label"
+                style="@style/trf_info_label_style"
+                android:text="@string/tcm_infochallenge_name_str" />
+
+            <EditText
+                android:id="@+id/trf_payee_info_name_edit"
+                style="@style/com_edittext_style"
+                android:layout_width="208dp"
+                android:layout_toRightOf="@id/trf_payee_info_name_label"
+                android:singleLine="true"
+                android:hint="收款人姓名" />
+
+            <ImageView
+                android:id="@+id/trf_contacts_img"
+                style="@style/tam_edittext_icon_style"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="13dp"
+                android:layout_toRightOf="@id/trf_payee_info_name_edit"
+                android:src="@drawable/com_icon_payee_img" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/trf_payee_info_card_layout"
+            style="@style/tam_edittext_icon_lay_style"
+            android:layout_below="@+id/trf_payee_info_name_layout"
+            android:background="@drawable/com_input_middleline_img" >
+
+            <TextView
+                android:id="@+id/trf_payee_info_card_label"
+                style="@style/trf_info_label_style"
+                android:text="卡号" />
+
+            <EditText
+                android:id="@+id/trf_payee_info_card_edit"
+                style="@style/com_edittext_style"
+                android:layout_width="260dp"
+                android:layout_toRightOf="@id/trf_payee_info_card_label"
+                android:singleLine="true"
+                android:hint="收款人卡号"
+                android:inputType="number"
+                android:maxLength="16" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/trf_payee_info_bank_layout"
+            style="@style/tam_edittext_icon_lay_style"
+            android:layout_below="@+id/trf_payee_info_card_layout"
+            android:background="@drawable/com_input_bottomline_img" >
+
+            <TextView
+                android:id="@+id/trf_payee_info_bank_label"
+                style="@style/trf_info_label_style"
+                android:text="银行" />
+
+            <EditText
+                android:id="@+id/trf_payee_info_bank_edit"
+                style="@style/com_edittext_style"
+                android:layout_width="260dp"
+                android:layout_toRightOf="@id/trf_payee_info_bank_label"
+                android:hint="收款人开户行"
+                android:singleLine="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/trf_next_step_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/trf_payee_info_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/scm_bottom_layout_selector"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/trf_next_step_button_btn"
+            style="@style/com_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="false"
+            android:text="@string/com_next_str" />
+    </RelativeLayout>
+
+</RelativeLayout>

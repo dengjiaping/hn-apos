@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_pur_lay"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/tam_next_top_textview"
+            style="@style/com_top_text_style"
+            android:text="@string/tam_balance_result_str" />
+
+             <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_home_imageview_style"
+            android:layout_marginTop="7dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tam_content_pur_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_top_pur_lay"
+        android:background="#ffffff" >
+
+        <RelativeLayout
+            android:id="@+id/tam_amt_balance_lay"
+            style="@style/com_txn_detail_lay_style"
+            android:layout_height="38dp"
+            android:layout_alignParentTop="true" >
+
+            <TextView
+                android:id="@+id/tam_amtname_txnview"
+                style="@style/com_txn_detail_left_text_style"
+                android:text="@string/tam_balance_amt_str" />
+
+            <TextView
+                android:id="@+id/tam_amt_txnview"
+                style="@style/com_txn_detail_right_text_style" 
+                android:textSize="18dp"
+                android:textColor="#444444"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/tam_amt_balance_imgview"
+            style="@style/com_txn_detail_dotted_img_style"
+            android:layout_below="@id/tam_amt_balance_lay" />
+
+        <RelativeLayout
+            android:id="@+id/tam_issuer_balance_lay"
+            style="@style/com_txn_detail_lay_style"
+            android:layout_below="@id/tam_amt_balance_imgview" >
+
+            <TextView
+                android:id="@+id/tam_issuername_txnview"
+                style="@style/com_txn_detail_left_text_style"
+                android:text="@string/tqm_txn_detail_issuer_title_str" />
+
+            <TextView
+                android:id="@+id/tam_issuer_txnview"
+                style="@style/com_txn_detail_right_text_style" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/tam_issuer_balance_imgview"
+            style="@style/com_txn_detail_dotted_img_style"
+            android:layout_below="@id/tam_issuer_balance_lay" />
+
+        <RelativeLayout
+            android:id="@+id/tam_pan_balance_lay"
+            style="@style/com_txn_detail_lay_style"
+            android:layout_below="@id/tam_issuer_balance_imgview" >
+
+            <TextView
+                android:id="@+id/tam_cardname_pur_txnview"
+                style="@style/com_txn_detail_left_text_style"
+                android:text="@string/tqm_txn_detail_cardNo_title_str" />
+
+            <TextView
+                android:id="@+id/tam_pan_txnview"
+                style="@style/com_txn_detail_right_text_style" />
+
+            <ImageView
+                android:id="@+id/tam_card_balance_imgview"
+                android:layout_width="30dp"
+                android:layout_height="19dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="7dp"
+                android:layout_toLeftOf="@+id/tam_pan_txnview"
+                android:contentDescription="@string/com_image_content_desc" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/tam_botton_pur_imgview"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@id/tam_content_pur_lay"
+        android:background="@drawable/tam_list_bottom_img"
+        android:contentDescription="@string/tam_covert_browser_srt" />
+
+</RelativeLayout>

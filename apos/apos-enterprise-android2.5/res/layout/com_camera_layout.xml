@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+         android:layout_weight="1">
+        <FrameLayout
+            android:id="@+id/com_camera_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/com_camera_lay"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/cam_navbg_img"
+        android:visibility="visible" >
+
+        <Button
+            android:id="@+id/com_button_cancel"
+            android:layout_width="52dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="7dp"
+            android:background="@drawable/com_cam_black_button_img_selector"
+            android:text="取消"
+            android:textColor="#cccccc"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/com_button_capture"
+            android:layout_width="96dp"
+            android:layout_height="38dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@drawable/com_cam_camera_button_img_selector"
+            android:textColor="#cccccc"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:id="@+id/com_button_capture"
+            android:layout_width="28dp"
+            android:layout_height="22dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@drawable/cam_camera_icon_parallel_img" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/com_savepic_lay"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/cam_navbg_img"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/com_recapture_button"
+            android:layout_width="52dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="7dp"
+            android:background="@drawable/com_cam_black_button_img_selector"
+            android:text="重拍"
+            android:textColor="#cccccc"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/com_save_button"
+            android:layout_width="52dp"
+            android:layout_height="32dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/cam_camera_button_blue_img_selector"
+            android:text="使用"
+            android:layout_alignParentRight="true"
+            android:textColor="#cccccc"
+            android:layout_marginRight="7dp"
+            android:textSize="12dp" />
+    </RelativeLayout>
+
+</LinearLayout>

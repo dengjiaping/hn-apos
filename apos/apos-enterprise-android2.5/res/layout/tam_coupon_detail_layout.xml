@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#000000"
+    >
+
+    <LinearLayout
+        android:id="@+id/com_processing_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/com_top_order_lay"
+        android:gravity="center"
+        android:visibility="gone" >
+
+        <ProgressBar
+            android:id="@+id/com_processing_pb"
+            android:layout_width="18dp"
+            android:layout_height="18dp" />
+
+        <TextView
+            android:id="@+id/com_processing_info_tv"
+            style="@style/com_non_str_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="@string/com_progress_prompt_str" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/tam_coupan_lay"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/barcode_bg_img" >
+
+        <TextView
+            android:id="@+id/tam_merchant_name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="13dp"
+            android:background="#00000000"
+            android:gravity="fill_vertical"
+            android:shadowColor="#000000"
+            android:shadowDx="0"
+            android:shadowDy="-1"
+            android:shadowRadius="1"
+            android:text="星巴克咖啡连锁"
+            android:textColor="#ffffff"
+            android:textSize="18dp" />
+
+        <RelativeLayout
+            android:id="@+id/tam_main_lay"
+            android:layout_width="match_parent"
+            android:layout_height="117dp"
+            android:layout_below="@id/tam_merchant_name_tv"
+            android:background="@drawable/barcode_banner_img" >
+
+            <RelativeLayout
+                android:id="@+id/tam_detail_lay"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:layout_marginLeft="13dp"
+                android:background="#00000000" >
+
+                <TextView
+                    android:id="@+id/tam_coupon_detail_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:background="#00000000"
+                    android:gravity="fill_vertical"
+                    android:shadowColor="#000000"
+                    android:shadowDx="0"
+                    android:shadowDy="-1"
+                    android:shadowRadius="1"
+                    android:text="20000"
+                    android:textColor="#ffffff"
+                    android:textSize="66dp" />
+
+                <TextView
+                    android:id="@+id/tam_coupon_detail2_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="2dp"
+                    android:layout_toRightOf="@+id/tam_coupon_detail_tv"
+                    android:background="#00000000"
+                    android:gravity="fill_vertical"
+                    android:paddingTop="19dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="0"
+                    android:shadowDy="-1"
+                    android:shadowRadius="1"
+                    android:text="元"
+                    android:textColor="#ffffff"
+                    android:textSize="40dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tam_coupon_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tam_detail_lay"
+                android:layout_marginLeft="13dp"
+                android:background="#00000000"
+                android:gravity="fill_vertical"
+                android:shadowColor="#000000"
+                android:shadowDx="0"
+                android:shadowDy="-1"
+                android:shadowRadius="1"
+                android:text="星巴克咖啡连锁"
+                android:textColor="#ffffff"
+                android:textSize="21dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tam_coupon_expire_lay"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/tam_main_lay"
+            android:background="#00000000" >
+
+            <TextView
+                android:id="@+id/tam_coupon_expire_name_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="13dp"
+                android:background="#00000000"
+                android:gravity="fill_vertical"
+                android:shadowColor="#1dbd5c"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:text="截止日期"
+                android:textColor="#35714e"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tam_coupon_expire_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tam_coupon_expire_name_tv"
+                android:layout_marginLeft="13dp"
+                android:background="#00000000"
+                android:gravity="fill_vertical"
+                android:shadowColor="#000000"
+                android:shadowDx="0"
+                android:shadowDy="-1"
+                android:shadowRadius="1"
+                android:text="2013-10-20"
+                android:textColor="#ffffff"
+                android:textSize="17dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/tam_coupon_expire_lay"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="#00000000"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/tam_cancel_coupon_btn"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginRight="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/com_button_green_selector"
+                android:shadowColor="#000000"
+                android:shadowDx="0"
+                android:shadowDy="-1"
+                android:shadowRadius="1"
+                android:text="放弃"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="16dp" />
+
+            <Button
+                android:id="@+id/tam_redeem_coupon_btn"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_marginLeft="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/com_button_green_selector"
+                android:shadowColor="#000000"
+                android:shadowDx="0"
+                android:shadowDy="-1"
+                android:shadowRadius="1"
+                android:text="兑换"
+                android:textColor="#ffffff"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

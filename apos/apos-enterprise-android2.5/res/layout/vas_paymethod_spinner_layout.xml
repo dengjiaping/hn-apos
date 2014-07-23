@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_all_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/vas_paymethod_all_str"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/vas_po_pay_all_str"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/vas_paymethod_all_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/vas_paymethod_swipe_str"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/vas_po_pay_swiper_str"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/vas_paymethod_swipe_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/vas_paymethod_cash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/vas_paymethod_cash_str"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="@string/vas_po_pay_cash_str"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:id="@+id/vas_paymethod_cash_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:gravity="bottom"
+            android:src="@drawable/com_icon_selected"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <!--
+         <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/com_solid_line_img" />
+    -->
+    <!--
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/com_time_select_cancel_btn"
+            style="@style/com_button_left_style"
+            android:text="@string/com_cancel_str" />
+
+        <Button
+            android:id="@+id/com_time_select_sure_btn"
+            style="@style/com_button_right_style"
+            android:layout_marginLeft="10dp"
+            android:text="@string/com_sure_str" />
+    </LinearLayout>
+    -->
+
+</LinearLayout>

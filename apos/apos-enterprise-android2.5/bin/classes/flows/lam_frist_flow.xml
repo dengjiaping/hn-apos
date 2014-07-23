@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="login">
+    <flow-node node-name ="login" ref-activity="me.andpay.apos.lam.activity.LoginActivity">
+        <!-- 主页 -->
+        <node-complete identity = "go_home"   ref-activity="me.andpay.apos.common.activity.HomePageActivity"/>
+        <!-- 验证码 -->
+        <node-complete-activeCode   next-node="activecode"/>
+        <!-- 订单支付 -->
+        <node-complete-orderCheck  ref-activity="me.andpay.apos.mopm.activity.MerchantOrderPayActivity"/> 
+        <!-- cardreaderset -->
+		<node-complete-cardSet   sub-flow="scm_cardreader_set_flow" sub-finish-cpl="finished"  transfer="Com.Start.CardReaderSetTransfer"/>
+        <node-complete-finished   next-node="go_home" />        
+          <!-- password chage -->
+        <node-complete-chagePwd   next-node="chagePwd"/>
+    </flow-node>
+    <!-- 验证码 -->
+    <flow-node node-name ="activecode" ref-activity="me.andpay.apos.lam.activity.ActivateCodeActivity">
+        <!-- 主页 -->
+        <node-complete identity = "go_home"   ref-activity="me.andpay.apos.common.activity.HomePageActivity"/>
+        <!-- password chage -->
+        <node-complete-chagePwd   next-node="chagePwd"/>
+        <!-- cardreaderset -->
+		<node-complete-cardSet   sub-flow="scm_cardreader_set_flow" sub-finish-cpl="finished"  transfer="Com.Start.CardReaderSetTransfer"/>
+        <node-complete-finished   next-node="go_home" />      </flow-node>
+    <!-- 修改密码 -->
+    <flow-node node-name ="chagePwd" ref-activity="me.andpay.apos.lam.activity.ChangePasswordActivity">
+         <!-- 主页 -->
+        <node-complete identity = "go_home"   ref-activity="me.andpay.apos.common.activity.HomePageActivity"/>
+        <!-- cardreaderset -->
+        <node-complete-cardSet   next-node="cardSet"/>
+    </flow-node>
+      <flow-node node-name ="go_home" ref-activity="me.andpay.apos.common.activity.HomePageActivity">
+        <node-complete identity = "go_home"   ref-activity="me.andpay.apos.common.activity.HomePageActivity"/>
+    </flow-node>
+</flow-diagram>

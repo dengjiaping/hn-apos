@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/scm_top_lay"
+        style="@style/com_native_top_style"
+        
+        android:persistentDrawingCache="none" >
+
+        <TextView
+            android:id="@+id/scm_main_title_tv"
+            style="@style/com_top_text_style"
+            android:text="@string/vas_value_service_str" />
+
+        <ImageView
+            android:id="@+id/com_show_silder_btn"
+            style="@style/com_slider_button_style" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scm_main_sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/scm_top_lay"
+        android:alwaysDrawnWithCache="false"
+        android:background="#00000000" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/vas_sales_product_layout"
+                style="@style/scm_layout_style" >
+
+                <ImageView
+                    android:id="@+id/scm_cardread_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_product_sales_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_toRightOf="@id/scm_cardread_icon_img"
+                    android:text="@string/vas_card_sales" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+
+            <RelativeLayout
+                android:id="@+id/scm_party_limit_layout"
+                style="@style/scm_layout_style" 
+                android:onClick="startQueryFlow">
+
+                <ImageView
+                    android:id="@+id/scm_cardread_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_sales_record_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_toRightOf="@id/scm_cardread_icon_img"
+                    android:text="销售记录" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+            
+            <RelativeLayout
+                android:id="@+id/vas_svc_deposite_layout"
+                style="@style/scm_layout_style" 
+                android:onClick="startSvcDepositeFlow">
+
+                <ImageView
+                    android:id="@+id/scm_cardread_icon_img"
+                    style="@style/scm_image_icon_style"
+                    android:background="@drawable/com_icon_card_recharge_img" />
+
+                <TextView
+                    style="@style/scm_text_style"
+                    android:layout_toRightOf="@id/scm_cardread_icon_img"
+                    android:text="预付费卡充值" />
+
+                <ImageView style="@style/scm_right_icon_style" />
+            </RelativeLayout>
+
+            <ImageView style="@style/scm_line_image_style" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

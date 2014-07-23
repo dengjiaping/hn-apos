@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/vas_top_lay"
+        style="@style/com_native_top_style"
+        android:layout_width="match_parent"
+        
+        android:persistentDrawingCache="none" >
+
+        <TextView
+            android:id="@+id/vas_total_price_text"
+            style="@style/com_top_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥0.00" />
+
+        <ImageView
+            android:id="@+id/vas_top_back_btn"
+            style="@style/com_top_return_button_style" >
+        </ImageView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/vas_top_lay"
+        android:background="#f0f0f0" >
+
+        <ListView
+            android:id="@+id/vas_product_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f0f0f0"
+            android:divider="@color/com_no_color"
+            android:dividerHeight="0dp" >
+        </ListView>
+    </RelativeLayout>
+
+</RelativeLayout>

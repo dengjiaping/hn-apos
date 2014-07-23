@@ -1,0 +1,163 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>me.andpay.ti</groupId>
+	<artifactId>ti-moible-framework-android</artifactId>
+	<version>1.0.0-SNAPSHOT</version><!-- 测试版本号 -->
+	<!-- <version>1.0.0</version> release版本号 -->
+	<packaging>jar</packaging>
+	<name>ti-moible-framework-android</name>
+
+	<!-- 设置版本和其他信息 -->
+	<properties>
+		<jdk.version>1.6</jdk.version>
+		<project.name>ti-moible-framework-android</project.name>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Jar依赖 -->
+		<ti-moible-framework.version>1.0.0-SNAPSHOT</ti-moible-framework.version>
+		<android-support-v4.version>4.0</android-support-v4.version>
+		<ti-mobile-dexlib-api.version>1.0.0-SNAPSHOT</ti-mobile-dexlib-api.version>
+		<ti-mobile-dexlib-provider.version>1.0.0-SNAPSHOT</ti-mobile-dexlib-provider.version>
+
+	</properties>
+
+	<dependencies>
+
+
+		<dependency>
+			<groupId>me.andpay.ti.ti-lnk</groupId>
+			<artifactId>ti-lnk-api</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti.ti-lnk</groupId>
+			<artifactId>ti-lnk-transport-wsock-common</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti.ti-lnk</groupId>
+			<artifactId>ti-lnk-rpc</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>me.andpay.ti.ti-lnk</groupId>
+			<artifactId>ti-lnk-simple-client</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti</groupId>
+			<artifactId>ti-base</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti.ti-lnk</groupId>
+			<artifactId>ti-lnk-transport-wsock-client</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti.ti-lnk</groupId>
+			<artifactId>ti-lnk-inter-api</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<!-- <dependency> <groupId>com.google.inject</groupId> <artifactId>guice</artifactId> 
+			<version>4.0-beta</version> <classifier>no_aop</classifier> </dependency> -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>11.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>3.0</version>
+			<classifier>no_aop</classifier>
+
+		</dependency>
+		
+		<dependency>
+			<groupId>me.andpay.ti</groupId>
+			<artifactId>ti-moible-framework</artifactId>
+			<version>${ti-moible-framework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android-support-v4</artifactId>
+			<version>${android-support-v4.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti</groupId>
+			<artifactId>ti-mobile-dexlib-api</artifactId>
+			<version>${ti-mobile-dexlib-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.andpay.ti</groupId>
+			<artifactId>ti-mobile-dexlib-provider</artifactId>
+			<version>${ti-mobile-dexlib-provider.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<url>http://172.19.30.105:8081/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>thirdparty</id>
+			<url>http://172.19.30.105:8081/nexus/content/repositories/thirdparty</url>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>http://172.19.30.105:8081/nexus/content/repositories/releases</url>
+			<layout>default</layout>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshots</name>
+			<url>http://172.19.30.105:8081/nexus/content/repositories/snapshots</url>
+			<layout>default</layout>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<finalName>${project.name}</finalName>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<!-- 打包时 跳过 test -->
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

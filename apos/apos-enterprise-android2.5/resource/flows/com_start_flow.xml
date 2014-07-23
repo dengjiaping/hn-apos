@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="start">
+    <!-- 启动 -->
+    <flow-node node-name ="start" ref-activity="me.andpay.apos.lam.activity.StartAppActivity" remove-node = "true">
+        <!-- 主页 -->
+        <node-complete identity = "go_home"   ref-activity="me.andpay.apos.common.activity.HomePageActivity"/>
+        <!-- 登陆 -->
+        <node-complete-success  sub-flow="lam_login_flow" sub-finish-cpl="go_home"/>
+        <!-- 介绍页面 -->
+        <node-complete-success2  next-node="introduce"/>
+        <!-- 验证码 -->
+        <node-complete-activeCode   sub-flow="lam_active_flow"/>
+        <!-- 订单支付 -->
+        <!--<node-complete-orderCheck  ref-activity="me.andpay.apos.mopm.activity.MerchantOrderPayActivity"/>  -->
+        <!-- password change -->
+        <node-complete-changePwd  next-node="changePwd"/>
+          <!-- cardreaderset -->
+  		<node-complete-cardSet   sub-flow="scm_cardreader_set_flow" sub-finish-cpl="finished"  transfer="Com.Start.CardReaderSetTransfer"/>
+        <node-complete-finished   next-node="go_home" />   
+    </flow-node>
+    <!-- 风险控制结点 -->
+    <!-- <flow-node node-name ="risk" ref-activity="me.andpay.apos.lam.activity.RiskPromptActivity">
+        <node-complete-success  next-node="introduce"/>
+    </flow-node> -->
+    <!-- 介绍 -->
+    <flow-node node-name ="introduce" ref-activity="me.andpay.apos.lam.activity.IntroduceStartActivity">
+        <node-complete-success sub-flow="lam_login_flow"  flush-context = "true" finish-flow = "true"/>
+    </flow-node>
+    <!-- 修改密码 -->
+    <flow-node node-name ="changePwd" ref-activity="me.andpay.apos.lam.activity.ChangePasswordActivity">
+         <!-- 主页 -->
+        <node-complete identity = "go_home"   ref-activity="me.andpay.apos.common.activity.HomePageActivity"/>
+        <!-- cardreaderset -->
+        <node-complete-cardSet   sub-flow="scm_cardreader_set_flow" sub-finish-cpl="finished"  transfer="Com.Start.CardReaderSetTransfer"/>
+        <node-complete-finished   next-node="go_home" />  
+    </flow-node>
+
+    
+	 <flow-node node-name ="go_home" ref-activity="me.andpay.apos.common.activity.HomePageActivity">
+        <node-complete identity = "go_home"   ref-activity="me.andpay.apos.common.activity.HomePageActivity"/>
+    </flow-node>
+</flow-diagram>

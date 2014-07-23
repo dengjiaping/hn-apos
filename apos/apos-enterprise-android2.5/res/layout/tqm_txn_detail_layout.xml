@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/tqm_top_lay"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/tqm_txn_list_title_tv"
+            style="@style/com_top_text_style"
+            android:text="@string/tqm_txn_list_detail_title_str" />
+
+        <ImageView
+            android:id="@+id/tqm_txn_list_back_btn"
+            style="@style/com_top_return_button_style" />
+
+        <Button
+            android:id="@+id/tqm_txn_refund_btn"
+            style="@style/com_top_button_refund_style"
+            android:layout_width="50dp"
+            android:text="@string/com_refund_str"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/tqm_repostvoucher_btn"
+            style="@style/com_top_right_button_style"
+            android:layout_width="60dp"
+            android:text="@string/tqm_postvoucher_str"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tqm_top_lay" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:scrollbars="vertical" >
+
+            <include
+                android:id="@+id/com_net_error_layout"
+                android:layout_width="match_parent"
+                android:layout_height="462dp"
+                android:layout_gravity="fill_horizontal"
+                layout="@layout/com_net_error" />
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/com_txn_detail_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:scrollbars="vertical" >
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_amount_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_amount_title_str"
+                        android:textColor="@color/tqm_list_item_amount_col"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_amount_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/tqm_list_item_amount_col"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/tqm_txn_refund_amount_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_refundAmount_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_refund_amount_title_str"
+                        android:textColor="@color/com_title_red_color"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_refund_amount_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="@string/com_amt_str"
+                        android:textColor="@color/com_title_red_color"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_txnflag_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_txnflag_title_str"
+                        android:textColor="@color/tqm_list_item_amount_col"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_txnflag_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/tqm_list_item_amount_col"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/com_dotted_line_img" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_cardNo_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_cardNo_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_cardNo_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:id="@+id/tqm_txn_detail_cardOrg_img"
+                        android:layout_width="30dp"
+                        android:layout_height="19dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_toLeftOf="@+id/tqm_txn_detail_cardNo_tv" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_cardType_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_issuer_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_cardtype_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_txnType_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_txnType_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_txnType_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_orderid_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_orderid_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_orderid_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_txnTime_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_txnTime_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_txnTime_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <!--
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_merchantName_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_merchantName_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_merchantName_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+                -->
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_merchantNo_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_merchantNo_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_merchantNo_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_deviceid_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_deviceid_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_deviceid_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_authno_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_authno_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_authno_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_refno_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_refno_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_refno_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_traceno_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_traceno_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_traceno_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_batchno_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_batchno_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_batchno_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_memo_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_memo_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_memo_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:singleLine="false"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/tqm_txn_detail_location_dotted_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/com_dotted_line_img" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/tqm_txn_detail_location_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_location_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_location_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_location_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tqm_txn_detail_location_title_tv"
+                        android:layout_marginTop="13dp"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:id="@+id/tqm_txn_detail_location_img"
+                        android:layout_width="8dp"
+                        android:layout_height="13dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/com_icon_into_img" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/tqm_txn_detail_transpic_dotted_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/com_dotted_line_img" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/tqm_txn_detail_transpic_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_trandpic_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_transpic_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:id="@+id/tqm_txn_detail_transpic_img"
+                        android:layout_width="120dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/com_photo_frame_img"
+                        android:focusable="false"
+                        android:padding="4dp"
+                        android:scaleType="fitXY" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/tqm_txn_detail_signpic_dotted_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/com_dotted_line_img" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/tqm_txn_detail_signpic_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tqm_txn_detail_signpic_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/tqm_txn_detail_signpic_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="13dp" />
+
+                    <ImageView
+                        android:id="@+id/tqm_txn_detail_signpic_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:layout_below="@id/tqm_txn_detail_signpic_title_tv"
+                        android:layout_marginTop="2dp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/tqm_fill_sign_btn"
+                style="@style/com_button_left_style"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="13dp"
+                android:text="签名补入"
+                android:textSize="18dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

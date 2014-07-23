@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/com_title_tv"
+            style="@style/com_top_text_style"
+            android:text="交易失败" />
+
+     <!--    <Button
+            android:id="@+id/com_out_btn"
+            style="@style/com_top_right_button_style"
+            android:layout_width="60dp"
+            android:text="退出交易" /> -->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
+
+        <ImageView
+            android:id="@+id/tam_success_img"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/com_salesslip_tip_img" />
+
+        <TextView
+            android:id="@+id/com_msg_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tam_success_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="交易失败了"
+            android:textColor="#666666"
+            android:textSize="17dp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/com_event_btn"
+        style="@style/com_button_left_style"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="17dp"
+        android:text="进入主页" />
+
+</RelativeLayout>

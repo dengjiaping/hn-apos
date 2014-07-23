@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        layout="@layout/vas_purchaseorder_section_layout" />
+
+    <RelativeLayout
+        android:id="@+id/trf_contacts_item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/com_list_f0f0f0_item_selector"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/trf_contacts_item_name_textview"
+            style="@style/com_item_title_text_style"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13dp"
+            android:text="李泽麟"
+            android:textColor="@color/contents_text"
+            android:textSize="18dp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="7dp"
+           	android:layout_marginTop="4dp"
+           	android:layout_centerVertical="true"
+           	android:background="@color/transparent">
+            <TextView
+                android:id="@+id/trf_contacts_item_bank_name"
+                style="@style/com_item_title_text_style"
+                android:layout_alignParentRight="true"
+                android:text="中国民生银行" />
+
+            <TextView
+                android:id="@+id/trf_contacts_item_card_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tqm_txn_list_item_time_tv"
+                android:background="@color/com_no_color"
+                android:text="6225 8779 6238 5830" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

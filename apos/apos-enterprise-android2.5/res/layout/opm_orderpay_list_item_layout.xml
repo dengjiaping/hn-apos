@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/tom_order_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="7dp"
+        android:background="@android:color/transparent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="#00000000" >
+
+            <TextView
+                android:id="@+id/tom_order_item_amount_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-3dp"
+                android:layout_marginTop="4dp"
+                android:background="@android:color/transparent"
+                android:text="￥1111.11"
+                android:textColor="@color/com_list_item_text_amount_selector"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tom_order_item_createDate_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tom_order_item_amount_tv"
+                android:layout_marginTop="4dp"
+                android:background="@android:color/transparent"
+                android:text="时间"
+                android:textColor="@color/com_list_item_text_selector"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/tom_order_pay_button"
+            android:layout_width="65dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/com_button_clear_button_selector"
+            android:shadowColor="#ffffff"
+            android:shadowDx="0"
+            android:shadowDy="-1"
+            android:shadowRadius="1"
+            android:text="支付"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/tqm_txn_list_item_line_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tom_order_lay"
+        android:layout_marginLeft="7dip"
+        android:layout_marginRight="7dip"
+        android:layout_marginTop="9dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/com_dotted_line_img" />
+
+    <RelativeLayout
+        android:id="@+id/opm_order_orderId_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tqm_txn_list_item_line_img"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="9dp"
+        android:background="#00000000" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@android:color/transparent"
+            android:text="订单号"
+            android:textColor="@color/com_list_item_text_selector"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tqm_order_item_id_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:textColor="@color/com_list_item_text_selector"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/opm_order_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/opm_order_orderId_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:background="#00000000"
+        android:orientation="vertical"
+        android:scrollbars="vertical" >
+      
+        
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="6dp"
+        android:layout_below="@id/opm_order_lay"
+        android:background="#00000000" />
+
+</RelativeLayout>

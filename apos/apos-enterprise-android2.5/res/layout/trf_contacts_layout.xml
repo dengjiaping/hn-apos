@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/trf_contacts_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/trf_contacts_title_textview"
+            style="@style/com_top_text_style"
+            android:text="常用联系人" />
+
+        <ImageView
+            android:id="@+id/trf_contacts_list_back_btn"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+</RelativeLayout>

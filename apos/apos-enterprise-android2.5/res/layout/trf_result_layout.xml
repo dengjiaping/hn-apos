@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/trf_result_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/trf_result_title_textview"
+            style="@style/com_top_text_style"
+            android:text="转账失败" />
+
+        <Button
+            android:id="@+id/trf_result_top_quit_btn"
+            style="@style/com_top_button_style"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:text="@string/com_login_out_str" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/trf_result_content_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="100dp" >
+
+        <ImageView
+            android:id="@+id/trf_result_img"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/com_salesslip_tip_img" />
+
+        <TextView
+            android:id="@+id/trf_result_msg_txtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/trf_result_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="转账失败"
+            android:textColor="#666666"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/trf_result_info_txtView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/trf_result_msg_txtView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="你的银行卡限额已经用完"
+            android:textColor="#666666"
+            android:textSize="14dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/trf_result_next_step_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@id/trf_result_content_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/scm_bottom_layout_selector"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/trf_result_next_step_btn"
+            style="@style/com_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="true"
+            android:text="@string/com_back_modify_str" />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+    android:id="@+id/com_wrap_pur_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e0e3e4"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_pur_lay"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/trm_txn_list_title_str" />
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/com_pur_top_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/com_top_pur_lay"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/com_purchase_shadow" >
+
+        <RelativeLayout
+            android:id="@+id/com_pur_content_top_lay"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/com_no_color" >
+
+            <TextView
+                android:id="@+id/trm_memo_tv"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:gravity="left"
+                android:layout_marginLeft="8dp"
+                android:background="@color/com_no_color"
+                android:text="@string/tam_pur_ext_info_str"
+                android:textColor="@color/com_button_top_col"
+                android:textSize="16dp" />
+
+            <me.andpay.apos.cmview.AmtEditTextView
+                android:id="@+id/trm_amt_txnview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="115dp"
+                android:layout_marginRight="8dp"
+                android:background="#00000000"
+                android:gravity="right"
+                android:singleLine="true"
+                android:textSize="22dp"
+                apos:amtHitColor="#999999"
+                apos:amtHitText="@string/com_amt_str" />
+
+            <!--
+                apos:amtHitColor="#999999"
+                apos:amtHitText="@string/com_amt_str"
+            -->
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/com_pur_info_line_img"
+            style="@style/scm_line_image_style"
+            android:layout_below="@+id/com_pur_content_top_lay" />
+
+        <RelativeLayout
+            android:id="@+id/trm_foot_lay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/com_pur_info_line_img"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/com_no_color" >
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

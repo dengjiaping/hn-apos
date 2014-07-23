@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.andpay.apos.cmview.ResizeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lam_login_main_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:id="@+id/lam_login_content_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:id="@+id/lam_login_content_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/lam_login_img"
+                style="@style/com_logo_style" />
+
+            <LinearLayout
+                android:id="@+id/lam_phone_lay"
+                style="@style/tam_edittext_icon_lay_style"
+                android:layout_below="@id/lam_login_img"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/com_input_topline_img" >
+
+                <ImageView
+                    style="@style/tam_edittext_icon_style"
+                    android:src="@drawable/com_icon_phone_img" />
+
+                <EditText
+                    android:id="@+id/lam_username_autotext"
+                    style="@style/com_edittext_style"
+                    android:completionHint="@string/lam_username_hit_str"
+                    android:hint="@string/lam_username_hit_str"
+                    android:inputType="phone"
+                    android:maxLength="11" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lam_password_lay"
+                style="@style/tam_edittext_icon_lay_style"
+                android:layout_below="@id/lam_phone_lay"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="33dp"
+                android:background="@drawable/com_input_bottomline_img" >
+
+                <ImageView
+                    style="@style/tam_edittext_icon_style"
+                    android:src="@drawable/com_icon_password_img" />
+
+                <EditText
+                    android:id="@+id/lam_passwd_edittext"
+                    style="@style/com_edittext_style"
+                    android:hint="@string/lam_pwd_hit_str"
+                    android:inputType="textPassword"
+                    android:maxLength="64"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/lam_login_btn"
+                style="@style/com_button_style"
+                android:layout_width="match_parent"
+                android:layout_below="@id/lam_password_lay"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_marginTop="20dp"
+                android:enabled="false"
+                android:text="@string/lam_login_btn_str" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lam_login_btn"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="33dp"
+                android:layout_marginTop="20dp" >
+
+                <!--
+                <TextView
+                    android:id="@+id/lam_service_introduce_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/lam_service_introduce_str"
+                    android:textColor="#b1b5b7"
+                    android:textSize="12sp" />
+                -->
+
+                <CheckBox
+                    android:id="@+id/lam_save_pwd_checkbox"
+                    style="@style/com_checkbox_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="18dp"
+                    android:layout_alignParentTop="true"
+                    android:checked="true"
+                    android:paddingLeft="26dp"
+                    android:text="@string/lam_save_password_str"
+                    android:textColor="#b1b5b7"
+                    android:textSize="12sp" 
+                    
+                    />
+
+                <TextView
+                    android:id="@+id/lam_forget_password_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/lam_forget_password_str"
+                    android:textColor="#b1b5b7"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/lam_foot_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lam_login_content_scroll"
+        android:background="#00000000" >
+
+        <TextView
+            android:id="@+id/com_app_copyright_textv"
+            style="@style/com_copyright_text_style"
+            android:text="@string/lam_login_copyright_text_str" />
+
+        <ImageView
+            android:id="@+id/com_andpay_logo_imgv"
+            style="@style/com_copyright_img_style"
+            android:layout_width="253dp"
+            android:layout_height="33dp"
+            android:layout_above="@id/com_app_copyright_textv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="6dp"
+            android:src="@drawable/com_bankcard_img" />
+    </RelativeLayout>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/lam_help_gif_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="13dp"
+        android:layout_marginRight="13dp" />
+
+
+</me.andpay.apos.cmview.ResizeLayout>

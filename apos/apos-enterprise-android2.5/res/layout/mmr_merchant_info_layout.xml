@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/com_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_lay"
+        style="@style/com_native_top_style"
+        android:persistentDrawingCache="none" >
+        <ImageView
+            android:id="@+id/vas_top_back_btn"
+            style="@style/com_top_return_button_style" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/vas_top_title_tv"
+            style="@style/com_top_text_style"
+            android:text="企业主信息" />
+    </RelativeLayout>
+
+   	
+
+</RelativeLayout>

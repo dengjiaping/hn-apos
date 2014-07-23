@@ -1,0 +1,9 @@
+.DS_Store
+.settings
+.springBeans
+bin
+*.log
+.*.swp
+.classpath
+target
+build

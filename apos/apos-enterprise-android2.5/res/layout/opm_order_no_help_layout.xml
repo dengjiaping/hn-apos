@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0E3E4"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/lam_top_layout"
+        style="@style/com_native_top_style"
+        android:layout_alignParentLeft="true" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="关于订单格式" />
+
+        <ImageView
+            android:id="@+id/opm_top_back_btn"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lam_top_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp" >
+
+        <TextView
+            android:id="@+id/opm_help_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#666666"
+            android:text="asdasdsad"
+            android:textSize="22dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

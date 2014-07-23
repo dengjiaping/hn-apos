@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_layout"
+        style="@style/com_native_top_style" >
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" />
+
+        <TextView
+            android:id="@+id/com_title_tv"
+            style="@style/com_top_text_style"
+            android:text="设备适配" />
+
+        <Button
+            android:id="@+id/scm_top_right_btn"
+            style="@style/com_top_right_button_style"
+            android:layout_width="70dp"
+            android:text="其它读卡器" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/scm_faild_lay"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/com_top_layout"
+        android:background="@drawable/scm_failed_shap" >
+
+        <ImageView
+            android:id="@+id/scm_failed_image"
+              android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/com_icon_undetermined_red_img" 
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/scm_failed_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/scm_failed_image"
+            android:text="适配失败"
+            android:textColor="#444444"
+            android:layout_marginLeft="10dp"
+             android:layout_centerInParent="true"
+            android:background="#00000000"
+            android:gravity="center_vertical"
+            android:textSize="14dp" />
+        
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/scm_faild_lay" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/scm_cardreader_img"
+                android:layout_width="134dp"
+                android:layout_height="134dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/open_device_cardreader_3_img" />
+
+            <RelativeLayout
+                android:id="@+id/scm_cardreader_type_content_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/scm_cardreader_img"
+                android:layout_marginTop="20dp" >
+
+                <RelativeLayout
+                    android:id="@+id/scm_cardreader_type_lay"
+                    style="@style/cardreader_set_success_layout_style"
+                    android:background="@drawable/com_input_topline_img" >
+
+                    <TextView
+                        style="@style/cardreader_set_success_leftText_style"
+                        android:text="设备类型" />
+
+                    <TextView
+                        android:id="@+id/scm_cardreader_type_text"
+                        style="@style/cardreader_set_success_rightText_style"
+                        android:text="APOS1" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/scm_cardreader_ksn_lay"
+                    style="@style/cardreader_set_success_layout_style"
+                    android:layout_below="@+id/scm_cardreader_type_lay"
+                    android:background="@drawable/com_input_middleline_img" >
+
+                    <TextView
+                        style="@style/cardreader_set_success_leftText_style"
+                        android:text="编号" />
+
+                    <TextView
+                        android:id="@+id/scm_cardreader_ksn_text"
+                        style="@style/cardreader_set_success_rightText_style"
+                        android:text="123123123123123123" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/scm_cardreader_comm_lay"
+                    style="@style/cardreader_set_success_layout_style"
+                    android:layout_below="@+id/scm_cardreader_ksn_lay"
+                    android:background="@drawable/com_input_middleline_img" >
+
+                    <TextView
+                        style="@style/cardreader_set_success_leftText_style"
+                        android:text="连接类型" />
+
+                    <TextView
+                        android:id="@+id/scm_cardreader_comm_text"
+                        style="@style/cardreader_set_success_rightText_style"
+                        android:text="蓝牙" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/scm_cardreader_bluetoothName_lay"
+                    style="@style/cardreader_set_success_layout_style"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/scm_cardreader_comm_lay"
+                    android:background="@drawable/com_input_bottomline_img" >
+
+                    <TextView
+                        style="@style/cardreader_set_success_leftText_style"
+                        android:text="蓝牙名称" />
+
+                    <TextView
+                        android:id="@+id/scm_cardreader_bluetoothName_text"
+                        style="@style/cardreader_set_success_rightText_style"
+                        android:text="ME30-1231553" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/scm_progress_lay"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/scm_cardreader_img"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left" >
+
+                    <ProgressBar
+                        android:id="@+id/progressBar1"
+                        style="?android:attr/progressBarStyleLarge"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="14dp"
+                        android:gravity="center"
+                        android:text="设备正在适配中..."
+                        android:textColor="#666666"
+                        android:textSize="16dp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!--
+            <RelativeLayout
+                android:id="@+id/scm_adapter_failed_lay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/scm_result_text_view"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/scm_check_failed_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:gravity="center"
+                    android:singleLine="false"
+                    android:text="设备匹配失败,请重新适配或者进入设置向导。"
+                    android:textColor="#666666"
+                    android:textSize="16dp" />
+
+                <Button
+                    android:id="@+id/scm_recheck_button"
+                    style="@style/com_button_left_style"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/scm_check_failed_text"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="13dp"
+                    android:text="重新适配" />
+
+                <Button
+                    android:id="@+id/scm_cardreader_set_guide_button"
+                    style="@style/com_button_left_style"
+                    android:layout_width="match_parent"
+                    android:layout_below="@+id/scm_recheck_button"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="13dp"
+                    android:text="进入适配向导" />
+            </RelativeLayout>
+            -->
+
+            <Button
+                android:id="@+id/scm_recheck_button"
+                style="@style/com_button_style"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/scm_cardreader_type_content_lay"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="25dp"
+                android:text="重新适配" />
+
+            <Button
+                android:id="@+id/scm_test_swiper_btn"
+                style="@style/com_button_style"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/scm_cardreader_type_content_lay"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="25dp"
+                android:text="测试刷卡" />
+
+            <Button
+                android:id="@+id/scm_set_ok_btn"
+                style="@style/com_button_style"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/scm_cardreader_type_content_lay"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="25dp"
+                android:text="开始使用" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

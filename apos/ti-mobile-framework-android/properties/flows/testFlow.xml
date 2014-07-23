@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="steup1">
+    <flow-node nodeName = "steup1" refActivity="me.andpay.timobileframework.flow.TiFlowNode">
+        <node-complete-success  next-node = "steup2"/>
+        <node-complete-fail next-node = "steup5"/>
+    </flow-node>
+     <flow-node nodeName = "steup2" refActivity="me.andpay.timobileframework.flow.TiFlowNode">
+        <node-complete identity = "success" next-node = "steup3"/>
+        <node-complete identity = "fail" next-node = "steup4"/>
+    </flow-node>
+    <flow-node nodeName = "steup3" refActivity="me.andpay.timobileframework.flow.TiFlowNode">
+        <node-complete identity = "success" next-node = "steup4"/>
+        <node-complete identity = "fail" next-node = "steup5"/>
+    </flow-node>
+     <flow-node nodeName = "steup4" refActivity="me.andpay.timobileframework.flow.TiFlowNode">
+        <node-complete identity = "success" next-node = "steup5"/>
+        <node-complete identity = "fail" refActivity = "me.andpay.timobileframework.flow.TiFlowNode"/>
+    </flow-node>
+    <flow-node nodeName = "steup5" refActivity="me.andpay.timobileframework.flow.TiFlowNode">
+        <node-complete identity = "success" sub-flow = "testFlow2">
+       		<flow-send-data>
+            	<entry	key="test" value="test"/>
+        	</flow-send-data>  
+       	</node-complete>
+    </flow-node>
+</flow-diagram>

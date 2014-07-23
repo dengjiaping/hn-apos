@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="swipeAndTxn">
+    <!-- 刷卡交易 -->
+    <flow-node node-name ="swipeAndTxn" ref-activity="me.andpay.apos.tam.activity.TxnAcitivty" >
+         <node-complete  identity = "success"  next-node="txnSign" transfer = "Com.TxnFlow.SignTransfer"/>
+        <node-complete  identity = "success2"  next-node="postVoucher" transfer = "Com.TxnFlow.VoucherTransfer"/>
+        <node-complete  identity = "success4"  sub-flow="tcm_info_challenge_flow" sub-finish-cpl="finished"/>
+        <node-complete  identity = "success3"  sub-flow="tcm_photo_challenge_flow" sub-finish-cpl="finished"/>
+        <node-complete  identity = "faild"  next-node="txnfaild" />
+        <node-complete  identity = "faild_step2"  next-node="txnfaild" remove-node="true" />
+        <node-complete  identity = "faild_step1"  next-node="txnTimeout" />
+        <node-complete  identity = "finish" finish-flow = "true" />
+        <node-complete  identity = "finish1" finish-flow = "true"   hold-sub-finish="true"/>
+        <node-complete-finished  identity = "finish" next-node="txnSign" transfer = "Com.TxnFlow.SignTransfer"/>
+    </flow-node>
+    <!-- 交易签名 -->
+   	<flow-node node-name ="txnSign" ref-activity="me.andpay.apos.tam.activity.SignActivity">
+          <node-complete  identity ="success"  next-node="postVoucher"  transfer="Com.TxnFlow.VoucherTransfer"/>
+    </flow-node>
+ 	<!-- 发送凭证 -->  
+   	<flow-node node-name ="postVoucher" ref-activity="me.andpay.apos.tam.activity.PostVoucherActivity">
+   	     <node-complete  identity = "finish" finish-flow = "true" />
+         <node-complete  identity = "success" finish-flow = "true" />
+   	     <node-complete  identity = "faild"  next-node="purchaseOrderFaild" transfer="Tam.TxnFlow.PurchaseOrderFaildTransfer"/>
+  </flow-node>
+   	<!-- 交易超时 -->  
+   	<flow-node node-name ="txnTimeout" ref-activity="me.andpay.apos.tam.activity.TxnTimeoutActivity">
+   	     <node-complete  identity = "success"  next-node="txnSign" transfer = "Com.TxnFlow.SignTransfer" remove-node="true" />
+   	     <node-complete  identity = "success2"  next-node="postVoucher" transfer = "Com.TxnFlow.VoucherTransfer" remove-node="true"/>
+   	     <node-complete  identity = "faild"  next-node="txnfaild" remove-node="true" />
+   	     <node-complete  identity = "finish"  finish-flow = "true"   hold-sub-finish="true"/>
+   </flow-node>
+   	<!-- 交易失败 -->  
+   	<flow-node node-name ="txnfaild" ref-activity="me.andpay.apos.tam.activity.TxnFaildActivity">
+   	     <node-complete  identity = "finish"  finish-flow = "true"  hold-sub-finish="true" />
+   	     <node-complete  identity = "faild"  next-node="txnfaild" remove-node="true" />
+   </flow-node>
+   <flow-node node-name ="purchaseOrderFaild" ref-activity="me.andpay.apos.vas.activity.PurchaseOrderFaildActivity">
+          <node-complete  identity = "success"  finish-flow = "true"/>
+   </flow-node>
+   	
+</flow-diagram>

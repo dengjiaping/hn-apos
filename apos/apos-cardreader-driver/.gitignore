@@ -1,0 +1,15 @@
+###############
+#    folder   #
+###############
+/bin/
+/target/
+/gen/**/
+
+###############
+#    project  #
+###############
+*.class
+.DS_Store
+*.classpath
+*.project
+*.DS_Store

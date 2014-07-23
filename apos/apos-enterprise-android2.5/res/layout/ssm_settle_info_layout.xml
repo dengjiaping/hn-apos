@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_navigator_layout"
+        style="@style/com_native_top_style"
+         >
+
+        <TextView
+            android:id="@+id/tqm_txn_list_title_tv"
+            style="@style/com_top_text_style"
+            android:text="@string/ssm_settle_info_title_str" />
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/com_processing_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/com_navigator_layout"
+        android:layout_marginTop="-5dp"
+        android:gravity="center" >
+
+        <ProgressBar
+            android:id="@+id/com_processing_pb"
+            android:layout_width="18dp"
+            android:layout_height="18dp" />
+
+        <TextView
+            android:id="@+id/com_processing_info_tv"
+            style="@style/com_non_str_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="@string/com_progress_prompt_str" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/com_net_error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/com_navigator_layout"
+        android:layout_marginBottom="80dp"
+        layout="@layout/com_net_error" />
+
+    <RelativeLayout
+        android:id="@+id/com_no_data_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/com_navigator_layout"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/com_non_data_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/com_icon_none_img" />
+
+        <TextView
+            android:id="@+id/ssm_info_non_tv"
+            style="@style/com_non_str_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/com_non_data_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/com_non_str" />
+    </RelativeLayout>
+
+    <LinearLayout
+        xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+        android:id="@+id/com_list_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_navigator_layout"
+        android:layout_marginTop="-5dp"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp" >
+
+            <TextView
+                android:id="@+id/ssm_info_list_count_tv"
+                style="@style/com_native_count_bold_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true" />
+
+            <TextView
+                android:id="@+id/ssm_info_list_count_title_tv"
+                style="@style/com_native_count_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/ssm_info_list_count_tv"
+                android:text="条结账记录" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ssm_main_unsettle_info_layout"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="-5dp"
+            android:background="@drawable/ssm_table_title_bg_img" >
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle1_tv"
+                style="@style/ssm_info_title_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="2"
+                android:text="@string/ssm_main_infotitle1_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle2_tv"
+                style="@style/ssm_info_title_style"
+                android:layout_width="0dip"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:text="@string/ssm_main_infotitle3_str" />
+
+            <TextView
+                android:id="@+id/ssm_main_infotitle3_tv"
+               style="@style/ssm_info_title_style"
+                android:layout_width="0dip"
+                android:gravity="right|center_vertical"
+                android:layout_height="match_parent"
+                android:layout_marginRight="7dp"
+                android:layout_weight="1"
+                android:text="@string/ssm_main_infotitle2_str" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+        android:id="@+id/com_list_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/com_list_info_layout" >
+
+        <me.andpay.apos.cmview.PullToRefreshLayout
+            android:id="@+id/pull_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-5dp"
+            android:fadingEdge="none"
+            android:scrollingCache="false"
+            apos:actionViewId="@id/action_view" >
+
+            <include
+                android:id="@id/action_view"
+                layout="@layout/com_refresh_layout" />
+
+            <ListView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="#00000000"
+                android:fadingEdge="none" />
+        </me.andpay.apos.cmview.PullToRefreshLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="txnStart">
+   <!-- 刷卡交易 -->
+    <flow-node node-name ="txnStart" start-complete="success">
+         <node-complete  identity = "success"  sub-flow="com_txn_flow" sub-finish-cpl="finished" />
+         <node-complete-finished   next-node="txnDetail"   transfer="Tam.TxnFlow.DetailContextTransfer"   />
+    </flow-node>
+    
+    <!-- 余额查询明细 -->
+    <flow-node node-name ="txnDetail" ref-activity="me.andpay.apos.tam.activity.BalanceDetailActivity">
+         <node-complete  identity = "finish"  flush-context = "true" finish-flow = "true"/>
+    </flow-node>
+</flow-diagram>

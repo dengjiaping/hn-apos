@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/com_dialog_title_tv"
+        style="@style/com_dialog_title_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/scm_main_curruser_str" />
+
+    <RelativeLayout
+        android:id="@+id/com_dialog_user_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_dialog_title_tv"
+        android:layout_marginTop="15dp" >
+
+        <TextView
+            android:id="@+id/com_dialog_user_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="7dp"
+            android:text="@string/scm_username_str"
+            android:textColor="@color/tqm_amount_col"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/com_dialog_user_textview"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/com_dialog_user_text"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="6dp"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/com_dialog_party_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_dialog_user_lay"
+        android:layout_marginTop="2dp" >
+
+        <TextView
+            android:id="@+id/com_dialog_party_text"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="7dp"
+            android:text="@string/scm_merchant_name_str"
+            android:textColor="@color/tqm_amount_col"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/com_dialog_party_textview"
+            style="@style/com_dialog_title_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/com_dialog_party_text"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="6dp"
+            android:textSize="16dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_dialog_party_lay"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:paddingBottom="7dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp" >
+
+        <Button
+            android:id="@+id/com_dialog_sure_btn"
+            style="@style/com_button_center_style"
+            android:layout_width="match_parent"
+            android:text="@string/com_sure_str" />
+    </LinearLayout>
+
+</RelativeLayout>

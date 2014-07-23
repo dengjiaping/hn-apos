@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_layout"
+        style="@style/com_native_top_style"
+         >
+
+        <TextView
+            android:id="@+id/tqm_txn_list_title_tv"
+            style="@style/com_top_text_style"
+            android:text="@string/ssm_send_title_str" />
+
+        <ImageView
+            android:id="@+id/com_home_btn"
+            style="@style/com_home_imageview_style"
+            android:layout_marginTop="7dp" />
+    </RelativeLayout>
+
+    <!-- <RelativeLayout
+        android:id="@+id/com_processing_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-5dp"
+        android:visibility="gone" >
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal" >
+
+            <ProgressBar
+                android:id="@+id/com_processing_pb"
+                android:layout_width="18dp"
+                android:layout_height="18dp" />
+
+            <TextView
+                android:id="@+id/com_processing_info_tv"
+                style="@style/com_non_str_style"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="@string/ssm_mail_sending_str" />
+        </LinearLayout>
+    </RelativeLayout> -->
+
+    <RelativeLayout
+        android:id="@+id/ssm_batch_send_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/com_top_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="13dp"
+        android:background="#ffffff" >
+
+        <LinearLayout
+            android:id="@+id/tam_post_phone_lay"
+            style="@style/tam_edittext_icon_lay_style"
+            android:background="@drawable/com_input_topline_img" >
+
+            <ImageView
+                style="@style/tam_edittext_icon_style"
+                android:src="@drawable/com_icon_phone_img" />
+
+            <EditText
+                android:id="@+id/ssm_batch_send_phone_tv"
+                style="@style/com_edittext_style"
+                android:hint="@string/lam_username_hit_str"
+                android:inputType="phone"
+                android:maxLines="11" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tam_post_mail_lay"
+            style="@style/tam_edittext_icon_lay_style"
+            android:layout_below="@id/tam_post_phone_lay"
+            android:background="@drawable/com_input_middleline_img" >
+
+            <ImageView
+                style="@style/tam_edittext_icon_style"
+                android:src="@drawable/com_icon_email_img" />
+
+            <EditText
+                android:id="@+id/ssm_batch_send_mail_tv"
+                style="@style/com_edittext_style"
+                android:hint="@string/ssm_mail_title_str" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/ssm_batch_send_btn"
+        style="@style/com_button_style"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ssm_batch_send_info_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp"
+        android:enabled="false"
+        android:text="@string/ssm_send_btn_str" />
+
+</RelativeLayout>

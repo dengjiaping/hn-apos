@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apos="http://schemas.android.com/apk/res/me.andpay.apos"
+    android:id="@+id/com_wrap_input_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e0e3e4"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_pur_lay"
+        style="@style/com_native_top_style"
+         >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/tam_input_txnamt_str" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tam_amt_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="81dp"
+        android:layout_below="@id/com_top_pur_lay"
+        android:layout_marginTop="-6dp"
+        android:background="@drawable/tam_input_top"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <me.andpay.apos.cmview.AmtEditTextView
+            android:id="@+id/tam_amt_txnview"
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:layout_marginLeft="-2dp"
+            android:background="#00000000"
+            android:singleLine="true"
+            android:textSize="46dp"
+            apos:amtHitColor="#999999"
+            apos:amtHitText="@string/com_amt_str" />
+
+        <ImageView
+            android:id="@+id/tam_amt_delete"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/com_icon_clear_img"
+            android:contentDescription="@string/com_image_content_desc"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+ 
+
+    <RelativeLayout
+        android:id="@+id/tam_foot_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:visibility="gone" >
+    </RelativeLayout>
+
+</RelativeLayout>

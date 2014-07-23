@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 优惠劵扫描消费流程 -->
+<flow-diagram version="1.0" begin-node="scanCoupon">
+    <flow-node node-name ="scanCoupon"  ref-activity="me.andpay.apos.common.activity.AposQRActivity">
+         <node-complete  identity = "success"  next-node="couponDetail" />
+    </flow-node>
+   	<!-- 优惠劵明细 -->   
+	<flow-node node-name ="couponDetail" ref-activity="me.andpay.apos.tam.activity.CouponDeailActivity">
+         <node-complete  identity = "success"  next-node="couponSuccess"/>
+    </flow-node> 
+	<!--优惠劵扫描成功 -->   
+	<flow-node node-name ="couponSuccess" ref-activity="me.andpay.apos.tqrm.activity.RedeemCouponSuccessActivty">
+         <node-complete  identity = "finish"  flush-context = "true" finish-flow = "true"/>
+    </flow-node> 
+</flow-diagram>

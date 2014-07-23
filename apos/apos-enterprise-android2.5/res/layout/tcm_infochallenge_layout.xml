@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/tcm_infochallenge_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            android:id="@+id/tam_infochallenge_title"
+            style="@style/com_top_text_style"
+            android:text="@string/tcm_infochallenge_str" />
+
+        <Button
+            android:id="@+id/tcm_infochallenge_quit_btn"
+            style="@style/com_top_button_style"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="7dp"
+            android:text="@string/com_login_out_str" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tcm_infochallenge_content_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tcm_infochallenge_top_layout" >
+
+        <TextView
+            android:id="@+id/tcm_infochallenge_explanation_txnView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:gravity="bottom"
+            android:text="@string/tcm_infochallenge_explanation_str"
+            android:textColor="#999999"
+            android:textSize="16dp" />
+
+        <RelativeLayout
+            android:id="@+id/tcm_infochallenge_phone_layout"
+            style="@style/tam_edittext_icon_lay_style"
+            android:layout_below="@+id/tcm_infochallenge_explanation_txnView"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/com_input_topline_img" >
+
+            <TextView
+                android:id="@+id/tcm_infochallenge_phone_label"
+                style="@style/tcm_infochallenge_label_style"
+                android:text="@string/tcm_infochallenge_phone_str" />
+
+            <EditText
+                android:id="@+id/tcm_infochallenge_phone_edit"
+                style="@style/com_edittext_style"
+                android:layout_width="240dp"
+                android:layout_toRightOf="@id/tcm_infochallenge_phone_label"
+                android:hint="@string/tcm_infochallenge_phone_hint_str"
+                android:inputType="number"
+                android:maxLength="11" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tcm_infochallenge_name_layout"
+            style="@style/tam_edittext_icon_lay_style"
+            android:layout_below="@+id/tcm_infochallenge_phone_layout"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/com_input_middleline_img" >
+
+            <TextView
+                android:id="@+id/tcm_infochallenge_name_label"
+                style="@style/tcm_infochallenge_label_style"
+                android:text="@string/tcm_infochallenge_name_str" />
+
+            <EditText
+                android:id="@+id/tcm_infochallenge_name_edit"
+                style="@style/com_edittext_style"
+                android:layout_toRightOf="@id/tcm_infochallenge_name_label"
+                android:layout_width="240dp"
+                android:hint="@string/tcm_infochallenge_name_hint_str" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tcm_infochallenge_identity_layout"
+            style="@style/tam_edittext_icon_lay_style"
+            android:layout_below="@+id/tcm_infochallenge_name_layout"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/com_input_middleline_img" >
+
+            <TextView
+                android:id="@+id/tcm_infochallenge_identity_label"
+                style="@style/tcm_infochallenge_label_style"
+                android:text="@string/tcm_infochallenge_identity_str" />
+
+            <EditText
+                android:id="@+id/tcm_infochallenge_identity_edit"
+                style="@style/com_edittext_style"
+                android:layout_width="240dp"
+                android:layout_toRightOf="@id/tcm_infochallenge_identity_label"
+                android:hint="@string/tcm_infochallenge_identity_hint_str"
+                android:inputType="number"
+                android:digits="0123456789xyzXYZ"
+                android:maxLength="18" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/tcm_infochallenge_cvv2_layout"
+            style="@style/tam_edittext_icon_lay_style"
+            android:layout_below="@+id/tcm_infochallenge_identity_layout"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/com_input_bottomline_img" >
+
+            <TextView
+                android:id="@+id/tcm_infochallenge_cvv2_label"
+                style="@style/tcm_infochallenge_label_style"
+                android:text="@string/tcm_infochallenge_cvv2_str" />
+
+            <EditText
+                android:id="@+id/tcm_infochallenge_cvv2_edit"
+                style="@style/com_edittext_style"
+                android:layout_toRightOf="@id/tcm_infochallenge_cvv2_label"
+                android:layout_width="160dp"
+                android:hint="@string/tcm_infochallenge_cvv2_hint_str"
+                android:inputType="number"
+                android:maxLength="3" />
+
+            <ImageView
+                android:id="@+id/tcm_infochallenge_cvv2_img"
+                android:layout_width="38dp"
+                android:layout_height="29dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="6dp"
+                android:background="#00000000"
+                android:src="@drawable/com_icon_s_card_img" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tcm_infochallenge_button_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_below="@+id/tcm_infochallenge_content_layout"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/scm_bottom_layout_selector"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/tcm_infochallenge_sure_btn"
+            style="@style/com_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:enabled="false"
+            android:text="@string/com_sure_str" />
+    </RelativeLayout>
+
+</RelativeLayout>

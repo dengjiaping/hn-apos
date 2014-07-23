@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ResourceAsColor" severity="ignore" />
+    <issue id="SpUsage">
+        <ignore path="res/layout/tam_purchase_first_layout.xml" />
+    </issue>
+</lint>

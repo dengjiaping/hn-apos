@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 交易恢复流程 -->
+<flow-diagram version="1.0" begin-node="start">
+  	<!-- 交易开始 -->
+   	<flow-node node-name ="start" ref-activity="me.andpay.apos.tam.activity.TxnTimeoutActivity">
+   	     <node-complete  identity = "success"  next-node="txnSign" transfer = "Com.TxnFlow.SignTransfer"/>
+   	     <node-complete  identity = "success2"  next-node="postVoucher" transfer = "Com.TxnFlow.VoucherTransfer"/>
+   	     <node-complete  identity = "success3"  next-node="refundSuccess" />
+   	     <node-complete  identity = "faild"  next-node="txnfaild" remove-node="true" />
+   	     <node-complete  identity = "finish" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+   </flow-node>
+   	 <!-- 交易签名 -->
+   	<flow-node node-name ="txnSign" ref-activity="me.andpay.apos.tam.activity.SignActivity">
+          <node-complete  identity ="success"  next-node="postVoucher"  transfer="Com.TxnFlow.VoucherTransfer"/>
+    </flow-node>
+ 	<!-- 发送凭证 -->  
+   	<flow-node node-name ="postVoucher" ref-activity="me.andpay.apos.tam.activity.PostVoucherActivity">
+        <!-- <node-complete  identity = "success" next-node="txnDetail" transfer="Tam.TxnFlow.DetailContextTransfer" /> -->
+        <node-complete  identity = "success" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+        <node-complete  identity = "finish" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+    </flow-node>
+   
+   	<!-- 交易明细 -->   
+	<!--  <flow-node node-name ="txnDetail" ref-activity="me.andpay.apos.tam.activity.TxnDetailActivity">
+         <node-complete  identity = "finish" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+    </flow-node>  -->
+   	
+   	<!-- 交易失败 -->  
+   	<flow-node node-name ="txnfaild" ref-activity="me.andpay.apos.tam.activity.recover.RecoverTxnFaildActivity">
+         <node-complete  identity = "finish" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+   </flow-node>
+   	  <!--退货交易成功-->  
+   	<flow-node node-name ="refundSuccess" ref-activity="me.andpay.apos.trm.activity.RefundSuccessActivity">
+         <node-complete  identity = "finish" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+   </flow-node>
+
+</flow-diagram>

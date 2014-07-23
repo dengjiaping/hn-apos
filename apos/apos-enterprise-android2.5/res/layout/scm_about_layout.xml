@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/com_top_layout"
+        style="@style/com_native_top_style"
+         >
+
+        <TextView
+            android:id="@+id/com_title_tv"
+            style="@style/com_top_text_style"
+            android:text="@string/scm_main_about_str" />
+
+        <ImageView
+            android:id="@+id/com_back_btn"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="70dp"
+        android:layout_below="@+id/com_top_layout"
+        android:orientation="vertical" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                
+                <ImageView
+                    android:id="@+id/scm_logo_img"
+                    android:layout_width="66dp"
+                    android:layout_height="67dp"
+                    android:layout_alignBottom="@+id/com_net_tv"
+                    android:layout_alignLeft="@+id/scm_dotted_img"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/com_icon_about_app_img" />
+                <TextView
+                    android:id="@+id/com_pname_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/scm_logo_img"
+                    android:text="@string/scm_about_pname_str"
+                    android:textColor="@color/com_title_normal_col"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/com_version_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/com_pname_tv"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_toRightOf="@+id/scm_logo_img"
+                    android:text="@string/scm_about_version_str"
+                    android:textColor="@color/com_title_normal_col"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/com_net_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/com_version_tv"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@+id/scm_logo_img"
+                    android:text="@string/scm_about_neturl_str"
+                    android:textColor="@color/com_title_normal_col"
+                    android:textSize="14sp" />
+                
+                
+                <TextView
+                    android:id="@+id/com_net_url_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/com_version_tv"
+                    android:layout_toRightOf="@+id/com_net_tv"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/com_title_normal_col"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/scm_dotted_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_below="@+id/com_net_tv"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/com_solid_line_img" />
+
+                <TextView
+                    android:id="@+id/com_info_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/scm_dotted_img"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/scm_about_info_str"
+                    android:textColor="@color/com_title_normal_col"
+                    android:textSize="14dp" />
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/scm_help_phone_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/com_info_tv"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/scm_help_phone_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/com_button_gray_selector"
+                        android:gravity="center"
+                        android:text="@string/scm_help_telephone_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="14dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/scm_help_email_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/scm_help_phone_layout"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/scm_help_email_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/com_button_gray_selector"
+                        android:gravity="center"
+                        android:text="@string/scm_help_email_title_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="14dp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/scm_weibo_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_below="@+id/scm_help_email_layout"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal" >
+
+                    <Button
+                        android:id="@+id/scm_weibo_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/com_button_gray_selector"
+                        android:gravity="center"
+                        android:text="@string/scm_main_weibo_str"
+                        android:textColor="@color/com_title_normal_col"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                
+            </RelativeLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/com_andpay_logo_imgv"
+        style="@style/com_copyright_img_style"
+        android:layout_above="@id/com_app_copyright_textv" />
+
+    <TextView
+        android:id="@+id/com_app_copyright_textv"
+        style="@style/com_copyright_text_style" />
+
+</RelativeLayout>

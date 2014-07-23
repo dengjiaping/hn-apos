@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram version="1.0" begin-node="start">
+  <!-- 开始节点 -->
+    <flow-node node-name ="start" ref-activity="me.andpay.apos.mopm.activity.MerchantOrderRealPayActivity"  > 	
+        <node-complete identity = "faild"  next-node="loginfaild" remove-node="true"/>
+        <node-complete identity = "faild_step1"  next-node="activateCode" remove-node="true"/>
+        <node-complete  identity = "success"  sub-flow="com_txn_flow" sub-finish-cpl="finished" /> 
+        <node-complete  identity = "finish"  flush-context = "true" finish-flow = "true"/>
+        <node-complete-finished  identity = "finish" ref-activity="me.andpay.apos.common.activity.HomePageActivity" flush-context = "true" finish-flow = "true"/>
+        <!--  <node-complete-finished   next-node="txnDetail"  remove-node="true" transfer="Tam.TxnFlow.DetailContextTransfer" /> -->
+    </flow-node>
+    <!-- 交易明细 -->   
+	<!--  <flow-node node-name ="txnDetail" ref-activity="me.andpay.apos.tam.activity.TxnDetailActivity">
+         <node-complete  identity = "finish"  flush-context = "true" finish-flow = "true"/>
+    </flow-node> -->
+    <!-- 登陆失败 -->
+    <flow-node node-name ="loginfaild" ref-activity="me.andpay.apos.lam.activity.LoginActivity" > 	
+		<node-complete-cardSet   sub-flow="scm_cardreader_set_flow" sub-finish-cpl="finished"  transfer="Com.Start.CardReaderSetTransfer"/>
+        <node-complete-finished   next-node="start" />        
+        <node-complete identity= "activeCode" next-node="activateCode"/>
+       <node-complete identity ="success"   next-node="start"/>
+    </flow-node>
+    <!-- 验证码设置 -->
+   <flow-node node-name ="activateCode" ref-activity="me.andpay.apos.lam.activity.ActivateCodeActivity" > 	
+		<node-complete-cardSet   sub-flow="scm_cardreader_set_flow" sub-finish-cpl="finished"  transfer="Com.Start.CardReaderSetTransfer"/>
+        <node-complete-finished   next-node="start" />  
+         <node-complete identity ="success"   next-node="start"/>
+    </flow-node>
+ <!-- 读卡器设置 -->
+  <!--   <flow-node node-name ="cardSet" ref-activity="me.andpay.apos.lam.activity.CardReaderSetActivity">
+   	     <node-complete  identity = "success"  next-node="start" />
+   	     <node-complete-finished   next-node="txnDetail"  transfer="Tam.TxnFlow.DetailContextTransfer" />
+    </flow-node> -->
+</flow-diagram>

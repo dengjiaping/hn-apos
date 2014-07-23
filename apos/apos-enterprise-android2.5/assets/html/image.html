@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
+<title>Insert title here</title>
+</head>
+<body background="#f3f3f3">
+	<img id="imgs"  onload="resize(this);">
+</body>
+<script type="text/javascript">
+	function changeImage(url) {
+		document.getElementById('imgs').src = url;
+	}
+
+	function lazyLoad(url) {
+		makeAsyncRequest(url, changeImage);
+	}
+
+	function makeAsyncRequest(url, callback) {
+		var httpRequest;
+
+		if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+
+			httpRequest = new XMLHttpRequest();
+			if (httpRequest.overrideMimeType) {
+				httpRequest.overrideMimeType('text/xml');
+			}
+		} else if (window.ActiveXObject) { // IE
+
+			try {
+				httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				} catch (e) {
+				}
+			}
+		}
+
+		httpRequest.onreadystatechange = function() {
+			if (httpRequest.readyState == 4 && httpRequest.status == 200)
+				callback(url);
+		};
+
+		httpRequest.open('GET', url, true);
+		httpRequest.send('');
+	}
+
+	function resize(image) {
+		var differenceHeight = document.body.clientHeight - image.clientHeight;
+		var differenceWidth = document.body.clientWidth - image.clientWidth;
+		if (differenceHeight < 0)
+			differenceHeight = differenceHeight * -1;
+		if (differenceWidth < 0)
+			differenceWidth = differenceWidth * -1;
+
+		if (differenceHeight > differenceWidth) {
+			image.style['height'] = document.body.clientHeight + 'px';
+		} else {
+			image.style['width'] = document.body.clientWidth + 'px';
+		}
+
+		// Optional: remove margins or compensate for offset.
+		image.style['margin'] = 0;
+		document.body.style['margin'] = 0;
+	}
+</script>
+</html>
