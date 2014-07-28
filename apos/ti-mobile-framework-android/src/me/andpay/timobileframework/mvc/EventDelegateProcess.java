@@ -35,9 +35,9 @@ public class EventDelegateProcess {
 	public void delegate(Activity activity, View view, EventDelegate delegate,
 			Injector injector) {
 		DelegateType type = delegate.type();
-		Class delegateListenClass = delegate.delegateClass();
+		Class delegateListenClass = delegate.delegateClass();//代理对象类型
 		String delegateListen = "".equals(delegate.delegate()) ? method_prefix
-				+ delegateListenClass.getSimpleName() : delegate.delegate();
+				+ delegateListenClass.getSimpleName() : delegate.delegate();//设置代理方法名
 		String method = delegate.toMethod();
 		Class eventController = delegate.toEventController();
 		boolean isNeedFormBean = delegate.isNeedFormBean();
@@ -104,8 +104,13 @@ public class EventDelegateProcess {
 			}
 			
 			if (type == DelegateType.method) {
+				try{
 				method = activity.getClass().getDeclaredMethod(methodName,
 						method.getParameterTypes());
+				}catch(NoSuchMethodException ex){
+					return null;
+				}
+			
 				return method.invoke(activity, args);
 			} else {
 				if (!eventController.preProcess(activity)) {

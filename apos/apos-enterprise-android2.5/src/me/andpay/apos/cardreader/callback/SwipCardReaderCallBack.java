@@ -109,9 +109,9 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 //	@Inject
 //	private OrderInfoDao orderInfoDao;
 
-	public void onDevicePlugged() {
+	public void onDevicePlugged(){
 		TxnAcitivty tiActivity = (TxnAcitivty) txnControl.getCurrActivity();
-		if (tiActivity == null || tiActivity.isFinishing()) {
+		if (tiActivity == null || tiActivity.isFinishing()){
 			return;
 		}
 
@@ -174,18 +174,18 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 
 		final TxnAcitivty tiActivity = (TxnAcitivty) txnControl
 				.getCurrActivity();
-		if (tiActivity.isFinishing()) {
+		if (tiActivity.isFinishing()){
 			return;
 		}
 		final TxnContext txnContext = txnControl.getTxnContext();
 
-		if (!setMac(txnContext, cardInfo,null)) {
+		if(!setMac(txnContext, cardInfo,null)){
 			return;
 		}
 
 		final SwipCardReaderCallBack callback = this;
 
-		tiActivity.runOnUiThread(new Runnable() {
+		tiActivity.runOnUiThread(new Runnable(){
 
 			public void run() {
 				CardReaderManager.setDefaultCallBack();

@@ -30,7 +30,7 @@ public class TxnAction extends SessionKeepAction {
 	@Inject
 	protected PayTxnInfoDao payTxnInfoDao;
 
-	public void txnProcess(ActionRequest request) {
+	public void txnProcess(ActionRequest request){
 		
 		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");
 

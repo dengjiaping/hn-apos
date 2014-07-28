@@ -20,14 +20,14 @@ public class TiFlowStringResourceTransfer implements TiFlowNodeDataTransfer {
 	public Map<String, String> transfterData(Activity activity, Map<String, String> data,
 			TiFlowNodeComplete complete, Map<String, Serializable> subFlowContext) {
 		Map<String, String> transferData = new HashMap<String, String>();
-		for (String key : data.keySet()) {
+		for (String key : data.keySet()){
 			int resId = activity.getResources().getIdentifier(
 					activity.getPackageName() + ":string/" + data.get(key), null, null);
 			if (resId == 0) {
 				continue;
 			}
 			String transferValue = activity.getResources().getString(resId);
-			if (StringUtil.isEmpty(transferValue)) {
+			if (StringUtil.isEmpty(transferValue)){
 				transferValue = data.get(key);
 			}
 

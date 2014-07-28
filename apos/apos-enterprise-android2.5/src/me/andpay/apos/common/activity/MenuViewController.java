@@ -70,7 +70,7 @@ public class MenuViewController implements OnClickListener,
 
 	private String firstTab = TabNames.TXN_PAGE;
 
-	public void changeViewState(View v) {
+	public void changeViewState(View v){
 		if (v == null) {
 			return;
 		}
@@ -143,7 +143,7 @@ public class MenuViewController implements OnClickListener,
 
 			TxnContext txnContext = homeActivity.txnControl.init();
 
-			txnContext.setNeedPin(true);
+			txnContext.setNeedPin(false);
 			txnContext.setTxnType(TxnTypes.INQUIRY_BALANCE);
 			txnContext.setBackTagName(TabNames.BALANCE_PAGE);
 			homeActivity.txnControl

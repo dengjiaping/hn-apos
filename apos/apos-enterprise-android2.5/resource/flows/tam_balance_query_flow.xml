@@ -3,7 +3,7 @@
    <!-- 刷卡交易 -->
     <flow-node node-name ="txnStart" start-complete="success">
          <node-complete  identity = "success"  sub-flow="com_txn_flow" sub-finish-cpl="finished" />
-         <node-complete-finished   next-node="txnDetail"   transfer="Tam.TxnFlow.DetailContextTransfer"   />
+         <node-complete-finished   next-node="txnDetail"   transfer="Tam.TxnFlow.DetailContextTransfer"   />c
     </flow-node>
     
     <!-- 余额查询明细 -->

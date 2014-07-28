@@ -7,6 +7,7 @@ package me.andpay.apos.common.flow;
  * 
  */
 public class FlowNames {
+	
 	/**
 	 * 交易流程
 	 */
@@ -93,4 +94,12 @@ public class FlowNames {
 	 */
 	public final static String SCM_CARDREADER_SET_FLOW = "scm_cardreader_set_flow";
 
+	/**
+	 *  转装流程
+	 */
+	public final static String LFT_TRANSFER_ACCOUNTS="lft_tranfer_accounts";
+	/**
+	 * 手机充值流程
+	 */
+	public final static String LFT_TOP_UP="lft_top_up";
 }

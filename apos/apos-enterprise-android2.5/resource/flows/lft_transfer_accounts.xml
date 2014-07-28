@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram
+    begin-node="transfer_payee"
+    version="1.0" >
+
+    <flow-node
+        node-name="transfer_payee"
+        ref-activity="me.andpay.apos.lft.activity.PayeeInformationActivity" >
+
+        <!-- 常用联系人 -->
+
+        <node-complete
+            identity="go_often_person"
+            next-node="often_person" />
+        <!-- 刷卡联系人 -->
+
+        <node-complete
+            identity="go_person_sure"
+            next-node="person_sure" />
+    </flow-node>
+
+    <!-- 查看重用联系人 -->
+
+    <flow-node
+        node-name="often_person"
+        ref-activity="me.andpay.apos.lft.activity.OftenPersonActivity" >
+
+        <node-complete
+            identity="start_complete"
+            ref-activity="me.andpay.apos.lft.activity.OftenPersonActivity" />
+    </flow-node>
+
+    <flow-node
+        node-name="person_sure"
+        ref-activity="me.andpay.apos.lft.activity.PayeeInformationDeatailActivity" >
+
+        <!-- 刷卡转账 -->
+
+        <node-complete
+            identity="lft_transtf_txn"
+            sub-finish-cpl="finished"
+            sub-flow="com_txn_flow" />
+
+        <node-complete-finished
+            finish-flow="true"
+            flush-context="true"
+            identity="finish"
+            ref-activity="me.andpay.apos.common.activity.HomePageActivity" />
+    </flow-node>
+
+</flow-diagram>

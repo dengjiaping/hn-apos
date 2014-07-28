@@ -89,7 +89,7 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 
 	@InjectView(R.id.tam_content_pur_lay)
 	public RelativeLayout purLayout;
-	
+
 	@Inject
 	public SwipCardReaderCallBack swipCardReaderCallBack;
 	/**
@@ -103,7 +103,7 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 	 */
 	@InjectView(R.id.tam_gif_view)
 	public GifImageView gifView;
-	
+
 	public GifDrawable gifDrawable;
 
 	/**
@@ -198,20 +198,18 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 	@Inject
 	private LocationService locationService;
 
-
 	@Inject
 	private AposContext aposContext;
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// 请求一次位置信息
 		locationService.requestLocation();
+		
+		
 		solfKeyBoard = SolfKeyBoardView.instance(getApplicationContext(),
 				footLayout, this);
-
-	
 
 		startTxn();
 
@@ -223,14 +221,23 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 	}
 
 	protected void startTxn() {
-		
+        /**
+         * 设置刷卡机回调callBack器件
+         */
 		CardReaderManager.setCurrCallback(swipCardReaderCallBack);
+		/**
+		 * 接收交易上下文信息
+		 */
 
 		TxnContext txnContext = TiFlowControlImpl.instanceControl()
 				.getFlowContextData(TxnContext.class);
 		if (txnContext == null) {
 			return;
 		}
+
+		/**
+		 * 根据传递过来的上下文数据，初始化不同交易类型的界面
+		 */
 		if (ExtTypes.EXT_TYPE_VALUE_CARD_TXN.equals(txnContext.getExtType())) {
 			txnControl.changeTxnStatus(TxnStatus.WAIT_PASSWORD, this);
 		} else {
@@ -239,12 +246,12 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 	}
 
 	/**
-	 * 交易请求
+	 * 交易请求 等待密码时，触发的事件函数
 	 */
 	public void sureClick() {
 		// 防快速点击重复提交
 		if (FastDoubleClickUtil.isFastDoubleClick(solfKeyBoard.getSure_btn()
-				.getId())) {
+				.getId())){
 			return;
 		}
 		// 等待密码输入状态
@@ -282,7 +289,7 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 			goodsMap.recycle();
 			goodsMap = null;
 		}
-		
+
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

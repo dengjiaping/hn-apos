@@ -251,7 +251,7 @@
     <string name="tam_settlement_rules5_str">每天23:00之前的交易算作当日的交易，会在第1个工作日结算到商户提供的结算账户。</string>
     <string name="tam_settlement_rules6_str">23:00 之后的交易（含23:00 ）</string>
     <string name="tam_settlement_rules7_str">每天23:00以后的交易算作次日的交易，会在第2个工作日结算到商户提供的结算账户。</string>
-    
+
     <!-- 挑战模块 TCM -->
     <string name="tcm_infochallenge_str">持卡人身份验证</string>
     <string name="tcm_infochallenge_explanation_str">说明文字</string>
@@ -263,10 +263,10 @@
     <string name="tcm_infochallenge_identity_hint_str">请输入持卡人身份证号</string>
     <string name="tcm_infochallenge_cvv2_str">CVV2</string>
     <string name="tcm_infochallenge_cvv2_hint_str">请输入信用卡背后3位</string>
-	<string name="tcm_infochallenge_failure_str">持卡人验证失败</string>
-	<string name="tcm_infochallenge_failure_str1">验证失败</string>
-	<string name="tcm_smschallenge_input_str">短信6位验证码</string>
-	<string name="tcm_smschallenge_request_str">获取验证码</string>
+    <string name="tcm_infochallenge_failure_str">持卡人验证失败</string>
+    <string name="tcm_infochallenge_failure_str1">验证失败</string>
+    <string name="tcm_smschallenge_input_str">短信6位验证码</string>
+    <string name="tcm_smschallenge_request_str">获取验证码</string>
     <!-- 结算模块 SSM -->
     <string name="ssm_main_title_str">结账统计</string>
     <string name="ssm_main_unsettleinfo_nodata_str">没有未结算的交易信息</string>
@@ -491,5 +491,17 @@
     <string name="vas_svc_deposite_product_name_str">预付费卡充值</string>
     <string name="vas_svc_deposite_price_format_str">充值%1$s,卡内消费金额%2$s</string>
     <string name="stl_settle_data_no_refresh_str">没有新的到账数据</string>
+    <!-- 便民服务 -->
+    <string name="lft_serve_home_title_str">便民服务</string>
+    <string name="lft_serve_home_phone_topup_str">手机充值</string>
+    <string name="lft_serve_home_pay_electricity_cost_str">缴电费</string>
+    <string name="lft_serve_home_pay_water_cost_str">缴水费</string>
+    <string name="lft_serve_home_card_refund_str">信用卡还款</string>
+    <string name="lft_serve_home_transfer_accounts_str">转账</string>
+    <string name="lft_serve_transfer_accounts_often_person_title_str">常用联系人</string>
+    <string name="lft_serve_transfer_accounts_collection_person_title_str">收款人信息</string>
+    <string name="lft_serve_transfer_accounts_collection_person_sure_title_str">收款人信息确认</string>
+    
+    
 
 </resources>

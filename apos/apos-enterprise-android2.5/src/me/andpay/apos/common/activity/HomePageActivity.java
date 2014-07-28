@@ -16,6 +16,7 @@ import me.andpay.apos.common.constant.RuntimeAttrNames;
 import me.andpay.apos.common.contextdata.PartyInfo;
 import me.andpay.apos.common.service.DownloadICCardParamsService;
 import me.andpay.apos.common.service.LocationService;
+import me.andpay.apos.lft.activity.LeftServeActivity;
 import me.andpay.apos.opm.activity.InputOrderNoActivity;
 import me.andpay.apos.opm.activity.OrderPayListActivity;
 import me.andpay.apos.scm.activity.ScmMainActivity;
@@ -81,7 +82,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 	 * 刷头类型选择的是云POS，隐藏余额查询
 	 */
 	@Override
-	protected void onResumeProcess() {
+	protected void onResumeProcess(){
 		// 云pos不支持余额查询操作
 		filterCloudPosMenu();
 	}
@@ -159,7 +160,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 			if (ts10 == null) {
 				ts10 = mth.newTabSpec(TabNames.LEFT_PAGE).setIndicator(
 						TabNames.LEFT_PAGE);
-				ts10.setContent(new Intent(this, PurchaseFirstActivity.class)
+				ts10.setContent(new Intent(this, LeftServeActivity.class)
 						.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				mth.addTab(ts10);
 			} 
@@ -175,7 +176,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 			} 
 			getTabHost().setCurrentTabByTag(TabNames.TXN_PAGE);
 
-		} else if (tagName.endsWith(TabNames.TRANSFER_PAGE)) {
+		} else if (tagName.endsWith(TabNames.TRANSFER_PAGE)){
 			if (ts9 == null) {
 				ts9 = mth.newTabSpec(TabNames.TRANSFER_PAGE).setIndicator(
 						TabNames.TRANSFER_PAGE);
@@ -208,7 +209,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 			getTabHost().setCurrentTabByTag(TabNames.QUERY_PAGE);
 
 		}
-		if (tagName.endsWith(TabNames.MORE_PAGE)) {
+		if (tagName.endsWith(TabNames.MORE_PAGE)){
 
 			if (ts4 == null) {
 				ts4 = mth.newTabSpec(TabNames.MORE_PAGE).setIndicator(

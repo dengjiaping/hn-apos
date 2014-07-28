@@ -34,7 +34,7 @@ public class CardInfo implements Serializable {
 	
 	private String  expiryDate;
 	
-	private String cardHolderName;
+	private String cardHolderName;//卡的持有者姓名
 	
 	private byte[] pin;
 	//hex

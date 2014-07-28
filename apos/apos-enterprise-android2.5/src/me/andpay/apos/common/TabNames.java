@@ -17,8 +17,8 @@ public class TabNames {
 	
 	public final static String REFUND_PAGE = "refund";
 		
-	public final static String MORE_PAGE = "more";
 	
+	public final static String MORE_PAGE = "more";
 	public final static String ORDERPAY_PAGE = "orderpay";
 	/**
 	 * 增值服务

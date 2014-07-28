@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/lft_serve_home_phone_topup_str" />
+
+        <ImageView
+            android:id="@+id/lft_top_up_back"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="25dip"
+        android:background="@drawable/com_icon_frame_img"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:paddingTop="5dip" >
+
+        <ImageView
+            android:id="@+id/lft_top_up_phonenumber_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/com_icon_payee_img" />
+
+        <EditText
+            android:id="@+id/lft_top_up_phonenumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dip"
+            android:layout_toLeftOf="@id/lft_top_up_phonenumber_select"
+            android:background="@color/transparent"
+            android:hint="充值的手机号码"
+            android:phoneNumber="true"
+            android:singleLine="true"
+            android:textColor="@color/com_title_normal_col"
+            android:textColorHint="@color/com_button_top_col"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/com_icon_frame_img"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="11dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:paddingTop="11dip" >
+
+        <ImageView
+            android:id="@+id/lft_top_up_amount_select"
+            style="@style/scm_right_icon_style" />
+
+        <EditText
+            android:id="@+id/lft_top_up_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dip"
+            android:layout_toLeftOf="@id/lft_top_up_amount_select"
+            android:background="@color/transparent"
+            android:phoneNumber="true"
+            android:singleLine="true"
+            android:text="50元"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+</LinearLayout>

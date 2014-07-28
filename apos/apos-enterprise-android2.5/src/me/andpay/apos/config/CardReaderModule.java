@@ -18,8 +18,8 @@ public class CardReaderModule extends TiMobileModule {
 		bind(SearchCardreaderCallBack.class).in(Scopes.SINGLETON);
 		bind(CardreaderSetSearchCallback.class).in(Scopes.SINGLETON);
 		bind(DefaultCardReaderCallBack.class).in(Scopes.SINGLETON);
-		bind(SwipCardReaderCallBack.class).in(Scopes.SINGLETON);
 		bind(InitMsrKeyServiceImpl.class).in(Scopes.SINGLETON);
+		bind(SwipCardReaderCallBack.class).in(Scopes.SINGLETON);
 	}
 
 }

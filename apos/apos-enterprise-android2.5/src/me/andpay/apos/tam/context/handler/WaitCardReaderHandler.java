@@ -16,6 +16,7 @@ import android.view.View;
  * @author cpz
  * 
  */
+
 @HandlerStatus(status = TxnStatus.WAIT_CARDREADER)
 public class WaitCardReaderHandler extends GenChangeStatusHander {
 

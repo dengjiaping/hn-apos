@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/lft_transfer_accounts_often_person_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/lft_serve_transfer_accounts_often_person_title_str" />
+
+        <ImageView
+            android:id="@+id/lft_transfer_accounts_often_person_back"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <ListView
+        android:divider="@drawable/scm_solid_line_img"
+        android:id="@+id/lft_transfer_accounts_often_person_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ListView>
+
+</LinearLayout>

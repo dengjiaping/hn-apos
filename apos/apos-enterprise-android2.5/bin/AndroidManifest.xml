@@ -13,16 +13,16 @@
         android:largeScreens="true"
         android:normalScreens="true"
         android:resizeable="true"
-        android:smallScreens="true"/>
-    <!---->
+        android:smallScreens="true" />
+    <!--  -->
     <application
         android:name="me.andpay.timobileframework.mvc.support.TiApplication"
         android:icon="@drawable/app"
         android:label="@string/app_name"
         android:theme="@style/aposTheme" >
-        
-         <!-- 挑战模块 --> 
-         <!--  
+
+        <!-- 挑战模块 -->
+        <!--
         <activity
             android:name=".tcm.activity.InfoChallengeActivity"
             android:screenOrientation="portrait" >
@@ -70,7 +70,69 @@
             </intent-filter>
         </activity>
         -->
+        <!-- 生活服务模块 -->
         
+        
+         <activity
+            android:name=".lft.activity.AddressBookActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.AddressBookActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name=".lft.activity.TopupActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.TopupActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".lft.activity.PayeeInformationDeatailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.PayeeInformationDeatailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".lft.activity.PayeeInformationActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.PayeeInformationActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lft.activity.LeftServeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.LeftServeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lft.activity.OftenPersonActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.OftenPersonActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        
+
         <!-- 首页 -->
         <activity
             android:name=".lam.activity.FirstPageActivity"
@@ -143,7 +205,7 @@
             android:name=".common.activity.HomePageActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" 
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|stateAlwaysHidden|adjustNothing|adjustUnspecified" >
             <intent-filter>
                 <action android:name="com.homePage.activity" />
@@ -188,7 +250,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-      
+
         <!-- 转账模块 -->
         <activity
             android:name=".trf.activity.PayeeInfomationActivity"
@@ -1207,6 +1269,7 @@
     <!-- 获取摄像头和闪光灯权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <!-- 允许调用系统电话簿 -->

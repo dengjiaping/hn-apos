@@ -2,7 +2,115 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f0f0f0"
     android:orientation="vertical" >
-    
+
+    <RelativeLayout
+        android:id="@+id/lft_serve_home_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/lft_serve_home_title_str" />
+
+        <ImageView
+            android:id="@+id/lft_serve_home_show_silder_btn"
+            style="@style/com_slider_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lft_serve_home_phone_topup_layout"
+        style="@style/scm_layout_style" >
+
+        <ImageView
+            android:id="@+id/lft_serve_home_phone_topup_icon_img"
+            style="@style/scm_image_icon_style"
+            android:background="@drawable/com_icon_product_sales_img" />
+
+        <TextView
+            style="@style/scm_text_style"
+            android:layout_toRightOf="@id/lft_serve_home_phone_topup_icon_img"
+            android:text="@string/lft_serve_home_phone_topup_str" />
+
+        <ImageView style="@style/scm_right_icon_style" />
+    </RelativeLayout>
+
+    <ImageView style="@style/scm_line_image_style" />
+
+    <RelativeLayout
+        android:id="@+id/lft_serve_home_pay_electricity_cost_layout"
+        style="@style/scm_layout_style" >
+
+        <ImageView
+            android:id="@+id/lft_serve_home_pay_electricity_cost_icon_img"
+            style="@style/scm_image_icon_style"
+            android:background="@drawable/com_icon_product_sales_img" />
+
+        <TextView
+            style="@style/scm_text_style"
+            android:layout_toRightOf="@id/lft_serve_home_pay_electricity_cost_icon_img"
+            android:text="@string/lft_serve_home_pay_electricity_cost_str" />
+
+        <ImageView style="@style/scm_right_icon_style" />
+    </RelativeLayout>
+
+    <ImageView style="@style/scm_line_image_style" />
+
+    <RelativeLayout
+        android:id="@+id/lft_serve_home_pay_water_cost_layout"
+        style="@style/scm_layout_style" >
+
+        <ImageView
+            android:id="@+id/lft_serve_home_pay_water_cost_icon_img"
+            style="@style/scm_image_icon_style"
+            android:background="@drawable/com_icon_product_sales_img" />
+
+        <TextView
+            style="@style/scm_text_style"
+            android:layout_toRightOf="@id/lft_serve_home_pay_water_cost_icon_img"
+            android:text="@string/lft_serve_home_pay_water_cost_str" />
+
+        <ImageView style="@style/scm_right_icon_style" />
+    </RelativeLayout>
+
+    <ImageView style="@style/scm_line_image_style" />
+
+    <RelativeLayout
+        android:id="@+id/lft_serve_home_card_refund_layout"
+        style="@style/scm_layout_style" >
+
+        <ImageView
+            android:id="@+id/lft_serve_home_card_refund_icon_img"
+            style="@style/scm_image_icon_style"
+            android:background="@drawable/com_icon_product_sales_img" />
+
+        <TextView
+            style="@style/scm_text_style"
+            android:layout_toRightOf="@id/lft_serve_home_card_refund_icon_img"
+            android:text="@string/lft_serve_home_card_refund_str" />
+
+        <ImageView style="@style/scm_right_icon_style" />
+    </RelativeLayout>
+
+    <ImageView style="@style/scm_line_image_style" />
+
+    <RelativeLayout
+        android:id="@+id/lft_serve_home_transfer_accounts_layout"
+        style="@style/scm_layout_style" >
+
+        <ImageView
+            android:id="@+id/lft_serve_home_transfer_accounts_icon_img"
+            style="@style/scm_image_icon_style"
+            android:background="@drawable/com_icon_product_sales_img" />
+
+        <TextView
+            style="@style/scm_text_style"
+            android:layout_toRightOf="@id/lft_serve_home_transfer_accounts_icon_img"
+            android:text="@string/lft_serve_home_transfer_accounts_str" />
+
+        <ImageView style="@style/scm_right_icon_style" />
+    </RelativeLayout>
+
+    <ImageView style="@style/scm_line_image_style" />
 
 </LinearLayout>

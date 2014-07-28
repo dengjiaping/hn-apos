@@ -34,7 +34,7 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 	@Override
 	public void sendTxn(TxnForm txnForm, PurchaseRequest txnRequest, TxnCallback callBack) {
 		// 判断是否是云订单
-		if (!txnForm.getIsCloudOrder()) {
+		if (!txnForm.getIsCloudOrder()){
 			super.sendTxn(txnForm, txnRequest, callBack);
 			return;
 		}
