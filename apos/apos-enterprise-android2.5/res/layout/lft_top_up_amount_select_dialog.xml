@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:padding="10dip" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0f0f0"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:padding="10dip"
+            android:text="选择充值面额"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="22sp" />
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <TextView
+            android:id="@+id/lft_top_up_30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:padding="10dip"
+            android:text="30元"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="22sp" />
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <TextView
+            android:id="@+id/lft_top_up_50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:padding="10dip"
+            android:text="50元"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="22sp" />
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <TextView
+            android:id="@+id/lft_top_up_100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:padding="10dip"
+            android:text="100元"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="22sp" />
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <TextView
+            android:id="@+id/lft_top_up_300"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:padding="10dip"
+            android:text="300元"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="22sp" />
+
+        <ImageView style="@style/scm_line_image_style" />
+
+        <TextView
+            android:id="@+id/lft_top_up_500"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:padding="10dip"
+            android:text="500元"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+</RelativeLayout>

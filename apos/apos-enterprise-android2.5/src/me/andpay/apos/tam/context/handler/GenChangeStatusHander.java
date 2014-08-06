@@ -7,7 +7,7 @@ public class GenChangeStatusHander {
 
 	public void processHandle(TxnControl txnControl) {
 		
-		if( txnControl.getCurrActivity()!=null) {
+		if( txnControl.getCurrActivity()!=null){
 			ResetActivityStatus resetActivityStatus = (ResetActivityStatus) txnControl
 					.getCurrActivity();
 			resetActivityStatus.resetActivity();	

@@ -34,7 +34,7 @@ public class TxnProcessorFactory {
 		}
 
 		TxnProcessor txnProcessor = txnProcessors.get(txnType);
-		if (txnProcessor == null) {
+		if (txnProcessor == null){
 
 			Class<? extends TxnProcessor> txnClass = txnProcessorsClass
 					.get(txnType);

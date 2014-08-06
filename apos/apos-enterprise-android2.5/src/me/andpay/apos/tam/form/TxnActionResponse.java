@@ -7,7 +7,7 @@ import java.util.Date;
 import me.andpay.ac.term.api.txn.TxnResponse;
 import me.andpay.apos.cdriver.model.AposICCardDataInfo;
 
-public class TxnActionResponse implements Serializable {
+public class TxnActionResponse implements Serializable{
 
 	/**
 	 * 

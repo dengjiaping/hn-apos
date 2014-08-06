@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/lft_serve_home_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/msg_home_title_str" />
+
+        <ImageView
+            android:id="@+id/msg_home_show_silder_btn"
+            style="@style/com_slider_button_style" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/msg_message_home_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@drawable/scm_solid_line_img"
+        android:listSelector="@color/transparent" >
+    </ListView>
+
+</LinearLayout>

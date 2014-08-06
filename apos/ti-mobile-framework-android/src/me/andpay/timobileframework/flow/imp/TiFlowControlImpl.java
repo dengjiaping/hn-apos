@@ -91,7 +91,7 @@ public class TiFlowControlImpl implements TiFlowControl {
 	 * @param identity
 	 */
 	public void nextSetup(Activity activity, String identity,
-			Map<String, String> sendData) {
+			Map<String,String> sendData) {
 		nextSetup(activity, identity, sendData, null);
 	}
 

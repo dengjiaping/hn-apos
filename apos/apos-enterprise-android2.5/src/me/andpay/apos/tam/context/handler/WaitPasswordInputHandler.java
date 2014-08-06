@@ -45,7 +45,7 @@ public class WaitPasswordInputHandler extends GenChangeStatusHander {
 		}
 		TxnContext txnContext = txnControl.getTxnContext();
 
-		if (txnContext.isNeedPin()) {
+		if (txnContext.isNeedPin()){
 			activity.pwdTextView.setText("");
 			activity.solfKeyBoard.showKeyboard(activity.pwdTextView);
 			if (txnControl.getTxnContext().getTxnType()

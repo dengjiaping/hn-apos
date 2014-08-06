@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/lft_serve_home_pay_electricity_cost_str" />
+
+        <ImageView
+            android:id="@+id/lft_pay_electricity_back"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="25dip"
+        android:background="@drawable/com_icon_frame_img"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="2dip"
+        android:paddingLeft="15dip"
+        android:paddingTop="2dip" >
+
+        <LinearLayout
+            android:id="@+id/lft_pay_electricity_city_select"
+            android:layout_width="50dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/transparent"
+                android:src="@drawable/com_icon_into_img" />
+        </LinearLayout>
+
+        <EditText
+            android:enabled="false"
+            android:id="@+id/lft_pay_electricity_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dip"
+            android:layout_toLeftOf="@id/lft_pay_electricity_city_select"
+            android:background="@color/transparent"
+            android:hint="缴费地区"
+            android:phoneNumber="true"
+            android:singleLine="true"
+            android:textColor="@color/com_title_normal_col"
+            android:textColorHint="@color/com_button_top_col"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <EditText
+        android:enabled="false"
+        android:id="@+id/lft_pay_electricity_company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/com_icon_frame_img"
+        android:hint="缴费单位"
+        android:paddingBottom="5dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:paddingTop="5dip"
+        android:singleLine="true"
+        android:textColor="@color/com_title_normal_col"
+        android:textColorHint="@color/com_button_top_col"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/lft_pay_electricity_customer_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/com_icon_frame_img"
+        android:hint="客户编号"
+        android:paddingBottom="5dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:paddingTop="5dip"
+        android:singleLine="true"
+        android:textColor="@color/com_title_normal_col"
+        android:textColorHint="@color/com_button_top_col"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/lft_pay_electricity_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/com_button_selector"
+        android:enabled="false"
+        android:paddingBottom="5dip"
+        android:paddingTop="5dip"
+        android:text="下一步"
+        android:textColor="@drawable/com_text_color_selector"
+        android:textSize="20sp" />
+
+</LinearLayout>

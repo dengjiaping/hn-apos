@@ -17,6 +17,7 @@ import me.andpay.apos.common.contextdata.PartyInfo;
 import me.andpay.apos.common.service.DownloadICCardParamsService;
 import me.andpay.apos.common.service.LocationService;
 import me.andpay.apos.lft.activity.LeftServeActivity;
+import me.andpay.apos.message.activity.MessageActivity;
 import me.andpay.apos.opm.activity.InputOrderNoActivity;
 import me.andpay.apos.opm.activity.OrderPayListActivity;
 import me.andpay.apos.scm.activity.ScmMainActivity;
@@ -64,6 +65,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 	TabSpec ts8;
 	TabSpec ts9;
 	TabSpec ts10;
+	TabSpec ts11;
 
 	@Inject
 	private LocationService locationService;
@@ -156,6 +158,16 @@ public class HomePageActivity extends AposBaseTabActivity implements
 		if (tagName.endsWith(TabNames.BALANCE_PAGE)) {
 			return;
 		} 
+		else if(tagName.endsWith(TabNames.MESSAGE_PAGE)){
+			if (ts11 == null) {
+				ts11 = mth.newTabSpec(TabNames.MESSAGE_PAGE).setIndicator(
+						TabNames.MESSAGE_PAGE);
+				ts11.setContent(new Intent(this, MessageActivity.class)
+						.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+				mth.addTab(ts11);
+			} 
+			getTabHost().setCurrentTabByTag(TabNames.MESSAGE_PAGE);
+		}
 		else if(tagName.endsWith(TabNames.LEFT_PAGE)){
 			if (ts10 == null) {
 				ts10 = mth.newTabSpec(TabNames.LEFT_PAGE).setIndicator(

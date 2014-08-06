@@ -200,13 +200,13 @@
                     android:text="增值服务" />
             </RelativeLayout>
             -->
-
+           <!--  
             <ImageView
                 android:id="@+id/com_memu_vaservice_line_img"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="@drawable/com_left_menu_solid_line_img" />
-
+-->
             <!--
             <RelativeLayout
                 android:id="@+id/com_menu_more_lay"
@@ -252,13 +252,13 @@
                     android:text="@string/tam_coupon_query_str" />
             </RelativeLayout>
             -->
-
+<!--  
             <ImageView
                 android:id="@+id/com_memu_coupon_line_img"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="@drawable/com_left_menu_solid_line_img" />
-
+-->
             <RelativeLayout
                 android:id="@+id/com_menu_balance_lay"
                 android:layout_width="match_parent"
@@ -326,7 +326,7 @@
                 <ImageView
                     android:id="@+id/com_memu_left_serve_img"
                     style="@style/com_menu_image_style"
-                    android:background="@drawable/com_icon_settle_img" />
+                    android:background="@drawable/left_server_icon" />
 
                 <TextView
                     android:id="@+id/com_memu_left_serve_text"
@@ -334,6 +334,33 @@
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/com_memu_left_serve_img"
                     android:text="便民服务" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_settle_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+            
+            
+            
+            <RelativeLayout
+                android:id="@+id/com_menu_message_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_message_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/message_icon" />
+
+                <TextView
+                    android:id="@+id/com_memu_message_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_message_img"
+                    android:text="通知公告" />
             </RelativeLayout>
 
             <ImageView

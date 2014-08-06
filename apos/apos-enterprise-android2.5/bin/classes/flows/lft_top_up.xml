@@ -1,17 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow-diagram
     begin-node="topup"
-    version="1.0">
+    version="1.0" >
 
     <flow-node
         node-name="topup"
         ref-activity="me.andpay.apos.lft.activity.TopupActivity" >
 
-       <node-complete
-            identity="go_often_person"
-            ref-activity="me.andpay.apos.lft.activity.TopupActivity" />
+        <node-complete
+            identity="address_book"
+            next-node="address_book" />
+
+        <node-complete
+            identity="topup_txn"
+            sub-flow="com_txn_flow" 
+            sub-finish-cpl="finish"
+            />
+        <node-complete
+            identity="finish"
+            ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity"
+            />
     </flow-node>
 
-   
+    <flow-node
+        node-name="address_book"
+        ref-activity="me.andpay.apos.lft.activity.AddressBookActivity" >
+
+        <node-complete
+            identity="go_home"
+            ref-activity="me.andpay.apos.common.activity.HomePageActivity" />
+    </flow-node>
 
 </flow-diagram>

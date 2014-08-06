@@ -233,7 +233,7 @@ public class NewSolfKeyBoardView {
 	private void keyPressed(int keyCode) {
 		Editable etext = null;
 		if (keyCode == KeyEvent.KEYCODE_DEL) {
-			if (currentView.length() == 0) {
+			if (currentView.length() == 0){
 				return;
 			}
 			String text = currentView.getText().toString();

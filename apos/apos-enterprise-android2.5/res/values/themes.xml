@@ -2,7 +2,10 @@
 
     <style name="aposTheme" parent="@android:style/Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:background">@color/com_bgroud_common_col</item>
+        <!--    
+        <item name="android:background">@color/com_bgroud_common_col</item> 
+        -->
+        <item name="android:background">@color/transparent</item>
         <item name="android:alwaysDrawnWithCache">false</item>
         <item name="android:windowBackground">@color/com_bgroud_common_col</item>
         <item name="android:scrollingCache">false</item>

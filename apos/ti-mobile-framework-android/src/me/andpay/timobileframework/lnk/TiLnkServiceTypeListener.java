@@ -22,7 +22,7 @@ public class TiLnkServiceTypeListener implements TypeListener {
 	@Inject
 	private NetworkStatusChecker networkStatusChecker;
 
-	public TiLnkServiceTypeListener() {
+	public TiLnkServiceTypeListener(){
 	}
 
 	public <I> void hear(TypeLiteral<I> type, TypeEncounter<I> encounter) {
@@ -30,7 +30,7 @@ public class TiLnkServiceTypeListener implements TypeListener {
 		for (Class<?> c = type.getRawType(); c != Object.class; c = c
 				.getSuperclass()) {
 			if (ReflectUtil
-					.isImplInterface(c, TiRpcClientAware.class.getName())){
+					.isImplInterface(c,TiRpcClientAware.class.getName())){
 				encounter.register(new InjectionListener() {
 
 					public void afterInjection(Object injectee){

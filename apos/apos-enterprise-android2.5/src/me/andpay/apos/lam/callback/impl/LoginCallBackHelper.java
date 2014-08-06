@@ -8,17 +8,12 @@ import java.util.Set;
 
 import me.andpay.ac.consts.TxnTypes;
 import me.andpay.ac.term.api.auth.LoginResponse;
-import me.andpay.apos.R;
-import me.andpay.apos.cmview.OperationDialog;
-import me.andpay.apos.cmview.PromptDialog;
 import me.andpay.apos.common.constant.ConfigAttrNames;
 import me.andpay.apos.common.constant.RuntimeAttrNames;
 import me.andpay.apos.common.contextdata.PartyInfo;
 import me.andpay.apos.common.flow.FlowConstants;
 import me.andpay.apos.common.flow.FlowNames;
-import me.andpay.apos.common.util.ResourceUtil;
 import me.andpay.apos.dao.ExceptionPayTxnInfoDao;
-import me.andpay.apos.dao.ICCardInfoDao;
 import me.andpay.apos.dao.PayTxnInfoDao;
 import me.andpay.apos.dao.PayTxnInfoStatus;
 import me.andpay.apos.dao.model.ExceptionPayTxnInfo;
@@ -35,8 +30,6 @@ import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.support.TiActivity;
 import me.andpay.timobileframework.util.RoboGuiceUtil;
 import me.andpay.timobileframework.util.StringConvertor;
-import android.view.View;
-import android.view.View.OnClickListener;
 
 public class LoginCallBackHelper {
 

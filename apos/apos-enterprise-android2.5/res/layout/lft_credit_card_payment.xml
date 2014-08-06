@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/lft_serve_home_card_refund_str" />
+
+        <ImageView
+            android:id="@+id/lft_credit_card_payment_back"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="25dip"
+        android:background="@drawable/com_icon_frame_img"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:paddingTop="15dip" >
+
+        <TextView
+            android:id="@+id/lft_credit_card_payment_poundage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="手续费15%"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/lft_credit_card_payment_money_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="金额"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/lft_credit_card_payment_money_title"
+            android:layout_marginTop="20dip"
+            android:background="@color/transparent"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:text="￥"
+                android:textColor="@color/trf_info_amt_col"
+                android:textSize="60sp" />
+
+            <EditText
+                android:id="@+id/lft_credit_card_payment_money"
+                android:layout_width="120dip"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:gravity="right"
+                android:singleLine="true"
+                android:text="0.00"
+                android:textColor="@color/trf_info_amt_col"
+                android:textSize="60sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="15dip"
+        android:background="@drawable/com_icon_frame_img"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="2dip"
+        android:paddingRight="15dip"
+        android:paddingTop="2dip" >
+
+        <TextView
+            android:id="@+id/lft_credit_card_payment_number_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dip"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="卡号"
+            android:textColor="@color/com_title_normal_col"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/lft_credit_card_payment_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:src="@drawable/com_icon_payee_img" />
+
+        <EditText
+            android:id="@+id/lft_credit_card_payment_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/lft_credit_card_payment_person"
+            android:layout_toRightOf="@id/lft_credit_card_payment_number_title"
+            android:background="@color/transparent"
+            android:hint="信用卡卡号"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:phoneNumber="true"
+            android:singleLine="true"
+            android:textColor="@color/com_title_normal_col"
+            android:textColorHint="@color/com_button_top_col"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/lft_credit_card_payment_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/com_button_selector"
+        android:enabled="false"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:text="确定"
+        android:textColor="@drawable/com_text_color_selector"
+        android:textSize="20sp" />
+
+</LinearLayout>

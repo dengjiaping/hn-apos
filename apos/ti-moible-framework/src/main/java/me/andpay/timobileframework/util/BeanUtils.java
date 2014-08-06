@@ -19,12 +19,14 @@ public class BeanUtils {
 			Method[] beanMethods = beanMethodCache.get(beanClass);
 			if (beanMethods == null) {
 				beanMethods = beanClass.getMethods();
-				beanMethodCache.put(beanClass, beanMethods);
+				beanMethodCache.put(beanClass,beanMethods);
 			}
 
+			
+			
 			HashMap<String, Method> fromBeanMethods = fromBeanMethodCache
 					.get(formBeanClass);
-			if (fromBeanMethods == null) {
+			if (fromBeanMethods == null){
 				fromBeanMethods = new HashMap<String, Method>();
 				Method[] methods = formBeanClass.getMethods();
 				String getMethodName = null;
@@ -41,7 +43,7 @@ public class BeanUtils {
 			String getMethodName = null;
 			Class<?>[] paramsType = null;
 			Class<?> paramType = null;
-			for (Method method : beanMethods) {
+			for (Method method : beanMethods){
 				methodName = method.getName();
 				if (methodName.startsWith("set")) {
 					paramsType = method.getParameterTypes();
@@ -58,10 +60,11 @@ public class BeanUtils {
 							.get(getMethodName);
 					if (formBeanGetMethod != null) {
 						if (paramType.equals(formBeanGetMethod.getReturnType())) {
+							
 							Object value = formBeanGetMethod.invoke(fromBean,
 									objects);
 							if (value != null) {
-								method.invoke(bean, new Object[] { value });
+								method.invoke(bean, new Object[] {value });
 							}
 						}
 					}
@@ -76,7 +79,7 @@ public class BeanUtils {
 
 	public static void copyProperties(Object fromBean, Object tagBean) {
 
-		Object[] objects = new Object[0];
+		
 		try {
 			Class beanClass = tagBean.getClass();
 
@@ -124,6 +127,7 @@ public class BeanUtils {
 							.get(getMethodName);
 					if (formBeanGetMethod != null) {
 						if (paramType.equals(formBeanGetMethod.getReturnType())) {
+							Object[] objects = new Object[0];
 							Object value = formBeanGetMethod.invoke(fromBean,
 									objects);
 							if (value != null) {

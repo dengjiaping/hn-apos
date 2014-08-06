@@ -70,10 +70,105 @@
             </intent-filter>
         </activity>
         -->
+        <!-- 通知公告 -->
+         <activity
+            android:name=".message.activity.MessageDeatailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="message.activity.MessageDeatailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+          
+         <activity
+            android:name=".message.activity.MessageActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="message.activity.MessageActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!-- 生活服务模块 -->
         
         
          <activity
+            android:name=".lft.activity.LftTradingSuccessfulActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.LftTradingSuccessfulActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+         <activity
+            android:name=".lft.activity.PayCostQueryActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.PayCostQueryActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name=".lft.activity.WaterDeatailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.WaterDeatailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".lft.activity.PayWaterCostActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.PayWaterCostActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lft.activity.ElectricityDeatailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.ElectricityDeatailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lft.activity.PayElectricityCostActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.PayElectricityCostActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lft.activity.CreditCardConfirmActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.CreditCardConfirmActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lft.activity.CreditCardPaymentsActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="lft.activity.CreditCardPaymentsActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".lft.activity.AddressBookActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -82,8 +177,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-         <activity
+        <activity
             android:name=".lft.activity.TopupActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -92,7 +186,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".lft.activity.PayeeInformationDeatailActivity"
             android:screenOrientation="portrait" >
@@ -102,7 +195,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".lft.activity.PayeeInformationActivity"
             android:screenOrientation="portrait" >
@@ -130,8 +222,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-        
 
         <!-- 首页 -->
         <activity

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/com_list_f0f0f0_item_selector"
+    android:orientation="vertical"
+    android:paddingBottom="10dip"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:paddingTop="10dip" >
+
+    <TextView
+        android:id="@+id/lft_phone_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:text="单小萍"
+        android:textColor="@color/tqm_list_item_amount_col"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/lft_phone_item_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:background="@color/transparent"
+        android:text="13667355464"
+        android:textColor="@color/tqm_list_item_amount_col"
+        android:textSize="20sp" />
+
+</LinearLayout>

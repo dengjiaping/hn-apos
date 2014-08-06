@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram
+    begin-node="start"
+    version="1.0" >
+
+    <flow-node
+        node-name="start"
+        ref-activity="me.andpay.apos.lft.activity.PayElectricityCostActivity" >
+
+        <node-complete
+            identity="pay_cost_query"
+            next-node="pay_cost_query" />
+    </flow-node>
+
+    <flow-node
+        node-name="pay_cost_query"
+        ref-activity="me.andpay.apos.lft.activity.PayCostQueryActivity" >
+
+        <node-complete
+            identity="electricity_deatail"
+            next-node="electricity_deatail"/>
+    </flow-node>
+
+    <flow-node
+        node-name="electricity_deatail"
+        ref-activity="me.andpay.apos.lft.activity.ElectricityDeatailActivity" >
+
+        <node-complete
+            identity="electricity_deatail"
+            ref-activity="me.andpay.apos.lft.activity.ElectricityDeatailActivity" />
+    </flow-node>
+
+</flow-diagram>

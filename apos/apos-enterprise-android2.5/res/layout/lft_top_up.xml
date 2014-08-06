@@ -25,10 +25,10 @@
         android:background="@drawable/com_icon_frame_img"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="5dip"
+        android:paddingBottom="2dip"
         android:paddingLeft="15dip"
         android:paddingRight="15dip"
-        android:paddingTop="5dip" >
+        android:paddingTop="2dip" >
 
         <ImageView
             android:id="@+id/lft_top_up_phonenumber_select"
@@ -52,7 +52,7 @@
             android:singleLine="true"
             android:textColor="@color/com_title_normal_col"
             android:textColorHint="@color/com_button_top_col"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -64,14 +64,25 @@
         android:background="@drawable/com_icon_frame_img"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingBottom="11dip"
+        android:paddingBottom="2dip"
         android:paddingLeft="15dip"
-        android:paddingRight="15dip"
-        android:paddingTop="11dip" >
+        android:paddingTop="2dip" >
 
-        <ImageView
+        <LinearLayout
             android:id="@+id/lft_top_up_amount_select"
-            style="@style/scm_right_icon_style" />
+            android:layout_width="50dip"
+            android:layout_height="40dip"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/transparent"
+                android:src="@drawable/com_icon_into_img" />
+        </LinearLayout>
 
         <EditText
             android:id="@+id/lft_top_up_amount"
@@ -85,7 +96,22 @@
             android:singleLine="true"
             android:text="50元"
             android:textColor="@color/com_title_normal_col"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/lft_top_up_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/com_button_selector"
+        android:enabled="false"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
+        android:text="确定"
+        android:textColor="@drawable/com_text_color_selector"
+        android:textSize="20sp" />
 
 </LinearLayout>

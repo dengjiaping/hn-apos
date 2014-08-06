@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:src="@drawable/com_icon_connection_failure_img" />
-
+    
         <TextView
             android:id="@+id/com_net_error_tv"
             style="@style/com_non_str_style"

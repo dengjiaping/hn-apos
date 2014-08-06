@@ -25,7 +25,7 @@
         <ImageView
             android:id="@+id/lft_serve_home_phone_topup_icon_img"
             style="@style/scm_image_icon_style"
-            android:background="@drawable/com_icon_product_sales_img" />
+            android:background="@drawable/topup_icon" />
 
         <TextView
             style="@style/scm_text_style"
@@ -44,7 +44,7 @@
         <ImageView
             android:id="@+id/lft_serve_home_pay_electricity_cost_icon_img"
             style="@style/scm_image_icon_style"
-            android:background="@drawable/com_icon_product_sales_img" />
+            android:background="@drawable/electricity_icon" />
 
         <TextView
             style="@style/scm_text_style"
@@ -63,7 +63,7 @@
         <ImageView
             android:id="@+id/lft_serve_home_pay_water_cost_icon_img"
             style="@style/scm_image_icon_style"
-            android:background="@drawable/com_icon_product_sales_img" />
+            android:background="@drawable/water_icon" />
 
         <TextView
             style="@style/scm_text_style"
@@ -82,7 +82,7 @@
         <ImageView
             android:id="@+id/lft_serve_home_card_refund_icon_img"
             style="@style/scm_image_icon_style"
-            android:background="@drawable/com_icon_product_sales_img" />
+            android:background="@drawable/card_pay_icon" />
 
         <TextView
             style="@style/scm_text_style"
@@ -101,7 +101,7 @@
         <ImageView
             android:id="@+id/lft_serve_home_transfer_accounts_icon_img"
             style="@style/scm_image_icon_style"
-            android:background="@drawable/com_icon_product_sales_img" />
+            android:background="@drawable/transfer_icon" />
 
         <TextView
             style="@style/scm_text_style"

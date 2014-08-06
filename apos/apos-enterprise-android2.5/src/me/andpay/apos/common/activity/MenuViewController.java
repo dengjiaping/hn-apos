@@ -41,7 +41,8 @@ public class MenuViewController implements OnClickListener,
 	//public RelativeLayout couponLayout;
 	public RelativeLayout settleLayout;
 	
-	private  RelativeLayout leftServe;//生活服务
+	private  RelativeLayout leftServeLayout;//生活服务
+	private RelativeLayout messageLayout;//通知公告
 	
 	
 
@@ -50,11 +51,12 @@ public class MenuViewController implements OnClickListener,
 	private ImageView orderImageView;
 	private ImageView queryImageView;
 	private ImageView refundImageView;
-	private ImageView vaserviceImageView;
+	//private ImageView vaserviceImageView;
 	private ImageView balanceImageView;
-	private ImageView couponImageView;
+	//private ImageView couponImageView;
 	private ImageView settleImageView;
 	private ImageView lefeServeImageView;//生活服务
+	private ImageView messageImageView;//消息
 
 	public Map<String, RelativeLayout> layoutMaps = new HashMap<String, RelativeLayout>();
 
@@ -126,9 +128,13 @@ public class MenuViewController implements OnClickListener,
 			homeActivity.changeView(TabNames.REFUND_PAGE);
 			changeViewState(v);
 
-		}else if(v.getId()==leftServe.getId()){
+		}else if(v.getId()==leftServeLayout.getId()){
 			homeActivity.changeView(TabNames.LEFT_PAGE);//切换页面
 			changeViewState(v);//标志状态
+		}else if(v.getId()==messageLayout.getId()){
+			homeActivity.changeView(TabNames.MESSAGE_PAGE);//切换页面
+			changeViewState(v);//标志状态
+
 		}
 		
 //		else if (v.getId() == vaserviceLayout.getId()) {
@@ -165,8 +171,8 @@ public class MenuViewController implements OnClickListener,
 		mMenuDrawer.setOnDrawerStateChangeListener(this);
 		View menuView = mMenuDrawer.getMenuView();
 		
-		leftServe = (RelativeLayout)menuView.findViewById(R.id.com_menu_left_serve_lay);
-		
+		leftServeLayout = (RelativeLayout)menuView.findViewById(R.id.com_menu_left_serve_lay);
+		messageLayout = (RelativeLayout)menuView.findViewById(R.id.com_menu_message_lay);
 
 		purLayout = (RelativeLayout) menuView
 				.findViewById(R.id.com_menu_pur_lay);
@@ -187,7 +193,8 @@ public class MenuViewController implements OnClickListener,
 
 //		vaserviceLayout = (RelativeLayout) menuView
 //				.findViewById(R.id.com_menu_vaserivce_lay);
-		layoutMaps.put(TabNames.LEFT_PAGE,leftServe);
+		layoutMaps.put(TabNames.MESSAGE_PAGE,messageLayout);
+		layoutMaps.put(TabNames.LEFT_PAGE,leftServeLayout);
 		layoutMaps.put(TabNames.TXN_PAGE, purLayout);
 		//layoutMaps.put(TabNames.TRANSFER_PAGE, transferLayout);
 		layoutMaps.put(TabNames.ORDERPAY_PAGE, orderLayout);
@@ -199,7 +206,7 @@ public class MenuViewController implements OnClickListener,
 		layoutMaps.put(TabNames.SETTLE_PAGE, settleLayout);
 
 		
-		
+		messageImageView = (ImageView)menuView.findViewById(R.id.com_memu_message_img);
 		lefeServeImageView = (ImageView)menuView.findViewById(R.id.com_memu_left_serve_img);
 		purImageView = (ImageView) menuView
 				.findViewById(R.id.com_memu_pur_line_img);
@@ -211,12 +218,12 @@ public class MenuViewController implements OnClickListener,
 				.findViewById(R.id.com_memu_query_line_img);
 		refundImageView = (ImageView) menuView
 				.findViewById(R.id.com_memu_refund_line_img);
-		vaserviceImageView = (ImageView) menuView
-				.findViewById(R.id.com_memu_vaservice_line_img);
+//		vaserviceImageView = (ImageView) menuView
+//				.findViewById(R.id.com_memu_vaservice_line_img);
 		balanceImageView = (ImageView) menuView
 				.findViewById(R.id.com_memu_balance_line_img);
-		couponImageView = (ImageView) menuView
-				.findViewById(R.id.com_memu_coupon_line_img);
+//		couponImageView = (ImageView) menuView
+//				.findViewById(R.id.com_memu_coupon_line_img);
 		settleImageView = (ImageView) menuView
 				.findViewById(R.id.com_memu_settle_line_img);
 		setPrivilege();
@@ -276,7 +283,8 @@ public class MenuViewController implements OnClickListener,
 		balanceLayout.setOnClickListener(this);
 		//couponLayout.setOnClickListener(this);
 		settleLayout.setOnClickListener(this);
-		leftServe.setOnClickListener(this);
+		leftServeLayout.setOnClickListener(this);
+		messageLayout.setOnClickListener(this);
 
 	}
 
@@ -336,9 +344,9 @@ public class MenuViewController implements OnClickListener,
 			purLayout.setVisibility(View.GONE);
 			purImageView.setVisibility(View.GONE);
 			//vaserviceLayout.setVisibility(View.GONE);
-			vaserviceImageView.setVisibility(View.GONE);
+			//vaserviceImageView.setVisibility(View.GONE);
 			//couponLayout.setVisibility(View.GONE);
-			couponImageView.setVisibility(View.GONE);
+			//couponImageView.setVisibility(View.GONE);
 
 		} else {
 			privilegeMaps.put(Privileges.PURCHASE, purLayout);

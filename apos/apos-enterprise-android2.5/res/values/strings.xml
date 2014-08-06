@@ -19,7 +19,7 @@
     <string name="com_query_str">交易查询</string>
     <string name="com_stlstat_str">结帐统计</string>
     <string name="com_more_str">更多</string>
-    <string name="app_name">APOS</string>
+    <string name="app_name">银联商户移动综合服务平台</string>
     <string name="com_progress_prompt_str">操作处理中...</string>
     <string name="com_download_str">更 新</string>
     <string name="com_download_failed">更 新</string>
@@ -60,7 +60,7 @@
     <string name="com_paytype_title_str"> 支付类型</string>
     <string name="com_amt_str">￥0.00</string>
     <string name="com_show_str">提示</string>
-    <string name="com_sure_logout__apos_str">是否确认退出APOS？</string>
+    <string name="com_sure_logout__apos_str">是否确认退出银联商户移动综合服务平台？</string>
     <string name="com_session_timeout_title_str">用户会话实效，请重新输入密码。</string>
     <string name="com_login_out_str">退出</string>
     <string name="com_update_title_str">更新提示</string>
@@ -111,7 +111,7 @@
     <string name="lam_logo_txn_str">移动POS机，随时随地支付</string>
     <string name="lam_service_introduce_str">服务介绍</string>
     <string name="lam_forget_password_str">忘记密码？</string>
-    <string name="lam_login_copyright_text_str">服务电话 4007-288-100 APOS$VERSION$版</string>
+    <string name="lam_login_copyright_text_str">服务电话 4007-288-100 银联商户移动综合服务平台$VERSION$版</string>
     <string name="lam_copyright_text_str">Copyright @ 2013 AndPay,Inc.All Rights Reserved</string>
     <string name="lam_logining_dialog_str">正在登录...</string>
     <string name="lam_cardreader_type1_str">1型</string>
@@ -123,7 +123,7 @@
     <string name="lam_cardreader_sekect_ok_str">读卡器已正确选择</string>
     <string name="lam_save_password_str">自动登录</string>
     <string name="lam_input_pwd_hit_str">请输入密码</string>
-    <string name="lam_introduce_text1_str">APOS支持所有银联卡及外卡交易</string>
+    <string name="lam_introduce_text1_str">银联商户移动综合服务平台支持所有银联卡及外卡交易</string>
     <string name="lam_introduce_text2_str">您还可以灵活选择需要的读卡器类型</string>
     <string name="lam_introduce_text3_str">支持所有银联卡及外卡交易</string>
     <string name="lam_introduce_text4_str">您可以为终端用户设置消费和退款权限</string>
@@ -151,10 +151,10 @@
     <string name="lam_help_title4_str">4. 次日资金到账</string>
     <string name="lam_help_content1_str">商家在与智能手机相连的APOS读卡器上，刷消费者提供的银行卡，发起消费扣款。</string>
     <string name="lam_help_content2_str">消费扣款成功后，消费者在商家的智能手机上电子签名确认消费。</string>
-    <string name="lam_help_content3_str">商家通过APOS将电子消费凭据发送给消费者， 完成消费。</string>
+    <string name="lam_help_content3_str">商家通过银联商户移动综合服务平台将电子消费凭据发送给消费者， 完成消费。</string>
     <string name="lam_help_content4_str">次日，和付将消费资金结算到商家指定的收款银行账户。商家可以随时上网查询所有交易明细。</string>
     <string name="lam_sure_user_str">确认符合使用条件</string>
-    <string name="lam_risk_cotent_str">APOS产品仅限与和付信息直接签约的商户使用。如通过第三方进行接入，将对您的资金安全产生风险。如您需要使用APOS产品，请直接联系我们。</string>
+    <string name="lam_risk_cotent_str">银联商户移动综合服务平台产品仅限与和付信息直接签约的商户使用。如通过第三方进行接入，将对您的资金安全产生风险。如您需要使用银联商户移动综合服务平台产品，请直接联系我们。</string>
     <string name="lam_risk_title_str">风险提示</string>
 
     <!-- 交易模块 -->
@@ -402,22 +402,22 @@
     <string name="scm_help_card_title_str">刷卡演示</string>
     <string name="scm_help_card_one_str">1型</string>
     <string name="scm_help_card_two_str">2型</string>
-    <string name="scm_help_service_title_str">APOS介绍</string>
+    <string name="scm_help_service_title_str">银联商户移动综合服务平台介绍</string>
     <string name="scm_help_service_introduce_str">概况</string>
-    <string name="scm_help_service_introduce_text_str">APOS是上海和付信息技术有限公司的移动支付产品，适用于企业客户的银行卡收单业务需求，产品所涉及到的软硬件均通过相关检测机构认证，符合支付业务安全规定。</string>
+    <string name="scm_help_service_introduce_text_str">银联商户移动综合服务平台是上海和付信息技术有限公司的移动支付产品，适用于企业客户的银行卡收单业务需求，产品所涉及到的软硬件均通过相关检测机构认证，符合支付业务安全规定。</string>
     <string name="scm_help_service_product_str">组成</string>
-    <string name="scm_help_service_product_text_str">APOS包括客户端应用、外置读卡器以及移动设备，支持所有IOS和绝大部分Android设备。其中客户端应用可在相关应用商店进行免费下载，服务开通需要联系上海和付信息技术有限公司（4007-288-100）进行签约。</string>
+    <string name="scm_help_service_product_text_str">银联商户移动综合服务平台包括客户端应用、外置读卡器以及移动设备，支持所有IOS和绝大部分Android设备。其中客户端应用可在相关应用商店进行免费下载，服务开通需要联系上海和付信息技术有限公司（4007-288-100）进行签约。</string>
     <string name="scm_help_service_fee_str">费用</string>
-    <string name="scm_help_service_fee_text_str">APOS费用包括外置读卡器的购买费用和交易手续费，在合作签约时具体约定。</string>
+    <string name="scm_help_service_fee_text_str">银联商户移动综合服务平台费用包括外置读卡器的购买费用和交易手续费，在合作签约时具体约定。</string>
     <string name="scm_help_apply_title_str">如何申请</string>
-    <string name="scm_help_apply_text_str">请联系和付销售服务热线4007-288-100，提供您的需求，APOS销售和技术支团队会向您提供必要的指导。</string>
+    <string name="scm_help_apply_text_str">请联系和付销售服务热线4007-288-100，提供您的需求，银联商户移动综合服务平台销售和技术支团队会向您提供必要的指导。</string>
     <string name="scm_help_use_title_str">如何使用</string>
     <string name="scm_help_use_open_str">服务开通</string>
-    <string name="scm_help_use_open_text_str">签署完服务合同后，会向商户提供密码、数字证书等信息，商户管理员凭密码和证书即可登录APOS数据服务系统，为本企业设置各类终端和后台用户。</string>
+    <string name="scm_help_use_open_text_str">签署完服务合同后，会向商户提供密码、数字证书等信息，商户管理员凭密码和证书即可登录银联商户移动综合服务平台数据服务系统，为本企业设置各类终端和后台用户。</string>
     <string name="scm_help_use_msr_str">获取读卡器</string>
-    <string name="scm_help_use_msr_text_str">APOS服务团队将于指定时间内将读卡器递交至商户处。</string>
+    <string name="scm_help_use_msr_text_str">银联商户移动综合服务平台服务团队将于指定时间内将读卡器递交至商户处。</string>
     <string name="scm_help_use_download_str">下载和安装</string>
-    <string name="scm_help_use_download_text_str">在应用商店（google play、百度应用、移动MM等），搜索APOS或和付，即可免费下载和安装客户端应用。下载前建议您前往www.andpay.me查询下具体支持机型列表，以确保正常使用。</string>
+    <string name="scm_help_use_download_text_str">在应用商店（google play、百度应用、移动MM等），搜索银联商户移动综合服务平台或和付，即可免费下载和安装客户端应用。下载前建议您前往www.andpay.me查询下具体支持机型列表，以确保正常使用。</string>
     <string name="scm_help_use_experience_str">进入体验</string>
     <string name="scm_help_use_experience_text_str">使用您所在商户管理员设置分配好的ID及密码，即可登录客户端应用。在进行交易时，需要您按提示连接读卡器，以完成银行卡信息读取。</string>
     <string name="scm_help_update_operation_str">正在进行版本检测操作</string>
@@ -429,10 +429,10 @@
     <string name="scm_feedback_error_str">反馈信息发送失败，请稍后重试</string>
     <string name="scm_feedback_succ_str">反馈信息发送成功</string>
     <string name="scm_version_str">1.0版本</string>
-    <string name="scm_about_pname_str">APOS</string>
+    <string name="scm_about_pname_str">银联商户移动综合服务平台</string>
     <string name="scm_about_version_str">版本号	：</string>
     <string name="scm_about_neturl_str">网址			：</string>
-    <string name="scm_about_info_str">APOS是上海和付信息技术有限公司的移动支付产品，适用于企业客户的银行卡收单业务需求，产品所涉及到的软硬件均通过相关检测机构认证，符合支付业务安全规定。</string>
+    <string name="scm_about_info_str">银联商户移动综合服务平台是上海和付信息技术有限公司的移动支付产品，适用于企业客户的银行卡收单业务需求，产品所涉及到的软硬件均通过相关检测机构认证，符合支付业务安全规定。</string>
     <string name="scm_main_curruser_str">当前用户</string>
     <string name="scm_username_str">用户名</string>
     <string name="scm_merchant_name_str">商户名称</string>
@@ -501,7 +501,13 @@
     <string name="lft_serve_transfer_accounts_often_person_title_str">常用联系人</string>
     <string name="lft_serve_transfer_accounts_collection_person_title_str">收款人信息</string>
     <string name="lft_serve_transfer_accounts_collection_person_sure_title_str">收款人信息确认</string>
-    
-    
+    <string name="lft_address_book">手机通讯录</string>
+    <string name="lft_credit_card_sure_title_str">信用卡信息确认</string>
+    <string name="lft_electricity_deatail_str">电费详情</string>
+    <string name="lft_water_deatail_str">电费详情</string>
+    <string name="lft_cost_query_str">缴费查询</string>
+    <!-- 通知公告 -->
+    <string name="msg_home_title_str">活动管理</string>
+    <string name="msg_message_deatail_title_str">公告详情</string>
 
 </resources>

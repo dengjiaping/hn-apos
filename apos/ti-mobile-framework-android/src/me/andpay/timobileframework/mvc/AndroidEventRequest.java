@@ -101,7 +101,7 @@ public class AndroidEventRequest implements EventRequest {
 		if (submitData != null) {
 			this.submitData.putAll(submitData);
 		}
-		if (this.pattern == Pattern.async) {
+		if (this.pattern == Pattern.async){
 			AsyncActionTask task = new AsyncActionTask(dispatcher,
 					this.afterCallBack, this.provider);
 			if(Build.VERSION.SDK_INT >10) {

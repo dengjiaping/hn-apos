@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/com_list_f0f0f0_item_selector"
-    android:gravity="center_vertical"
+    android:gravity="center_horizontal"
     android:orientation="horizontal"
     android:paddingBottom="15dip"
     android:paddingLeft="10dip"
@@ -17,7 +17,7 @@
         android:background="@color/transparent"
         android:text="张赛"
         android:textColor="@color/tqm_list_item_amount_col"
-        android:textSize="22sp" />
+        android:textSize="20sp" />
 
     <View
         android:layout_width="0dip"
@@ -39,7 +39,7 @@
             android:background="@color/transparent"
             android:text="招商银行"
             android:textColor="@color/tam_text_col"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/lft_often_person_item_bank_number"
@@ -49,7 +49,7 @@
             android:background="@color/transparent"
             android:text="6222 8029 2043 1035 784"
             android:textColor="@color/tam_text_col"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

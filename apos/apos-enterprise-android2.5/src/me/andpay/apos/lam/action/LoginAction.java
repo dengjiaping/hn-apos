@@ -60,8 +60,7 @@ import com.google.inject.Inject;
  */
 @ActionMapping(domain = LoginAction.DOMAIN_NAME)
 public class LoginAction extends MultiAction {
-
-	public final static String DOMAIN_NAME = "/lam/login.action";
+    public final static String DOMAIN_NAME = "/lam/login.action";
 	public final static String ACTION_NAME_BIND = "bindParty";
 	public final static String PARTYID = "party_id";
 	public final static String FLEX_DEFINE = "flex_define";
@@ -308,7 +307,7 @@ public class LoginAction extends MultiAction {
 			Party party = selectParty(response, loginCallback);
 			saveTiConfigInfo(response, loginUserForm);
 			// 设置cookies信息重建rpc
-			setCookies(response, party);
+			setCookies(response,party);
 			// 设备初始化
 			deviveInit(response);
 
@@ -328,8 +327,10 @@ public class LoginAction extends MultiAction {
 		} catch (AppBizException e) {
 			// TERM.017
 			if (ResponseCodes.MUST_UPDATE_SOFEWARE_VERSION.equals(e.getCode())) {
-				loginCallback.updateApp(e.getLocalizedMessage());
-				return null;
+				//loginCallback.updateApp(e.getLocalizedMessage());
+				
+				loginCallback.loginSuccess(response);
+				return mv;
 			}
 			loginCallback.loginFaild(e.getLocalizedMessage());
 			Log.e(this.getClass().getName(), "app error", e);

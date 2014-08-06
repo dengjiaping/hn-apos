@@ -32,4 +32,5 @@
       <flow-node node-name ="go_home" ref-activity="me.andpay.apos.common.activity.HomePageActivity">
         <node-complete identity = "go_home"   ref-activity="me.andpay.apos.common.activity.HomePageActivity"/>
     </flow-node>
+    
 </flow-diagram>

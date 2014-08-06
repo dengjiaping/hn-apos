@@ -8,7 +8,7 @@ import java.util.Map;
  * @author tinyliu
  * 
  */
-public interface TiRpcClient {
+public interface TiRpcClient{
 	/**
 	 * 启动RpcClient
 	 */

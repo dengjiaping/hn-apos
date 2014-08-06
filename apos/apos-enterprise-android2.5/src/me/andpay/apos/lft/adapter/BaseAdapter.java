@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  *
  * @param <T>
  */
-public class BaseAdapter<T extends BaseData> extends
+public class BaseAdapter<T> extends
 		android.widget.BaseAdapter {
 	private Context context;//上下文环境
 	private ArrayList<T> list = new ArrayList<T>();// 适配器数据

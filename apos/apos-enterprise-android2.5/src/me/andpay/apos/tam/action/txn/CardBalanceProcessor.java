@@ -44,7 +44,7 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 	
 	
 	
-	public void processTxn(ActionRequest request) {
+	public void processTxn(ActionRequest request){
 
 		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");
 		txnForm.setTimeoutTime(System.currentTimeMillis());
@@ -54,7 +54,7 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 			super.processTxn(request);
 			InquiryBalanceRequest queryRequest = createRequest(txnForm);
 			txnForm.setReEntryTxnRequest(queryRequest);
-			
+		
 			sendTxn(txnForm, queryRequest,callBack);
 		} catch (Exception ex) {
 			sysError(txnForm, callBack, ex);
@@ -64,6 +64,7 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 
 	public void sendTxn(TxnForm txnForm,InquiryBalanceRequest queryRequest, TxnCallback callBack) {
 		try {
+			//向服务器开始发送请求
 			InquiryBalanceResponse inquiryBalanceResponse = txnService
 					.syncInquiryBalance(queryRequest);
 			dealResponse(inquiryBalanceResponse, txnForm, callBack, null);
@@ -71,16 +72,19 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 			dealException(ex, txnForm, callBack);
 		}
 	}
-
+/**
+ * 返回处理
+ */
 	public void dealResponse(TxnResponse txnResponse, TxnForm txnForm,
 			TxnCallback callBack, String errorMsg) {
+		//若交易已返回处理，则直接返回
 		if (txnForm.getProcessStatus() == TxnForm.PRSTATUS_RESPONSE) {
 			return;
 		} else {
 			txnForm.setProcessStatus(TxnForm.PRSTATUS_RESPONSE);
 		}
 
-		if (StringUtil.isNotBlank(errorMsg)) {
+		if (StringUtil.isNotBlank(errorMsg)){
 			txnForm.getResponse().setResponMsg(errorMsg);
 			callBack.showFaild(txnForm.getResponse());
 			return;
@@ -110,7 +114,7 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 	}
 
 	private void responseProcess(InquiryBalanceResponse queryResponse,
-			TxnCallback callBack, TxnForm txnForm) {
+			TxnCallback callBack, TxnForm txnForm){
 
 		
 		TxnActionResponse actionResponse = txnForm.getResponse();

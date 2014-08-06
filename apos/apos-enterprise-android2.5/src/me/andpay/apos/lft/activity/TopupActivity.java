@@ -1,63 +1,170 @@
 package me.andpay.apos.lft.activity;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectView;
+import com.google.inject.Inject;
+
+import me.andpay.ac.consts.TxnTypes;
 import me.andpay.apos.R;
+import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.lft.data.PhoneNumber;
+import me.andpay.apos.lft.even.TopupTextWatcherEventControl;
+import me.andpay.apos.lft.flow.FlowConstants;
+import me.andpay.apos.lft.tools.ShowUtil;
+import me.andpay.apos.lft.view.CustomDialog;
+import me.andpay.apos.tam.callback.impl.QueryBalanceCallBackImpl;
+import me.andpay.apos.tam.context.TxnControl;
+import me.andpay.apos.tam.flow.model.TxnContext;
+import me.andpay.timobileframework.flow.TiFlowCallback;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+
 /**
  * 生活手机充值
+ * 
  * @author Administrator
- *
+ * 
  */
 @ContentView(R.layout.lft_top_up)
-public class TopupActivity extends AposBaseActivity{
-	@EventDelegate(type=DelegateType.method,toMethod="back",delegateClass=OnClickListener.class)
-    @InjectView(R.id.lft_top_up_back)
-    private ImageView back;//返回
-	
-	@EventDelegate(type=DelegateType.method,toMethod="back",delegateClass=OnClickListener.class)
+public class TopupActivity extends AposBaseActivity implements OnClickListener,
+		TiFlowCallback {
+	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
+	@InjectView(R.id.lft_top_up_back)
+	private ImageView back;// 返回
+
+	@EventDelegate(type = DelegateType.eventController, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = TopupTextWatcherEventControl.class)
 	@InjectView(R.id.lft_top_up_phonenumber)
-	private EditText phoneNumber;//手机号码
-	@EventDelegate(type=DelegateType.method,toMethod="phoneNumberSelect",delegateClass=OnClickListener.class)
+	public EditText phoneNumber;// 手机号码
+
+	@EventDelegate(type = DelegateType.method, toMethod = "phoneNumberSelect", delegateClass = OnClickListener.class)
 	@InjectView(R.id.lft_top_up_phonenumber_select)
-	private ImageView phoneNumberSelect;//选取联系人 
-	
-	@EventDelegate(type=DelegateType.method,toMethod="back",delegateClass=OnClickListener.class)
+	private ImageView phoneNumberSelect;// 选取联系人
+
+	@EventDelegate(type = DelegateType.eventController, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = TopupTextWatcherEventControl.class)
 	@InjectView(R.id.lft_top_up_amount)
-	private EditText amount;//金额数
-	@EventDelegate(type=DelegateType.method,toMethod="amountSelect",delegateClass=OnClickListener.class)
+	public EditText amount;// 金额数
+
+	@EventDelegate(type = DelegateType.method, toMethod = "amountSelect", delegateClass = OnClickListener.class)
 	@InjectView(R.id.lft_top_up_amount_select)
-	private ImageView amountSelect;//金额数选择
-	
-	
-	
+	private View amountSelect;//金额数选择
+
+	@EventDelegate(type = DelegateType.method, toMethod = "sure", delegateClass = OnClickListener.class)
+	@InjectView(R.id.lft_top_up_sure)
+	public Button sure;
+
 	/**
 	 * 返回上一级
+	 * 
 	 * @param v
 	 */
-	
-	public void back(View v){
+
+	public void back(View v) {
 		TiFlowControlImpl.instanceControl().previousSetup(this);
 	}
+
 	/**
 	 * 手机号码选择
+	 * 
 	 * @param v
 	 */
-	public void phoneNumberSelect(View v){
-		
+	public void phoneNumberSelect(View v) {
+		TiFlowControlImpl.instanceControl().nextSetup(this,
+				FlowConstants.ADDRESS_BOOK);
 	}
+
+	/**
+	 * 充值确定
+	 */
+	@Inject TxnControl txnControl;
+	public void sure(View v) {
+		TxnContext txnContext = txnControl.init();
+
+		txnContext.setNeedPin(false);
+		txnContext.setTxnType(TxnTypes.INQUIRY_BALANCE);
+		txnContext.setBackTagName(TabNames.BALANCE_PAGE);
+		txnControl
+				.setTxnCallback(new QueryBalanceCallBackImpl());
+		TiFlowControlImpl.instanceControl().setFlowContextData(txnContext);
+		TiFlowControlImpl.instanceControl().nextSetup(this,FlowConstants.TOPUP_TXN);
+	}
+	
+
 	/**
 	 * 充值金额选择
+	 * 
 	 * @param v
 	 */
-	public void amountSelect(View v){
-		
+	private CustomDialog amoutDialog = null;
+
+	public void amountSelect(View v) {
+		amoutDialog = ShowUtil.getCustomDialog(this,
+				R.layout.lft_top_up_amount_select_dialog, 0);
+		amoutDialog.getcView().findViewById(R.id.lft_top_up_30)
+				.setOnClickListener(this);
+		amoutDialog.getcView().findViewById(R.id.lft_top_up_50)
+				.setOnClickListener(this);
+		amoutDialog.getcView().findViewById(R.id.lft_top_up_100)
+				.setOnClickListener(this);
+		amoutDialog.getcView().findViewById(R.id.lft_top_up_300)
+				.setOnClickListener(this);
+		amoutDialog.getcView().findViewById(R.id.lft_top_up_500)
+				.setOnClickListener(this);
+
+		amoutDialog.show();
+
+	}
+
+	/**
+	 * 关闭
+	 */
+	public void closeAmountSelect() {
+		if (amoutDialog != null) {
+			amoutDialog.dismiss();
+		}
+	}
+
+	public void callback(String sourceNodeName) {
+		// TODO Auto-generated method stub
+		PhoneNumber phoneNumberStr = (PhoneNumber) TiFlowControlImpl
+				.instanceControl().getFlowContext()
+				.get(PhoneNumber.class.getName());
+		if(phoneNumberStr!=null){
+			phoneNumber.setText(phoneNumberStr.getDisplayNumber());
+		}
+	}
+
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		switch (arg0.getId()) {
+		case R.id.lft_top_up_30:
+			closeAmountSelect();
+			amount.setText("30");
+			break;
+
+		case R.id.lft_top_up_50:
+			closeAmountSelect();
+			amount.setText("50");
+			break;
+		case R.id.lft_top_up_100:
+			closeAmountSelect();
+			amount.setText("100");
+			break;
+		case R.id.lft_top_up_300:
+			closeAmountSelect();
+			amount.setText("300");
+			break;
+		case R.id.lft_top_up_500:
+			closeAmountSelect();
+			amount.setText("500");
+			break;
+		}
 	}
 }

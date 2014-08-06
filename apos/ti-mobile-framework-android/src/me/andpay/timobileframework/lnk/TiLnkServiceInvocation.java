@@ -25,6 +25,7 @@ public class TiLnkServiceInvocation {
 		return proxy;
 	}
 
+	
 	public class TiLnkServiceProxy implements InvocationHandler {
 
 		private TiRpcClient tiRpcClient;

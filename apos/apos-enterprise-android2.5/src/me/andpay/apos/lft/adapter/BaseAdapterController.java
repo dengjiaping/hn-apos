@@ -1,6 +1,5 @@
 package me.andpay.apos.lft.adapter;
 
-import me.andpay.apos.lft.data.BaseData;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -9,7 +8,7 @@ import android.view.ViewGroup;
  * @author Administrator
  *
  */
-public abstract class BaseAdapterController<T extends BaseData>{
+public abstract class BaseAdapterController<T>{
 	
 	
 	private BaseAdapter<T> adpter;//控制主体

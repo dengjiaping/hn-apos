@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram
+    begin-node="look_message"
+    version="1.0" >
+
+    <flow-node
+        node-name="look_message"
+        ref-activity="me.andpay.apos.message.activity.MessageDeatailActivity" >
+
+        <node-complete
+            identity="success"
+            ref-activity="me.andpay.apos.message.activity.MessageDeatailActivity" />
+    </flow-node>
+
+</flow-diagram>

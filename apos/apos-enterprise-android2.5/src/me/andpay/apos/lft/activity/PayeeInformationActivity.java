@@ -5,10 +5,11 @@ import java.util.Map;
 
 import me.andpay.apos.R;
 import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.common.flow.FlowConstants;
+
 import me.andpay.apos.lft.data.OftenUser;
 import me.andpay.apos.lft.even.PayeeBankNumberTextWatcherEventControl;
 import me.andpay.apos.lft.even.PayeeIfmTextWatcherEventControl;
+import me.andpay.apos.lft.flow.FlowConstants;
 import me.andpay.apos.tam.flow.model.TxnContext;
 import me.andpay.timobileframework.flow.TiFlowCallback;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;

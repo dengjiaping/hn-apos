@@ -106,12 +106,13 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 
 	@Inject
 	private PayTxnInfoDao payTxnInfoDao;
-//	@Inject
-//	private OrderInfoDao orderInfoDao;
 
-	public void onDevicePlugged(){
+	// @Inject
+	// private OrderInfoDao orderInfoDao;
+
+	public void onDevicePlugged() {
 		TxnAcitivty tiActivity = (TxnAcitivty) txnControl.getCurrActivity();
-		if (tiActivity == null || tiActivity.isFinishing()){
+		if (tiActivity == null || tiActivity.isFinishing()) {
 			return;
 		}
 
@@ -174,18 +175,18 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 
 		final TxnAcitivty tiActivity = (TxnAcitivty) txnControl
 				.getCurrActivity();
-		if (tiActivity.isFinishing()){
+		if (tiActivity.isFinishing()) {
 			return;
 		}
 		final TxnContext txnContext = txnControl.getTxnContext();
 
-		if(!setMac(txnContext, cardInfo,null)){
+		if (!setMac(txnContext, cardInfo, null)) {
 			return;
 		}
 
 		final SwipCardReaderCallBack callback = this;
 
-		tiActivity.runOnUiThread(new Runnable(){
+		tiActivity.runOnUiThread(new Runnable() {
 
 			public void run() {
 				CardReaderManager.setDefaultCallBack();
@@ -222,7 +223,8 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 
 	}
 
-	private boolean setMac(TxnContext txnContext, CardInfo cardInfo,AposICCardDataInfo aposICCardDataInfo) {
+	private boolean setMac(TxnContext txnContext, CardInfo cardInfo,
+			AposICCardDataInfo aposICCardDataInfo) {
 		if (CardReaderManager.getCardReaderType() == CardReaderTypes.NEW_LAND_BL) {
 			Log.e(this.getClass().getName(), "start mac");
 			String sourceData = genMacSourceData(txnContext.getSalesAmt(),
@@ -237,7 +239,7 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 				onDecodeError("发送数据异常!");
 				return false;
 			}
-			
+
 			Log.e(this.getClass().getName(), "end mac");
 
 		}
@@ -932,11 +934,18 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 		return str;
 	}
 
+	/**
+	 * 获得银行卡和相应交易金额信息
+	 * 
+	 * @param amt
+	 * @param cardInfo
+	 * @param aposICCardDataInfo
+	 * @return
+	 */
 	public String genMacSourceData(BigDecimal amt, CardInfo cardInfo,
 			AposICCardDataInfo aposICCardDataInfo) {
 		StringBuffer macDataBuff = new StringBuffer();
-		
-		
+
 		macDataBuff.append(formatNullString(cardInfo.getEncTracks()));
 		macDataBuff.append(formatNullString(HexUtils.bytesToHexString(cardInfo
 				.getPin())));
@@ -951,7 +960,7 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 
 		if (aposICCardDataInfo != null) {
 			String tlvString = TlvUtil.encodeTvl(aposICCardDataInfo);
-			
+
 			String hexData = HexUtils.bytesToHexString(Base64.encode(
 					HexUtils.hexString2Bytes(tlvString)).getBytes());
 
@@ -979,12 +988,11 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 			cardInfo.setPin(HexUtils.hexString2Bytes(icCardDataInfo
 					.getPinData()));
 		}
-		if(!StringUtil.isEmpty(icCardDataInfo.getTrackAll())) {
+		if (!StringUtil.isEmpty(icCardDataInfo.getTrackAll())) {
 			cardInfo.setEncTracks(icCardDataInfo.getTrackAll());
 		}
-		
-		
-		if (!setMac(txnContext, cardInfo,icCardDataInfo)) {
+
+		if (!setMac(txnContext, cardInfo, icCardDataInfo)) {
 			return;
 		}
 
@@ -1059,8 +1067,9 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 		TxnCallbackHelper.clearAc(txnControl);
 		txnControl.getTxnContext().getTxnActionResponse()
 				.setResponMsg("IC卡没有插好或者读取失败。");
-		if(txnControl.getTxnContext().getTxnActionResponse().getTxnResponse() != null) {
-			txnControl.getTxnContext().getTxnActionResponse().getTxnResponse().setRespCode(ResponseCodes.SYS_ERROR);
+		if (txnControl.getTxnContext().getTxnActionResponse().getTxnResponse() != null) {
+			txnControl.getTxnContext().getTxnActionResponse().getTxnResponse()
+					.setRespCode(ResponseCodes.SYS_ERROR);
 		}
 		TxnCallbackHelper.txnFailed(txnControl.getTxnContext(), txnControl
 				.getTxnContext().getTxnActionResponse(), tiActivity);

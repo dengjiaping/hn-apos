@@ -7,22 +7,9 @@ package me.andpay.apos.common.flow;
  *
  */
 public class FlowConstants {
-	/**
-	 * 转账刷卡流程
-	 */
-	public static final String LFT_TRANSFER_TXN="lft_transtf_txn";
-	/**
-	 * 收款人确认
-	 */
-	public static final String OFTEN_DEATAIL="go_person_sure";
-	/**
-	 * 常用联系人
-	 */
-	public static final String OFTEN="go_often_person";
-	/**
-	 * 刷卡联系人
-	 */
-	public static final String CARD_PERSON="person_information";
+	
+	
+	
 	
 	/**
 	 * 成功

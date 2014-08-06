@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/electricity_order_item_time"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:background="@drawable/com_icon_frame_img"
+        android:gravity="center"
+        android:text="2014-06"
+        android:textColor="@color/com_title_normal_col"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/electricity_order_item_owecost"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1.5"
+        android:background="@drawable/com_icon_frame_img"
+        android:gravity="center"
+        android:text="100"
+        android:textColor="@color/com_title_normal_col"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/electricity_order_item_breachcost"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1.5"
+        android:background="@drawable/com_icon_frame_img"
+        android:gravity="center"
+        android:text="150"
+        android:textColor="@color/com_title_normal_col"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/electricity_order_item_shouldbecost"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1.5"
+        android:background="@drawable/com_icon_frame_img"
+        android:gravity="center"
+        android:text="300"
+        android:textColor="@color/com_title_normal_col"
+        android:textSize="13sp" />
+
+</LinearLayout>

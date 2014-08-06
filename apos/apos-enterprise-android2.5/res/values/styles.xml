@@ -122,15 +122,15 @@
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:background">@drawable/com_navtop_bg_img</item>
     </style>
-    
+
     <style name="com_qrscan_top_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">45dp</item>
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:background">@color/com_no_color</item>
-		<item name="android:layout_marginTop">13dp</item>  
-		<item name="android:layout_marginLeft">10dp</item>
-		<item name="android:layout_marginRight">10dp</item>      
+        <item name="android:layout_marginTop">13dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
     </style>
 
     <style name="com_native_bottom_style">
@@ -153,7 +153,7 @@
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">1</item>
     </style>
-    
+
     <style name="com_qrscan_top_text_style">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -570,7 +570,7 @@
 
     <style name="com_copyright_img_style">
         <item name="android:layout_width">66dp</item>
-        <item name="android:layout_height">22dp</item>
+        <item name="android:layout_height">22dp</item>.
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:layout_marginBottom">6dp</item>
         <item name="android:src">@drawable/com_andpay_logo_img</item>
@@ -901,6 +901,15 @@
         <item name="android:layout_width">70dp</item>
         <item name="android:background">@drawable/scm_button_cardreader_selector</item>
         <item name="android:textColor">@drawable/scm_text_selector</item>
+    </style>
+
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.6</item>
     </style>
 
 </resources>
