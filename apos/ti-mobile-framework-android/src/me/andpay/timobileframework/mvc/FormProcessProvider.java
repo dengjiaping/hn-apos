@@ -9,8 +9,8 @@ import com.google.inject.Provider;
 
 public class FormProcessProvider implements Provider<FormProcesser>{
 	
-	public FormProcesser get() {
-		FormProcesser processer = new DefaultFormProcesser();
+	public FormProcesser get(){
+		FormProcesser processer = new DefaultFormProcesser(); 
 		processer.resigteFieldValueLoader(FormProcessPattern.ANDROID, new AndroidFieldValueLoader());
 		return processer;
 	}

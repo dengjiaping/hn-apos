@@ -305,7 +305,7 @@ public class TiFlowControlImpl implements TiFlowControl {
 	 * 
 	 * @return
 	 */
-	protected TiFlowNodeControl getNodeContrl() {
+	public TiFlowNodeControl getNodeContrl() {
 		if (controlNode == null) {
 			throw new TiFlowException(TiFlowException.TIFLOWEX_GROUP_PROCESS,
 					TiFlowErrorCode.PROCESS_FLOW_STATUS_ERROR,

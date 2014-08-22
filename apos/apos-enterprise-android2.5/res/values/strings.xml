@@ -154,7 +154,8 @@
     <string name="lam_help_content3_str">商家通过银联商户移动综合服务平台将电子消费凭据发送给消费者， 完成消费。</string>
     <string name="lam_help_content4_str">次日，和付将消费资金结算到商家指定的收款银行账户。商家可以随时上网查询所有交易明细。</string>
     <string name="lam_sure_user_str">确认符合使用条件</string>
-    <string name="lam_risk_cotent_str">银联商户移动综合服务平台产品仅限与和付信息直接签约的商户使用。如通过第三方进行接入，将对您的资金安全产生风险。如您需要使用银联商户移动综合服务平台产品，请直接联系我们。</string>
+    <string name="lam_risk_cotent_str">银联商户移动综合服务平台产品仅限与和湖南银联
+        直接签约的商户使用。如通过第三方进行接入，将对您的资金安全产生风险。如您需要使用银联商户移动综合服务平台产品，请直接联系我们。</string>
     <string name="lam_risk_title_str">风险提示</string>
 
     <!-- 交易模块 -->
@@ -404,13 +405,13 @@
     <string name="scm_help_card_two_str">2型</string>
     <string name="scm_help_service_title_str">银联商户移动综合服务平台介绍</string>
     <string name="scm_help_service_introduce_str">概况</string>
-    <string name="scm_help_service_introduce_text_str">银联商户移动综合服务平台是上海和付信息技术有限公司的移动支付产品，适用于企业客户的银行卡收单业务需求，产品所涉及到的软硬件均通过相关检测机构认证，符合支付业务安全规定。</string>
+    <string name="scm_help_service_introduce_text_str">银联商户移动综合服务平台是银联的移动支付产品，适用于企业客户的银行卡收单业务需求，产品所涉及到的软硬件均通过相关检测机构认证，符合支付业务安全规定。</string>
     <string name="scm_help_service_product_str">组成</string>
-    <string name="scm_help_service_product_text_str">银联商户移动综合服务平台包括客户端应用、外置读卡器以及移动设备，支持所有IOS和绝大部分Android设备。其中客户端应用可在相关应用商店进行免费下载，服务开通需要联系上海和付信息技术有限公司（4007-288-100）进行签约。</string>
+    <string name="scm_help_service_product_text_str">银联商户移动综合服务平台包括客户端应用、外置读卡器以及移动设备，支持所有IOS和绝大部分Android设备。其中客户端应用可在相关应用商店进行免费下载，服务开通需要联系湖南银联（4007-288-100）进行签约。</string>
     <string name="scm_help_service_fee_str">费用</string>
     <string name="scm_help_service_fee_text_str">银联商户移动综合服务平台费用包括外置读卡器的购买费用和交易手续费，在合作签约时具体约定。</string>
     <string name="scm_help_apply_title_str">如何申请</string>
-    <string name="scm_help_apply_text_str">请联系和付销售服务热线4007-288-100，提供您的需求，银联商户移动综合服务平台销售和技术支团队会向您提供必要的指导。</string>
+    <string name="scm_help_apply_text_str">请联系湖南银联销售服务热线4007-288-100，提供您的需求，银联商户移动综合服务平台销售和技术支团队会向您提供必要的指导。</string>
     <string name="scm_help_use_title_str">如何使用</string>
     <string name="scm_help_use_open_str">服务开通</string>
     <string name="scm_help_use_open_text_str">签署完服务合同后，会向商户提供密码、数字证书等信息，商户管理员凭密码和证书即可登录银联商户移动综合服务平台数据服务系统，为本企业设置各类终端和后台用户。</string>
@@ -432,7 +433,7 @@
     <string name="scm_about_pname_str">银联商户移动综合服务平台</string>
     <string name="scm_about_version_str">版本号	：</string>
     <string name="scm_about_neturl_str">网址			：</string>
-    <string name="scm_about_info_str">银联商户移动综合服务平台是上海和付信息技术有限公司的移动支付产品，适用于企业客户的银行卡收单业务需求，产品所涉及到的软硬件均通过相关检测机构认证，符合支付业务安全规定。</string>
+    <string name="scm_about_info_str">银联商户移动综合服务平台是湖南银联的移动支付产品，适用于企业客户的银行卡收单业务需求，产品所涉及到的软硬件均通过相关检测机构认证，符合支付业务安全规定。</string>
     <string name="scm_main_curruser_str">当前用户</string>
     <string name="scm_username_str">用户名</string>
     <string name="scm_merchant_name_str">商户名称</string>

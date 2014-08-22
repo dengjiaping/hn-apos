@@ -54,6 +54,7 @@ public class LoginCallbackImpl implements LoginCallback {
 			}
 
 		} catch (Exception e) {
+		
 			loginFaild(ResourceUtil.getString(activity, R.string.tam_syserror_str));
 			return;
 		}

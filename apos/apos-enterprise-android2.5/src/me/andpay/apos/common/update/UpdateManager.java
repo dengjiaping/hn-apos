@@ -77,7 +77,7 @@ public class UpdateManager extends AfterProcessWithErrorHandler {
 		hasNewVersion = false;
 		if (info != null
 				&& !StringUtil.isEmpty(info.getAppVersionCode())
-				&& Integer.parseInt(info.getAppVersionCode()) > this.curVersionCode) {
+				&& Integer.parseInt(info.getAppVersionCode()) > this.curVersionCode){
 
 			this.newVersion = info.getAppName();
 			this.updateInfo = info.getDescription();

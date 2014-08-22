@@ -117,14 +117,15 @@ public class StartAppActivity extends AposBaseActivity implements
 
 		String onceInstall = (String) getAppConfig().getAttribute(
 				ConfigAttrNames.ONCE_INSTALL_USE);
+		
 
 		// 是否安装
-//		if (ConfigAttrValues.ONCE_INSTALL_USE_VALUE.equals(onceInstall)) {
-//			checkUpdate();
-//		} else {
+		if (ConfigAttrValues.ONCE_INSTALL_USE_VALUE.equals(onceInstall)) {
+			checkUpdate();
+		} else {
 
 			this.nextSetup(FlowConstants.SUCCESS_STEP2);
-	//	}
+		}
 		System.gc();
 	}
 

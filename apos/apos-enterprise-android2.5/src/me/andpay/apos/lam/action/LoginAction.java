@@ -22,6 +22,7 @@ import me.andpay.apos.common.constant.RuntimeAttrNames;
 import me.andpay.apos.common.contextdata.DeviceInfo;
 import me.andpay.apos.common.contextdata.LoginUserInfo;
 import me.andpay.apos.common.contextdata.PartyInfo;
+import me.andpay.apos.common.flow.FlowConstants;
 import me.andpay.apos.common.log.AposDebugLog;
 import me.andpay.apos.common.service.CleanDataService;
 import me.andpay.apos.common.service.ProductSynchroner;
@@ -37,6 +38,7 @@ import me.andpay.apos.tam.action.txn.cloud.CloudPosUtil;
 import me.andpay.orderpay.OrderPayRequest;
 import me.andpay.ti.base.AppBizException;
 import me.andpay.ti.util.StringUtil;
+import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.lnk.TiRpcClient;
 import me.andpay.timobileframework.mvc.ModelAndView;
 import me.andpay.timobileframework.mvc.action.ActionMapping;
@@ -60,7 +62,7 @@ import com.google.inject.Inject;
  */
 @ActionMapping(domain = LoginAction.DOMAIN_NAME)
 public class LoginAction extends MultiAction {
-    public final static String DOMAIN_NAME = "/lam/login.action";
+	public final static String DOMAIN_NAME = "/lam/login.action";
 	public final static String ACTION_NAME_BIND = "bindParty";
 	public final static String PARTYID = "party_id";
 	public final static String FLEX_DEFINE = "flex_define";
@@ -288,10 +290,14 @@ public class LoginAction extends MultiAction {
 
 	/**
 	 * 登录
+	 * 
 	 * @param request
 	 * @return
 	 */
+	Party party;
+
 	public ModelAndView login(ActionRequest request) {
+		
 		initContext(request);
 		ModelAndView mv = new ModelAndView();
 		LoginUserForm loginUserForm = (LoginUserForm) request
@@ -304,10 +310,10 @@ public class LoginAction extends MultiAction {
 				loginCallback.loginFaild("操作失败，请稍后再试");
 				return null;
 			}
-			Party party = selectParty(response, loginCallback);
+			party = selectParty(response, loginCallback);
 			saveTiConfigInfo(response, loginUserForm);
 			// 设置cookies信息重建rpc
-			setCookies(response,party);
+			setCookies(response, party);
 			// 设备初始化
 			deviveInit(response);
 
@@ -327,9 +333,10 @@ public class LoginAction extends MultiAction {
 		} catch (AppBizException e) {
 			// TERM.017
 			if (ResponseCodes.MUST_UPDATE_SOFEWARE_VERSION.equals(e.getCode())) {
-				//loginCallback.updateApp(e.getLocalizedMessage());
-				
-				loginCallback.loginSuccess(response);
+				loginCallback.updateApp(e.getLocalizedMessage());
+				//TiFlowControlImpl.instanceControl().nextSetup(TiFlowControlImpl.instanceControl().getNodeContrl().getLastActivity(),FlowConstants.GOHOME);
+			
+				//loginCallback.loginSuccess(response);
 				return mv;
 			}
 			loginCallback.loginFaild(e.getLocalizedMessage());
