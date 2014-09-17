@@ -1,6 +1,5 @@
 package me.andpay.apos.tam.event;
 
-import me.andpay.ac.consts.TxnTypes;
 import me.andpay.apos.cmview.OperationDialog;
 import me.andpay.apos.common.constant.RuntimeAttrNames;
 import me.andpay.apos.common.service.ExceptionPayTxnInfoService;

@@ -22,6 +22,7 @@ public class WaitPasswordInputHandler extends GenChangeStatusHander {
 	/**
 	 * 前置处理器
 	 */
+	@Override
 	protected boolean preAction(TxnControl txnControl) {
 
 		/**

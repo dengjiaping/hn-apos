@@ -78,6 +78,7 @@ public class PurchaseQueryCondActivity extends AposBaseActivity implements OnKey
 	@InjectView(R.id.vas_hascondition_image)
 	public ImageView hasCondImg;
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 

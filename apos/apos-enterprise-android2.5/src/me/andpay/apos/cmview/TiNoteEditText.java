@@ -47,6 +47,7 @@ public class TiNoteEditText extends EditText {
 		super.onDraw(canvas);
 	}
 
+	@Override
 	public int getLineCount() {
 		return this.linecount;
 	}

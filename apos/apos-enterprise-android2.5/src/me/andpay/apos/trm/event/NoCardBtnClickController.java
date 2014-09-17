@@ -139,7 +139,7 @@ public class NoCardBtnClickController extends AbstractEventController {
 					opDialog.show();
 					return;
 				}
-				txnControl.setCurrActivity((TiFlowActivity) refActivty);
+				txnControl.setCurrActivity(refActivty);
 				NoCardRefundTxnCallback callback = new NoCardRefundTxnCallback();
 				txnControl.setTxnCallback(callback);
 				txnControl.submitTxn(refActivty);

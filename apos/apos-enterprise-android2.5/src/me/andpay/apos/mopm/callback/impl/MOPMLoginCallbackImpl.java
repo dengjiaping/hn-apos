@@ -15,6 +15,7 @@ public class MOPMLoginCallbackImpl extends LoginCallbackImpl implements LoginCal
 		super(activity);
 	}
 
+	@Override
 	public void loginSuccess(LoginResponse response) {
 		activity.loginDialog.cancel();
 		OrderPayContext orderPayContext = OrderPayUtil
@@ -24,6 +25,7 @@ public class MOPMLoginCallbackImpl extends LoginCallbackImpl implements LoginCal
 	}
 
 	//TODO更新原理
+	@Override
 	public void updateApp(String errorCode) {
 		activity.loginDialog.cancel();
 		loginFaild("当前版本已经停止，请先更新客户端程序");

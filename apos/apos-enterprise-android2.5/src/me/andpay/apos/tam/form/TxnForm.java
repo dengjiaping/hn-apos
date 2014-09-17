@@ -3,8 +3,6 @@ package me.andpay.apos.tam.form;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import android.R.integer;
-
 import me.andpay.ac.term.api.txn.ParseBinResponse;
 import me.andpay.ac.term.api.txn.TxnRequest;
 import me.andpay.apos.cdriver.CardInfo;

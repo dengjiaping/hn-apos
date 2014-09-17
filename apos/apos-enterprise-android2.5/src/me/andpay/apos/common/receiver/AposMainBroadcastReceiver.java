@@ -30,6 +30,7 @@ public class AposMainBroadcastReceiver extends RoboBroadcastReceiver {
 	@Inject
 	private TxnConfirmService txnConfirmService;
 
+	@Override
 	protected void handleReceive(Context context, Intent intent) {
 
 		Log.i("AposMainService", "AposMainService_onHandleIntent");

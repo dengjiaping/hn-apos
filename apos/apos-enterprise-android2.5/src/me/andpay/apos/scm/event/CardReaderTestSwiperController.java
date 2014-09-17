@@ -1,8 +1,6 @@
 package me.andpay.apos.scm.event;
 
 import me.andpay.apos.common.flow.FlowConstants;
-import me.andpay.apos.common.log.AposOperationLog;
-import me.andpay.apos.common.log.OperationCodes;
 import me.andpay.apos.scm.flow.model.CardReaderSetContext;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.AbstractEventController;

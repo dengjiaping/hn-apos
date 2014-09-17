@@ -26,6 +26,7 @@ public class BluetoothCardReaderListAdapter extends BaseAdapter {
 	
 	public void clear() {
 		deviceList.clear();
+
 	}
 
 	public void updateData(CardReaderInfo cardReaderInfo) {

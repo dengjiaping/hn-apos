@@ -13,6 +13,7 @@ public class ValueCardTxnCallbackImpl extends TxnCallbackImpl implements
 		TxnCallback {
 
 
+	@Override
 	public void showFaild(TxnActionResponse txnActionResponse) {
 		if (txnControl.getTxnDialog().isShowing()) {
 			TxnCallbackHelper.clearAc(txnControl);

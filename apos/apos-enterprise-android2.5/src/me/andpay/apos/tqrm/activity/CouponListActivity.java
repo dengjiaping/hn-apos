@@ -140,6 +140,7 @@ public class CouponListActivity extends AposBaseActivity {
 		// resetCountTvTitle(couponListAdapter.getCount());
 	}
 
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

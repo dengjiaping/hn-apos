@@ -288,6 +288,7 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 
 	}
 
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

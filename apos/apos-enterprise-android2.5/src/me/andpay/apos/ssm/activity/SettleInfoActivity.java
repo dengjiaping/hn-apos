@@ -65,6 +65,7 @@ public class SettleInfoActivity extends AposBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		refresh_layout.initView();
 		refresh_layout.setPullLoadEnable(true);
@@ -145,6 +146,7 @@ public class SettleInfoActivity extends AposBaseActivity {
 			super(activity);
 		}
 
+		@Override
 		public void afterRequest(ModelAndView mv) {
 			LinkedList<TxnBatch> details = (LinkedList<TxnBatch>) mv
 					.getValue("infoList");

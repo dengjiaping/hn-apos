@@ -3,7 +3,6 @@ package me.andpay.apos.cmview.tispinner;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.database.DataSetObserver;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -33,14 +32,17 @@ public class TiSpinnerAdapter extends BaseAdapter {
 		return position;
 	}
 
+	@Override
 	public int getItemViewType(int position) {
 		return position;
 	}
 
+	@Override
 	public int getViewTypeCount() {
 		return tiSpinnerItemems.size();
 	}
 
+	@Override
 	public boolean isEmpty() {
 		return false;
 	}

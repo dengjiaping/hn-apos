@@ -3,8 +3,6 @@ package me.andpay.apos.tam.action.txn;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.util.Log;
-
 import me.andpay.ac.term.api.txn.TxnExtAttrNames;
 import me.andpay.ac.term.api.txn.TxnRequest;
 import me.andpay.apos.cdriver.model.AposICCardDataInfo;

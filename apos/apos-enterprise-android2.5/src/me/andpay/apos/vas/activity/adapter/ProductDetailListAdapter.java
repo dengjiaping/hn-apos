@@ -27,6 +27,7 @@ public class ProductDetailListAdapter extends BaseAdapter {
 	public int getCount() {
 		return ShoppingCartCenter.getShoppingCart().getItemsList().size();
 	}
+	
 
 	public Object getItem(int position) {
 		return ShoppingCartCenter.getShoppingCart().getItemsList().get(position);

@@ -18,6 +18,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
 import android.view.View.OnClickListener;
@@ -97,7 +98,7 @@ public class SmsChallengeActivity extends AposBaseActivity {
 		explanation = explanation.replace(INITIAL_NUMBER, phoneNumber);
 		SpannableStringBuilder style = new SpannableStringBuilder(explanation);
 		style.setSpan(new ForegroundColorSpan(Color.parseColor("#2e86ca")), 22,
-				33, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+				33, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
 		explanationTextView.setText(style);
 	}
 

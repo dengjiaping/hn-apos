@@ -480,6 +480,7 @@ public class TxnDetailActivity extends AposBaseActivity implements
 			this.dialog = dialog;
 		}
 
+		@Override
 		public void afterRequest(ModelAndView mv) {
 			DialogUtil.setDialogAllowClose(dialog.getDialog(), true);
 			dialog.cancel();

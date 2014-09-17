@@ -62,6 +62,7 @@ public class ScmFeedbackActivity extends AposBaseActivity {
 
 	public String getErrorMsg() {
 		return errorMsg;
+	
 	}
 
 	public String getOperationMsg() {

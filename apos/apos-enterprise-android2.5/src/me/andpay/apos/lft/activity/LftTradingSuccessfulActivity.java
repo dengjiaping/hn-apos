@@ -1,8 +1,8 @@
 package me.andpay.apos.lft.activity;
 
-import roboguice.inject.ContentView;
 import me.andpay.apos.R;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import roboguice.inject.ContentView;
 /**
  * 交易成功界面
  * @author Administrator

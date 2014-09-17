@@ -29,6 +29,7 @@ public class LoginUpdateCallback extends DefaultUpdateCallback {
 		super(activity, manager);
 	}
 
+	@Override
 	public void checkUpdateCompleted(Boolean hasUpdate, CharSequence updateInfo) {
 		if (!hasUpdate) {
 			if (ReflectUtil.isImplInterface(this.activity.getClass(),
@@ -87,6 +88,7 @@ public class LoginUpdateCallback extends DefaultUpdateCallback {
 		this.checkUpdateCompleted(false, "");
 	}
 
+	@Override
 	public void downloadCompleted(Boolean sucess, CharSequence errorMsg) {
 		if (updateProgressDialog != null && updateProgressDialog.isShowing()) {
 			updateProgressDialog.dismiss();

@@ -45,6 +45,7 @@ public class ScmFeedBackAlertActivity extends AposBaseActivity{
 	@Override
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
+		
 	}
 	
 	@Override

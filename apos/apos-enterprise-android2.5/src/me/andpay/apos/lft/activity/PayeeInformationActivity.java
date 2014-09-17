@@ -5,7 +5,6 @@ import java.util.Map;
 
 import me.andpay.apos.R;
 import me.andpay.apos.common.activity.AposBaseActivity;
-
 import me.andpay.apos.lft.data.OftenUser;
 import me.andpay.apos.lft.even.PayeeBankNumberTextWatcherEventControl;
 import me.andpay.apos.lft.even.PayeeIfmTextWatcherEventControl;

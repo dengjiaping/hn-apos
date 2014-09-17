@@ -25,8 +25,10 @@ public class InfoDataUpdateCallbackHandler extends AfterProcessWithErrorHandler 
 		this.adapter = refActivty.getAdapter();
 		this.isRefresh = isRefresh;
 		this.refActivty = refActivty;
+		
 	}
 
+	@Override
 	public void afterRequest(ModelAndView mv) {
 		LinkedList<PayTxnInfo> infos = (LinkedList<PayTxnInfo>) mv
 				.getValue("infoList");

@@ -27,6 +27,7 @@ public class StlTxnDataUpdateCallbackHandler extends AfterProcessWithErrorHandle
 		this.refActivty = refActivty;
 	}
 
+	@Override
 	public void afterRequest(ModelAndView mv) {
 		LinkedList<PayTxnInfo> infos = (LinkedList<PayTxnInfo>) mv
 				.getValue("txnList");
@@ -38,6 +39,7 @@ public class StlTxnDataUpdateCallbackHandler extends AfterProcessWithErrorHandle
 	public void processNetworkError() {
 		stopListView();
 		showError();
+		
 	}
 	
 	@Override

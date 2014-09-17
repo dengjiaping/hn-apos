@@ -4,21 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.text.TextWatcher;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectView;
 import me.andpay.apos.R;
+import me.andpay.apos.base.adapter.AdpterEventListener;
+import me.andpay.apos.base.adapter.BaseAdapter;
 import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.lft.adapter.AdpterEventListener;
-import me.andpay.apos.lft.adapter.BaseAdapter;
-import me.andpay.apos.lft.adapter.controller.CitySelectController;
+import me.andpay.apos.lft.controller.CitySelectController;
 import me.andpay.apos.lft.even.PayWaterTextWatcherEventControl;
 import me.andpay.apos.lft.flow.CityTable;
 import me.andpay.apos.lft.flow.FlowConstants;
@@ -28,6 +18,16 @@ import me.andpay.apos.lft.view.CustomDialog;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * 缴纳水费

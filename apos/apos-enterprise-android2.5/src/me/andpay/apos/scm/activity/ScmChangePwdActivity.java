@@ -50,6 +50,7 @@ public class ScmChangePwdActivity extends AposBaseActivity implements ValueConta
 
 	public Button getSureButton() {
 		return sureButton;
+		
 	}
 
 	public EditText getOldPwd() {

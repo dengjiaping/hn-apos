@@ -128,8 +128,8 @@ public class TiSpinner extends EditText implements OnClickListener,
 
 	public void showItemSelect(int position) {
 		for (int i = 0; i < texts.size(); i++) {
-			TextView text = (TextView) texts.get(i);
-			ImageView view = (ImageView) images.get(i);
+			TextView text = texts.get(i);
+			ImageView view = images.get(i);
 			if (i == position) {
 				text.setTextColor(getResources().getColor(R.color.com_bule_color));
 				view.setVisibility(View.VISIBLE);

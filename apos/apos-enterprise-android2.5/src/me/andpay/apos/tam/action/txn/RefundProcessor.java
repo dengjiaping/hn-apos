@@ -36,6 +36,7 @@ import android.util.Log;
 
 public class RefundProcessor extends GenTxnProcessor {
 
+	@Override
 	public void reEntryTxn(TxnForm txnForm, TxnCallback callBack) {
 		if (txnForm.getProcessStatus() == TxnForm.PRSTATUS_RESPONSE) {
 			return;
@@ -121,6 +122,7 @@ public class RefundProcessor extends GenTxnProcessor {
 		return refundRequest;
 	}
 
+	@Override
 	public synchronized void dealResponse(TxnResponse txnResponse,
 			TxnForm txnForm, TxnCallback callBack, String errorMsg) {
 
@@ -288,6 +290,7 @@ public class RefundProcessor extends GenTxnProcessor {
 		}
 	}
 
+	@Override
 	protected ExceptionPayTxnInfo genPayTxnInfo(TxnRequest txnRequest,
 			TxnForm txnForm) {
 

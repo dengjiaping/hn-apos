@@ -7,12 +7,10 @@ import me.andpay.apos.cardreader.CardReaderResourceSelector;
 import me.andpay.apos.cardreader.view.SelectCardreaderDialog;
 import me.andpay.apos.cardreader.view.SelectCardreaderDialog.OnDialogItemClickListener;
 import me.andpay.apos.cdriver.CardReaderManager;
-import me.andpay.apos.cdriver.CardReaderTypes;
 import me.andpay.apos.cdriver.callback.CardReaderCallback;
 import me.andpay.apos.cdriver.control.CardReaderInfo;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.cmview.OperationDialog;
-import me.andpay.apos.common.constant.ConfigAttrNames;
 import me.andpay.timobileframework.mvc.support.TiActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,6 +34,7 @@ public class SearchCardreaderCallBack extends DefaultCardReaderCallBack {
 		this.tiActivity = tiActivity;
 	}
 
+	@Override
 	public void seachFoundDevice(final CardReaderInfo cardReaderInfo,
 			final List<CardReaderInfo> cardReaderInfos) {
 

@@ -15,6 +15,7 @@ public class CardreaderWaitPasswordHandler extends GenChangeStatusHander {
 	 * 
 	 * @param txnControl
 	 */
+	@Override
 	protected void changeUI(TxnControl txnControl) {
 		TxnAcitivty txnAcitivty = (TxnAcitivty) txnControl.getCurrActivity();
 		txnAcitivty.topTextView.setText("请输入密码");
@@ -28,6 +29,7 @@ public class CardreaderWaitPasswordHandler extends GenChangeStatusHander {
 	 * 
 	 * 服务提交和资源变更
 	 */
+	@Override
 	protected void changeAction(TxnControl txnControl) {
 
 	}

@@ -1,22 +1,21 @@
 package me.andpay.apos.lft.activity;
 
+import me.andpay.apos.R;
+import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.lft.flow.FlowConstants;
+import me.andpay.apos.lft.flow.PayCostType;
+import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
+import me.andpay.timobileframework.mvc.anno.EventDelegate;
+import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectExtra;
+import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectExtra;
-import roboguice.inject.InjectView;
-import me.andpay.apos.R;
-import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.lft.flow.FlowConstants;
-import me.andpay.apos.lft.flow.PayCostType;
-
-import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
-import me.andpay.timobileframework.mvc.anno.EventDelegate;
-import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
 
 /**
  * 缴费查询

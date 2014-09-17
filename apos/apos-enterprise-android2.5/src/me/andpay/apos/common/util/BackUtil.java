@@ -7,8 +7,6 @@ import me.andpay.apos.cmview.OperationDialog;
 import me.andpay.apos.common.CommonProvider;
 import me.andpay.apos.common.flow.FlowNames;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
-import me.andpay.timobileframework.mvc.context.TiContext;
-import me.andpay.timobileframework.mvc.support.TiApplication;
 import android.app.Activity;
 import android.view.KeyEvent;
 import android.view.View;

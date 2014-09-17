@@ -31,6 +31,7 @@ public class IntentOnclickController extends AbstractEventController {
 	private AposContext aposContext;
 
 	public IntentOnclickController() {
+		
 		intentAction
 				.put(R.id.scm_main_pwd_layout, ScmProvider.SCM_ACTIVITY_PWD);
 		intentAction

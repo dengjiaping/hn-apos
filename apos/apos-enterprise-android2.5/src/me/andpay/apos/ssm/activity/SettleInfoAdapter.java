@@ -27,6 +27,7 @@ public class SettleInfoAdapter extends SsmBaseAdapter<TxnBatch> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		
 		TxnBatch batch = getRerords().get(position);
 		if (convertView == null) {
 			convertView = LayoutInflater.from(

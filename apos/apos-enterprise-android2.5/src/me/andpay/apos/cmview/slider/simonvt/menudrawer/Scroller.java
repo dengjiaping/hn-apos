@@ -341,7 +341,7 @@ public class Scroller  {
         mFinalY = startY + dy;
         mDeltaX = dx;
         mDeltaY = dy;
-        mDurationReciprocal = 1.0f / (float) mDuration;
+        mDurationReciprocal = 1.0f / mDuration;
     }
 
     /**
@@ -369,8 +369,8 @@ public class Scroller  {
         if (mFlywheel && !mFinished) {
             float oldVel = getCurrVelocity();
 
-            float dx = (float) (mFinalX - mStartX);
-            float dy = (float) (mFinalY - mStartY);
+            float dx = mFinalX - mStartX;
+            float dy = mFinalY - mStartY;
             float hyp = FloatMath.sqrt(dx * dx + dy * dy);
 
             float ndx = dx / hyp;

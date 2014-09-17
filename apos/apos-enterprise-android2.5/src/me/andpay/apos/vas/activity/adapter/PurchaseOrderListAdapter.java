@@ -62,6 +62,7 @@ public class PurchaseOrderListAdapter extends TiSectionListAdapter<PurchaseOrder
 		}
 	}
 
+	@Override
 	public void configureSectionView(View header, int section, int alpha) {
 		TextView lSectionTitle = (TextView) header
 				.findViewById(R.id.vas_purchase_order_section_tv);

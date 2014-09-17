@@ -159,14 +159,14 @@ public class TxnCallbackImpl implements TxnCallback, CloudPosCallback,
 	 */
 	public void pushOrderSucc(String cloudOrderId) {
 		if (delegate != null) {
-			((CloudPosCallback) delegate).pushOrderSucc(cloudOrderId);
+			delegate.pushOrderSucc(cloudOrderId);
 		}
 
 	}
 
 	public void pushOrderNetworkError(String errorMsg) {
 		if (delegate != null) {
-			((CloudPosCallback) delegate).pushOrderNetworkError(errorMsg);
+			delegate.pushOrderNetworkError(errorMsg);
 		}
 	}
 

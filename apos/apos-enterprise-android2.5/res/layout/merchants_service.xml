@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ms_top_layout"
+        style="@style/com_native_top_style"
+        android:layout_width="match_parent" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/ms_home_title_str" />
+
+        <ImageView
+            android:id="@+id/ms_show_silder_btn"
+            style="@style/com_slider_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ms_reconciliation_layout"
+        style="@style/scm_layout_style" >
+
+        <ImageView
+            android:id="@+id/ms_reconciliation_icon_img"
+            style="@style/scm_image_icon_style"
+            android:background="@drawable/topup_icon" />
+
+        <TextView
+            style="@style/scm_text_style"
+            android:layout_toRightOf="@id/ms_reconciliation_icon_img"
+            android:text="@string/ms_home_reconciliation_str" />
+
+        <ImageView style="@style/scm_right_icon_style" />
+    </RelativeLayout>
+
+    <ImageView style="@style/scm_line_image_style" />
+
+    <RelativeLayout
+        android:id="@+id/ms_error_dispose_layout"
+        style="@style/scm_layout_style" >
+
+        <ImageView
+            android:id="@+id/ms_error_dispose_icon_img"
+            style="@style/scm_image_icon_style"
+            android:background="@drawable/electricity_icon" />
+
+        <TextView
+            style="@style/scm_text_style"
+            android:layout_toRightOf="@id/ms_error_dispose_icon_img"
+            android:text="@string/ms_home_error_dispose_str" />
+
+        <ImageView style="@style/scm_right_icon_style" />
+    </RelativeLayout>
+
+    <ImageView style="@style/scm_line_image_style" />
+
+    <RelativeLayout
+        android:id="@+id/ms_message_manager_layout"
+        style="@style/scm_layout_style" >
+
+        <ImageView
+            android:id="@+id/ms_message_manager_icon_img"
+            style="@style/scm_image_icon_style"
+            android:background="@drawable/water_icon" />
+
+        <TextView
+            style="@style/scm_text_style"
+            android:layout_toRightOf="@id/ms_message_manager_icon_img"
+            android:text="@string/ms_home_message_manager_str" />
+
+        <ImageView style="@style/scm_right_icon_style" />
+    </RelativeLayout>
+
+    <ImageView style="@style/scm_line_image_style" />
+
+    
+
+   
+</LinearLayout>

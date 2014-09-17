@@ -22,6 +22,7 @@ public class QueryTxnListAfterProcessHandler extends AfterProcessWithErrorHandle
 		this.form = form;
 	}
 
+	@Override
 	public void afterRequest(ModelAndView mv) {
 
 		LinkedList<PayTxnInfo> infos = (LinkedList<PayTxnInfo>) mv.getValue("txnList");

@@ -28,6 +28,7 @@ public class UpdateSettleCallbackImpl extends AfterProcessWithErrorHandler {
 	public void processNetworkError() {
 		stopListView();
 		showError();
+		
 	}
 
 	@Override

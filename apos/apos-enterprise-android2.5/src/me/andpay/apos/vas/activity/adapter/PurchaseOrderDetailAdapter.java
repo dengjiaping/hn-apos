@@ -159,6 +159,7 @@ public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem>
 		}
 	}
 
+	@Override
 	public void configureSectionView(View header, int section, int alpha) {
 		TextView lSectionTitle = (TextView) header
 				.findViewById(R.id.vas_purchase_order_section_tv);
@@ -168,7 +169,7 @@ public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem>
 	@Override
 	public View getSectionItemView(int sectionIndex, int itemIndex, View convertView,
 			ViewGroup parent) {
-		DetailItem item = (DetailItem) this.getSectionItem(sectionIndex, itemIndex);
+		DetailItem item = this.getSectionItem(sectionIndex, itemIndex);
 		View view = LayoutInflater.from(applicationContext).inflate(
 				R.layout.vas_purchaseorder_detail_list_item_layout, null);
 		((ImageView) view.findViewById(R.id.vas_purchase_order_item_img))

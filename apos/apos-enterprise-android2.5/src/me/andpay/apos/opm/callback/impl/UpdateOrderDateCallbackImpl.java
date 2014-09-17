@@ -23,7 +23,9 @@ public class UpdateOrderDateCallbackImpl extends AfterProcessWithErrorHandler {
 		super(activity);
 		orderPayListActivity = activity;
 		this.refresh = refresh;
+	
 	}
+	
 	@Override
 	public void processNetworkError() {
 		stopListView();

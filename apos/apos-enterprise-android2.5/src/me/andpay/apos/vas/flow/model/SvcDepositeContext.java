@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.SortedMap;
 
 import android.app.Application;
-
 import me.andpay.apos.R;
 import me.andpay.apos.common.util.ResourceUtil;
 import me.andpay.ti.util.JacksonSerializer;

@@ -10,6 +10,7 @@ import me.andpay.timobileframework.mvc.anno.CallBackHandler;
 public class QueryBalanceCallBackImpl extends TxnCallbackImpl implements
 		TxnCallback {
 
+	@Override
 	public void txnSuccess(TxnActionResponse txnActionResponse) {
 		if (txnControl.getTxnDialog().isShowing()) {
 			TxnCallbackHelper.clearAc(txnControl);

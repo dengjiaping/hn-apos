@@ -66,6 +66,7 @@ public class FeedBackSendButtonController extends AbstractEventController {
 			onClick(TiAndroidRuntimeInfo.getCurrentActivity(), null, null);
 		}
 
+		@Override
 		public void afterRequest(ModelAndView mv) {
 			dialog.cancel();
 			Boolean sendFlag = (Boolean) mv.getValue("sendSucc");

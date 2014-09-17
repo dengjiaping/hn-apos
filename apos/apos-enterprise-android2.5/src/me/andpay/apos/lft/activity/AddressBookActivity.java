@@ -2,8 +2,17 @@ package me.andpay.apos.lft.activity;
 
 import java.util.ArrayList;
 
-import com.google.inject.Inject;
-
+import me.andpay.apos.R;
+import me.andpay.apos.base.adapter.AdpterEventListener;
+import me.andpay.apos.base.adapter.BaseAdapter;
+import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.lft.controller.PhoneNumberController;
+import me.andpay.apos.lft.data.PhoneNumber;
+import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
+import me.andpay.timobileframework.mvc.anno.EventDelegate;
+import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
 import android.content.ContentResolver;
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -13,18 +22,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectView;
-import me.andpay.apos.R;
-import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.lft.adapter.AdpterEventListener;
-import me.andpay.apos.lft.adapter.BaseAdapter;
-import me.andpay.apos.lft.adapter.BaseAdapterController;
-import me.andpay.apos.lft.adapter.controller.PhoneNumberController;
-import me.andpay.apos.lft.data.PhoneNumber;
-import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
-import me.andpay.timobileframework.mvc.anno.EventDelegate;
-import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+
+import com.google.inject.Inject;
 
 /**
  * 手机通讯录

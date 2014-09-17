@@ -573,6 +573,7 @@ public class PullActivateLayout extends FrameLayout {
 			snapToToolViewBottom();
 	}
 
+	@Override
 	protected int computeVerticalScrollRange() {
 		int scrollRange = getHeight();
 		if (mTargetView != null) {

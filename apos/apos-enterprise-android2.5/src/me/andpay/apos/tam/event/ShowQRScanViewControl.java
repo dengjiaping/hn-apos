@@ -31,6 +31,7 @@ public class ShowQRScanViewControl extends AbstractEventController {
 //			return;
 //		}
 //		
+		
 		if (amt.length() < 0
 				|| amt.toString()
 						.equals(activity.getResources().getString(

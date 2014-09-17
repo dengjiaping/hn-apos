@@ -3,7 +3,6 @@ package me.andpay.apos.common;
 import me.andpay.apos.lam.activity.FirstPageActivity;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Looper;
 
 /**
  * jvm内存记录器

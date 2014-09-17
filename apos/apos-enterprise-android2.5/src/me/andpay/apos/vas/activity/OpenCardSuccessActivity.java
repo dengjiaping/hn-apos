@@ -46,6 +46,7 @@ public class OpenCardSuccessActivity extends AposBaseActivity {
 	
 	private OpenCardContext openCardContext;
 	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
@@ -91,6 +92,7 @@ public class OpenCardSuccessActivity extends AposBaseActivity {
 		request.submit();
 	}
 
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

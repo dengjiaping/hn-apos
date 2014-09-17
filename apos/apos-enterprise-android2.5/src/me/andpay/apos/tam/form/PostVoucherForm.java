@@ -25,6 +25,7 @@ public class PostVoucherForm {
 	/**
 	 * 邮箱
 	 */
+	
 	@ParamId(R.id.tam_post_email_edit)
 	@FieldValidate.EMAIL
 	private String email;

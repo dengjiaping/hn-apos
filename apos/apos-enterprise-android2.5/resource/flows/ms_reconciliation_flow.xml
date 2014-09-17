@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram
+    begin-node="start"
+    version="1.0" >
+
+    <flow-node
+        node-name="start"
+        
+        ref-activity="me.andpay.apos.merchantservice.activity.MsReconciliationActivity" >
+
+        <node-complete
+            identity="success"
+            ref-activity="me.andpay.apos.message.activity.MessageDeatailActivity" />
+    </flow-node>
+
+</flow-diagram>

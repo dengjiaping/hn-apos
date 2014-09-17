@@ -16,5 +16,6 @@ public class PhoneBtnClickController extends AbstractEventController {
 				+ ResourceUtil.getString(refActivty, R.string.config_service_phonenumber_str)));
 		
 		refActivty.startActivity(myIntentDial);
+		
 	}
 }

@@ -62,6 +62,7 @@ public class SettleInfoSendActivity extends AposBaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		batchId = getIntent().getLongExtra("batchId", 0l);
+	
 	}
 
 	public Long getBatchId() {

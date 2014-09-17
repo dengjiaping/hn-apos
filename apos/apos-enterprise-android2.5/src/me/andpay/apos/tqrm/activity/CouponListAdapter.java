@@ -29,6 +29,7 @@ public class CouponListAdapter extends TiSectionListAdapter<CouponRedeemList> {
 		this.queryCouponCondForm = queryCouponCondForm;
 	}
 
+	@Override
 	public long getItemId(int position) {
 		return position;
 	}
@@ -65,6 +66,7 @@ public class CouponListAdapter extends TiSectionListAdapter<CouponRedeemList> {
 		}
 	}
 	
+	@Override
 	public void configureSectionView(View header, int section, int alpha) {
 		TextView lSectionTitle = (TextView) header
 				.findViewById(R.id.vas_purchase_order_section_tv);
@@ -81,7 +83,7 @@ public class CouponListAdapter extends TiSectionListAdapter<CouponRedeemList> {
 	@Override
 	public View getSectionItemView(int sectionIndex, int itemIndex, View convertView,
 			ViewGroup parent) {
-		final CouponRedeemList couponInfo = (CouponRedeemList) this.getSectionItem(
+		final CouponRedeemList couponInfo = this.getSectionItem(
 				sectionIndex, itemIndex);
 		CouponItemViewHolder holder = null;
 		if (convertView == null) {

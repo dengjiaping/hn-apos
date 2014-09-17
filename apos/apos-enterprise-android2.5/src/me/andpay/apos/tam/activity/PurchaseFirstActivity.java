@@ -228,7 +228,7 @@ public class PurchaseFirstActivity extends AposBaseActivity implements
 			}
 		} else if (requestCode == TiCalculatorConfigs.CALCULATOR_REQUEST_CODE) {
 
-			String caResult = (String) intent
+			String caResult = intent
 					.getStringExtra(TiCalculatorConfigs.CALCULATOR_RESULT);
 
 			BigDecimal amtBig = BigDecimal.ZERO;
@@ -255,6 +255,7 @@ public class PurchaseFirstActivity extends AposBaseActivity implements
 		this.txnSunmit();
 	}
 
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

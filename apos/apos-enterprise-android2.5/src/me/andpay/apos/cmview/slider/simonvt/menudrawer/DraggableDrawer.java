@@ -186,7 +186,8 @@ public abstract class DraggableDrawer extends MenuDrawer {
         mCloseEnough = dpToPx(DraggableDrawer.CLOSE_ENOUGH);
     }
 
-    public void toggleMenu(boolean animate) {
+    @Override
+	public void toggleMenu(boolean animate) {
         if (mDrawerState == STATE_OPEN || mDrawerState == STATE_OPENING) {
             closeMenu(animate);
         } else if (mDrawerState == STATE_CLOSED || mDrawerState == STATE_CLOSING) {
@@ -194,11 +195,13 @@ public abstract class DraggableDrawer extends MenuDrawer {
         }
     }
 
-    public boolean isMenuVisible() {
+    @Override
+	public boolean isMenuVisible() {
         return mMenuVisible;
     }
 
-    public void setMenuSize(final int size) {
+    @Override
+	public void setMenuSize(final int size) {
         mMenuSize = size;
         mMenuSizeSet = true;
         if (mDrawerState == STATE_OPEN || mDrawerState == STATE_OPENING) {
@@ -208,7 +211,8 @@ public abstract class DraggableDrawer extends MenuDrawer {
         invalidate();
     }
 
-    public void setOffsetMenuEnabled(boolean offsetMenu) {
+    @Override
+	public void setOffsetMenuEnabled(boolean offsetMenu) {
         if (offsetMenu != mOffsetMenu) {
             mOffsetMenu = offsetMenu;
             requestLayout();
@@ -216,19 +220,23 @@ public abstract class DraggableDrawer extends MenuDrawer {
         }
     }
 
-    public boolean getOffsetMenuEnabled() {
+    @Override
+	public boolean getOffsetMenuEnabled() {
         return mOffsetMenu;
     }
 
-    public void peekDrawer() {
+    @Override
+	public void peekDrawer() {
         peekDrawer(DEFAULT_PEEK_START_DELAY, DEFAULT_PEEK_DELAY);
     }
 
-    public void peekDrawer(long delay) {
+    @Override
+	public void peekDrawer(long delay) {
         peekDrawer(DEFAULT_PEEK_START_DELAY, delay);
     }
 
-    public void peekDrawer(final long startDelay, final long delay) {
+    @Override
+	public void peekDrawer(final long startDelay, final long delay) {
         if (startDelay < 0) {
             throw new IllegalArgumentException("startDelay must be zero or larger.");
         }
@@ -248,7 +256,8 @@ public abstract class DraggableDrawer extends MenuDrawer {
         postDelayed(mPeekStartRunnable, startDelay);
     }
 
-    public void setHardwareLayerEnabled(boolean enabled) {
+    @Override
+	public void setHardwareLayerEnabled(boolean enabled) {
         if (enabled != mHardwareLayersEnabled) {
             mHardwareLayersEnabled = enabled;
             mMenuContainer.setHardwareLayersEnabled(enabled);
@@ -257,22 +266,26 @@ public abstract class DraggableDrawer extends MenuDrawer {
         }
     }
 
-    public int getTouchMode() {
+    @Override
+	public int getTouchMode() {
         return mTouchMode;
     }
 
-    public void setTouchMode(int mode) {
+    @Override
+	public void setTouchMode(int mode) {
         if (mTouchMode != mode) {
             mTouchMode = mode;
             updateTouchAreaSize();
         }
     }
 
-    public void setTouchBezelSize(int size) {
+    @Override
+	public void setTouchBezelSize(int size) {
         mTouchBezelSize = size;
     }
 
-    public int getTouchBezelSize() {
+    @Override
+	public int getTouchBezelSize() {
         return mTouchBezelSize;
     }
 
@@ -656,12 +669,14 @@ public abstract class DraggableDrawer extends MenuDrawer {
      */
     protected abstract void drawIndicator(Canvas canvas, int offsetPixels);
 
-    void saveState(Bundle state) {
+    @Override
+	void saveState(Bundle state) {
         final boolean menuVisible = mDrawerState == STATE_OPEN || mDrawerState == STATE_OPENING;
         state.putBoolean(STATE_MENU_VISIBLE, menuVisible);
     }
 
-    public void restoreState(Parcelable in) {
+    @Override
+	public void restoreState(Parcelable in) {
         super.restoreState(in);
         Bundle state = (Bundle) in;
         final boolean menuOpen = state.getBoolean(STATE_MENU_VISIBLE);

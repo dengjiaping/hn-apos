@@ -1,7 +1,5 @@
 package me.andpay.apos.tam.callback;
 
-import me.andpay.apos.tam.form.TxnForm;
-
 /**
  * 云Pos操作类
  * 

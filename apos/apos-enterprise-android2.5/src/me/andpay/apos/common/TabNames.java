@@ -7,6 +7,8 @@ package me.andpay.apos.common;
  *
  */
 public class TabNames {
+	public final static String MSERVICE_PAGE="ms";//商户服务
+	public final static String MMAKING_PAGE="mmk";//商户营销
 	public final static String MESSAGE_PAGE="msg";//通知公告
 	public final static String LEFT_PAGE="lft";//便民服务
 	

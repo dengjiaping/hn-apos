@@ -102,6 +102,7 @@ public class UpdateManager extends AfterProcessWithErrorHandler {
 		request.submit();
 	}
 
+	@Override
 	public void afterRequest(ModelAndView mv) {
 		Boolean isUpdate = (Boolean) mv.getValue("isUpdate");
 		if (!isUpdate) {
@@ -118,6 +119,7 @@ public class UpdateManager extends AfterProcessWithErrorHandler {
 		callback.checkUpdateCompleted(isUpdate, updateInfo);
 	}
 
+	@Override
 	public void processThrowable(ThrowableInfo info) {
 		callback.processThrowable(info);
 	}

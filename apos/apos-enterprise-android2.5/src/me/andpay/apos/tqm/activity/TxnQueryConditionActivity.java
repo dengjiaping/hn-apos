@@ -100,6 +100,7 @@ public class TxnQueryConditionActivity extends AposBaseActivity implements Value
 	@InjectView(R.id.tqm_hascondition_image)
 	public ImageView hasCondImg;
 
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		initTxnTypeSpinner();

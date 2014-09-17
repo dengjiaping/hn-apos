@@ -59,6 +59,7 @@ public class PurchaseProcessor extends GenTxnProcessor {
 	@Inject
 	private ICCardInfoDao idCardInfoDao;
 
+	@Override
 	public void reEntryTxn(TxnForm txnForm, TxnCallback callBack) {
 
 		if (txnForm.getProcessStatus() == TxnForm.PRSTATUS_RESPONSE) {
@@ -76,6 +77,7 @@ public class PurchaseProcessor extends GenTxnProcessor {
 		}
 	}
 
+	@Override
 	public void processTxn(ActionRequest request) {
 
 		Log.e(this.getClass().getName(), "txn start");
@@ -368,6 +370,7 @@ public class PurchaseProcessor extends GenTxnProcessor {
 	/**
 	 * 
 	 */
+	@Override
 	public synchronized void dealResponse(TxnResponse txnResponse,
 			TxnForm txnForm, TxnCallback callBack, String hasDealErrorMsg) {
 

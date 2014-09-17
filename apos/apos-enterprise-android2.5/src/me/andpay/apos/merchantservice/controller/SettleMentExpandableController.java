@@ -1,0 +1,75 @@
+package me.andpay.apos.merchantservice.controller;
+
+import me.andpay.apos.R;
+import me.andpay.apos.base.adapter.BaseExpandableAdapterController;
+import me.andpay.apos.merchantservice.data.SelementOrder;
+import me.andpay.timobileframework.mvc.support.TiApplication;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class SettleMentExpandableController extends
+		BaseExpandableAdapterController<SelementOrder> {
+	private LayoutInflater inflater = LayoutInflater.from(TiApplication
+			.getContext());
+
+	@Override
+	public View getChildView(int arg0, int arg1, boolean arg2, View arg3,
+			ViewGroup arg4) {
+		// TODO Auto-generated method stub
+		Holder holder;
+		if (arg3 == null) {
+			arg3 = inflater.inflate(R.layout.settlement_order_item, null);
+			holder = new Holder();
+			holder.title = (TextView)arg3.findViewById(R.id.settlement_order_item_title);
+            holder.trandingType = (TextView)arg3.findViewById(R.id.settlement_order_item_tranding_type);
+            holder.time = (TextView)arg3.findViewById(R.id.settlement_order_item_time);
+            holder.trandingAccounts = (TextView)arg3.findViewById(R.id.settlement_order_item_tranding_accounts);
+            holder.merchantsCost = (TextView)arg3.findViewById(R.id.settlement_order_item_merchants_cost);
+            holder.settleMentAccounts = (TextView)arg3.findViewById(R.id.settlement_order_item_settlement_accounts);
+            arg3.setTag(holder);
+		}else{
+			
+			holder = (Holder)arg3.getTag();
+		}
+		SelementOrder order = getAdapter().getList().get(arg0).get(arg1);
+		holder.title.setText(order.getTitle());
+		holder.trandingType.setText(order.getTradingType());
+		holder.time.setText(order.getTime());
+		holder.trandingAccounts.setText(order.getSettlementAccount());
+		holder.merchantsCost.setText(order.getMerchantsCost());
+		holder.settleMentAccounts.setText(order.getSettlementAccount());
+		return arg3;
+	}
+
+	@Override
+	public View getGroupView(int arg0, boolean arg1, View arg2, ViewGroup arg3) {
+		// TODO Auto-generated method stub
+		if (arg2 == null) {
+			arg2 = inflater.inflate(R.layout.head_data_item, null);
+		}
+		TextView time = (TextView) arg2.findViewById(R.id.head_data_item_time);
+		SelementOrder order = getAdapter().getList().get(0).get(0);
+		time.setText(order.getTime());
+
+		return arg2;
+	}
+
+	class Holder {
+		/* 标题 */
+		TextView title;
+		/* 交易类型 */
+		TextView trandingType;
+		/* 时间 */
+		TextView time;
+		/* 交易金额 */
+		TextView trandingAccounts;
+		/* 商家花费 */
+		TextView merchantsCost;
+		/* 结算金额 */
+		TextView settleMentAccounts;
+
+	}
+
+}

@@ -3,9 +3,10 @@ package me.andpay.apos.cmview;
 import java.util.HashMap;
 import java.util.Map;
 
+import me.andpay.apos.R;
+
 import com.google.common.eventbus.EventBus;
 
-import me.andpay.apos.R;
 import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;

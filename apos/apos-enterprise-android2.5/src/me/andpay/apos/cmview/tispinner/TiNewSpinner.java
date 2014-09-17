@@ -55,7 +55,7 @@ public class TiNewSpinner extends TextView implements OnClickListener,
 	public void onClick(View v) {
 		dialog.show();
 		InputMethodManager im = ((InputMethodManager)context 
-				.getSystemService(Activity.INPUT_METHOD_SERVICE));
+				.getSystemService(Context.INPUT_METHOD_SERVICE));
 		im.hideSoftInputFromWindow(this.getWindowToken(), 0);
 		siAdapter.notifyDataSetChanged();
 	}

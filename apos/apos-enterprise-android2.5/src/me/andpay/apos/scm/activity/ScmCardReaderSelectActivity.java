@@ -79,6 +79,7 @@ public class ScmCardReaderSelectActivity extends AposBaseActivity {
 //	@Override@InjectView(R.id.scm_qr_scan_btn)
 //	@EventDelegate(delegateClass = OnClickListener.class, toEventController = QRScanNextEventController.class)
 //	public ImageView qrScanButton;
+	@Override
 	protected void onResumeProcess() {
 		super.onResumeProcess();
 

@@ -17,6 +17,7 @@ public class QueryPoListAfterProcessHandler extends AfterProcessWithErrorHandler
 		this.activity = activity;
 	}
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public void afterRequest(ModelAndView mv) {
 		if (activity.getAdapter() != null) {

@@ -39,6 +39,7 @@ public class RefundPwdDialogSureClick implements OnClickListener {
 	private CommonDialog dialog = null;
 
 	public RefundPwdDialogSureClick(Dialog pwdDialog, TiActivity refActivity) {
+		
 		this.password = (EditText) pwdDialog
 				.findViewById(R.id.trm_refund_dialog_pwd_ev);
 		this.userid = ((TextView) pwdDialog
@@ -75,6 +76,7 @@ public class RefundPwdDialogSureClick implements OnClickListener {
 			super(activity);
 		}
 
+		@Override
 		public void afterRequest(ModelAndView mv) {
 			boolean result = (Boolean) mv.getValue("checkResult");
 			String errorMsg = (String) mv.getValue("errorMsg");
@@ -85,6 +87,7 @@ public class RefundPwdDialogSureClick implements OnClickListener {
 			}
 		}
 
+		@Override
 		protected void refreshAfterNetworkError() {
 			dialog.cancel();
 			onClick(null);

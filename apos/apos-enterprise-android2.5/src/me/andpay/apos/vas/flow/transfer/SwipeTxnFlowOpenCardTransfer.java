@@ -6,7 +6,6 @@ import java.util.Map;
 import me.andpay.apos.tam.flow.model.TxnContext;
 import me.andpay.apos.vas.flow.model.OpenCardContext;
 import me.andpay.apos.vas.flow.model.ProductSalesContext;
-import me.andpay.apos.vas.flow.model.PurchaseOrderFaildContext;
 import me.andpay.timobileframework.flow.TiFlowNodeComplete;
 import me.andpay.timobileframework.flow.TiFlowNodeDataTransfer;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;

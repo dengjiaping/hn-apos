@@ -44,6 +44,9 @@ public class MenuViewController implements OnClickListener,
 	private  RelativeLayout leftServeLayout;//生活服务
 	private RelativeLayout messageLayout;//通知公告
 	
+	private RelativeLayout mserviceLayout;//特约商户服务
+	private RelativeLayout mMarkingLayout;//特约商户营销
+	
 	
 
 	private ImageView purImageView;
@@ -57,6 +60,10 @@ public class MenuViewController implements OnClickListener,
 	private ImageView settleImageView;
 	private ImageView lefeServeImageView;//生活服务
 	private ImageView messageImageView;//消息
+	
+	private ImageView mserviceImageView;//特约商户服务
+	private ImageView mMarkingImageView;//特约商户营销
+	
 
 	public Map<String, RelativeLayout> layoutMaps = new HashMap<String, RelativeLayout>();
 
@@ -135,6 +142,13 @@ public class MenuViewController implements OnClickListener,
 			homeActivity.changeView(TabNames.MESSAGE_PAGE);//切换页面
 			changeViewState(v);//标志状态
 
+		}else if(v.getId()==mserviceLayout.getId()){//商户特约服务
+			homeActivity.changeView(TabNames.MSERVICE_PAGE);
+			changeViewState(v);//标志状态
+			
+		}else if(v.getId()==mMarkingLayout.getId()){//商户特约营销
+			homeActivity.changeView(TabNames.MMAKING_PAGE);
+			changeViewState(v);//标志状态
 		}
 		
 //		else if (v.getId() == vaserviceLayout.getId()) {
@@ -173,7 +187,8 @@ public class MenuViewController implements OnClickListener,
 		
 		leftServeLayout = (RelativeLayout)menuView.findViewById(R.id.com_menu_left_serve_lay);
 		messageLayout = (RelativeLayout)menuView.findViewById(R.id.com_menu_message_lay);
-
+        mserviceLayout =(RelativeLayout)menuView.findViewById(R.id.com_menu_mservice_lay);
+        mMarkingLayout = (RelativeLayout)menuView.findViewById(R.id.com_menu_mMarketing_lay);
 		purLayout = (RelativeLayout) menuView
 				.findViewById(R.id.com_menu_pur_lay);
 //		transferLayout = (RelativeLayout) menuView
@@ -208,6 +223,11 @@ public class MenuViewController implements OnClickListener,
 		
 		messageImageView = (ImageView)menuView.findViewById(R.id.com_memu_message_img);
 		lefeServeImageView = (ImageView)menuView.findViewById(R.id.com_memu_left_serve_img);
+		
+		
+		mserviceImageView =(ImageView)menuView.findViewById(R.id.com_memu_mservice_img);
+        mMarkingImageView = (ImageView)menuView.findViewById(R.id.com_memu_mMarketing_img);
+		
 		purImageView = (ImageView) menuView
 				.findViewById(R.id.com_memu_pur_line_img);
 //		transferImageView = (ImageView) menuView
@@ -285,6 +305,9 @@ public class MenuViewController implements OnClickListener,
 		settleLayout.setOnClickListener(this);
 		leftServeLayout.setOnClickListener(this);
 		messageLayout.setOnClickListener(this);
+		
+	    mserviceLayout.setOnClickListener(this);//特约商户服务
+		mMarkingLayout.setOnClickListener(this);//特约商户营销
 
 	}
 

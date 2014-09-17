@@ -24,6 +24,7 @@ import android.view.View;
 @HandlerStatus(status = TxnStatus.INIT)
 public class InitStatusHandler extends GenChangeStatusHander {
 
+	@Override
 	protected boolean preAction(TxnControl txnControl) {
 
 		return super.preAction(txnControl);
@@ -35,6 +36,7 @@ public class InitStatusHandler extends GenChangeStatusHander {
 	 * 
 	 * @param txnControl
 	 */
+	@Override
 	public void changeUI(TxnControl txnControl) {
 
 		TxnAcitivty activity = (TxnAcitivty) txnControl.getCurrActivity();

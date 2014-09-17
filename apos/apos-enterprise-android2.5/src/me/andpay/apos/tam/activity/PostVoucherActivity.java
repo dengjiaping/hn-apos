@@ -174,6 +174,7 @@ public class PostVoucherActivity extends AposBaseActivity implements
 		request.submit();
 	}
 
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

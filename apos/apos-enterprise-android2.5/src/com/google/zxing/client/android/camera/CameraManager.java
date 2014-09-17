@@ -17,7 +17,6 @@
 package com.google.zxing.client.android.camera;
 
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import android.content.Context;
@@ -29,7 +28,6 @@ import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.os.Build;
 import android.os.Handler;
-import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.SurfaceHolder;

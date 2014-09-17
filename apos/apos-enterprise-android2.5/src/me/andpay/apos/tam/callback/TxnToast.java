@@ -21,10 +21,11 @@ public class TxnToast {
 		ImageView imageCodeProject = new ImageView(activity);
 		imageCodeProject.setImageResource(R.drawable.com_tips_succeed_img);
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		toastView.addView(imageCodeProject, params);
 		toast.show();
 	}
+	
 	
 	
 	public static void showFailed(Activity activity) {
@@ -37,7 +38,7 @@ public class TxnToast {
 		ImageView imageCodeProject = new ImageView(activity);
 		imageCodeProject.setImageResource(R.drawable.com_tips_unsuccessfully_img);
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		toastView.addView(imageCodeProject, params);
 		toast.show();
 	}

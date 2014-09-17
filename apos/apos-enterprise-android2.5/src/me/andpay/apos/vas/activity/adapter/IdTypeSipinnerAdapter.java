@@ -21,6 +21,7 @@ public class IdTypeSipinnerAdapter extends TiSpinnerAdapter {
 		this.activity = activity;
 	}
 
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		TiSpinnerItem item = (TiSpinnerItem) getItem(position);

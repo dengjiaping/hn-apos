@@ -2,7 +2,6 @@ package me.andpay.apos.lft.even;
 
 import android.app.Activity;
 import android.text.Editable;
-import me.andpay.apos.lft.activity.PayElectricityCostActivity;
 import me.andpay.apos.lft.activity.PayWaterCostActivity;
 import me.andpay.timobileframework.mvc.AbstractEventController;
 import me.andpay.timobileframework.mvc.form.FormBean;

@@ -28,6 +28,7 @@ public class QueryCodButtonClickController extends AbstractEventController {
 					TqmProvider.TQM_QUERY_COND_FORM,
 					formByte);
 		}
+		
 		refActivty.startActivityForResult(txnConditionIntent,
 				TqmProvider.TQM_RESULT_CODE_CONDITION);
 	}

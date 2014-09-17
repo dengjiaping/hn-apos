@@ -2,6 +2,16 @@ package me.andpay.apos.lft.activity;
 
 import java.util.ArrayList;
 
+import me.andpay.apos.R;
+import me.andpay.apos.base.adapter.BaseAdapter;
+import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.lft.controller.WaterOrderController;
+import me.andpay.apos.lft.data.WaterOrder;
+import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
+import me.andpay.timobileframework.mvc.anno.EventDelegate;
+import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,19 +19,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.inject.Inject;
-
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectView;
-import me.andpay.apos.R;
-import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.lft.adapter.BaseAdapter;
-import me.andpay.apos.lft.adapter.controller.ElectricityOrderController;
-import me.andpay.apos.lft.adapter.controller.WaterOrderController;
-import me.andpay.apos.lft.data.ElectricityOrder;
-import me.andpay.apos.lft.data.WaterOrder;
-import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
-import me.andpay.timobileframework.mvc.anno.EventDelegate;
-import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
 
 /**
  * 缴纳水费详情

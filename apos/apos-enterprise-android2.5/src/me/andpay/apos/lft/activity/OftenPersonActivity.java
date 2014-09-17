@@ -2,24 +2,24 @@ package me.andpay.apos.lft.activity;
 
 import java.util.ArrayList;
 
-import com.google.inject.Inject;
-
+import me.andpay.apos.R;
+import me.andpay.apos.base.adapter.AdpterEventListener;
+import me.andpay.apos.base.adapter.BaseAdapter;
+import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.lft.controller.OftenPersonController;
+import me.andpay.apos.lft.data.OftenUser;
+import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
+import me.andpay.timobileframework.mvc.anno.EventDelegate;
+import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectView;
-import me.andpay.apos.R;
-import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.lft.adapter.AdpterEventListener;
-import me.andpay.apos.lft.adapter.BaseAdapter;
-import me.andpay.apos.lft.data.OftenUser;
-import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
-import me.andpay.timobileframework.mvc.anno.EventDelegate;
-import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
-import me.andpay.apos.lft.adapter.controller.OftenPersonController;
+
+import com.google.inject.Inject;
 
 @ContentView(R.layout.lft_transfer_accouts_often_person)
 public class OftenPersonActivity extends AposBaseActivity {

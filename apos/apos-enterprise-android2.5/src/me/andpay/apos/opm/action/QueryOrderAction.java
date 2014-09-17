@@ -12,9 +12,7 @@ import me.andpay.apos.common.action.SessionKeepAction;
 import me.andpay.apos.common.constant.RuntimeAttrNames;
 import me.andpay.apos.common.contextdata.LoginUserInfo;
 import me.andpay.apos.common.contextdata.PartyInfo;
-import me.andpay.apos.dao.OrderInfoDao;
 import me.andpay.apos.dao.model.OrderInfo;
-import me.andpay.apos.dao.model.OrderInfoCond;
 import me.andpay.apos.opm.callback.InquiryOrderCallback;
 import me.andpay.apos.opm.form.OrderCondResult;
 import me.andpay.apos.opm.form.OrderConverter;
@@ -24,8 +22,6 @@ import me.andpay.timobileframework.mvc.ModelAndView;
 import me.andpay.timobileframework.mvc.action.ActionMapping;
 import me.andpay.timobileframework.mvc.action.ActionRequest;
 import me.andpay.timobileframework.mvc.context.TiContext;
-
-import com.google.inject.Inject;
 
 @ActionMapping(domain = QueryOrderAction.QUERY_ORDER_ACTION)
 public class QueryOrderAction extends SessionKeepAction {

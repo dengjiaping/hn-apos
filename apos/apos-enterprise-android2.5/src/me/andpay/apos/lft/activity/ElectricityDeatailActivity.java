@@ -2,24 +2,23 @@ package me.andpay.apos.lft.activity;
 
 import java.util.ArrayList;
 
-import com.crashlytics.android.internal.ad;
-import com.google.inject.Inject;
-
+import me.andpay.apos.R;
+import me.andpay.apos.base.adapter.BaseAdapter;
+import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.lft.controller.ElectricityOrderController;
+import me.andpay.apos.lft.data.ElectricityOrder;
+import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
+import me.andpay.timobileframework.mvc.anno.EventDelegate;
+import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectView;
-import me.andpay.apos.R;
-import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.lft.adapter.BaseAdapter;
-import me.andpay.apos.lft.adapter.controller.ElectricityOrderController;
-import me.andpay.apos.lft.data.ElectricityOrder;
-import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
-import me.andpay.timobileframework.mvc.anno.EventDelegate;
-import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+
+import com.google.inject.Inject;
 
 /**
  * 电费详情

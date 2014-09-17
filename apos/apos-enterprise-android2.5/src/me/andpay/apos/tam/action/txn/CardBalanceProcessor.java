@@ -38,12 +38,14 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 		} catch (Exception ex) {
 			dealException(ex, txnForm, callBack);
 		}
+		
 
 	}
 
 	
 	
 	
+	@Override
 	public void processTxn(ActionRequest request){
 
 		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");
@@ -75,6 +77,7 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 /**
  * 返回处理
  */
+	@Override
 	public void dealResponse(TxnResponse txnResponse, TxnForm txnForm,
 			TxnCallback callBack, String errorMsg) {
 		//若交易已返回处理，则直接返回

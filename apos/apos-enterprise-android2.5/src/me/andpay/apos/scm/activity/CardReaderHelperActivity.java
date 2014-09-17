@@ -11,6 +11,7 @@ public class CardReaderHelperActivity extends AposBaseActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 	}
 }

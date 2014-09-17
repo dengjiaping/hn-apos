@@ -21,4 +21,5 @@ public class VasImageResourceUtil {
 		return productImg.get(productType);
 	}
 	
+	
 }

@@ -46,6 +46,7 @@ public class MdsWebViewActivity extends AposBaseActivity {
 				view.loadUrl(url);
 				return false;
 			}
+			@Override
 			public void onPageFinished (WebView view, String url) {
 				
 				if(view.canGoBack()) {

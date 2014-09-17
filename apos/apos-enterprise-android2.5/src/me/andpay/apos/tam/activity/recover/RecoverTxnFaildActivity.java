@@ -39,6 +39,7 @@ public class RecoverTxnFaildActivity extends TiActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		errorMsg = ResourceUtil.getIntentStr(getIntent(), "errorMsg");
+	
 	}
 	
 	@Override

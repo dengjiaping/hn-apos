@@ -4,10 +4,10 @@ import me.andpay.apos.trm.activity.RefundInputActivity;
 import me.andpay.timobileframework.mvc.AbstractEventController;
 import me.andpay.timobileframework.mvc.form.FormBean;
 import android.app.Activity;
+import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 public class AmtEventControl extends AbstractEventController {
 
@@ -19,7 +19,7 @@ public class AmtEventControl extends AbstractEventController {
 		// ac.getFootLayout().setVisibility(View.VISIBLE);
 		// ac.getSolfKeyBoard().showKeyboard((EditText)view);
 		InputMethodManager im = ((InputMethodManager) activity
-				.getSystemService(Activity.INPUT_METHOD_SERVICE));
+				.getSystemService(Context.INPUT_METHOD_SERVICE));
 		im.hideSoftInputFromWindow(ac.getAmtEditText().getWindowToken(), 0);
 		ac.getAmtEditText().requestFocus();
 		return true;

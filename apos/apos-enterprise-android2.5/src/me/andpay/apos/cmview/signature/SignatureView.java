@@ -144,7 +144,7 @@ public class SignatureView extends View {
 
 		for (int i = 0; i < drawSteps; i++) {
 			// Calculate the Bezier (x, y) coordinate for this step.
-			float t = ((float) i) / drawSteps;
+			float t = (i) / drawSteps;
 			float tt = t * t;
 			float ttt = tt * t;
 			float u = 1 - t;

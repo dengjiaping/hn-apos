@@ -62,6 +62,7 @@ public class ScmAboutActivity extends AposBaseActivity {
 		}
 		this.netTv.setText( Html.fromHtml("<u>" + ResourceUtil.getString(this, R.string.config_company_url_str) + "</u>"));
 		versionTv.setText(versionTv.getText() + versionName);
+		
 	}
 
 }

@@ -1,14 +1,13 @@
 package me.andpay.apos.message.controller;
 
+import me.andpay.apos.R;
+import me.andpay.apos.base.adapter.BaseAdapterController;
+import me.andpay.apos.message.data.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import me.andpay.apos.lft.adapter.BaseAdapterController;
-import me.andpay.apos.message.data.Message;
-import me.andpay.apos.R;
 /**
  * 消息通知控制器
  * @author Administrator

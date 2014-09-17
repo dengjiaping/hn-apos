@@ -81,6 +81,7 @@ public class SettleListActivity extends AposBaseActivity implements ValueContain
 		QuerySettleCondForm settleForm = new QuerySettleCondForm();
 		settleForm.setOrders("settleTime-");
 		sendQueryForm(settleForm);
+		
 	}
 
 	public void sendQueryForm(QuerySettleCondForm settleForm) {
@@ -121,6 +122,7 @@ public class SettleListActivity extends AposBaseActivity implements ValueContain
 		// resetCountTvTitle(couponListAdapter.getCount());
 	}
 
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

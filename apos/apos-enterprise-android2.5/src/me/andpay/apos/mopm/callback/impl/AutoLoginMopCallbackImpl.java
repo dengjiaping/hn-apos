@@ -13,11 +13,13 @@ public class AutoLoginMopCallbackImpl extends AutoLoginCallback implements Login
 		super(activity);
 	}
 
+	@Override
 	public void loginSuccess(LoginResponse response) {
 		OrderPayUtil.goToOrderCheck(activity);
 	}
 
 	// TODO更新原理
+	@Override
 	public void updateApp(String errorCode) {
 		loginFaild("当前版本已经停止，请先更新客户端程序");
 	}

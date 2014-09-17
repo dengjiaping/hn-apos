@@ -5,7 +5,6 @@ import java.util.Map;
 
 import me.andpay.ac.consts.PaymentMethods;
 import me.andpay.apos.tam.flow.model.PostVoucherContext;
-import me.andpay.apos.tam.flow.model.TxnContext;
 import me.andpay.apos.vas.flow.model.PurchaseOrderFaildContext;
 import me.andpay.timobileframework.flow.TiFlowNodeComplete;
 import me.andpay.timobileframework.flow.TiFlowNodeDataTransfer;

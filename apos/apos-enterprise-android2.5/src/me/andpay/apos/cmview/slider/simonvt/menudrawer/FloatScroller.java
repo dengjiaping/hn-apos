@@ -129,7 +129,7 @@ public class FloatScroller {
         mStart = start;
         mFinal = start + delta;
         mDeltaX = delta;
-        mDurationReciprocal = 1.0f / (float) mDuration;
+        mDurationReciprocal = 1.0f / mDuration;
     }
 
     /**

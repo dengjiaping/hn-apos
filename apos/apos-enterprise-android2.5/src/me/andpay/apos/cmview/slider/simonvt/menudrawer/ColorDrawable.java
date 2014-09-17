@@ -104,7 +104,8 @@ public class ColorDrawable extends Drawable {
      *
      * @param alpha The alpha value to set, between 0 and 255.
      */
-    public void setAlpha(int alpha) {
+    @Override
+	public void setAlpha(int alpha) {
         alpha += alpha >> 7;   // make it 0..256
         int baseAlpha = mState.mBaseColor >>> 24;
         int useAlpha = baseAlpha * alpha >> 8;
@@ -120,10 +121,12 @@ public class ColorDrawable extends Drawable {
      *
      * @param colorFilter Ignore.
      */
-    public void setColorFilter(ColorFilter colorFilter) {
+    @Override
+	public void setColorFilter(ColorFilter colorFilter) {
     }
 
-    public int getOpacity() {
+    @Override
+	public int getOpacity() {
         switch (mState.mUseColor >>> 24) {
             case 255:
                 return PixelFormat.OPAQUE;

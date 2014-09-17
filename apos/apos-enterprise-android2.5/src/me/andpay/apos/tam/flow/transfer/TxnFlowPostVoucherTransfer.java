@@ -1,7 +1,6 @@
 package me.andpay.apos.tam.flow.transfer;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Map;
 
 import me.andpay.apos.tam.flow.model.PostVoucherContext;

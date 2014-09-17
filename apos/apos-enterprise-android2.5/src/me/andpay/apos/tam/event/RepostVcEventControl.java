@@ -38,6 +38,7 @@ public class RepostVcEventControl extends AbstractEventController {
 				}
 				postForm.setPhone(phone);
 			}
+			
 		}
 		postForm.setTxnId(TiFlowControlImpl.instanceControl()
 				.getFlowContextData(PostVoucherContext.class).getTxnId());

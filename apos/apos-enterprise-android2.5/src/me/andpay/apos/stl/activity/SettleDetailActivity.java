@@ -54,6 +54,7 @@ public class SettleDetailActivity extends AposBaseActivity  {
 		settleAmtText.setText(StringConvertor.convert2Currency(settleOrder.getSettleAmt()));
 //		TextPaint tp = settleAmtText.getPaint(); 
 //		tp.setFakeBoldText(true);
+		
 		settleTimeText.setText(DateUtil.format("yyyy-MM-dd",
 				settleOrder.getSettleTime()));
 		salesText.setText(StringConvertor.convert2Currency(settleOrder.getSalesTxnAmtTotal()));

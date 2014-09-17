@@ -8,6 +8,7 @@ import me.andpay.timobileframework.runtime.TiAndroidRuntimeInfo;
 import me.andpay.timobileframework.util.FileUtil;
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
@@ -35,7 +36,7 @@ public class FeedBackSensorEventListener implements SensorEventListener {
 			return;
 		}
 		mVibrator = (Vibrator) application
-				.getSystemService(Application.VIBRATOR_SERVICE);
+				.getSystemService(Context.VIBRATOR_SERVICE);
 		tiContext = ((TiApplication) application).getContextProvider()
 				.provider(TiContext.CONTEXT_SCOPE_APPLICATION);
 		init = true;
@@ -57,7 +58,7 @@ public class FeedBackSensorEventListener implements SensorEventListener {
 
 				mVibrator.vibrate(100);
 
-				Bitmap bitMap = takeScreenShot((Activity) TiAndroidRuntimeInfo
+				Bitmap bitMap = takeScreenShot(TiAndroidRuntimeInfo
 						.getCurrentActivity());
 				String filePath = FileUtil.bitMapSaveFile(bitMap, application,
 						FileUtil.getMyUUID() + "screen.jpg");

@@ -25,6 +25,7 @@ public class NoCardRefundTxnCallback extends TxnCallbackImpl implements
 		}
 	}
 
+	@Override
 	public void txnSuccess(TxnActionResponse txnActionResponse) {
 		clear();
 		TxnCallbackHelper.convertResponse(txnActionResponse);
@@ -40,6 +41,7 @@ public class NoCardRefundTxnCallback extends TxnCallbackImpl implements
 		// ignore
 	}
 
+	@Override
 	public void showFaild(TxnActionResponse txnActionResponse) {
 
 		clear();
@@ -65,6 +67,7 @@ public class NoCardRefundTxnCallback extends TxnCallbackImpl implements
 				FlowConstants.FAILED_SEPT1, intentData);
 	}
 
+	@Override
 	public void showInputPassword(TxnActionResponse txnActionResponse) {
 		// ignore
 	}
@@ -73,6 +76,7 @@ public class NoCardRefundTxnCallback extends TxnCallbackImpl implements
 		// ignore
 	}
 
+	@Override
 	public void initCallBack(TxnControl txnControl) {
 		activity = (RefundInputActivity) txnControl.getCurrActivity();
 		this.txnControl = txnControl;

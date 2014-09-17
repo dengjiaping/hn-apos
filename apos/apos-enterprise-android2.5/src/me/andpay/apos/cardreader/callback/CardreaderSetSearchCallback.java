@@ -16,6 +16,7 @@ public class CardreaderSetSearchCallback extends DefaultCardReaderCallBack {
 		
 	}
 
+	@Override
 	public void seachDeviceComplete(final List<CardReaderInfo> cardReaderInfos) {
 		bluetoothListActivity.stopSearch();
 		if (cardReaderInfos.size() == 0) {
@@ -35,6 +36,7 @@ public class CardreaderSetSearchCallback extends DefaultCardReaderCallBack {
 
 	}
 
+	@Override
 	public void seachFoundDevice(CardReaderInfo cardReaderInfo,List<CardReaderInfo> cardReaderInfos) {
 
 		bluetoothListActivity.progressLay.setVisibility(android.view.View.GONE);

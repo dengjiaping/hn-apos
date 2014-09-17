@@ -6,7 +6,6 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.hardware.Camera.Size;
 import android.os.Build;

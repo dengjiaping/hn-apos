@@ -1,6 +1,5 @@
 package me.andpay.apos.tam.context.handler;
 
-import me.andpay.apos.R;
 import me.andpay.apos.cardreader.CardReaderResourceSelector;
 import me.andpay.apos.cdriver.CardReaderManager;
 import me.andpay.apos.common.util.APOSGifUtil;

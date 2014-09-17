@@ -4,6 +4,7 @@ import me.andpay.apos.vas.activity.PurchaseQueryCondActivity;
 import me.andpay.timobileframework.mvc.AbstractEventController;
 import me.andpay.timobileframework.mvc.form.FormBean;
 import android.app.Activity;
+import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -19,7 +20,7 @@ public class AmtEventControl extends AbstractEventController {
 		purAc.getFootLayout().setVisibility(View.VISIBLE);
 		purAc.getSolfKeyBoard().showKeyboard((EditText) view);
 		InputMethodManager im = ((InputMethodManager) activity
-				.getSystemService(Activity.INPUT_METHOD_SERVICE));
+				.getSystemService(Context.INPUT_METHOD_SERVICE));
 		im.hideSoftInputFromWindow(purAc.getAmtEditText().getWindowToken(), 0);
 		purAc.getAmtEditText().requestFocus();
 		return true;

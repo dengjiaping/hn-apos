@@ -70,8 +70,39 @@
             </intent-filter>
         </activity>
         -->
+        <!-- 商户服务 -->
+        <activity
+            android:name=".merchantservice.activity.MerchantsServiceActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.MerchantsServiceActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".merchantservice.activity.MsReconciliationActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.MsReconciliationActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- 特约商户营销 -->
+        <activity
+            android:name=".merchantsmaking.activity.MerchantsMakingActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantsmaking.activity.MerchantsMakingActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!-- 通知公告 -->
-         <activity
+        <activity
             android:name=".message.activity.MessageDeatailActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -80,9 +111,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-          
-         <activity
+        <activity
             android:name=".message.activity.MessageActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -92,9 +121,8 @@
             </intent-filter>
         </activity>
         <!-- 生活服务模块 -->
-        
-        
-         <activity
+
+        <activity
             android:name=".lft.activity.LftTradingSuccessfulActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -103,7 +131,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-         <activity
+        <activity
             android:name=".lft.activity.PayCostQueryActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -112,8 +140,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-         <activity
+        <activity
             android:name=".lft.activity.WaterDeatailActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -122,7 +149,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".lft.activity.PayWaterCostActivity"
             android:screenOrientation="portrait" >

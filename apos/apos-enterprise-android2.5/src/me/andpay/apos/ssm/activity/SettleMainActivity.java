@@ -117,6 +117,7 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 		dialog = new CommonDialog(this, com_progress_prompt_str);
 		// settleFailDialog = new CommonDialog(this, com_progress_prompt_str);
 		loadUnCheckOutInfo();
+		
 	}
 
 	/**
@@ -152,6 +153,7 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 		ssm_main_txncount_tv.setText(this.getApplication().getResources()
 				.getString(R.string.ssm_main_settle_count_default_str));
 	}
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:
@@ -195,6 +197,7 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 			super(activity);
 		}
 
+		@Override
 		public void afterRequest(ModelAndView mv) {
 			Boolean hasUnSettleInfo = (Boolean) mv.getModels().get(
 					"hasUnSettleInfo");

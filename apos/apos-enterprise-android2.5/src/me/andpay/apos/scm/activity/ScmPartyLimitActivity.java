@@ -89,6 +89,7 @@ public class ScmPartyLimitActivity extends AposBaseActivity {
 		showProgess();
 		request.callBack(new ScmPartyLimitCallBackImpl(this));
 		request.submit();
+		
 	}
 	
 	public void showProgess() {

@@ -33,6 +33,7 @@ public class SettleInfoSendController extends AbstractEventController {
 			return;
 
 		}
+		
 		form.setBatchId(activity.getBatchId());
 		EventRequest request = this.generateSubmitRequest(refActivty);
 		request.open(formBean, Pattern.async);

@@ -33,7 +33,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 @ContentView(R.layout.opm_input_order_no_layout)
 public class InputOrderNoActivity extends AposBaseActivity implements
 		ValueContainer, MenuChangeEvent {
@@ -121,6 +120,7 @@ public class InputOrderNoActivity extends AposBaseActivity implements
 	}
 	
 
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

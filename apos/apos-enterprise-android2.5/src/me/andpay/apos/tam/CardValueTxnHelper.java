@@ -2,7 +2,6 @@ package me.andpay.apos.tam;
 
 import me.andpay.ac.consts.TxnTypes;
 import me.andpay.ac.term.api.txn.ParseBinResponse;
-import me.andpay.apos.cdriver.AposSwiperContext;
 import me.andpay.apos.cdriver.CardInfo;
 import me.andpay.apos.cdriver.ExtTypes;
 import me.andpay.apos.common.TabNames;

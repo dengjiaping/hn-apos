@@ -54,6 +54,7 @@ public class TxnFaildActivity extends AposBaseActivity {
 		msgContent.setText(errorMsg);
 	}
 
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

@@ -17,6 +17,8 @@ import me.andpay.apos.common.contextdata.PartyInfo;
 import me.andpay.apos.common.service.DownloadICCardParamsService;
 import me.andpay.apos.common.service.LocationService;
 import me.andpay.apos.lft.activity.LeftServeActivity;
+import me.andpay.apos.merchantservice.activity.MerchantsServiceActivity;
+import me.andpay.apos.merchantsmaking.activity.MerchantsMakingActivity;
 import me.andpay.apos.message.activity.MessageActivity;
 import me.andpay.apos.opm.activity.InputOrderNoActivity;
 import me.andpay.apos.opm.activity.OrderPayListActivity;
@@ -37,7 +39,6 @@ import roboguice.inject.ContentView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TabHost;
@@ -66,7 +67,8 @@ public class HomePageActivity extends AposBaseTabActivity implements
 	TabSpec ts9;
 	TabSpec ts10;
 	TabSpec ts11;
-
+	TabSpec ts12;
+	TabSpec ts13;
 	@Inject
 	private LocationService locationService;
 
@@ -158,6 +160,25 @@ public class HomePageActivity extends AposBaseTabActivity implements
 		if (tagName.endsWith(TabNames.BALANCE_PAGE)) {
 			return;
 		} 
+		else if(tagName.endsWith(TabNames.MSERVICE_PAGE)){
+			if (ts12 == null) {
+				ts12 = mth.newTabSpec(TabNames.MSERVICE_PAGE).setIndicator(
+						TabNames.MSERVICE_PAGE);
+				ts12.setContent(new Intent(this, MerchantsServiceActivity.class)
+						.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+				mth.addTab(ts12);
+			} 
+			getTabHost().setCurrentTabByTag(TabNames.MSERVICE_PAGE);
+		}else if(tagName.endsWith(TabNames.MMAKING_PAGE)){
+			if (ts13 == null) {
+				ts13 = mth.newTabSpec(TabNames.MMAKING_PAGE).setIndicator(
+						TabNames.MMAKING_PAGE);
+				ts13.setContent(new Intent(this, MerchantsMakingActivity.class)
+						.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+				mth.addTab(ts13);
+			} 
+			getTabHost().setCurrentTabByTag(TabNames.MMAKING_PAGE);
+		}
 		else if(tagName.endsWith(TabNames.MESSAGE_PAGE)){
 			if (ts11 == null) {
 				ts11 = mth.newTabSpec(TabNames.MESSAGE_PAGE).setIndicator(

@@ -70,7 +70,7 @@ public class TxnListAdapter extends TiSectionListAdapter<PayTxnInfo> {
 	@Override
 	public View getSectionItemView(int sectionIndex, int itemIndex,
 			View convertView, ViewGroup parent) {
-		PayTxnInfo info = (PayTxnInfo) getSectionItem(sectionIndex, itemIndex);
+		PayTxnInfo info = getSectionItem(sectionIndex, itemIndex);
 		TxnItemViewHolder holder = null;
 		if (convertView == null) {
 			convertView = LayoutInflater.from(applicationContext).inflate(
@@ -232,6 +232,7 @@ public class TxnListAdapter extends TiSectionListAdapter<PayTxnInfo> {
 		}
 	}
 
+	@Override
 	public void destory() {
 		for (Pair<String, LinkedList<PayTxnInfo>> infos : all) {
 			infos.second.clear();
@@ -265,6 +266,7 @@ public class TxnListAdapter extends TiSectionListAdapter<PayTxnInfo> {
 		}
 	}
 
+	@Override
 	public void configureSectionView(View header, int section, int alpha) {
 		TextView lSectionTitle = (TextView) header
 				.findViewById(R.id.vas_purchase_order_section_tv);

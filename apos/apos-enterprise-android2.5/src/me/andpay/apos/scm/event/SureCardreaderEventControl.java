@@ -59,6 +59,7 @@ public class SureCardreaderEventControl extends AbstractEventController {
 			// 主页
 			LoginCallBackHelper.goHome(crActivity);
 			return;
+			
 		}
 
 		crActivity.getAppConfig().setAttribute(

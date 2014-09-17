@@ -22,6 +22,7 @@ public class AposCleanAppDataActivity extends Activity {
 
 	public Button cleanBtn;
 	 
+	@Override
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.com_clean_appdata_layout);

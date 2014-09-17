@@ -71,7 +71,8 @@ public class BuildLayerFrameLayout extends FrameLayout {
         }
     }
 
-    protected void dispatchDraw(Canvas canvas) {
+    @Override
+	protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
 
         if (mChanged && MenuDrawer.USE_TRANSLATIONS) {

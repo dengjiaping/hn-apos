@@ -15,6 +15,7 @@ public class LoginOutClickController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
 		showBackDialog(refActivty);
+		
 	}
 
 	public void showBackDialog(final Activity activity) {

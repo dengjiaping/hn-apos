@@ -25,5 +25,6 @@ public class OrderDetailPayController  extends AbstractEventController {
 		}
 		OrderInfo orderInfo= activity.orderInfo;
 		OrderPayHelper.sendTxn(refActivty, orderInfo);
+		
 	}
 }

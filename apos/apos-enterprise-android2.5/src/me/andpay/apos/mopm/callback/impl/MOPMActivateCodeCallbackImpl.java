@@ -14,6 +14,7 @@ public class MOPMActivateCodeCallbackImpl extends ActivateCodeCallbackImpl imple
 		super(activateCodeActivity);
 	}
 
+	@Override
 	public void activateSuccess() {
 		activateCodeActivity.submitDialog.cancel();
 		LoginCallBackHelper.nextPage(activateCodeActivity);

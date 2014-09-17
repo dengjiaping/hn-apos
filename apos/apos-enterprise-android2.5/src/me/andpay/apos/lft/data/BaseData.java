@@ -7,4 +7,7 @@ import java.io.Serializable;
  * @author Administrator
  *
  */
-public interface BaseData extends Serializable{}
+public interface BaseData extends Serializable{
+	
+	
+}

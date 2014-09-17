@@ -28,8 +28,10 @@ public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
 		this.activity = activity;
 		this.addValues(settleOrders);
 		this.querySettleCondForm = querySettleCondForm;
+		
 	}
 
+	@Override
 	public long getItemId(int position) {
 		return position;
 	}
@@ -67,6 +69,7 @@ public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
 		}
 	}
 	
+	@Override
 	public void configureSectionView(View header, int section, int alpha) {
 		TextView lSectionTitle = (TextView) header
 				.findViewById(R.id.vas_purchase_order_section_tv);
@@ -83,7 +86,7 @@ public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
 	@Override
 	public View getSectionItemView(int sectionIndex, int itemIndex, View convertView,
 			ViewGroup parent) {
-		final SettleOrder settleOrder = (SettleOrder) this.getSectionItem(
+		final SettleOrder settleOrder = this.getSectionItem(
 				sectionIndex, itemIndex);
 		SettleItemViewHolder holder = null;
 		if (convertView == null) {

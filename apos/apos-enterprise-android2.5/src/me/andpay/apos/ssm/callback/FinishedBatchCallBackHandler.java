@@ -27,8 +27,10 @@ public class FinishedBatchCallBackHandler extends AfterProcessWithErrorHandler {
 		super(mainActivity);
 		this.mainActivity = mainActivity;
 		this.dao = dao;
+		
 	}
 
+	@Override
 	public void afterRequest(ModelAndView mv) {
 		DialogUtil.setDialogAllowClose(mainActivity.getDialog().getDialog(),
 				true);

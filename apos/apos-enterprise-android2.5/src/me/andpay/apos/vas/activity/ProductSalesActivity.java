@@ -164,6 +164,7 @@ public class ProductSalesActivity extends AposBaseActivity {
 		ShoppingCartCenter.clearShoppingCard();
 	}
 	
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			finish();

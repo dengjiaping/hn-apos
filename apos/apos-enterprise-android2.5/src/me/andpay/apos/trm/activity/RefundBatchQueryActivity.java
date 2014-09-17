@@ -50,6 +50,7 @@ import com.google.inject.Inject;
  * @author tinyliu
  * 
  */
+
 @SuppressWarnings("unchecked")
 @ContentView(R.layout.trm_refund_list_layout)
 @FormBind(formBean = QueryConditionForm.class)
@@ -125,6 +126,7 @@ public class RefundBatchQueryActivity extends AposBaseActivity {
 		queryBatchTxn(form);
 	}
 
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

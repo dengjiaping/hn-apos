@@ -8,7 +8,6 @@ import android.app.Application;
 import android.os.Looper;
 
 import com.google.inject.Inject;
-import com.tencent.stat.StatService;
 
 /**
  * 记录所有UI主线程未捕获异常 记录所有Error级别异常

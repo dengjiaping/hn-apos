@@ -10,7 +10,6 @@ import me.andpay.apos.common.util.TxnUtil;
 import me.andpay.apos.tam.callback.impl.TxnCallbackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
-import me.andpay.apos.vas.flow.FlowConstants;
 import me.andpay.apos.vas.flow.model.CashPaymentContext;
 import me.andpay.apos.vas.flow.model.SvcDepositeContext;
 import me.andpay.apos.vas.spcart.ShoppingCart;

@@ -18,5 +18,6 @@ public class ShowWeiboClickEventControl extends AbstractEventController {
 		Intent intent = new Intent(ScmProvider.SCM_ACTIVITY_WEIBO);
 		intent.putExtra(ScmProvider.SCM_WEB_ACTIVITY_URL_KEY, uString);
 		refActivty.startActivity(intent);
+		
 	}
 }

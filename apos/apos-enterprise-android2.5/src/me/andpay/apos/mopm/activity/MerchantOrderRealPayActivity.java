@@ -1,7 +1,5 @@
 package me.andpay.apos.mopm.activity;
 
-import java.util.Date;
-
 import me.andpay.apos.R;
 import me.andpay.apos.cardreader.InitMsrKeyServiceImpl;
 import me.andpay.apos.cardreader.callback.DefaultCardReaderCallBack;
@@ -30,7 +28,6 @@ import me.andpay.timobileframework.mvc.EventRequest;
 import me.andpay.timobileframework.mvc.EventRequest.Pattern;
 import roboguice.inject.ContentView;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.inject.Inject;
 

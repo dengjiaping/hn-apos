@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.util.Locale;
 
 import me.andpay.ac.term.api.txn.ParseBinResponse;
-import me.andpay.apos.cdriver.AposSwiperContext;
 import me.andpay.apos.cdriver.CardInfo;
 import me.andpay.apos.cdriver.model.AposICCardDataInfo;
 import me.andpay.apos.dao.model.PayTxnInfo;
@@ -15,7 +14,6 @@ import me.andpay.apos.tam.context.TxnStatus;
 import me.andpay.apos.tam.form.TxnActionResponse;
 import me.andpay.apos.vas.spcart.ShoppingCart;
 import me.andpay.ti.util.StringUtil;
-import me.andpay.timobileframework.mvc.EventRequest;
 
 /**
  * 交易流程上下文

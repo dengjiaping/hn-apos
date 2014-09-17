@@ -25,7 +25,6 @@ public class CashPaymentSuccessActivity extends AposBaseActivity {
 	@InjectView(R.id.vas_open_card_btn)
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = CashPaymentSuccessNextControl.class)
 	public Button openCard;
-
 	@InjectView(R.id.vas_msg_content)
 	public TextView msgContent;
 
@@ -61,6 +60,7 @@ public class CashPaymentSuccessActivity extends AposBaseActivity {
 	/**
 	 * placeOrder
 	 */
+	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:

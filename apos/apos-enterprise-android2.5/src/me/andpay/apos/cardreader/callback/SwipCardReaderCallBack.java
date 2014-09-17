@@ -128,7 +128,7 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 						CardReaderResourceSelector.CONNECT));
 
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		toastView.addView(imageCodeProject, params);
 		toast.show();
 
@@ -156,7 +156,7 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 						.selectShowImg(CardReaderManager.getCardReaderType(),
 								CardReaderResourceSelector.SWIPER));
 				LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+						android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 				toastView.addView(imageCodeProject, params);
 				toast.show();
 

@@ -30,6 +30,7 @@ public class SupportCloudTxnCallbackImpl implements CloudPosCallback {
 		if (txnControl.getTxnDialog() != null && txnControl.getTxnDialog().isShowing()) {
 			txnControl.getTxnDialog().cancel();
 		}
+		
 		Log.i(this.getClass().getName(), "couldOrderId is [" + cloudOrderId + "]");
 		context.setCloudOrderId(cloudOrderId);
 		DisplayMetrics metric = new DisplayMetrics();

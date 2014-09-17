@@ -60,7 +60,7 @@ public class CustomDialog extends Dialog {
 		// TODO Auto-generated method stub
 		
 
-		if (keyCode == event.KEYCODE_BACK) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			switch (type){
 				case 0:
 					return super.onKeyDown(keyCode, event);
