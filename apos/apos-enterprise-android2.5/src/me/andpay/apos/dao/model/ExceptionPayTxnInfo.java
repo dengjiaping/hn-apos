@@ -10,15 +10,16 @@ import me.andpay.timobileframework.sqlite.convert.BigDecimalConverter;
 
 /**
  * 交易表
+ * 
  * @author cpz
  */
-@TableName(name = "ExceptionPayTxnInfo",version=6)
-public class ExceptionPayTxnInfo implements Serializable{
+@TableName(name = "ExceptionPayTxnInfo", version = 6)
+public class ExceptionPayTxnInfo implements Serializable {
 	/**
 	 * 异常交易，等待重试
 	 */
 	public static final String EXP_STATUS_WAIT_RETRY = "0";
-	
+
 	/**
 	 * 等待签名
 	 */
@@ -36,27 +37,27 @@ public class ExceptionPayTxnInfo implements Serializable{
 	 * 主键编号
 	 */
 	@ID
-	@Column	
+	@Column
 	private Integer idTxn;
-	
+
 	/**
 	 * 异常交易状态
 	 */
 	@Column
 	private String expcetionStatus;
-	
+
 	/**
 	 * 交易关联编号
 	 */
 	@Column
 	private String refNo;
-	
+
 	/**
 	 * 原交易关联编号
 	 */
 	@Column
 	private String origRefNo;
-	
+
 	/**
 	 * 外部跟踪编号
 	 */
@@ -90,7 +91,7 @@ public class ExceptionPayTxnInfo implements Serializable{
 	/**
 	 * 金额
 	 */
-	@Column(dataConverter=BigDecimalConverter.class)
+	@Column(dataConverter = BigDecimalConverter.class)
 	private BigDecimal salesAmt;
 	/**
 	 * 终端批次号
@@ -279,7 +280,7 @@ public class ExceptionPayTxnInfo implements Serializable{
 	 */
 	@Column
 	private String signPic;
-	
+
 	/**
 	 * 交易图片路径
 	 */
@@ -290,7 +291,7 @@ public class ExceptionPayTxnInfo implements Serializable{
 	 */
 	@Column
 	private String signPicPath;
-	
+
 	/**
 	 * 位置信息描述
 	 */
@@ -301,11 +302,11 @@ public class ExceptionPayTxnInfo implements Serializable{
 	 */
 	@Column
 	private String txnTypeDesc;
-	
+
 	/**
 	 * 退货金额
 	 */
-	@Column(dataConverter=BigDecimalConverter.class)
+	@Column(dataConverter = BigDecimalConverter.class)
 	private BigDecimal refundAmt;
 	/**
 	 * 机构编号
@@ -317,7 +318,7 @@ public class ExceptionPayTxnInfo implements Serializable{
 	 */
 	@Column
 	private String issuerName;
-	
+
 	/**
 	 * 交易地址
 	 */
@@ -325,11 +326,11 @@ public class ExceptionPayTxnInfo implements Serializable{
 	private String txnAddress;
 
 	/**
-	 *交易唯一编号
+	 * 交易唯一编号
 	 */
 	@Column
 	private String txnId;
-	
+
 	/**
 	 * 全磁道
 	 */
@@ -340,26 +341,25 @@ public class ExceptionPayTxnInfo implements Serializable{
 	 */
 	@Column
 	private String trackRandomFactor;
-	
+
 	/**
 	 * 交易币种
 	 */
 	@Column
 	private String salesCur;
-	
+
 	/**
 	 * 原交易编号
 	 */
 	@Column
 	private String origTxnId;
-	
-	
+
 	/**
 	 * 交易状态标志
 	 */
 	@Column
 	private String txnFlag;
-	
+
 	/**
 	 * 是否允许退款
 	 */
@@ -385,13 +385,13 @@ public class ExceptionPayTxnInfo implements Serializable{
 	 */
 	@Column
 	private String deviceId;
-	
+
 	/**
 	 * 是否是IC卡交易
 	 */
 	@Column
 	private Boolean isICCardTxn;
-	
+
 	public Double getSpecLongitude() {
 		return specLongitude;
 	}
@@ -431,7 +431,6 @@ public class ExceptionPayTxnInfo implements Serializable{
 	public void setIsRefundEnable(Boolean isRefundEnable) {
 		this.isRefundEnable = isRefundEnable;
 	}
-
 
 	public String getExTraceNO() {
 		return exTraceNO;
@@ -473,7 +472,6 @@ public class ExceptionPayTxnInfo implements Serializable{
 		this.refundFlag = refundFlag;
 	}
 
-
 	public String getSalesCur() {
 		return salesCur;
 	}
@@ -481,7 +479,6 @@ public class ExceptionPayTxnInfo implements Serializable{
 	public void setSalesCur(String salesCur) {
 		this.salesCur = salesCur;
 	}
-
 
 	public String getTermBatchNo() {
 		return termBatchNo;
@@ -499,7 +496,6 @@ public class ExceptionPayTxnInfo implements Serializable{
 		this.termTraceNo = termTraceNo;
 	}
 
-
 	public String getTxnTime() {
 		return txnTime;
 	}
@@ -516,7 +512,6 @@ public class ExceptionPayTxnInfo implements Serializable{
 		this.termTxnTime = termTxnTime;
 	}
 
-	
 	public String getSubPartyNo() {
 		return subPartyNo;
 	}
@@ -552,8 +547,7 @@ public class ExceptionPayTxnInfo implements Serializable{
 	public String getOperName() {
 		return operName;
 	}
-	
-	
+
 	public void setOperName(String operName) {
 		this.operName = operName;
 	}
@@ -806,8 +800,6 @@ public class ExceptionPayTxnInfo implements Serializable{
 		this.issuerName = issuerName;
 	}
 
-	
-
 	public String getMerchantId() {
 		return merchantId;
 	}
@@ -843,8 +835,7 @@ public class ExceptionPayTxnInfo implements Serializable{
 	public String getTxnAddress() {
 		return txnAddress;
 	}
- 
-	
+
 	public void setTxnAddress(String txnAddress) {
 		this.txnAddress = txnAddress;
 	}
@@ -938,7 +929,7 @@ public class ExceptionPayTxnInfo implements Serializable{
 	}
 
 	public Boolean getIsICCardTxn() {
-		if(isICCardTxn==null) {
+		if (isICCardTxn == null) {
 			return false;
 		}
 		return isICCardTxn;
@@ -947,7 +938,5 @@ public class ExceptionPayTxnInfo implements Serializable{
 	public void setIsICCardTxn(Boolean isICCardTxn) {
 		this.isICCardTxn = isICCardTxn;
 	}
-	
-	
-	
+
 }

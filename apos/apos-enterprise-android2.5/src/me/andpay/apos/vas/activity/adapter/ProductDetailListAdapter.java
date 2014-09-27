@@ -16,9 +16,8 @@ import android.widget.TextView;
 
 public class ProductDetailListAdapter extends BaseAdapter {
 
-	
 	private ProductDetailListActivity productDetailListActivity;
-	
+
 	public ProductDetailListAdapter(
 			ProductDetailListActivity productDetailListActivity) {
 		this.productDetailListActivity = productDetailListActivity;
@@ -27,10 +26,10 @@ public class ProductDetailListAdapter extends BaseAdapter {
 	public int getCount() {
 		return ShoppingCartCenter.getShoppingCart().getItemsList().size();
 	}
-	
 
 	public Object getItem(int position) {
-		return ShoppingCartCenter.getShoppingCart().getItemsList().get(position);
+		return ShoppingCartCenter.getShoppingCart().getItemsList()
+				.get(position);
 	}
 
 	public long getItemId(int position) {
@@ -38,13 +37,14 @@ public class ProductDetailListAdapter extends BaseAdapter {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		
-		ProductItem productItem = ShoppingCartCenter.getShoppingCart().getItemsList().get(position);
-		
+
+		ProductItem productItem = ShoppingCartCenter.getShoppingCart()
+				.getItemsList().get(position);
+
 		ProductHolder productHolder = null;
 		if (convertView == null) {
-			convertView = LayoutInflater.from(productDetailListActivity).inflate(
-					R.layout.vas_product_list_item_layout, null);
+			convertView = LayoutInflater.from(productDetailListActivity)
+					.inflate(R.layout.vas_product_list_item_layout, null);
 			productHolder = new ProductHolder();
 			productHolder.setProductImge((ImageView) convertView
 					.findViewById(R.id.vas_product_img));
@@ -54,35 +54,36 @@ public class ProductDetailListAdapter extends BaseAdapter {
 					.findViewById(R.id.vas_product_price));
 			productHolder.setUnitView(convertView
 					.findViewById(R.id.vas_product_unit_lay));
-			productHolder.setUnitText((TextView)convertView.findViewById(R.id.vas_product_unit_text));
+			productHolder.setUnitText((TextView) convertView
+					.findViewById(R.id.vas_product_unit_text));
 			productHolder.setInterImageView((ImageView) convertView
 					.findViewById(R.id.vas_item_img));
-			
+
 			convertView.setTag(productHolder);
 		} else {
 			productHolder = (ProductHolder) convertView.getTag();
 		}
 
-	
 		productHolder.getProductImge().setBackgroundResource(
 				ProductResouceHelper.getProductImages(productItem
 						.getProductType()));
-		if(StringUtil.isNotBlank(productItem.getProductName())) {
-			productHolder.getProductName().setText(productItem.getProductName());
+		if (StringUtil.isNotBlank(productItem.getProductName())) {
+			productHolder.getProductName()
+					.setText(productItem.getProductName());
 		}
 		productHolder.getProductPrice().setText(
 				productItem.getPrice().toString());
-		if(productItem.getUnit()<=1) {
+		if (productItem.getUnit() <= 1) {
 			productHolder.getUnitView().setVisibility(View.GONE);
-		}else{
+		} else {
 			productHolder.getUnitView().setVisibility(View.VISIBLE);
-			productHolder.getUnitText().setText(ShoppingCartHelper.getProductUnit(productItem.getUnit()));
+			productHolder.getUnitText().setText(
+					ShoppingCartHelper.getProductUnit(productItem.getUnit()));
 		}
-		
+
 		productHolder.getInterImageView().setVisibility(View.VISIBLE);
-	
+
 		return convertView;
 	}
-	
-	
+
 }

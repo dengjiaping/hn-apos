@@ -8,8 +8,8 @@ import android.view.View;
 
 public class HomeTabEventControl extends AbstractEventController {
 
-		public void onClick(Activity activity, FormBean formBean, View view) {
-			HomePageActivity tabActivity = (HomePageActivity) activity;
-//			tabActivity.changeView(view,false);
-		}
+	public void onClick(Activity activity, FormBean formBean, View view) {
+		HomePageActivity tabActivity = (HomePageActivity) activity;
+		// tabActivity.changeView(view,false);
+	}
 }

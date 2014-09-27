@@ -40,7 +40,7 @@ public class DataUpdateCallbackHandler extends AfterProcessWithErrorHandler {
 		stopListView();
 		showError();
 	}
-	
+
 	@Override
 	protected void processOtherError() {
 		stopListView();
@@ -56,10 +56,10 @@ public class DataUpdateCallbackHandler extends AfterProcessWithErrorHandler {
 	}
 
 	private void showError() {
-//		ToastTools.toast(refActivty.getApplicationContext(), refActivty
-//				.getApplicationContext().getString(R.string.com_net_error_str),
-//				null, null, 0, 0);
-		
+		// ToastTools.toast(refActivty.getApplicationContext(), refActivty
+		// .getApplicationContext().getString(R.string.com_net_error_str),
+		// null, null, 0, 0);
+
 		ToastTools.topToast(refActivty,
 				ResourceUtil.getString(refActivty, R.string.com_net_error_str),
 				ToastTools.LIST_VIEW_TOAST_HEIGHT);
@@ -71,9 +71,7 @@ public class DataUpdateCallbackHandler extends AfterProcessWithErrorHandler {
 				refActivty.getApplicationContext().getString(
 						R.string.tqm_txn_list_refresh_str), size);
 
-		ToastTools.topToast(refActivty,
-				str,
-				ToastTools.LIST_VIEW_TOAST_HEIGHT);
+		ToastTools.topToast(refActivty, str, ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
 	private void addDataByRefreshFlag(LinkedList<PayTxnInfo> infos) {
@@ -96,17 +94,16 @@ public class DataUpdateCallbackHandler extends AfterProcessWithErrorHandler {
 				adapter.notifyDataSetChanged();
 			}
 		}
-		/*if (infos.size() < TqmProvider.TQM_CONST_MAX_COUNTS) {
-			refActivty.getRefresh_layout().setPullLoadEnable(false);
-		}*/
-		
+		/*
+		 * if (infos.size() < TqmProvider.TQM_CONST_MAX_COUNTS) {
+		 * refActivty.getRefresh_layout().setPullLoadEnable(false); }
+		 */
+
 	}
 
 	@Override
 	public boolean isSupport(Thread thread, Throwable ex) {
 		return true;
 	}
-	
-	
 
 }

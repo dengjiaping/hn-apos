@@ -18,10 +18,10 @@ public class GuideButtonController extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
 
-		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl.instanceControl()
-				.getFlowContextData(CardReaderSetContext.class);
-		
-		
+		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl
+				.instanceControl().getFlowContextData(
+						CardReaderSetContext.class);
+
 		cardReaderSetContext.setShowCardreaderGuide(false);
 		cardReaderSetContext.setHasSelectCardreader(false);
 		cardReaderSetContext.setKsn(null);

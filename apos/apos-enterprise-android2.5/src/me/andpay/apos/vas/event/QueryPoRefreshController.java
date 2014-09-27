@@ -19,18 +19,21 @@ public class QueryPoRefreshController extends AbstractEventController {
 		loadMoreData(refActivty, formBean, false);
 	}
 
-	private void loadMoreData(Activity refActivty, FormBean formBean, boolean isRefresh) {
+	private void loadMoreData(Activity refActivty, FormBean formBean,
+			boolean isRefresh) {
 		PurchaseOrderListActivity activity = (PurchaseOrderListActivity) refActivty;
 		EventRequest request = generateSubmitRequest(refActivty);
-		request.open(VasProvider.VAS_DOMAIN_QUERY,
-				activity.isHasQueryCondition() ? VasProvider.VAS_ACTION_QUERY_GETPOLIST
-						: VasProvider.VAS_ACTION_QUERY_GETPOLISTSTORAGE, Pattern.async);
+		request.open(VasProvider.VAS_DOMAIN_QUERY, activity
+				.isHasQueryCondition() ? VasProvider.VAS_ACTION_QUERY_GETPOLIST
+				: VasProvider.VAS_ACTION_QUERY_GETPOLISTSTORAGE, Pattern.async);
 		if (isRefresh) {
 			activity.getCond().setMaxOrderId(null);
-			activity.getCond().setMinOrderId(activity.getAdapter().getMaxOrderId());
+			activity.getCond().setMinOrderId(
+					activity.getAdapter().getMaxOrderId());
 		} else {
 			activity.getCond().setMinOrderId(null);
-			activity.getCond().setMaxOrderId(activity.getAdapter().getMinOrderId());
+			activity.getCond().setMaxOrderId(
+					activity.getAdapter().getMinOrderId());
 		}
 		request.getSubmitData().put("queryForm", activity.getCond());
 		request.callBack(new DataUpdateCallbackHandler(activity, isRefresh));

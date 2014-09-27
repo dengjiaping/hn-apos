@@ -3,8 +3,8 @@ package me.andpay.apos.dao.model;
 import me.andpay.timobileframework.sqlite.Sorts;
 import me.andpay.timobileframework.sqlite.anno.Expression;
 
-public class OrderInfoCond extends Sorts{
-	
+public class OrderInfoCond extends Sorts {
+
 	/**
 	 * 主键编号
 	 */
@@ -20,40 +20,39 @@ public class OrderInfoCond extends Sorts{
 	 */
 	@Expression
 	private String orderId;
-	
+
 	/**
 	 * 订单金额
 	 */
 	@Expression
-	private Double orderAmt; 
-	
+	private Double orderAmt;
+
 	/**
 	 * 订单状态
 	 */
 	@Expression
 	private String orderStatus;
-	
-	@Expression
-    private String txnId;
 
-    /**
-     * 机构编号
-     */
 	@Expression
-    private String partyId;
-    
-//    /**
-//     * 用户名称
-//     */
-//	@Expression
-//    private String userName;
-	
-	
-    /**
-     * 用户名称
-     */
-	@Expression(paraName = "userName", sqlformat="( ${paraName}=${value} or ${paraName} is NULL)")
-    private String userNameFormat;
+	private String txnId;
+
+	/**
+	 * 机构编号
+	 */
+	@Expression
+	private String partyId;
+
+	// /**
+	// * 用户名称
+	// */
+	// @Expression
+	// private String userName;
+
+	/**
+	 * 用户名称
+	 */
+	@Expression(paraName = "userName", sqlformat = "( ${paraName}=${value} or ${paraName} is NULL)")
+	private String userNameFormat;
 
 	/**
 	 * 最大id
@@ -65,7 +64,7 @@ public class OrderInfoCond extends Sorts{
 	 */
 	@Expression(paraName = "orderRecordId", operater = ">")
 	private Long minId;
-	
+
 	/**
 	 * 开始更新时间
 	 */
@@ -76,14 +75,13 @@ public class OrderInfoCond extends Sorts{
 	 */
 	@Expression(paraName = "synDate", operater = "<")
 	public String endSynDate;
-	
 
 	/**
 	 * 最大交易编号
 	 */
 	@Expression(paraName = "txnId", operater = "<")
 	private String maxTxnId;
-	
+
 	/**
 	 * 最小交易编号
 	 */
@@ -97,7 +95,6 @@ public class OrderInfoCond extends Sorts{
 	public void setIdOrder(Integer idOrder) {
 		this.idOrder = idOrder;
 	}
-
 
 	public Long getOrderRecordId() {
 		return orderRecordId;
@@ -155,13 +152,13 @@ public class OrderInfoCond extends Sorts{
 		this.partyId = partyId;
 	}
 
-//	public String getUserName() {
-//		return userName;
-//	}
-//
-//	public void setUserName(String userName) {
-//		this.userName = userName;
-//	}
+	// public String getUserName() {
+	// return userName;
+	// }
+	//
+	// public void setUserName(String userName) {
+	// this.userName = userName;
+	// }
 
 	public String getBeginSynDate() {
 		return beginSynDate;
@@ -211,6 +208,4 @@ public class OrderInfoCond extends Sorts{
 		this.txnId = txnId;
 	}
 
-	
-    
 }

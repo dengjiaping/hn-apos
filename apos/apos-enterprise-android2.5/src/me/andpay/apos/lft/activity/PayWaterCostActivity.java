@@ -7,14 +7,14 @@ import java.util.Map;
 import me.andpay.apos.R;
 import me.andpay.apos.base.adapter.AdpterEventListener;
 import me.andpay.apos.base.adapter.BaseAdapter;
+import me.andpay.apos.base.tools.ShowUtil;
+import me.andpay.apos.base.view.CustomDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.lft.controller.CitySelectController;
 import me.andpay.apos.lft.even.PayWaterTextWatcherEventControl;
 import me.andpay.apos.lft.flow.CityTable;
 import me.andpay.apos.lft.flow.FlowConstants;
 import me.andpay.apos.lft.flow.PayCostType;
-import me.andpay.apos.lft.tools.ShowUtil;
-import me.andpay.apos.lft.view.CustomDialog;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
@@ -44,8 +44,8 @@ public class PayWaterCostActivity extends AposBaseActivity {
 	@EventDelegate(type = DelegateType.eventController, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = PayWaterTextWatcherEventControl.class)
 	@InjectView(R.id.lft_pay_water_city)
 	public EditText city;// 城市
-    
-	@EventDelegate(type=DelegateType.method,toMethod="citySelect",delegateClass=OnClickListener.class)
+
+	@EventDelegate(type = DelegateType.method, toMethod = "citySelect", delegateClass = OnClickListener.class)
 	@InjectView(R.id.lft_pay_water_city_select)
 	private View citySelect;// 城市选择
 
@@ -61,16 +61,13 @@ public class PayWaterCostActivity extends AposBaseActivity {
 	@InjectView(R.id.lft_pay_water_next)
 	public Button next;// 下一步
 
-	
-	
-	
 	/**
 	 * 城市选择
 	 * 
 	 * @param v
 	 */
 	private CustomDialog dialog = null;
-    
+
 	public void citySelect(View v) {
 		if (dialog == null) {
 			dialog = ShowUtil.getCustomDialog(this, R.layout.lft_select_dailog,
@@ -79,21 +76,21 @@ public class PayWaterCostActivity extends AposBaseActivity {
 					R.id.lft_select_dailog_title);
 			ListView listView = (ListView) dialog.getcView().findViewById(
 					R.id.lft_select_dailog_listview);
-			
+
 			title.setText("请选择城市");
-			ArrayList<String> list=new ArrayList<String>();
-			for(int i=0;i<CityTable.city.length;i++){
-				list.add(i+"");
+			ArrayList<String> list = new ArrayList<String>();
+			for (int i = 0; i < CityTable.city.length; i++) {
+				list.add(i + "");
 			}
 			BaseAdapter<String> adapter = new BaseAdapter<String>();
 			adapter.setContext(this);
 			adapter.setList(list);
 			adapter.setAdpterEventListener(new AdpterEventListener() {
-				
+
 				public boolean onEventListener(Object... objects) {
 					// TODO Auto-generated method stub
 					dialog.dismiss();
-					int index = (Integer)objects[0];
+					int index = (Integer) objects[0];
 					city.setText(CityTable.city[index][0]);
 					company.setText(CityTable.city[index][1]);
 					return true;
@@ -105,8 +102,7 @@ public class PayWaterCostActivity extends AposBaseActivity {
 		}
 		dialog.show();
 	}
-	
-	
+
 	/**
 	 * 返回
 	 * 
@@ -120,22 +116,21 @@ public class PayWaterCostActivity extends AposBaseActivity {
 	 * 下一步
 	 */
 	public void next(View v) {
-		if(!isCorrectCustom()){
-			ShowUtil.showShortToast(this,"客户编号不合法");
+		if (!isCorrectCustom()) {
+			ShowUtil.showShortToast(this, "客户编号不合法");
 			return;
 		}
-		TiFlowControlImpl.instanceControl().getFlowContext().put("type",PayCostType.WATER);
+		TiFlowControlImpl.instanceControl().getFlowContext()
+				.put("type", PayCostType.WATER);
 
-		Map<String,String> data = new HashMap<String,String>();
+		Map<String, String> data = new HashMap<String, String>();
 		data.put("unit", company.getText().toString());
 		data.put("serialNumber", customer.getText().toString());
-		
-		
+
 		TiFlowControlImpl.instanceControl().nextSetup(this,
-				FlowConstants.PAY_COST_QUERY,data);
+				FlowConstants.PAY_COST_QUERY, data);
 	}
-	
-	
+
 	/**
 	 * 正确的
 	 * 
@@ -156,7 +151,7 @@ public class PayWaterCostActivity extends AposBaseActivity {
 		} catch (Exception ex) {
 			return false;
 		}
-		if(!((number>=11&&number<=24)||(number>=61&&number<=74))){
+		if (!((number >= 11 && number <= 24) || (number >= 61 && number <= 74))) {
 			return false;
 		}
 		return true;

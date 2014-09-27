@@ -95,7 +95,8 @@ public class UpdateManager {
 				Log.i("@@@@@", ">>>>>>>>>>>>>>>>>>>>>>>>>>>getServerVerCode() ");
 				try {
 
-					String verjson = null;//= NetHelper.httpStringGet(UPDATE_CHECKURL);
+					String verjson = null;// =
+											// NetHelper.httpStringGet(UPDATE_CHECKURL);
 					Log.i("@@@@",
 							verjson
 									+ "**************************************************");

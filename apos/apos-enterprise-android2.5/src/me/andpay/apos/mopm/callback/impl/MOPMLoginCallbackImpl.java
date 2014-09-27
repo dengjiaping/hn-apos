@@ -7,10 +7,10 @@ import me.andpay.apos.lam.callback.impl.LoginCallbackImpl;
 import me.andpay.apos.mopm.order.OrderPayContext;
 import me.andpay.timobileframework.mvc.anno.CallBackHandler;
 
-
 @CallBackHandler
-public class MOPMLoginCallbackImpl extends LoginCallbackImpl implements LoginCallback {
-	
+public class MOPMLoginCallbackImpl extends LoginCallbackImpl implements
+		LoginCallback {
+
 	public MOPMLoginCallbackImpl(LoginActivity activity) {
 		super(activity);
 	}
@@ -18,13 +18,12 @@ public class MOPMLoginCallbackImpl extends LoginCallbackImpl implements LoginCal
 	@Override
 	public void loginSuccess(LoginResponse response) {
 		activity.loginDialog.cancel();
-		OrderPayContext orderPayContext = OrderPayUtil
-				.getOrderPayContext();
+		OrderPayContext orderPayContext = OrderPayUtil.getOrderPayContext();
 		orderPayContext.setNeedAutoLogin(true);
 		OrderPayUtil.goToOrderCheck(activity);
 	}
 
-	//TODO更新原理
+	// TODO更新原理
 	@Override
 	public void updateApp(String errorCode) {
 		activity.loginDialog.cancel();

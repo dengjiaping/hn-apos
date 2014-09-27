@@ -9,7 +9,8 @@ import me.andpay.apos.tqm.activity.TxnListAdapter;
 import me.andpay.apos.tqm.form.QueryConditionForm;
 import me.andpay.timobileframework.mvc.ModelAndView;
 
-public class QueryTxnListAfterProcessHandler extends AfterProcessWithErrorHandler {
+public class QueryTxnListAfterProcessHandler extends
+		AfterProcessWithErrorHandler {
 
 	StlTxnQueryActivity activity;
 
@@ -25,8 +26,10 @@ public class QueryTxnListAfterProcessHandler extends AfterProcessWithErrorHandle
 	@Override
 	public void afterRequest(ModelAndView mv) {
 
-		LinkedList<PayTxnInfo> infos = (LinkedList<PayTxnInfo>) mv.getValue("txnList");
-		QueryConditionForm form = (QueryConditionForm) mv.getValue("queryConditionForm");
+		LinkedList<PayTxnInfo> infos = (LinkedList<PayTxnInfo>) mv
+				.getValue("txnList");
+		QueryConditionForm form = (QueryConditionForm) mv
+				.getValue("queryConditionForm");
 		if (infos == null || infos.size() == 0) {
 			activity.showNoDataView();
 			if (activity.getAdapter() != null) {

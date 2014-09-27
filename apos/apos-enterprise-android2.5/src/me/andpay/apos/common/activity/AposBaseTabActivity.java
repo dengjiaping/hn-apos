@@ -4,10 +4,7 @@ import me.andpay.apos.common.MemoryRecorder;
 import me.andpay.timobileframework.mvc.support.TiTabActivity;
 
 public class AposBaseTabActivity extends TiTabActivity {
-	
-	
-	
-	
+
 	@Override
 	protected void onRestart() {
 		super.onRestart();
@@ -25,11 +22,11 @@ public class AposBaseTabActivity extends TiTabActivity {
 			onResumeProcess();
 		}
 	}
-	
+
 	/**
 	 * 用于处理
 	 */
 	protected void onResumeProcess() {
-		
+
 	}
 }

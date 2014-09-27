@@ -23,15 +23,17 @@ public class ShowQRScanViewControl extends AbstractEventController {
 		if (!purchaseFirstActivity.checkGpsEnable()) {
 			return;
 		}
-		
+
 		String amt = purchaseFirstActivity.amtEditText.getText().toString();
 
 		// 超额照片限制
-//		if (purchaseFirstActivity.amtLimit(StringConvertor.parseToBigDecimal(amt))) {
-//			return;
-//		}
-//		
-		
+		// if
+		// (purchaseFirstActivity.amtLimit(StringConvertor.parseToBigDecimal(amt)))
+		// {
+		// return;
+		// }
+		//
+
 		if (amt.length() < 0
 				|| amt.toString()
 						.equals(activity.getResources().getString(

@@ -33,21 +33,19 @@ public class CouponDeailActivity extends AposBaseActivity {
 
 	@InjectView(R.id.tam_coupan_lay)
 	public RelativeLayout couponLayout;
-	
-	
+
 	@InjectView(R.id.tam_merchant_name_tv)
 	public TextView partyNameText;
-	
+
 	@InjectView(R.id.tam_coupon_detail_tv)
 	public TextView couponDetailText;
 	@InjectView(R.id.tam_coupon_detail2_tv)
 	public TextView couponDetail2Text;
 	@InjectView(R.id.tam_coupon_name_tv)
 	public TextView couponNameText;
-	
+
 	@InjectView(R.id.tam_coupon_expire_tv)
 	public TextView couponExpireText;
-
 
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = CancelCouponControl.class)
 	@InjectView(R.id.tam_cancel_coupon_btn)
@@ -55,10 +53,9 @@ public class CouponDeailActivity extends AposBaseActivity {
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = RedeemCouponCouponControl.class)
 	@InjectView(R.id.tam_redeem_coupon_btn)
 	public Button redeemCoupon;
-	
-	
+
 	public CommonDialog redeemDialog;
-	
+
 	@Inject
 	public LocationService locationService;
 
@@ -91,7 +88,7 @@ public class CouponDeailActivity extends AposBaseActivity {
 		request.getSubmitData().put("couponInfo", couponInfo);
 		redeemDialog = new CommonDialog(this, "处理中...");
 		redeemDialog.setCancelable(false);
-		redeemDialog.show();		
+		redeemDialog.show();
 		request.submit();
 	}
 

@@ -11,12 +11,13 @@ import android.view.View;
 public class EmailButtonClickController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
-		Intent email = new Intent(android.content.Intent.ACTION_SEND);  
-		email.setType("text/plain");  
-		String[] emailReciver = new String[]{ResourceUtil.getString(refActivty, R.string.config_service_email_str)}; 
-		  
-		//设置邮件默认地址  
-		email.putExtra(android.content.Intent.EXTRA_EMAIL, emailReciver);  
+		Intent email = new Intent(android.content.Intent.ACTION_SEND);
+		email.setType("text/plain");
+		String[] emailReciver = new String[] { ResourceUtil.getString(
+				refActivty, R.string.config_service_email_str) };
+
+		// 设置邮件默认地址
+		email.putExtra(android.content.Intent.EXTRA_EMAIL, emailReciver);
 
 		refActivty.startActivity(email);
 	}

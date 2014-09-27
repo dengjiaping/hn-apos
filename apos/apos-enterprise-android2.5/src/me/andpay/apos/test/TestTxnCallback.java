@@ -15,27 +15,27 @@ import me.andpay.timobileframework.mvc.anno.CallBackHandler;
 import me.andpay.timobileframework.mvc.support.TiActivity;
 import me.andpay.timobileframework.util.RoboGuiceUtil;
 
-
 @CallBackHandler
 public class TestTxnCallback implements TxnCallback {
 
 	public static final String TAG = TestTxnCallback.class.getName();
-	
+
 	private TiActivity tiActivity;
-	
+
 	public TestTxnCallback(TiActivity tiActivity) {
 		this.tiActivity = tiActivity;
 	}
-	
+
 	private WaitUploadImageDao waitUploadImageDao;
-	
+
 	public void txnSuccess(TxnActionResponse actionResponse) {
 		Log.i(TAG, "txn callback success");
-		if(waitUploadImageDao == null) {
-			waitUploadImageDao= RoboGuiceUtil.getInjectObject(WaitUploadImageDao.class, tiActivity);
+		if (waitUploadImageDao == null) {
+			waitUploadImageDao = RoboGuiceUtil.getInjectObject(
+					WaitUploadImageDao.class, tiActivity);
 		}
-		
-		//更新上传数据表
+
+		// 更新上传数据表
 		QueryWaitUploadImageCond cond = new QueryWaitUploadImageCond();
 		cond.setItemType(AttachmentTypes.SIGNATURE_PICTURE);
 		cond.setTermTraceNo(actionResponse.getTermTraceNo());
@@ -43,7 +43,8 @@ public class TestTxnCallback implements TxnCallback {
 		List<WaitUploadImage> imges = waitUploadImageDao.query(cond, 0, -1);
 		if (!imges.isEmpty()) {
 			WaitUploadImage waitImge = imges.get(0);
-			waitImge.setFilePath(TestTxnProcessor.createTempFile("test_sign.jpg", tiActivity));
+			waitImge.setFilePath(TestTxnProcessor.createTempFile(
+					"test_sign.jpg", tiActivity));
 			waitImge.setReadyUpload(true);
 			waitUploadImageDao.update(waitImge);
 		}
@@ -70,7 +71,7 @@ public class TestTxnCallback implements TxnCallback {
 	}
 
 	public void initCallBack(TxnControl txnControl) {
-	
+
 	}
 
 	public TxnContext getTxnContext() {

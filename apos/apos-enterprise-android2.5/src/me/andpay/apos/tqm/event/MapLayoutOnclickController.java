@@ -16,14 +16,14 @@ public class MapLayoutOnclickController extends AbstractEventController {
 		PayTxnInfo info = activity.getTxnInfo();
 		Intent txnMapIntent = new Intent(
 				TqmProvider.TQM_ACTIVITY_DETAIL_MAP_ACTION);
-		if(info.getSpecLatitude() == null || info.getSpecLongitude() == 0) {
+		if (info.getSpecLatitude() == null || info.getSpecLongitude() == 0) {
 			txnMapIntent.putExtra("latitude", info.getLatitude());
 			txnMapIntent.putExtra("longitude", info.getLongitude());
-		}else {
+		} else {
 			txnMapIntent.putExtra("latitude", info.getSpecLatitude());
 			txnMapIntent.putExtra("longitude", info.getSpecLongitude());
 		}
-		
+
 		txnMapIntent.putExtra("locationInfo", info.getTxnAddress());
 		activity.startActivity(txnMapIntent);
 	}

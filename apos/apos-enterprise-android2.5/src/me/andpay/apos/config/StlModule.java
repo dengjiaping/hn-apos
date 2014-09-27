@@ -9,9 +9,9 @@ public class StlModule extends TiMobileModule {
 
 	@Override
 	protected void configure() {
-		
+
 		bindAction(QuerySettleAction.class);
-		
+
 	}
 
 }

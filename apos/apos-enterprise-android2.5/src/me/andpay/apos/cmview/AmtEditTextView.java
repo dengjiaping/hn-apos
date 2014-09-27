@@ -20,7 +20,7 @@ public class AmtEditTextView extends EditText implements WidgetValueHolder {
 
 	private int hitColor;
 	private String hitText;
-	
+
 	private boolean autoFontResize;
 
 	public AmtEditTextView(Context context, AttributeSet attrs) {
@@ -73,7 +73,8 @@ public class AmtEditTextView extends EditText implements WidgetValueHolder {
 				return;
 			}
 
-			NumberFormat format = NumberFormat.getCurrencyInstance(Locale.CHINA);
+			NumberFormat format = NumberFormat
+					.getCurrencyInstance(Locale.CHINA);
 			Number numOld = null;
 			try {
 				numOld = format.parse(textOld.toString());
@@ -90,7 +91,8 @@ public class AmtEditTextView extends EditText implements WidgetValueHolder {
 				String textRe = format.format(tempAmt);
 				text = textRe;
 			} else {
-				BigDecimal bigde = new BigDecimal(numOld.toString()).multiply(new BigDecimal("0.1"));
+				BigDecimal bigde = new BigDecimal(numOld.toString())
+						.multiply(new BigDecimal("0.1"));
 				bigde = bigde.setScale(2, BigDecimal.ROUND_DOWN);
 				if (bigde.compareTo(new BigDecimal(0l)) == 0) {
 					text = hitText;
@@ -105,7 +107,7 @@ public class AmtEditTextView extends EditText implements WidgetValueHolder {
 			float textWidth = mTextPaint.measureText("1");
 			float with = getWidth();
 			float textCount = with / textWidth;
-			
+
 			if (text.length() > textCount) {
 				text = textOld;
 			}

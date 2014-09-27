@@ -2,13 +2,13 @@ package me.andpay.apos.lft.activity;
 
 import me.andpay.ac.consts.TxnTypes;
 import me.andpay.apos.R;
+import me.andpay.apos.base.tools.ShowUtil;
+import me.andpay.apos.base.view.CustomDialog;
 import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.lft.data.PhoneNumber;
 import me.andpay.apos.lft.even.TopupTextWatcherEventControl;
 import me.andpay.apos.lft.flow.FlowConstants;
-import me.andpay.apos.lft.tools.ShowUtil;
-import me.andpay.apos.lft.view.CustomDialog;
 import me.andpay.apos.tam.callback.impl.QueryBalanceCallBackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
@@ -54,7 +54,7 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 
 	@EventDelegate(type = DelegateType.method, toMethod = "amountSelect", delegateClass = OnClickListener.class)
 	@InjectView(R.id.lft_top_up_amount_select)
-	private View amountSelect;//金额数选择
+	private View amountSelect;// 金额数选择
 
 	@EventDelegate(type = DelegateType.method, toMethod = "sure", delegateClass = OnClickListener.class)
 	@InjectView(R.id.lft_top_up_sure)
@@ -83,19 +83,20 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 	/**
 	 * 充值确定
 	 */
-	@Inject TxnControl txnControl;
+	@Inject
+	TxnControl txnControl;
+
 	public void sure(View v) {
 		TxnContext txnContext = txnControl.init();
 
 		txnContext.setNeedPin(false);
 		txnContext.setTxnType(TxnTypes.INQUIRY_BALANCE);
 		txnContext.setBackTagName(TabNames.BALANCE_PAGE);
-		txnControl
-				.setTxnCallback(new QueryBalanceCallBackImpl());
+		txnControl.setTxnCallback(new QueryBalanceCallBackImpl());
 		TiFlowControlImpl.instanceControl().setFlowContextData(txnContext);
-		TiFlowControlImpl.instanceControl().nextSetup(this,FlowConstants.TOPUP_TXN);
+		TiFlowControlImpl.instanceControl().nextSetup(this,
+				FlowConstants.TOPUP_TXN);
 	}
-	
 
 	/**
 	 * 充值金额选择
@@ -136,7 +137,7 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 		PhoneNumber phoneNumberStr = (PhoneNumber) TiFlowControlImpl
 				.instanceControl().getFlowContext()
 				.get(PhoneNumber.class.getName());
-		if(phoneNumberStr!=null){
+		if (phoneNumberStr != null) {
 			phoneNumber.setText(phoneNumberStr.getDisplayNumber());
 		}
 	}

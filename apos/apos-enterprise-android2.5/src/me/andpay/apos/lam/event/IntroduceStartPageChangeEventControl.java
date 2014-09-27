@@ -18,13 +18,15 @@ import android.view.View;
  * @author cpz
  * 
  */
-public class IntroduceStartPageChangeEventControl extends AbstractEventController {
+public class IntroduceStartPageChangeEventControl extends
+		AbstractEventController {
 
 	public int startFlag = 0;
 
 	public int currentPageNo;
 
-	public void onPageSelected(Activity refActivty, FormBean formBean, int pageNo) {
+	public void onPageSelected(Activity refActivty, FormBean formBean,
+			int pageNo) {
 		IntroduceStartActivity inActivity = (IntroduceStartActivity) refActivty;
 		currentPageNo = pageNo;
 		startFlag = 0;
@@ -59,11 +61,11 @@ public class IntroduceStartPageChangeEventControl extends AbstractEventControlle
 
 	}
 
-	public void onPageScrolled(Activity refActivty, FormBean formBean, int arg0,
-			float arg1, int arg2) {
+	public void onPageScrolled(Activity refActivty, FormBean formBean,
+			int arg0, float arg1, int arg2) {
 		if (currentPageNo == 1 && arg0 == 1) {
 			if (startFlag == 1) {
-				//设置
+				// 设置
 				((TiActivity) refActivty).getAppConfig().setAttribute(
 						ConfigAttrNames.ONCE_INSTALL_USE,
 						ConfigAttrValues.ONCE_INSTALL_USE_VALUE);
@@ -76,7 +78,8 @@ public class IntroduceStartPageChangeEventControl extends AbstractEventControlle
 
 	}
 
-	public void onPageScrollStateChanged(Activity refActivty, FormBean formBean, int arg0) {
+	public void onPageScrollStateChanged(Activity refActivty,
+			FormBean formBean, int arg0) {
 
 	}
 

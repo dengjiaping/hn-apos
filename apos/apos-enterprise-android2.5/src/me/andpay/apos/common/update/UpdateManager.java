@@ -77,7 +77,7 @@ public class UpdateManager extends AfterProcessWithErrorHandler {
 		hasNewVersion = false;
 		if (info != null
 				&& !StringUtil.isEmpty(info.getAppVersionCode())
-				&& Integer.parseInt(info.getAppVersionCode()) > this.curVersionCode){
+				&& Integer.parseInt(info.getAppVersionCode()) > this.curVersionCode) {
 
 			this.newVersion = info.getAppName();
 			this.updateInfo = info.getDescription();
@@ -231,11 +231,11 @@ public class UpdateManager extends AfterProcessWithErrorHandler {
 				callback.downloadProgressChanged(progress);
 				break;
 			case UPDATE_DOWNLOAD_ERROR:
-				
+
 				callback.downloadCompleted(false, msg.obj.toString());
 				break;
 			case UPDATE_DOWNLOAD_COMPLETED:
-				
+
 				callback.downloadCompleted(true, "");
 				break;
 			case UPDATE_DOWNLOAD_CANCELED:

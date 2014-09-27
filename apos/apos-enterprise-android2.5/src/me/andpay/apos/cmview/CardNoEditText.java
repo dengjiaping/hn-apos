@@ -17,7 +17,7 @@ import android.widget.EditText;
 public class CardNoEditText extends EditText implements WidgetValueHolder {
 
 	private Integer maxSize;
-	
+
 	public CardNoEditText(Context context) {
 		this(context, null);
 	}
@@ -28,10 +28,11 @@ public class CardNoEditText extends EditText implements WidgetValueHolder {
 
 	public CardNoEditText(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		
+
 		TypedArray typeArray = context.obtainStyledAttributes(attrs,
 				me.andpay.apos.R.styleable.com_card_text_arrt);
-		maxSize = typeArray.getInteger(me.andpay.apos.R.styleable.com_card_text_arrt_maxSize,24);
+		maxSize = typeArray.getInteger(
+				me.andpay.apos.R.styleable.com_card_text_arrt_maxSize, 24);
 	}
 
 	@Override

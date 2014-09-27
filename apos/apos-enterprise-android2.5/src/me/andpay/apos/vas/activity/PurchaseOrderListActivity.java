@@ -30,12 +30,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 @ContentView(R.layout.vas_purchaseorder_list_layout)
-public class PurchaseOrderListActivity extends AposBaseActivity implements TiFlowCallback {
+public class PurchaseOrderListActivity extends AposBaseActivity implements
+		TiFlowCallback {
 
 	private PurchaseOrderListAdapter adapter;
 	// 用户输入条件
 	private QueryPurchaseOrderInfoCond cond;
- 
+
 	@InjectView(R.id.list_view)
 	@EventDelegate(delegateClass = OnItemClickListener.class, toEventController = PurchaseOrderItemClickController.class)
 	private TiSectionListView listView;
@@ -64,7 +65,7 @@ public class PurchaseOrderListActivity extends AposBaseActivity implements TiFlo
 			@EventDelegate(delegateClass = OnClickListener.class, toEventController = PurQueryCodButtonClickController.class),
 			@EventDelegate(delegateClass = OnLongClickListener.class, toEventController = PurQueryCodButtonClickController.class) })
 	Button conditionButton;
-	
+
 	@InjectView(R.id.com_back_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = PreviousClickEventController.class)
 	ImageView backBtn;
@@ -101,12 +102,13 @@ public class PurchaseOrderListActivity extends AposBaseActivity implements TiFlo
 		request.getSubmitData().put("queryForm", cond);
 		request.open(VasProvider.VAS_DOMAIN_QUERY,
 				isHasQueryCondition ? VasProvider.VAS_ACTION_QUERY_GETPOLIST
-						: VasProvider.VAS_ACTION_QUERY_GETPOLISTSTORAGE, Pattern.async);
+						: VasProvider.VAS_ACTION_QUERY_GETPOLISTSTORAGE,
+				Pattern.async);
 		request.callBack(new QueryPoListAfterProcessHandler(this));
 		request.submit();
 		showProgressView();
 	}
-	
+
 	public void clearCondition() {
 		hasCondImg.setVisibility(View.GONE);
 	}
@@ -121,14 +123,17 @@ public class PurchaseOrderListActivity extends AposBaseActivity implements TiFlo
 			return;
 		}
 		isHasQueryCondition = condition.isHasViewCond();
-		hasCondImg.setVisibility(isHasQueryCondition ? View.VISIBLE : View.GONE);
+		hasCondImg
+				.setVisibility(isHasQueryCondition ? View.VISIBLE : View.GONE);
 		this.cond = condition;
-		getControl().getFlowContext().remove(QueryPurchaseOrderInfoCond.class.getName());
+		getControl().getFlowContext().remove(
+				QueryPurchaseOrderInfoCond.class.getName());
 		queryPoList();
 	}
 
 	public void showListView() {
-		hasCondImg.setVisibility(isHasQueryCondition ? View.VISIBLE : View.GONE);
+		hasCondImg
+				.setVisibility(isHasQueryCondition ? View.VISIBLE : View.GONE);
 		com_list_view.setVisibility(View.VISIBLE);
 		com_list_info_view.setVisibility(View.VISIBLE);
 		com_progress_layout.setVisibility(View.GONE);

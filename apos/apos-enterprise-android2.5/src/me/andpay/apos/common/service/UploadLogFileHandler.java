@@ -20,10 +20,10 @@ public class UploadLogFileHandler {
 
 	@Inject
 	private AposContext aposContext;
-	
+
 	@Inject
 	private Application application;
-	
+
 	@Inject
 	private TiRpcClient tiRpcClient;
 
@@ -45,7 +45,8 @@ public class UploadLogFileHandler {
 		for (int j = 0; j < attachmentItems.size(); j++) {
 
 			AttachmentItem attachmentItem = attachmentItems.get(j);
-			StringBuffer uploadUrl = new StringBuffer(tiRpcClient.getUploadUrl());
+			StringBuffer uploadUrl = new StringBuffer(
+					tiRpcClient.getUploadUrl());
 			if (uploadUrl.indexOf("?") == -1) {
 				uploadUrl.append("?");
 			} else {

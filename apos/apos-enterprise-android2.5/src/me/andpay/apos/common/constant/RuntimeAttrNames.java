@@ -45,7 +45,7 @@ public class RuntimeAttrNames {
 	/**
 	 * 自动登录标志
 	 */
-	public static final String HIS_AUTOLOGIN_FLAG="auto_flag";
+	public static final String HIS_AUTOLOGIN_FLAG = "auto_flag";
 	/**
 	 * 图片缓存器
 	 */
@@ -54,7 +54,7 @@ public class RuntimeAttrNames {
 	 * 最新版本信息
 	 */
 	public static final String LAST_VERSION_INFO = "last_version";
-	
+
 	/**
 	 * 是否进入下一笔交易
 	 */
@@ -64,7 +64,6 @@ public class RuntimeAttrNames {
 	 */
 	public static final String IS_BACKFEED = "backfeed";
 
-	
 	/**
 	 * 是否刷新优惠劵
 	 */
@@ -73,36 +72,34 @@ public class RuntimeAttrNames {
 	 * 是否刷新结账信息
 	 */
 	public static final String FRESH_SETTLE_FLAG = "fresh_settle_flag";
-	
+
 	/**
 	 * 刷新交易信息
 	 */
 	public static final String FRESH_TXN_FLAG = "fresh_txn_flag";
-	
+
 	/**
 	 * 刷新退货信息
 	 */
 	public static final String FRESH_REFUND_FLAG = "fresh_refund_flag";
-	
-	
+
 	/**
 	 * 刷新订单信息
 	 */
 	public static final String FRESH_ORDER_FLAG = "fresh_order_flag";
-		
+
 	/**
-	 *  登录历史用户
+	 * 登录历史用户
 	 */
 	public static final String LOGIN_CURRENT_USER = "login_curr_user";
-	
+
 	/**
-	 *  登录历史用户
+	 * 登录历史用户
 	 */
 	public static final String LOGIN_CURRENT_PASSWORD = "login_curr_pwd";
-	
+
 	public static final String LOGIN_RESPONSE = "login_response";
-	
-	
+
 	/**
 	 * 客户端订单请求标志
 	 */
@@ -112,7 +109,7 @@ public class RuntimeAttrNames {
 	 * 联迪设备列表
 	 */
 	public static final String BLUETOOTH_CARDREADER_LIST = "bluetooth_cardreader_list";
-	
+
 	/**
 	 * 订单输入格式
 	 */
@@ -125,11 +122,10 @@ public class RuntimeAttrNames {
 	 * IC卡应用参数
 	 */
 	public static final String IC_CARD_PARAMS = "ic_card_params";
-	
+
 	/**
 	 * IC卡公钥
 	 */
 	public static final String IC_CARD_PUBLIC_KEY = "ic_card_public_key";
 
-	
 }

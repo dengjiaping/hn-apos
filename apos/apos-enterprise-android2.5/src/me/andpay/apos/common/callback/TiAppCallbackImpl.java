@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.google.inject.Inject;
 
-public class TiAppCallbackImpl implements TiAppCallback{
-	
+public class TiAppCallbackImpl implements TiAppCallback {
+
 	@Inject
 	private Application application;
 
@@ -24,15 +24,13 @@ public class TiAppCallbackImpl implements TiAppCallback{
 				Toast.makeText(
 						application,
 						ResourceUtil.getString(application,
-								R.string.com_system_retry_str), Toast.LENGTH_LONG)
-						.show();
+								R.string.com_system_retry_str),
+						Toast.LENGTH_LONG).show();
 				BackUtil.loginOut(TiAndroidRuntimeInfo.getCurrentActivity());
-				
+
 			}
 		});
-	
-		
-		
+
 	}
 
 }

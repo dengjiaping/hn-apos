@@ -6,13 +6,12 @@ import me.andpay.timobileframework.sqlite.GenSqLiteDao;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
-public class ICCardInfoDao  extends GenSqLiteDao<ICCardInfo, QueryICCardInfoCond, Integer> {
+public class ICCardInfoDao extends
+		GenSqLiteDao<ICCardInfo, QueryICCardInfoCond, Integer> {
 
-	
 	public ICCardInfoDao(Context context, String name, CursorFactory factory,
 			int version) {
 		super(context, name, factory, version, ICCardInfo.class);
 	}
-	
 
 }

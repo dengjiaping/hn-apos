@@ -24,7 +24,8 @@ public class SvcDepositeSuccActivity extends AposBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		SvcDepositeContext dContext = this.getFlowContextData(SvcDepositeContext.class);
+		SvcDepositeContext dContext = this
+				.getFlowContextData(SvcDepositeContext.class);
 		balanceView.setText(balanceView.getText()
 				+ dContext.getBalance().setScale(2).toPlainString());
 		finishButton.setOnClickListener(new OnClickListener() {

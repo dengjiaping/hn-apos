@@ -26,7 +26,7 @@ public class SessionKeepAction extends MultiAction {
 
 	@Inject
 	Application application;
-	
+
 	@Inject
 	private LoginAction loginAction;
 
@@ -52,7 +52,6 @@ public class SessionKeepAction extends MultiAction {
 					return null;
 				}
 			}
-			
 
 			// ModelAndView mv = relogin(request);
 			// if (mv.getHappedEx() != null

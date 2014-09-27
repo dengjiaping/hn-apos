@@ -8,15 +8,17 @@ import android.app.Application;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-public class PurchaseOrderInfoDaoProvider implements Provider<PurchaseOrderInfoDao> {
+public class PurchaseOrderInfoDaoProvider implements
+		Provider<PurchaseOrderInfoDao> {
 
 	@Inject
 	private Application application;
 
 	public PurchaseOrderInfoDao get() {
-		TableName table = PurchaseOrderInfo.class.getAnnotation(TableName.class);
-		return new PurchaseOrderInfoDao(application, null, null, table.version(),
-				PurchaseOrderInfo.class);
+		TableName table = PurchaseOrderInfo.class
+				.getAnnotation(TableName.class);
+		return new PurchaseOrderInfoDao(application, null, null,
+				table.version(), PurchaseOrderInfo.class);
 	}
 
 }

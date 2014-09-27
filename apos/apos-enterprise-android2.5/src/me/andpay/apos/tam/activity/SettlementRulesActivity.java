@@ -60,12 +60,12 @@ public class SettlementRulesActivity extends AposBaseActivity {
 
 	private void boldPartialOfText(TextView textView, int startBlodIndex,
 			int endBlodIndex) {
-		if(endBlodIndex==0)
+		if (endBlodIndex == 0)
 			return;
 		String text = textView.getText().toString();
 		SpannableString spannableString = new SpannableString(text);
-		spannableString.setSpan(new StyleSpan(Typeface.BOLD),
-				startBlodIndex, endBlodIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		spannableString.setSpan(new StyleSpan(Typeface.BOLD), startBlodIndex,
+				endBlodIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		textView.setText(spannableString);
 	}
 

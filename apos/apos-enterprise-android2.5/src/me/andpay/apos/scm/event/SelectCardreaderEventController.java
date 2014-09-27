@@ -51,8 +51,8 @@ public class SelectCardreaderEventController extends AbstractEventController {
 	private DefaultCardReaderCallBack defaultCardReaderCallBack;
 	@Inject
 	private AposContext aposContext;
-	
-	public interface BluetoothConnectMode{
+
+	public interface BluetoothConnectMode {
 		public static final String SEARCH = "search";
 		public static final String SCAN = "scan";
 	}
@@ -63,7 +63,7 @@ public class SelectCardreaderEventController extends AbstractEventController {
 		int cardreaderType = cardTypes.get(Integer.valueOf(v.getId()));
 
 		setCardreadType(aposContext, cardreaderType, refActivty);
-		
+
 		if (cardreaderType == CardReaderTypes.ITRON
 				|| cardreaderType == CardReaderTypes.LANDI) {
 
@@ -71,35 +71,38 @@ public class SelectCardreaderEventController extends AbstractEventController {
 					FlowConstants.SUCCESS_STEP1);
 			return;
 		}
-		
-		if(cardreaderType == CardReaderTypes.NEW_LAND_BL){
-//			final OperationDialog operationDialog = new OperationDialog(refActivty,
-//					null, "请选择匹配蓝牙读卡器的方式", "手动搜索", "二维码匹配", true);
-//			operationDialog.setSureButtonOnclickListener(new OnClickListener() {
-//				public void onClick(View v) {
-//					operationDialog.dismiss();
-//					aposContext.getAppConfig().setAttribute(
-//							ConfigAttrNames.DEFAULT_BLUETOOTH_CONNECT_MODE,
-//							BluetoothConnectMode.SEARCH);
-//					TiFlowControlImpl.instanceControl().nextSetup(refActivty,
-//							FlowConstants.SUCCESS_STEP1);
-//					return;
-//				}
-//			});
-//			operationDialog.setCancelButtonOnclickListener(new OnClickListener() {
-//				public void onClick(View v) {
-//					operationDialog.dismiss();
-//					aposContext.getAppConfig().setAttribute(
-//							ConfigAttrNames.DEFAULT_BLUETOOTH_CONNECT_MODE,
-//							BluetoothConnectMode.SCAN);
-//					TiFlowControlImpl.instanceControl().nextSetup(refActivty,
-//							FlowConstants.SUCCESS_STEP1);
-//					return;
-//				}
-//			});
-//
-//			operationDialog.show();
-			
+
+		if (cardreaderType == CardReaderTypes.NEW_LAND_BL) {
+			// final OperationDialog operationDialog = new
+			// OperationDialog(refActivty,
+			// null, "请选择匹配蓝牙读卡器的方式", "手动搜索", "二维码匹配", true);
+			// operationDialog.setSureButtonOnclickListener(new
+			// OnClickListener() {
+			// public void onClick(View v) {
+			// operationDialog.dismiss();
+			// aposContext.getAppConfig().setAttribute(
+			// ConfigAttrNames.DEFAULT_BLUETOOTH_CONNECT_MODE,
+			// BluetoothConnectMode.SEARCH);
+			// TiFlowControlImpl.instanceControl().nextSetup(refActivty,
+			// FlowConstants.SUCCESS_STEP1);
+			// return;
+			// }
+			// });
+			// operationDialog.setCancelButtonOnclickListener(new
+			// OnClickListener() {
+			// public void onClick(View v) {
+			// operationDialog.dismiss();
+			// aposContext.getAppConfig().setAttribute(
+			// ConfigAttrNames.DEFAULT_BLUETOOTH_CONNECT_MODE,
+			// BluetoothConnectMode.SCAN);
+			// TiFlowControlImpl.instanceControl().nextSetup(refActivty,
+			// FlowConstants.SUCCESS_STEP1);
+			// return;
+			// }
+			// });
+			//
+			// operationDialog.show();
+
 			aposContext.getAppConfig().setAttribute(
 					ConfigAttrNames.DEFAULT_BLUETOOTH_CONNECT_MODE,
 					BluetoothConnectMode.SEARCH);
@@ -133,15 +136,15 @@ public class SelectCardreaderEventController extends AbstractEventController {
 		}
 
 	}
-	
+
 	private void initData() {
 
 		if (!isInit) {
 			isInit = true;
 			cardTypes.put(Integer.valueOf(oneBt.getId()),
 					CardReaderTypes.NEW_LAND);
-			cardTypes.put(Integer.valueOf(twoBt.getId()), 
-					CardReaderTypes.ITRON);
+			cardTypes
+					.put(Integer.valueOf(twoBt.getId()), CardReaderTypes.ITRON);
 			cardTypes.put(Integer.valueOf(threeBt.getId()),
 					CardReaderTypes.CLOUD_POS);
 			cardTypes.put(Integer.valueOf(fourBt.getId()),
@@ -152,13 +155,14 @@ public class SelectCardreaderEventController extends AbstractEventController {
 					CardReaderTypes.NEW_LAND_AD);
 		}
 	}
-	
-	public static void setCardreadType(AposContext aposContext, int cardreaderType, Activity refActivty){
+
+	public static void setCardreadType(AposContext aposContext,
+			int cardreaderType, Activity refActivty) {
 		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl
 				.instanceControl().getFlowContextData(
 						CardReaderSetContext.class);
 		cardReaderSetContext.setKsn(null);
-		
+
 		// 设置读卡器
 		Object oldCardreadType = aposContext.getAppConfig().getAttribute(
 				ConfigAttrNames.CARD_READER_TYPE);
@@ -171,12 +175,11 @@ public class SelectCardreaderEventController extends AbstractEventController {
 					Integer.valueOf(cardreaderType));
 			CardReaderManager.resetCardreader();
 			CardReaderManager.initCardReader(
-					refActivty.getApplicationContext(),
-					AposCardReaderUtil.genAposSwiperContext(aposContext.getAppConfig()));
+					refActivty.getApplicationContext(), AposCardReaderUtil
+							.genAposSwiperContext(aposContext.getAppConfig()));
 		}
 		cardReaderSetContext.setCardReaderType(cardreaderType);
 
 	}
-
 
 }

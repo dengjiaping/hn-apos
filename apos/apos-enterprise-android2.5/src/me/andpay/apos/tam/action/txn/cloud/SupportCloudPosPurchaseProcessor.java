@@ -32,15 +32,17 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 	private static int DEFAULT_APPLY_ORDER_WAIT_TIME = 2 * 1000;
 
 	@Override
-	public void sendTxn(TxnForm txnForm, PurchaseRequest txnRequest, TxnCallback callBack) {
+	public void sendTxn(TxnForm txnForm, PurchaseRequest txnRequest,
+			TxnCallback callBack) {
 		// 判断是否是云订单
-		if (!txnForm.getIsCloudOrder()){
+		if (!txnForm.getIsCloudOrder()) {
 			super.sendTxn(txnForm, txnRequest, callBack);
 			return;
 		}
 		Log.i(this.getClass().getName(), "txn start send");
 		// 将消费请求转换为云订单发送请求
-		CloudOrderApply apply = CloudPosUtil.convert2CloudRequest(txnForm, txnRequest);
+		CloudOrderApply apply = CloudPosUtil.convert2CloudRequest(txnForm,
+				txnRequest);
 		String cloudOrderId = null;
 		boolean continueFlag = false;
 		do {
@@ -53,9 +55,9 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 			} catch (Throwable ex) {
 				Log.e(this.getClass().getName(), "sendTxn", ex);
 				if (!isContinueWithCOApplyException(ex, txnForm)) {
-					((CloudPosCallback) callBack).pushOrderNetworkError(
-							ResourceUtil.getString(application,
-									R.string.tam_networkerror_str));
+					((CloudPosCallback) callBack)
+							.pushOrderNetworkError(ResourceUtil.getString(
+									application, R.string.tam_networkerror_str));
 					return;
 				}
 				continueFlag = true;
@@ -63,27 +65,27 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 		} while (continueFlag);
 		getCloudOrderResult(txnRequest, txnForm, callBack);
 	}
-	
+
 	/**
 	 * 循环获取云订单支付结果
 	 * 
 	 * @param txnForm
 	 * @param callBack
 	 */
-	protected void getCloudOrderResult(PurchaseRequest txnRequest, TxnForm txnForm,
-			TxnCallback callBack) {
+	protected void getCloudOrderResult(PurchaseRequest txnRequest,
+			TxnForm txnForm, TxnCallback callBack) {
 		CloudOrderPaymentResult txnResponse = null;
 		do {
 
 			try {
-				txnResponse  = cloudOrderService.getCloudOrderPaymentResult(txnForm
-						.getCloudOrderId());
+				txnResponse = cloudOrderService
+						.getCloudOrderPaymentResult(txnForm.getCloudOrderId());
 			} catch (Throwable ex) {
 				Log.e(this.getClass().getName(), "getCloudOrderResult", ex);
 			}
 			if (txnForm.getTxnCancelFlag().isCancelTxn()) {
-				Log.e("SupportCloudPosPurchaseProcessor", "[" + txnForm.getCloudOrderId()
-						+ "] is canceled");
+				Log.e("SupportCloudPosPurchaseProcessor",
+						"[" + txnForm.getCloudOrderId() + "] is canceled");
 				return;
 			}
 		} while (txnResponse == null);
@@ -92,10 +94,11 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 		super.recordTxnSnapshot(txnRequest, txnForm);
 		dealResponse(purResponse, txnForm, callBack, null);
 	}
-	
+
 	@Override
-	protected void dealFailResponse(PurchaseResponse purResponse, TxnCallback callBack,
-			TxnForm txnForm, ExceptionPayTxnInfo exPayTxnInfo) {
+	protected void dealFailResponse(PurchaseResponse purResponse,
+			TxnCallback callBack, TxnForm txnForm,
+			ExceptionPayTxnInfo exPayTxnInfo) {
 		if (!txnForm.getIsCloudOrder()) {
 			super.dealFailResponse(purResponse, callBack, txnForm, exPayTxnInfo);
 			return;
@@ -105,19 +108,19 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 		exPayTxnInfo.setTxnFlag(TxnFlags.FAIL);
 		txnAfter(purResponse, txnForm, exPayTxnInfo);
 		txnForm.getResponse().setResponMsg(purResponse.getRespMessage());
-		((CloudPosCallback) callBack).pushOrderNetworkError(
-				purResponse.getRespMessage());
+		((CloudPosCallback) callBack).pushOrderNetworkError(purResponse
+				.getRespMessage());
 	}
 
-//	/**
-//	 * 只有IC交易才有ACK
-//	 */
-//	@Override
-//	protected void confirmTxn(TxnForm txnForm, String txnId) {
-//		if (txnForm.isIcCardTxn()) {
-//			super.confirmTxn(txnId);
-//		}
-//	}
+	// /**
+	// * 只有IC交易才有ACK
+	// */
+	// @Override
+	// protected void confirmTxn(TxnForm txnForm, String txnId) {
+	// if (txnForm.isIcCardTxn()) {
+	// super.confirmTxn(txnId);
+	// }
+	// }
 
 	/**
 	 * 云订单不需要设置签名图片
@@ -142,8 +145,6 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 		super.recordTxnSnapshot(txnRequest, txnForm);
 	}
 
-	
-
 	/**
 	 * 根据异常信息判断是否需要继续上送云订单
 	 * 
@@ -156,18 +157,20 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 	 * @param txnForm
 	 * @return
 	 */
-	protected boolean isContinueWithCOApplyException(Throwable ex, TxnForm txnForm) {
+	protected boolean isContinueWithCOApplyException(Throwable ex,
+			TxnForm txnForm) {
 		boolean isContinue = false;
 		if (ex instanceof NetworkErrorException) {
 			NetworkErrorException netExp = (NetworkErrorException) ex;
 			isContinue = netExp.getPhase().equals(NetworkOpPhase.READ_WRITE);
 		} else if (ex instanceof WebSockTimeoutException) {
 			WebSockTimeoutException netException = (WebSockTimeoutException) ex;
-			isContinue = netException.getPhase().equals(NetworkOpPhase.READ_WRITE);
+			isContinue = netException.getPhase().equals(
+					NetworkOpPhase.READ_WRITE);
 		}
 		if (!isContinue) {
-			exceptionPayTxnInfoService.removeExceptionTxn(txnForm.getTermTraceNo(),
-					txnForm.getTermTxnTime());
+			exceptionPayTxnInfoService.removeExceptionTxn(
+					txnForm.getTermTraceNo(), txnForm.getTermTxnTime());
 		}
 		return isContinue;
 	}
@@ -176,10 +179,11 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 	/**
 	 * 云订单不需要设置GPS信息
 	 */
-	protected PayTxnInfo generatePayTxnInfoByResponse(PurchaseResponse purResponse,
-			ExceptionPayTxnInfo exPayTxnInfo, TxnForm txnForm) {
-		PayTxnInfo info = super.generatePayTxnInfoByResponse(purResponse, exPayTxnInfo,
-				txnForm);
+	protected PayTxnInfo generatePayTxnInfoByResponse(
+			PurchaseResponse purResponse, ExceptionPayTxnInfo exPayTxnInfo,
+			TxnForm txnForm) {
+		PayTxnInfo info = super.generatePayTxnInfoByResponse(purResponse,
+				exPayTxnInfo, txnForm);
 		if (txnForm.getIsCloudOrder()) {
 			info.setTermTxnTime(StringUtil.format("yyyyMMddHHmmss",
 					purResponse.getTermTxnTime()));
@@ -190,7 +194,7 @@ public class SupportCloudPosPurchaseProcessor extends PurchaseProcessor {
 			info.setSpecLatitude(null);
 			info.setSpecLongitude(null);
 			info.setIsCloudOrder(true);
-			
+
 		}
 		return info;
 	}

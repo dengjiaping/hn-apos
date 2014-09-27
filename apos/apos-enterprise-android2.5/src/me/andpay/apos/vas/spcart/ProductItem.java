@@ -3,7 +3,6 @@ package me.andpay.apos.vas.spcart;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-
 public class ProductItem implements Serializable {
 
 	/**
@@ -40,7 +39,7 @@ public class ProductItem implements Serializable {
 	 * 价格名称
 	 */
 	private String priceName;
-	
+
 	/**
 	 * 价格
 	 */
@@ -50,12 +49,11 @@ public class ProductItem implements Serializable {
 	 * 属性
 	 */
 	private String attr;
-	
+
 	/**
 	 * 产品购买排它标志
 	 */
 	private boolean exclusive;
-	
 
 	public String getProductType() {
 		return productType;

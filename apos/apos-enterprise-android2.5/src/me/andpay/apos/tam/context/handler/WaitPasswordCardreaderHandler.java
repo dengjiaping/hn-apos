@@ -31,7 +31,6 @@ public class WaitPasswordCardreaderHandler extends GenChangeStatusHander {
 		TxnAcitivty activity = (TxnAcitivty) txnControl.getCurrActivity();
 		activity.topTextView.setText(R.string.tam_top_input_pass_str);
 
-		
 		APOSGifUtil.startGif(activity.gifDrawable, activity.gifView, activity
 				.getResources(), CardReaderResourceSelector.selectGit(
 				CardReaderManager.getCardReaderType(),
@@ -42,8 +41,9 @@ public class WaitPasswordCardreaderHandler extends GenChangeStatusHander {
 	@Override
 	protected void changeAction(TxnControl txnControl) {
 		TxnAcitivty activity = (TxnAcitivty) txnControl.getCurrActivity();
-		
-		CardReaderManager.setCurrCallback(txnControl.getSwipCardReaderCallBack());
+
+		CardReaderManager.setCurrCallback(txnControl
+				.getSwipCardReaderCallBack());
 		CardReaderManager.startSwiper(AposCardReaderUtil.convertSwiperRequest(
 				txnControl.getTxnContext(), activity.getAppConfig()));
 	}

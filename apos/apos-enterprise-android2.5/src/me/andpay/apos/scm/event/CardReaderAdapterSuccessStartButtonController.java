@@ -12,21 +12,22 @@ import me.andpay.timobileframework.mvc.form.FormBean;
 import android.app.Activity;
 import android.view.View;
 
-public class CardReaderAdapterSuccessStartButtonController extends AbstractEventController {
-	
+public class CardReaderAdapterSuccessStartButtonController extends
+		AbstractEventController {
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-//		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl
-//				.instanceControl().getFlowContextData(
-//						CardReaderSetContext.class);
-//		
-//		
-//		
+		// CardReaderSetContext cardReaderSetContext = TiFlowControlImpl
+		// .instanceControl().getFlowContextData(
+		// CardReaderSetContext.class);
+		//
+		//
+		//
 		Map<String, String> intentData = new HashMap<String, String>();
 		intentData.put(CommonProvider.TAGNAME, TabNames.TXN_PAGE);
-		
-		TiFlowControlImpl.instanceControl().nextSetup(activity, FlowConstants.FINISH,
-				intentData);
-		
+
+		TiFlowControlImpl.instanceControl().nextSetup(activity,
+				FlowConstants.FINISH, intentData);
+
 	}
 
 }

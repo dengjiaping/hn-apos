@@ -9,9 +9,9 @@ import android.view.View;
 public class SignBackControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
+
 		TiFlowControlImpl.instanceControl().previousSetup(activity);
-		
+
 	}
 
 }

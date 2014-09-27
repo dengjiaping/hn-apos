@@ -71,7 +71,8 @@ public class TiSpinner extends EditText implements OnClickListener,
 	public void setSpinnerValues(List<Pair<String, String>> values) {
 		dialog.setContentView(defaultLayoutId);
 		this.values = values;
-		LinearLayout layout = (LinearLayout) dialog.findViewById(R.id.com_root_view);
+		LinearLayout layout = (LinearLayout) dialog
+				.findViewById(R.id.com_root_view);
 		for (int i = 0; i < values.size(); i++) {
 			layout.addView(createSolidImage());
 			layout.addView(createItemView(values.get(i), i));
@@ -90,10 +91,12 @@ public class TiSpinner extends EditText implements OnClickListener,
 
 	private View createItemView(Pair<String, String> value, final int position) {
 
-		final View convertView = LayoutInflater.from(this.getContext()).inflate(
-				R.layout.com_idtype_spinner_item_layout, null);
-		TextView text = (TextView) convertView.findViewById(R.id.com_type_name_text);
-		ImageView view = (ImageView) convertView.findViewById(R.id.com_id_type_img);
+		final View convertView = LayoutInflater.from(this.getContext())
+				.inflate(R.layout.com_idtype_spinner_item_layout, null);
+		TextView text = (TextView) convertView
+				.findViewById(R.id.com_type_name_text);
+		ImageView view = (ImageView) convertView
+				.findViewById(R.id.com_id_type_img);
 		text.setText(value.first);
 		convertView.setOnClickListener(new OnClickListener() {
 
@@ -131,12 +134,14 @@ public class TiSpinner extends EditText implements OnClickListener,
 			TextView text = texts.get(i);
 			ImageView view = images.get(i);
 			if (i == position) {
-				text.setTextColor(getResources().getColor(R.color.com_bule_color));
+				text.setTextColor(getResources().getColor(
+						R.color.com_bule_color));
 				view.setVisibility(View.VISIBLE);
 				setText(values.get(i).first);
 				this.selectedItemId = position;
 			} else {
-				text.setTextColor(getResources().getColor(R.color.com_title_normal_col));
+				text.setTextColor(getResources().getColor(
+						R.color.com_title_normal_col));
 				view.setVisibility(View.INVISIBLE);
 			}
 		}
@@ -145,14 +150,17 @@ public class TiSpinner extends EditText implements OnClickListener,
 	public void showSelect(int viewId) {
 		for (Integer itemId : itemIds.keySet()) {
 			TextView text = (TextView) dialog.findViewById(itemIds.get(itemId));
-			ImageView view = (ImageView) dialog.findViewById(itemImgs.get(itemId));
+			ImageView view = (ImageView) dialog.findViewById(itemImgs
+					.get(itemId));
 			if (itemId.intValue() == viewId) {
-				text.setTextColor(getResources().getColor(R.color.com_bule_color));
+				text.setTextColor(getResources().getColor(
+						R.color.com_bule_color));
 				view.setVisibility(View.VISIBLE);
 				value = itemValues.get(itemId);
 				textId = itemStrs.get(itemId);
 			} else {
-				text.setTextColor(getResources().getColor(R.color.com_title_normal_col));
+				text.setTextColor(getResources().getColor(
+						R.color.com_title_normal_col));
 				view.setVisibility(View.INVISIBLE);
 			}
 
@@ -186,8 +194,8 @@ public class TiSpinner extends EditText implements OnClickListener,
 
 	public interface TiSpinnerInit {
 		public void initData(Map<Integer, Integer> itemIds,
-				Map<Integer, Integer> itemImgs, Map<Integer, String> itemValues,
-				Map<Integer, Integer> itemStrs);
+				Map<Integer, Integer> itemImgs,
+				Map<Integer, String> itemValues, Map<Integer, Integer> itemStrs);
 	}
 
 }

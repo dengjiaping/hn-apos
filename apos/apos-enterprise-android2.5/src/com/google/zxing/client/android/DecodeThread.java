@@ -60,16 +60,16 @@ final class DecodeThread extends Thread {
 			SharedPreferences prefs = PreferenceManager
 					.getDefaultSharedPreferences(activity);
 			decodeFormats = new ArrayList<BarcodeFormat>();
-//			if (prefs.getBoolean(PreferencesActivity.KEY_DECODE_1D, true)) {
-//				decodeFormats.addAll(DecodeFormatManager.ONE_D_FORMATS);
-//			}
+			// if (prefs.getBoolean(PreferencesActivity.KEY_DECODE_1D, true)) {
+			// decodeFormats.addAll(DecodeFormatManager.ONE_D_FORMATS);
+			// }
 			if (prefs.getBoolean(PreferencesActivity.KEY_DECODE_QR, true)) {
 				decodeFormats.addAll(DecodeFormatManager.QR_CODE_FORMATS);
 			}
-//			if (prefs.getBoolean(PreferencesActivity.KEY_DECODE_DATA_MATRIX,
-//					true)) {
-//				decodeFormats.addAll(DecodeFormatManager.DATA_MATRIX_FORMATS);
-//			}
+			// if (prefs.getBoolean(PreferencesActivity.KEY_DECODE_DATA_MATRIX,
+			// true)) {
+			// decodeFormats.addAll(DecodeFormatManager.DATA_MATRIX_FORMATS);
+			// }
 		}
 		hints.put(DecodeHintType.POSSIBLE_FORMATS, decodeFormats);
 

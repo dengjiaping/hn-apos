@@ -1,9 +1,9 @@
 package me.andpay.apos.cmview.tispinner;
 
 public class TiSpinnerItem {
-	
+
 	private int index;
-	
+
 	private String value;
 
 	private String name;
@@ -41,8 +41,5 @@ public class TiSpinnerItem {
 	public void setSelectFlag(boolean selectFlag) {
 		this.selectFlag = selectFlag;
 	}
-	
-	
-	
 
 }

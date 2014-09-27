@@ -9,6 +9,7 @@ import android.view.View;
 
 /**
  * 显示产品明细
+ * 
  * @author cpz
  *
  */

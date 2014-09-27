@@ -71,6 +71,81 @@
         </activity>
         -->
         <!-- 商户服务 -->
+        
+        
+        <activity
+            android:name=".merchantservice.activity.SettleMentDetailListActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.SettleMentDetailListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".merchantservice.activity.MserviceQueryActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.MserviceQueryActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        
+         <activity
+            android:name=".merchantsmaking.activity.CouponsActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantsmaking.activity.CouponsActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+         <activity
+            android:name=".merchantservice.activity.MerchantsInformationActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.MerchantsInformationActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name=".merchantservice.activity.OrderInformationReportActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.OrderInformationReportActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        
+         <activity
+            android:name=".merchantservice.activity.BackOrderDetailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.BackOrderDetailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        
+        <activity
+            android:name=".merchantservice.activity.AddBackOrderActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.AddBackOrderActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
         <activity
             android:name=".merchantservice.activity.MerchantsServiceActivity"
             android:screenOrientation="portrait" >
@@ -81,10 +156,28 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".merchantservice.activity.SettleMentDeatailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.SettleMentDeatailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".merchantservice.activity.MsReconciliationActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="merchantservice.activity.MsReconciliationActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".merchantservice.activity.BankErrorDisposeActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantservice.activity.BankErrorDisposeActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

@@ -24,8 +24,7 @@ public class VasMainActivity extends AposBaseActivity {
 	@InjectView(R.id.com_show_silder_btn)
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = ShowSliderControl.class)
 	public ImageView showSilder;
-	
-	
+
 	@InjectView(R.id.vas_sales_product_layout)
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = VasMainEventControl.class)
 	public RelativeLayout salesLayout;
@@ -39,12 +38,12 @@ public class VasMainActivity extends AposBaseActivity {
 		getControl().startFlow(this, FlowNames.VAS_PUR_QUERY_FLOW);
 
 	}
-	
+
 	public void startSvcDepositeFlow(View view) {
 		getControl().startFlow(this, FlowNames.VAS_SVC_DEPOSITE_FLOW);
 
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {

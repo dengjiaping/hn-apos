@@ -27,7 +27,7 @@ public class SettleInfoAdapter extends SsmBaseAdapter<TxnBatch> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		
+
 		TxnBatch batch = getRerords().get(position);
 		if (convertView == null) {
 			convertView = LayoutInflater.from(
@@ -55,7 +55,7 @@ public class SettleInfoAdapter extends SsmBaseAdapter<TxnBatch> {
 		TextView amount = (TextView) convertView
 				.findViewById(R.id.ssm_main_amount_tv);
 		TextView count = (TextView) convertView
-				.findViewById(R.id.ssm_main_count_tv); 
+				.findViewById(R.id.ssm_main_count_tv);
 		txnTime.setText(String.format(getDateStr(), batch.getTxnStartTime(),
 				batch.getTxnEndTime()));
 		batchNo.setText(batch.getTermBatchNo().toString());

@@ -12,7 +12,7 @@ public class ReundSuccessControl extends AbstractEventController {
 
 	@Inject
 	private TxnControl txnControl;
-	
+
 	public void onClick(Activity activity, FormBean formBean, View v) {
 		txnControl.backHomePage(activity);
 	}

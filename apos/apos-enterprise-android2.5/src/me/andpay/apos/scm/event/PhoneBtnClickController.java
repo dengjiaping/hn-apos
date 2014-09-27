@@ -13,9 +13,10 @@ public class PhoneBtnClickController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
 		Intent myIntentDial = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"
-				+ ResourceUtil.getString(refActivty, R.string.config_service_phonenumber_str)));
-		
+				+ ResourceUtil.getString(refActivty,
+						R.string.config_service_phonenumber_str)));
+
 		refActivty.startActivity(myIntentDial);
-		
+
 	}
 }

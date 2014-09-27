@@ -23,11 +23,11 @@ public class SvcDepositeContext implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	public static final String ATTR_KEY_CARDNO = "cardNo";
-	
+
 	public static final String ATTR_KEY_CARDTYPE = "cardType";
-	
+
 	public static final String ATTR_KEY_CARDNAME = "cardName";
 
 	/**
@@ -189,7 +189,8 @@ public class SvcDepositeContext implements Serializable {
 		attr.put(ATTR_KEY_CARDNO, cardNo);
 		attr.put(ATTR_KEY_CARDTYPE, cardType);
 		attr.put(ATTR_KEY_CARDNAME, cardName);
-		return new String(JacksonSerializer.newPrettySerializer().serialize(attr));
+		return new String(JacksonSerializer.newPrettySerializer().serialize(
+				attr));
 	}
 
 	private void convertDepositCtrls(Application application) {
@@ -200,10 +201,10 @@ public class SvcDepositeContext implements Serializable {
 		this.ctrlAmtArray = new BigDecimal[depositCtrls.size()];
 		int i = 0;
 		for (Map.Entry<BigDecimal, BigDecimal> entry : depositCtrls.entrySet()) {
-			this.ctrlAmtDesc[i] = String.format(ResourceUtil.getString(application,
-					R.string.vas_svc_deposite_price_format_str),
-					entry.getKey().setScale(2).toPlainString(),
-					entry.getValue().setScale(2).toPlainString());
+			this.ctrlAmtDesc[i] = String.format(ResourceUtil.getString(
+					application, R.string.vas_svc_deposite_price_format_str),
+					entry.getKey().setScale(2).toPlainString(), entry
+							.getValue().setScale(2).toPlainString());
 			this.ctrlAmtArray[i] = entry.getKey();
 			i++;
 		}

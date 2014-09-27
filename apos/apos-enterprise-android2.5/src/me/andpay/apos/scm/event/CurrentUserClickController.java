@@ -24,19 +24,20 @@ public class CurrentUserClickController extends AbstractEventController {
 		final Dialog currUserDialog = new Dialog(refActivty,
 				R.style.Theme_dialog_style);
 
-
 		currUserDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		currUserDialog.setContentView(R.layout.scm_current_user_dialog_layout);
-		
-		
+
 		LoginUserInfo userInfo = (LoginUserInfo) tiActivity.getAppContext()
 				.getAttribute(RuntimeAttrNames.LOGIN_USER);
 		PartyInfo partyInfo = (PartyInfo) tiActivity.getAppContext()
 				.getAttribute(RuntimeAttrNames.PARTY_INFO);
-	
-		TextView userView = (TextView)currUserDialog.findViewById(R.id.com_dialog_user_textview);
-		TextView partyView = (TextView)currUserDialog.findViewById(R.id.com_dialog_party_textview);
-		Button suButton = (Button)currUserDialog.findViewById(R.id.com_dialog_sure_btn);
+
+		TextView userView = (TextView) currUserDialog
+				.findViewById(R.id.com_dialog_user_textview);
+		TextView partyView = (TextView) currUserDialog
+				.findViewById(R.id.com_dialog_party_textview);
+		Button suButton = (Button) currUserDialog
+				.findViewById(R.id.com_dialog_sure_btn);
 
 		userView.setText(userInfo.getUserName());
 		partyView.setText(partyInfo.getPartyName());
@@ -45,8 +46,7 @@ public class CurrentUserClickController extends AbstractEventController {
 				currUserDialog.dismiss();
 			}
 		});
-		
-		
+
 		currUserDialog.show();
 
 	}

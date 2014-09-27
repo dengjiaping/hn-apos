@@ -4,38 +4,36 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class TxnDetailContext implements Serializable {
-	
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2877569706193701981L;
 
 	private String salesAmtFomat;
-	
+
 	private String extTraceNo;
-	
+
 	private String memo;
-	
-	
+
 	private String cardNo;
-	
+
 	private String txnType;
-	
+
 	private String txnTypeName;
-	
+
 	private String txnAddress;
 
 	private String cardIssuerName;
-	
+
 	private Date txnTime;
-	
+
 	private String cardAssoc;
-	
+
 	private String goodsFileURL;
-	
+
 	private String signFileURL;
-	
+
 	public String getCardIssuerName() {
 		return cardIssuerName;
 	}
@@ -67,14 +65,15 @@ public class TxnDetailContext implements Serializable {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-//
-//	public boolean isTxnfinish() {
-//		return txnfinish;
-//	}
-//
-//	public void setTxnfinish(boolean txnfinish) {
-//		this.txnfinish = txnfinish;
-//	}
+
+	//
+	// public boolean isTxnfinish() {
+	// return txnfinish;
+	// }
+	//
+	// public void setTxnfinish(boolean txnfinish) {
+	// this.txnfinish = txnfinish;
+	// }
 
 	public String getCardNo() {
 		return cardNo;
@@ -139,6 +138,5 @@ public class TxnDetailContext implements Serializable {
 	public void setSignFileURL(String signFileURL) {
 		this.signFileURL = signFileURL;
 	}
-	
 
 }

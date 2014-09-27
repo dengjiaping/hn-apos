@@ -2,15 +2,16 @@ package me.andpay.apos.tam.action.txn.model;
 
 /**
  * 密码数据
+ * 
  * @author cpz
  *
  */
 public class PinData {
 
 	private byte[] pinblock;
-	
+
 	private byte[] pinEncryptAdditionData;
-	
+
 	private String pinEncryptMethods;
 
 	public byte[] getPinblock() {

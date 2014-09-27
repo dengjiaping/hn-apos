@@ -8,8 +8,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 /**
  * 消息通知控制器
+ * 
  * @author Administrator
  *
  */
@@ -39,7 +41,12 @@ public class MessageAdapterController extends BaseAdapterController<Message> {
 		Message msg = getAdpter().getList().get(arg0);
 		holder.title.setText(msg.getTitle());
 		holder.time.setText(msg.getTime());
-		holder.isReader.setTextColor(getAdpter().getContext().getResources().getColor(msg.isReader()?R.color.tqm_list_item_amount_col:R.color.com_red_color));
+		holder.isReader.setTextColor(getAdpter()
+				.getContext()
+				.getResources()
+				.getColor(
+						msg.isReader() ? R.color.tqm_list_item_amount_col
+								: R.color.com_red_color));
 		holder.isReader.setText(msg.isReader() ? "已读" : "未读");
 
 		return arg1;
@@ -52,11 +59,12 @@ public class MessageAdapterController extends BaseAdapterController<Message> {
 
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-                if(getAdpter().getAdpterEventListener()!=null){
-                	getAdpter().getAdpterEventListener().onEventListener(new Object[]{
-                			getAdpter().getList().get(position)
-                	});
-                }
+				if (getAdpter().getAdpterEventListener() != null) {
+					getAdpter().getAdpterEventListener()
+							.onEventListener(
+									new Object[] { getAdpter().getList().get(
+											position) });
+				}
 			}
 		});
 	}

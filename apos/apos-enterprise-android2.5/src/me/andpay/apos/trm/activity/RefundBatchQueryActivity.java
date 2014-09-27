@@ -102,20 +102,19 @@ public class RefundBatchQueryActivity extends AposBaseActivity {
 
 		super.onCreate(savedInstanceState);
 		trm_txn_list_lv.setPinnedHeaderView(LayoutInflater.from(this).inflate(
-				R.layout.vas_purchaseorder_section_layout, trm_txn_list_lv, false));
+				R.layout.vas_purchaseorder_section_layout, trm_txn_list_lv,
+				false));
 		refresh_layout.initView();
 		queryAll();
 
 	}
-	
 
 	@Override
 	protected void onResumeProcess() {
 		Object flag = getAppContext().getAttribute(
 				RuntimeAttrNames.FRESH_REFUND_FLAG);
 		if (flag != null && StringUtil.isNotBlank(flag.toString())) {
-			getAppContext().removeAttribute(
-					RuntimeAttrNames.FRESH_REFUND_FLAG);
+			getAppContext().removeAttribute(RuntimeAttrNames.FRESH_REFUND_FLAG);
 			queryAll();
 		}
 	}
@@ -180,8 +179,8 @@ public class RefundBatchQueryActivity extends AposBaseActivity {
 			// adapter = null;
 		}
 		byte[] conditionBytes = data.getByteArrayExtra("queryConditionForm");
-		QueryConditionForm form = JacksonSerializer.newPrettySerializer().deserialize(
-				QueryConditionForm.class, conditionBytes);
+		QueryConditionForm form = JacksonSerializer.newPrettySerializer()
+				.deserialize(QueryConditionForm.class, conditionBytes);
 
 		if (hasCond(form)) {
 			hasCondImg.setVisibility(View.VISIBLE);

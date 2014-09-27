@@ -53,7 +53,6 @@ public class TiDatePickerView extends EditText implements OnClickListener,
 				return false;
 			}
 		});
-		
 
 	}
 
@@ -119,7 +118,7 @@ public class TiDatePickerView extends EditText implements OnClickListener,
 			dayOfMonth = Integer.valueOf(dates[2]);
 
 		}
-		picker.updateDate(year+1, month, dayOfMonth);
+		picker.updateDate(year + 1, month, dayOfMonth);
 		picker.updateDate(year, month, dayOfMonth);
 		dialog.show();
 	}

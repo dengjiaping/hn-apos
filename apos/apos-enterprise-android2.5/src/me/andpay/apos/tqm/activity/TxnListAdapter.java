@@ -111,7 +111,7 @@ public class TxnListAdapter extends TiSectionListAdapter<PayTxnInfo> {
 
 		holder.amount.setTextColor(TxnTypes.PURCHASE.equalsIgnoreCase(info
 				.getTxnType()) ? blackList : redList);
-		//holder.cardIssueName.setText(info.getIssuerName());
+		// holder.cardIssueName.setText(info.getIssuerName());
 		holder.txntype.setText(info.getTxnTypeDesc());
 		holder.cardno.setText(info.getShortPan());
 		if (!StringUtil.isEmpty(info.getTermTxnTime())) {
@@ -162,8 +162,7 @@ public class TxnListAdapter extends TiSectionListAdapter<PayTxnInfo> {
 	private int getAvailableCharactersNumber(Activity activity) {
 		DisplayMetrics metric = new DisplayMetrics();
 		activity.getWindowManager().getDefaultDisplay().getMetrics(metric);
-		int availableNumber = (int) ((metric.widthPixels/metric.density - unAvailableWidthPixels)
-				/ chineseCharacterPixels);
+		int availableNumber = (int) ((metric.widthPixels / metric.density - unAvailableWidthPixels) / chineseCharacterPixels);
 		return availableNumber;
 	}
 
@@ -177,13 +176,14 @@ public class TxnListAdapter extends TiSectionListAdapter<PayTxnInfo> {
 
 	private void setDynamicField(TxnItemViewHolder holder, PayTxnInfo info) {
 		String issuerName = info.getIssuerName();
-		if (StringUtil.isNotBlank(issuerName)&&issuerName.length() > this.availableCharactersNumber) {
+		if (StringUtil.isNotBlank(issuerName)
+				&& issuerName.length() > this.availableCharactersNumber) {
 			StringBuffer buffer = new StringBuffer();
 			buffer.append(issuerName.substring(0,
 					this.availableCharactersNumber));
 			buffer.append(ellipsis);
 			holder.cardIssueName.setText(buffer.toString());
-		}else{
+		} else {
 			holder.cardIssueName.setText(issuerName);
 		}
 	}

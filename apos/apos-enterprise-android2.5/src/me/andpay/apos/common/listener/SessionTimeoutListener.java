@@ -66,7 +66,8 @@ public class SessionTimeoutListener implements RemoteCallExceptionListener {
 		if (ErrorMsgUtil.isNetworkError(throwable)
 				&& NetWorkUtil.isNetworkConnected(application)) {
 
-			if (tiRpcClient.getRemoteParamsReader().checkRemoteUrlAndChange(application.getApplicationContext())) {
+			if (tiRpcClient.getRemoteParamsReader().checkRemoteUrlAndChange(
+					application.getApplicationContext())) {
 				tiRpcClient.refreshLookupService();
 			}
 

@@ -29,11 +29,13 @@ import android.widget.ImageView;
 
 /**
  * 结算明细
+ * 
  * @author cpz
  *
  */
 @ContentView(R.layout.stl_settle_list_layout)
-public class SettleListActivity extends AposBaseActivity implements ValueContainer {
+public class SettleListActivity extends AposBaseActivity implements
+		ValueContainer {
 
 	@InjectView(R.id.pull_container)
 	@EventDelegate(delegateClass = IOperationListener.class, toEventController = QuerySettleRefreshController.class)
@@ -47,7 +49,7 @@ public class SettleListActivity extends AposBaseActivity implements ValueContain
 
 	@InjectView(R.id.com_list_layout)
 	public View listView;
-	
+
 	@InjectView(R.id.list_view)
 	@EventDelegate(delegateClass = OnItemClickListener.class, toEventController = QuerySettleItemClickController.class)
 	public TiSectionListView sectionListView;
@@ -72,8 +74,6 @@ public class SettleListActivity extends AposBaseActivity implements ValueContain
 		refreshLayout.initView();
 		queryAll();
 	}
-	
-
 
 	public void queryAll() {
 		refreshLayout.setPullRefreshEnable(true);
@@ -81,16 +81,16 @@ public class SettleListActivity extends AposBaseActivity implements ValueContain
 		QuerySettleCondForm settleForm = new QuerySettleCondForm();
 		settleForm.setOrders("settleTime-");
 		sendQueryForm(settleForm);
-		
+
 	}
 
 	public void sendQueryForm(QuerySettleCondForm settleForm) {
 
 		EventRequest request = this.generateSubmitRequest(this);
-		request.getSubmitData().put("settleQueryForm",  settleForm);
+		request.getSubmitData().put("settleQueryForm", settleForm);
 		request.open(QuerySettleAction.DOMAIN_NAME,
 				QuerySettleAction.QUERY_SETTLE, Pattern.async);
-		request.callBack(new QuerySettleCallbackImpl(this,  settleForm));
+		request.callBack(new QuerySettleCallbackImpl(this, settleForm));
 		request.submit();
 		showProgress();
 	}

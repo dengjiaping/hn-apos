@@ -14,9 +14,9 @@
     <string name="note_pull_loading">加载中&#8230;</string>
     <string name="note_update_at">最后更新时间：%1$tY-%1$tm-%1$td %1$tH:%1$tM</string>
     <string name="note_not_update">尚未更新</string>
-    <string name="com_pur_str">消费</string>
-    <string name="com_refund_str">退款</string>
-    <string name="com_query_str">交易查询</string>
+    <string name="com_pur_str">MPOS 消费</string>
+    <string name="com_refund_str">MPOS 退款</string>
+    <string name="com_query_str">MPOS 交易查询</string>
     <string name="com_stlstat_str">结帐统计</string>
     <string name="com_more_str">更多</string>
     <string name="app_name">银联商户移动综合服务平台</string>
@@ -86,7 +86,7 @@
     <string name="com_login_out_user_str">签退</string>
 
     <!-- 订单支付 -->
-    <string name="opm_tab_name">订单支付</string>
+    <string name="opm_tab_name">MPOS 订单支付</string>
     <string name="opm_order_list_no_refresh_str">没有新的订单数据</string>
     <string name="opm_order_list_refresh_str">你有%1$d条订单数据更新</string>
     <string name="opm_order_list_count_title_str">条订单记录</string>
@@ -202,7 +202,7 @@
     <string name="tam_email_hint_str">电子邮箱</string>
     <string name="tam_holder_email_hint_str">持卡人电子邮箱</string>
     <string name="tam_weibo_hint_str">微博</string>
-    <string name="tam_balance_query_str">余额查询</string>
+    <string name="tam_balance_query_str">MPOS 余额查询</string>
     <string name="tam_coupon_query_str">优惠劵兑换查询</string>
     <string name="tam_sign_txn_success_str">交易成功请在此签名</string>
     <string name="tam_sign_sure_text_str">本人确认以上交易，同意将其记入本卡账户</string>
@@ -510,13 +510,15 @@
     <!-- 通知公告 -->
     <string name="msg_home_title_str">活动管理</string>
     <string name="msg_message_deatail_title_str">公告详情</string>
-    <!-- 特约商户服务-->
-     <string name="ms_home_title_str">特约商户服务</string>
-     <string name="ms_home_reconciliation_str">银联对账报表</string>
-     <string name="ms_home_error_dispose_str">银联差错处理</string>
-     <string name="ms_home_message_manager_str">商户信息管理</string>
-    
-     
-     
+    <!-- 特约商户服务 -->
+    <string name="ms_home_title_str">特约商户服务</string>
+    <string name="ms_home_reconciliation_str">银联对账报表</string>
+    <string name="ms_home_error_dispose_str">银联差错处理</string>
+    <string name="ms_home_message_manager_str">商户信息管理</string>
+    <string name="ms_settlement_deatail_str">清算明细详情</string>
+    <string name="ms_add_back_order_str">新增退货申请</string>
+    <string name="ms_back_order_detail_str">退货申请详情</string>
+    <string name="ms_report_order_detail_str">调单上报处理</string>
+    <string name="mmaking_home_title_str">特约商家营销</string>
 
 </resources>

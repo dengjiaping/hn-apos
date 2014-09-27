@@ -5,16 +5,16 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
 /**
  * 处理器状态
+ * 
  * @author cpz
  *
  */
 
-@Retention(RetentionPolicy.RUNTIME)  
-@Target({ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.TYPE })
 public @interface HandlerStatus {
 	public String status();
-	
+
 }

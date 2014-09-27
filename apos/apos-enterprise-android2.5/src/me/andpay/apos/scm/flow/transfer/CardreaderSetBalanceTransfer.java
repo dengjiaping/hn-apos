@@ -20,22 +20,22 @@ public class CardreaderSetBalanceTransfer implements TiFlowNodeDataTransfer {
 	public Map<String, String> transfterData(Activity activity,
 			Map<String, String> data, TiFlowNodeComplete complete,
 			Map<String, Serializable> subFlowContext) {
-		
-		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl.instanceControl().getFlowContextData(CardReaderSetContext.class);
-		
-		
-		TxnControl txnControl =  RoboGuiceUtil.getInjectObject(TxnControl.class, activity);
-		
+
+		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl
+				.instanceControl().getFlowContextData(
+						CardReaderSetContext.class);
+
+		TxnControl txnControl = RoboGuiceUtil.getInjectObject(TxnControl.class,
+				activity);
+
 		TxnContext txnContext = txnControl.init();
 		txnContext.setNeedPin(true);
 		txnContext.setTxnType(TxnTypes.INQUIRY_BALANCE);
 		txnContext.setBackTagName(TabNames.BALANCE_PAGE);
-		txnControl
-				.setTxnCallback(new QueryBalanceCallBackImpl());
+		txnControl.setTxnCallback(new QueryBalanceCallBackImpl());
 		txnContext.setOpTraceNo(cardReaderSetContext.getOpTraceNo());
 		TiFlowControlImpl.instanceControl().setFlowContextData(txnContext);
 
-		
 		return null;
 	}
 

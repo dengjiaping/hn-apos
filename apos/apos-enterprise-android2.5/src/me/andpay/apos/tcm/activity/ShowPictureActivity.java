@@ -38,7 +38,7 @@ public class ShowPictureActivity extends AposBaseActivity {
 	public Button useButton;
 
 	public DisplayMetrics displayMetrics;
-	
+
 	private static int PIC_WIDTH = 1024;
 	private static int PIC_HEIGHT = 768;
 
@@ -55,12 +55,13 @@ public class ShowPictureActivity extends AposBaseActivity {
 		Intent intent = this.getIntent();
 		if (intent != null && intent.hasExtra("photo_path")) {
 			String photoPath = intent.getStringExtra("photo_path");
-			Bitmap bitMap = BitMapUtil.getBitmap(photoPath, PIC_WIDTH, PIC_HEIGHT);
-			Bitmap cutBitmap=transformBitmap(bitMap);
+			Bitmap bitMap = BitMapUtil.getBitmap(photoPath, PIC_WIDTH,
+					PIC_HEIGHT);
+			Bitmap cutBitmap = transformBitmap(bitMap);
 			ViewfinderManager.bitMapRecycle(bitMap);
 			String[] strs = photoPath.split(File.separator);
-			filePath=FileUtil.bitMapSaveFile(cutBitmap, this.getApplicationContext(),
-					strs[strs.length - 1],95);
+			filePath = FileUtil.bitMapSaveFile(cutBitmap,
+					this.getApplicationContext(), strs[strs.length - 1], 95);
 		}
 	}
 

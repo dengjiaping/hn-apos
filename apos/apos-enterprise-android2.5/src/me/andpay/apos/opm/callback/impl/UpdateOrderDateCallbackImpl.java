@@ -23,9 +23,9 @@ public class UpdateOrderDateCallbackImpl extends AfterProcessWithErrorHandler {
 		super(activity);
 		orderPayListActivity = activity;
 		this.refresh = refresh;
-	
+
 	}
-	
+
 	@Override
 	public void processNetworkError() {
 		stopListView();
@@ -58,33 +58,35 @@ public class UpdateOrderDateCallbackImpl extends AfterProcessWithErrorHandler {
 		}
 		if (infos.size() > 0) {
 			addDataByRefreshFlag(infos);
-			orderPayListActivity.resetCountTvTitle(orderPayListActivity.orderPayListAdapter.getCount());
+			orderPayListActivity
+					.resetCountTvTitle(orderPayListActivity.orderPayListAdapter
+							.getCount());
 		}
 
 		orderPayListActivity.orderPayListAdapter.notifyDataSetChanged();
 	}
-	
+
 	@Override
 	protected void processOtherError() {
 		stopListView();
 		super.processOtherError();
 	}
-	
-	
+
 	private void addDataByRefreshFlag(LinkedList<OrderInfo> infos) {
 		for (int i = 1; i <= infos.size(); i++) {
 			if (refresh) {
-				orderPayListActivity.orderPayListAdapter.getOrders().addFirst(infos.get(infos.size() - i));
+				orderPayListActivity.orderPayListAdapter.getOrders().addFirst(
+						infos.get(infos.size() - i));
 			} else {
-				orderPayListActivity.orderPayListAdapter.getOrders().addLast(infos.get(i - 1));
+				orderPayListActivity.orderPayListAdapter.getOrders().addLast(
+						infos.get(i - 1));
 			}
 		}
 	}
-	
 
-	public void showError() {		
-		ToastTools.topToast(orderPayListActivity,
-				ResourceUtil.getString(orderPayListActivity, R.string.com_net_error_str),
+	public void showError() {
+		ToastTools.topToast(orderPayListActivity, ResourceUtil.getString(
+				orderPayListActivity, R.string.com_net_error_str),
 				ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
@@ -94,7 +96,8 @@ public class UpdateOrderDateCallbackImpl extends AfterProcessWithErrorHandler {
 				.format(orderPayListActivity.getApplicationContext().getString(
 						R.string.opm_order_list_refresh_str), size);
 
-		ToastTools.topToast(orderPayListActivity, str, ToastTools.LIST_VIEW_TOAST_HEIGHT);
+		ToastTools.topToast(orderPayListActivity, str,
+				ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
 	@Override

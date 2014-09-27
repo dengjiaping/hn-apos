@@ -12,18 +12,16 @@ import me.andpay.apos.opm.form.QueryOrderCondForm;
 import me.andpay.timobileframework.mvc.ModelAndView;
 import android.app.Activity;
 
-
-public class QueryOrderCallBackImpl extends AfterProcessWithErrorHandler{
+public class QueryOrderCallBackImpl extends AfterProcessWithErrorHandler {
 
 	public OrderPayListActivity orderActivity;
-	
+
 	private QueryOrderCondForm form;
-	
-	
-	public QueryOrderCallBackImpl(Activity activity,QueryOrderCondForm form) {
+
+	public QueryOrderCallBackImpl(Activity activity, QueryOrderCondForm form) {
 		super(activity);
 		this.form = form;
-		this.orderActivity = (OrderPayListActivity)activity;
+		this.orderActivity = (OrderPayListActivity) activity;
 	}
 
 	@Override
@@ -34,8 +32,7 @@ public class QueryOrderCallBackImpl extends AfterProcessWithErrorHandler{
 				.getValue("orderQueryForm");
 		LinkedList<OrderInfo> orderInfosLink = new LinkedList<OrderInfo>();
 		orderInfosLink.addAll(orderInfos);
-		
-		
+
 		if (orderActivity.orderPayListAdapter == null) {
 			OrderPayListAdapter adapter = initAdapter(form, orderInfosLink);
 			orderActivity.orderPayListAdapter = adapter;
@@ -44,31 +41,28 @@ public class QueryOrderCallBackImpl extends AfterProcessWithErrorHandler{
 			orderActivity.orderPayListAdapter.setOrders(orderInfosLink);
 			orderActivity.orderPayListAdapter.setQueryOrderCondForm(form);
 		}
-		
-		if(orderInfos==null || orderInfos.size()==0) {
+
+		if (orderInfos == null || orderInfos.size() == 0) {
 			orderActivity.showNoData();
 			return;
 		}
-		
-	
-	
+
 		orderActivity.orderPayListAdapter.notifyDataSetChanged();
 		orderActivity.showListView();
-		
+
 	}
 
 	private OrderPayListAdapter initAdapter(QueryOrderCondForm form,
 			LinkedList<OrderInfo> orderInfos) {
-		OrderPayListAdapter  adapter = new OrderPayListAdapter(orderInfos, form, (OrderPayListActivity)activity);
+		OrderPayListAdapter adapter = new OrderPayListAdapter(orderInfos, form,
+				(OrderPayListActivity) activity);
 		return adapter;
 	}
-	
+
 	@Override
 	protected void refreshAfterNetworkError() {
-	
+
 		orderActivity.sendQueryForm(form);
 	}
-	
-	
 
 }

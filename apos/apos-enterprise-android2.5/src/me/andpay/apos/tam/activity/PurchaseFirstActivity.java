@@ -6,6 +6,7 @@ import java.util.Map;
 
 import me.andpay.ac.consts.TxnTypes;
 import me.andpay.ac.term.api.auth.ExtFuncConfigNames;
+import me.andpay.ac.term.api.auth.UserAuthService;
 import me.andpay.ac.term.api.base.FlexFieldDefine;
 import me.andpay.apos.R;
 import me.andpay.apos.cdriver.CardReaderManager;
@@ -24,6 +25,7 @@ import me.andpay.apos.common.constant.RuntimeAttrNames;
 import me.andpay.apos.common.contextdata.PartyInfo;
 import me.andpay.apos.common.event.ShowSliderControl;
 import me.andpay.apos.common.flow.FlowNames;
+import me.andpay.apos.common.service.UpLoadFileServce;
 import me.andpay.apos.common.util.DynamicFieldHelper;
 import me.andpay.apos.common.util.ResourceUtil;
 import me.andpay.apos.tam.TamProvider;

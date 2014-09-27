@@ -11,9 +11,9 @@ import android.view.View;
 public class SelectPaymentControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
+
 		ProductPaymentModeActivity modeActivity = (ProductPaymentModeActivity) activity;
-		
+
 		if (modeActivity.cashPayLay.getId() == view.getId()) {
 			modeActivity.getFlowContext().put(PAYMENT_METHOD_KEY,
 					FlowConstants.ND_CASH_PAYMENT);

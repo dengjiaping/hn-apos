@@ -7,7 +7,8 @@ import me.andpay.apos.lam.callback.impl.LoginCallBackHelper;
 import me.andpay.timobileframework.mvc.anno.CallBackHandler;
 
 @CallBackHandler
-public class MOPMActivateCodeCallbackImpl extends ActivateCodeCallbackImpl implements ActivateCodeCallback {
+public class MOPMActivateCodeCallbackImpl extends ActivateCodeCallbackImpl
+		implements ActivateCodeCallback {
 
 	public MOPMActivateCodeCallbackImpl(
 			ActivateCodeActivity activateCodeActivity) {

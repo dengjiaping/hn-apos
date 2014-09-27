@@ -60,9 +60,11 @@ public class ScmAboutActivity extends AposBaseActivity {
 		} catch (NameNotFoundException e) {
 			versionName = "2.0";
 		}
-		this.netTv.setText( Html.fromHtml("<u>" + ResourceUtil.getString(this, R.string.config_company_url_str) + "</u>"));
+		this.netTv.setText(Html.fromHtml("<u>"
+				+ ResourceUtil.getString(this, R.string.config_company_url_str)
+				+ "</u>"));
 		versionTv.setText(versionTv.getText() + versionName);
-		
+
 	}
 
 }

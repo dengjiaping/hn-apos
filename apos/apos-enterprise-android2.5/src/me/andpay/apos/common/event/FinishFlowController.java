@@ -7,11 +7,12 @@ import me.andpay.timobileframework.mvc.form.FormBean;
 import android.app.Activity;
 import android.view.View;
 
-public class FinishFlowController  extends AbstractEventController {
-	
+public class FinishFlowController extends AbstractEventController {
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
-		TiFlowControlImpl.instanceControl().nextSetup(activity, FlowConstants.FINISH);
+
+		TiFlowControlImpl.instanceControl().nextSetup(activity,
+				FlowConstants.FINISH);
 	}
-		
+
 }

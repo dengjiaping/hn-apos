@@ -8,7 +8,6 @@ import android.view.View;
 
 public class ProductPaymentModeBackControl extends AbstractEventController {
 
-
 	public void onClick(Activity activity, FormBean formBean, View view) {
 		TiFlowControlImpl.instanceControl().previousSetup(activity);
 	}

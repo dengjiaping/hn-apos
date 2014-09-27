@@ -6,7 +6,8 @@ import me.andpay.timobileframework.sqlite.GenSqLiteDao;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
-public class ICCardPublicKeyInfoDao extends
+public class ICCardPublicKeyInfoDao
+		extends
 		GenSqLiteDao<ICCardPublicKeyInfo, QueryICCardPublicKeyInfoCond, Integer> {
 
 	public ICCardPublicKeyInfoDao(Context context, String name,

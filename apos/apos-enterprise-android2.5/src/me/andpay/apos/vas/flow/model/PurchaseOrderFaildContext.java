@@ -18,20 +18,17 @@ public class PurchaseOrderFaildContext implements Serializable {
 	private String txnId;
 
 	private String paymentMethod;
-	
+
 	private String msgContent;
-	
+
 	/**
 	 * 是否显示退出按钮
 	 */
 	private boolean showOutButton;
-	
-	private Long orderId;
-	
-	private Date orderTime;
-	
-	
 
+	private Long orderId;
+
+	private Date orderTime;
 
 	public Date getOrderTime() {
 		return orderTime;
@@ -96,7 +93,5 @@ public class PurchaseOrderFaildContext implements Serializable {
 	public void setMsgContent(String msgContent) {
 		this.msgContent = msgContent;
 	}
-	
-	
 
 }

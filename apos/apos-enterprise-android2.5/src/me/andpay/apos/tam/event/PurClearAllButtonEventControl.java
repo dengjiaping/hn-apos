@@ -18,6 +18,6 @@ public class PurClearAllButtonEventControl extends AbstractEventController {
 		PurchaseFirstActivity tiActivity = (PurchaseFirstActivity) activity;
 		tiActivity.cleanPic();
 		tiActivity.clear();
-	
+
 	}
 }

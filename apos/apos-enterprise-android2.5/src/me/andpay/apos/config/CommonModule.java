@@ -62,25 +62,27 @@ public class CommonModule extends TiMobileModule {
 
 	@Override
 	protected void configure() {
-		
-//		Log.e(this.getClass().getName(), "start commonCofig");
+
+		// Log.e(this.getClass().getName(), "start commonCofig");
 
 		java.lang.System.setProperty("java.net.preferIPv4Stack", "true");
 		java.lang.System.setProperty("java.net.preferIPv6Addresses", "false");
-		
+
 		/**
 		 * Ti Lnk Srv auto inject config Begin
 		 * *********************************************************************
 		 */
-		bind(NetworkStatusChecker.class).to(TiNetworkStatusChecker.class).asEagerSingleton();
+		bind(NetworkStatusChecker.class).to(TiNetworkStatusChecker.class)
+				.asEagerSingleton();
 		TiRpcClientProvider provider = TiRpcClientProvider
 				.getProvider(AposTestConnector.class);
-		
-		SessionTimeoutListener sessionTimeoutListener =  new SessionTimeoutListener();
+
+		SessionTimeoutListener sessionTimeoutListener = new SessionTimeoutListener();
 		bind(SessionTimeoutListener.class).toInstance(sessionTimeoutListener);
-		provider.registerExceptionListeners(Throwable.class, sessionTimeoutListener);
+		provider.registerExceptionListeners(Throwable.class,
+				sessionTimeoutListener);
 		requestInjection(sessionTimeoutListener);
-		
+
 		bind(TiLnkServiceInvocation.class).in(Scopes.SINGLETON);
 		bind(TiRpcClient.class).toProvider(provider).asEagerSingleton();
 		TiLnkServiceTypeListener listener = new TiLnkServiceTypeListener();
@@ -105,42 +107,45 @@ public class CommonModule extends TiMobileModule {
 
 		bind(LocationService.class).in(Scopes.SINGLETON);
 		bind(ExceptionPayTxnInfoService.class).in(Scopes.SINGLETON);
-		
+
 		requestInjection(WaitUploadImageDaoProvider.class);
 		bind(WaitUploadImageDao.class).toProvider(
 				WaitUploadImageDaoProvider.class).asEagerSingleton();
-		
+
 		requestInjection(TxnConfirmDaoProvider.class);
-		bind(TxnConfirmDao.class).toProvider(TxnConfirmDaoProvider.class).asEagerSingleton();
-		
-		
+		bind(TxnConfirmDao.class).toProvider(TxnConfirmDaoProvider.class)
+				.asEagerSingleton();
+
 		requestInjection(ICCardPublicKeyInfoDaoProvider.class);
-		bind(ICCardPublicKeyInfoDao.class).toProvider(ICCardPublicKeyInfoDaoProvider.class).asEagerSingleton();
+		bind(ICCardPublicKeyInfoDao.class).toProvider(
+				ICCardPublicKeyInfoDaoProvider.class).asEagerSingleton();
 		requestInjection(ICCardParamsInfoDaoProvider.class);
-		bind(ICCardParamsInfoDao.class).toProvider(ICCardParamsInfoDaoProvider.class).asEagerSingleton();
-		bind(ICCardInfoDao.class).toProvider(ICCardInfoDaoProvider.class).asEagerSingleton();
-		
+		bind(ICCardParamsInfoDao.class).toProvider(
+				ICCardParamsInfoDaoProvider.class).asEagerSingleton();
+		bind(ICCardInfoDao.class).toProvider(ICCardInfoDaoProvider.class)
+				.asEagerSingleton();
+
 		bindAction(LbsAction.class);
 		bindAction(UpdateAction.class);
 
 		bindAction(LbsAction.class);
-		
-//		requestInjection(DynamicFieldHelperProvider.class);
+
+		// requestInjection(DynamicFieldHelperProvider.class);
 		bind(DynamicFieldHelper.class).in(Scopes.SINGLETON);
-		
+
 		bind(CleanDataService.class).in(Scopes.SINGLETON);
-		//增加同步产品数据服务
+		// 增加同步产品数据服务
 		bind(ProductSynchroner.class).in(Scopes.SINGLETON);
-//		bind(SessionKeepService.class).in(Scopes.SINGLETON);
+		// bind(SessionKeepService.class).in(Scopes.SINGLETON);
 
 		bind(TxnConfirmService.class).in(Scopes.SINGLETON);
-		
+
 		bindEventController(CaptureVcEventControl.class);
 		bindEventController(CameraCancelEventControl.class);
 		bindEventController(ReCaptureEventControl.class);
 		bindEventController(CameraSaveEventControl.class);
 		bindEventController(QRScanBackEventControl.class);
-		
+
 		bind(UploadLogFileHandler.class).in(Scopes.SINGLETON);
 		bind(AposDebugLog.class).in(Scopes.SINGLETON);
 		bind(AposContext.class).in(Scopes.SINGLETON);
@@ -150,12 +155,10 @@ public class CommonModule extends TiMobileModule {
 		bind(AudioFileUploadService.class).in(Scopes.SINGLETON);
 		bind(MainhandlerFactory.class).in(Scopes.SINGLETON);
 		bind(DownloadICCardParamsService.class).in(Scopes.SINGLETON);
-		
+
 		bind(ICCardSumbitSettleLListService.class).in(Scopes.SINGLETON);
-//		Log.e(this.getClass().getName(), "end commonCofig");
+		// Log.e(this.getClass().getName(), "end commonCofig");
 
 	}
-
-	
 
 }

@@ -10,6 +10,6 @@ public interface UpdateCallback {
 	public void downloadCanceled();
 
 	public void downloadCompleted(Boolean sucess, CharSequence errorMsg);
-	
+
 	public void processThrowable(ThrowableInfo info);
 }

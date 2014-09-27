@@ -11,17 +11,18 @@ import android.view.View;
 public class PurchaseOrderFaildControl extends AbstractEventController {
 
 	public void onClick(Activity refActivity, FormBean formBean, View v) {
-		
-		PurchaseOrderFaildActivity purchaseOrderDetailActivity =(PurchaseOrderFaildActivity)refActivity;
-		if(v.getId() == purchaseOrderDetailActivity.retryBtn.getId()) {
+
+		PurchaseOrderFaildActivity purchaseOrderDetailActivity = (PurchaseOrderFaildActivity) refActivity;
+		if (v.getId() == purchaseOrderDetailActivity.retryBtn.getId()) {
 			purchaseOrderDetailActivity.sumbitPurchaseOrder();
 			return;
 		}
-		
-		if(v.getId() == purchaseOrderDetailActivity.outButton.getId()) {
-			
-			TiFlowControlImpl.instanceControl().nextSetup(purchaseOrderDetailActivity, FlowConstants.FINISH);
-			
+
+		if (v.getId() == purchaseOrderDetailActivity.outButton.getId()) {
+
+			TiFlowControlImpl.instanceControl().nextSetup(
+					purchaseOrderDetailActivity, FlowConstants.FINISH);
+
 			return;
 		}
 	}

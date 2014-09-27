@@ -9,14 +9,16 @@ import me.andpay.apos.tqm.form.QueryConditionForm;
 import me.andpay.apos.trm.activity.RefundBatchQueryActivity;
 import me.andpay.timobileframework.mvc.ModelAndView;
 
-public class AfterRefundQueryCallBackHandler extends AfterProcessWithErrorHandler {
+public class AfterRefundQueryCallBackHandler extends
+		AfterProcessWithErrorHandler {
 
 	RefundBatchQueryActivity activity;
 
 	QueryConditionForm form;
 
 	public AfterRefundQueryCallBackHandler(
-			RefundBatchQueryActivity refundBatchQueryActivity, QueryConditionForm form) {
+			RefundBatchQueryActivity refundBatchQueryActivity,
+			QueryConditionForm form) {
 		super(refundBatchQueryActivity);
 		this.activity = refundBatchQueryActivity;
 		this.form = form;
@@ -25,8 +27,10 @@ public class AfterRefundQueryCallBackHandler extends AfterProcessWithErrorHandle
 	@Override
 	public void afterRequest(ModelAndView mv) {
 
-		LinkedList<PayTxnInfo> infos = (LinkedList<PayTxnInfo>) mv.getValue("txnList");
-		QueryConditionForm form = (QueryConditionForm) mv.getValue("queryConditionForm");
+		LinkedList<PayTxnInfo> infos = (LinkedList<PayTxnInfo>) mv
+				.getValue("txnList");
+		QueryConditionForm form = (QueryConditionForm) mv
+				.getValue("queryConditionForm");
 		if (infos == null || infos.size() == 0) {
 			activity.showNoDataView();
 			if (activity.getAdapter() != null) {

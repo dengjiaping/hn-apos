@@ -14,13 +14,15 @@ public class ComStartCardReaderSetTransfer implements TiFlowNodeDataTransfer {
 	public Map<String, String> transfterData(Activity activity,
 			Map<String, String> data, TiFlowNodeComplete complete,
 			Map<String, Serializable> subFlowContext) {
-	
+
 		CardReaderSetContext cardReaderSetContext = new CardReaderSetContext();
 		cardReaderSetContext.setShowBackButton(false);
 		cardReaderSetContext.setShowSkipButton(true);
 		cardReaderSetContext.setShowCardreaderGuide(false);
-		cardReaderSetContext.setOpTraceNo(String.valueOf(System.currentTimeMillis()));
-		TiFlowControlImpl.instanceControl().setFlowContextData(cardReaderSetContext);
+		cardReaderSetContext.setOpTraceNo(String.valueOf(System
+				.currentTimeMillis()));
+		TiFlowControlImpl.instanceControl().setFlowContextData(
+				cardReaderSetContext);
 		return null;
 	}
 

@@ -30,23 +30,22 @@ public class TxnAction extends SessionKeepAction {
 	@Inject
 	protected PayTxnInfoDao payTxnInfoDao;
 
-	public void txnProcess(ActionRequest request){
-		
+	public void txnProcess(ActionRequest request) {
+
 		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");
 
-		txnProcessorFactory.getProcessor(
-				txnForm.getTxnType()).processTxn(request);
+		txnProcessorFactory.getProcessor(txnForm.getTxnType()).processTxn(
+				request);
 	}
-	
+
 	/**
 	 * 重新获取交易
 	 */
 	public void retrieveTxn(ActionRequest request) {
-		
-		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");
-		txnProcessorFactory.getProcessor(
-				txnForm.getTxnType()).retrieveTxn(request);
-	}
 
+		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");
+		txnProcessorFactory.getProcessor(txnForm.getTxnType()).retrieveTxn(
+				request);
+	}
 
 }

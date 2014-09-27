@@ -15,7 +15,7 @@ import android.view.View;
 public class MakeQRCodeNextEventController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
-		
+
 		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl
 				.instanceControl().getFlowContextData(
 						CardReaderSetContext.class);
@@ -25,4 +25,3 @@ public class MakeQRCodeNextEventController extends AbstractEventController {
 				FlowConstants.SUCCESS, intentData);
 	}
 }
-

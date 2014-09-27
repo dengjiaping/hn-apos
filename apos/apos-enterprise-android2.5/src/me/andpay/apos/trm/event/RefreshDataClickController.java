@@ -7,10 +7,10 @@ import android.app.Activity;
 import android.view.View;
 
 public class RefreshDataClickController extends AbstractEventController {
-	
-	
+
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
-		RefundBatchQueryActivity refundBatchQueryActivity = (RefundBatchQueryActivity)refActivty;
-		refundBatchQueryActivity.queryBatchTxn(refundBatchQueryActivity.getAdapter().getCondition());
-	}	
+		RefundBatchQueryActivity refundBatchQueryActivity = (RefundBatchQueryActivity) refActivty;
+		refundBatchQueryActivity.queryBatchTxn(refundBatchQueryActivity
+				.getAdapter().getCondition());
+	}
 }

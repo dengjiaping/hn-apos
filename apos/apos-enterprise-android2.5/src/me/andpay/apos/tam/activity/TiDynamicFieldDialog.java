@@ -25,13 +25,15 @@ public class TiDynamicFieldDialog implements OnClickListener {
 
 	private String txnType;
 
-	public TiDynamicFieldDialog(Context context, DynamicFieldHelper helper, String txnType) {
+	public TiDynamicFieldDialog(Context context, DynamicFieldHelper helper,
+			String txnType) {
 		this.helper = helper;
 		dialog = new Dialog(context, R.style.dynamicDialog_style);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		dialog.setContentView(R.layout.com_dynamic_input_dialog_layout);
-		dialog.findViewById(R.id.com_dialog_sure_layout).setOnClickListener(this);
+		dialog.findViewById(R.id.com_dialog_sure_layout).setOnClickListener(
+				this);
 		dialog.findViewById(R.id.com_dialog_cancel_layout).setOnClickListener(
 				new OnClickListener() {
 					public void onClick(View v) {
@@ -56,8 +58,8 @@ public class TiDynamicFieldDialog implements OnClickListener {
 			orderid = fieldValues.get(FlexFieldDefine.FIELD_NAME_EXT_TRACE_NO);
 			memo = fieldValues.get(FlexFieldDefine.FIELD_NAME_MEMO);
 		}
-		setDynamicField(R.id.com_prompt_dialog_orderid_tv, R.id.solid_img, orderid,
-				FlexFieldDefine.FIELD_NAME_EXT_TRACE_NO);
+		setDynamicField(R.id.com_prompt_dialog_orderid_tv, R.id.solid_img,
+				orderid, FlexFieldDefine.FIELD_NAME_EXT_TRACE_NO);
 		setDynamicField(R.id.com_prompt_dialog_memo_tv, R.id.solid1_img, memo,
 				FlexFieldDefine.FIELD_NAME_MEMO);
 		setSureColor();
@@ -142,9 +144,11 @@ public class TiDynamicFieldDialog implements OnClickListener {
 
 	public void onClick(View v) {
 		String orderid = ((TextView) dialog
-				.findViewById(R.id.com_prompt_dialog_orderid_tv)).getText().toString();
-		String memo = ((TextView) dialog.findViewById(R.id.com_prompt_dialog_memo_tv))
-				.getText().toString();
+				.findViewById(R.id.com_prompt_dialog_orderid_tv)).getText()
+				.toString();
+		String memo = ((TextView) dialog
+				.findViewById(R.id.com_prompt_dialog_memo_tv)).getText()
+				.toString();
 		Map<String, String> values = new HashMap<String, String>();
 		values.put(FlexFieldDefine.FIELD_NAME_EXT_TRACE_NO, orderid);
 		values.put(FlexFieldDefine.FIELD_NAME_MEMO, memo);

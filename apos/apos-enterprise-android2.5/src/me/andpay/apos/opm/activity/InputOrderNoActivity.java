@@ -33,6 +33,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 @ContentView(R.layout.opm_input_order_no_layout)
 public class InputOrderNoActivity extends AposBaseActivity implements
 		ValueContainer, MenuChangeEvent {
@@ -95,7 +96,6 @@ public class InputOrderNoActivity extends AposBaseActivity implements
 		queryDialog = new CommonDialog(this, "订单查询中...");
 		hideKeyborad();
 		queryDialog.show();
-		
 
 	}
 
@@ -110,15 +110,14 @@ public class InputOrderNoActivity extends AposBaseActivity implements
 	@Override
 	protected void onStop() {
 		super.onStop();
-		
 
 	}
+
 	@Override
 	protected void onPause() {
 		super.onPause();
 		hideKeyborad();
 	}
-	
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -128,12 +127,12 @@ public class InputOrderNoActivity extends AposBaseActivity implements
 		}
 		return super.onKeyDown(keyCode, event);
 	}
-	
+
 	public void showKeyborad() {
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.showSoftInput(orderNoText, InputMethodManager.SHOW_FORCED);
 	}
-	
+
 	public void hideKeyborad() {
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.hideSoftInputFromWindow(orderNoText.getWindowToken(), 0); // 强制隐藏键盘

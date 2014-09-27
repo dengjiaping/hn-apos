@@ -83,7 +83,7 @@ public class StlTxnQueryActivity extends AposBaseActivity {
 		refresh_layout.initView();
 		settleOrderId = getIntent().getLongExtra("settleOrderId", 0l);
 		queryAll();
-		
+
 	}
 
 	@Override

@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
-	
+
 	private QuerySettleCondForm querySettleCondForm;
 
 	private SettleListActivity activity;
@@ -28,7 +28,7 @@ public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
 		this.activity = activity;
 		this.addValues(settleOrders);
 		this.querySettleCondForm = querySettleCondForm;
-		
+
 	}
 
 	@Override
@@ -43,8 +43,6 @@ public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
 	public Date getMinSettleTime() {
 		return all.get(all.size() - 1).second.getLast().getSettleTime();
 	}
-
-
 
 	public QuerySettleCondForm getQuerySettleCondForm() {
 		return querySettleCondForm;
@@ -64,18 +62,16 @@ public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
 					.findViewById(R.id.vas_purchase_order_section_tv);
 			lSectionTitle.setText(getSections()[sectionIdex].toString());
 		} else {
-			view.findViewById(R.id.section_header).setVisibility(
-					View.GONE);
+			view.findViewById(R.id.section_header).setVisibility(View.GONE);
 		}
 	}
-	
+
 	@Override
 	public void configureSectionView(View header, int section, int alpha) {
 		TextView lSectionTitle = (TextView) header
 				.findViewById(R.id.vas_purchase_order_section_tv);
 		lSectionTitle.setText(getSections()[section].toString());
 	}
-
 
 	@Override
 	public long getItemId(int section, int itemIndex) {
@@ -84,10 +80,10 @@ public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
 	}
 
 	@Override
-	public View getSectionItemView(int sectionIndex, int itemIndex, View convertView,
-			ViewGroup parent) {
-		final SettleOrder settleOrder = this.getSectionItem(
-				sectionIndex, itemIndex);
+	public View getSectionItemView(int sectionIndex, int itemIndex,
+			View convertView, ViewGroup parent) {
+		final SettleOrder settleOrder = this.getSectionItem(sectionIndex,
+				itemIndex);
 		SettleItemViewHolder holder = null;
 		if (convertView == null) {
 			convertView = LayoutInflater.from(activity).inflate(
@@ -95,8 +91,8 @@ public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
 			holder = new SettleItemViewHolder();
 			holder.settleAmtText = (TextView) convertView
 					.findViewById(R.id.stl_settle_amt_tv);
-			//holder.redeemDateTextView = (TextView) convertView
-			//		.findViewById(R.id.tqrm_coupin_redeem_date_tv);
+			// holder.redeemDateTextView = (TextView) convertView
+			// .findViewById(R.id.tqrm_coupin_redeem_date_tv);
 			holder.settleTimeText = (TextView) convertView
 					.findViewById(R.id.stl_settle_time_tv);
 			holder.settleCountText = (TextView) convertView
@@ -106,13 +102,14 @@ public class SettleListAdapter extends TiSectionListAdapter<SettleOrder> {
 		} else {
 			holder = (SettleItemViewHolder) convertView.getTag();
 		}
-		holder.settleAmtText.setText( StringConvertor.convert2Currency(settleOrder.getSettleAmt()));
+		holder.settleAmtText.setText(StringConvertor
+				.convert2Currency(settleOrder.getSettleAmt()));
 		holder.settleTimeText.setText(DateUtil.format("MM-dd",
 				settleOrder.getSettleTime()));
-		holder.settleCountText.setText(settleOrder.getTxnCount()+"笔交易");
+		holder.settleCountText.setText(settleOrder.getTxnCount() + "笔交易");
 		return convertView;
 	}
-	
+
 	@Override
 	public String getSectionDesc(SettleOrder settleOrder) {
 		String orderTimeStr = DateUtil.format("yyyy年MM月",

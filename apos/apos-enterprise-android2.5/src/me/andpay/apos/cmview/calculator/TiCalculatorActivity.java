@@ -135,39 +135,38 @@ public class TiCalculatorActivity extends Activity {
 		});
 
 	}
-	
+
 	private void back() {
 		setResultData();
 		this.finish();
 	}
 
 	class CalculatorNumberClickListener implements OnClickListener {
-		
+
 		public void onClick(View v) {
-			
+
 			String inputData = v.getTag().toString();
-			if(inputData.equals("B")) {
+			if (inputData.equals("B")) {
 				back();
 				return;
 			}
-			
+
 			tiCalulate.inPutData(inputData);
 			TiCalculateResult tiCalculateResult = tiCalulate
 					.getCalulateResult();
-			
+
 			String result = tiCalculateResult.getDisplayResult();
 
-			if(Double.valueOf(numFormat2(result)) >999999999) {
+			if (Double.valueOf(numFormat2(result)) > 999999999) {
 				tiCalulate.inPutData("C");
 				resultText.setText("超出计算范围");
 				expressionText.setText("");
-			}else {
-				
+			} else {
+
 				resultText.setText(tiCalculateResult.getDisplayResult());
 				expressionText.setText(tiCalculateResult.getDiplayExpression());
 			}
-			
-		
+
 		}
 	}
 
@@ -179,25 +178,24 @@ public class TiCalculatorActivity extends Activity {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			setResultData();
 		}
-		
+
 		return super.onKeyDown(keyCode, event);
 
 	}
 
 	private void setResultData() {
 		Intent aintent = new Intent();
-		String disPlayResult = tiCalulate
-				.getCalulateResult().getDisplayResult();
-		
-		if(disPlayResult==null || disPlayResult.trim().equals("")) {
+		String disPlayResult = tiCalulate.getCalulateResult()
+				.getDisplayResult();
+
+		if (disPlayResult == null || disPlayResult.trim().equals("")) {
 			disPlayResult = "0";
 		}
 		disPlayResult = numFormat2(disPlayResult);
 		aintent.putExtra(TiCalculatorConfigs.CALCULATOR_RESULT, disPlayResult);
 		this.setResult(TiCalculatorConfigs.CALCULATOR_REQUEST_CODE, aintent);
 	}
-	
-	
+
 	public String numFormat2(String str) throws RuntimeException {
 		DecimalFormat format = new DecimalFormat("###,##0.#########");
 		Number data = null;
@@ -209,6 +207,5 @@ public class TiCalculatorActivity extends Activity {
 		}
 		return data.toString();
 	}
-
 
 }

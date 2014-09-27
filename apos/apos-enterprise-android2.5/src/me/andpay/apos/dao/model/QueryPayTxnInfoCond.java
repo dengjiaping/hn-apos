@@ -57,7 +57,7 @@ public class QueryPayTxnInfoCond extends Sorts {
 	@Expression
 	private String txnType;
 
-	@Expression(dataConverter=BigDecimalConverter.class)
+	@Expression(dataConverter = BigDecimalConverter.class)
 	private BigDecimal salesAmt;
 
 	@Expression
@@ -88,7 +88,7 @@ public class QueryPayTxnInfoCond extends Sorts {
 
 	@Expression
 	private Boolean isRefundEnable;
-	
+
 	/**
 	 * 开始更新时间
 	 */
@@ -99,7 +99,6 @@ public class QueryPayTxnInfoCond extends Sorts {
 	 */
 	@Expression(paraName = "updateTime", operater = "<")
 	public String endUpdateTime;
-
 
 	public String getShortPan() {
 		return shortPan;
@@ -260,7 +259,5 @@ public class QueryPayTxnInfoCond extends Sorts {
 	public void setSalesAmt(BigDecimal salesAmt) {
 		this.salesAmt = salesAmt;
 	}
-	
-	
 
 }

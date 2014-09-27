@@ -13,10 +13,10 @@ public class ChangePasswordEventControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
 
-		if(ValidateHelper.validate(activity, formBean, null)) {
+		if (ValidateHelper.validate(activity, formBean, null)) {
 			return;
 		}
-		
+
 		EventRequest request = this.generateSubmitRequest(activity);
 		request.open(formBean, Pattern.async);
 		request.callBack(new ChangePasswordCallbackImpl(activity, formBean,

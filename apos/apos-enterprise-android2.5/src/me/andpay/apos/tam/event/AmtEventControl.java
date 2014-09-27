@@ -11,11 +11,8 @@ import android.view.inputmethod.InputMethodManager;
 
 public class AmtEventControl extends AbstractEventController {
 
-	
 	public boolean onTouch(Activity activity, FormBean formBean, View view,
 			MotionEvent motionEvent) {
-
-
 
 		return true;
 

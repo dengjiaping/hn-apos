@@ -1,7 +1,7 @@
 package me.andpay.apos.vas.flow;
 
 public class FlowConstants {
-	
+
 	/**
 	 * 现金支付
 	 */
@@ -11,5 +11,4 @@ public class FlowConstants {
 	 */
 	public static final String ND_CARD_PAYMENT = "card_payment";
 
-	
 }

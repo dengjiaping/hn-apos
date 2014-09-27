@@ -33,19 +33,18 @@ public class SettleInfoSendController extends AbstractEventController {
 			return;
 
 		}
-		
+
 		form.setBatchId(activity.getBatchId());
 		EventRequest request = this.generateSubmitRequest(refActivty);
 		request.open(formBean, Pattern.async);
 		request.callBack(new FinishSendCallBackHandler(activity));
-		activity.progressDialog = new CommonDialog(activity,ResourceUtil.getString(activity, R.string.ssm_sending_str));
+		activity.progressDialog = new CommonDialog(activity,
+				ResourceUtil.getString(activity, R.string.ssm_sending_str));
 		activity.progressDialog.show();
 		request.submit();
-	
-		
-		
-//		activity.getSsm_batch_sending_info_layout().setVisibility(View.VISIBLE);
-//		activity.getSsm_batch_send_info_layout().setVisibility(View.GONE);
+
+		// activity.getSsm_batch_sending_info_layout().setVisibility(View.VISIBLE);
+		// activity.getSsm_batch_send_info_layout().setVisibility(View.GONE);
 	}
 
 	private void showErrorInfo(String errormsg, Activity refActivty) {

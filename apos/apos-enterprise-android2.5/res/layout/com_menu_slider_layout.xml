@@ -58,6 +58,104 @@
                 android:background="@drawable/com_left_menu_solid_line_img" />
 
             <RelativeLayout
+                android:id="@+id/com_menu_mservice_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_mservice_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/mservice_icon" />
+
+                <TextView
+                    android:id="@+id/com_memu_mservice_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_mservice_img"
+                    android:text="特约商户服务" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/com_memu_settle_line_img"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_mMarketing_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_mMarketing_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/mmaking_icon" />
+
+                <TextView
+                    android:id="@+id/com_memu_mMarketing_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_mMarketing_img"
+                    android:text="特约商户营销" />
+            </RelativeLayout>
+
+            <ImageView
+                
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_left_serve_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_left_serve_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/left_server_icon" />
+
+                <TextView
+                    android:id="@+id/com_memu_left_serve_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_left_serve_img"
+                    android:text="便民服务" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
+                android:id="@+id/com_menu_message_lay"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/com_menu_background_selector" >
+
+                <ImageView
+                    android:id="@+id/com_memu_message_img"
+                    style="@style/com_menu_image_style"
+                    android:background="@drawable/message_icon" />
+
+                <TextView
+                    android:id="@+id/com_memu_message_text"
+                    style="@style/com_menu_text_style"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/com_memu_message_img"
+                    android:text="通知公告" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="@drawable/com_left_menu_solid_line_img" />
+
+            <RelativeLayout
                 android:id="@+id/com_menu_pur_lay"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
@@ -200,13 +298,13 @@
                     android:text="增值服务" />
             </RelativeLayout>
             -->
-           <!--  
+            <!--
             <ImageView
                 android:id="@+id/com_memu_vaservice_line_img"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="@drawable/com_left_menu_solid_line_img" />
--->
+            -->
             <!--
             <RelativeLayout
                 android:id="@+id/com_menu_more_lay"
@@ -252,13 +350,14 @@
                     android:text="@string/tam_coupon_query_str" />
             </RelativeLayout>
             -->
-<!--  
+            <!--
             <ImageView
                 android:id="@+id/com_memu_coupon_line_img"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="@drawable/com_left_menu_solid_line_img" />
--->
+            -->
+
             <RelativeLayout
                 android:id="@+id/com_menu_balance_lay"
                 android:layout_width="match_parent"
@@ -278,7 +377,6 @@
                     android:text="@string/tam_balance_query_str" />
 
                 <TextView
-                    android:id="@+id/com_memu_balance_text"
                     style="@style/com_menu_text_style"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
@@ -308,110 +406,11 @@
                     style="@style/com_menu_text_style"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/com_memu_settle_img"
-                    android:text="到账查询" />
-            </RelativeLayout>
-            
-             <ImageView
-                android:id="@+id/com_memu_settle_line_img"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
-            <RelativeLayout
-                android:id="@+id/com_menu_mservice_lay"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:background="@drawable/com_menu_background_selector" >
-
-                <ImageView
-                    android:id="@+id/com_memu_mservice_img"
-                    style="@style/com_menu_image_style"
-                    android:background="@drawable/left_server_icon" />
-
-                <TextView
-                    android:id="@+id/com_memu_mservice_text"
-                    style="@style/com_menu_text_style"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/com_memu_mservice_img"
-                    android:text="特约商户服务" />
-            </RelativeLayout>
-             <ImageView
-                android:id="@+id/com_memu_settle_line_img"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
-            <RelativeLayout
-                android:id="@+id/com_menu_mMarketing_lay"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:background="@drawable/com_menu_background_selector" >
-
-                <ImageView
-                    android:id="@+id/com_memu_mMarketing_img"
-                    style="@style/com_menu_image_style"
-                    android:background="@drawable/left_server_icon" />
-
-                <TextView
-                    android:id="@+id/com_memu_mMarketing_text"
-                    style="@style/com_menu_text_style"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/com_memu_mMarketing_img"
-                    android:text="特约商户营销" />
+                    android:text="MPOS 到账查询" />
             </RelativeLayout>
 
             <ImageView
-                android:id="@+id/com_memu_settle_line_img"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
-
-            <RelativeLayout
-                android:id="@+id/com_menu_left_serve_lay"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:background="@drawable/com_menu_background_selector" >
-
-                <ImageView
-                    android:id="@+id/com_memu_left_serve_img"
-                    style="@style/com_menu_image_style"
-                    android:background="@drawable/left_server_icon" />
-
-                <TextView
-                    android:id="@+id/com_memu_left_serve_text"
-                    style="@style/com_menu_text_style"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/com_memu_left_serve_img"
-                    android:text="便民服务" />
-            </RelativeLayout>
-
-            <ImageView
-                android:id="@+id/com_memu_settle_line_img"
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
-            
-            
-            
-            <RelativeLayout
-                android:id="@+id/com_menu_message_lay"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:background="@drawable/com_menu_background_selector" >
-
-                <ImageView
-                    android:id="@+id/com_memu_message_img"
-                    style="@style/com_menu_image_style"
-                    android:background="@drawable/message_icon" />
-
-                <TextView
-                    android:id="@+id/com_memu_message_text"
-                    style="@style/com_menu_text_style"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/com_memu_message_img"
-                    android:text="通知公告" />
-            </RelativeLayout>
-
-            <ImageView
-                android:id="@+id/com_memu_settle_line_img"
+               
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="@drawable/com_left_menu_solid_line_img" />

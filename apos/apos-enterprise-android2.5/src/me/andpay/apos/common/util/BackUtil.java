@@ -14,7 +14,8 @@ import android.view.View.OnClickListener;
 
 public class BackUtil {
 
-	public static boolean backDialogShow(int keyCode, KeyEvent event, Activity activity) {
+	public static boolean backDialogShow(int keyCode, KeyEvent event,
+			Activity activity) {
 		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
 			showBackDialog(activity);
 			return false;
@@ -23,8 +24,8 @@ public class BackUtil {
 	}
 
 	public static void showBackDialog(Activity activity) {
-		final OperationDialog dialog = new OperationDialog(activity, "提示", "是否确认退出登录",
-				true);
+		final OperationDialog dialog = new OperationDialog(activity, "提示",
+				"是否确认退出登录", true);
 
 		final Activity inActivity = activity;
 		dialog.setSureButtonOnclickListener(new OnClickListener() {
@@ -45,26 +46,30 @@ public class BackUtil {
 	public static void loginOut(Activity activity, OperationDialog dialog) {
 
 		dialog.dismiss();
-		//TiApplication application = (TiApplication) activity.getApplication();
-		//application.getContextProvider().provider(TiContext.CONTEXT_SCOPE_APPLICATION)
-		//		.inValidate();
+		// TiApplication application = (TiApplication)
+		// activity.getApplication();
+		// application.getContextProvider().provider(TiContext.CONTEXT_SCOPE_APPLICATION)
+		// .inValidate();
 		Map<String, String> params = new HashMap<String, String>();
-		params.put(CommonProvider.COM_STR_RECONN_FLAG, CommonProvider.COM_STR_RECONN_FLAG);
+		params.put(CommonProvider.COM_STR_RECONN_FLAG,
+				CommonProvider.COM_STR_RECONN_FLAG);
 		params.put(CommonProvider.LOGIN_OUT, CommonProvider.LOGIN_OUT);
-		TiFlowControlImpl.instanceControl().startFlow(activity, FlowNames.LAM_LOGIN_FLOW,
-				params);
+		TiFlowControlImpl.instanceControl().startFlow(activity,
+				FlowNames.LAM_LOGIN_FLOW, params);
 		activity.finish();
 
 	}
 
 	public static void loginOut(Activity activity) {
-		//TiApplication application = (TiApplication) activity.getApplication();
-		//application.getContextProvider().provider(TiContext.CONTEXT_SCOPE_APPLICATION)
-		//		.inValidate();
+		// TiApplication application = (TiApplication)
+		// activity.getApplication();
+		// application.getContextProvider().provider(TiContext.CONTEXT_SCOPE_APPLICATION)
+		// .inValidate();
 		Map<String, String> params = new HashMap<String, String>();
-		params.put(CommonProvider.COM_STR_RECONN_FLAG, CommonProvider.COM_STR_RECONN_FLAG);
-		TiFlowControlImpl.instanceControl().startFlow(activity, FlowNames.LAM_LOGIN_FLOW,
-				params);
+		params.put(CommonProvider.COM_STR_RECONN_FLAG,
+				CommonProvider.COM_STR_RECONN_FLAG);
+		TiFlowControlImpl.instanceControl().startFlow(activity,
+				FlowNames.LAM_LOGIN_FLOW, params);
 		activity.finish();
 	}
 

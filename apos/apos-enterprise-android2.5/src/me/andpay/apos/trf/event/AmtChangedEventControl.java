@@ -33,7 +33,8 @@ public class AmtChangedEventControl extends AbstractEventController {
 				tempAmt = tempAmt.divide(new BigDecimal(100));
 				outputText = StringConvertor.convert2Currency(tempAmt);
 			} else {
-				BigDecimal tempAmt = new BigDecimal(getBigDecimalString(newText));
+				BigDecimal tempAmt = new BigDecimal(
+						getBigDecimalString(newText));
 				tempAmt = tempAmt.multiply(new BigDecimal(10));
 				outputText = StringConvertor.convert2Currency(tempAmt);
 			}

@@ -23,9 +23,8 @@ public class StlTxnRefreshController extends AbstractEventController {
 			boolean isRefresh) {
 		StlTxnQueryActivity activity = (StlTxnQueryActivity) refActivty;
 		EventRequest request = generateSubmitRequest(refActivty);
-		request.open(
-			QuerySettleAction.DOMAIN_NAME,QuerySettleAction.QUERY_TXN,
-				Pattern.async);
+		request.open(QuerySettleAction.DOMAIN_NAME,
+				QuerySettleAction.QUERY_TXN, Pattern.async);
 		if (isRefresh) {
 			activity.getAdapter().getCondition().setMaxTxnId(null);
 			activity.getAdapter().getCondition()
@@ -37,7 +36,8 @@ public class StlTxnRefreshController extends AbstractEventController {
 		}
 		request.getSubmitData().put("queryConditionForm",
 				activity.getAdapter().getCondition());
-		request.callBack(new StlTxnDataUpdateCallbackHandler(activity, isRefresh));
+		request.callBack(new StlTxnDataUpdateCallbackHandler(activity,
+				isRefresh));
 		request.submit();
 	}
 }

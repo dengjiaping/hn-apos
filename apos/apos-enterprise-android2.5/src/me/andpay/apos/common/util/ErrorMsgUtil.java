@@ -29,7 +29,7 @@ public class ErrorMsgUtil {
 	}
 
 	public static boolean isNetworkError(Throwable ex) {
-		//Throwable originalThrowable = ErrorMsgUtil.getOriginalThrowable(ex);
+		// Throwable originalThrowable = ErrorMsgUtil.getOriginalThrowable(ex);
 		if (ex instanceof NetworkErrorException
 				|| ex instanceof WebSockTimeoutException) {
 			return true;
@@ -37,14 +37,14 @@ public class ErrorMsgUtil {
 		return false;
 	}
 
-//	private static Throwable getOriginalThrowable(Throwable ex) {
-//		if (ex.getCause() == null
-//				|| ex.getCause().getClass().getName()
-//						.equalsIgnoreCase(ex.getClass().getName()))
-//			return ex;
-//		else
-//			return getOriginalThrowable(ex.getCause());
-//
-//	}
+	// private static Throwable getOriginalThrowable(Throwable ex) {
+	// if (ex.getCause() == null
+	// || ex.getCause().getClass().getName()
+	// .equalsIgnoreCase(ex.getClass().getName()))
+	// return ex;
+	// else
+	// return getOriginalThrowable(ex.getCause());
+	//
+	// }
 
 }

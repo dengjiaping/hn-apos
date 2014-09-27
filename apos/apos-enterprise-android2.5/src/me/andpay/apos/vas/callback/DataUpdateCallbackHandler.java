@@ -63,9 +63,9 @@ public class DataUpdateCallbackHandler extends AfterProcessWithErrorHandler {
 
 	private void showPrompt(int size) {
 		String str = size == 0 ? refActivty.getApplicationContext().getString(
-				R.string.tqm_txn_list_no_refresh_str) : String.format(refActivty
-				.getApplicationContext().getString(R.string.tqm_txn_list_refresh_str),
-				size);
+				R.string.tqm_txn_list_no_refresh_str) : String.format(
+				refActivty.getApplicationContext().getString(
+						R.string.tqm_txn_list_refresh_str), size);
 
 		ToastTools.topToast(refActivty, str, ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}

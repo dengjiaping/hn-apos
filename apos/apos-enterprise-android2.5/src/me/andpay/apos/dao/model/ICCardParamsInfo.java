@@ -4,10 +4,9 @@ import me.andpay.timobileframework.sqlite.anno.Column;
 import me.andpay.timobileframework.sqlite.anno.ID;
 import me.andpay.timobileframework.sqlite.anno.TableName;
 
-
-@TableName(name = "ICCardParamsInfo",version=1)
+@TableName(name = "ICCardParamsInfo", version = 1)
 public class ICCardParamsInfo {
-	
+
 	/**
 	 * 主键编号
 	 */
@@ -183,5 +182,5 @@ public class ICCardParamsInfo {
 	public void setIdICCardParamsInfo(Integer idICCardParamsInfo) {
 		this.idICCardParamsInfo = idICCardParamsInfo;
 	}
-	
+
 }

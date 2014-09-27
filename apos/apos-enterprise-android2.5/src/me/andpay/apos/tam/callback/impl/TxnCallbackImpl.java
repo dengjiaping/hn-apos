@@ -89,18 +89,18 @@ public class TxnCallbackImpl implements TxnCallback, CloudPosCallback,
 			txnControl.getTxnDialog().cancel();
 		}
 		TxnCallbackHelper.convertResponse(actionResponse);
-//		secondIssuance(actionResponse);
+		// secondIssuance(actionResponse);
 		TiFlowControlImpl.instanceControl().nextSetup(
 				txnControl.getCurrActivity(), FlowConstants.FAILED_SEPT1);
 	}
 
 	private void secondIssuance(TxnActionResponse actionResponse) {
 		// IC卡二次授权
-		if(actionResponse.getAposICCardDataInfo() != null) {
+		if (actionResponse.getAposICCardDataInfo() != null) {
 			CardReaderManager.setDefaultCallBack();
 			CardReaderManager.secondIssuance(actionResponse
 					.getAposICCardDataInfo());
-		}else {
+		} else {
 			CardReaderManager.clearScreen();
 		}
 	}
@@ -112,8 +112,7 @@ public class TxnCallbackImpl implements TxnCallback, CloudPosCallback,
 		}
 		TxnCallbackHelper.convertResponse(actionResponse);
 		secondIssuance(actionResponse);
-		
-		
+
 		final OperationDialog dialog = new OperationDialog(activity,
 				ResourceUtil.getString(activity, R.string.tam_txn_error_str),
 				actionResponse.getResponMsg(), true);
@@ -179,7 +178,6 @@ public class TxnCallbackImpl implements TxnCallback, CloudPosCallback,
 		}
 	}
 
-
 	public void loginFaild(String errorMsg) {
 		if (txnControl.getTxnDialog() != null
 				&& txnControl.getTxnDialog().isShowing()) {
@@ -205,12 +203,12 @@ public class TxnCallbackImpl implements TxnCallback, CloudPosCallback,
 	}
 
 	public void networkError(String errorMsg) {
-		if (txnControl.getTxnDialog() != null 
+		if (txnControl.getTxnDialog() != null
 				&& txnControl.getTxnDialog().isShowing()) {
 			txnControl.getTxnDialog().cancel();
 		}
 		secondIssuance(null);
-		
+
 		final PromptDialog promptDialog = new PromptDialog(activity,
 				ResourceUtil.getString(activity,
 						R.string.tam_txn_submit_error_str), errorMsg);

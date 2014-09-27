@@ -10,6 +10,6 @@ public class QueryAllButtonClickController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
 		TxnBatchQueryActivity activity = (TxnBatchQueryActivity) refActivty;
-		activity.queryAll(); 
+		activity.queryAll();
 	}
 }

@@ -33,7 +33,8 @@ import android.widget.TextView;
  * @author tinyliu
  * 
  */
-public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem> {
+public class PurchaseOrderDetailAdapter extends
+		TiSectionListAdapter<DetailItem> {
 
 	static final Integer MAX_DESC_SIZE = 6;
 
@@ -52,19 +53,20 @@ public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem>
 	 * @param info
 	 * @param activity
 	 */
-	protected void generateProductSection(PurchaseOrderInfo info, Activity activity) {
+	protected void generateProductSection(PurchaseOrderInfo info,
+			Activity activity) {
 		LinkedList<DetailItem> items = new LinkedList<DetailItem>();
 		Pair<String, LinkedList<DetailItem>> itemList = new Pair<String, LinkedList<DetailItem>>(
-				activity.getResources()
-						.getString(R.string.vas_po_detail_item_section_str), items);
+				activity.getResources().getString(
+						R.string.vas_po_detail_item_section_str), items);
 		for (PurchaseOrderItem item : info.getItems()) {
 			DetailItem dItem = new DetailItem();
 			dItem.setImgId(VasImageResourceUtil.getImageFromProductImage(item
 					.getProductType()));
-			if(StringUtil.isNotBlank(item.getProductName())) {
+			if (StringUtil.isNotBlank(item.getProductName())) {
 				dItem.setDesc(item.getProductName().length() > MAX_DESC_SIZE ? item
-						.getProductName().substring(0, MAX_DESC_SIZE - 1) + "..." : item
-						.getProductName());
+						.getProductName().substring(0, MAX_DESC_SIZE - 1)
+						+ "..." : item.getProductName());
 			}
 			dItem.setCount(item.getUnit());
 			dItem.setAmount(item.getPrice().toString() + "元");
@@ -73,14 +75,15 @@ public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem>
 			if (item.getProductType().equals(ShopProductTypes.SVC_DEPOSIT)) {
 				DetailItem cardItem = new DetailItem();
 				cardItem.setImgId(R.drawable.com_icon_swipe_img);
-				Map<String, String> attr = JacksonSerializer.newPrettySerializer()
-						.deserialize(Map.class, item.getAttr().getBytes());
+				Map<String, String> attr = JacksonSerializer
+						.newPrettySerializer().deserialize(Map.class,
+								item.getAttr().getBytes());
 				cardItem.setDesc(TxnUtil.formatCardNo(attr
 						.get(SvcDepositeContext.ATTR_KEY_CARDNO)));
 				items.add(cardItem);
-				
+
 				cardItem = new DetailItem();
-				cardItem.setImgId(R.drawable.com_icon_swipe_img); 
+				cardItem.setImgId(R.drawable.com_icon_swipe_img);
 				cardItem.setDesc(attr.get(SvcDepositeContext.ATTR_KEY_CARDNAME));
 				items.add(cardItem);
 			}
@@ -103,8 +106,8 @@ public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem>
 	protected void generateInfoSection(PurchaseOrderInfo info, Activity activity) {
 		LinkedList<DetailItem> items = new LinkedList<DetailItem>();
 		Pair<String, LinkedList<DetailItem>> itemList = new Pair<String, LinkedList<DetailItem>>(
-				activity.getResources()
-						.getString(R.string.vas_po_detail_info_section_str), items);
+				activity.getResources().getString(
+						R.string.vas_po_detail_info_section_str), items);
 		// 凭证信息
 		DetailItem dItem = new DetailItem();
 		dItem.setImgId(R.drawable.com_icon_voucher_number_img);
@@ -129,7 +132,8 @@ public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem>
 		dItem = new DetailItem();
 		dItem.setImgId(R.drawable.com_icon_time_img);
 		dItem.setDesc(DateUtil.format(ResourceUtil.getString(activity,
-				R.string.vas_po_detail_info_section_ordertime_str), info.getOrderTime()));
+				R.string.vas_po_detail_info_section_ordertime_str), info
+				.getOrderTime()));
 		items.add(dItem);
 		if (info.getRefundTime() != null) {
 			dItem = new DetailItem();
@@ -149,8 +153,8 @@ public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem>
 	protected void bindSectionHeader(View view, int sectionIdex,
 			boolean displaySectionHeader) {
 		if (displaySectionHeader) {
-			view.findViewById(me.andpay.apos.R.id.section_header).setVisibility(
-					View.VISIBLE);
+			view.findViewById(me.andpay.apos.R.id.section_header)
+					.setVisibility(View.VISIBLE);
 			TextView lSectionTitle = (TextView) view
 					.findViewById(R.id.vas_purchase_order_section_tv);
 			lSectionTitle.setText(getSections()[sectionIdex].toString());
@@ -167,8 +171,8 @@ public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem>
 	}
 
 	@Override
-	public View getSectionItemView(int sectionIndex, int itemIndex, View convertView,
-			ViewGroup parent) {
+	public View getSectionItemView(int sectionIndex, int itemIndex,
+			View convertView, ViewGroup parent) {
 		DetailItem item = this.getSectionItem(sectionIndex, itemIndex);
 		View view = LayoutInflater.from(applicationContext).inflate(
 				R.layout.vas_purchaseorder_detail_list_item_layout, null);
@@ -179,10 +183,11 @@ public class PurchaseOrderDetailAdapter extends TiSectionListAdapter<DetailItem>
 		setView(view, R.id.vas_purchase_order_item_amount_tv, item.getAmount());
 		if (!setView(view, R.id.vas_purchase_order_item_count_tv,
 				item.getCount() > 0 ? "" + item.getCount() : null)) {
-			view.findViewById(R.id.vas_purchase_order_item_count_layout).setVisibility(
-					View.GONE);
+			view.findViewById(R.id.vas_purchase_order_item_count_layout)
+					.setVisibility(View.GONE);
 		}
-		setView(view, R.id.vas_purchase_order_item_total_tv, item.getTotalAmount());
+		setView(view, R.id.vas_purchase_order_item_total_tv,
+				item.getTotalAmount());
 		return view;
 	}
 

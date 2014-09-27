@@ -39,9 +39,6 @@ public class LoginUserInfo {
 	 */
 	private Map<String, String> rights;
 
-
-	
-
 	public String getUserName() {
 		return userName;
 	}

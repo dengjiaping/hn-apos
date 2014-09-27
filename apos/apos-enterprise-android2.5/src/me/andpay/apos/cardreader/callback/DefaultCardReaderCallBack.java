@@ -52,7 +52,8 @@ public class DefaultCardReaderCallBack implements CardReaderCallback {
 				.selectShowImg(cardType, CardReaderResourceSelector.CONNECT));
 
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		toastView.addView(imageCodeProject, params);
 		toast.show();
 
@@ -76,20 +77,19 @@ public class DefaultCardReaderCallBack implements CardReaderCallback {
 		int imageId = 0;
 		try {
 			imageId = CardReaderResourceSelector.selectShowImg(cardType,
-						CardReaderResourceSelector.SWIPER);
-		}catch(Exception ex) {
-			
+					CardReaderResourceSelector.SWIPER);
+		} catch (Exception ex) {
+
 		}
-	
-		if(imageId >0) {
+
+		if (imageId > 0) {
 			imageCodeProject.setImageResource(imageId);
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-					android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+					android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+					android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 			toastView.addView(imageCodeProject, params);
 			toast.show();
 		}
-
-		
 
 	}
 

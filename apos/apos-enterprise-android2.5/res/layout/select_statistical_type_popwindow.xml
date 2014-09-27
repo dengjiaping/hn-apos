@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/com_icon_frame_img"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/select_statistical_type_popwindow_terminal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dip"
+        android:text="按终端统计"
+        android:textColor="@color/main_show_font_color"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@drawable/scm_solid_line_img" >
+    </View>
+
+    <TextView
+        android:id="@+id/select_statistical_type_popwindow_trading_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip"
+        android:text="按交易类型统计"
+        android:textColor="@color/main_show_font_color"
+        android:textSize="15sp" />
+
+</LinearLayout>

@@ -7,11 +7,12 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 /**
- *  
+ * 
  * @author cpz
  *
  */
-public class OrderInfoDao extends GenSqLiteDao<OrderInfo, OrderInfoCond, Integer> {
+public class OrderInfoDao extends
+		GenSqLiteDao<OrderInfo, OrderInfoCond, Integer> {
 
 	public OrderInfoDao(Context context, String name, CursorFactory factory,
 			int version) {

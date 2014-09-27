@@ -8,14 +8,17 @@ import android.app.Application;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-public class ExceptionPayTxnDaoProvider implements Provider<ExceptionPayTxnInfoDao> {
-	
+public class ExceptionPayTxnDaoProvider implements
+		Provider<ExceptionPayTxnInfoDao> {
+
 	@Inject
 	private Application application;
-	
+
 	public ExceptionPayTxnInfoDao get() {
-		 
-		TableName table = ExceptionPayTxnInfo.class.getAnnotation(TableName.class);	
-		return new ExceptionPayTxnInfoDao(application.getApplicationContext(),null,null,table.version());
+
+		TableName table = ExceptionPayTxnInfo.class
+				.getAnnotation(TableName.class);
+		return new ExceptionPayTxnInfoDao(application.getApplicationContext(),
+				null, null, table.version());
 	}
 }

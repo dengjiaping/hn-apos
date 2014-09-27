@@ -33,29 +33,28 @@ public class OpenCardSuccessActivity extends AposBaseActivity {
 
 	@InjectView(R.id.vas_title_tv)
 	public TextView topTextView;
-	
+
 	@InjectView(R.id.vas_msg_content)
 	public TextView msgContent;
-	
+
 	@InjectView(R.id.vas_event_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = OpenCardSuccessControl.class)
 	public TiTimeButton resendBtn;
-	
+
 	public CommonDialog commonDialog;
-	
-	
+
 	private OpenCardContext openCardContext;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		openCardContext = TiFlowControlImpl.instanceControl()
 				.getFlowContextData(OpenCardContext.class);
-		
-		if(StringUtil.isBlank(openCardContext.getPhoneNo())) {
+
+		if (StringUtil.isBlank(openCardContext.getPhoneNo())) {
 			resendBtn.setVisibility(View.GONE);
-		}else {
+		} else {
 			resendBtn.setVisibility(View.VISIBLE);
 			resendBtn.setEnabled(false);
 			resendBtn.setOnTimeoutListener(new OnTimeoutListener() {
@@ -70,23 +69,21 @@ public class OpenCardSuccessActivity extends AposBaseActivity {
 
 	@Override
 	protected void onResumeProcess() {
-		topTextView.setText(StringConvertor.convert2Currency(openCardContext.getCardSalesAmt()
-				));
+		topTextView.setText(StringConvertor.convert2Currency(openCardContext
+				.getCardSalesAmt()));
 		msgContent.setText("开卡成功");
 	}
-	
-	
-	
+
 	public void sendSvcEcard() {
 
 		OpenCardContext openCardContext = TiFlowControlImpl.instanceControl()
 				.getFlowContextData(OpenCardContext.class);
-		
+
 		EventRequest request = this.generateSubmitRequest(this);
-		request.getSubmitData().put("orderId",openCardContext.getOrderId());
-		request.open(OpenCardAction.DOMAIN_NAME,
-				OpenCardAction.SEND_SVC_ECARD, Pattern.async);
-		commonDialog= new CommonDialog(this, "处理中...");
+		request.getSubmitData().put("orderId", openCardContext.getOrderId());
+		request.open(OpenCardAction.DOMAIN_NAME, OpenCardAction.SEND_SVC_ECARD,
+				Pattern.async);
+		commonDialog = new CommonDialog(this, "处理中...");
 		commonDialog.show();
 		request.callBack(new SendEcardCallbackImp(this));
 		request.submit();

@@ -295,7 +295,7 @@ public class LoginAction extends MultiAction {
 	Party party;
 
 	public ModelAndView login(ActionRequest request) {
-		
+
 		initContext(request);
 		ModelAndView mv = new ModelAndView();
 		LoginUserForm loginUserForm = (LoginUserForm) request
@@ -332,9 +332,9 @@ public class LoginAction extends MultiAction {
 			// TERM.017
 			if (ResponseCodes.MUST_UPDATE_SOFEWARE_VERSION.equals(e.getCode())) {
 				loginCallback.updateApp(e.getLocalizedMessage());
-				//TiFlowControlImpl.instanceControl().nextSetup(TiFlowControlImpl.instanceControl().getNodeContrl().getLastActivity(),FlowConstants.GOHOME);
-			
-				//loginCallback.loginSuccess(response);
+				// TiFlowControlImpl.instanceControl().nextSetup(TiFlowControlImpl.instanceControl().getNodeContrl().getLastActivity(),FlowConstants.GOHOME);
+
+				// loginCallback.loginSuccess(response);
 				return mv;
 			}
 			loginCallback.loginFaild(e.getLocalizedMessage());

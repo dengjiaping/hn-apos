@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 public class CouponListAdapter extends TiSectionListAdapter<CouponRedeemList> {
 
-
 	private QueryCouponCondForm queryCouponCondForm;
 
 	private CouponListActivity activity;
@@ -50,7 +49,6 @@ public class CouponListAdapter extends TiSectionListAdapter<CouponRedeemList> {
 		this.queryCouponCondForm = queryCouponCondForm;
 	}
 
-
 	@Override
 	protected void bindSectionHeader(View view, int sectionIdex,
 			boolean displaySectionHeader) {
@@ -61,18 +59,16 @@ public class CouponListAdapter extends TiSectionListAdapter<CouponRedeemList> {
 					.findViewById(R.id.vas_purchase_order_section_tv);
 			lSectionTitle.setText(getSections()[sectionIdex].toString());
 		} else {
-			view.findViewById(R.id.section_header).setVisibility(
-					View.GONE);
+			view.findViewById(R.id.section_header).setVisibility(View.GONE);
 		}
 	}
-	
+
 	@Override
 	public void configureSectionView(View header, int section, int alpha) {
 		TextView lSectionTitle = (TextView) header
 				.findViewById(R.id.vas_purchase_order_section_tv);
 		lSectionTitle.setText(getSections()[section].toString());
 	}
-
 
 	@Override
 	public long getItemId(int section, int itemIndex) {
@@ -81,10 +77,10 @@ public class CouponListAdapter extends TiSectionListAdapter<CouponRedeemList> {
 	}
 
 	@Override
-	public View getSectionItemView(int sectionIndex, int itemIndex, View convertView,
-			ViewGroup parent) {
-		final CouponRedeemList couponInfo = this.getSectionItem(
-				sectionIndex, itemIndex);
+	public View getSectionItemView(int sectionIndex, int itemIndex,
+			View convertView, ViewGroup parent) {
+		final CouponRedeemList couponInfo = this.getSectionItem(sectionIndex,
+				itemIndex);
 		CouponItemViewHolder holder = null;
 		if (convertView == null) {
 			convertView = LayoutInflater.from(activity).inflate(
@@ -92,8 +88,8 @@ public class CouponListAdapter extends TiSectionListAdapter<CouponRedeemList> {
 			holder = new CouponItemViewHolder();
 			holder.nameTextView = (TextView) convertView
 					.findViewById(R.id.tqrm_coupon_name_tv);
-			//holder.redeemDateTextView = (TextView) convertView
-			//		.findViewById(R.id.tqrm_coupin_redeem_date_tv);
+			// holder.redeemDateTextView = (TextView) convertView
+			// .findViewById(R.id.tqrm_coupin_redeem_date_tv);
 			holder.redeemTimeTextView = (TextView) convertView
 					.findViewById(R.id.tqrm_coupin_redeem_time_tv);
 			convertView.setTag(holder);
@@ -107,11 +103,11 @@ public class CouponListAdapter extends TiSectionListAdapter<CouponRedeemList> {
 				couponInfo.getRedeemTime()));
 		return convertView;
 	}
-	
+
 	@Override
 	public String getSectionDesc(CouponRedeemList info) {
-		String orderTimeStr = DateFormat.getDateInstance(DateFormat.FULL).format(
-				info.getRedeemTime());
+		String orderTimeStr = DateFormat.getDateInstance(DateFormat.FULL)
+				.format(info.getRedeemTime());
 		return orderTimeStr;
 	}
 }

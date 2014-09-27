@@ -18,7 +18,7 @@ public class RefundDialogSureClick implements OnClickListener {
 
 	public RefundDialogSureClick(TiActivity refActivty, Dialog dialog) {
 		preDialog = dialog;
-		
+
 		LoginUserInfo info = (LoginUserInfo) refActivty.getAppContext()
 				.getAttribute(RuntimeAttrNames.LOGIN_USER);
 		pwdDialog = new Dialog(refActivty, R.style.Theme_dialog_style);

@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+
 /*基础expandableAdapter*/
-public class BaseExpandableAdapter<T> extends BaseExpandableListAdapter{
-	/*数据*/
-	private ArrayList<ArrayList<T>> list=new ArrayList<ArrayList<T>>();
-	/*控制器*/
+public class BaseExpandableAdapter<T> extends BaseExpandableListAdapter {
+	/* 数据 */
+	private ArrayList<ArrayList<T>> list = new ArrayList<ArrayList<T>>();
+	/* 控制器 */
 	private BaseExpandableAdapterController<T> controller;
-	/*事件监听器*/
+	/* 事件监听器 */
 	private AdpterEventListener listener;
-	
-    
+
 	public ArrayList<ArrayList<T>> getList() {
 		return list;
 	}
@@ -30,7 +30,7 @@ public class BaseExpandableAdapter<T> extends BaseExpandableListAdapter{
 	public void setController(BaseExpandableAdapterController<T> controller) {
 		this.controller = controller;
 		controller.setAdapter(this);
-		
+
 	}
 
 	public AdpterEventListener getListener() {
@@ -41,7 +41,7 @@ public class BaseExpandableAdapter<T> extends BaseExpandableListAdapter{
 		this.listener = listener;
 	}
 
-	public Object getChild(int arg0, int arg1){
+	public Object getChild(int arg0, int arg1) {
 		// TODO Auto-generated method stub
 		return list.get(arg0).get(arg1);
 	}
@@ -91,7 +91,5 @@ public class BaseExpandableAdapter<T> extends BaseExpandableListAdapter{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	
 
 }

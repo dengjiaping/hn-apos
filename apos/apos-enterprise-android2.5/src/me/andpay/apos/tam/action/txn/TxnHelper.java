@@ -11,33 +11,31 @@ import me.andpay.timobileframework.util.HexUtils;
 import me.andpay.timobileframework.util.tlv.TlvUtil;
 
 public class TxnHelper {
-	
-	
+
 	public static void setICCardInfo(AposICCardDataInfo aposICCardDataInfo,
 			TxnRequest purRequest) {
 		if (aposICCardDataInfo == null) {
 			return;
 		}
 		Map<String, String> extAttrs = purRequest.getExtAttrs();
-		if(extAttrs == null) {
-			extAttrs  = new HashMap<String, String>();
+		if (extAttrs == null) {
+			extAttrs = new HashMap<String, String>();
 			purRequest.setExtAttrs(extAttrs);
 		}
-		
-		
-		extAttrs.put(TxnExtAttrNames.IC_DATA_BASE64,genICCardInfoBase64(aposICCardDataInfo) );
-		extAttrs.put(TxnExtAttrNames.CARD_SEQ_NO,aposICCardDataInfo.getCardSerialNumber());
+
+		extAttrs.put(TxnExtAttrNames.IC_DATA_BASE64,
+				genICCardInfoBase64(aposICCardDataInfo));
+		extAttrs.put(TxnExtAttrNames.CARD_SEQ_NO,
+				aposICCardDataInfo.getCardSerialNumber());
 
 	}
-	
-	
-	public static String genICCardInfoBase64(AposICCardDataInfo aposICCardDataInfo) {
+
+	public static String genICCardInfoBase64(
+			AposICCardDataInfo aposICCardDataInfo) {
 		String tlvString = TlvUtil.encodeTvl(aposICCardDataInfo);
-//		Log.e(TxnHelper.class.getName(), "tlvString----->"+tlvString);
+		// Log.e(TxnHelper.class.getName(), "tlvString----->"+tlvString);
 
-		return 	Base64.encode(HexUtils.hexString2Bytes(tlvString));
+		return Base64.encode(HexUtils.hexString2Bytes(tlvString));
 	}
-	
-	
-	
+
 }

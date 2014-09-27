@@ -9,10 +9,12 @@ import me.andpay.apos.vas.flow.model.OpenCardContext;
 
 /**
  * 预付费卡履约上下文转换
+ * 
  * @author tinyliu
  *
  */
-public class PCFulfillCtxConvert implements PdFulfillCtxConvert<OpenCardContext> {
+public class PCFulfillCtxConvert implements
+		PdFulfillCtxConvert<OpenCardContext> {
 
 	public OpenCardContext convert2Context(PurchaseOrderInfo info) {
 		OpenCardContext openCardContext = new OpenCardContext();

@@ -1,6 +1,5 @@
 package me.andpay.apos.tqrm.form;
 
-
 public class QueryCouponCondForm {
 
 	private Long redeemId;

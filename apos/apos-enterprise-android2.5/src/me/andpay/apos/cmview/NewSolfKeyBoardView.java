@@ -99,7 +99,7 @@ public class NewSolfKeyBoardView {
 		LayoutParams softLayoutParams = new RelativeLayout.LayoutParams(
 				ViewGroup.LayoutParams.MATCH_PARENT,
 				ViewGroup.LayoutParams.MATCH_PARENT);
-//		softKeyBoardView.setVisibility(View.GONE);
+		// softKeyBoardView.setVisibility(View.GONE);
 
 		foot.addView(softKeyBoardView, softLayoutParams);
 		// foot.setVisibility(View.GONE);
@@ -234,7 +234,7 @@ public class NewSolfKeyBoardView {
 	private void keyPressed(int keyCode) {
 		Editable etext = null;
 		if (keyCode == KeyEvent.KEYCODE_DEL) {
-			if (currentView.length() == 0){
+			if (currentView.length() == 0) {
 				return;
 			}
 			String text = currentView.getText().toString();
@@ -263,11 +263,8 @@ public class NewSolfKeyBoardView {
 						.get(keyCode).toString()));
 			}
 			etext = currentView.getText();
-			
 
 		}
-
-
 
 		Selection.setSelection(etext, currentView.length());
 

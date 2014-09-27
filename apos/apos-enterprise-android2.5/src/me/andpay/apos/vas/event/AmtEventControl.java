@@ -26,11 +26,12 @@ public class AmtEventControl extends AbstractEventController {
 		return true;
 	}
 
-	public boolean onFocusChange(Activity activity, FormBean formBean, View view,
-			boolean hasFocus) {
+	public boolean onFocusChange(Activity activity, FormBean formBean,
+			View view, boolean hasFocus) {
 
 		if (!hasFocus) {
-			((PurchaseQueryCondActivity) activity).getSolfKeyBoard().hideKeyboard();
+			((PurchaseQueryCondActivity) activity).getSolfKeyBoard()
+					.hideKeyboard();
 		}
 		return true;
 	}

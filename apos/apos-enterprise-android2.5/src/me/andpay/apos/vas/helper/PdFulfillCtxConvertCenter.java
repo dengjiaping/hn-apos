@@ -16,8 +16,8 @@ public class PdFulfillCtxConvertCenter {
 
 	@SuppressWarnings("unchecked")
 	public static Object convert(PurchaseOrderInfo info) {
-		for(PdFulfillCtxConvert convert : converts) {
-			if(convert.isSupport(info.getItems())) {
+		for (PdFulfillCtxConvert convert : converts) {
+			if (convert.isSupport(info.getItems())) {
 				return convert.convert2Context(info);
 			}
 		}

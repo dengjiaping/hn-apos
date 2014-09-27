@@ -19,66 +19,65 @@ import android.util.Log;
  * 
  */
 public class AposOperationLog {
-	
+
 	public static final String TAG = AposOperationLog.class.getName();
 
 	private static TerminalStatsService terminalStatsService;
 	private static AposContext aposContext;
 
 	private static String deviceId;
-	
-	
 
-	public  static void init(Context context) {
+	public static void init(Context context) {
 
-		if(terminalStatsService == null) {
-			terminalStatsService = RoboGuiceUtil.getInjectObject(TerminalStatsService.class,context );
+		if (terminalStatsService == null) {
+			terminalStatsService = RoboGuiceUtil.getInjectObject(
+					TerminalStatsService.class, context);
 		}
-		if(aposContext == null) {
-			aposContext =  RoboGuiceUtil.getInjectObject(AposContext.class,context );
+		if (aposContext == null) {
+			aposContext = RoboGuiceUtil.getInjectObject(AposContext.class,
+					context);
 		}
 	}
-	
-	public static void asynLog(String opCode,String opTraceNO,
+
+	public static void asynLog(String opCode, String opTraceNO,
 			Map<String, String> opDesc) {
-		
-		final  String opCodeIn = opCode;
-		final  String opDescin = opTraceNO;
-		final  Map<String, String> opDescIn = opDesc;
+
+		final String opCodeIn = opCode;
+		final String opDescin = opTraceNO;
+		final Map<String, String> opDescIn = opDesc;
 
 		Thread thread = new Thread(new Runnable() {
 			public void run() {
-				AposOperationLog.log(opCodeIn, opDescin,opDescIn);
+				AposOperationLog.log(opCodeIn, opDescin, opDescIn);
 			}
 		});
-		thread.start(); 
+		thread.start();
 	}
 
-	private static void log(String opCode,String opTraceNO,
+	private static void log(String opCode, String opTraceNO,
 			Map<String, String> opDesc) {
 		try {
-			if(StringUtil.isBlank(deviceId)) {
-				deviceId = (String) aposContext.getAppConfig()
-						.getAttribute(ConfigAttrNames.DEVICE_ID);
+			if (StringUtil.isBlank(deviceId)) {
+				deviceId = (String) aposContext.getAppConfig().getAttribute(
+						ConfigAttrNames.DEVICE_ID);
 			}
-			
-			if(opDesc == null) {
+
+			if (opDesc == null) {
 				opDesc = new HashMap<String, String>();
 			}
-			if(StringUtil.isNotBlank(opTraceNO)) {
+			if (StringUtil.isNotBlank(opTraceNO)) {
 				opDesc.put(OperationDataKeys.OPKEYS_OP_TRACENO, opTraceNO);
 			}
-			opDesc.put(OperationDataKeys.OPKEYS_SUBDATE,StringUtil.format("yyyy-MM-dd HH:mm:ss.SSS", new Date()));
-			
-			Log.d(TAG, opCode+":"+opTraceNO+":" +opDesc.toString() );
+			opDesc.put(OperationDataKeys.OPKEYS_SUBDATE,
+					StringUtil.format("yyyy-MM-dd HH:mm:ss.SSS", new Date()));
+
+			Log.d(TAG, opCode + ":" + opTraceNO + ":" + opDesc.toString());
 
 			terminalStatsService.submitOpLog(deviceId, opCode, opDesc);
-		}catch(Exception ex) {
+		} catch (Exception ex) {
 			Log.e(TAG, "log error", ex);
 		}
-	
+
 	}
-	
-	
-	
+
 }

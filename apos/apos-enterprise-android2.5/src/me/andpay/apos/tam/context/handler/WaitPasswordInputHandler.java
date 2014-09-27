@@ -28,7 +28,7 @@ public class WaitPasswordInputHandler extends GenChangeStatusHander {
 		/**
 		 * 如果是外部输入pin跳过键盘密码输入
 		 */
-		if (CardReaderManager.getInputType()  == AposSwiperContext.INPUT_CARD_READER) {
+		if (CardReaderManager.getInputType() == AposSwiperContext.INPUT_CARD_READER) {
 			txnControl.changeTxnStatus(TxnStatus.TXN_SUBMIT_WITH_PIN,
 					txnControl.getCurrActivity());
 			return true;
@@ -46,7 +46,7 @@ public class WaitPasswordInputHandler extends GenChangeStatusHander {
 		}
 		TxnContext txnContext = txnControl.getTxnContext();
 
-		if (txnContext.isNeedPin()){
+		if (txnContext.isNeedPin()) {
 			activity.pwdTextView.setText("");
 			activity.solfKeyBoard.showKeyboard(activity.pwdTextView);
 			if (txnControl.getTxnContext().getTxnType()
@@ -91,23 +91,23 @@ public class WaitPasswordInputHandler extends GenChangeStatusHander {
 		activity.topTextView.setText(R.string.tam_top_input_pass_str);
 		CardReaderManager.setDefaultCallBack();
 		CardReaderManager.stopSwiper();
-		
+
 		activity.txnContentLay.setVisibility(View.VISIBLE);
 		activity.txnBottomImage.setVisibility(View.VISIBLE);
-		//设置图片文件
-		//设置图片文件
-		if (StringUtil.isNotBlank(txnControl.getTxnContext().getGoodsFileURL()) ) {
-			
-			if(activity.goodsMap == null) {
-				activity.goodsMap =BitMapUtil.getBitmap(txnControl.getTxnContext()
-						.getGoodsFileURL(), 5);
-			
-				activity.goodsImg.setBackgroundDrawable(new BitmapDrawable(activity.getResources(),
-						activity.goodsMap));
+		// 设置图片文件
+		// 设置图片文件
+		if (StringUtil.isNotBlank(txnControl.getTxnContext().getGoodsFileURL())) {
+
+			if (activity.goodsMap == null) {
+				activity.goodsMap = BitMapUtil.getBitmap(txnControl
+						.getTxnContext().getGoodsFileURL(), 5);
+
+				activity.goodsImg.setBackgroundDrawable(new BitmapDrawable(
+						activity.getResources(), activity.goodsMap));
 				activity.goodsLay.setVisibility(View.VISIBLE);
 			}
-			
-		}else {	
+
+		} else {
 			activity.goodsLay.setVisibility(View.GONE);
 		}
 		activity.amtTxnView.setText(txnContext.getAmtFomat());
@@ -119,7 +119,7 @@ public class WaitPasswordInputHandler extends GenChangeStatusHander {
 
 	@Override
 	protected void changeAction(TxnControl txnControl) {
-	
+
 	}
 
 }

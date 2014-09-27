@@ -41,7 +41,8 @@ public class SvcDepositeAction extends SessionKeepAction {
 	public PurchaseOrderInfoDao purchaseOrderInfoDao;
 
 	public ModelAndView deposite(ActionRequest request) {
-		SvcDepositeCallback callback = (SvcDepositeCallback) request.getHandler();
+		SvcDepositeCallback callback = (SvcDepositeCallback) request
+				.getHandler();
 		SvcDepositeContext dContext = (SvcDepositeContext) request
 				.getParameterValue("depositeContext");
 
@@ -50,7 +51,8 @@ public class SvcDepositeAction extends SessionKeepAction {
 
 		try {
 			BigDecimal balance = svcDepositService.deposit(dRequest);
-			purchaseOrderInfoDao.updatePayTxnInfo2Fulfill(dContext.getPurchaseOrderId());
+			purchaseOrderInfoDao.updatePayTxnInfo2Fulfill(dContext
+					.getPurchaseOrderId());
 			callback.depositeSucc(balance);
 		} catch (AppBizException ex) {
 			Log.e(this.getClass().getName(), "check order error", ex);
@@ -67,7 +69,8 @@ public class SvcDepositeAction extends SessionKeepAction {
 	}
 
 	public ModelAndView validateCard(ActionRequest request) {
-		SvcValidateCallback callback = (SvcValidateCallback) request.getHandler();
+		SvcValidateCallback callback = (SvcValidateCallback) request
+				.getHandler();
 		String cardNo = (String) request.getParameterValue("cardNo");
 		GetSvcDepositCtrlsRequest sRequest = new GetSvcDepositCtrlsRequest();
 		sRequest.setCardNo(cardNo);
@@ -83,7 +86,8 @@ public class SvcDepositeAction extends SessionKeepAction {
 		} catch (Exception ex) {
 			Log.e(this.getClass().getName(), "check order error", ex);
 			if (ErrorMsgUtil.isNetworkError(ex)) {
-				callback.validateFailed(ErrorMsgUtil.parseError(application, ex));
+				callback.validateFailed(ErrorMsgUtil
+						.parseError(application, ex));
 				return null;
 			}
 			callback.validateFailed(null);

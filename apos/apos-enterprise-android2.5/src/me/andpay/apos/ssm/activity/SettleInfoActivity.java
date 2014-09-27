@@ -65,7 +65,7 @@ public class SettleInfoActivity extends AposBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		refresh_layout.initView();
 		refresh_layout.setPullLoadEnable(true);
@@ -142,7 +142,7 @@ public class SettleInfoActivity extends AposBaseActivity {
 
 	class InfoProcess extends AfterProcessWithErrorHandler {
 
-		public InfoProcess(Activity  activity) {
+		public InfoProcess(Activity activity) {
 			super(activity);
 		}
 

@@ -110,7 +110,6 @@ public class TxnDetailActivity extends AposBaseActivity implements
 	@InjectView(R.id.tam_time_textView)
 	public TiTimeTextView timeTextView;
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -155,8 +154,8 @@ public class TxnDetailActivity extends AposBaseActivity implements
 
 		// 设置图片文件
 		if (StringUtil.isNotBlank(txnDetailContext.getGoodsFileURL())) {
-			goodbitMap = BitMapUtil.getBitmap(txnDetailContext
-					.getGoodsFileURL(), 5);
+			goodbitMap = BitMapUtil.getBitmap(
+					txnDetailContext.getGoodsFileURL(), 5);
 			goodsImg.setImageBitmap(null);
 			goodsImg.setBackgroundDrawable(new BitmapDrawable(goodbitMap));
 		} else {
@@ -165,8 +164,8 @@ public class TxnDetailActivity extends AposBaseActivity implements
 
 		// 设置图片文件
 		if (StringUtil.isNotBlank(txnDetailContext.getSignFileURL())) {
-			signBitMap = BitMapUtil.getBitmap(txnDetailContext
-					.getSignFileURL(), 5);
+			signBitMap = BitMapUtil.getBitmap(
+					txnDetailContext.getSignFileURL(), 5);
 			signImgeView.setImageBitmap(null);
 			signImgeView.setBackgroundDrawable(new BitmapDrawable(signBitMap));
 		} else {
@@ -179,10 +178,6 @@ public class TxnDetailActivity extends AposBaseActivity implements
 				.getCardAssoc()));
 		dynamicField(txnDetailContext.getTxnType());
 	}
-	
-
-	
-	
 
 	private void dynamicField(String txnType) {
 

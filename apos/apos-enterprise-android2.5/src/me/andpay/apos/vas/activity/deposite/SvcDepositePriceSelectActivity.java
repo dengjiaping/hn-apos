@@ -83,18 +83,22 @@ public class SvcDepositePriceSelectActivity extends AposBaseActivity implements
 	}
 
 	private void setCardInfo() {
-		SvcDepositeContext dContext = this.getFlowContextData(SvcDepositeContext.class);
+		SvcDepositeContext dContext = this
+				.getFlowContextData(SvcDepositeContext.class);
 		this.cardNameTv.setText(dContext.getCardName());
 		this.cardNoTv.setText(dContext.getCardNo());
 		this.balanceTv.setText(StringConvertor.format(dContext.getBalance()));
 	}
 
 	private void confingAmtPriceView() {
-		SvcDepositeContext dContext = this.getFlowContextData(SvcDepositeContext.class);
+		SvcDepositeContext dContext = this
+				.getFlowContextData(SvcDepositeContext.class);
 		amtEditText.clearFocus();
 		priceSp.clearFocus();
-		amtInputLay.setVisibility(dContext.isHasCtrlPrice() ? View.GONE : View.VISIBLE);
-		priceSp.setVisibility(dContext.isHasCtrlPrice() ? View.VISIBLE : View.GONE);
+		amtInputLay.setVisibility(dContext.isHasCtrlPrice() ? View.GONE
+				: View.VISIBLE);
+		priceSp.setVisibility(dContext.isHasCtrlPrice() ? View.VISIBLE
+				: View.GONE);
 		if (dContext.isHasCtrlPrice()) {
 			List<Pair<String, String>> values = new ArrayList<Pair<String, String>>();
 			for (String str : dContext.getCtrlAmtDesc()) {
@@ -102,13 +106,14 @@ public class SvcDepositePriceSelectActivity extends AposBaseActivity implements
 				values.add(value);
 			}
 			priceSp.setSpinnerValues(values);
-		//	priceSp.clear();
+			// priceSp.clear();
 		} else {
 			DisplayMetrics metric = new DisplayMetrics();
 			Display display = getWindowManager().getDefaultDisplay();
 			display.getMetrics(metric);
 			solfKeyBoardDialog = SolfKeyBoardDialog.instance(this, cardButton,
-					metric.heightPixels - Float.valueOf(350 * metric.density).intValue(),
+					metric.heightPixels
+							- Float.valueOf(350 * metric.density).intValue(),
 					this);
 			solfKeyBoardDialog.getHintImgeBtn().setVisibility(View.VISIBLE);
 			solfKeyBoardDialog.showKeyboard(amtEditText);

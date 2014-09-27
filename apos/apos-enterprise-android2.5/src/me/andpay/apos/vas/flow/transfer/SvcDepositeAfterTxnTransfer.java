@@ -14,26 +14,29 @@ import android.app.Activity;
 
 /**
  * 交易完成后，获取PurchaseOrderId
+ * 
  * @author tinyliu
  *
  */
 public class SvcDepositeAfterTxnTransfer implements TiFlowNodeDataTransfer {
 
-	public Map<String, String> transfterData(Activity activity, Map<String, String> data,
-			TiFlowNodeComplete complete, Map<String, Serializable> subFlowContext) {
+	public Map<String, String> transfterData(Activity activity,
+			Map<String, String> data, TiFlowNodeComplete complete,
+			Map<String, Serializable> subFlowContext) {
 		AposBaseActivity baseActivity = (AposBaseActivity) activity;
-		String paymentMethod = baseActivity.getFlowContextData(SvcDepositeContext.class)
-				.getPaymentMethod();
+		String paymentMethod = baseActivity.getFlowContextData(
+				SvcDepositeContext.class).getPaymentMethod();
 		Long orderId = null;
 		if (PaymentMethods.CASH.equals(paymentMethod)) {
 			orderId = baseActivity.getFlowContextData(CashPaymentContext.class)
 					.getOrderId();
 		}
 		if (PaymentMethods.SWIPING.equals(paymentMethod)) {
-			orderId = baseActivity.getFlowContextData(TxnContext.class).getOrderId();
+			orderId = baseActivity.getFlowContextData(TxnContext.class)
+					.getOrderId();
 		}
-		baseActivity.getFlowContextData(SvcDepositeContext.class).setPurchaseOrderId(
-				orderId);
+		baseActivity.getFlowContextData(SvcDepositeContext.class)
+				.setPurchaseOrderId(orderId);
 		return null;
 	}
 

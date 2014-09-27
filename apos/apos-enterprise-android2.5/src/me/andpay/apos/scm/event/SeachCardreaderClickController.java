@@ -23,9 +23,9 @@ public class SeachCardreaderClickController extends AbstractEventController {
 	public void onClick(Activity activity, FormBean formBean, View view) {
 
 		searchCardreaderCallBack.setTiActivity((TiActivity) activity);
-		CardReaderManager
-				.initCardReader(activity.getApplication(), AposCardReaderUtil
-						.genAposSwiperContext(aposContext.getAppConfig()));
+		CardReaderManager.initCardReader(activity.getApplication(),
+				AposCardReaderUtil.genAposSwiperContext(aposContext
+						.getAppConfig()));
 		CardReaderManager.searchDevice();
 
 	}

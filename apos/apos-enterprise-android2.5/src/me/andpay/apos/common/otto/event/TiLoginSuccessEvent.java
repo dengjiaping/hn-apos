@@ -8,17 +8,15 @@ import me.andpay.timobileframework.mvc.context.TiContext;
  *
  */
 public class TiLoginSuccessEvent {
-	
+
 	private TiContext ticonfig;
-	
-	public TiLoginSuccessEvent (TiContext context) {
+
+	public TiLoginSuccessEvent(TiContext context) {
 		this.ticonfig = context;
 	}
 
 	public TiContext getTiconfig() {
 		return ticonfig;
 	}
-	
-	
-	
+
 }

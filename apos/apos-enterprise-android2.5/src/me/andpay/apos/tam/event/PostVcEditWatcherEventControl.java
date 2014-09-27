@@ -44,7 +44,6 @@ public class PostVcEditWatcherEventControl extends AbstractEventController {
 
 	public boolean onTouch(Activity activity, FormBean formBean, View view,
 			MotionEvent motionEvent) {
-		
 
 		PostVoucherActivity postVoucherActivity = (PostVoucherActivity) activity;
 

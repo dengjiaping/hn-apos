@@ -60,7 +60,5 @@ public class ProductHolder {
 	public void setInterImageView(ImageView interImageView) {
 		this.interImageView = interImageView;
 	}
-	
-	
 
 }

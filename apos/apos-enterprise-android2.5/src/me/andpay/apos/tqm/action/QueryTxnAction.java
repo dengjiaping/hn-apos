@@ -42,7 +42,8 @@ public class QueryTxnAction extends SessionKeepAction {
 	}
 
 	@SuppressWarnings("unchecked")
-	private ModelAndView queryMultipleTxnList(ActionRequest request, boolean isStorage) {
+	private ModelAndView queryMultipleTxnList(ActionRequest request,
+			boolean isStorage) {
 		ModelAndView mv = new ModelAndView();
 		Integer maxCount = (Integer) request.getParameterValue("counts");
 		if (maxCount == null) {
@@ -56,8 +57,8 @@ public class QueryTxnAction extends SessionKeepAction {
 		results.addAll(infos);
 		if (results.size() < maxCount) {
 			String txnId = getLocalMaxTxnId(results);
-			condition.setMaxTxnId(StringUtil.isEmpty(txnId) ? condition.getMaxTxnId()
-					: txnId);
+			condition.setMaxTxnId(StringUtil.isEmpty(txnId) ? condition
+					.getMaxTxnId() : txnId);
 			request.setAttribute("counts", maxCount - results.size());
 			ModelAndView forwardRefundMv;
 			try {
@@ -68,21 +69,22 @@ public class QueryTxnAction extends SessionKeepAction {
 								isStorage ? TqmProvider.TQM_ACTION_QUERY_REMOTE_GETTXNLIST_STORAGE_REMOTE
 										: TqmProvider.TQM_ACTION_QUERY_REMOTE_GETTXNLIST_REMOTE,
 								request);
-			List<PayTxnInfo> remoteTxnList =(List<PayTxnInfo>) forwardRefundMv.getValue("remoteTxnList");
-			for (PayTxnInfo info : remoteTxnList) {
-				results.addLast(info);
-			}
-				
+				List<PayTxnInfo> remoteTxnList = (List<PayTxnInfo>) forwardRefundMv
+						.getValue("remoteTxnList");
+				for (PayTxnInfo info : remoteTxnList) {
+					results.addLast(info);
+				}
+
 			} catch (Throwable e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-//			mv.addModelValue("remoteTxnList", infos);
+
+			// mv.addModelValue("remoteTxnList", infos);
 		}
 
-		return mv.addModelValue("txnList", results).addModelValue("queryConditionForm",
-				condition);
+		return mv.addModelValue("txnList", results).addModelValue(
+				"queryConditionForm", condition);
 	}
 
 	/**
@@ -94,10 +96,12 @@ public class QueryTxnAction extends SessionKeepAction {
 	 */
 	private List<PayTxnInfo> queryLocalPayTxnInfo(QueryConditionForm condition,
 			Integer maxCount, TiContext context) {
-		PartyInfo party = (PartyInfo) context.getAttribute(RuntimeAttrNames.PARTY_INFO);
+		PartyInfo party = (PartyInfo) context
+				.getAttribute(RuntimeAttrNames.PARTY_INFO);
 		LoginUserInfo info = (LoginUserInfo) context
 				.getAttribute(RuntimeAttrNames.LOGIN_USER);
-		QueryPayTxnInfoCond cond = PayTxnInfoConvert.convertCondtion2Cond(condition);
+		QueryPayTxnInfoCond cond = PayTxnInfoConvert
+				.convertCondtion2Cond(condition);
 		cond.setTxnPartyId(party.getPartyId());
 		cond.setOperNo(info.getUserName());
 		List<PayTxnInfo> payInfo = payTxnDao.query(cond, 0, maxCount);

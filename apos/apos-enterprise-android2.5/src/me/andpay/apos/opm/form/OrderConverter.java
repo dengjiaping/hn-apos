@@ -88,12 +88,14 @@ public class OrderConverter {
 				orderInfosMerge.add(orderInfo);
 			}
 		}
-//		
-//		for (OrderInfo orderInfo : orderInfosMerge) {
-//			if(orderInfo.getOrderAttrs1()!=null && orderInfo.getOrderAttrs1().size()>0) {
-//				android.util.Log.d("orderAttr=", orderInfo.getOrderAttrs1().get(0).getName().toString()+"orderId="+orderInfo.getOrderId());
-//			}
-//		}
+		//
+		// for (OrderInfo orderInfo : orderInfosMerge) {
+		// if(orderInfo.getOrderAttrs1()!=null &&
+		// orderInfo.getOrderAttrs1().size()>0) {
+		// android.util.Log.d("orderAttr=",
+		// orderInfo.getOrderAttrs1().get(0).getName().toString()+"orderId="+orderInfo.getOrderId());
+		// }
+		// }
 
 		return orderInfosMerge;
 	}

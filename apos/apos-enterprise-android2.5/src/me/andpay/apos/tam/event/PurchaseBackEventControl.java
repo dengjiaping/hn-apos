@@ -10,7 +10,7 @@ import android.view.View;
 public class PurchaseBackEventControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
+
 		PurchaseFirstActivity purActivity = (PurchaseFirstActivity) activity;
 		BackUtil.showBackDialog(purActivity);
 

@@ -23,8 +23,9 @@ public class ProductDetailItemClickControl extends AbstractEventController {
 		if (position >= adapter.getCount()) {
 			return;
 		}
-		
-		ProductItem productItem = ShoppingCartCenter.getShoppingCart().getItemsList().get(position);
+
+		ProductItem productItem = ShoppingCartCenter.getShoppingCart()
+				.getItemsList().get(position);
 
 		Intent intent = new Intent();
 		intent.setAction(VasProvider.VAS_PRODUCT_EDIT_ACTIVITY);

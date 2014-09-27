@@ -4,7 +4,7 @@ import me.andpay.timobileframework.sqlite.Sorts;
 import me.andpay.timobileframework.sqlite.anno.Expression;
 
 public class QueryICCardInfoCond extends Sorts {
-	
+
 	@Expression
 	private Integer idTxn;
 
@@ -16,6 +16,4 @@ public class QueryICCardInfoCond extends Sorts {
 		this.idTxn = idTxn;
 	}
 
-	
-	
 }

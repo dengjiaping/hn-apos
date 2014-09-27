@@ -191,21 +191,20 @@ public class CardReaderAdapterSuccessActivity extends AposBaseActivity {
 							.getOpTraceNo());
 				}
 
-				String defaultIdentifier = (String)tempActivity.getAppConfig()
+				String defaultIdentifier = (String) tempActivity.getAppConfig()
 						.getAttribute(
 								CardReaderResourceSelector
 										.getBluetoothIdKey(CardReaderManager
 												.getCardReaderType()));
-				OpenDeivceResult openDeivceResult = CardReaderManager.openDevice(defaultIdentifier);
+				OpenDeivceResult openDeivceResult = CardReaderManager
+						.openDevice(defaultIdentifier);
 				DeviceInfo deviceInfo = null;
-				if(openDeivceResult.isSuccess()) {
+				if (openDeivceResult.isSuccess()) {
 					deviceInfo = CardReaderManager.getDeviceInfo();
-				}else {
+				} else {
 					deviceInfo = new DeviceInfo();
 					deviceInfo.setSuccess(false);
 				}
-				
-				
 
 				if (isMrsInit() && deviceInfo.isSuccess()) {
 					InitMsrKeyResult initMsrKeyResult = CardReaderManager

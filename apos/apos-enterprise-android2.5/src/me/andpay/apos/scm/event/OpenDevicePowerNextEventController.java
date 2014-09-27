@@ -22,22 +22,29 @@ public class OpenDevicePowerNextEventController extends AbstractEventController 
 	private AposContext aposContext;
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
-		
+
 		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl
 				.instanceControl().getFlowContextData(
 						CardReaderSetContext.class);
-		
-		if(CardReaderManager.getDeviceCommType() == DeviceCommunicationTypes.COMM_AUDIO) {
-			TiFlowControlImpl.instanceControl().nextSetup(refActivty, FlowConstants.SUCCESS);
-		}else{
-			if(CardReaderTypes.NEW_LAND_BL == CardReaderManager.getCardReaderType() 
-					&& BluetoothConnectMode.SCAN.equals(aposContext.getAppConfig().getAttribute(
-					ConfigAttrNames.DEFAULT_BLUETOOTH_CONNECT_MODE))){
-				TiFlowControlImpl.instanceControl().nextSetup(refActivty, FlowConstants.SUCCESS_STEP3);
-			}else{
-				TiFlowControlImpl.instanceControl().nextSetup(refActivty, FlowConstants.SUCCESS_STEP2);
+
+		if (CardReaderManager.getDeviceCommType() == DeviceCommunicationTypes.COMM_AUDIO) {
+			TiFlowControlImpl.instanceControl().nextSetup(refActivty,
+					FlowConstants.SUCCESS);
+		} else {
+			if (CardReaderTypes.NEW_LAND_BL == CardReaderManager
+					.getCardReaderType()
+					&& BluetoothConnectMode.SCAN
+							.equals(aposContext
+									.getAppConfig()
+									.getAttribute(
+											ConfigAttrNames.DEFAULT_BLUETOOTH_CONNECT_MODE))) {
+				TiFlowControlImpl.instanceControl().nextSetup(refActivty,
+						FlowConstants.SUCCESS_STEP3);
+			} else {
+				TiFlowControlImpl.instanceControl().nextSetup(refActivty,
+						FlowConstants.SUCCESS_STEP2);
 			}
 		}
-	
+
 	}
 }

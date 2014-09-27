@@ -30,7 +30,8 @@ public class QueryRemotePoAction extends SessionKeepAction {
 	/**
 	 * 查询交易 到服务端查询,并且存储远端数据到本地
 	 * 
-	 * @param request\
+	 * @param request
+	 *            \
 	 * @return
 	 */
 	public ModelAndView queryPoListByRemote(ActionRequest request) {
@@ -90,8 +91,8 @@ public class QueryRemotePoAction extends SessionKeepAction {
 
 		// 按照TxnId倒序
 		cond.setOrders(QueryPoAction.PO_SORTS);
-		List<PurchaseOrder> results = purchaseOrderService.queryPurchaseOrders(cond, 0,
-				maxCount);
+		List<PurchaseOrder> results = purchaseOrderService.queryPurchaseOrders(
+				cond, 0, maxCount);
 		for (PurchaseOrder record : results) {
 			PurchaseOrderInfo info = new PurchaseOrderInfo();
 			BeanUtils.copyProperties(record, info);
@@ -107,7 +108,8 @@ public class QueryRemotePoAction extends SessionKeepAction {
 		cond.setOrderId(info.getOrderId());
 		cond.setMerchPartyId(info.getMerchPartyId());
 		cond.setUserName(info.getUserName());
-		List<PurchaseOrderInfo> poInfosDb = purchaseOrderInfoDao.query(cond, 0, 1);
+		List<PurchaseOrderInfo> poInfosDb = purchaseOrderInfoDao.query(cond, 0,
+				1);
 		if (poInfosDb.isEmpty()) {
 			purchaseOrderInfoDao.insert(info);
 			return;

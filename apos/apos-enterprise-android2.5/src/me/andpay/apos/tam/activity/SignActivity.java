@@ -104,7 +104,7 @@ public class SignActivity extends AposBaseActivity implements ValueContainer {
 		SignContext signContext = TiFlowControlImpl.instanceControl()
 				.getFlowContextData(SignContext.class);
 		nextBtn.setEnabled(false);
-		//signature.setFadeOffset(10);// 清除前设置时间间隔缩小
+		// signature.setFadeOffset(10);// 清除前设置时间间隔缩小
 		signature.clear();
 		signature.ensureSignatureBitmap();
 		// signature.setFadeOffset(3600000);// 清楚后恢复时间间隔

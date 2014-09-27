@@ -9,20 +9,20 @@ import me.andpay.apos.ssm.event.MainHomeController;
 import me.andpay.apos.ssm.event.RefreshSettleController;
 import me.andpay.apos.ssm.event.TextWatcherController;
 import me.andpay.timobileframework.config.TiMobileModule;
- 
+
 public class SsmModule extends TiMobileModule {
 
 	@Override
 	protected void configure() {
-		//bind controller
+		// bind controller
 		bindEventController(MainHistoryController.class);
 		bindEventController(MainHomeController.class);
 		bindEventController(MainDetailController.class);
 		bindEventController(RefreshSettleController.class);
 		bindEventController(TextWatcherController.class);
-		//bind action
+		// bind action
 		bindAction(SettleSendAction.class);
-		//bindAction(MockSettleQueryAction.class);
+		// bindAction(MockSettleQueryAction.class);
 		bindAction(SettleQueryAction.class);
 		bindAction(SettleAction.class);
 

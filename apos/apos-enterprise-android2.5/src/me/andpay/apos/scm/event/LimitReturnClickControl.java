@@ -7,7 +7,6 @@ import android.view.View;
 
 public class LimitReturnClickControl extends AbstractEventController {
 
-
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
 		refActivty.finish();
 	}

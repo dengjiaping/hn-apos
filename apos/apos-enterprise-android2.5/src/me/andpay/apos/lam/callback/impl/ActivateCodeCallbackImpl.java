@@ -23,8 +23,8 @@ public class ActivateCodeCallbackImpl implements ActivateCodeCallback {
 		LoginResponse loginResponse = (LoginResponse) activateCodeActivity
 				.getAppContext().getAttribute(RuntimeAttrNames.LOGIN_RESPONSE);
 
-	
-		if(LoginCallBackHelper.passwordExpire(loginResponse,activateCodeActivity)) {
+		if (LoginCallBackHelper.passwordExpire(loginResponse,
+				activateCodeActivity)) {
 			return;
 		}
 

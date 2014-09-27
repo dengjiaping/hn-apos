@@ -7,11 +7,11 @@ public class TxnItemViewHolder {
 	TextView amount;
 	TextView time;
 	TextView cardno;
-	//TextView orderid;
+	// TextView orderid;
 	TextView txntype;;
 	ImageView txnTypeImg;
-	//TextView merchantName;
+	// TextView merchantName;
 	TextView refund;
 	TextView cardIssueName;
-	//TextView orderidTitle;
+	// TextView orderidTitle;
 }

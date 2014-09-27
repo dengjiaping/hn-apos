@@ -7,7 +7,8 @@ import me.andpay.timobileframework.mvc.anno.CallBackHandler;
 import me.andpay.timobileframework.mvc.support.TiActivity;
 
 @CallBackHandler
-public class AutoLoginMopCallbackImpl extends AutoLoginCallback implements LoginCallback {
+public class AutoLoginMopCallbackImpl extends AutoLoginCallback implements
+		LoginCallback {
 
 	public AutoLoginMopCallbackImpl(TiActivity activity) {
 		super(activity);

@@ -89,8 +89,8 @@ public class PullToRefreshLayout extends PullActivateLayout implements
 		mPullLayout = (PullActivateLayout) findViewById(R.id.pull_container);
 		listView = (ListView) findViewById(R.id.list_view);
 		// listView.setOnScrollListener(new OnScollListener());
-		//listView.setDivider(this.getResources().getDrawable(
-		//		R.drawable.com_solid_line_img));
+		// listView.setDivider(this.getResources().getDrawable(
+		// R.drawable.com_solid_line_img));
 		listView.setDrawingCacheEnabled(false);
 		mActionView = findViewById(R.id.action_view);
 		footerView = new PullListViewFooter(this.getContext());
@@ -181,7 +181,7 @@ public class PullToRefreshLayout extends PullActivateLayout implements
 			footerView.setOnClickListener(new OnClickListener() {
 
 				public void onClick(View v) {
-					if(!footerView.isLoading()) {
+					if (!footerView.isLoading()) {
 						onBottomShow();
 					}
 				}

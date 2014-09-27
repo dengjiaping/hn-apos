@@ -20,7 +20,7 @@ import com.google.inject.Inject;
 
 @ActionMapping(domain = "/vas/query.action")
 public class QueryPoAction extends SessionKeepAction {
-	
+
 	public static final String PO_SORTS = "orderId-";
 
 	@Inject
@@ -61,10 +61,13 @@ public class QueryPoAction extends SessionKeepAction {
 			Long orderId = getLocalMaxOrderId(results);
 			cond.setMaxOrderId(orderId == null ? cond.getMaxOrderId() : orderId);
 			request.setAttribute("counts", maxCount - results.size());
-			ModelAndView forwardRefundMv = request.getDispatcher().forward(
-					VasProvider.VAS_DOMAIN_QUERY_REMOTE,
-					isStorge ? VasProvider.VAS_ACTION_QUERY_GETREMOTEPOLISTSTORAGE
-							: VasProvider.VAS_ACTION_QUERY_GETREMOTEPOLIST, request);
+			ModelAndView forwardRefundMv = request
+					.getDispatcher()
+					.forward(
+							VasProvider.VAS_DOMAIN_QUERY_REMOTE,
+							isStorge ? VasProvider.VAS_ACTION_QUERY_GETREMOTEPOLISTSTORAGE
+									: VasProvider.VAS_ACTION_QUERY_GETREMOTEPOLIST,
+							request);
 			infos = forwardRefundMv.getValue("remotePoList", List.class);
 			for (PurchaseOrderInfo info : infos) {
 				results.addLast(info);
@@ -72,7 +75,8 @@ public class QueryPoAction extends SessionKeepAction {
 			mv.addModelValue("remotePoList", infos);
 		}
 
-		return mv.addModelValue("poList", results).addModelValue("queryForm", cond);
+		return mv.addModelValue("poList", results).addModelValue("queryForm",
+				cond);
 	}
 
 	/**
@@ -82,9 +86,11 @@ public class QueryPoAction extends SessionKeepAction {
 	 * @param maxCount
 	 * @return
 	 */
-	private List<PurchaseOrderInfo> queryLocalPo(QueryPurchaseOrderInfoCond condition,
-			Integer maxCount, TiContext context) {
-		PartyInfo party = (PartyInfo) context.getAttribute(RuntimeAttrNames.PARTY_INFO);
+	private List<PurchaseOrderInfo> queryLocalPo(
+			QueryPurchaseOrderInfoCond condition, Integer maxCount,
+			TiContext context) {
+		PartyInfo party = (PartyInfo) context
+				.getAttribute(RuntimeAttrNames.PARTY_INFO);
 		LoginUserInfo info = (LoginUserInfo) context
 				.getAttribute(RuntimeAttrNames.LOGIN_USER);
 		condition.setMerchPartyId(party.getPartyId());

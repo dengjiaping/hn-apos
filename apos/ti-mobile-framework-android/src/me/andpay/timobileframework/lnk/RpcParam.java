@@ -41,7 +41,7 @@ public class RpcParam {
 		addressInfo.setSslClientUrl(prop.getProperty(clientSSLUrl));
 		
 		String urlStr = prop.getProperty(yunUrls);
-		if(StringUtil.isNotBlank(urlStr)) {
+		if(StringUtil.isNotBlank(urlStr)){
 			String[] yunUrlString  = urlStr.split(",");
 			for (String url : yunUrlString) {
 				yunUrlList.add(url);

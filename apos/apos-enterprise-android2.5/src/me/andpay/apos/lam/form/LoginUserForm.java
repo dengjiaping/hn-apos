@@ -1,6 +1,5 @@
 package me.andpay.apos.lam.form;
 
-
 import me.andpay.apos.R;
 import me.andpay.timobileframework.mvc.form.annotation.FormInfo;
 import me.andpay.timobileframework.mvc.form.annotation.ParamId;
@@ -8,15 +7,12 @@ import me.andpay.timobileframework.mvc.form.validation.anno.FieldErrorMsgTransla
 import me.andpay.timobileframework.mvc.form.validation.anno.FieldErrorMsgTranslate.TRANSTYPE;
 import me.andpay.timobileframework.mvc.form.validation.anno.FieldValidate;
 
-
-
-
 @FormInfo(domain = "/lam/login.action", action = "login", formName = LoginUserForm.FORM_NAME)
 @FieldErrorMsgTranslate(transType = TRANSTYPE.RESOURCE, resouceInfo = "properties/loginErrorMsg.properties")
 public class LoginUserForm {
-	
+
 	public static final String FORM_NAME = "loginUserForm";
-	
+
 	/**
 	 * 用户名
 	 */
@@ -24,16 +20,16 @@ public class LoginUserForm {
 	@FieldValidate.REQUIRED
 	@FieldValidate.PHONENUMBER
 	private String userName;
-	
+
 	/**
 	 * 密码
 	 */
 	@ParamId(R.id.lam_passwd_edittext)
 	@FieldValidate.REQUIRED
 	@FieldValidate.STRRANGE(max = 200, min = 6)
-//	@FieldValidate.MASK(pattern = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[\\w]")
-	private  String password;
-	
+	// @FieldValidate.MASK(pattern = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[\\w]")
+	private String password;
+
 	/**
 	 * 自动登录标志
 	 */
@@ -43,7 +39,7 @@ public class LoginUserForm {
 	 * 是否加密密码
 	 */
 	private boolean encryptedPwd;
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -75,7 +71,5 @@ public class LoginUserForm {
 	public void setEncryptedPwd(boolean encryptedPwd) {
 		this.encryptedPwd = encryptedPwd;
 	}
-	
-	
-	
+
 }

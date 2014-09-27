@@ -20,38 +20,38 @@ import com.google.inject.Inject;
 
 /**
  * 支付方式选择
- * @author cpz 
+ * 
+ * @author cpz
  * 
  */
 
 @ContentView(R.layout.vas_product_payment_mode_layout)
-public class ProductPaymentModeActivity extends AposBaseActivity{
+public class ProductPaymentModeActivity extends AposBaseActivity {
 
-	
 	@InjectView(R.id.vas_cash_payment_lay)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = SelectPaymentControl.class)
 	public RelativeLayout cashPayLay;
-	
+
 	@InjectView(R.id.vas_card_payment_lay)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = SelectPaymentControl.class)
 	public RelativeLayout cardPayLay;
-	
+
 	@InjectView(R.id.vas_title_tv)
 	public TextView titleText;
-	
 
 	@InjectView(R.id.vas_top_back_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = ProductPaymentModeBackControl.class)
 	public ImageView backBtn;
-	
+
 	@Inject
 	public TxnControl txnControl;
-	
+
 	public static final String PAYMENT_METHOD_KEY = "PayMethod";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		titleText.setText(StringConvertor.convert2Currency(ShoppingCartCenter.getShoppingCart().getTotalAmt()));
+		titleText.setText(StringConvertor.convert2Currency(ShoppingCartCenter
+				.getShoppingCart().getTotalAmt()));
 	}
 }

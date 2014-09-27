@@ -10,11 +10,11 @@ import android.view.View;
 
 import com.google.inject.Inject;
 
-public class SkipSignEventControl  extends AbstractEventController {
-	
+public class SkipSignEventControl extends AbstractEventController {
+
 	@Inject
 	private TxnControl txnControl;
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
 
 		Intent intent = new Intent();

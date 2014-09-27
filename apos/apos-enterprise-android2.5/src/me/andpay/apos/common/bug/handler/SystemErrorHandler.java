@@ -19,14 +19,14 @@ public class SystemErrorHandler implements ThrowableHandler {
 
 	@Inject
 	private ThrowableReporter throwableReporter;
-	
+
 	@Inject
 	private Application application;
 
 	public void processThrowable(ThrowableInfo info) {
-//		throwableReporter.submitError(info.getEx());
-		
-//		StatService.reportException(application, info.getEx());
+		// throwableReporter.submitError(info.getEx());
+
+		// StatService.reportException(application, info.getEx());
 		TiAndroidRuntimeInfo.setup(null);
 		android.os.Process.killProcess(android.os.Process.myPid());
 	}

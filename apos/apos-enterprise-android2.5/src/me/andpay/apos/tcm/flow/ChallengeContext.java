@@ -2,7 +2,7 @@ package me.andpay.apos.tcm.flow;
 
 import java.io.Serializable;
 
-public class ChallengeContext implements Serializable{
+public class ChallengeContext implements Serializable {
 
 	/**
 	 * 
@@ -28,14 +28,12 @@ public class ChallengeContext implements Serializable{
 	 * cvv2码
 	 */
 	private String cvv2Id;
-	
+
 	/**
 	 * 手机验证码
 	 */
-	private String verificationCode; 
+	private String verificationCode;
 
-	
-	
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -67,7 +65,7 @@ public class ChallengeContext implements Serializable{
 	public void setCvv2Id(String cvv2Id) {
 		this.cvv2Id = cvv2Id;
 	}
-	
+
 	public String getVerificationCode() {
 		return verificationCode;
 	}

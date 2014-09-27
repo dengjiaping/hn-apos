@@ -18,8 +18,9 @@ import me.andpay.timobileframework.flow.TiFlowNodeDataTransfer;
  */
 public class QuerySvcDepFulfillTransfer implements TiFlowNodeDataTransfer {
 
-	public Map<String, String> transfterData(Activity activity, Map<String, String> data,
-			TiFlowNodeComplete complete, Map<String, Serializable> subFlowContext) {
+	public Map<String, String> transfterData(Activity activity,
+			Map<String, String> data, TiFlowNodeComplete complete,
+			Map<String, Serializable> subFlowContext) {
 		Long purchaseOrderId = Long.parseLong(data
 				.get(VasProvider.VAS_INTENT_PURCHASE_INFO_ID_KEY));
 		SvcDepositeContext dContext = new SvcDepositeContext();

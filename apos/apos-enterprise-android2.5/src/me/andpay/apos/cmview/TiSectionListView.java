@@ -15,7 +15,7 @@ import android.widget.ListView;
  * It also supports pagination by setting a custom view as the loading
  * indicator.
  */
-public class TiSectionListView extends ListView implements HasMorePagesListener  {
+public class TiSectionListView extends ListView implements HasMorePagesListener {
 	public static final String TAG = TiSectionListView.class.getSimpleName();
 
 	View listFooter;
@@ -54,7 +54,8 @@ public class TiSectionListView extends ListView implements HasMorePagesListener 
 	}
 
 	@Override
-	protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+	protected void onLayout(boolean changed, int left, int top, int right,
+			int bottom) {
 		super.onLayout(changed, left, top, right, bottom);
 		if (mHeaderView != null) {
 			mHeaderView.layout(0, 0, mHeaderViewWidth, mHeaderViewHeight);
@@ -99,7 +100,8 @@ public class TiSectionListView extends ListView implements HasMorePagesListener 
 				}
 				adapter.configurePinnedHeader(mHeaderView, position, alpha);
 				if (mHeaderView.getTop() != y) {
-					mHeaderView.layout(0, y, mHeaderViewWidth, mHeaderViewHeight + y);
+					mHeaderView.layout(0, y, mHeaderViewWidth,
+							mHeaderViewHeight + y);
 				}
 				mHeaderViewVisible = true;
 			}
@@ -139,9 +141,10 @@ public class TiSectionListView extends ListView implements HasMorePagesListener 
 	@Override
 	public void setAdapter(ListAdapter adapter) {
 		if (!(adapter instanceof TiSectionListAdapter)) {
-			throw new IllegalArgumentException(TiSectionListView.class.getSimpleName()
-					+ " must use adapter of type "
-					+ TiSectionListAdapter.class.getSimpleName());
+			throw new IllegalArgumentException(
+					TiSectionListView.class.getSimpleName()
+							+ " must use adapter of type "
+							+ TiSectionListAdapter.class.getSimpleName());
 		}
 
 		// previous adapter

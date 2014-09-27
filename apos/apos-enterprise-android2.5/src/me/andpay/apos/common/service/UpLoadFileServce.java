@@ -31,7 +31,7 @@ public class UpLoadFileServce {
 
 	@Inject
 	private ThrowableReporter throwableReporter;
-	
+
 	@Inject
 	private TiRpcClient tiRpcClient;
 
@@ -80,7 +80,7 @@ public class UpLoadFileServce {
 			}
 
 		} catch (Exception e) {
-			
+
 			Log.e(this.getClass().getName(), "file upload error", e);
 		}
 	}

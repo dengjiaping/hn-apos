@@ -7,11 +7,10 @@ import android.app.Activity;
 import android.view.View;
 
 public class CameraCancelEventControl extends AbstractEventController {
-	
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		AposCameraActivity cameraActivity = (AposCameraActivity)activity;
+		AposCameraActivity cameraActivity = (AposCameraActivity) activity;
 		cameraActivity.finish();
-		
+
 	}
 }

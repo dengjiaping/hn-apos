@@ -6,11 +6,10 @@ import me.andpay.timobileframework.mvc.form.FormBean;
 import android.app.Activity;
 import android.view.View;
 
-public class PurMainLayoutEventControl  extends AbstractEventController{
+public class PurMainLayoutEventControl extends AbstractEventController {
 
-	
-	public void onClick(Activity activity, FormBean formBean, View view) {		
-		PurchaseFirstActivity tiActivity = (PurchaseFirstActivity)activity;
+	public void onClick(Activity activity, FormBean formBean, View view) {
+		PurchaseFirstActivity tiActivity = (PurchaseFirstActivity) activity;
 		tiActivity.solfKeyBoard.hideKeyboard();
 	}
 }

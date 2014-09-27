@@ -62,9 +62,8 @@ public class CreditCardPaymentsActivity extends AposBaseActivity {
 		senData.put("poundage", poundage.getText().toString());
 		senData.put("bankNumber", number.getText().toString());
 
-		
 		TiFlowControlImpl.instanceControl().nextSetup(this,
-				FlowConstants.CREDIT_CARD_CONFIRM,senData);
+				FlowConstants.CREDIT_CARD_CONFIRM, senData);
 
 	}
 

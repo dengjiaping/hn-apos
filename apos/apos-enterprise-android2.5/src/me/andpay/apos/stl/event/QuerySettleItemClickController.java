@@ -13,12 +13,10 @@ import android.widget.AdapterView;
 
 public class QuerySettleItemClickController extends AbstractEventController {
 
- 
-	
-
 	public void onItemClick(Activity refActivty, FormBean formBean,
 			AdapterView<?> adapterView, View view, int position, long id) {
-		if (position >= ((SettleListActivity) refActivty).settleListAdapter.getCount()) {
+		if (position >= ((SettleListActivity) refActivty).settleListAdapter
+				.getCount()) {
 			return;
 		}
 		SettleOrder settleOrder = (SettleOrder) ((SettleListActivity) refActivty).settleListAdapter

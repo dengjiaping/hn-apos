@@ -19,9 +19,9 @@ public class TiNetImageView {
 	private ImageDisplayer displayer = null;
 
 	private TiImageCacheManager manager = null;
-	
+
 	private TiNetImageHttpStatusListener listener;
-	
+
 	public Context context;
 
 	public TiNetImageView(Context context, ImageView view) {
@@ -35,7 +35,7 @@ public class TiNetImageView {
 				context.getApplicationInfo().name, null);
 		displayer.displayLoadingImage();
 	}
-	
+
 	public void setHttpStatusListener(TiNetImageHttpStatusListener listener) {
 		this.listener = listener;
 	}
@@ -47,7 +47,6 @@ public class TiNetImageView {
 			displayer.displayLoadingImage();
 		}
 
-	
 		Runnable post = new Runnable() {
 			public void run() {
 
@@ -59,24 +58,24 @@ public class TiNetImageView {
 				}
 
 				final byte[] dataMy = data;
-				
-				Activity activity = (Activity)context;
+
+				Activity activity = (Activity) context;
 				activity.runOnUiThread(new Runnable() {
-					
+
 					public void run() {
-				
+
 						if (dataMy != null) {
 							displayer.displayImage(dataMy);
 						} else {
 							displayer.displayLoadFailedImage();
 						}
-						
+
 					}
 				});
-			
+
 			}
 		};
-		
+
 		Thread thread = new Thread(post);
 		thread.start();
 

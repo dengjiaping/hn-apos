@@ -48,7 +48,8 @@ public class ProductItemClickControl extends AbstractEventController {
 							.productInfoConvertItem(productInfo));
 					freshShow(productSalesActivity);
 					// 特殊产品流程
-					specialFlow(ShoppingCartCenter.getShoppingCart().getProductType(),productSalesActivity);
+					specialFlow(ShoppingCartCenter.getShoppingCart()
+							.getProductType(), productSalesActivity);
 				}
 			});
 
@@ -59,42 +60,47 @@ public class ProductItemClickControl extends AbstractEventController {
 		freshShow(productSalesActivity);
 
 		// 特殊产品流程
-		specialFlow(ShoppingCartCenter.getShoppingCart().getProductType(),productSalesActivity);
+		specialFlow(ShoppingCartCenter.getShoppingCart().getProductType(),
+				productSalesActivity);
 
 	}
 
-	private void specialFlow(String productType,ProductSalesActivity productSalesActivity) {
+	private void specialFlow(String productType,
+			ProductSalesActivity productSalesActivity) {
 		if (ShopProductTypes.E_SVC.equals(productType)
 				|| ShopProductTypes.PHYSICAL_SVC.equals(productType)) {
-			TiFlowControlImpl.instanceControl().startFlow(productSalesActivity, FlowNames.VAS_PRODUCT_SALES_CARD_FLOW);
+			TiFlowControlImpl.instanceControl().startFlow(productSalesActivity,
+					FlowNames.VAS_PRODUCT_SALES_CARD_FLOW);
 			ProductSalesContext productSalesContext = new ProductSalesContext();
-			TiFlowControlImpl.instanceControl().setFlowContextData(productSalesContext);
-			productSalesContext.setShoppingCart(ShoppingCartCenter.getShoppingCart());
+			TiFlowControlImpl.instanceControl().setFlowContextData(
+					productSalesContext);
+			productSalesContext.setShoppingCart(ShoppingCartCenter
+					.getShoppingCart());
 			return;
 		}
 	}
 
 	private void freshShow(ProductSalesActivity productSalesActivity) {
-//		ShoppingCart shoppingCart = ShoppingCartCenter.getShoppingCart();
+		// ShoppingCart shoppingCart = ShoppingCartCenter.getShoppingCart();
 
-//		productSalesActivity.totalPrice.setText(StringConvertor
-//				.convert2Currency(shoppingCart.getTotalAmt()));
-//		productSalesActivity.productTotal.setText(ShoppingCartHelper
-//				.getProductUnit(shoppingCart.getTotalProduct()));
-//		productSalesActivity.productTotalLay.setVisibility(View.VISIBLE);
+		// productSalesActivity.totalPrice.setText(StringConvertor
+		// .convert2Currency(shoppingCart.getTotalAmt()));
+		// productSalesActivity.productTotal.setText(ShoppingCartHelper
+		// .getProductUnit(shoppingCart.getTotalProduct()));
+		// productSalesActivity.productTotalLay.setVisibility(View.VISIBLE);
 
-//		if (shoppingCart.getTotalProduct() > 0) {
-//			productSalesActivity.nextImView.setEnabled(true);
-//		} else {
-//			productSalesActivity.nextImView.setEnabled(false);
-//		}
-//
-//		if (shoppingCart.getItemsList().isEmpty()) {
-//			productSalesActivity.nextImView.setEnabled(false);
-//		} else {
-//			productSalesActivity.nextImView.setEnabled(true);
-//
-//		}
+		// if (shoppingCart.getTotalProduct() > 0) {
+		// productSalesActivity.nextImView.setEnabled(true);
+		// } else {
+		// productSalesActivity.nextImView.setEnabled(false);
+		// }
+		//
+		// if (shoppingCart.getItemsList().isEmpty()) {
+		// productSalesActivity.nextImView.setEnabled(false);
+		// } else {
+		// productSalesActivity.nextImView.setEnabled(true);
+		//
+		// }
 	}
 
 }

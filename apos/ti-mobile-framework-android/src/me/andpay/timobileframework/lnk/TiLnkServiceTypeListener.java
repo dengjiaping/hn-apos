@@ -40,7 +40,7 @@ public class TiLnkServiceTypeListener implements TypeListener {
 				});
 			}
 			for (Field field : c.getDeclaredFields()){
-				if (field.getType().isAnnotationPresent(LnkService.class)) {
+				if (field.getType().isAnnotationPresent(LnkService.class)){
 					encounter.register(new TiLnkServiceInjector(field, this));
 				}
 			}

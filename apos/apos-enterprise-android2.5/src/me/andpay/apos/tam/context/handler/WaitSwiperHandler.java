@@ -43,7 +43,6 @@ public class WaitSwiperHandler extends GenChangeStatusHander {
 		TxnAcitivty activity = (TxnAcitivty) txnControl.getCurrActivity();
 		activity.topTextView.setText("设备检测中...");
 
-		
 		APOSGifUtil.startGif(activity.gifDrawable, activity.gifView, activity
 				.getResources(), CardReaderResourceSelector.selectGit(
 				CardReaderManager.getCardReaderType(),
@@ -55,8 +54,9 @@ public class WaitSwiperHandler extends GenChangeStatusHander {
 
 	@Override
 	protected void changeAction(TxnControl txnControl) {
-		
-		CardReaderManager.setCurrCallback(txnControl.getSwipCardReaderCallBack());
+
+		CardReaderManager.setCurrCallback(txnControl
+				.getSwipCardReaderCallBack());
 		CardReaderManager.startSwiper(AposCardReaderUtil.convertSwiperRequest(
 				txnControl.getTxnContext(), txnControl.getCurrActivity()
 						.getAppConfig()));

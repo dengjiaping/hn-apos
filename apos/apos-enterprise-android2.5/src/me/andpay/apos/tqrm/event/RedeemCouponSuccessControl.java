@@ -10,7 +10,8 @@ import android.view.View;
 public class RedeemCouponSuccessControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		TiFlowControlImpl.instanceControl().nextSetup(activity, FlowConstants.FINISH);
+		TiFlowControlImpl.instanceControl().nextSetup(activity,
+				FlowConstants.FINISH);
 	}
-	
+
 }

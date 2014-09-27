@@ -14,6 +14,7 @@ import android.view.View;
 
 /**
  * 显示动态字段
+ * 
  * @author tinyliu
  *
  */
@@ -25,7 +26,8 @@ public class PurExtInfoClickController extends AbstractEventController {
 				purActivity.dyHelper, TxnTypes.PURCHASE);
 		dialog.setDelegate(purActivity);
 		Map<String, String> values = new HashMap<String, String>();
-		values.put(FlexFieldDefine.FIELD_NAME_EXT_TRACE_NO, purActivity.extTraceNo);
+		values.put(FlexFieldDefine.FIELD_NAME_EXT_TRACE_NO,
+				purActivity.extTraceNo);
 		values.put(FlexFieldDefine.FIELD_NAME_MEMO, purActivity.memo);
 		dialog.setFieldValue(values);
 		dialog.show();

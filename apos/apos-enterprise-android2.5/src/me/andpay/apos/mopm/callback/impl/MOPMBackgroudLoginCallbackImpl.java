@@ -4,7 +4,6 @@ import me.andpay.ac.term.api.auth.LoginResponse;
 import me.andpay.apos.lam.callback.LoginCallback;
 import me.andpay.timobileframework.mvc.anno.CallBackHandler;
 
-
 @CallBackHandler
 public class MOPMBackgroudLoginCallbackImpl implements LoginCallback {
 

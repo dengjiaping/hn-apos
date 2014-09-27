@@ -17,10 +17,13 @@ public class DetailFulfullBtnClickController extends AbstractEventController {
 	public void onClick(Activity activity, FormBean formBean, View view) {
 		PurchaseOrderDetailActivity pActivity = (PurchaseOrderDetailActivity) activity;
 		Map<String, String> sendData = new HashMap<String, String>();
-		PurchaseOrderInfo info = pActivity.getFlowContextData(PurchaseOrderInfo.class);
+		PurchaseOrderInfo info = pActivity
+				.getFlowContextData(PurchaseOrderInfo.class);
 		sendData.put(VasProvider.VAS_INTENT_PURCHASE_INFO_ID_KEY, pActivity
-				.getFlowContextData(PurchaseOrderInfo.class).getOrderId().toString());
-		sendData.put(VasProvider.VAS_INTENT_SHOWBACK_FLAG_KEY, Boolean.TRUE.toString());
+				.getFlowContextData(PurchaseOrderInfo.class).getOrderId()
+				.toString());
+		sendData.put(VasProvider.VAS_INTENT_SHOWBACK_FLAG_KEY,
+				Boolean.TRUE.toString());
 		pActivity.nextSetup(FlowConstants.NEXT_STEP_PREFIX
 				+ info.getItems().get(0).getProductType(), sendData);
 

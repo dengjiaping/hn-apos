@@ -12,7 +12,6 @@ import android.widget.Button;
 
 public class TiTimeButton extends Button {
 
-
 	private OnTimeoutListener onTimeoutListener;
 
 	private int time;
@@ -20,9 +19,9 @@ public class TiTimeButton extends Button {
 	public String PLACEHOLDER = "$TIME$";
 
 	public String text;
-	
+
 	private Timer timer;
-	
+
 	public TiTimeButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
@@ -35,13 +34,12 @@ public class TiTimeButton extends Button {
 		super(context);
 	}
 
-
 	public void setOnTimeoutListener(final OnTimeoutListener onTimeoutListener) {
 		this.onTimeoutListener = onTimeoutListener;
 	}
 
 	public void startTimer(int timeout) {
-		if(StringUtil.isBlank(text)) {
+		if (StringUtil.isBlank(text)) {
 			text = getText().toString();
 		}
 		this.time = timeout;
@@ -81,7 +79,7 @@ public class TiTimeButton extends Button {
 		timer.schedule(task, 1000, 1000);
 
 	}
-	
+
 	public void stopTimer() {
 		timer.cancel();
 	}

@@ -22,7 +22,7 @@ public class RedeemCouponSuccessActivty extends AposBaseActivity {
 	@InjectView(R.id.com_event_btn)
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = RedeemCouponSuccessControl.class)
 	public Button returnHomeBtn;
-	
+
 	@InjectView(R.id.com_title_tv)
 	public TextView topTitle;
 

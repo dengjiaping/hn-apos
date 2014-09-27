@@ -30,8 +30,8 @@ public class PostVoucherCallbackImpl implements PostVoucherCallback {
 				Toast.LENGTH_SHORT).show();
 
 		if (StringUtil.isBlank(postActivity.postVoucherContext.getReceiptNo())) {
-		//	TiFlowControlImpl.instanceControl().nextSetup(postActivity,
-			//		FlowConstants.FINISH);
+			// TiFlowControlImpl.instanceControl().nextSetup(postActivity,
+			// FlowConstants.FINISH);
 			postActivity.txnControl.backHomePage(postActivity);
 
 		} else {

@@ -16,10 +16,12 @@ public class ProductSalesFlowOpenCardTransfer implements TiFlowNodeDataTransfer 
 			Map<String, String> data, TiFlowNodeComplete complete,
 			Map<String, Serializable> subFlowContext) {
 
-		ProductSalesContext productSalesContext =	TiFlowControlImpl.instanceControl().getFlowContextData(ProductSalesContext.class);
-		data.put(VasProvider.VAS_INTENT_PURCHASE_INFO_ID_KEY, productSalesContext.getPurchaseOrder().getOrderId().toString());
+		ProductSalesContext productSalesContext = TiFlowControlImpl
+				.instanceControl()
+				.getFlowContextData(ProductSalesContext.class);
+		data.put(VasProvider.VAS_INTENT_PURCHASE_INFO_ID_KEY,
+				productSalesContext.getPurchaseOrder().getOrderId().toString());
 		return data;
 	}
-
 
 }

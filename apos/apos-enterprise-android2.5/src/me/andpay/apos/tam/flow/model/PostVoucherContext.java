@@ -12,7 +12,7 @@ import me.andpay.apos.vas.spcart.ShoppingCart;
  * @author cpz
  * 
  */
-public class PostVoucherContext implements Serializable{
+public class PostVoucherContext implements Serializable {
 	/**
 	 * 
 	 */
@@ -26,13 +26,12 @@ public class PostVoucherContext implements Serializable{
 	 * 重发凭证标志
 	 */
 	private boolean rePostFlag;
-	
+
 	/**
 	 * 是否有新交易按钮
 	 */
 	private boolean hasNewTxnButton;
-	
-	
+
 	/**
 	 * 销售票据号
 	 */
@@ -41,15 +40,15 @@ public class PostVoucherContext implements Serializable{
 	 * 购物车
 	 */
 	private ShoppingCart shoppingCart;
-	
+
 	private String txnId;
-	
+
 	private String formatedAmt;
 
 	private String message;
-	
+
 	private Date orderTime;
-	
+
 	private Date settlementTime;
 
 	public String getMessage() {
@@ -115,7 +114,7 @@ public class PostVoucherContext implements Serializable{
 	public void setOrderTime(Date orderTime) {
 		this.orderTime = orderTime;
 	}
-	
+
 	public String getFormatedAmt() {
 		return formatedAmt;
 	}
@@ -123,7 +122,7 @@ public class PostVoucherContext implements Serializable{
 	public void setFormatedAmt(String formatedAmt) {
 		this.formatedAmt = formatedAmt;
 	}
-	
+
 	public Date getSettlementTime() {
 		return settlementTime;
 	}

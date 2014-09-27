@@ -8,19 +8,18 @@ import android.util.AttributeSet;
 import android.widget.CheckBox;
 
 public class TiCheckBox extends CheckBox implements WidgetValueHolder {
-	
-	
+
 	private String value = null;
-	
+
 	public TiCheckBox(Context context, AttributeSet attrs) {
-		super(context, attrs);	
-		TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.custom);
+		super(context, attrs);
+		TypedArray typedArray = context.obtainStyledAttributes(attrs,
+				R.styleable.custom);
 		value = typedArray.getString(R.styleable.custom_value);
 	}
 
 	public Object getWidgetValue() {
 		return value;
 	}
-	
-	
+
 }

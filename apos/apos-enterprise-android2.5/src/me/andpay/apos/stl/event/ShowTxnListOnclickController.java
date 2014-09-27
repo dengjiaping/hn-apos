@@ -9,14 +9,13 @@ import android.content.Intent;
 import android.view.View;
 
 public class ShowTxnListOnclickController extends AbstractEventController {
-	
-	
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-	
-		SettleDetailActivity settleDetailActivity = (SettleDetailActivity)activity;
+
+		SettleDetailActivity settleDetailActivity = (SettleDetailActivity) activity;
 		Intent txnDetailIntent = new Intent(StlProvider.STL_ACTIVITY_TXN_LIST);
-		txnDetailIntent.putExtra("settleOrderId", settleDetailActivity.settleOrder.getSettleOrderId());
+		txnDetailIntent.putExtra("settleOrderId",
+				settleDetailActivity.settleOrder.getSettleOrderId());
 		settleDetailActivity.startActivity(txnDetailIntent);
 	}
 }

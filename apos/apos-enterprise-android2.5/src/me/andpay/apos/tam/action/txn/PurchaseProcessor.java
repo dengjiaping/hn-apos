@@ -265,8 +265,6 @@ public class PurchaseProcessor extends GenTxnProcessor {
 	 */
 	private void setTracks(TxnForm txnForm, PurchaseRequest purRequest) {
 
-		
-
 		if (txnForm.getCardInfo() == null) {
 			return;
 		}

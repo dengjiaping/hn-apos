@@ -1,4 +1,4 @@
- package me.andpay.apos.tam.action.txn;
+package me.andpay.apos.tam.action.txn;
 
 import me.andpay.timobileframework.mvc.action.ActionRequest;
 

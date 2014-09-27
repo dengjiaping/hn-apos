@@ -25,14 +25,13 @@ public class RefundAmtEventControl extends AbstractEventController {
 			Editable s) {
 		RefundInputActivity refActivity = (RefundInputActivity) activity;
 		String inputAmt = refActivity.getAmtEditText().getText().toString();
-		if(refActivity.getAmtEditText().isBank()) {
+		if (refActivity.getAmtEditText().isBank()) {
 			refActivity.solfKeyBoard.changeSureButton(false, "退款");
-		}else {
+		} else {
 			refActivity.solfKeyBoard.changeSureButton(true, "退款");
 
 		}
-		
-		
+
 		BigDecimal inputAmtBg = new BigDecimal(
 				StringConvertor.convertCurrency2Str(inputAmt));
 		if (refActivity.refundInputContext.getRefundAmt().compareTo(inputAmtBg) < 0) {

@@ -129,8 +129,6 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 	@InjectView(R.id.tam_phoneinput_txnview)
 	public EditText phoneNo;
 
-	
-
 	/**
 	 * 键盘
 	 */
@@ -202,8 +200,7 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 		super.onCreate(savedInstanceState);
 		// 请求一次位置信息
 		locationService.requestLocation();
-		
-		
+
 		solfKeyBoard = SolfKeyBoardView.instance(getApplicationContext(),
 				footLayout, this);
 
@@ -217,9 +214,9 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 	}
 
 	protected void startTxn() {
-        /**
-         * 设置刷卡机回调callBack器件
-         */
+		/**
+		 * 设置刷卡机回调callBack器件
+		 */
 		CardReaderManager.setCurrCallback(swipCardReaderCallBack);
 		/**
 		 * 接收交易上下文信息
@@ -244,10 +241,10 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 	/**
 	 * 交易请求 等待密码时，触发的事件函数
 	 */
-	public void sureClick(){
+	public void sureClick() {
 		// 防快速点击重复提交
 		if (FastDoubleClickUtil.isFastDoubleClick(solfKeyBoard.getSure_btn()
-				.getId())){
+				.getId())) {
 			return;
 		}
 		// 等待密码输入状态

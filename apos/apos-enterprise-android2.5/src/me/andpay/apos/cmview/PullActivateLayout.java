@@ -423,7 +423,7 @@ public class PullActivateLayout extends FrameLayout {
 			mScrollbarStoreTarget = null;
 			setVerticalScrollBarEnabled(false);
 		}
-		if(!isRefreashEnable && destY < 0) {
+		if (!isRefreashEnable && destY < 0) {
 			super.scrollTo(x, 0);
 			return;
 		}

@@ -27,7 +27,7 @@ public class TxnFlowDetailContextTransfer implements TiFlowNodeDataTransfer {
 		}
 
 		TxnActionResponse actionResponse = txnContext.getTxnActionResponse();
-		
+
 		TxnDetailContext txnDetailContext = new TxnDetailContext();
 		TiFlowControlImpl.instanceControl()
 				.setFlowContextData(txnDetailContext);
@@ -37,7 +37,7 @@ public class TxnFlowDetailContextTransfer implements TiFlowNodeDataTransfer {
 				.getCardAssoc());
 		txnDetailContext.setCardIssuerName(txnContext.getParseBinResp()
 				.getCardIssuerName());
-		if(actionResponse != null) {
+		if (actionResponse != null) {
 			txnDetailContext.setCardNo(actionResponse.getShortCardNo());
 			txnDetailContext.setTxnAddress(actionResponse.getTxnAddress());
 			txnDetailContext.setTxnTime(actionResponse.getTxnTime());

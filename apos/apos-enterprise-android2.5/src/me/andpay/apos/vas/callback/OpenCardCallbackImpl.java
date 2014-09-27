@@ -24,8 +24,8 @@ public class OpenCardCallbackImpl implements OpenCardCallback {
 	public void netWorkError() {
 		openCardRegisterActivity.openCardDialog.cancel();
 
-		final PromptDialog dialog = new PromptDialog(
-				openCardRegisterActivity, "提示", "网络异常，请稍后重试,在网络恢复前请不要退出此页面。");
+		final PromptDialog dialog = new PromptDialog(openCardRegisterActivity,
+				"提示", "网络异常，请稍后重试,在网络恢复前请不要退出此页面。");
 		dialog.setCancelable(false);
 
 		dialog.setSureButtonOnclickListener(new OnClickListener() {
@@ -49,9 +49,10 @@ public class OpenCardCallbackImpl implements OpenCardCallback {
 
 	public void openCardFaild(String errorMsg) {
 		openCardRegisterActivity.openCardDialog.cancel();
-		Map<String,String> intentData = new HashMap<String,String>();
+		Map<String, String> intentData = new HashMap<String, String>();
 		intentData.put("errorMessage", errorMsg);
-		TiFlowControlImpl.instanceControl().nextSetup(openCardRegisterActivity, FlowConstants.FAILED,intentData);
+		TiFlowControlImpl.instanceControl().nextSetup(openCardRegisterActivity,
+				FlowConstants.FAILED, intentData);
 	}
 
 }

@@ -17,11 +17,12 @@ import me.andpay.timobileframework.mvc.action.ActionRequest;
 import me.andpay.timobileframework.mvc.action.MultiAction;
 
 @ActionMapping(domain = "/ssm/query.action")
-public class MockSettleQueryAction  extends MultiAction {
+public class MockSettleQueryAction extends MultiAction {
 	/**
 	 * 加载用户未结帐汇总信息
+	 * 
 	 * @param request
-	 * @return 
+	 * @return
 	 * @throws RuntimeException
 	 */
 	public ModelAndView loadUnSettleInfo(ActionRequest request)
@@ -34,20 +35,21 @@ public class MockSettleQueryAction  extends MultiAction {
 		mv.addModelValue("txnAmount", "" + 100.10);
 		mv.addModelValue("cancelCount", "" + 10);
 		mv.addModelValue("cancelAmount", "" + 100.10);
-		mv.addModelValue("amount",  "" + "" + 200.20);
+		mv.addModelValue("amount", "" + "" + 200.20);
 		mv.addModelValue("count", "" + "" + 20);
 		return mv;
 	}
-	
+
 	/**
 	 * 查询用户结帐汇总信息
+	 * 
 	 * @param request
 	 * @return
 	 */
 	public ModelAndView querySettleInfo(ActionRequest request) {
 		List<TxnBatch> batchs = new LinkedList<TxnBatch>();
 		try {
-			Thread.sleep(3*1000);
+			Thread.sleep(3 * 1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -61,7 +63,7 @@ public class MockSettleQueryAction  extends MultiAction {
 			item.setTotal(new BigDecimal(10000.12));
 			batch.setSummary(item);
 			Map<String, TxnBatchItem> items = new HashMap<String, TxnBatchItem>();
-			if(i % 2 == 0) {
+			if (i % 2 == 0) {
 				items.put(TxnTypes.PURCHASE, item);
 			} else {
 				TxnBatchItem item1 = new TxnBatchItem();

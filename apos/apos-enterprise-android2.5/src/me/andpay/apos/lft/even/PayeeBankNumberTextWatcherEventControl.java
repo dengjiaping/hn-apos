@@ -20,14 +20,10 @@ public class PayeeBankNumberTextWatcherEventControl extends
 		PayeeInformationActivity lactivity = (PayeeInformationActivity) activity;
 		if (lactivity.number.length() > 0) {
 
-			
-			
-			
-
-			//lactivity.number.setPadding(5,0,5,0);
+			// lactivity.number.setPadding(5,0,5,0);
 			lactivity.cardNumberTitle.setVisibility(View.GONE);
 		} else {
-			//lactivity.number.setPadding(20,0,20,0);
+			// lactivity.number.setPadding(20,0,20,0);
 			lactivity.cardNumberTitle.setVisibility(View.VISIBLE);
 		}
 	}

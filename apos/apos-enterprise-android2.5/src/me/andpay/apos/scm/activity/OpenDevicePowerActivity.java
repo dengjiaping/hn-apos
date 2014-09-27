@@ -1,6 +1,5 @@
 package me.andpay.apos.scm.activity;
 
-
 import me.andpay.apos.R;
 import me.andpay.apos.cardreader.CardReaderResourceSelector;
 import me.andpay.apos.common.activity.AposBaseActivity;
@@ -42,10 +41,9 @@ public class OpenDevicePowerActivity extends AposBaseActivity {
 		int resourceId = CardReaderResourceSelector
 				.selectCardreaderOpen(cardReaderSetContext.getCardReaderType());
 		cardImageView.setImageResource(resourceId);
-		
-		
-		cardReaderSetContext.getOpLogData().put(OperationDataKeys.OPKEYS_OPEN_DEVICE, String.valueOf(true));
 
+		cardReaderSetContext.getOpLogData().put(
+				OperationDataKeys.OPKEYS_OPEN_DEVICE, String.valueOf(true));
 
 	}
 }

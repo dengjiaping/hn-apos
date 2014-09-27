@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 public class TiTimeTextView extends TextView {
 
-
 	private OnTimeoutListener onTimeoutListener;
 
 	private int time;
@@ -19,9 +18,9 @@ public class TiTimeTextView extends TextView {
 	public String PLACEHOLDER = "$TIME$";
 
 	public String text;
-	
+
 	private Timer timer;
-	
+
 	public TiTimeTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 	}
@@ -33,7 +32,6 @@ public class TiTimeTextView extends TextView {
 	public TiTimeTextView(Context context) {
 		super(context);
 	}
-
 
 	public void setOnTimeoutListener(final OnTimeoutListener onTimeoutListener) {
 		this.onTimeoutListener = onTimeoutListener;
@@ -78,7 +76,7 @@ public class TiTimeTextView extends TextView {
 		timer.schedule(task, 1000, 1000);
 
 	}
-	
+
 	public void stopTimer() {
 		timer.cancel();
 	}

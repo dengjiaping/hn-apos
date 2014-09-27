@@ -34,7 +34,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 @ContentView(R.layout.vas_purchaseorder_cond_layout)
-public class PurchaseQueryCondActivity extends AposBaseActivity implements OnKeyboardListener {
+public class PurchaseQueryCondActivity extends AposBaseActivity implements
+		OnKeyboardListener {
 	private SolfKeyBoardView solfKeyBoard;
 
 	@InjectView(R.id.com_softkeyborad_layout)
@@ -84,11 +85,12 @@ public class PurchaseQueryCondActivity extends AposBaseActivity implements OnKey
 
 		initPaymethodSpinner();
 
-		solfKeyBoard = SolfKeyBoardView.instance(getApplicationContext(), footLayout,
-				this);
+		solfKeyBoard = SolfKeyBoardView.instance(getApplicationContext(),
+				footLayout, this);
 		QueryPurchaseOrderInfoCond form = getControl().getFlowContextData(
 				QueryPurchaseOrderInfoCond.class);
-		getControl().getFlowContext().remove(QueryPurchaseOrderInfoCond.class.getName());
+		getControl().getFlowContext().remove(
+				QueryPurchaseOrderInfoCond.class.getName());
 		if (form != null) {
 
 			if (form.isHasViewCond()) {
@@ -110,7 +112,8 @@ public class PurchaseQueryCondActivity extends AposBaseActivity implements OnKey
 			if (StringUtil.isNotBlank(form.getPaymentMethod())) {
 				Map<Integer, String> itemValues = payMethodSp.getItemValues();
 				for (Integer valueKey : itemValues.keySet()) {
-					if (form.getPaymentMethod().equals(itemValues.get(valueKey))) {
+					if (form.getPaymentMethod()
+							.equals(itemValues.get(valueKey))) {
 						payMethodSp.showSelect(valueKey);
 					}
 				}

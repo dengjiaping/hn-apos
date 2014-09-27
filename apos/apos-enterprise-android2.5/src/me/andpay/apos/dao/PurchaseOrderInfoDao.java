@@ -12,8 +12,9 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 public class PurchaseOrderInfoDao extends
 		GenSqLiteDao<PurchaseOrderInfo, QueryPurchaseOrderInfoCond, Integer> {
 
-	public PurchaseOrderInfoDao(Context context, String name, CursorFactory factory,
-			int version, Class<? extends PurchaseOrderInfo> t) {
+	public PurchaseOrderInfoDao(Context context, String name,
+			CursorFactory factory, int version,
+			Class<? extends PurchaseOrderInfo> t) {
 		super(context, name, factory, version, t);
 	}
 

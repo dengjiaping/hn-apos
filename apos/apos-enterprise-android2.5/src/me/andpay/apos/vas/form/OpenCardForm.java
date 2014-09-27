@@ -1,6 +1,5 @@
 package me.andpay.apos.vas.form;
 
-
 import me.andpay.apos.R;
 import me.andpay.apos.vas.action.OpenCardAction;
 import me.andpay.timobileframework.mvc.form.annotation.FormInfo;
@@ -9,19 +8,17 @@ import me.andpay.timobileframework.mvc.form.validation.anno.FieldErrorMsgTransla
 import me.andpay.timobileframework.mvc.form.validation.anno.FieldErrorMsgTranslate.TRANSTYPE;
 import me.andpay.timobileframework.mvc.form.validation.anno.FieldValidate;
 
-
 @FormInfo(action = OpenCardAction.OPEN_CARD, domain = OpenCardAction.DOMAIN_NAME, formName = "OpenCardForm")
 @FieldErrorMsgTranslate(transType = TRANSTYPE.RESOURCE, resouceInfo = "properties/opencardErrorMsg.properties")
-
 public class OpenCardForm {
-	
+
 	/**
 	 * 手机号码
 	 */
 	@ParamId(R.id.vas_telno_text)
 	@FieldValidate.PHONENUMBER
 	public String phoneNo;
-	
+
 	/**
 	 * 重输手机号码
 	 */
@@ -42,33 +39,30 @@ public class OpenCardForm {
 	 * 截至空白卡部分卡号
 	 */
 	private String endBlankPartCardNo;
-	
-	
+
 	/**
 	 * 用户姓名
 	 */
 	@ParamId(R.id.vas_user_text)
 	@FieldValidate.STRRANGE(max = 64, min = 0)
 	public String holderName;
-	
+
 	/**
 	 * 证件类型
 	 */
 	@ParamId(R.id.vas_id_type_spinner)
 	public String idType;
-	
+
 	/**
 	 * 证件号码
 	 */
 	@ParamId(R.id.vas_id_NO_text)
 	public String idNo;
-	
+
 	/**
 	 * 订单编号
 	 */
 	public Long orderId;
-
-	
 
 	public String getPhoneNo() {
 		return phoneNo;
@@ -118,7 +112,6 @@ public class OpenCardForm {
 		this.idType = idType;
 	}
 
-
 	public String getIdNo() {
 		return idNo;
 	}
@@ -135,6 +128,4 @@ public class OpenCardForm {
 		this.orderId = orderId;
 	}
 
-	
-	
 }

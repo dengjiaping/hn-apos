@@ -26,12 +26,12 @@ import com.google.inject.Inject;
 public class IntentOnclickController extends AbstractEventController {
 
 	private Map<Integer, String> intentAction = new HashMap<Integer, String>();
-	
+
 	@Inject
 	private AposContext aposContext;
 
 	public IntentOnclickController() {
-		
+
 		intentAction
 				.put(R.id.scm_main_pwd_layout, ScmProvider.SCM_ACTIVITY_PWD);
 		intentAction
@@ -53,27 +53,33 @@ public class IntentOnclickController extends AbstractEventController {
 
 		if (event.getAction() == MotionEvent.ACTION_UP
 				|| event.getAction() == MotionEvent.ACTION_CANCEL) {
-			String actionStr  = intentAction.get(v.getId());
-			if(actionStr.equals(ScmProvider.SCM_ACTIVITY_SET)) {
-			  TiFlowControl tiFlowControl =	TiFlowControlImpl.instanceControl();
-			  tiFlowControl.startFlow(refActivty, FlowNames.SCM_CARDREADER_SET_FLOW);
-			  CardReaderSetContext cardReaderSetContext =  new CardReaderSetContext();
-			  
-			  Object cardreaderType = aposContext.getAppConfig().getAttribute(ConfigAttrNames.CARD_READER_TYPE);
-			  if(cardreaderType==null || cardreaderType.toString().trim().equals("")) {
-				  cardReaderSetContext.setHasSelectCardreader(false); 
-			  }else {
-				  cardReaderSetContext.setHasSelectCardreader(true);
-				  cardReaderSetContext.setCardReaderType(Integer.valueOf(cardreaderType.toString()));
-			  }
-			  
-			  cardReaderSetContext.setOpTraceNo(String.valueOf(System.currentTimeMillis()));
-			  tiFlowControl.setFlowContextData(cardReaderSetContext);
-			}else {
+			String actionStr = intentAction.get(v.getId());
+			if (actionStr.equals(ScmProvider.SCM_ACTIVITY_SET)) {
+				TiFlowControl tiFlowControl = TiFlowControlImpl
+						.instanceControl();
+				tiFlowControl.startFlow(refActivty,
+						FlowNames.SCM_CARDREADER_SET_FLOW);
+				CardReaderSetContext cardReaderSetContext = new CardReaderSetContext();
+
+				Object cardreaderType = aposContext.getAppConfig()
+						.getAttribute(ConfigAttrNames.CARD_READER_TYPE);
+				if (cardreaderType == null
+						|| cardreaderType.toString().trim().equals("")) {
+					cardReaderSetContext.setHasSelectCardreader(false);
+				} else {
+					cardReaderSetContext.setHasSelectCardreader(true);
+					cardReaderSetContext.setCardReaderType(Integer
+							.valueOf(cardreaderType.toString()));
+				}
+
+				cardReaderSetContext.setOpTraceNo(String.valueOf(System
+						.currentTimeMillis()));
+				tiFlowControl.setFlowContextData(cardReaderSetContext);
+			} else {
 				Intent intent = new Intent(actionStr);
 				refActivty.startActivity(intent);
 			}
-		
+
 			v.setPressed(false);
 			RelativeLayout rel = (RelativeLayout) v;
 			for (int i = 0; i < rel.getChildCount(); i++) {
@@ -89,7 +95,5 @@ public class IntentOnclickController extends AbstractEventController {
 		}
 		return true;
 	}
-
-
 
 }

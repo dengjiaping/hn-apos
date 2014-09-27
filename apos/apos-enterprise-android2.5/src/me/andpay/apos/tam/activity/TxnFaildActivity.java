@@ -66,9 +66,9 @@ public class TxnFaildActivity extends AposBaseActivity {
 	public boolean isStartNewFlow() {
 		return isStartNewFlow;
 	}
-	
+
 	public void setStartNewFlow(boolean isStartNewFlow) {
 		this.isStartNewFlow = isStartNewFlow;
 	}
-	
+
 }

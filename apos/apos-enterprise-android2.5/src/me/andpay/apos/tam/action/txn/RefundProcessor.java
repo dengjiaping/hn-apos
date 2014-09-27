@@ -118,7 +118,7 @@ public class RefundProcessor extends GenTxnProcessor {
 			}
 			txnForm.getResponse().setTxnAddress(tiLocation.getAddress());
 		}
-//		refundRequest.setServiceEntryMode(ServiceEntryModes.IC_WITHOUT_PIN);
+		// refundRequest.setServiceEntryMode(ServiceEntryModes.IC_WITHOUT_PIN);
 		return refundRequest;
 	}
 
@@ -227,7 +227,7 @@ public class RefundProcessor extends GenTxnProcessor {
 			tiContext.setAttribute(RuntimeAttrNames.FRESH_SETTLE_FLAG,
 					RuntimeAttrNames.FRESH_SETTLE_FLAG);
 			// 发送交易确认
-//			confirmTxn(txnForm, refundResponse.getTxnId());
+			// confirmTxn(txnForm, refundResponse.getTxnId());
 			afertRefund(refundResponse, exPayTxnInfo, txnForm);
 			updateOrigTxn(refundResponse, txnForm);
 			actionResponse.setResponMsg(refundResponse.getRespMessage());

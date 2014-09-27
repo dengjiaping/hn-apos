@@ -38,7 +38,7 @@ public class QueryCouponAction extends SessionKeepAction {
 		List<CouponRedeemList> couponResult = couponService
 				.queryCouponRedeemLists(queryCond, 0, 10);
 		ModelAndView mav = new ModelAndView();
-	    mav.addModelValue("couponResult", couponResult);
+		mav.addModelValue("couponResult", couponResult);
 		mav.addModelValue("couponQueryForm", condForm);
 		return mav;
 

@@ -116,14 +116,15 @@ public class SignatureView extends View {
 
 			// The new width is a function of the velocity. Higher velocities
 			// correspond to thinner strokes.
-			//Log.e(this.getClass().getName(), "velocity="+velocity);
+			// Log.e(this.getClass().getName(), "velocity="+velocity);
 			float newWidth = strokeWidth(velocity);
 
 			// The Bezier's width starts out as last curve's final width, and
 			// gradually changes to the stroke width just calculated. The new
 			// width calculation is based on the velocity between the Bezier's
 			// start and end mPoints.
-			//Log.e(this.getClass().getName(), "LastWidth="+mLastWidth+"newWidth="+newWidth);
+			// Log.e(this.getClass().getName(),
+			// "LastWidth="+mLastWidth+"newWidth="+newWidth);
 			addBezier(curve, mLastWidth, newWidth);
 
 			mLastVelocity = velocity;
@@ -136,10 +137,10 @@ public class SignatureView extends View {
 	}
 
 	private void addBezier(Bezier curve, float startWidth, float endWidth) {
-		//ensureSignatureBitmap();
+		// ensureSignatureBitmap();
 		float originalWidth = mPaint.getStrokeWidth();
 		float widthDelta = endWidth - startWidth;
-		
+
 		float drawSteps = (float) Math.floor(curve.length());
 
 		for (int i = 0; i < drawSteps; i++) {

@@ -18,13 +18,14 @@ public class MockCloudOrderService {
 
 	public Map<String, CloudOrderApply> caches = new HashMap<String, CloudOrderApply>();
 
-	public String processCloudOrderApply(CloudOrderApply copApply) throws AppBizException {
+	public String processCloudOrderApply(CloudOrderApply copApply)
+			throws AppBizException {
 		String orderid = null;
-		
+
 		try {
 			orderid = String.valueOf(System.currentTimeMillis());
-			Thread.sleep(5*1000);
-			if(copApply.getSalesAmt().doubleValue() == 0.01) {
+			Thread.sleep(5 * 1000);
+			if (copApply.getSalesAmt().doubleValue() == 0.01) {
 				throw new RuntimeException("订单上送失败");
 			}
 			caches.put(orderid, copApply);
@@ -41,17 +42,18 @@ public class MockCloudOrderService {
 
 	public TxnResponse getCloudOrderPaymentResult(String cloudOrderNo)
 			throws AppBizException {
-		
+
 		try {
-			Thread.sleep(10*1000);
+			Thread.sleep(10 * 1000);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
 		CloudOrderApply apply = caches.get(cloudOrderNo);
-		if(apply.getSalesAmt().doubleValue() == 0.02) {
-			throw new WebSockTimeoutException(NetworkOpPhase.READ_WRITE, "订单上送失败", 5);
+		if (apply.getSalesAmt().doubleValue() == 0.02) {
+			throw new WebSockTimeoutException(NetworkOpPhase.READ_WRITE,
+					"订单上送失败", 5);
 		}
-		
+
 		PurchaseResponse response = new PurchaseResponse();
 		response.setTxnFlag(TxnFlags.SUCCESS);
 		response.setAuthAmt(apply.getSalesAmt());

@@ -15,8 +15,8 @@ public class AposBaseActivity extends TiFlowActivity {
 		}
 	}
 
-	//在onRestart和OnResume中判断jvm是否被重置，如果重置则跳转到首页进行初始化恢复
-	//所有想在Onresume中实现的逻辑都必须在onResumeProcess中实现，否则会出现
+	// 在onRestart和OnResume中判断jvm是否被重置，如果重置则跳转到首页进行初始化恢复
+	// 所有想在Onresume中实现的逻辑都必须在onResumeProcess中实现，否则会出现
 	@Override
 	protected final void onResume() {
 		super.onResume();
@@ -26,12 +26,14 @@ public class AposBaseActivity extends TiFlowActivity {
 			onResumeProcess();
 		}
 	}
+
 	/**
 	 * 用于处理
 	 */
 	protected void onResumeProcess() {
-		
+
 	}
+
 	/**
 	 * 监听返回键按钮点击事件，如果当前存在流程，则用流程控制器进行回退
 	 */
@@ -47,11 +49,10 @@ public class AposBaseActivity extends TiFlowActivity {
 		return super.onKeyDown(keyCode, event);
 
 	}
-	
+
 	public void alertErrorMsg(String msg) {
 		PromptDialog dialog = new PromptDialog(this, "错误提示", msg);
 		dialog.show();
 	}
-	
 
 }

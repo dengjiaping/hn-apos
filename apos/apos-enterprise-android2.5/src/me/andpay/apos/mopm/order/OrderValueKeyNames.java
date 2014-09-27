@@ -1,7 +1,7 @@
 package me.andpay.apos.mopm.order;
 
 public class OrderValueKeyNames {
-	
+
 	public final static String PGTNP_URI = "pgTnpUrl";
 	public final static String PG_CANCEL_UTI = "pgCancelUrl";
 	public final static String PARTY_ID = "partyId";

@@ -1,6 +1,5 @@
 package me.andpay.apos.lam.callback.impl;
 
-
 import me.andpay.ac.term.api.auth.LoginResponse;
 import me.andpay.apos.R;
 import me.andpay.apos.cmview.CommonDialog;
@@ -34,9 +33,9 @@ public class LoginCallbackImpl implements LoginCallback {
 	public LoginCallbackImpl(LoginActivity activity) {
 		this.activity = activity;
 	}
-	
+
 	public void clear() {
-		if(activity.loginDialog != null && activity.loginDialog.isShowing()) {
+		if (activity.loginDialog != null && activity.loginDialog.isShowing()) {
 			activity.loginDialog.cancel();
 		}
 	}
@@ -46,6 +45,7 @@ public class LoginCallbackImpl implements LoginCallback {
 			clear();
 
 			LoginCallBackHelper.configImagetCache(activity);
+
 			if (LoginCallBackHelper.recoverTxn(response, activity, true)) {
 				return;
 			}
@@ -54,11 +54,13 @@ public class LoginCallbackImpl implements LoginCallback {
 			}
 
 		} catch (Exception e) {
-		
-			loginFaild(ResourceUtil.getString(activity, R.string.tam_syserror_str));
+
+			loginFaild(ResourceUtil.getString(activity,
+					R.string.tam_syserror_str));
 			return;
 		}
-		activity.getAppConfig().setAttribute(ConfigAttrNames.AUTOLOGIN_START_TIME, ""+DateUtil.getToday());
+		activity.getAppConfig().setAttribute(
+				ConfigAttrNames.AUTOLOGIN_START_TIME, "" + DateUtil.getToday());
 		LoginCallBackHelper.nextPage(activity);
 	}
 
@@ -69,7 +71,8 @@ public class LoginCallbackImpl implements LoginCallback {
 		clear();
 		// 失败对话框
 		PromptDialog dialog = new PromptDialog(this.activity, this.activity
-				.getResources().getString(R.string.lam_login_faild_str), errorCode);
+				.getResources().getString(R.string.lam_login_faild_str),
+				errorCode);
 		dialog.show();
 
 	}
@@ -77,8 +80,9 @@ public class LoginCallbackImpl implements LoginCallback {
 	public void updateApp(String errorMsg) {
 		clear();
 		// 失败对话框
-		final PromptDialog dialog = new PromptDialog(this.activity, this.activity
-				.getResources().getString(R.string.lam_login_faild_str), errorMsg);
+		final PromptDialog dialog = new PromptDialog(this.activity,
+				this.activity.getResources().getString(
+						R.string.lam_login_faild_str), errorMsg);
 
 		dialog.setSureButtonOnclickListener(new OnClickListener() {
 
@@ -107,7 +111,7 @@ public class LoginCallbackImpl implements LoginCallback {
 			super(activity, manager);
 			this.activity = activity;
 		}
-		
+
 		@Override
 		public void processThrowable(ThrowableInfo info) {
 			dialogUpdate.cancel();
@@ -115,10 +119,12 @@ public class LoginCallbackImpl implements LoginCallback {
 		}
 
 		@Override
-		public void checkUpdateCompleted(Boolean hasUpdate, CharSequence updateInfo) {
+		public void checkUpdateCompleted(Boolean hasUpdate,
+				CharSequence updateInfo) {
 			dialogUpdate.cancel();
 			if (!hasUpdate) {
-				PromptDialog pDialog = new PromptDialog(activity, null, "当前版本为测试版本,请等待此版本开通再使用。");
+				PromptDialog pDialog = new PromptDialog(activity, null,
+						"当前版本为测试版本,请等待此版本开通再使用。");
 				pDialog.setCancelable(false);
 				pDialog.setButtonText("点击退出应用");
 				pDialog.setSureButtonOnclickListener(new OnClickListener() {
@@ -137,8 +143,9 @@ public class LoginCallbackImpl implements LoginCallback {
 
 	public void goActivateCert() {
 		clear();
-	
-		TiFlowControlImpl.instanceControl().nextSetup(activity, FlowConstants.START_ACTIVE);
+
+		TiFlowControlImpl.instanceControl().nextSetup(activity,
+				FlowConstants.START_ACTIVE);
 
 	}
 

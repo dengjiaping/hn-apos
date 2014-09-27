@@ -39,7 +39,6 @@ public class ScmMainActivity extends AposBaseActivity {
 	@EventDelegate(delegateClass = OnTouchListener.class, toEventController = ShowHelpClickControl.class)
 	private View help_layout;
 
-
 	@InjectView(R.id.scm_main_update_layout)
 	@EventDelegate(delegateClass = OnTouchListener.class, toEventController = UpdateClickController.class)
 	private View update_layout;
@@ -51,40 +50,36 @@ public class ScmMainActivity extends AposBaseActivity {
 	@InjectView(R.id.com_show_silder_btn)
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = ShowSliderControl.class)
 	public ImageView showSilder;
-	
+
 	@InjectView(R.id.scm_party_limit_layout)
 	@EventDelegate(delegateClass = OnTouchListener.class, toEventController = IntentOnclickController.class)
 	public View partyLmitView;
-	
-	
+
 	@InjectView(R.id.scm_settle_layout)
 	@EventDelegate(delegateClass = OnTouchListener.class, toEventController = IntentOnclickController.class)
 	public View settleView;
-	
+
 	@InjectView(R.id.scm_settle_layout)
 	public View settleImageView;
-	
-	
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		PartyInfo partyInfo = (PartyInfo) getAppContext().getAttribute(
 				RuntimeAttrNames.PARTY_INFO);
 		Map<String, String> privileges = partyInfo.getPrivileges();
-		
+
 		if (privileges.containsKey(Privileges.BATCH_TXN)) {
 			settleView.setVisibility(View.VISIBLE);
 			settleImageView.setVisibility(View.VISIBLE);
-		}else {
+		} else {
 			settleView.setVisibility(View.GONE);
 			settleImageView.setVisibility(View.GONE);
 		}
 
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {

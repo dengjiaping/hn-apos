@@ -6,9 +6,9 @@ import me.andpay.apos.tam.context.HandlerStatus;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.context.TxnStatus;
 
-
 /**
  * 交易提交
+ * 
  * @author cpz
  *
  */
@@ -22,7 +22,6 @@ public class TxnSubmitWithPinHandler extends GenChangeStatusHander {
 
 		activity.topTextView.setText(activity.getResources().getText(
 				R.string.tam_txn_submit_top_str));
-	
 
 	}
 

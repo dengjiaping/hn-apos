@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="优惠券领取" />
+
+        <ImageView
+            android:id="@+id/mmaking_coupons_back"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/mmaking_coupons_card_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dip"
+        android:background="@drawable/com_icon_frame_img"
+        android:hint="持卡人卡号"
+        android:numeric="integer"
+        android:paddingLeft="10dip"
+        android:textColor="@color/com_title_normal_col"
+        android:textColorHint="@color/com_button_top_col"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/mmaking_coupons_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:background="@drawable/com_icon_frame_img"
+        android:hint="持卡人手机号"
+        android:maxLength="11"
+        android:numeric="integer"
+        android:paddingLeft="10dip"
+        android:textColor="@color/com_title_normal_col"
+        android:textColorHint="@color/com_button_top_col"
+        android:textSize="15sp" />
+
+    <TextView
+        android:textColor="@color/com_title_normal_col"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginTop="10dip"
+        android:text="商家为持卡人代领"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/mmaking_coupons_sure"
+        style="@style/com_button_style"
+        android:layout_width="match_parent"
+        android:layout_below="@id/lam_password_lay"
+        android:layout_margin="10dip"
+        android:enabled="false"
+        android:text="@string/lam_login_btn_str" />
+
+</LinearLayout>

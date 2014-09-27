@@ -26,7 +26,7 @@ public class AposMainBroadcastReceiver extends RoboBroadcastReceiver {
 
 	@Inject
 	private TiApplication tiApplication;
-	
+
 	@Inject
 	private TxnConfirmService txnConfirmService;
 
@@ -34,14 +34,14 @@ public class AposMainBroadcastReceiver extends RoboBroadcastReceiver {
 	protected void handleReceive(Context context, Intent intent) {
 
 		Log.i("AposMainService", "AposMainService_onHandleIntent");
-		
+
 		txnReversalService.statrtReversal();
 		upLoadFileServce.startUpload();
 		productSynchroner.sync(tiApplication, false);
 		txnConfirmService.sendConfirmTxn();
-		
+
 		APOSAlarmUtil.startMainAlarm(context);
-		
+
 	}
 
 }

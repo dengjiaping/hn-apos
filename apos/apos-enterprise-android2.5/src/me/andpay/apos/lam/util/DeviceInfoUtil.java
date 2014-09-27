@@ -17,11 +17,11 @@ import android.os.Build;
 import android.telephony.TelephonyManager;
 
 public class DeviceInfoUtil {
-	
-	
+
 	public static DeviceInfo setDeviceInfo(TiActivity activity) {
 
-		TelephonyManager tpMg = (TelephonyManager) activity.getSystemService(Context.TELEPHONY_SERVICE);
+		TelephonyManager tpMg = (TelephonyManager) activity
+				.getSystemService(Context.TELEPHONY_SERVICE);
 		DeviceInfo deviceInfo = new DeviceInfo();
 		deviceInfo.setImei(tpMg.getDeviceId());
 		deviceInfo.setOsVersion(android.os.Build.VERSION.SDK);
@@ -44,21 +44,19 @@ public class DeviceInfoUtil {
 		}
 		deviceInfo.setDeviceId(deviceId);
 		deviceInfo.setModel(Build.MODEL);
-		
-		String status =   Statuses.INVALID;
-		if(RootUtil.isRootSystem()) {
+
+		String status = Statuses.INVALID;
+		if (RootUtil.isRootSystem()) {
 			status = Statuses.VALID;
 		}
-		
-		deviceInfo.setRoot(status);
-		
 
-		activity.getAppContext().setAttribute(RuntimeAttrNames.DEVICE_INFO, deviceInfo);
-		
+		deviceInfo.setRoot(status);
+
+		activity.getAppContext().setAttribute(RuntimeAttrNames.DEVICE_INFO,
+				deviceInfo);
+
 		return deviceInfo;
 	}
-	
-	
 
 	/**
 	 * 获取mac地址
@@ -66,9 +64,10 @@ public class DeviceInfoUtil {
 	 * @return
 	 */
 	public static String getLocalMacAddress(TiActivity activity) {
-		WifiManager wifi = (WifiManager)activity.getSystemService(Context.WIFI_SERVICE);
+		WifiManager wifi = (WifiManager) activity
+				.getSystemService(Context.WIFI_SERVICE);
 		WifiInfo info = wifi.getConnectionInfo();
-		if(info != null&&StringUtil.isNotBlank(info.getMacAddress())) {
+		if (info != null && StringUtil.isNotBlank(info.getMacAddress())) {
 			return info.getMacAddress();
 		}
 		return "00:00:00:00:00:00";

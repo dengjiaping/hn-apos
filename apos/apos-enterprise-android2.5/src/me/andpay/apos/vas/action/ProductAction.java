@@ -13,31 +13,34 @@ import me.andpay.timobileframework.mvc.action.ActionRequest;
 
 import com.google.inject.Inject;
 
-
 /**
  * 商品服务
+ * 
  * @author cpz
  *
  */
-@ActionMapping(domain = ProductAction.DOMAIN_NAME )
-public class ProductAction extends SessionKeepAction{
-	
-	public static final String DOMAIN_NAME ="/vas/product.action";
-	
+@ActionMapping(domain = ProductAction.DOMAIN_NAME)
+public class ProductAction extends SessionKeepAction {
+
+	public static final String DOMAIN_NAME = "/vas/product.action";
+
 	public static final String QUERY_LOCAL = "queryLocalProduct";
-	
+
 	@Inject
 	private ProductInfoDao productInfoDao;
-	
+
 	/**
 	 * 本地商品查询
+	 * 
 	 * @param request
 	 */
 	public ModelAndView queryLocalProduct(ActionRequest request) {
-		
-		QueryProductInfoCond cond = (QueryProductInfoCond)request.getParameterValue("QueryProductInfoCond");
-		ProductLocalQueryCallback callback = (ProductLocalQueryCallback)request.getHandler();
-		List<ProductInfo> productInfos =  productInfoDao.query(cond, 0, -1);
+
+		QueryProductInfoCond cond = (QueryProductInfoCond) request
+				.getParameterValue("QueryProductInfoCond");
+		ProductLocalQueryCallback callback = (ProductLocalQueryCallback) request
+				.getHandler();
+		List<ProductInfo> productInfos = productInfoDao.query(cond, 0, -1);
 		callback.querySuccess(productInfos);
 		return null;
 	}

@@ -34,7 +34,7 @@ public class ConfigAttrNames {
 	/**
 	 * 收款编号
 	 */
-	public static final String RECEIP_NO = "receip_no"; 
+	public static final String RECEIP_NO = "receip_no";
 
 	/**
 	 * 登录历史用户
@@ -45,9 +45,9 @@ public class ConfigAttrNames {
 	 * 登录历史用户
 	 */
 	public static final String LOGIN_HIS_PASSWORD = "login_his_pwd";
-	
+
 	/**
-	 *  可自动登录开始时间
+	 * 可自动登录开始时间
 	 */
 	public static final String AUTOLOGIN_START_TIME = "autologin_start_time";
 
@@ -74,13 +74,12 @@ public class ConfigAttrNames {
 	 * 新大陆默认蓝牙设备名称
 	 */
 	public static final String NEWLAND_DEFAULT_BLUETOOTH_NAME = "newland_default_bluetooth_name";
-	
-	
+
 	/**
 	 * IC卡应用参数 完成保存
 	 */
 	public static final String IC_CARD_PARAMS_SAVED = "ic_card_params_saved";
-	
+
 	/**
 	 * IC卡公钥 完成保存
 	 */

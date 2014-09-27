@@ -16,8 +16,8 @@ import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 
 @ContentView(R.layout.scm_make_qrcode_layout)
-public class MakeQRCodeActivity extends AposBaseActivity{
-	
+public class MakeQRCodeActivity extends AposBaseActivity {
+
 	@InjectView(R.id.scm_cardread_open_img)
 	public ImageView cardImageView;
 
@@ -37,6 +37,7 @@ public class MakeQRCodeActivity extends AposBaseActivity{
 				.instanceControl().getFlowContextData(
 						CardReaderSetContext.class);
 
-		cardReaderSetContext.getOpLogData().put(OperationDataKeys.OPKEYS_OPEN_DEVICE, String.valueOf(true));
+		cardReaderSetContext.getOpLogData().put(
+				OperationDataKeys.OPKEYS_OPEN_DEVICE, String.valueOf(true));
 	}
 }

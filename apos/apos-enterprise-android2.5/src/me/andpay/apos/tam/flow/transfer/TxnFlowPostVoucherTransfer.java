@@ -40,7 +40,8 @@ public class TxnFlowPostVoucherTransfer implements TiFlowNodeDataTransfer {
 		postVoucherContext.setMessage(txnContext.getTxnActionResponse()
 				.getTxnResponse().getComment());
 		postVoucherContext.setFormatedAmt(txnContext.getAmtFomat());
-		postVoucherContext.setSettlementTime(txnContext.getTxnActionResponse().getSettlementTime());
+		postVoucherContext.setSettlementTime(txnContext.getTxnActionResponse()
+				.getSettlementTime());
 
 		return null;
 	}

@@ -24,12 +24,14 @@ public class PurQueryCodButtonClickController extends AbstractEventController {
 
 	public boolean onLongClick(Activity refActivty, FormBean formBean, View v) {
 		final PurchaseOrderListActivity queryActivity = (PurchaseOrderListActivity) refActivty;
-		if (queryActivity.getAdapter() == null || !queryActivity.isHasQueryCondition()) {
+		if (queryActivity.getAdapter() == null
+				|| !queryActivity.isHasQueryCondition()) {
 			return false;
 		}
 		final OperationDialog dialog = new OperationDialog(refActivty,
-				ResourceUtil.getString(refActivty, R.string.com_show_str), refActivty
-						.getResources().getString(R.string.tqm_condition_clear_str), true);
+				ResourceUtil.getString(refActivty, R.string.com_show_str),
+				refActivty.getResources().getString(
+						R.string.tqm_condition_clear_str), true);
 
 		dialog.setSureButtonOnclickListener(new OnClickListener() {
 			public void onClick(View v) {

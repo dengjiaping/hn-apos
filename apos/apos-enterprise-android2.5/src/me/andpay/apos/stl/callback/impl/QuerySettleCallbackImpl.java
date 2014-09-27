@@ -12,14 +12,15 @@ import me.andpay.apos.stl.callback.QuerySettleCallback;
 import me.andpay.apos.stl.form.QuerySettleCondForm;
 import me.andpay.timobileframework.mvc.ModelAndView;
 
-public class QuerySettleCallbackImpl extends AfterProcessWithErrorHandler implements QuerySettleCallback {
-
+public class QuerySettleCallbackImpl extends AfterProcessWithErrorHandler
+		implements QuerySettleCallback {
 
 	public SettleListActivity settleListActivity;
 
 	private QuerySettleCondForm form;
 
-	public QuerySettleCallbackImpl(SettleListActivity activity, QuerySettleCondForm form) {
+	public QuerySettleCallbackImpl(SettleListActivity activity,
+			QuerySettleCondForm form) {
 		super(activity);
 		this.form = form;
 		this.settleListActivity = activity;
@@ -27,9 +28,10 @@ public class QuerySettleCallbackImpl extends AfterProcessWithErrorHandler implem
 
 	@Override
 	public void afterRequest(ModelAndView mv) {
-		List<SettleOrder> settleOrders= (ArrayList<SettleOrder>) mv
+		List<SettleOrder> settleOrders = (ArrayList<SettleOrder>) mv
 				.getValue("settleResult");
-		QuerySettleCondForm form = (QuerySettleCondForm) mv.getValue("settleQueryForm");
+		QuerySettleCondForm form = (QuerySettleCondForm) mv
+				.getValue("settleQueryForm");
 		LinkedList<SettleOrder> orderInfosLink = new LinkedList<SettleOrder>();
 		orderInfosLink.addAll(settleOrders);
 		synchronized (settleListActivity) {
@@ -41,7 +43,8 @@ public class QuerySettleCallbackImpl extends AfterProcessWithErrorHandler implem
 			} else {
 				settleListActivity.settleListAdapter.destory();
 				settleListActivity.settleListAdapter.addValues(orderInfosLink);
-				settleListActivity.settleListAdapter.setQuerySettleCondForm(form);
+				settleListActivity.settleListAdapter
+						.setQuerySettleCondForm(form);
 			}
 
 			if (settleOrders == null || settleOrders.size() == 0) {
@@ -66,6 +69,5 @@ public class QuerySettleCallbackImpl extends AfterProcessWithErrorHandler implem
 
 		settleListActivity.sendQueryForm(form);
 	}
-
 
 }

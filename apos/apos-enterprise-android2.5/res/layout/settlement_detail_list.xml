@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/baseBackGround"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/com_native_top_style" >
+
+        <TextView 
+            android:id="@+id/settlement_detail_list_title"
+            style="@style/com_top_text_style" />
+
+        <ImageView
+            android:id="@+id/settlement_detail_list_back"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+    
+    <ExpandableListView
+        android:id="@+id/settlement_detail_list_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@color/com_no_color"
+        android:listSelector="@color/com_no_color" >
+    </ExpandableListView>
+
+</LinearLayout>

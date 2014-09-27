@@ -125,9 +125,9 @@ public class TimeProgressDialog {
 	public Dialog getDialog() {
 		return dialog;
 	}
-	
-	public void setCancelable(boolean flag)  {
+
+	public void setCancelable(boolean flag) {
 		dialog.setCancelable(flag);
 	}
-	
+
 }

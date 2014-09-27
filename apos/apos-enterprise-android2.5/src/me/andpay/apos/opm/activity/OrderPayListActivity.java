@@ -84,7 +84,7 @@ public class OrderPayListActivity extends AposBaseActivity {
 
 	@Inject
 	public TxnControl txnControl;
-	
+
 	@InjectView(R.id.com_show_silder_btn)
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = ShowSliderControl.class)
 	public ImageView showSilder;
@@ -96,8 +96,7 @@ public class OrderPayListActivity extends AposBaseActivity {
 		changeStatusButton();
 		queryAll();
 	}
-	
-	
+
 	@Override
 	protected void onResumeProcess() {
 		fleshView();
@@ -105,12 +104,11 @@ public class OrderPayListActivity extends AposBaseActivity {
 
 	private void fleshView() {
 		Object flag = getAppContext().getAttribute(RuntimeAttrNames.NEXT_TXN);
-		if(flag != null && flag.toString().equals(RuntimeAttrNames.NEXT_TXN)) {
+		if (flag != null && flag.toString().equals(RuntimeAttrNames.NEXT_TXN)) {
 			getAppContext().removeAttribute(RuntimeAttrNames.NEXT_TXN);
 			queryAll();
 		}
 	}
-
 
 	public void queryAll() {
 		refreshLayout.setPullRefreshEnable(true);

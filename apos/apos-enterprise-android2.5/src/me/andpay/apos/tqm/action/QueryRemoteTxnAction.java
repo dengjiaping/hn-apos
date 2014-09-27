@@ -69,7 +69,8 @@ public class QueryRemoteTxnAction extends SessionKeepAction {
 		return mv;
 	}
 
-	protected ModelAndView queryRemoteTxn(ActionRequest request, boolean isStorage) {
+	protected ModelAndView queryRemoteTxn(ActionRequest request,
+			boolean isStorage) {
 		ModelAndView mv = new ModelAndView();
 		QueryConditionForm condition = (QueryConditionForm) request
 				.getParameterValue("queryConditionForm");
@@ -97,9 +98,10 @@ public class QueryRemoteTxnAction extends SessionKeepAction {
 	 * @param maxCount
 	 * @return
 	 */
-	private List<PayTxnInfo> queryRemotePayTxnInfo(QueryConditionForm condition,
-			Integer maxCount) {
-		QueryTxnCond cond = PayTxnInfoConvert.convertCondtion2RemoteCond(condition);
+	private List<PayTxnInfo> queryRemotePayTxnInfo(
+			QueryConditionForm condition, Integer maxCount) {
+		QueryTxnCond cond = PayTxnInfoConvert
+				.convertCondtion2RemoteCond(condition);
 		List<PayTxnInfo> infos = new ArrayList<PayTxnInfo>();
 
 		if (!StringUtil.isEmpty(condition.getAmount())) {
@@ -121,7 +123,7 @@ public class QueryRemoteTxnAction extends SessionKeepAction {
 		condTxn.setTermTraceNo(payTxnInfo.getTermTraceNo());
 		condTxn.setOperNo(payTxnInfo.getOperNo());
 		condTxn.setTxnPartyId(payTxnInfo.getTxnPartyId());
-//		condTxn.setSalesAmt(payTxnInfo.getSalesAmt());
+		// condTxn.setSalesAmt(payTxnInfo.getSalesAmt());
 
 		List<PayTxnInfo> payTxnInfosDb = payTxnInfoDao.query(condTxn, 0, 10);
 		if (payTxnInfosDb.isEmpty()) {

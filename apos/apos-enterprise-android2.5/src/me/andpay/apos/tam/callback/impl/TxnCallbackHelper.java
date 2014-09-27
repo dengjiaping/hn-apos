@@ -15,10 +15,11 @@ import me.andpay.timobileframework.mvc.support.TiActivity;
 import me.andpay.timobileframework.util.RoboGuiceUtil;
 
 public class TxnCallbackHelper {
-    /**
-     * 设置服务器应答格式
-     * @param reActionResponse
-     */
+	/**
+	 * 设置服务器应答格式
+	 * 
+	 * @param reActionResponse
+	 */
 	public static void convertResponse(TxnActionResponse reActionResponse) {
 		TxnContext txnContext = TiFlowControlImpl.instanceControl()
 				.getFlowContextData(TxnContext.class);
@@ -63,7 +64,7 @@ public class TxnCallbackHelper {
 
 	public static void txnFailed(TxnContext txnContext,
 			TxnActionResponse txnActionResponse, TiActivity tiAcitivty) {
-		
+
 		Map<String, String> intentData = new HashMap<String, String>();
 		intentData.put("errorMsg", txnActionResponse.getResponMsg());
 

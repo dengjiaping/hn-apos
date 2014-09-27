@@ -12,19 +12,20 @@ import me.andpay.timobileframework.mvc.form.FormBean;
 import android.app.Activity;
 import android.view.View;
 
-public class OrderDetailPayController  extends AbstractEventController {
+public class OrderDetailPayController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
-		OrderDetailActivity activity = (OrderDetailActivity)refActivty;
-		//订单支付不支持云pos
-		if(CloudPosUtil.isCloudPosCardReader(activity)) {
-			PromptDialog dialog = new PromptDialog(activity, null, ResourceUtil.getString(
-					activity, R.string.tam_cloud_txntype_error_str));
+		OrderDetailActivity activity = (OrderDetailActivity) refActivty;
+		// 订单支付不支持云pos
+		if (CloudPosUtil.isCloudPosCardReader(activity)) {
+			PromptDialog dialog = new PromptDialog(activity, null,
+					ResourceUtil.getString(activity,
+							R.string.tam_cloud_txntype_error_str));
 			dialog.show();
 			return;
 		}
-		OrderInfo orderInfo= activity.orderInfo;
+		OrderInfo orderInfo = activity.orderInfo;
 		OrderPayHelper.sendTxn(refActivty, orderInfo);
-		
+
 	}
 }

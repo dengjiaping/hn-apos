@@ -69,7 +69,6 @@ public class TxnBatchQueryActivity extends AposBaseActivity {
 	@InjectView(R.id.com_list_layout)
 	View com_list_view;
 
-
 	@InjectView(R.id.com_no_data_layout)
 	View com_no_data_layout;
 
@@ -116,25 +115,22 @@ public class TxnBatchQueryActivity extends AposBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		tqm_txn_list_lv.setPinnedHeaderView(LayoutInflater.from(this).inflate(
-				R.layout.vas_purchaseorder_section_layout, tqm_txn_list_lv, false));
+				R.layout.vas_purchaseorder_section_layout, tqm_txn_list_lv,
+				false));
 		refresh_layout.initView();
 		queryAll();
-		
 
 	}
-	
 
 	@Override
 	protected void onResumeProcess() {
 		Object flag = getAppContext().getAttribute(
 				RuntimeAttrNames.FRESH_TXN_FLAG);
 		if (flag != null && StringUtil.isNotBlank(flag.toString())) {
-			getAppContext().removeAttribute(
-					RuntimeAttrNames.FRESH_TXN_FLAG);
+			getAppContext().removeAttribute(RuntimeAttrNames.FRESH_TXN_FLAG);
 			queryAll();
 		}
 	}
-
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -165,8 +161,8 @@ public class TxnBatchQueryActivity extends AposBaseActivity {
 		// setQueryButton();
 
 		byte[] conditionBytes = data.getByteArrayExtra("queryConditionForm");
-		QueryConditionForm form = JacksonSerializer.newPrettySerializer().deserialize(
-				QueryConditionForm.class, conditionBytes);
+		QueryConditionForm form = JacksonSerializer.newPrettySerializer()
+				.deserialize(QueryConditionForm.class, conditionBytes);
 		if (hasCond(form)) {
 			hasCondImg.setVisibility(View.VISIBLE);
 			form.setHasViewCond(true);
@@ -229,7 +225,8 @@ public class TxnBatchQueryActivity extends AposBaseActivity {
 		request.getSubmitData().put("queryConditionForm", form);
 		request.open(TqmProvider.TQM_DOMAIN_QUERY,
 				isHasQueryCondition ? TqmProvider.TQM_ACTION_QUERY_GETTXNLIST
-						: TqmProvider.TQM_ACTION_QUERY_GETTXNLIST_STORAGE, Pattern.async);
+						: TqmProvider.TQM_ACTION_QUERY_GETTXNLIST_STORAGE,
+				Pattern.async);
 		request.callBack(new QueryTxnListAfterProcessHandler(this, form));
 		request.submit();
 		showProgressView();
@@ -240,36 +237,44 @@ public class TxnBatchQueryActivity extends AposBaseActivity {
 		case R.id.tqm_txn_list_all_btn:
 			allButton
 					.setBackgroundResource(R.drawable.com_navtop_tab_button_left_sel_img);
-			succButton.setBackgroundResource(R.drawable.com_tab_button_middle_selector);
-			failButton.setBackgroundResource(R.drawable.com_tab_button_right_selector);
-			allButton
-					.setTextColor(getResources().getColor(R.color.lam_button_entrue_col));
 			succButton
-					.setTextColor(getResources().getColor(R.color.com_title_normal_col));
+					.setBackgroundResource(R.drawable.com_tab_button_middle_selector);
 			failButton
-					.setTextColor(getResources().getColor(R.color.com_title_normal_col));
+					.setBackgroundResource(R.drawable.com_tab_button_right_selector);
+			allButton.setTextColor(getResources().getColor(
+					R.color.lam_button_entrue_col));
+			succButton.setTextColor(getResources().getColor(
+					R.color.com_title_normal_col));
+			failButton.setTextColor(getResources().getColor(
+					R.color.com_title_normal_col));
 			break;
 		case R.id.tqm_txn_list_succ_btn:
 			succButton
 					.setBackgroundResource(R.drawable.com_navtop_tab_button_middle_sel_img);
-			allButton.setBackgroundResource(R.drawable.com_tab_button_left_selector);
-			failButton.setBackgroundResource(R.drawable.com_tab_button_right_selector);
-			succButton.setTextColor(getResources()
-					.getColor(R.color.lam_button_entrue_col));
-			allButton.setTextColor(getResources().getColor(R.color.com_title_normal_col));
+			allButton
+					.setBackgroundResource(R.drawable.com_tab_button_left_selector);
 			failButton
-					.setTextColor(getResources().getColor(R.color.com_title_normal_col));
+					.setBackgroundResource(R.drawable.com_tab_button_right_selector);
+			succButton.setTextColor(getResources().getColor(
+					R.color.lam_button_entrue_col));
+			allButton.setTextColor(getResources().getColor(
+					R.color.com_title_normal_col));
+			failButton.setTextColor(getResources().getColor(
+					R.color.com_title_normal_col));
 			break;
 		case R.id.tqm_txn_list_failed_btn:
 			failButton
 					.setBackgroundResource(R.drawable.com_navtop_tab_button_right_sel_img);
-			allButton.setBackgroundResource(R.drawable.com_tab_button_left_selector);
-			succButton.setBackgroundResource(R.drawable.com_tab_button_middle_selector);
-			failButton.setTextColor(getResources()
-					.getColor(R.color.lam_button_entrue_col));
-			allButton.setTextColor(getResources().getColor(R.color.com_title_normal_col));
+			allButton
+					.setBackgroundResource(R.drawable.com_tab_button_left_selector);
 			succButton
-					.setTextColor(getResources().getColor(R.color.com_title_normal_col));
+					.setBackgroundResource(R.drawable.com_tab_button_middle_selector);
+			failButton.setTextColor(getResources().getColor(
+					R.color.lam_button_entrue_col));
+			allButton.setTextColor(getResources().getColor(
+					R.color.com_title_normal_col));
+			succButton.setTextColor(getResources().getColor(
+					R.color.com_title_normal_col));
 			break;
 		}
 	}
@@ -277,7 +282,8 @@ public class TxnBatchQueryActivity extends AposBaseActivity {
 	public void setQueryButton() {
 		// queryAllButton.setVisibility(isHasQueryCondition ? View.VISIBLE
 		// : View.GONE);
-		conditionButton.setVisibility(isHasQueryCondition ? View.GONE : View.VISIBLE);
+		conditionButton.setVisibility(isHasQueryCondition ? View.GONE
+				: View.VISIBLE);
 	}
 
 	public void showListView() {

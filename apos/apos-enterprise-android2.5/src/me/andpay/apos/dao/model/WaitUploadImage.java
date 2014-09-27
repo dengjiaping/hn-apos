@@ -6,20 +6,20 @@ import me.andpay.timobileframework.sqlite.anno.TableName;
 
 /**
  * 等待上传的图片
+ * 
  * @author cpz
  *
  */
-@TableName(name="WaitUploadImage",version=2)
+@TableName(name = "WaitUploadImage", version = 2)
 public class WaitUploadImage {
-
 
 	/**
 	 * 主键编号
 	 */
 	@ID
-	@Column	
+	@Column
 	private Integer id;
-	
+
 	/**
 	 * 终端流水号
 	 */
@@ -35,25 +35,25 @@ public class WaitUploadImage {
 	 */
 	@Column
 	private String createDate;
-	
+
 	/**
 	 * 文件路径
 	 */
 	@Column
 	private String filePath;
-	
+
 	/**
 	 * 上传文件类型
 	 */
 	@Column
 	private String itemType;
-	
+
 	/**
 	 * 上传编号
 	 */
 	@Column
 	private String itemId;
-	
+
 	/**
 	 * 上传次数
 	 */
@@ -136,7 +136,5 @@ public class WaitUploadImage {
 	public void setReadyUpload(Boolean readyUpload) {
 		this.readyUpload = readyUpload;
 	}
-	
-	
 
 }

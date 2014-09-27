@@ -15,31 +15,31 @@ public class LoginOutClickController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
 		showBackDialog(refActivty);
-		
+
 	}
 
 	public void showBackDialog(final Activity activity) {
-//		final OperationDialog dialog = new OperationDialog(activity, null,
-//				loginOutPrompt, true);
-//
-//		final Activity inActivity = activity;
-//		dialog.setSureButtonOnclickListener(new OnClickListener() {
-//			public void onClick(View v) {
-//				dialog.dismiss();
-//				TiContextProvider provider = ((TiApplication) activity
-//						.getApplication()).getContextProvider();
-//				provider.provider(TiContext.CONTEXT_SCOPE_APPLICATION)
-//						.inValidate();
-//				Intent intent = new Intent();
-//				intent.putExtra(CommonProvider.COM_STR_RECONN_FLAG, true);
-//				intent.setAction(LamProvider.LAM_STARTAPP_ACTIVITY);
-//				inActivity.startActivity(intent);
-//				inActivity.finish();
-//			}
-//		});
-//
-//		dialog.show();
-		
+		// final OperationDialog dialog = new OperationDialog(activity, null,
+		// loginOutPrompt, true);
+		//
+		// final Activity inActivity = activity;
+		// dialog.setSureButtonOnclickListener(new OnClickListener() {
+		// public void onClick(View v) {
+		// dialog.dismiss();
+		// TiContextProvider provider = ((TiApplication) activity
+		// .getApplication()).getContextProvider();
+		// provider.provider(TiContext.CONTEXT_SCOPE_APPLICATION)
+		// .inValidate();
+		// Intent intent = new Intent();
+		// intent.putExtra(CommonProvider.COM_STR_RECONN_FLAG, true);
+		// intent.setAction(LamProvider.LAM_STARTAPP_ACTIVITY);
+		// inActivity.startActivity(intent);
+		// inActivity.finish();
+		// }
+		// });
+		//
+		// dialog.show();
+
 		BackUtil.showBackDialog(activity);
 	}
 }

@@ -183,11 +183,9 @@ public class TimeOperationDialog {
 	public Dialog getDialog() {
 		return this.dialog;
 	}
-	
-	
-	public void setCancelable(boolean flag)  {
+
+	public void setCancelable(boolean flag) {
 		dialog.setCancelable(flag);
 	}
-	
 
 }

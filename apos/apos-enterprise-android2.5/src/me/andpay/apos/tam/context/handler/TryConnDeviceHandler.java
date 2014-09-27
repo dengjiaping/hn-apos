@@ -26,7 +26,8 @@ public class TryConnDeviceHandler extends GenChangeStatusHander {
 
 	@Override
 	protected void changeAction(TxnControl txnControl) {
-		CardReaderManager.setCurrCallback(txnControl.getSwipCardReaderCallBack());
+		CardReaderManager.setCurrCallback(txnControl
+				.getSwipCardReaderCallBack());
 		CardReaderManager.startSwiper(AposCardReaderUtil.convertSwiperRequest(
 				txnControl.getTxnContext(), txnControl.getCurrActivity()
 						.getAppConfig()));

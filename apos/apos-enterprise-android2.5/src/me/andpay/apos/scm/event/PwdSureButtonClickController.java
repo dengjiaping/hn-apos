@@ -25,11 +25,11 @@ import android.view.View.OnClickListener;
 public class PwdSureButtonClickController extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
-		if(ValidateHelper.validate(activity, formBean,null)) {
+
+		if (ValidateHelper.validate(activity, formBean, null)) {
 			return;
 		}
-		
+
 		CommonDialog dialog = new CommonDialog(activity, activity
 				.getResources().getString(R.string.com_progress_prompt_str));
 		DialogUtil.setDialogAllowClose(dialog.getDialog(), false);
@@ -66,7 +66,8 @@ public class PwdSureButtonClickController extends AbstractEventController {
 			pDialog.setSureButtonOnclickListener(new OnClickListener() {
 
 				public void onClick(View v) {
-					KeyEvent key = new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_BACK);
+					KeyEvent key = new KeyEvent(KeyEvent.ACTION_DOWN,
+							KeyEvent.KEYCODE_BACK);
 					activity.onKeyDown(key.getKeyCode(), key);
 					activity.finish();
 				}

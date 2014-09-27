@@ -63,38 +63,41 @@ public class CashPaymentActivity extends AposBaseActivity implements
 	public CommonDialog placeDialog;
 
 	public SolfKeyBoardDialog solfKeyBoard;
-	
+
 	public CashPaymentContext cashPaymentContext;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		cashPaymentContext = TiFlowControlImpl.instanceControl().getFlowContextData(CashPaymentContext.class);
+		cashPaymentContext = TiFlowControlImpl.instanceControl()
+				.getFlowContextData(CashPaymentContext.class);
 		cashPaymentContext.setReceiptNo(TxnUtil.getReceipNo(getAppConfig()));
 	}
 
 	@Override
 	protected void onResumeProcess() {
-		if(cashPaymentContext.isInputAmtFlag() ){
-			topTitle.setText(StringConvertor.convert2Currency(cashPaymentContext
-					.getShoppingCart().getTotalAmt()));
+		if (cashPaymentContext.isInputAmtFlag()) {
+			topTitle.setText(StringConvertor
+					.convert2Currency(cashPaymentContext.getShoppingCart()
+							.getTotalAmt()));
 			DisplayMetrics metric = new DisplayMetrics();
 			Display display = getWindowManager().getDefaultDisplay();
 			display.getMetrics(metric);
 			solfKeyBoard = SolfKeyBoardDialog.instance(this, rootView,
 					metric.heightPixels
-							- Float.valueOf(330 * metric.density).intValue(), this);
+							- Float.valueOf(330 * metric.density).intValue(),
+					this);
 			solfKeyBoard.getHintImgeBtn().setVisibility(View.GONE);
 			solfKeyBoard.showKeyboard(amtEditText);
-		}else {
-			topTitle.setText(cashPaymentContext
-					.getShoppingCart().getItemsList().get(0).getProductName());
+		} else {
+			topTitle.setText(cashPaymentContext.getShoppingCart()
+					.getItemsList().get(0).getProductName());
 			amtEditText.setEnabled(false);
-			amtEditText.setText(StringConvertor.convert2Currency(cashPaymentContext
-					.getShoppingCart().getTotalAmt()));
+			amtEditText.setText(StringConvertor
+					.convert2Currency(cashPaymentContext.getShoppingCart()
+							.getTotalAmt()));
 		}
 
-	
 	}
 
 	public void sureClick() {
@@ -105,7 +108,7 @@ public class CashPaymentActivity extends AposBaseActivity implements
 	 * 现金支付
 	 */
 	public void cashPaySubmit() {
-	
+
 		PurchaseOrderForm form = new PurchaseOrderForm();
 		form.setPaymeneMethed(PaymentMethods.CASH);
 		form.setShoppingCart(cashPaymentContext.getShoppingCart());

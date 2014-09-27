@@ -13,16 +13,17 @@ import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.AbstractEventController;
 import me.andpay.timobileframework.mvc.form.FormBean;
 
-public class QRScanNextEventController extends AbstractEventController{
-	
+public class QRScanNextEventController extends AbstractEventController {
+
 	@Inject
 	private AposContext aposContext;
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
+
 		int cardreaderType = CardReaderTypes.NEW_LAND_BL;
-		SelectCardreaderEventController.setCardreadType(aposContext, cardreaderType, activity);
-		
+		SelectCardreaderEventController.setCardreadType(aposContext,
+				cardreaderType, activity);
+
 		aposContext.getAppConfig().setAttribute(
 				ConfigAttrNames.DEFAULT_BLUETOOTH_CONNECT_MODE,
 				BluetoothConnectMode.SCAN);

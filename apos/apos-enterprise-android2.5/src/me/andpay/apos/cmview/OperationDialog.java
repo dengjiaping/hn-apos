@@ -23,19 +23,15 @@ public class OperationDialog {
 	private Button sureButton = null;
 
 	private Button cancelButton = null;
-	
-
 
 	public OperationDialog(Context context, String title, String promptMsg) {
 		this(context, title, promptMsg, false);
 	}
-	
 
 	public OperationDialog(Context context, String title, String promptMsg,
 			boolean isSureleft) {
 		this(context, title, promptMsg, null, null, isSureleft);
 	}
-
 
 	public OperationDialog(Context context, String title, String promptMsg,
 			String sureButtonStr, String cancelButtonStr, boolean isSureleft) {
@@ -96,20 +92,18 @@ public class OperationDialog {
 	public Dialog getDialog() {
 		return this.dialog;
 	}
-	
+
 	public void setSureButtonName(String buttonName) {
 		sureButton.setText(buttonName);
 	}
-	
-	
+
 	public void setCancelButtonName(String buttonName) {
 		cancelButton.setText(buttonName);
-		
+
 	}
 
 	public void setCancelable(boolean flag) {
 		dialog.setCancelable(flag);
 	}
-	
-	
+
 }

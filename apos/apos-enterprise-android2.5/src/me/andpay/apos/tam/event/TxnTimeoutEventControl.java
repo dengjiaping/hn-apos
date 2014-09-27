@@ -40,20 +40,20 @@ public class TxnTimeoutEventControl extends AbstractEventController {
 			return;
 		}
 
-//		if (timeoutActivity.outButton.getId() == view.getId()) {
-//			TxnContext txnContext = txnControl.getTxnContext();
-//			if (TxnTypes.PURCHASE.endsWith(txnContext.getTxnType())) {
-//				purchaseTxnOut(timeoutActivity);
-//			} else {
-//				refundTxnOut(timeoutActivity);
-//			}
-//
-//			return;
-//		}
+		// if (timeoutActivity.outButton.getId() == view.getId()) {
+		// TxnContext txnContext = txnControl.getTxnContext();
+		// if (TxnTypes.PURCHASE.endsWith(txnContext.getTxnType())) {
+		// purchaseTxnOut(timeoutActivity);
+		// } else {
+		// refundTxnOut(timeoutActivity);
+		// }
+		//
+		// return;
+		// }
 	}
 
 	public void purchaseTxnOut(final TxnTimeoutActivity timeoutActivity) {
-		
+
 		final OperationDialog operationDialog = new OperationDialog(
 				timeoutActivity, "提示", "此交易将会在1-10个工作日退还到持卡人账户。");
 		operationDialog.setCancelButtonOnclickListener(new OnClickListener() {
@@ -70,10 +70,10 @@ public class TxnTimeoutEventControl extends AbstractEventController {
 				// 设置已完成一笔交易
 				timeoutActivity.getAppContext().setAttribute(
 						RuntimeAttrNames.NEXT_TXN, RuntimeAttrNames.NEXT_TXN);
-				
-				exceptionPayTxnInfoService.changeExceptionStatus(
-						txnContext.getTxnActionResponse().getTermTraceNo(),
-						txnContext.getTxnActionResponse().getTermTxnTime(),
+
+				exceptionPayTxnInfoService.changeExceptionStatus(txnContext
+						.getTxnActionResponse().getTermTraceNo(), txnContext
+						.getTxnActionResponse().getTermTxnTime(),
 						ExceptionPayTxnInfo.EXP_STATUS_WAIT_REVERSE);
 				txnReversalService.statrtReversal();
 
@@ -97,9 +97,9 @@ public class TxnTimeoutEventControl extends AbstractEventController {
 			public void onClick(View v) {
 				operationDialog.dismiss();
 				TxnContext txnContext = txnControl.getTxnContext();
-				exceptionPayTxnInfoService.removeExceptionTxn(
-						txnContext.getTxnActionResponse().getTermTraceNo(),
-						txnContext.getTxnActionResponse().getTermTxnTime());
+				exceptionPayTxnInfoService.removeExceptionTxn(txnContext
+						.getTxnActionResponse().getTermTraceNo(), txnContext
+						.getTxnActionResponse().getTermTxnTime());
 				txnControl.backHomePage(timeoutActivity);
 			}
 		});

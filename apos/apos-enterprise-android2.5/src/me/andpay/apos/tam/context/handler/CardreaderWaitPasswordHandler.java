@@ -19,8 +19,9 @@ public class CardreaderWaitPasswordHandler extends GenChangeStatusHander {
 	protected void changeUI(TxnControl txnControl) {
 		TxnAcitivty txnAcitivty = (TxnAcitivty) txnControl.getCurrActivity();
 		txnAcitivty.topTextView.setText("请输入密码");
-		
-		CardReaderManager.setCurrCallback(txnControl.getSwipCardReaderCallBack());
+
+		CardReaderManager.setCurrCallback(txnControl
+				.getSwipCardReaderCallBack());
 		CardReaderManager.startSwiper(AposCardReaderUtil.convertSwiperRequest(
 				txnControl.getTxnContext(), txnAcitivty.getAppConfig()));
 	}

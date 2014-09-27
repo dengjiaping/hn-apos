@@ -53,7 +53,7 @@ public class QueryExceptionPayTxnInfoCond extends Sorts {
 	@Expression
 	private String txnType;
 
-	@Expression(dataConverter=BigDecimalConverter.class)
+	@Expression(dataConverter = BigDecimalConverter.class)
 	private BigDecimal salesAmt;
 
 	@Expression
@@ -81,30 +81,29 @@ public class QueryExceptionPayTxnInfoCond extends Sorts {
 
 	@Expression
 	private String shortPan;
-	
-	
+
 	/**
 	 * 商户编号
 	 */
 	@Expression
 	private String merchantId;
-	
+
 	/**
 	 * 异常交易状态
 	 */
 	@Expression
 	private String expcetionStatus;
-	
+
 	/**
 	 * 异常交易状态
 	 */
-	@Expression(operater="in",paraName="expcetionStatus")
+	@Expression(operater = "in", paraName = "expcetionStatus")
 	private Set<String> expcetionStatuses;
 
-	
 	public Set<String> getExpcetionStatuses() {
 		return expcetionStatuses;
 	}
+
 	public void setExpcetionStatuses(Set<String> expcetionStatuses) {
 		this.expcetionStatuses = expcetionStatuses;
 	}
@@ -228,18 +227,21 @@ public class QueryExceptionPayTxnInfoCond extends Sorts {
 	public void setOperNo(String operNo) {
 		this.operNo = operNo;
 	}
+
 	public String getMerchantId() {
 		return merchantId;
 	}
+
 	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
+
 	public String getExpcetionStatus() {
 		return expcetionStatus;
 	}
+
 	public void setExpcetionStatus(String expcetionStatus) {
 		this.expcetionStatus = expcetionStatus;
 	}
 
-	
 }

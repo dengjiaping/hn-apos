@@ -23,7 +23,8 @@ public class SvcValidateCallbackImp implements SvcValidateCallback {
 		SvcDepositeContext dContext = activity
 				.getFlowContextData(SvcDepositeContext.class);
 		dContext.setCardNo(response.getCardNo());
-		dContext.setDepositCtrls(activity.getApplication(), response.getDepositCtrls());
+		dContext.setDepositCtrls(activity.getApplication(),
+				response.getDepositCtrls());
 		dContext.setCardType(response.getCardType());
 		dContext.setCardName(response.getCardName());
 		dContext.setBalance(response.getBalance());

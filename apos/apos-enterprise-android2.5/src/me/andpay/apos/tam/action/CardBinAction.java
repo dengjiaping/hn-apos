@@ -19,8 +19,8 @@ import android.util.Log;
 
 import com.google.inject.Inject;
 
-@ActionMapping(domain="/tam/cardbin.action")
-public class CardBinAction extends SessionKeepAction{
+@ActionMapping(domain = "/tam/cardbin.action")
+public class CardBinAction extends SessionKeepAction {
 
 	public final static String DOMAIN_NAME = "/tam/cardbin.action";
 	public final static String ACTION_NAME_PARSE = "parseBin";
@@ -47,12 +47,12 @@ public class CardBinAction extends SessionKeepAction{
 
 		try {
 			parseResponse = cardBindService.parseCardBin(parseRequest);
-			if(StringUtil.isBlank(parseResponse.getCardAssoc())) {
+			if (StringUtil.isBlank(parseResponse.getCardAssoc())) {
 				parseResponse.setCardAssoc("UP");
 			}
 			callback.dealSuccess(parseResponse);
-			
-		}catch (Throwable ex) {
+
+		} catch (Throwable ex) {
 			Log.e(this.getClass().getName(), "system error", ex);
 			callback.dealFailed(ErrorMsgUtil.parseError(application, ex,
 					ResourceUtil.getString(application,

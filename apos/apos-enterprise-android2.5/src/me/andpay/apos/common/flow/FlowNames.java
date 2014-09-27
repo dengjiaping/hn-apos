@@ -7,7 +7,7 @@ package me.andpay.apos.common.flow;
  * 
  */
 public class FlowNames {
-	
+
 	/**
 	 * 交易流程
 	 */
@@ -33,9 +33,9 @@ public class FlowNames {
 	/**
 	 * 开卡流程
 	 */
-	
+
 	public final static String VAS_OPEN_CARD_FLOW = "vas_open_card_flow";
-	
+
 	/**
 	 * 余额查询流程
 	 */
@@ -69,7 +69,7 @@ public class FlowNames {
 	 * 订单支付流程
 	 */
 	public final static String MOPM_MERCHANT_ORDER_PAY_FLOW = "mopm_merchant_order_pay_flow";
-	
+
 	/**
 	 * 交易恢复流程
 	 */
@@ -78,21 +78,20 @@ public class FlowNames {
 	 * 售卡流程
 	 */
 	public final static String VAS_PRODUCT_SALES_CARD_FLOW = "vas_product_sales_card_flow";
-	
+
 	/**
 	 * 订单支付流程
 	 */
 	public final static String OPM_TXN_FLOW = "opm_txn_flow";
-	
+
 	/**
 	 * 签名流程
 	 */
 	public final static String COM_SIGN_FLOW = "com_sign_flow";
-	
+
 	/**
 	 * 读卡器设置流程
 	 */
 	public final static String SCM_CARDREADER_SET_FLOW = "scm_cardreader_set_flow";
-	
-	
+
 }

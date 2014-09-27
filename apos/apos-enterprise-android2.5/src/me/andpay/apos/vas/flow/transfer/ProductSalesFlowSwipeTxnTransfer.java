@@ -23,22 +23,25 @@ public class ProductSalesFlowSwipeTxnTransfer implements TiFlowNodeDataTransfer 
 	public Map<String, String> transfterData(Activity activity,
 			Map<String, String> data, TiFlowNodeComplete complete,
 			Map<String, Serializable> subFlowContext) {
-		
-		//设置支付方式
-		TiFlowControlImpl.instanceControl().getFlowContextData(ProductSalesContext.class).setPaymeneMethed(PaymentMethods.SWIPING);
-		
-		TiActivity tiActivity = (TiActivity)activity;
-		TxnControl txnControl = RoboGuiceUtil
-				.getInjectObject(TxnControl.class,
-						activity.getApplicationContext());
-		
-		ProductSalesContext productSalesContext = TiFlowControlImpl.instanceControl().getFlowContextData(ProductSalesContext.class);
-		
+
+		// 设置支付方式
+		TiFlowControlImpl.instanceControl()
+				.getFlowContextData(ProductSalesContext.class)
+				.setPaymeneMethed(PaymentMethods.SWIPING);
+
+		TiActivity tiActivity = (TiActivity) activity;
+		TxnControl txnControl = RoboGuiceUtil.getInjectObject(TxnControl.class,
+				activity.getApplicationContext());
+
+		ProductSalesContext productSalesContext = TiFlowControlImpl
+				.instanceControl()
+				.getFlowContextData(ProductSalesContext.class);
+
 		TxnContext txnContext = new TxnContext();
 		TiFlowControlImpl.instanceControl().setFlowContextData(txnContext);
-		
+
 		ShoppingCart shoppingCart = productSalesContext.getShoppingCart();
-	
+
 		txnControl.init();
 		txnControl.setCurrActivity(tiActivity);
 		txnControl.setTxnCallback(new TxnCallbackImpl());
@@ -52,6 +55,5 @@ public class ProductSalesFlowSwipeTxnTransfer implements TiFlowNodeDataTransfer 
 		txnContext.setShoppingCart(shoppingCart);
 		return null;
 	}
-
 
 }

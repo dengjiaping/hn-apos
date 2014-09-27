@@ -127,21 +127,23 @@ public class TamModule extends TiMobileModule {
 		bind(TxnProcessorFactory.class).in(Scopes.SINGLETON);
 		TxnProcessorFactory.registerProcessor(TxnTypes.PURCHASE,
 				SupportCloudPosPurchaseProcessor.class);
-		TxnProcessorFactory.registerProcessor(TxnTypes.REFUND, RefundProcessor.class);
+		TxnProcessorFactory.registerProcessor(TxnTypes.REFUND,
+				RefundProcessor.class);
 
 		TxnProcessorFactory.registerProcessor(TxnTypes.INQUIRY_BALANCE,
 				CardBalanceProcessor.class);
 
 		requestInjection(PayTxnDaoProvider.class);
-		bind(PayTxnInfoDao.class).toProvider(PayTxnDaoProvider.class)
-				.in(Scopes.SINGLETON);
+		bind(PayTxnInfoDao.class).toProvider(PayTxnDaoProvider.class).in(
+				Scopes.SINGLETON);
 		requestInjection(ExceptionPayTxnDaoProvider.class);
-		bind(ExceptionPayTxnInfoDao.class).toProvider(ExceptionPayTxnDaoProvider.class)
-				.asEagerSingleton();
+		bind(ExceptionPayTxnInfoDao.class).toProvider(
+				ExceptionPayTxnDaoProvider.class).asEagerSingleton();
 
 	}
 
-	private void bindStatusHandler(Class<? extends GenChangeStatusHander> handlerClass) {
+	private void bindStatusHandler(
+			Class<? extends GenChangeStatusHander> handlerClass) {
 		try {
 			GenChangeStatusHander handler = handlerClass.newInstance();
 			HandlerStatus handlerStatus = handler.getClass().getAnnotation(

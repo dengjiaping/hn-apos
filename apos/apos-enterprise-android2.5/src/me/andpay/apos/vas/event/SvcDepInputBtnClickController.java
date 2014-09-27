@@ -15,6 +15,7 @@ import android.view.View;
 
 /**
  * 提交卡号验证
+ * 
  * @author tinyliu
  *
  */
@@ -26,10 +27,10 @@ public class SvcDepInputBtnClickController extends AbstractEventController {
 
 	public void submit(SvcDepositeCardInputActivity activity) {
 
-		//String cardNo = "9600000700000057";
+		// String cardNo = "9600000700000057";
 		String cardNo = (String) activity.cardNo.getWidgetValue();
-		//String repeatCardNo = (String) activity.cardNo.getWidgetValue();
-		if (StringUtil.isEmpty(cardNo) ) {
+		// String repeatCardNo = (String) activity.cardNo.getWidgetValue();
+		if (StringUtil.isEmpty(cardNo)) {
 			activity.alertErrorMsg(ResourceUtil.getString(activity,
 					R.string.vas_user_opencard_validate_null_str));
 			return;

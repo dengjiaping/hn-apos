@@ -19,14 +19,14 @@ public class FillSignController extends AbstractEventController {
 		TxnDetailActivity txnDetailActivity = (TxnDetailActivity) refActivty;
 		PayTxnInfo payTxnInfo = txnDetailActivity.getTxnInfo();
 
-		TiFlowControlImpl.instanceControl()
-				.startFlow(refActivty, FlowNames.COM_SIGN_FLOW);
+		TiFlowControlImpl.instanceControl().startFlow(refActivty,
+				FlowNames.COM_SIGN_FLOW);
 
 		SignContext signContext = new SignContext();
 		signContext.setAmtTextColor(refActivty.getResources().getColor(
 				R.color.tqm_list_item_amount_col));
-		signContext
-				.setShowAmt(StringConvertor.convert2Currency(payTxnInfo.getSalesAmt()));
+		signContext.setShowAmt(StringConvertor.convert2Currency(payTxnInfo
+				.getSalesAmt()));
 		signContext.setTermTraceNo(payTxnInfo.getTermTraceNo());
 		signContext.setTermTxnTime(payTxnInfo.getTermTxnTime());
 		signContext.setShowBackBtn(true);

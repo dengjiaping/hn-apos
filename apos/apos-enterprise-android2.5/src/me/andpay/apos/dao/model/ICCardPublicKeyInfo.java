@@ -99,7 +99,5 @@ public class ICCardPublicKeyInfo {
 	public void setIndexText(String indexText) {
 		this.indexText = indexText;
 	}
-	
-	
 
 }

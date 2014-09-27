@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/lft_serve_home_top_layout"
+        style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/ms_settlement_deatail_str" />
+
+        <ImageView
+            android:id="@+id/ms_settlement_deatail_back"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/ms_settlement_deatail_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@color/com_no_color"
+        android:divider="@drawable/scm_solid_line_img"
+        android:dividerHeight="1dip"
+        android:listSelector="@color/com_no_color" >
+    </ListView>
+
+</LinearLayout>

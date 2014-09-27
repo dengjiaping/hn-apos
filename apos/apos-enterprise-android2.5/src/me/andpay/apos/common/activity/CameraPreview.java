@@ -41,8 +41,8 @@ public class CameraPreview extends SurfaceView implements
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		// empty. Take care of releasing the Camera preview in your activity.
 		mCamera.stopPreview();
-//		mCamera.release();
-		
+		// mCamera.release();
+
 	}
 
 	@SuppressWarnings("deprecation")
@@ -51,12 +51,12 @@ public class CameraPreview extends SurfaceView implements
 
 		try {
 			Camera.Parameters parameters = mCamera.getParameters();
-//			setParamters(parameters);
-//			parameters.setPictureFormat(PixelFormat.JPEG);
-//			List<Size> sizes = parameters.getSupportedPreviewSizes();
-//			Size optimalSize = getBestPreviewSize(width, height, sizes);
-//			parameters.setPreviewSize(optimalSize.width, optimalSize.height);
-//			parameters.setPictureSize(optimalSize.width, optimalSize.height);
+			// setParamters(parameters);
+			// parameters.setPictureFormat(PixelFormat.JPEG);
+			// List<Size> sizes = parameters.getSupportedPreviewSizes();
+			// Size optimalSize = getBestPreviewSize(width, height, sizes);
+			// parameters.setPreviewSize(optimalSize.width, optimalSize.height);
+			// parameters.setPictureSize(optimalSize.width, optimalSize.height);
 			mCamera.setParameters(parameters);
 		} catch (Exception e) {
 			Camera.Parameters parameters = mCamera.getParameters();

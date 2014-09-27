@@ -28,17 +28,19 @@ import com.google.inject.Inject;
  */
 @ContentView(R.layout.lft_electricity_deatail)
 public class ElectricityDeatailActivity extends AposBaseActivity {
-	@EventDelegate(type=DelegateType.method,toMethod="back",delegateClass=OnClickListener.class)
+	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.lft_electricity_deatail_back)
 	private ImageView back;// 返回
 
 	@InjectView(R.id.lft_electricity_deatail_listview)
 	private ListView listView;// 列表
-	
-	@Inject BaseAdapter<ElectricityOrder> adapter;
-	
-	@Inject ElectricityOrderController controller;
-	
+
+	@Inject
+	BaseAdapter<ElectricityOrder> adapter;
+
+	@Inject
+	ElectricityOrderController controller;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -47,24 +49,23 @@ public class ElectricityDeatailActivity extends AposBaseActivity {
 		adapter.setList(getList());
 		adapter.setController(controller);
 		listView.setAdapter(adapter);
-		
-		
-		
+
 	}
-	private ArrayList<ElectricityOrder> getList(){
+
+	private ArrayList<ElectricityOrder> getList() {
 		ArrayList<ElectricityOrder> list = new ArrayList<ElectricityOrder>();
-		for(int i=0;i<10;i++){
+		for (int i = 0; i < 10; i++) {
 			ElectricityOrder order = new ElectricityOrder();
-			order.setTime(i+1+"月");
-			order.setOweCost(100+i+"");
-			order.setBreachCost(150+i+"");
-			order.setShouldbeCost(200+i+"");
+			order.setTime(i + 1 + "月");
+			order.setOweCost(100 + i + "");
+			order.setBreachCost(150 + i + "");
+			order.setShouldbeCost(200 + i + "");
 			list.add(order);
 		}
 		return list;
 	}
-	
-	public void back(View v){
+
+	public void back(View v) {
 		TiFlowControlImpl.instanceControl().previousSetup(this);
 	}
 }

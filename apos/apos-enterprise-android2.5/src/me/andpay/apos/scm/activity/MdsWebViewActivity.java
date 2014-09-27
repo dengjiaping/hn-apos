@@ -18,11 +18,11 @@ public class MdsWebViewActivity extends AposBaseActivity {
 
 	@InjectView(R.id.scm_mds_webview)
 	public WebView mdsWebView;
-	
+
 	@InjectView(R.id.scm_top_back_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = WebviewBackClickController.class)
 	public ImageView backButton;
-	
+
 	@InjectView(R.id.scm_webview_back)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = WebviewClickController.class)
 	public ImageView webBackButton;
@@ -46,23 +46,23 @@ public class MdsWebViewActivity extends AposBaseActivity {
 				view.loadUrl(url);
 				return false;
 			}
+
 			@Override
-			public void onPageFinished (WebView view, String url) {
-				
-				if(view.canGoBack()) {
+			public void onPageFinished(WebView view, String url) {
+
+				if (view.canGoBack()) {
 					webBackButton.setEnabled(true);
-				}else {
+				} else {
 					webBackButton.setEnabled(false);
 				}
-				if(view.canGoForward()) {
+				if (view.canGoForward()) {
 					webForwardButton.setEnabled(true);
-				}else {
+				} else {
 					webForwardButton.setEnabled(false);
 				}
 			}
-			
+
 		});
-		
 
 	}
 

@@ -6,7 +6,7 @@ import android.app.Activity;
 import android.view.View;
 
 public class BackBtnOnclickController extends AbstractEventController {
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
 		activity.finish();
 	}

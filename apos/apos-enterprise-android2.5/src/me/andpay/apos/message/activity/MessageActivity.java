@@ -31,19 +31,19 @@ import com.google.inject.Inject;
  */
 @ContentView(R.layout.msg_message_home)
 public class MessageActivity extends AposBaseActivity {
-	@EventDelegate(type=DelegateType.method,toMethod="backMenu",delegateClass=OnClickListener.class)
+	@EventDelegate(type = DelegateType.method, toMethod = "backMenu", delegateClass = OnClickListener.class)
 	@InjectView(R.id.msg_home_show_silder_btn)
-	private ImageView menu;//返回主菜单
-	
+	private ImageView menu;// 返回主菜单
+
 	@InjectView(R.id.msg_message_home_listview)
-	private ListView listview;//通知列表
-	
-	
-	@Inject BaseAdapter<Message> adapter;//适配器
-	
-	@Inject MessageAdapterController controller;//控制器
-	
-	
+	private ListView listview;// 通知列表
+
+	@Inject
+	BaseAdapter<Message> adapter;// 适配器
+
+	@Inject
+	MessageAdapterController controller;// 控制器
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -51,45 +51,50 @@ public class MessageActivity extends AposBaseActivity {
 		adapter.setContext(this);
 		adapter.setList(getList());
 		adapter.setAdpterEventListener(new AdpterEventListener() {
-			
+
 			public boolean onEventListener(Object... objects) {
 				// TODO Auto-generated method stub
-				lookMessageDeatail((Message)objects[0]);
+				lookMessageDeatail((Message) objects[0]);
 				return false;
 			}
 		});
 		adapter.setController(controller);
 		listview.setAdapter(adapter);
-		
+
 	}
+
 	/**
 	 * 查看详情
+	 * 
 	 * @param msg
 	 */
-	private void lookMessageDeatail(Message msg){
-		
-		TiFlowControlImpl.instanceControl().startFlow(this,FlowNames.MSG_LOOK_MESSAGE);
-		TiFlowControlImpl.instanceControl().getFlowContext().put(Message.class.getName(),msg);
+	private void lookMessageDeatail(Message msg) {
+
+		TiFlowControlImpl.instanceControl().startFlow(this,
+				FlowNames.MSG_LOOK_MESSAGE);
+		TiFlowControlImpl.instanceControl().getFlowContext()
+				.put(Message.class.getName(), msg);
 	}
-	private ArrayList<Message> getList(){
+
+	private ArrayList<Message> getList() {
 		ArrayList<Message> list = new ArrayList<Message>();
-		for(int i=0;i<10;i++){
+		for (int i = 0; i < 10; i++) {
 			Message msg = new Message();
 			msg.setTitle("开会了");
 			msg.setTime("2014-02-17");
-			msg.setId(i+"");
-			if(i%2==0){
+			msg.setId(i + "");
+			if (i % 2 == 0) {
 				msg.setReader(true);
-			}else{
+			} else {
 				msg.setReader(false);
 			}
 			list.add(msg);
 		}
 		return list;
 	}
-	
-	public void backMenu(View v){
-		HomePageActivity hp  =  (HomePageActivity)this.getParent();
+
+	public void backMenu(View v) {
+		HomePageActivity hp = (HomePageActivity) this.getParent();
 		hp.showSlider();
 	}
 }

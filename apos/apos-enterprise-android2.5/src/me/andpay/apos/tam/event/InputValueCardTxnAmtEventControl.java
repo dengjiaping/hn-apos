@@ -30,16 +30,16 @@ public class InputValueCardTxnAmtEventControl extends AbstractEventController {
 
 		final InputValueCardTxnAmtActivity purAc = (InputValueCardTxnAmtActivity) activity;
 		if (!hasFocus) {
-			//((PurchaseFirstActivity) activity).solfKeyBoard.hideKeyboard();
+			// ((PurchaseFirstActivity) activity).solfKeyBoard.hideKeyboard();
 		} else {
 			showKeyBoard(purAc);
 
 		}
 		return true;
 	}
-	
+
 	private void showKeyBoard(InputValueCardTxnAmtActivity purAc) {
-		
+
 		InputMethodManager im = ((InputMethodManager) purAc
 				.getSystemService(Context.INPUT_METHOD_SERVICE));
 		im.hideSoftInputFromWindow(purAc.amtEditText.getWindowToken(), 0);

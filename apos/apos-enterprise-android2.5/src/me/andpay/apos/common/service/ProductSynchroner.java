@@ -64,14 +64,14 @@ public class ProductSynchroner {
 			return;
 		}
 
-
 		try {
-			
+
 			TiContext tiContext = ((TiApplication) application)
 					.getContextProvider().provider(
 							TiContext.CONTEXT_SCOPE_APPLICATION);
-			TiContext tiConfig = ((TiApplication) application).getContextProvider()
-					.provider(TiContext.CONTEXT_SCOPE_APPLICATION_CONFIG);
+			TiContext tiConfig = ((TiApplication) application)
+					.getContextProvider().provider(
+							TiContext.CONTEXT_SCOPE_APPLICATION_CONFIG);
 			PartyInfo party = (PartyInfo) tiContext
 					.getAttribute(RuntimeAttrNames.PARTY_INFO);
 			if (party == null) {
@@ -114,7 +114,7 @@ public class ProductSynchroner {
 					|| e instanceof NetworkErrorException) {
 				return;
 			}
-//			throwReporter.submitError(e);
+			// throwReporter.submitError(e);
 		}
 	}
 

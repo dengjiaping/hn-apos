@@ -10,14 +10,13 @@ import com.google.inject.Inject;
 
 @ActionMapping(domain = "/common/upload.action")
 public class UploadAction extends MultiAction {
-	
+
 	@Inject
 	private UpLoadFileServce upLoadFileServce;
 
 	public ModelAndView synchroUpload(ActionRequest request)
 			throws RuntimeException {
 
-		
 		return null;
 	}
 }

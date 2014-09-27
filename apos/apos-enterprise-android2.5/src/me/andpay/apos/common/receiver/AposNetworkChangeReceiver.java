@@ -33,21 +33,20 @@ public class AposNetworkChangeReceiver extends BroadcastReceiver {
 
 	@Inject
 	public TxnReversalService txnReversalService;
-	
+
 	@Inject
 	public TxnConfirmService txnConfirmService;
-	
-	//@Inject
-	//AposReportPersistenceThrowService throwService;
+
+	// @Inject
+	// AposReportPersistenceThrowService throwService;
 
 	@Inject
 	public TiRpcClient tiRpcClient;
 
-
 	@Override
 	public void onReceive(Context context, Intent intent) {
-//		
-		if(CommonProvider.BROADCAST_CLOSEAPP_ACTION.equals(intent.getAction())) {
+		//
+		if (CommonProvider.BROADCAST_CLOSEAPP_ACTION.equals(intent.getAction())) {
 			Intent intentDate = new Intent();
 			intentDate.setAction(CommonProvider.COM_FIRSTPAGE_ACTIVITY);
 			TiAndroidRuntimeInfo.getCurrentActivity().startActivity(intentDate);
@@ -57,14 +56,12 @@ public class AposNetworkChangeReceiver extends BroadcastReceiver {
 
 		if (NetWorkUtil.isNetworkConnected(context)) {
 			upLoadFileServce.uploadFile();
-			txnConfirmService.sendConfirmTxn();		
+			txnConfirmService.sendConfirmTxn();
 		} else {
-//			tiRpcClient.pause();
+			// tiRpcClient.pause();
 		}
 
 	}
-	
-	
 
 	public void register(Context context) {
 		if (register) {

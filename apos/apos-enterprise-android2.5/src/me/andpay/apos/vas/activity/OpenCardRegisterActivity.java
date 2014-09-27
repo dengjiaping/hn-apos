@@ -84,7 +84,7 @@ public class OpenCardRegisterActivity extends AposBaseActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		typesSpinner.setAdadter(new IdTypeSipinnerAdapter(
 				IdTypeSpinnerItemFactory.getItems(), this));
 		typesSpinner.selectItem(0);
@@ -94,8 +94,9 @@ public class OpenCardRegisterActivity extends AposBaseActivity implements
 	protected void onResumeProcess() {
 		openCardContext = IntentDataConvert.getActivityContext(
 				OpenCardContext.class, getIntent());
-	
-		backBtn.setVisibility(openCardContext.isBack() ? View.VISIBLE : View.GONE);
+
+		backBtn.setVisibility(openCardContext.isBack() ? View.VISIBLE
+				: View.GONE);
 		String productType = openCardContext.getProductType();
 		if (ShopProductTypes.E_SVC.equals(productType)) {
 			holderPhone.setHint(R.string.vas_tel_no_must_str);

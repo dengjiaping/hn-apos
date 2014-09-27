@@ -26,22 +26,18 @@ public class ProductSalesContext implements Serializable {
 	 * 支付方式
 	 */
 	private String paymeneMethed;
-	
-	
+
 	private ShoppingCart shoppingCart;
-	
-	
+
 	/**
 	 * 销售票据号
 	 */
 	private String receiptNo;
-	
+
 	/**
 	 * 支付编号
 	 */
 	private String paymentTxnId;
-	
-	
 
 	public PurchaseOrder getPurchaseOrder() {
 		return purchaseOrder;
@@ -50,7 +46,6 @@ public class ProductSalesContext implements Serializable {
 	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
 		this.purchaseOrder = purchaseOrder;
 	}
-
 
 	public String getPaymeneMethed() {
 		return paymeneMethed;
@@ -83,6 +78,5 @@ public class ProductSalesContext implements Serializable {
 	public void setPaymentTxnId(String paymentTxnId) {
 		this.paymentTxnId = paymentTxnId;
 	}
-
 
 }

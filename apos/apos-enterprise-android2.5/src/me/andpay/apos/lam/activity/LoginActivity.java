@@ -244,7 +244,7 @@ public class LoginActivity extends TiActivity implements ValueContainer {
 				inActivity.finish();
 				android.os.Process.killProcess(android.os.Process.myPid());
 				System.exit(0);
-				
+
 			}
 		});
 
@@ -278,7 +278,7 @@ public class LoginActivity extends TiActivity implements ValueContainer {
 		loginDialog.setCancelable(false);
 		loginDialog.show();
 
-		if (OrderPayUtil.isOrderPay(getAppContext())){
+		if (OrderPayUtil.isOrderPay(getAppContext())) {
 			request.callBack(new MOPMLoginCallbackImpl((this)));
 		} else {
 			request.callBack(new LoginCallbackImpl((this)));

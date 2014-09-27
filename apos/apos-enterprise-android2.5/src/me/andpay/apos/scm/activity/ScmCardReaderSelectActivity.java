@@ -55,18 +55,18 @@ public class ScmCardReaderSelectActivity extends AposBaseActivity {
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = SelectCardreaderEventController.class)
 	public Button sixBt;
 
-
 	public Map<String, View> cardreaderTypeLays = new HashMap<String, View>();
 
 	@InjectView(R.id.com_back_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = FinishFlowController.class)
 	public ImageView backButton;
 
-//	@InjectView(R.id.com_skip_btn)
-//	@EventDelegate(delegateClass = OnClickListener.class, toEventController = CardReaderSetSkipController.class)
-//	public Button skipButton;
-	
-//	
+	// @InjectView(R.id.com_skip_btn)
+	// @EventDelegate(delegateClass = OnClickListener.class, toEventController =
+	// CardReaderSetSkipController.class)
+	// public Button skipButton;
+
+	//
 
 	private CardReaderSetContext cardReaderSetContext;
 
@@ -76,9 +76,10 @@ public class ScmCardReaderSelectActivity extends AposBaseActivity {
 
 	}
 
-//	@Override@InjectView(R.id.scm_qr_scan_btn)
-//	@EventDelegate(delegateClass = OnClickListener.class, toEventController = QRScanNextEventController.class)
-//	public ImageView qrScanButton;
+	// @Override@InjectView(R.id.scm_qr_scan_btn)
+	// @EventDelegate(delegateClass = OnClickListener.class, toEventController =
+	// QRScanNextEventController.class)
+	// public ImageView qrScanButton;
 	@Override
 	protected void onResumeProcess() {
 		super.onResumeProcess();
@@ -97,18 +98,19 @@ public class ScmCardReaderSelectActivity extends AposBaseActivity {
 		} else {
 			backButton.setVisibility(View.GONE);
 		}
-		
-		cardReaderSetContext.getOpLogData().put(OperationDataKeys.OPKEYS_IS_GUIDE, String.valueOf(true));
 
-//		if (cardReaderSetContext.isShowSkipButton()) {
-//			skipButton.setVisibility(View.VISIBLE);
-//		} else {
-//			skipButton.setVisibility(View.GONE);
-//		}
-			
-		//暂时不要动态显示
-//		resizeLayout();
-//		setCardReaderTypeButton();
+		cardReaderSetContext.getOpLogData().put(
+				OperationDataKeys.OPKEYS_IS_GUIDE, String.valueOf(true));
+
+		// if (cardReaderSetContext.isShowSkipButton()) {
+		// skipButton.setVisibility(View.VISIBLE);
+		// } else {
+		// skipButton.setVisibility(View.GONE);
+		// }
+
+		// 暂时不要动态显示
+		// resizeLayout();
+		// setCardReaderTypeButton();
 	}
 
 	private void setCardReaderTypeButton() {
@@ -132,7 +134,7 @@ public class ScmCardReaderSelectActivity extends AposBaseActivity {
 		} else {
 			msrTypes.clear();
 		}
-	
+
 	}
 
 	private void resizeLayout() {
@@ -140,7 +142,7 @@ public class ScmCardReaderSelectActivity extends AposBaseActivity {
 		int width = Float.valueOf(
 				displayMetrics.widthPixels - 26 * displayMetrics.density)
 				.intValue();
-		
+
 		setButtonSize(oneBt, width, displayMetrics);
 		setButtonSize(twoBt, width, displayMetrics);
 		setButtonSize(threeBt, width, displayMetrics);
@@ -156,8 +158,6 @@ public class ScmCardReaderSelectActivity extends AposBaseActivity {
 		sixBt.setBackgroundResource(R.drawable.scm_button_cardreader_selector);
 
 	}
-
-
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -181,10 +181,11 @@ public class ScmCardReaderSelectActivity extends AposBaseActivity {
 
 	}
 
-//	public void setViewSize(View view, int width, DisplayMetrics displayMetrics) {
-//		LayoutParams layoutParams = new LayoutParams();
-//		layoutParams.width = width / 4;
-//		view.setLayoutParams(layoutParams);
-//	}
+	// public void setViewSize(View view, int width, DisplayMetrics
+	// displayMetrics) {
+	// LayoutParams layoutParams = new LayoutParams();
+	// layoutParams.width = width / 4;
+	// view.setLayoutParams(layoutParams);
+	// }
 
 }

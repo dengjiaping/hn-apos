@@ -80,24 +80,26 @@ public class UpdateCoupanCallbackImpl extends AfterProcessWithErrorHandler {
 				couponListActivity.couponListAdapter.addValue(
 						infos.get(infos.size() - i), true);
 			} else {
-				couponListActivity.couponListAdapter.addValue(infos.get(i - 1), false);
+				couponListActivity.couponListAdapter.addValue(infos.get(i - 1),
+						false);
 			}
 		}
 	}
 
 	public void showError() {
-		ToastTools.topToast(couponListActivity,
-				ResourceUtil.getString(couponListActivity, R.string.com_net_error_str),
+		ToastTools.topToast(couponListActivity, ResourceUtil.getString(
+				couponListActivity, R.string.com_net_error_str),
 				ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
 	private void showPrompt(int size) {
-		String str = size == 0 ? couponListActivity.getApplicationContext().getString(
-				R.string.tqrm_coupon_list_no_refresh_str) : String.format(
-				couponListActivity.getApplicationContext().getString(
+		String str = size == 0 ? couponListActivity.getApplicationContext()
+				.getString(R.string.tqrm_coupon_list_no_refresh_str) : String
+				.format(couponListActivity.getApplicationContext().getString(
 						R.string.tqrm_coupon_list_refresh_str), size);
 
-		ToastTools.topToast(couponListActivity, str, ToastTools.LIST_VIEW_TOAST_HEIGHT);
+		ToastTools.topToast(couponListActivity, str,
+				ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
 	@Override

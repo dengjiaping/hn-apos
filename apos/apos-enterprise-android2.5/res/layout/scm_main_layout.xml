@@ -175,7 +175,7 @@
                 <ImageView
                     android:id="@+id/scm_cardread_icon_img"
                     style="@style/scm_image_icon_style"
-                    android:background="@drawable/com_icon_about_img" />
+                    android:background="@drawable/app" />
 
                 <TextView
                     style="@style/scm_text_style"

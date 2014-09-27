@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/com_native_top_style" >
+
+        <TextView
+            style="@style/com_top_text_style"
+            android:text="@string/mmaking_home_title_str" />
+
+        <ImageView
+            android:id="@+id/merchants_making_back"
+            style="@style/com_slider_button_style" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/merchants_making_coupons_layout"
+        style="@style/scm_layout_style" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dip"
+            android:text="持卡人领用优惠券"
+            android:textColor="#666666"
+            android:textSize="15sp" />
+
+        <ImageView
+            style="@style/scm_right_icon_style"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+
+</LinearLayout>

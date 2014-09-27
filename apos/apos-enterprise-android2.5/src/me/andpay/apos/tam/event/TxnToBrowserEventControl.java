@@ -1,6 +1,5 @@
 package me.andpay.apos.tam.event;
 
-
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.context.TxnStatus;
 import me.andpay.timobileframework.flow.activity.TiFlowActivity;
@@ -11,14 +10,14 @@ import android.view.View;
 
 import com.google.inject.Inject;
 
-public class TxnToBrowserEventControl  extends AbstractEventController  {
-	
-	
+public class TxnToBrowserEventControl extends AbstractEventController {
+
 	@Inject
 	public TxnControl txnControl;
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
-		txnControl.changeTxnStatus(TxnStatus.WAIT_BROWSER_PHONENO, (TiFlowActivity)activity);
+
+		txnControl.changeTxnStatus(TxnStatus.WAIT_BROWSER_PHONENO,
+				(TiFlowActivity) activity);
 	}
 }

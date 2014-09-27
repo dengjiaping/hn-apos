@@ -21,7 +21,7 @@ public class TextWatcherController extends AbstractEventController {
 
 	public void onTextChanged(Activity activity, FormBean formBean,
 			CharSequence s, int start, int before, int count) {
-		
+
 		SettleInfoSendActivity postActivity = (SettleInfoSendActivity) activity;
 
 		if (postActivity.phoneEditText.length() > 0

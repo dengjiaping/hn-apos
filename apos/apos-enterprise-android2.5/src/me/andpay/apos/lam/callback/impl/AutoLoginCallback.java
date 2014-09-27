@@ -41,12 +41,11 @@ public class AutoLoginCallback implements LoginCallback {
 			if (LoginCallBackHelper.passwordExpire(response, activity)) {
 				return;
 			}
-			
-		
 
 		} catch (Exception e) {
 			Log.e("loginError", "login callback error!", e);
-			loginFaild(ResourceUtil.getString(activity, R.string.tam_syserror_str));
+			loginFaild(ResourceUtil.getString(activity,
+					R.string.tam_syserror_str));
 			return;
 		}
 		// 直接进入主页
@@ -54,11 +53,12 @@ public class AutoLoginCallback implements LoginCallback {
 	}
 
 	public void loginFaild(String errorMsg) {
-		if(activity.isFinishing()) {
+		if (activity.isFinishing()) {
 			return;
 		}
 		final PromptDialog promptDialog = new PromptDialog(activity,
-				ResourceUtil.getString(activity, R.string.lam_login_faild_str), errorMsg);
+				ResourceUtil.getString(activity, R.string.lam_login_faild_str),
+				errorMsg);
 		promptDialog.setSureButtonOnclickListener(new OnClickListener() {
 			public void onClick(View v) {
 				promptDialog.dismiss();
@@ -76,8 +76,9 @@ public class AutoLoginCallback implements LoginCallback {
 
 	public void updateApp(String errorCode) {
 		// 失败对话框
-		final PromptDialog dialog = new PromptDialog(this.activity, this.activity
-				.getResources().getString(R.string.lam_login_faild_str), errorCode);
+		final PromptDialog dialog = new PromptDialog(this.activity,
+				this.activity.getResources().getString(
+						R.string.lam_login_faild_str), errorCode);
 
 		dialog.setSureButtonOnclickListener(new OnClickListener() {
 
@@ -105,7 +106,7 @@ public class AutoLoginCallback implements LoginCallback {
 			super(activity, manager);
 			this.activity = activity;
 		}
-		
+
 		@Override
 		public void processThrowable(ThrowableInfo info) {
 			dialogUpdate.cancel();
@@ -113,10 +114,12 @@ public class AutoLoginCallback implements LoginCallback {
 		}
 
 		@Override
-		public void checkUpdateCompleted(Boolean hasUpdate, CharSequence updateInfo) {
+		public void checkUpdateCompleted(Boolean hasUpdate,
+				CharSequence updateInfo) {
 			dialogUpdate.cancel();
 			if (!hasUpdate) {
-				PromptDialog pDialog = new PromptDialog(activity, null, "当前版本为测试版本,请等待此版本开通再使用。");
+				PromptDialog pDialog = new PromptDialog(activity, null,
+						"当前版本为测试版本,请等待此版本开通再使用。");
 				pDialog.setCancelable(false);
 				pDialog.setButtonText("点击退出应用");
 				pDialog.show();
@@ -132,7 +135,8 @@ public class AutoLoginCallback implements LoginCallback {
 				return;
 			}
 
-			final Dialog dialog = new Dialog(activity, R.style.Theme_dialog_style);
+			final Dialog dialog = new Dialog(activity,
+					R.style.Theme_dialog_style);
 			dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 			dialog.setContentView(R.layout.com_update_dialog_layout);
 
@@ -146,12 +150,12 @@ public class AutoLoginCallback implements LoginCallback {
 
 			}
 
-			((TextView) dialog.findViewById(R.id.com_update_size_tv)).setText(manager
-					.getSize());
-			((TextView) dialog.findViewById(R.id.com_update_version_tv)).setText(manager
-					.getNewVersionName());
-			((TextView) dialog.findViewById(R.id.com_update_time_tv)).setText(manager
-					.getLastUpdateTime());
+			((TextView) dialog.findViewById(R.id.com_update_size_tv))
+					.setText(manager.getSize());
+			((TextView) dialog.findViewById(R.id.com_update_version_tv))
+					.setText(manager.getNewVersionName());
+			((TextView) dialog.findViewById(R.id.com_update_time_tv))
+					.setText(manager.getLastUpdateTime());
 			((Button) dialog.findViewById(R.id.com_sure_btn))
 					.setOnClickListener(new DownBtnClick(dialog));
 			((Button) dialog.findViewById(R.id.com_cancel_btn))
@@ -170,7 +174,8 @@ public class AutoLoginCallback implements LoginCallback {
 	}
 
 	public void goActivateCert() {
-		TiFlowControlImpl.instanceControl().nextSetup(activity, FlowConstants.START_ACTIVE);
+		TiFlowControlImpl.instanceControl().nextSetup(activity,
+				FlowConstants.START_ACTIVE);
 	}
 
 }

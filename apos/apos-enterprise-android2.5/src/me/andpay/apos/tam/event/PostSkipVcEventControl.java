@@ -14,7 +14,7 @@ public class PostSkipVcEventControl extends AbstractEventController {
 	public void onClick(Activity activity, FormBean formBean, View view) {
 
 		PostVoucherActivity postActivity = (PostVoucherActivity) activity;
-		
+
 		if (postActivity.postVoucherContext.isRePostFlag()) {
 			TiFlowControlImpl.instanceControl().nextSetup(postActivity,
 					FlowConstants.GOHOME);

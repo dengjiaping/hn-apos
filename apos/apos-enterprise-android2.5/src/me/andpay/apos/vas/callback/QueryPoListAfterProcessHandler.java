@@ -8,7 +8,8 @@ import me.andpay.apos.vas.activity.PurchaseOrderListActivity;
 import me.andpay.apos.vas.activity.adapter.PurchaseOrderListAdapter;
 import me.andpay.timobileframework.mvc.ModelAndView;
 
-public class QueryPoListAfterProcessHandler extends AfterProcessWithErrorHandler {
+public class QueryPoListAfterProcessHandler extends
+		AfterProcessWithErrorHandler {
 
 	private PurchaseOrderListActivity activity;
 
@@ -44,8 +45,10 @@ public class QueryPoListAfterProcessHandler extends AfterProcessWithErrorHandler
 		}
 	}
 
-	private PurchaseOrderListAdapter initAdapter(LinkedList<PurchaseOrderInfo> infos) {
-		PurchaseOrderListAdapter adapter = new PurchaseOrderListAdapter(activity);
+	private PurchaseOrderListAdapter initAdapter(
+			LinkedList<PurchaseOrderInfo> infos) {
+		PurchaseOrderListAdapter adapter = new PurchaseOrderListAdapter(
+				activity);
 		adapter.addValues(infos);
 		return adapter;
 	}

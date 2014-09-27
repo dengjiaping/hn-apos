@@ -8,8 +8,7 @@ public class HelpStartPageChangeEventControl extends AbstractEventController {
 
 	public void onPageSelected(Activity refActivty, FormBean formBean,
 			int pageNo) {
-	
-		
+
 	}
 
 	public void onPageScrolled(Activity refActivty, FormBean formBean,

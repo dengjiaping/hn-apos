@@ -81,8 +81,8 @@ public class QueryOrderAction extends SessionKeepAction {
 		// saveOrder(orderRecords, condForm);
 
 		ModelAndView mav = new ModelAndView();
-		mav.addModelValue("orderResult",
-				OrderConverter.mergeOrderList(new ArrayList<OrderInfo>(), orderRecords));
+		mav.addModelValue("orderResult", OrderConverter.mergeOrderList(
+				new ArrayList<OrderInfo>(), orderRecords));
 		mav.addModelValue("orderQueryForm", condForm);
 		return mav;
 	}

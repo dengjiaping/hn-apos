@@ -17,7 +17,8 @@ public class QueryCouponCallbackImpl extends AfterProcessWithErrorHandler {
 
 	private QueryCouponCondForm form;
 
-	public QueryCouponCallbackImpl(CouponListActivity activity, QueryCouponCondForm form) {
+	public QueryCouponCallbackImpl(CouponListActivity activity,
+			QueryCouponCondForm form) {
 		super(activity);
 		this.form = form;
 		this.couponActivity = activity;
@@ -27,7 +28,8 @@ public class QueryCouponCallbackImpl extends AfterProcessWithErrorHandler {
 	public void afterRequest(ModelAndView mv) {
 		List<CouponRedeemList> couponRedeemLists = (ArrayList<CouponRedeemList>) mv
 				.getValue("couponResult");
-		QueryCouponCondForm form = (QueryCouponCondForm) mv.getValue("couponQueryForm");
+		QueryCouponCondForm form = (QueryCouponCondForm) mv
+				.getValue("couponQueryForm");
 		LinkedList<CouponRedeemList> orderInfosLink = new LinkedList<CouponRedeemList>();
 		orderInfosLink.addAll(couponRedeemLists);
 		synchronized (couponActivity) {
@@ -54,8 +56,8 @@ public class QueryCouponCallbackImpl extends AfterProcessWithErrorHandler {
 
 	private CouponListAdapter initAdapter(QueryCouponCondForm form,
 			LinkedList<CouponRedeemList> couponRedeemLists) {
-		CouponListAdapter adapter = new CouponListAdapter(couponRedeemLists, form,
-				(CouponListActivity) activity);
+		CouponListAdapter adapter = new CouponListAdapter(couponRedeemLists,
+				form, (CouponListActivity) activity);
 		return adapter;
 	}
 

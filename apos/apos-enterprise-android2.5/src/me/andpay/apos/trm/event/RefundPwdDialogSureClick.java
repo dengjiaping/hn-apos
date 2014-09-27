@@ -39,7 +39,7 @@ public class RefundPwdDialogSureClick implements OnClickListener {
 	private CommonDialog dialog = null;
 
 	public RefundPwdDialogSureClick(Dialog pwdDialog, TiActivity refActivity) {
-		
+
 		this.password = (EditText) pwdDialog
 				.findViewById(R.id.trm_refund_dialog_pwd_ev);
 		this.userid = ((TextView) pwdDialog
@@ -98,17 +98,17 @@ public class RefundPwdDialogSureClick implements OnClickListener {
 			PayTxnInfo info = ((TxnDetailActivity) activity).getTxnInfo();
 
 			RefundInputContext refundInputContext = new RefundInputContext();
-			refundInputContext.setHasRefundAmt(info
-					.getRefundAmt());
-			refundInputContext.setRefundAmt(info.getSalesAmt()
-					.subtract(info.getRefundAmt()));
+			refundInputContext.setHasRefundAmt(info.getRefundAmt());
+			refundInputContext.setRefundAmt(info.getSalesAmt().subtract(
+					info.getRefundAmt()));
 			refundInputContext.setExTraceNO(info.getExTraceNO());
 			refundInputContext.setMemo(info.getMemo());
 			refundInputContext.setPayTxnInfo(info);
 
 			TiFlowControlImpl.instanceControl().startFlow(activity,
 					FlowNames.TQRM_REFUND_FLOW);
-			TiFlowControlImpl.instanceControl().setFlowContextData(refundInputContext);
+			TiFlowControlImpl.instanceControl().setFlowContextData(
+					refundInputContext);
 			activity.finish();
 		}
 

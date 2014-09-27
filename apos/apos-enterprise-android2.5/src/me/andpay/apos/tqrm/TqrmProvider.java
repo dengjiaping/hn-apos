@@ -1,8 +1,7 @@
 package me.andpay.apos.tqrm;
 
 public class TqrmProvider {
-	
-	
+
 	/**
 	 * 优惠劵兑换明细
 	 */

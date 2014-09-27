@@ -53,7 +53,8 @@ public class SvcDepositeAfterPayActivity extends AposBaseActivity {
 		});
 		cancelBtn.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				if (getCurrentFlowName().equals(FlowNames.VAS_SVC_DEPOSITE_FLOW)) {
+				if (getCurrentFlowName()
+						.equals(FlowNames.VAS_SVC_DEPOSITE_FLOW)) {
 					nextSetup(FlowConstants.FINISH);
 				} else {
 					previousSetup();

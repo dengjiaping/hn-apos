@@ -85,7 +85,7 @@ public class OpenCardRegisterMainActivity extends AposBaseActivity implements
 				endBlankPartCardNo.getRootView(),
 				Float.valueOf((300 * metric.density)).intValue(), this);
 		solfKeyBoardDialog.setOnClickHideButtonListener(this);
-		
+
 		openCardContext = initContext();
 
 		this.setFlowContextData(openCardContext);
@@ -124,7 +124,7 @@ public class OpenCardRegisterMainActivity extends AposBaseActivity implements
 	public void onKeyboardHide() {
 		resizeView();
 	}
-	
+
 	public void resizeView() {
 		DisplayMetrics metric = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metric);

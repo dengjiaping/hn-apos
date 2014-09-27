@@ -33,10 +33,9 @@ public class PasswordEditWatcherEventControl extends AbstractEventController {
 					activity.getResources().getDrawable(
 							R.drawable.com_keyboard_button_img));
 		}
-		
-		txnAcitivty.pwdTextHint.requestFocus();
-		Selection.setSelection(txnAcitivty.pwdTextHint.getEditableText(),0);
 
+		txnAcitivty.pwdTextHint.requestFocus();
+		Selection.setSelection(txnAcitivty.pwdTextHint.getEditableText(), 0);
 
 	}
 

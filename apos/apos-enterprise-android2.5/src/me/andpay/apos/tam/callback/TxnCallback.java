@@ -28,15 +28,15 @@ public interface TxnCallback {
 	 * 密码错误重输
 	 */
 	public void showInputPassword(TxnActionResponse actionResponse);
-	
+
 	/**
 	 * 网络异常
 	 */
 	public void networkError(TxnActionResponse actionResponse);
 
-
 	/**
 	 * 初始化callback
+	 * 
 	 * @param txnControl
 	 */
 	public void initCallBack(TxnControl txnControl);

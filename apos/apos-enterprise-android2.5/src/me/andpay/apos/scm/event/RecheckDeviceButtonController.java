@@ -12,13 +12,15 @@ import me.andpay.timobileframework.mvc.form.FormBean;
 public class RecheckDeviceButtonController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
-		
-		
-		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl.instanceControl()
-				.getFlowContextData(CardReaderSetContext.class);
-		cardReaderSetContext.getOpLogData().put(OperationDataKeys.OPKEYS_RECHECK_FLAG, String.valueOf(true));
-		cardReaderSetContext.setTryTimes(cardReaderSetContext.getTryTimes()+1);
-		CardReaderAdapterSuccessActivity cardReaderAdapterSuccessActivity =(CardReaderAdapterSuccessActivity)refActivty;
+
+		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl
+				.instanceControl().getFlowContextData(
+						CardReaderSetContext.class);
+		cardReaderSetContext.getOpLogData().put(
+				OperationDataKeys.OPKEYS_RECHECK_FLAG, String.valueOf(true));
+		cardReaderSetContext
+				.setTryTimes(cardReaderSetContext.getTryTimes() + 1);
+		CardReaderAdapterSuccessActivity cardReaderAdapterSuccessActivity = (CardReaderAdapterSuccessActivity) refActivty;
 		cardReaderAdapterSuccessActivity.checkDevice();
 	}
 }

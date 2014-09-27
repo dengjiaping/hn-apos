@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.view.View;
 
 import com.google.inject.Inject;
+
 /**
  * 
  * @author cpz
@@ -23,21 +24,19 @@ public class QueryBalanceEventControl extends AbstractEventController {
 
 	@Inject
 	private TxnControl txnControl;
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-	
-		
+
 		TxnContext txnContext = txnControl.init();
 		txnContext.setNeedPin(true);
 		txnContext.setTxnType(TxnTypes.INQUIRY_BALANCE);
 		txnContext.setBackTagName(TabNames.TXN_PAGE);
 		txnControl.setTxnCallback(new QueryBalanceCallBackImpl());
-		
+
 		Intent intent = new Intent();
 		intent.putExtras(BundleProvider.provid(formBean));
 		intent.setAction(TamProvider.TAM_TXN_ACTIVITY);
 		activity.startActivity(intent);
-
 
 	}
 }

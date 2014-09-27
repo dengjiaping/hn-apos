@@ -12,16 +12,17 @@ import android.view.View;
 import android.widget.AdapterView;
 
 public class QueryClickItemController extends AbstractEventController {
-	
 
 	public void onItemClick(Activity refActivty, FormBean formBean,
 			AdapterView<?> adapterView, View view, int position, long id) {
-		if(position >= ((OrderPayListActivity) refActivty).orderPayListAdapter.getCount()) {
+		if (position >= ((OrderPayListActivity) refActivty).orderPayListAdapter
+				.getCount()) {
 			return;
 		}
-		OrderInfo info =(OrderInfo) ((OrderPayListActivity) refActivty).orderPayListAdapter
+		OrderInfo info = (OrderInfo) ((OrderPayListActivity) refActivty).orderPayListAdapter
 				.getItem(position);
-		Intent orderDetailIntent = new Intent(OpmProvider.OPM_ORDERDETAIL_ACTIVITY);
+		Intent orderDetailIntent = new Intent(
+				OpmProvider.OPM_ORDERDETAIL_ACTIVITY);
 		byte[] infoByte = JacksonSerializer.newPrettySerializer().serialize(
 				info.getClass(), info);
 		orderDetailIntent.putExtra("orderInfo", infoByte);

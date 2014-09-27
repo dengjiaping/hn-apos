@@ -5,23 +5,22 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+
 /**
  * 基础适配器
+ * 
  * @author Administrator
  *
  * @param <T>
  */
-public class BaseAdapter<T> extends
-		android.widget.BaseAdapter {
-	private Context context;//上下文环境
+public class BaseAdapter<T> extends android.widget.BaseAdapter {
+	private Context context;// 上下文环境
 	private ArrayList<T> list = new ArrayList<T>();// 适配器数据
-   
+
 	private BaseAdapterController<T> controller;// Adapter 控制器
 
-	private AdpterEventListener adpterEventListener;//事件监听器
-	
-    
-	
+	private AdpterEventListener adpterEventListener;// 事件监听器
+
 	public Context getContext() {
 		return context;
 	}
@@ -30,7 +29,7 @@ public class BaseAdapter<T> extends
 		this.context = context;
 	}
 
-	public ArrayList<T> getList(){
+	public ArrayList<T> getList() {
 		return list;
 	}
 
@@ -46,8 +45,6 @@ public class BaseAdapter<T> extends
 		this.controller = controller;
 		controller.setAdpter(this);
 	}
-	
-	
 
 	public AdpterEventListener getAdpterEventListener() {
 		return adpterEventListener;
@@ -56,8 +53,6 @@ public class BaseAdapter<T> extends
 	public void setAdpterEventListener(AdpterEventListener adpterEventListener) {
 		this.adpterEventListener = adpterEventListener;
 	}
-	
-	
 
 	public int getCount() {
 		// TODO Auto-generated method stub

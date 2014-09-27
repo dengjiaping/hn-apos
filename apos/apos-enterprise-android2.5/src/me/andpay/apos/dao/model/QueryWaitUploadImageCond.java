@@ -3,9 +3,8 @@ package me.andpay.apos.dao.model;
 import me.andpay.timobileframework.sqlite.Sorts;
 import me.andpay.timobileframework.sqlite.anno.Expression;
 
-
 public class QueryWaitUploadImageCond extends Sorts {
-	
+
 	/**
 	 * 终端流水号
 	 */
@@ -21,32 +20,31 @@ public class QueryWaitUploadImageCond extends Sorts {
 	 */
 	@Expression
 	private String createDate;
-	
+
 	/**
 	 * 文件路径
 	 */
 	@Expression
 	private String filePath;
-	
+
 	/**
 	 * 上传文件类型
 	 */
 	@Expression
 	private String itemType;
-	
+
 	/**
 	 * 上传编号
 	 */
 	@Expression
 	private String itemId;
-	
+
 	/**
 	 * 上传次数
 	 */
 	@Expression
 	private Integer times;
-	
-	
+
 	@Expression
 	private Boolean readyUpload;
 
@@ -113,5 +111,5 @@ public class QueryWaitUploadImageCond extends Sorts {
 	public void setReadyUpload(Boolean readyUpload) {
 		this.readyUpload = readyUpload;
 	}
-	
+
 }

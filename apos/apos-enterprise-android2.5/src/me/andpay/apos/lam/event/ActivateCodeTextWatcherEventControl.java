@@ -7,26 +7,27 @@ import me.andpay.timobileframework.mvc.form.FormBean;
 import android.app.Activity;
 import android.text.Editable;
 
-public class ActivateCodeTextWatcherEventControl   extends AbstractEventController {
-	
+public class ActivateCodeTextWatcherEventControl extends
+		AbstractEventController {
+
 	public void onTextChanged(Activity activity, FormBean formBean,
 			CharSequence s, int start, int before, int count) {
-		
-		ActivateCodeActivity codeActivity = (ActivateCodeActivity)activity;
-		if(codeActivity.activateCodeText.length() == 6) {
+
+		ActivateCodeActivity codeActivity = (ActivateCodeActivity) activity;
+		if (codeActivity.activateCodeText.length() == 6) {
 			codeActivity.activateBtn.setEnabled(true);
 			codeActivity.solfKeyBoard.getSure_btn().setEnabled(true);
 			codeActivity.solfKeyBoard.getSure_btn().setBackgroundDrawable(
 					activity.getResources().getDrawable(
 							R.drawable.com_keyboard_button_blue_img));
 
-		}else {
+		} else {
 			codeActivity.activateBtn.setEnabled(false);
 			codeActivity.solfKeyBoard.getSure_btn().setEnabled(false);
 			codeActivity.solfKeyBoard.getSure_btn().setBackgroundDrawable(
 					activity.getResources().getDrawable(
 							R.drawable.com_keyboard_button_img));
-			
+
 		}
 	}
 

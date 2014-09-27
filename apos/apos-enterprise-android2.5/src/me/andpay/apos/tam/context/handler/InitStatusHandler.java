@@ -42,7 +42,7 @@ public class InitStatusHandler extends GenChangeStatusHander {
 		TxnAcitivty activity = (TxnAcitivty) txnControl.getCurrActivity();
 
 		if (txnControl.getTxnContext().getTxnType()
-				.equals(TxnTypes.INQUIRY_BALANCE)){
+				.equals(TxnTypes.INQUIRY_BALANCE)) {
 			activity.queryShowLayout.setVisibility(View.VISIBLE);
 			activity.txnBottomImage.setVisibility(View.GONE);
 			activity.queryLayout.setVisibility(View.GONE);

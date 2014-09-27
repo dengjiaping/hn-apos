@@ -33,25 +33,25 @@ import com.google.inject.Inject;
 public class RepostVoucherActivity extends AposBaseActivity implements
 		ValueContainer {
 
-	@EventDelegate(type = DelegateType.eventController,isNeedFormBean = false, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = RepostVcEditWatcherEventControl.class)	
+	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = RepostVcEditWatcherEventControl.class)
 	@InjectView(R.id.tam_repost_phone_edit)
 	public EditText phoneEditText;
 
 	@InjectView(R.id.tam_repost_send_btn)
-	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = true,delegateClass = OnClickListener.class, toEventController = RepostVcEventControl.class)
+	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = true, delegateClass = OnClickListener.class, toEventController = RepostVcEventControl.class)
 	public Button sendBtn;
-	
+
 	@InjectView(R.id.com_back_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = PreviousClickEventController.class)
 	public ImageView backButton;
-	
+
 	public CommonDialog postDialog;
 
 	/**
 	 * 重发凭证标志
 	 */
 	public PostVoucherContext postVoucherContext;
-	
+
 	@Inject
 	public TxnControl txnControl;
 

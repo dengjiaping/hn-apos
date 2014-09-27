@@ -14,10 +14,11 @@ import android.view.View;
 public class ShowScanCouponControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-	
-		Map<String, String> intentData = new HashMap<String,String>();
+
+		Map<String, String> intentData = new HashMap<String, String>();
 		intentData.put("scanType", QrScanType.ST_COUPON);
-		TiFlowControlImpl.instanceControl().startFlow(activity, FlowNames.TQRM_COUPON_FLOW,intentData);
+		TiFlowControlImpl.instanceControl().startFlow(activity,
+				FlowNames.TQRM_COUPON_FLOW, intentData);
 	}
 
 }

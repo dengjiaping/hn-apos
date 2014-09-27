@@ -14,7 +14,7 @@ import android.view.View;
 public class UsePhotoEventController extends AbstractEventController {
 	public void onClick(Activity activity, FormBean formBean, View view) {
 		ShowPictureActivity picActivity = (ShowPictureActivity) activity;
-		
+
 		Map<String, String> intentData = new HashMap<String, String>();
 		intentData.put("file_path", picActivity.filePath);
 		TiFlowControlImpl.instanceControl().nextSetup(picActivity,

@@ -15,6 +15,6 @@ public class PurchaseOrderItemViewHolder {
 	public TextView timeView;
 
 	public ImageView refundImg;
-	
+
 	public RelativeLayout unFulfillLayout;
 }

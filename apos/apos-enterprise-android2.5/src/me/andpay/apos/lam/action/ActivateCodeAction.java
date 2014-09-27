@@ -64,7 +64,8 @@ public class ActivateCodeAction extends MultiAction {
 	public ModelAndView sendActivateCode(ActionRequest request) {
 		tiContext = request.getContext(TiContext.CONTEXT_SCOPE_APPLICATION);
 
-		LoginResponse loginResponse =(LoginResponse) tiContext.getAttribute(RuntimeAttrNames.LOGIN_RESPONSE);
+		LoginResponse loginResponse = (LoginResponse) tiContext
+				.getAttribute(RuntimeAttrNames.LOGIN_RESPONSE);
 		Party party = loginResponse.getParties().get(0);
 		try {
 			termAuthService.sendTermActCode(party.getPartyId());
@@ -91,9 +92,10 @@ public class ActivateCodeAction extends MultiAction {
 			ActivateCodeForm activateCodeForm = (ActivateCodeForm) request
 					.getParameterValue("activateCodeForm");
 			DeviceInfo deviceInfo = getDeviceInfo();
-			LoginResponse loginResponse =(LoginResponse) tiContext.getAttribute(RuntimeAttrNames.LOGIN_RESPONSE);
+			LoginResponse loginResponse = (LoginResponse) tiContext
+					.getAttribute(RuntimeAttrNames.LOGIN_RESPONSE);
 			Party party = loginResponse.getParties().get(0);
-			
+
 			GenKeyAndCsrRequest genKeyAndCsrRequest = createKeyAndCsrRequest(
 					party.getPartyId(), deviceInfo.getDeviceId());
 			KeyAndCsr keyAndCsr = PkcsClient.genKeyAndCsr(genKeyAndCsrRequest);

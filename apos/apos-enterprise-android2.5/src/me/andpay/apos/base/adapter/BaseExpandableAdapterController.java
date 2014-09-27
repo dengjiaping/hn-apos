@@ -7,15 +7,14 @@ import android.view.ViewGroup;
 public abstract class BaseExpandableAdapterController<T> {
 	private BaseExpandableAdapter<T> adapter;
 
-	
-
-	public BaseExpandableAdapter<T> getAdapter(){
+	public BaseExpandableAdapter<T> getAdapter() {
 		return adapter;
 	}
 
 	public void setAdapter(BaseExpandableAdapter<T> adapter) {
 		this.adapter = adapter;
 	}
+
 	/* 返回子视图 */
 	public abstract View getChildView(int arg0, int arg1, boolean arg2,
 			View arg3, ViewGroup arg4);

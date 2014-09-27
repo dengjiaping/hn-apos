@@ -24,14 +24,15 @@ public class VasModule extends TiMobileModule {
 
 	@Override
 	protected void configure() {
-		
+
 		requestInjection(ProductInfoDaoProvider.class);
-		bind(ProductInfoDao.class).toProvider(ProductInfoDaoProvider.class).asEagerSingleton();
-		
-		
+		bind(ProductInfoDao.class).toProvider(ProductInfoDaoProvider.class)
+				.asEagerSingleton();
+
 		requestInjection(PurchaseOrderInfoDaoProvider.class);
-		bind(PurchaseOrderInfoDao.class).toProvider(PurchaseOrderInfoDaoProvider.class).asEagerSingleton();
-		
+		bind(PurchaseOrderInfoDao.class).toProvider(
+				PurchaseOrderInfoDaoProvider.class).asEagerSingleton();
+
 		bindAction(QueryPoAction.class);
 		bindAction(QueryRemotePoAction.class);
 		bindAction(PurchaseOrderAction.class);

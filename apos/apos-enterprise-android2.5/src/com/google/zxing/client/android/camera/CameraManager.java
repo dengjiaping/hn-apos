@@ -254,23 +254,24 @@ public class CameraManager {
 			int width = screenResolution.x * 3 / 4;
 			if (width < MIN_FRAME_WIDTH) {
 				width = MIN_FRAME_WIDTH;
-			} 
-			
-			//大屏手机上480的扫描框太小
-//			else if (width > MAX_FRAME_WIDTH) {
-//				width = MAX_FRAME_WIDTH;
-//			}
-			
+			}
+
+			// 大屏手机上480的扫描框太小
+			// else if (width > MAX_FRAME_WIDTH) {
+			// width = MAX_FRAME_WIDTH;
+			// }
+
 			int height = width;
 			int leftOffset = (screenResolution.x - width) / 2;
 			int topOffset = (screenResolution.y - height) / 2;
-			framingRect = new Rect(leftOffset, topOffset , leftOffset
-					+ width, topOffset + height);
-			
-			//外部界面引入的topHeight对于获取有效数据有影响,surfaceView占满全屏不影响数据 
-//			framingRect = new Rect(leftOffset, topOffset - topHeight, leftOffset
-//					+ width, topOffset + height-topHeight);
-			
+			framingRect = new Rect(leftOffset, topOffset, leftOffset + width,
+					topOffset + height);
+
+			// 外部界面引入的topHeight对于获取有效数据有影响,surfaceView占满全屏不影响数据
+			// framingRect = new Rect(leftOffset, topOffset - topHeight,
+			// leftOffset
+			// + width, topOffset + height-topHeight);
+
 			Log.d(TAG, "Calculated framing rect: " + framingRect);
 		}
 		return framingRect;
@@ -381,32 +382,33 @@ public class CameraManager {
 			}
 			List<String> flashModes = parameters.getSupportedFlashModes();
 			if (flashModes == null) {
-			     return;
+				return;
 			}
 			String flashMode = parameters.getFlashMode();
-			if(onOff){
+			if (onOff) {
 				if (!Parameters.FLASH_MODE_TORCH.equals(flashMode)) {
-			        // Turn on the flash
-			        if (flashModes.contains(Parameters.FLASH_MODE_TORCH)) {
-			            parameters.setFlashMode(Parameters.FLASH_MODE_TORCH);
-			        }else if(flashModes.contains(Parameters.FLASH_MODE_ON)){
-			        	parameters.setFlashMode(Parameters.FLASH_MODE_ON);;
-			        } 
+					// Turn on the flash
+					if (flashModes.contains(Parameters.FLASH_MODE_TORCH)) {
+						parameters.setFlashMode(Parameters.FLASH_MODE_TORCH);
+					} else if (flashModes.contains(Parameters.FLASH_MODE_ON)) {
+						parameters.setFlashMode(Parameters.FLASH_MODE_ON);
+						;
+					}
 				}
-			}else{
+			} else {
 				if (!Parameters.FLASH_MODE_OFF.equals(flashMode)) {
 					// Turn off the flash
 					if (flashModes.contains(Parameters.FLASH_MODE_OFF)) {
 						parameters.setFlashMode(Parameters.FLASH_MODE_OFF);
-					} 
-				}	
+					}
+				}
 			}
 			camera.setParameters(parameters);
 		} catch (Exception e) {
 			Log.e(TAG, "turnOnOffFlash, Exception occur:" + e.toString());
 		}
 	}
-	
+
 	public void setTopHeight(int topHeight) {
 		this.topHeight = topHeight;
 	}

@@ -22,25 +22,26 @@ import android.widget.TextView;
  */
 @ContentView(R.layout.msg_message_deatail)
 public class MessageDeatailActivity extends AposBaseActivity {
-	@EventDelegate(type=DelegateType.method,toMethod="back",delegateClass=OnClickListener.class)
+	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.msg_message_deatail_back)
-	private ImageView back;//返回
-	
+	private ImageView back;// 返回
+
 	@InjectView(R.id.msg_message_deatail_content)
-	private TextView content;//内容
-	
+	private TextView content;// 内容
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		Message message=(Message)TiFlowControlImpl.instanceControl().getFlowContext().get(Message.class.getName());
-		if(message!=null){
+		Message message = (Message) TiFlowControlImpl.instanceControl()
+				.getFlowContext().get(Message.class.getName());
+		if (message != null) {
 			content.setText(message.getContent());
 		}
 	}
-	public void back(View v){
-		
-		
+
+	public void back(View v) {
+
 		TiFlowControlImpl.instanceControl().previousSetup(this);
 	}
 }

@@ -20,18 +20,17 @@ public class LoginSumitButtonEventControl extends AbstractEventController {
 		LoginActivity loginActivity = (LoginActivity) activity;
 		login(formBean, loginActivity);
 	}
+
 	/**
 	 * 登录
 	 */
 	private void login(FormBean formBean, LoginActivity activity) {
 
-		if(ValidateHelper.validate(activity, formBean,null)) {
+		if (ValidateHelper.validate(activity, formBean, null)) {
 			return;
 		}
 		activity.submitLogin(formBean);
 	}
-
-	
 
 	public boolean onKey(Activity activity, FormBean formBean, View v,
 			int keyCode, KeyEvent event) {
@@ -43,6 +42,5 @@ public class LoginSumitButtonEventControl extends AbstractEventController {
 		}
 		return false;
 	}
-
 
 }

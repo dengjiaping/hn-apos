@@ -9,6 +9,7 @@ import android.view.View;
 
 /**
  * 显示商户限额
+ * 
  * @author cpz
  *
  */
@@ -19,5 +20,5 @@ public class ShowPartyLimitController extends AbstractEventController {
 		intent.setAction(ScmProvider.SCM_ACTIVITY_PARTY_LIMIT);
 		activity.startActivity(intent);
 	}
-		
+
 }

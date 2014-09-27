@@ -19,27 +19,27 @@ public class SubmitVerificationCodeEventController extends
 		// TODO submit verification code to server
 
 		// Mock Code
-//		int num = (int) (Math.random() * 100);
-//		if (num % 2 == 0)
-//			TiFlowControlImpl.instanceControl().nextSetup(smsChallengeActivity,
-//					FlowConstants.FINISH);
-//		else {
-//			int num1 = (int) (Math.random() * 100);
-			Map<String, String> intentData = new HashMap<String, String>();
-//			switch (num1 % 3) {
-//			case 0:
-//				intentData.put("errorMsg", "sms error");
-//				break;
-//			case 1:
-				intentData.put("errorMsg", "limit error");
-//				break;
-//			default:
-//				intentData.put("errorMsg", "info error");
-//				break;
-//			}
+		// int num = (int) (Math.random() * 100);
+		// if (num % 2 == 0)
+		// TiFlowControlImpl.instanceControl().nextSetup(smsChallengeActivity,
+		// FlowConstants.FINISH);
+		// else {
+		// int num1 = (int) (Math.random() * 100);
+		Map<String, String> intentData = new HashMap<String, String>();
+		// switch (num1 % 3) {
+		// case 0:
+		// intentData.put("errorMsg", "sms error");
+		// break;
+		// case 1:
+		intentData.put("errorMsg", "limit error");
+		// break;
+		// default:
+		// intentData.put("errorMsg", "info error");
+		// break;
+		// }
 
-			TiFlowControlImpl.instanceControl().nextSetup(smsChallengeActivity,
-					FlowConstants.FAILED, intentData);
-//		}
+		TiFlowControlImpl.instanceControl().nextSetup(smsChallengeActivity,
+				FlowConstants.FAILED, intentData);
+		// }
 	}
 }

@@ -36,7 +36,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 @ContentView(R.layout.ssm_main_layout)
-public class SettleMainActivity extends AposBaseActivity implements ValueContainer {
+public class SettleMainActivity extends AposBaseActivity implements
+		ValueContainer {
 
 	@InjectView(R.id.ssm_main_time_tv)
 	private TextView ssm_main_time_tv;
@@ -78,13 +79,13 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 
 	@InjectView(R.id.ssm_has_data_layout)
 	private View ssm_has_data_layout;
-	
+
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = MainSettleBackController.class)
 	@InjectView(R.id.com_back_btn)
 	public ImageView backImage;
 
-//	@InjectView(R.id.com_processing_layout)
-//	View com_progress_layout;
+	// @InjectView(R.id.com_processing_layout)
+	// View com_progress_layout;
 
 	@InjectResource(R.string.ssm_main_time_str)
 	private String timeDescription;
@@ -96,17 +97,19 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 	private String scm_settle_fail_str;
 
 	private CommonDialog dialog = null;
-	
+
 	@InjectView(R.id.ssm_settle_refresh_img)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = RefreshSettleController.class)
 	private ImageView refreshImg;
-	
+
 	@InjectView(R.id.com_title_processing_pb)
 	private ProgressBar progressBar;
-	
-//	@InjectView(R.id.com_show_silder_btn)
-//	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = ShowSliderControl.class)
-//	public ImageView showSilder;
+
+	// @InjectView(R.id.com_show_silder_btn)
+	// @EventDelegate(type = DelegateType.eventController, isNeedFormBean =
+	// false, delegateClass = OnClickListener.class, toEventController =
+	// ShowSliderControl.class)
+	// public ImageView showSilder;
 
 	// private CommonDialog settleFailDialog = null;
 
@@ -117,7 +120,7 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 		dialog = new CommonDialog(this, com_progress_prompt_str);
 		// settleFailDialog = new CommonDialog(this, com_progress_prompt_str);
 		loadUnCheckOutInfo();
-		
+
 	}
 
 	/**
@@ -153,6 +156,7 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 		ssm_main_txncount_tv.setText(this.getApplication().getResources()
 				.getString(R.string.ssm_main_settle_count_default_str));
 	}
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {
@@ -161,6 +165,7 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 		}
 		return super.onKeyDown(keyCode, event);
 	}
+
 	public void showListView() {
 		refreshImg.setVisibility(View.VISIBLE);
 		progressBar.setVisibility(View.GONE);
@@ -168,7 +173,7 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 	}
 
 	public void showProgressView() {
-//		ssm_has_data_layout.setVisibility(View.GONE);
+		// ssm_has_data_layout.setVisibility(View.GONE);
 		progressBar.setVisibility(View.VISIBLE);
 		com_net_error_layout.setVisibility(View.GONE);
 		refreshImg.setVisibility(View.GONE);
@@ -322,7 +327,7 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 
 				}
 			};
-			
+
 			ssm_main_settle_btn.setEnabled(true);
 
 			ssm_main_time_tv.setText(String.format(timeDescription, beginDate,
@@ -330,7 +335,6 @@ public class SettleMainActivity extends AposBaseActivity implements ValueContain
 			ssm_main_time_tv.setText(String.format(timeDescription, beginDate,
 					endDate));
 			timer.schedule(task, 200, 200);
-
 
 		}
 

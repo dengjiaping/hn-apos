@@ -9,12 +9,10 @@ public class BluetoothConnectActivityReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		if (intent.getAction().equals("android.bluetooth.device.action.PAIRING_REQUEST")) {
-			   BluetoothDevice btDevice = intent
-					                .getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-			   
-			   
-			   
+		if (intent.getAction().equals(
+				"android.bluetooth.device.action.PAIRING_REQUEST")) {
+			BluetoothDevice btDevice = intent
+					.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 
 		}
 

@@ -3,6 +3,7 @@ package me.andpay.apos.tam.flow.model;
 public class TxnCancelFlag {
 
 	private boolean isCancel = false;
+
 	/**
 	 * 交易开始
 	 */
@@ -11,6 +12,7 @@ public class TxnCancelFlag {
 			isCancel = false;
 		}
 	}
+
 	/**
 	 * 交易结束
 	 */
@@ -19,8 +21,10 @@ public class TxnCancelFlag {
 			isCancel = true;
 		}
 	}
+
 	/**
 	 * 交易是否结束
+	 * 
 	 * @return
 	 */
 	public boolean isCancelTxn() {

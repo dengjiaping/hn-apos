@@ -85,16 +85,15 @@ public class RefundInputActivity extends AposBaseActivity implements
 	NoCardBtnClickController refundEventController;
 
 	public RefundInputContext refundInputContext;
-	
+
 	@Inject
 	private LocationService locationService;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		locationService.requestLocation();
 
+		locationService.requestLocation();
 
 	}
 
@@ -107,14 +106,12 @@ public class RefundInputActivity extends AposBaseActivity implements
 		solfKeyBoard = NewSolfKeyBoardView.instance(this, rootView, this);
 		solfKeyBoard.setWithCalculator(false);
 		solfKeyBoard.showKeyboard(amtEditText);
-		
+
 		amtEditText.setText(refundInputContext.getRefundAmt().toString());
 		amtEditText.requestFocus();
 		this.extTraceNo = refundInputContext.getExTraceNO();
 		this.memo = refundInputContext.getMemo();
 
-	
-		
 		// 判断是否有动态字段
 		if (dyHelper.getFieldDefine(FlexFieldDefine.FIELD_NAME_EXT_TRACE_NO,
 				TxnTypes.REFUND) == null
@@ -134,7 +131,7 @@ public class RefundInputActivity extends AposBaseActivity implements
 	}
 
 	protected void setExtInfoText() {
-		
+
 		String desc = StringUtil.defaultString(memo, "") + " "
 				+ StringUtil.defaultString(extTraceNo, "");
 		if (desc.startsWith(" ") || desc.endsWith(" ")) {
@@ -146,11 +143,9 @@ public class RefundInputActivity extends AposBaseActivity implements
 		} else {
 			float textWidth = extInfoTv.getPaint().measureText("中");
 			DisplayMetrics metric = new DisplayMetrics();
-			this.getWindowManager().getDefaultDisplay()
-					.getMetrics(metric);
+			this.getWindowManager().getDefaultDisplay().getMetrics(metric);
 
-		
-			int with = 	Float.valueOf((100 * metric.density)).intValue();
+			int with = Float.valueOf((100 * metric.density)).intValue();
 			float textCount = with / textWidth;
 			if (desc.length() > textCount) {
 				this.extInfoTv.setText(desc.substring(0, ((int) textCount) - 1)
@@ -161,13 +156,12 @@ public class RefundInputActivity extends AposBaseActivity implements
 		}
 	}
 
-	
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		locationService.requestLocation();
 	}
-	
+
 	public void sureClick() {
 		this.refundEventController.onClick(this, null, null);
 	}
@@ -190,6 +184,6 @@ public class RefundInputActivity extends AposBaseActivity implements
 
 	public void showCalculator() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

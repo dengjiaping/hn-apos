@@ -5,12 +5,12 @@ import java.util.Date;
 import me.andpay.apos.vas.spcart.ShoppingCart;
 
 public class PurchaseOrderForm {
-	
+
 	/**
 	 * 支付方式
 	 */
 	private String paymeneMethed;
-	
+
 	private ShoppingCart shoppingCart;
 	/**
 	 * 订单状态
@@ -20,14 +20,14 @@ public class PurchaseOrderForm {
 	 * 销售票据号
 	 */
 	private String receiptNo;
-	
+
 	/**
 	 * 支付编号
 	 */
 	private String paymentTxnId;
-	
+
 	private Date orderTime;
-	
+
 	public String getPaymeneMethed() {
 		return paymeneMethed;
 	}
@@ -75,6 +75,5 @@ public class PurchaseOrderForm {
 	public void setOrderTime(Date orderTime) {
 		this.orderTime = orderTime;
 	}
-	
 
 }

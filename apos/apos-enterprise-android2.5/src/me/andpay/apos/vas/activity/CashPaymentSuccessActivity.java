@@ -30,9 +30,8 @@ public class CashPaymentSuccessActivity extends AposBaseActivity {
 
 	@InjectView(R.id.com_title_tv)
 	public TextView topTile;
-	
-	public CommonDialog placeDialog;
 
+	public CommonDialog placeDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +41,18 @@ public class CashPaymentSuccessActivity extends AposBaseActivity {
 	@Override
 	protected void onResumeProcess() {
 		CashPaymentContext cashPaymentContext = TiFlowControlImpl
-				.instanceControl()
-				.getFlowContextData(CashPaymentContext.class);
+				.instanceControl().getFlowContextData(CashPaymentContext.class);
 
 		if (cashPaymentContext.getCashAmt() == null
-				|| cashPaymentContext.getCashAmt()
-						.compareTo(new BigDecimal(0)) == 0) {
+				|| cashPaymentContext.getCashAmt().compareTo(new BigDecimal(0)) == 0) {
 			msgContent.setText("交易成功");
 		} else {
 			BigDecimal lastAmt = cashPaymentContext.getCashAmt().subtract(
 					cashPaymentContext.getShoppingCart().getTotalAmt());
 			msgContent.setText("交易成功，找零" + lastAmt.toString() + "元");
 		}
-		topTile.setText(StringConvertor.convert2Currency(cashPaymentContext.getShoppingCart().getTotalAmt()));
+		topTile.setText(StringConvertor.convert2Currency(cashPaymentContext
+				.getShoppingCart().getTotalAmt()));
 	}
 
 	/**

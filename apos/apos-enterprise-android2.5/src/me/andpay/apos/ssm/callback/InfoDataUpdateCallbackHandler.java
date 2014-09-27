@@ -25,7 +25,7 @@ public class InfoDataUpdateCallbackHandler extends AfterProcessWithErrorHandler 
 		this.adapter = refActivty.getAdapter();
 		this.isRefresh = isRefresh;
 		this.refActivty = refActivty;
-		
+
 	}
 
 	@Override
@@ -94,9 +94,7 @@ public class InfoDataUpdateCallbackHandler extends AfterProcessWithErrorHandler 
 		// ToastTools.toast(refActivty.getApplicationContext(), str, null,
 		// Gravity.TOP, 0, 150);
 
-		ToastTools.topToast(refActivty,
-				str,
-				ToastTools.LIST_VIEW_TOAST_HEIGHT);
+		ToastTools.topToast(refActivty, str, ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
 	@Override

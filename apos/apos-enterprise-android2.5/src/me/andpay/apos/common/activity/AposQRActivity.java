@@ -75,18 +75,18 @@ public class AposQRActivity extends AposBaseActivity implements
 
 	@InjectView(R.id.com_top_progress)
 	public ProgressBar progress;
-	
+
 	@InjectView(R.id.com_top_title)
 	public TextView topTextView;
-	
+
 	@InjectView(R.id.com_top_pur_lay)
 	private RelativeLayout topRelativeLayout;
-	
+
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = LightTurnOnOffClickEventController.class)
 	@InjectView(R.id.qr_light_btn)
 	private ImageView lightBtn;
-	private boolean lightOnOff = false;  //false 默认闪光灯关闭
-	
+	private boolean lightOnOff = false; // false 默认闪光灯关闭
+
 	@Inject
 	private AposContext aposContext;
 
@@ -180,14 +180,14 @@ public class AposQRActivity extends AposBaseActivity implements
 		// inactivityTimer.shutdown();
 		super.onDestroy();
 	}
-	
-	public void finishSelf(){
-		if(QrScanType.ST_BLUETOOTH.equals(scanType))
+
+	public void finishSelf() {
+		if (QrScanType.ST_BLUETOOTH.equals(scanType))
 			this.getControl().previousSetup(this);
 		else
 			this.finish();
-	} 
-	
+	}
+
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
 
@@ -209,19 +209,19 @@ public class AposQRActivity extends AposBaseActivity implements
 		hasSurface = false;
 	}
 
-	public void turnOnOffLight (){
+	public void turnOnOffLight() {
 		if (lightOnOff) {
-            // turn off light 
+			// turn off light
 			cameraManager.turnOnOffFlash(false);
 			lightBtn.setSelected(false);
-        } else {
-            // turn on light
+		} else {
+			// turn on light
 			cameraManager.turnOnOffFlash(true);
-        	lightBtn.setSelected(true);
-        }
+			lightBtn.setSelected(true);
+		}
 		lightOnOff = !lightOnOff;
 	}
-	
+
 	public void drawViewfinder() {
 		viewfinderView.drawViewfinder();
 	}
@@ -229,7 +229,7 @@ public class AposQRActivity extends AposBaseActivity implements
 	public void handleDecode(Result rawResult, Bitmap barcode) {
 
 		beepManager.playBeepSoundAndVibrate();
-		
+
 		progress.setVisibility(View.VISIBLE);
 		topTextView.setText("扫描结果处理中");
 		String couponResult = "";
@@ -274,47 +274,49 @@ public class AposQRActivity extends AposBaseActivity implements
 			} else {
 				goToErrorQr(rawResult.getText());
 			}
-		} else if(QrScanType.ST_BLUETOOTH.equals(scanType)){
+		} else if (QrScanType.ST_BLUETOOTH.equals(scanType)) {
 			// 只扫5型机匹配蓝牙二维码
 			if (base64Str.substring(0, 1).equals("5")) {
 				String[] chars = base64Str.split(",");
-				if(chars.length == 3){
+				if (chars.length == 3) {
 					byte b[] = chars[2].getBytes();
 					String identifier = bytesToHexString(b);
-					BluetoothListItemClickController.setCardreaderContent(aposContext, identifier, chars[1]);
+					BluetoothListItemClickController.setCardreaderContent(
+							aposContext, identifier, chars[1]);
 				}
-				TiFlowControlImpl.instanceControl().nextSetup(this, FlowConstants.SUCCESS);
+				TiFlowControlImpl.instanceControl().nextSetup(this,
+						FlowConstants.SUCCESS);
 			} else {
 				goToErrorQr(rawResult.getText());
 			}
 		}
 
 	}
-	
+
 	public void goToErrorQr(String rawResult) {
 		Intent intent = new Intent();
 		intent.setAction(CommonProvider.COM_SHOW_QRRESULT_ACTIVITY);
 		intent.putExtra("couponInfo", rawResult);
 		startActivity(intent);
 	}
-	
-	//byte转化成16进制，以:连接，如：52:62:3F:6C
-	public String bytesToHexString(byte[] b){
+
+	// byte转化成16进制，以:连接，如：52:62:3F:6C
+	public String bytesToHexString(byte[] b) {
 		StringBuilder stringBuilder = new StringBuilder("");
-		if (b == null || b.length <= 0) {  
-	        return "";  
-	    }  
-	    for (int i = b.length - 1; i >= 0; i--) {  
-	        int v = b[i] & 0xFF;  
-	        String hv = Integer.toHexString(v);  
-	        if (hv.length() < 2) {  
-	            stringBuilder.append(0);  
-	        }  
-	        if(i == (b.length - 1))
-	        	stringBuilder.append(hv.toUpperCase());  
-	        else
-	        	stringBuilder.append(":"+hv.toUpperCase());
-	    }  
+		if (b == null || b.length <= 0) {
+			return "";
+		}
+		for (int i = b.length - 1; i >= 0; i--) {
+			int v = b[i] & 0xFF;
+			String hv = Integer.toHexString(v);
+			if (hv.length() < 2) {
+				stringBuilder.append(0);
+			}
+			if (i == (b.length - 1))
+				stringBuilder.append(hv.toUpperCase());
+			else
+				stringBuilder.append(":" + hv.toUpperCase());
+		}
 		return stringBuilder.toString();
 	}
 

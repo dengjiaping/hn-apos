@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram
+    begin-node="start"
+    version="1.0" >
+
+    <flow-node
+        node-name="start"
+        ref-activity="me.andpay.apos.merchantservice.activity.BankErrorDisposeActivity" >
+
+        <node-complete
+            identity="add_back_order"
+            next-node="second_node" />
+        
+         <node-complete
+            identity="back_order_detail"
+            next-node="back_detail_node" />
+         
+          <node-complete
+            identity="report_order_detail"
+            next-node="report_detail_node" />
+    </flow-node>
+
+    <flow-node
+        node-name="second_node"
+        ref-activity="me.andpay.apos.merchantservice.activity.AddBackOrderActivity" >
+
+        <node-complete
+            identity="add_back_order"
+            next-node="second_node" />
+    </flow-node>
+    
+    <flow-node
+        node-name="back_detail_node"
+        ref-activity="me.andpay.apos.merchantservice.activity.BackOrderDetailActivity" >
+
+        <node-complete
+            identity="add_back_order"
+            next-node="second_node" />
+    </flow-node>
+    
+    <flow-node
+        node-name="report_detail_node"
+        ref-activity="me.andpay.apos.merchantservice.activity.OrderInformationReportActivity" >
+
+        <node-complete
+            identity="add_back_order"
+            next-node="second_node" />
+    </flow-node>
+
+</flow-diagram>

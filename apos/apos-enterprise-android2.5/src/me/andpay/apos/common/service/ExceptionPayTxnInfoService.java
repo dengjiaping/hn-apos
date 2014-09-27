@@ -33,19 +33,18 @@ public class ExceptionPayTxnInfoService {
 		if (txns.size() > 0) {
 			ExceptionPayTxnInfo exceptionPayTxnInfo = txns.get(0);
 			exceptionPayTxnInfoDao.delete(exceptionPayTxnInfo.getIdTxn());
-			if(exceptionPayTxnInfo.getIsICCardTxn()) {
-				
+			if (exceptionPayTxnInfo.getIsICCardTxn()) {
+
 				QueryICCardInfoCond cond = new QueryICCardInfoCond();
 				cond.setIdTxn(exceptionPayTxnInfo.getIdTxn());
-				
+
 				List<ICCardInfo> icCardInfos = icCardInfoDao.query(cond, 0, 1);
-				if(icCardInfos.size() > 0) {
+				if (icCardInfos.size() > 0) {
 					icCardInfoDao.delete(icCardInfos.get(0).getIdICCardInfo());
 				}
 			}
 		}
-		
-		
+
 	}
 
 	public ExceptionPayTxnInfo getExceptionTxn(String termTraceNo,
@@ -90,10 +89,8 @@ public class ExceptionPayTxnInfoService {
 			icCardInfo.setIdTxn(idTxn.intValue());
 			icCardInfoDao.insert(icCardInfo);
 		}
-		
-		return idTxn;
-		
 
+		return idTxn;
 
 	}
 

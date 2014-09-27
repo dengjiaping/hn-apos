@@ -28,7 +28,7 @@ public class PartyInfo {
 	 * 扩展配置参数
 	 */
 	private Map<String, String> extFuncConfigs;
-	
+
 	private Set<String> msrTypes;
 
 	public String getPartyId() {
@@ -78,6 +78,5 @@ public class PartyInfo {
 	public void setMsrTypes(Set<String> msrTypes) {
 		this.msrTypes = msrTypes;
 	}
-	
 
 }

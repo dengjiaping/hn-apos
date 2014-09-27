@@ -42,7 +42,7 @@ public class MainSettleController extends AbstractEventController {
 						activity.getDialog().getDialog(), false);
 				activity.getDialog().getDialog().setCancelable(false);
 				activity.getDialog().show();
-				
+
 			}
 		});
 		dialog.show();

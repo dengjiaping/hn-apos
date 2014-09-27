@@ -50,15 +50,17 @@ public class SignNextEventControl extends AbstractEventController {
 	public void onClick(Activity activity, FormBean formBean, View view) {
 
 		final SignActivity signActivity = (SignActivity) activity;
-		SignContext signContext = TiFlowControlImpl.instanceControl().getFlowContextData(
-				SignContext.class);
+		SignContext signContext = TiFlowControlImpl.instanceControl()
+				.getFlowContextData(SignContext.class);
 
-		if (signContext.getGesturesCount() < 2 || signContext.getGesturesLength() < 16) {
+		if (signContext.getGesturesCount() < 2
+				|| signContext.getGesturesLength() < 16) {
 
 			Toast.makeText(
 					signActivity.getApplicationContext(),
 					ResourceUtil.getString(activity.getApplicationContext(),
-							R.string.tam_sign_tooeasy_str), Toast.LENGTH_SHORT).show();
+							R.string.tam_sign_tooeasy_str), Toast.LENGTH_SHORT)
+					.show();
 			return;
 		}
 
@@ -66,8 +68,8 @@ public class SignNextEventControl extends AbstractEventController {
 	}
 
 	public void submit(SignActivity activity) {
-		SignContext signContext = TiFlowControlImpl.instanceControl().getFlowContextData(
-				SignContext.class);
+		SignContext signContext = TiFlowControlImpl.instanceControl()
+				.getFlowContextData(SignContext.class);
 
 		// Bitmap bitMap = Bitmap.createBitmap(activity.signature.getWidth(),
 		// activity.signature.getHeight(), Config.ARGB_8888);
@@ -77,7 +79,7 @@ public class SignNextEventControl extends AbstractEventController {
 		// activity.signature.draw(cv);
 		// activity.signature.setBackgroundColor(activity.getResources().getColor(
 		// android.R.color.transparent));
-		Bitmap bitMap=activity.signature.getSignatureBitmap();
+		Bitmap bitMap = activity.signature.getSignatureBitmap();
 		String fileName = FileUtil.getMyUUID() + ".jpg";
 		String filePath = FileUtil.bitMapSaveFile(bitMap,
 				activity.getApplicationContext(), fileName, 10);
@@ -107,7 +109,8 @@ public class SignNextEventControl extends AbstractEventController {
 		} else {
 			if (!StringUtil.isEmpty(signContext.getIdUnderType())) {
 				WaitUploadImage waitImg = new WaitUploadImage();
-				waitImg.setCreateDate(StringUtil.format("yyyyMMddHHmmss", new Date()));
+				waitImg.setCreateDate(StringUtil.format("yyyyMMddHHmmss",
+						new Date()));
 				waitImg.setItemType(AttachmentTypes.SIGNATURE_PICTURE);
 				waitImg.setTermTraceNo(signContext.getTermTraceNo());
 				waitImg.setTermTxnTime(signContext.getTermTxnTime());
@@ -122,9 +125,10 @@ public class SignNextEventControl extends AbstractEventController {
 		upLoadFileServce.uploadFile();
 
 		// 删除快照
-		exceptionPayTxnInfoService.removeExceptionTxn(signContext.getTermTraceNo(),
-				signContext.getTermTxnTime());
+		exceptionPayTxnInfoService.removeExceptionTxn(
+				signContext.getTermTraceNo(), signContext.getTermTxnTime());
 
-		TiFlowControlImpl.instanceControl().nextSetup(activity, FlowConstants.SUCCESS);
+		TiFlowControlImpl.instanceControl().nextSetup(activity,
+				FlowConstants.SUCCESS);
 	}
 }

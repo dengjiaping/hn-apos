@@ -16,11 +16,11 @@ public class APOSGifUtil {
 			GifImageView gifImageView, Resources resources, int drawableId) {
 
 		try {
-			if(gifDrawable != null) {
+			if (gifDrawable != null) {
 				gifDrawable.stop();
 				gifDrawable.recycle();
 			}
-			
+
 			gifDrawable = new GifDrawable(resources, drawableId);
 			if (Build.VERSION.SDK_INT >= 16)
 				gifImageView.setBackground(gifDrawable);

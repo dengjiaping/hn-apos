@@ -20,53 +20,52 @@ import android.util.Log;
 
 /**
  * 余额查询
+ * 
  * @author cpz
  */
 public class CardBalanceProcessor extends GenTxnProcessor {
 
 	@Override
-	public void reEntryTxn(TxnForm txnForm,TxnCallback callBack) {
+	public void reEntryTxn(TxnForm txnForm, TxnCallback callBack) {
 		if (txnForm.getProcessStatus() == TxnForm.PRSTATUS_RESPONSE) {
 			return;
 		}
-		
+
 		SleepUtil.sleep(RE_ENTRY_SLEEPTIME);
 		try {
 			InquiryBalanceResponse inResponse = txnService
-					.syncInquiryBalance((InquiryBalanceRequest)txnForm.getReEntryTxnRequest());
+					.syncInquiryBalance((InquiryBalanceRequest) txnForm
+							.getReEntryTxnRequest());
 			dealResponse(inResponse, txnForm, callBack, null);
 		} catch (Exception ex) {
 			dealException(ex, txnForm, callBack);
 		}
-		
 
 	}
 
-	
-	
-	
 	@Override
-	public void processTxn(ActionRequest request){
+	public void processTxn(ActionRequest request) {
 
 		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");
 		txnForm.setTimeoutTime(System.currentTimeMillis());
 		TxnCallback callBack = (TxnCallback) request.getHandler();
-		
+
 		try {
 			super.processTxn(request);
 			InquiryBalanceRequest queryRequest = createRequest(txnForm);
 			txnForm.setReEntryTxnRequest(queryRequest);
-		
-			sendTxn(txnForm, queryRequest,callBack);
+
+			sendTxn(txnForm, queryRequest, callBack);
 		} catch (Exception ex) {
 			sysError(txnForm, callBack, ex);
 		}
 
 	}
 
-	public void sendTxn(TxnForm txnForm,InquiryBalanceRequest queryRequest, TxnCallback callBack) {
+	public void sendTxn(TxnForm txnForm, InquiryBalanceRequest queryRequest,
+			TxnCallback callBack) {
 		try {
-			//向服务器开始发送请求
+			// 向服务器开始发送请求
 			InquiryBalanceResponse inquiryBalanceResponse = txnService
 					.syncInquiryBalance(queryRequest);
 			dealResponse(inquiryBalanceResponse, txnForm, callBack, null);
@@ -74,20 +73,21 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 			dealException(ex, txnForm, callBack);
 		}
 	}
-/**
- * 返回处理
- */
+
+	/**
+	 * 返回处理
+	 */
 	@Override
 	public void dealResponse(TxnResponse txnResponse, TxnForm txnForm,
 			TxnCallback callBack, String errorMsg) {
-		//若交易已返回处理，则直接返回
+		// 若交易已返回处理，则直接返回
 		if (txnForm.getProcessStatus() == TxnForm.PRSTATUS_RESPONSE) {
 			return;
 		} else {
 			txnForm.setProcessStatus(TxnForm.PRSTATUS_RESPONSE);
 		}
 
-		if (StringUtil.isNotBlank(errorMsg)){
+		if (StringUtil.isNotBlank(errorMsg)) {
 			txnForm.getResponse().setResponMsg(errorMsg);
 			callBack.showFaild(txnForm.getResponse());
 			return;
@@ -99,7 +99,6 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 		}
 		inquiryBalanceResponse = (InquiryBalanceResponse) txnResponse;
 
-		
 		setParseBinInfo(inquiryBalanceResponse, txnForm);
 
 		String msg = getStringResource(R.string.tam_syserror_str);
@@ -111,23 +110,22 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 		if (StringUtil.isBlank(inquiryBalanceResponse.getRespMessage())) {
 			inquiryBalanceResponse.setRespMessage(msg);
 		}
-		
 
-		responseProcess(inquiryBalanceResponse, callBack,txnForm);
+		responseProcess(inquiryBalanceResponse, callBack, txnForm);
 	}
 
 	private void responseProcess(InquiryBalanceResponse queryResponse,
-			TxnCallback callBack, TxnForm txnForm){
+			TxnCallback callBack, TxnForm txnForm) {
 
-		
 		TxnActionResponse actionResponse = txnForm.getResponse();
-		
+
 		actionResponse.setTxnResponse(queryResponse);
 		setParseBinInfo(queryResponse, txnForm);
 
 		actionResponse.setIcCardTxn(txnForm.isIcCardTxn());
-		actionResponse.setAposICCardDataInfo(covertAposICCardDataInfo(queryResponse,txnForm));
-		
+		actionResponse.setAposICCardDataInfo(covertAposICCardDataInfo(
+				queryResponse, txnForm));
+
 		if (queryResponse.getRespCode().equals(ResponseCodes.SUCCESS)) {
 			txnForm.setSalesAmt(queryResponse.getBalance());
 			txnForm.getResponse().setResponMsg(queryResponse.getRespMessage());
@@ -156,16 +154,17 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 	}
 
 	private InquiryBalanceRequest createRequest(TxnForm txnForm) {
-		
+
 		InquiryBalanceRequest queryRequest = new InquiryBalanceRequest();
 		queryRequest.setKsn(txnForm.getCardInfo().getKsn());
 		queryRequest.setTermTxnTime(new Date());
 		queryRequest.setTermTraceNo(TxnUtil.getTermTraceNo(tiConfig));
 		TxnUtil.updateTermTraceNo(tiConfig);
-		
+
 		txnForm.setTermTraceNo(queryRequest.getTermTraceNo());
-		txnForm.setTermTxnTime(StringUtil.format("yyyyMMddHHmmss", queryRequest.getTermTxnTime()));
-		
+		txnForm.setTermTxnTime(StringUtil.format("yyyyMMddHHmmss",
+				queryRequest.getTermTxnTime()));
+
 		queryRequest.setTrackAll(txnForm.getCardInfo().getEncTracks());
 		queryRequest.setKsn(txnForm.getCardInfo().getKsn());
 		queryRequest.setTrackRandomFactor(txnForm.getCardInfo()
@@ -177,18 +176,17 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 		queryRequest.setPinblock(pinData.getPinblock());
 		queryRequest.setPinEncryptAdditionData(pinData
 				.getPinEncryptAdditionData());
-		
+
 		TxnHelper.setICCardInfo(txnForm.getAposICCardDataInfo(), queryRequest);
-		if(txnForm.isIcCardTxn()) {
+		if (txnForm.isIcCardTxn()) {
 			queryRequest.setCardNo(txnForm.getAposICCardDataInfo().getCardNo());
 		}
-		setMac(txnForm.getMac(),queryRequest);
+		setMac(txnForm.getMac(), queryRequest);
 
 		queryRequest.setPinEncryptMethod(pinData.getPinEncryptMethods());
 		return queryRequest;
 
 	}
-
 
 	@Override
 	public void txnTimeout(TxnForm txnForm, TxnCallback txnCallback) {
@@ -202,12 +200,9 @@ public class CardBalanceProcessor extends GenTxnProcessor {
 		return;
 
 	}
-	
-	
-	
 
 	public void retrieveTxn(ActionRequest request) {
-		//igore
+		// igore
 	}
 
 }

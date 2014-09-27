@@ -13,7 +13,7 @@ import java.util.Map;
  * @author cpz
  * 
  */
-public class ShoppingCart implements Serializable{
+public class ShoppingCart implements Serializable {
 
 	/**
 	 * 
@@ -29,7 +29,7 @@ public class ShoppingCart implements Serializable{
 	 * 总产品数
 	 */
 	private int totalProduct = 0;
-	
+
 	/**
 	 * 购物车产品类型
 	 */
@@ -38,10 +38,9 @@ public class ShoppingCart implements Serializable{
 	 * 购物车集合
 	 */
 	private List<ProductItem> itemsList = new ArrayList<ProductItem>();
-	private Map<Long,ProductItem> itemMap = new HashMap<Long, ProductItem>();
+	private Map<Long, ProductItem> itemMap = new HashMap<Long, ProductItem>();
 	private List<Long> productIds = new ArrayList<Long>();
 
-	
 	public BigDecimal getTotalAmt() {
 		return totalAmt;
 	}
@@ -66,7 +65,6 @@ public class ShoppingCart implements Serializable{
 		this.itemsList = itemsList;
 	}
 
-
 	public Map<Long, ProductItem> getItemMap() {
 		return itemMap;
 	}
@@ -80,7 +78,7 @@ public class ShoppingCart implements Serializable{
 		itemMap.put(item.getProductId(), item);
 		productIds.add(item.getProductId());
 	}
-	
+
 	public ProductItem deleteItem(Long productId) {
 		ProductItem productItem = itemMap.remove(productId);
 		productIds.remove(productId);
@@ -104,5 +102,4 @@ public class ShoppingCart implements Serializable{
 		this.productIds = productIds;
 	}
 
-	
 }

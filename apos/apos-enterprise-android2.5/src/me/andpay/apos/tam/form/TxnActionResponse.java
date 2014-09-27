@@ -7,7 +7,7 @@ import java.util.Date;
 import me.andpay.ac.term.api.txn.TxnResponse;
 import me.andpay.apos.cdriver.model.AposICCardDataInfo;
 
-public class TxnActionResponse implements Serializable{
+public class TxnActionResponse implements Serializable {
 
 	/**
 	 * 
@@ -41,7 +41,7 @@ public class TxnActionResponse implements Serializable{
 	 * 交易时间
 	 */
 	private Date txnTime;
-	
+
 	/**
 	 * 结算时间
 	 */
@@ -53,8 +53,7 @@ public class TxnActionResponse implements Serializable{
 	private int pinErrorCount;
 
 	private String responMsg;
-	
-	
+
 	/**
 	 * 终端流水号
 	 */
@@ -64,27 +63,22 @@ public class TxnActionResponse implements Serializable{
 	 * 终端交易时间
 	 */
 	private String termTxnTime;
-	
+
 	/**
 	 * 短卡号
 	 */
 	private String shortCardNo;
-	
+
 	private BigDecimal balanceAmt;
-	
+
 	private AposICCardDataInfo aposICCardDataInfo;
-	
+
 	private boolean icCardTxn;
-	
-	
+
 	/**
 	 * 交易快照编号
 	 */
 	private int exPayInfoIdTxn;
-	
-	
-	
-	
 
 	public int getExPayInfoIdTxn() {
 		return exPayInfoIdTxn;
@@ -142,7 +136,6 @@ public class TxnActionResponse implements Serializable{
 		this.goodsFileURL = goodsFileURL;
 	}
 
-
 	public String getTxnId() {
 		return txnId;
 	}
@@ -198,7 +191,7 @@ public class TxnActionResponse implements Serializable{
 	public void setTermTxnTime(String termTxnTime) {
 		this.termTxnTime = termTxnTime;
 	}
-	
+
 	public Date getSettlementTime() {
 		return settlementTime;
 	}
@@ -214,7 +207,5 @@ public class TxnActionResponse implements Serializable{
 	public void setIcCardTxn(boolean icCardTxn) {
 		this.icCardTxn = icCardTxn;
 	}
-
-
 
 }

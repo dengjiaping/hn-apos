@@ -30,20 +30,13 @@ public class CardReaderResourceSelector {
 
 	public static Map<Integer, String> chNames = new HashMap<Integer, String>();
 
-	
-	
 	public static Map<Integer, Integer> cardreaderOpenMap = new HashMap<Integer, Integer>();
-
 
 	public static Map<Integer, Integer> cardreaderConnectMap = new HashMap<Integer, Integer>();
 
 	public static Map<Integer, Integer> cardreaderShowMap = new HashMap<Integer, Integer>();
 
-
-
-
 	static {
-
 
 		cardreaderShowMap.put(Integer.valueOf(CardReaderTypes.ITRON),
 				R.drawable.open_device_cardreader_2_img);
@@ -76,12 +69,14 @@ public class CardReaderResourceSelector {
 		cardreaderOpenMap.put(Integer.valueOf(CardReaderTypes.NEW_LAND_BL),
 				R.drawable.open_device_5_img);
 
-
-
-		cardreaderOpenMap.put(Integer.valueOf(CardReaderTypes.ITRON), R.drawable.open_device_2_img);
-		cardreaderOpenMap.put(Integer.valueOf(CardReaderTypes.LANDI), R.drawable.open_device_4_img);
-		cardreaderOpenMap.put(Integer.valueOf(CardReaderTypes.NEW_LAND_AD), R.drawable.open_device_5_img);
-		cardreaderOpenMap.put(Integer.valueOf(CardReaderTypes.NEW_LAND_BL), R.drawable.open_device_5_img);
+		cardreaderOpenMap.put(Integer.valueOf(CardReaderTypes.ITRON),
+				R.drawable.open_device_2_img);
+		cardreaderOpenMap.put(Integer.valueOf(CardReaderTypes.LANDI),
+				R.drawable.open_device_4_img);
+		cardreaderOpenMap.put(Integer.valueOf(CardReaderTypes.NEW_LAND_AD),
+				R.drawable.open_device_5_img);
+		cardreaderOpenMap.put(Integer.valueOf(CardReaderTypes.NEW_LAND_BL),
+				R.drawable.open_device_5_img);
 
 		gitMap.put(CardReaderTypes.ITRON + ":" + CONNECT,
 				R.drawable.tam_cardreader_itron_conn_gif);
@@ -151,7 +146,6 @@ public class CardReaderResourceSelector {
 		chNames.put(CardReaderTypes.NEW_LAND_BL, "APOS5");
 		chNames.put(CardReaderTypes.NEW_LAND_AD, "APOS6");
 
-	
 	}
 
 	public static int selectGit(int readerType, String gitType) {
@@ -159,14 +153,12 @@ public class CardReaderResourceSelector {
 	}
 
 	public static int selectShowImg(int readerType, String imgType) {
- 		return showMap.get(readerType + ":" + imgType);
+		return showMap.get(readerType + ":" + imgType);
 	}
 
 	public static String selectCardreaderCHName(int cardType) {
 		return chNames.get(Integer.valueOf(cardType));
 	}
-
-	
 
 	public static String getDefaultCardreaderName(TiContext tiContext,
 			int cardreadType) {
@@ -182,35 +174,32 @@ public class CardReaderResourceSelector {
 
 		return name;
 	}
-	
+
 	public static String getBluetoothIdKey(int cardreadType) {
-		
+
 		if (cardreadType == CardReaderTypes.LANDI) {
 			return ConfigAttrNames.LANDI_DEFAULT_BLUETOOTH_IDENTIFIER;
 		} else if (cardreadType == CardReaderTypes.NEW_LAND_BL) {
 			return ConfigAttrNames.NEWLAND_DEFAULT_BLUETOOTH_IDENTIFIER;
 		}
-		
+
 		return "";
 	}
-	
+
 	public static String getBluetoothNameKey(int cardreadType) {
-		
+
 		if (cardreadType == CardReaderTypes.LANDI) {
 			return ConfigAttrNames.LANDI_DEFAULT_BLUETOOTH_NAME;
 		} else if (cardreadType == CardReaderTypes.NEW_LAND_BL) {
 			return ConfigAttrNames.NEWLAND_DEFAULT_BLUETOOTH_NAME;
 		}
-		
+
 		return "";
 	}
-	
-	
-	
+
 	public static int selectCardreaderOpen(int cardType) {
 		return cardreaderOpenMap.get(cardType);
 	}
-
 
 	public static int selectCardreaderConnect(int cardType) {
 		return cardreaderConnectMap.get(cardType);

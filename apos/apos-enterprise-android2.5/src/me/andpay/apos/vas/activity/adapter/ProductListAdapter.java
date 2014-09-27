@@ -40,7 +40,7 @@ public class ProductListAdapter extends BaseAdapter {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		
+
 		ProductInfo productInfo = productInfos.get(position);
 
 		ProductHolder productHolder = null;
@@ -62,9 +62,9 @@ public class ProductListAdapter extends BaseAdapter {
 		productHolder.getProductImge().setBackgroundResource(
 				ProductResouceHelper.getProductImages(productInfo
 						.getProductType()));
-		
+
 		productHolder.getProductName().setText(productInfo.getName());
-		
+
 		BigDecimal productPrice = productInfo.getPrice();
 		productHolder.getProductPrice().setText(
 				StringConvertor.convert2Currency(productPrice));
@@ -74,7 +74,5 @@ public class ProductListAdapter extends BaseAdapter {
 	public void setProductInfos(List<ProductInfo> productInfos) {
 		this.productInfos = productInfos;
 	}
-	
-	
 
 }

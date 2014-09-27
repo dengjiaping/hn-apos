@@ -24,150 +24,158 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 
 /**
- * A specialized Drawable that fills the Canvas with a specified color.
- * Note that a ColorDrawable ignores the ColorFilter.
+ * A specialized Drawable that fills the Canvas with a specified color. Note
+ * that a ColorDrawable ignores the ColorFilter.
  * <p/>
- * <p>It can be defined in an XML file with the <code>&lt;color></code> element.</p>
+ * <p>
+ * It can be defined in an XML file with the <code>&lt;color></code> element.
+ * </p>
  *
  * @attr ref android.R.styleable#ColorDrawable_color
  */
 public class ColorDrawable extends Drawable {
 
-    private ColorState mState;
-    private final Paint mPaint = new Paint();
+	private ColorState mState;
+	private final Paint mPaint = new Paint();
 
-    /** Creates a new black ColorDrawable. */
-    public ColorDrawable() {
-        this(null);
-    }
+	/** Creates a new black ColorDrawable. */
+	public ColorDrawable() {
+		this(null);
+	}
 
-    /**
-     * Creates a new ColorDrawable with the specified color.
-     *
-     * @param color The color to draw.
-     */
-    public ColorDrawable(int color) {
-        this(null);
-        setColor(color);
-    }
+	/**
+	 * Creates a new ColorDrawable with the specified color.
+	 *
+	 * @param color
+	 *            The color to draw.
+	 */
+	public ColorDrawable(int color) {
+		this(null);
+		setColor(color);
+	}
 
-    private ColorDrawable(ColorState state) {
-        mState = new ColorState(state);
-    }
+	private ColorDrawable(ColorState state) {
+		mState = new ColorState(state);
+	}
 
-    @Override
-    public int getChangingConfigurations() {
-        return super.getChangingConfigurations() | mState.mChangingConfigurations;
-    }
+	@Override
+	public int getChangingConfigurations() {
+		return super.getChangingConfigurations()
+				| mState.mChangingConfigurations;
+	}
 
-    @Override
-    public void draw(Canvas canvas) {
-        if ((mState.mUseColor >>> 24) != 0) {
-            mPaint.setColor(mState.mUseColor);
-            canvas.drawRect(getBounds(), mPaint);
-        }
-    }
+	@Override
+	public void draw(Canvas canvas) {
+		if ((mState.mUseColor >>> 24) != 0) {
+			mPaint.setColor(mState.mUseColor);
+			canvas.drawRect(getBounds(), mPaint);
+		}
+	}
 
-    /**
-     * Gets the drawable's color value.
-     *
-     * @return int The color to draw.
-     */
-    public int getColor() {
-        return mState.mUseColor;
-    }
+	/**
+	 * Gets the drawable's color value.
+	 *
+	 * @return int The color to draw.
+	 */
+	public int getColor() {
+		return mState.mUseColor;
+	}
 
-    /**
-     * Sets the drawable's color value. This action will clobber the results of prior calls to
-     * {@link #setAlpha(int)} on this object, which side-affected the underlying color.
-     *
-     * @param color The color to draw.
-     */
-    public void setColor(int color) {
-        if (mState.mBaseColor != color || mState.mUseColor != color) {
-            invalidateSelf();
-            mState.mBaseColor = mState.mUseColor = color;
-        }
-    }
+	/**
+	 * Sets the drawable's color value. This action will clobber the results of
+	 * prior calls to {@link #setAlpha(int)} on this object, which side-affected
+	 * the underlying color.
+	 *
+	 * @param color
+	 *            The color to draw.
+	 */
+	public void setColor(int color) {
+		if (mState.mBaseColor != color || mState.mUseColor != color) {
+			invalidateSelf();
+			mState.mBaseColor = mState.mUseColor = color;
+		}
+	}
 
-    /**
-     * Returns the alpha value of this drawable's color.
-     *
-     * @return A value between 0 and 255.
-     */
-    public int getAlpha() {
-        return mState.mUseColor >>> 24;
-    }
+	/**
+	 * Returns the alpha value of this drawable's color.
+	 *
+	 * @return A value between 0 and 255.
+	 */
+	public int getAlpha() {
+		return mState.mUseColor >>> 24;
+	}
 
-    /**
-     * Sets the color's alpha value.
-     *
-     * @param alpha The alpha value to set, between 0 and 255.
-     */
-    @Override
+	/**
+	 * Sets the color's alpha value.
+	 *
+	 * @param alpha
+	 *            The alpha value to set, between 0 and 255.
+	 */
+	@Override
 	public void setAlpha(int alpha) {
-        alpha += alpha >> 7;   // make it 0..256
-        int baseAlpha = mState.mBaseColor >>> 24;
-        int useAlpha = baseAlpha * alpha >> 8;
-        int oldUseColor = mState.mUseColor;
-        mState.mUseColor = (mState.mBaseColor << 8 >>> 8) | (useAlpha << 24);
-        if (oldUseColor != mState.mUseColor) {
-            invalidateSelf();
-        }
-    }
+		alpha += alpha >> 7; // make it 0..256
+		int baseAlpha = mState.mBaseColor >>> 24;
+		int useAlpha = baseAlpha * alpha >> 8;
+		int oldUseColor = mState.mUseColor;
+		mState.mUseColor = (mState.mBaseColor << 8 >>> 8) | (useAlpha << 24);
+		if (oldUseColor != mState.mUseColor) {
+			invalidateSelf();
+		}
+	}
 
-    /**
-     * Setting a color filter on a ColorDrawable has no effect.
-     *
-     * @param colorFilter Ignore.
-     */
-    @Override
+	/**
+	 * Setting a color filter on a ColorDrawable has no effect.
+	 *
+	 * @param colorFilter
+	 *            Ignore.
+	 */
+	@Override
 	public void setColorFilter(ColorFilter colorFilter) {
-    }
+	}
 
-    @Override
+	@Override
 	public int getOpacity() {
-        switch (mState.mUseColor >>> 24) {
-            case 255:
-                return PixelFormat.OPAQUE;
-            case 0:
-                return PixelFormat.TRANSPARENT;
-        }
-        return PixelFormat.TRANSLUCENT;
-    }
+		switch (mState.mUseColor >>> 24) {
+		case 255:
+			return PixelFormat.OPAQUE;
+		case 0:
+			return PixelFormat.TRANSPARENT;
+		}
+		return PixelFormat.TRANSLUCENT;
+	}
 
-    @Override
-    public ConstantState getConstantState() {
-        mState.mChangingConfigurations = getChangingConfigurations();
-        return mState;
-    }
+	@Override
+	public ConstantState getConstantState() {
+		mState.mChangingConfigurations = getChangingConfigurations();
+		return mState;
+	}
 
-    static final class ColorState extends ConstantState {
+	static final class ColorState extends ConstantState {
 
-        int mBaseColor; // base color, independent of setAlpha()
-        int mUseColor;  // basecolor modulated by setAlpha()
-        int mChangingConfigurations;
+		int mBaseColor; // base color, independent of setAlpha()
+		int mUseColor; // basecolor modulated by setAlpha()
+		int mChangingConfigurations;
 
-        ColorState(ColorState state) {
-            if (state != null) {
-                mBaseColor = state.mBaseColor;
-                mUseColor = state.mUseColor;
-            }
-        }
+		ColorState(ColorState state) {
+			if (state != null) {
+				mBaseColor = state.mBaseColor;
+				mUseColor = state.mUseColor;
+			}
+		}
 
-        @Override
-        public Drawable newDrawable() {
-            return new ColorDrawable(this);
-        }
+		@Override
+		public Drawable newDrawable() {
+			return new ColorDrawable(this);
+		}
 
-        @Override
-        public Drawable newDrawable(Resources res) {
-            return new ColorDrawable(this);
-        }
+		@Override
+		public Drawable newDrawable(Resources res) {
+			return new ColorDrawable(this);
+		}
 
-        @Override
-        public int getChangingConfigurations() {
-            return mChangingConfigurations;
-        }
-    }
+		@Override
+		public int getChangingConfigurations() {
+			return mChangingConfigurations;
+		}
+	}
 }

@@ -1,6 +1,5 @@
 package me.andpay.apos.tqrm.event;
 
-
 import me.andpay.apos.tqrm.action.QueryCouponAction;
 import me.andpay.apos.tqrm.activity.CouponListActivity;
 import me.andpay.apos.tqrm.callback.impl.UpdateCoupanCallbackImpl;

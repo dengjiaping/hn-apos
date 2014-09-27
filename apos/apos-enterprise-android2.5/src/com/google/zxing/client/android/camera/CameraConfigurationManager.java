@@ -109,7 +109,7 @@ final class CameraConfigurationManager {
 		Size bestSize = getBestPreviewSize(screenResolution.x,
 				screenResolution.y, sizes);
 
-		Point cameraResolution = new Point(bestSize.width,bestSize.height);
+		Point cameraResolution = new Point(bestSize.width, bestSize.height);
 		// if (previewSizeValueString != null) {
 		// Log.d(TAG, "preview-size-values parameter: "
 		// + previewSizeValueString);

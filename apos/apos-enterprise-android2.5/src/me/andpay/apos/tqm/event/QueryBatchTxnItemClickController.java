@@ -21,12 +21,14 @@ public class QueryBatchTxnItemClickController extends AbstractEventController {
 
 	public void onItemClick(Activity refActivty, FormBean formBean,
 			AdapterView<?> adapterView, View view, int position, long id) {
-		if (position >= ((TxnBatchQueryActivity) refActivty).getAdapter().getCount()) {
+		if (position >= ((TxnBatchQueryActivity) refActivty).getAdapter()
+				.getCount()) {
 			return;
 		}
-		PayTxnInfo info = (PayTxnInfo) ((TxnBatchQueryActivity) refActivty).getAdapter()
-				.getItem(position);
-		Intent txnDetailIntent = new Intent(TqmProvider.TQM_ACTIVITY_DETAIL_ACTION);
+		PayTxnInfo info = (PayTxnInfo) ((TxnBatchQueryActivity) refActivty)
+				.getAdapter().getItem(position);
+		Intent txnDetailIntent = new Intent(
+				TqmProvider.TQM_ACTIVITY_DETAIL_ACTION);
 		byte[] infoByte = JacksonSerializer.newPrettySerializer().serialize(
 				info.getClass(), info);
 		txnDetailIntent.putExtra("payTxnInfo", infoByte);

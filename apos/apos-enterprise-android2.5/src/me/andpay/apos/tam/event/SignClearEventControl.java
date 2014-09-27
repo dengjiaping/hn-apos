@@ -8,12 +8,11 @@ import android.view.View;
 
 public class SignClearEventControl extends AbstractEventController {
 
-
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
+
 		final SignActivity signActivity = (SignActivity) activity;
-		
+
 		signActivity.signClear();
-	
+
 	}
 }

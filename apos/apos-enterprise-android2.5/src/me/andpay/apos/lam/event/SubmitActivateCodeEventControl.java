@@ -7,11 +7,11 @@ import android.app.Activity;
 import android.view.View;
 
 public class SubmitActivateCodeEventControl extends AbstractEventController {
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-	
-		ActivateCodeActivity activateCodeActivity = (ActivateCodeActivity)activity;
+
+		ActivateCodeActivity activateCodeActivity = (ActivateCodeActivity) activity;
 		activateCodeActivity.submitActivateCode();
-		
+
 	}
 }

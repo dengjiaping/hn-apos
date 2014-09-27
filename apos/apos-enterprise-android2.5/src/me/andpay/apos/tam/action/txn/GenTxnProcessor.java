@@ -83,7 +83,6 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 
 	protected TxnService txnService;
 
-
 	@Inject
 	protected PayTxnInfoDao payTxnInfoDao;
 	@Inject
@@ -114,11 +113,10 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 	@Inject
 	protected ThrowableReporter throwableReporter;
 
-
 	@Inject
 	private UpLoadFileServce upLoadFileServce;
-	
-	//重试提交睡眠时间
+
+	// 重试提交睡眠时间
 	public static final int RE_ENTRY_SLEEPTIME = 2000;
 
 	public void processTxn(ActionRequest request) {
@@ -130,14 +128,14 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 		tiConfig = request
 				.getContext(TiContext.CONTEXT_SCOPE_APPLICATION_CONFIG);
 	}
-	
+
 	protected void setMac(String mac, TxnRequest purRequest) {
 		if (StringUtil.isBlank(mac)) {
 			return;
 		}
 		Map<String, String> extAttrs = purRequest.getExtAttrs();
-		if(extAttrs == null) {
-			extAttrs  = new HashMap<String, String>();
+		if (extAttrs == null) {
+			extAttrs = new HashMap<String, String>();
 			purRequest.setExtAttrs(extAttrs);
 		}
 		extAttrs.put(TxnExtAttrNames.MAC, mac);
@@ -236,9 +234,9 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 		if (CardReaderManager.getInputType() == AposSwiperContext.INPUT_KEY_BOARD) {
 			if (txnForm.getPin() != null) {
 				PinblockAndProtectedSecretKey pinAndKey = S3Client.encryptPin(
-						txnForm.getPin(), txnForm.getParseBinResp()
-								.getCardNo(), publicKey.getKeyVersion(),
-						publicKey.getKeyData());
+						txnForm.getPin(),
+						txnForm.getParseBinResp().getCardNo(),
+						publicKey.getKeyVersion(), publicKey.getKeyData());
 
 				pinData.setPinblock(pinAndKey.getPinblock());
 				pinData.setPinEncryptAdditionData(pinAndKey
@@ -259,7 +257,7 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 		}
 
 		TxnActionResponse actionResponse = txnForm.getResponse();
-		
+
 		for (AttachmentItem item : items) {
 
 			WaitUploadImage waitImg = new WaitUploadImage();
@@ -286,7 +284,7 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 					bitmap.recycle();
 					waitImg.setReadyUpload(true);
 					waitImg.setItemType(AttachmentTypes.PRODUCT_PICTURE);
-					
+
 					String tempFilePath = FileUtil.getFilePath(
 							FileUtil.getMyUUID(), application);
 					FileUtil.doCopyFile(new File(payTxnInfo.getTranPicPath()),
@@ -317,16 +315,14 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 
 		}
 
-
 	}
 
 	/**
 	 * 系统异常
 	 */
-	public void sysError(TxnForm txnForm, TxnCallback callback,
-			Throwable ex) {
+	public void sysError(TxnForm txnForm, TxnCallback callback, Throwable ex) {
 		Log.e(this.getClass().getName(), "txn error", ex);
-		
+
 		Crashlytics.log("txn system error");
 		Crashlytics.logException(ex);
 
@@ -344,8 +340,7 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 	/**
 	 * 网络异常
 	 */
-	public void netWorkerror(TxnForm txnForm, Exception ex,
-			TxnCallback callBack) {
+	public void netWorkerror(TxnForm txnForm, Exception ex, TxnCallback callBack) {
 		Log.i(this.getClass().getName(), "txn networkException");
 		Log.e(this.getClass().getName(), "txn networkException", ex);
 		if (txnForm.isNeedRetry()) {
@@ -353,15 +348,14 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 		} else {
 			exceptionPayTxnInfoService.removeExceptionTxn(
 					txnForm.getTermTraceNo(), txnForm.getTermTxnTime());
-			dealResponse(null, txnForm, callBack,
-					ResourceUtil.getString(application,
-							R.string.tam_networkerror_str));
+			dealResponse(null, txnForm, callBack, ResourceUtil.getString(
+					application, R.string.tam_networkerror_str));
 		}
 
 	}
 
-	abstract public void dealResponse(TxnResponse purResponse,
-			TxnForm txnForm, TxnCallback callBack, String errorMsg);
+	abstract public void dealResponse(TxnResponse purResponse, TxnForm txnForm,
+			TxnCallback callBack, String errorMsg);
 
 	/**
 	 * 交易是否成功
@@ -398,20 +392,19 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 
 	protected void dealException(Exception ex, TxnForm txnForm,
 			TxnCallback callBack) {
-		//超时判断
-		if((System.currentTimeMillis()-txnForm.getTimeoutTime())>TxnContext.TXN_TIMEOUT_TIME) {
+		// 超时判断
+		if ((System.currentTimeMillis() - txnForm.getTimeoutTime()) > TxnContext.TXN_TIMEOUT_TIME) {
 			txnTimeout(txnForm, callBack);
 			return;
 		}
-		
+
 		if (ex instanceof NetworkErrorException) {
 			NetworkErrorException netExp = (NetworkErrorException) ex;
 			processNetworkError(netExp.getPhase(), ex, txnForm, callBack);
 		} else if (ex instanceof WebSockTimeoutException) {
 			WebSockTimeoutException netException = (WebSockTimeoutException) ex;
-			processNetworkError(netException.getPhase(), ex, txnForm,
-					callBack);
-		} else  {
+			processNetworkError(netException.getPhase(), ex, txnForm, callBack);
+		} else {
 			sysError(txnForm, callBack, ex);
 		}
 	}
@@ -430,8 +423,7 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 
 	abstract public void reEntryTxn(TxnForm txnForm, TxnCallback callBack);
 
-	protected void setParseBinInfo(TxnResponse txnResponse,
-			TxnForm txnForm) {
+	protected void setParseBinInfo(TxnResponse txnResponse, TxnForm txnForm) {
 		ParseBinResponse parseBinResponse = txnForm.getParseBinResp();
 		if (parseBinResponse.getCardNo() == null) {
 			parseBinResponse.setCardNo(txnResponse.getEncCardNo());
@@ -442,26 +434,31 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 		txnForm.getResponse().setShortCardNo(txnResponse.getShortCardNo());
 
 	}
-	protected AposICCardDataInfo covertAposICCardDataInfo(TxnResponse txnResponse,TxnForm txnForm) {
-		
-		if(!txnForm.isIcCardTxn()) {
+
+	protected AposICCardDataInfo covertAposICCardDataInfo(
+			TxnResponse txnResponse, TxnForm txnForm) {
+
+		if (!txnForm.isIcCardTxn()) {
 			return null;
 		}
-		
+
 		AposICCardDataInfo aposICCardDataInfo = null;
-		Map<String,String> extAttrs = txnResponse.getExtAttrs() ;
-		if(extAttrs == null || extAttrs.get(TxnExtAttrNames.IC_DATA_BASE64) == null) {
+		Map<String, String> extAttrs = txnResponse.getExtAttrs();
+		if (extAttrs == null
+				|| extAttrs.get(TxnExtAttrNames.IC_DATA_BASE64) == null) {
 			aposICCardDataInfo = txnForm.getAposICCardDataInfo();
-		}else {
-			aposICCardDataInfo = TlvUtil.decodeTlv(HexUtils.bytesToHexString(Base64.decode(extAttrs.get(TxnExtAttrNames.IC_DATA_BASE64))) , AposICCardDataInfo.class);
+		} else {
+			aposICCardDataInfo = TlvUtil.decodeTlv(HexUtils
+					.bytesToHexString(Base64.decode(extAttrs
+							.get(TxnExtAttrNames.IC_DATA_BASE64))),
+					AposICCardDataInfo.class);
 
 		}
 		aposICCardDataInfo.setAutoCode(txnResponse.getIso8583RespCode());
-		
 
-		return  aposICCardDataInfo;
+		return aposICCardDataInfo;
 	}
-	abstract public void txnTimeout(TxnForm txnForm,
-			TxnCallback txnCallback);
+
+	abstract public void txnTimeout(TxnForm txnForm, TxnCallback txnCallback);
 
 }

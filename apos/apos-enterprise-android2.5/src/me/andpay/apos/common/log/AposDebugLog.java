@@ -25,7 +25,7 @@ public class AposDebugLog {
 	private static boolean isLog;
 	@Inject
 	private AposContext aposContext;
-	
+
 	public void init() {
 		AposDebugLog.terminalStatsService = statsService;
 		AposDebugLog.deviceId = (String) aposContext.getAppConfig()
@@ -46,20 +46,19 @@ public class AposDebugLog {
 
 	}
 
-	
-	public static void log(String category,String log) {
+	public static void log(String category, String log) {
 		log(category, null, log);
 	}
-	
-	
+
 	public static void log(String category, String traceNo, String log) {
 		if (!isEnable()) {
 			return;
 		}
-		log = StringUtil.format("yyyy-MM-dd HH:mm:ss.SSS", new Date())+"  "+log;
+		log = StringUtil.format("yyyy-MM-dd HH:mm:ss.SSS", new Date()) + "  "
+				+ log;
 		List<String> logs = new ArrayList<String>();
 		logs.add(log);
-		if(traceNo==null) {
+		if (traceNo == null) {
 			traceNo = getThreadId();
 		}
 		try {
@@ -69,15 +68,14 @@ public class AposDebugLog {
 		}
 
 	}
-	
+
 	public static boolean isEnable() {
 		return isLog;
 	}
-	
-	
+
 	public static String getThreadId() {
 
-		return 	String.valueOf(Thread.currentThread().getId());
+		return String.valueOf(Thread.currentThread().getId());
 	}
 
 }

@@ -35,73 +35,75 @@ public class LoginCallBackHelper {
 
 	public static boolean passwordExpire(LoginResponse response,
 			TiActivity activity) {
-		
+
 		final TiActivity activityFinal = activity;
 		if (LoginResponse.NEXT_STEP_NORMAL.equals(response.getNextStep())) {
-			//正常登录流程
+			// 正常登录流程
 			return false;
-//		}else if(LoginResponse.NEXT_STEP_CHANGE_PWD.equals(response.getNextStep())){
-//			//初始密码或过期密码，必须修改
-//			String msg = ResourceUtil.getString(activity,
-//					R.string.lam_your_password_must_change_str);
-//			final PromptDialog promptDialog = new PromptDialog(activity,
-//					ResourceUtil.getString(activity,
-//							R.string.tam_show_dialog_title_str), msg);
-//			promptDialog.setSureButtonOnclickListener(new OnClickListener() {
-//						public void onClick(View v) {
-//							promptDialog.dismiss();
-//							gotToModifyPassword(activityFinal);
-//						}
-//					});
-//			promptDialog.setCancelable(false);
-//			promptDialog.show();
-//			return true;
-//		}else if(LoginResponse.NEXT_STEP_NOTIFY_PWD_EXPIRE_DATE.equals(response.getNextStep())){
-//			long lessDate = response.getPasswordValidDays();
-//			// 密码90天过期后必须修改，过期前15天开始提示修改
-//			if (lessDate < 16) {
-//				String msg = "";
-//				if (lessDate == 0) {
-//					msg = ResourceUtil.getString(activity,
-//							R.string.lam_your_password_past_due_str);
-//					final PromptDialog promptDialog = new PromptDialog(activity,
-//							ResourceUtil.getString(activity,
-//									R.string.tam_show_dialog_title_str), msg);
-//					promptDialog.setSureButtonOnclickListener(new OnClickListener() {
-//								public void onClick(View v) {
-//									promptDialog.dismiss();
-//									gotToModifyPassword(activityFinal);
-//								}
-//							});
-//					promptDialog.setCancelable(false);
-//					promptDialog.show();
-//				} else {
-//					msg = ResourceUtil.getString(activity,
-//							R.string.lam_your_password_has_str)
-//							+ lessDate
-//							+ ResourceUtil.getString(activity,
-//									R.string.lam_must_past_due_str);
-//					final OperationDialog dialog = new OperationDialog(activity,
-//							ResourceUtil.getString(activity,
-//									R.string.tam_show_dialog_title_str), msg);
-//					dialog.setSureButtonOnclickListener(new OnClickListener() {
-//						public void onClick(View v) {
-//							dialog.dismiss();
-//							gotToModifyPassword(activityFinal);
-//						}
-//					});
-//					dialog.setCancelButtonOnclickListener(new OnClickListener() {
-//						public void onClick(View v) {
-//							dialog.dismiss();
-//							nextPage(activityFinal);
-//						}
-//					});
-//					dialog.setCancelable(false);
-//					dialog.show();
-//	
-//				}
-//				return true;
-//			}
+			// }else
+			// if(LoginResponse.NEXT_STEP_CHANGE_PWD.equals(response.getNextStep())){
+			// //初始密码或过期密码，必须修改
+			// String msg = ResourceUtil.getString(activity,
+			// R.string.lam_your_password_must_change_str);
+			// final PromptDialog promptDialog = new PromptDialog(activity,
+			// ResourceUtil.getString(activity,
+			// R.string.tam_show_dialog_title_str), msg);
+			// promptDialog.setSureButtonOnclickListener(new OnClickListener() {
+			// public void onClick(View v) {
+			// promptDialog.dismiss();
+			// gotToModifyPassword(activityFinal);
+			// }
+			// });
+			// promptDialog.setCancelable(false);
+			// promptDialog.show();
+			// return true;
+			// }else
+			// if(LoginResponse.NEXT_STEP_NOTIFY_PWD_EXPIRE_DATE.equals(response.getNextStep())){
+			// long lessDate = response.getPasswordValidDays();
+			// // 密码90天过期后必须修改，过期前15天开始提示修改
+			// if (lessDate < 16) {
+			// String msg = "";
+			// if (lessDate == 0) {
+			// msg = ResourceUtil.getString(activity,
+			// R.string.lam_your_password_past_due_str);
+			// final PromptDialog promptDialog = new PromptDialog(activity,
+			// ResourceUtil.getString(activity,
+			// R.string.tam_show_dialog_title_str), msg);
+			// promptDialog.setSureButtonOnclickListener(new OnClickListener() {
+			// public void onClick(View v) {
+			// promptDialog.dismiss();
+			// gotToModifyPassword(activityFinal);
+			// }
+			// });
+			// promptDialog.setCancelable(false);
+			// promptDialog.show();
+			// } else {
+			// msg = ResourceUtil.getString(activity,
+			// R.string.lam_your_password_has_str)
+			// + lessDate
+			// + ResourceUtil.getString(activity,
+			// R.string.lam_must_past_due_str);
+			// final OperationDialog dialog = new OperationDialog(activity,
+			// ResourceUtil.getString(activity,
+			// R.string.tam_show_dialog_title_str), msg);
+			// dialog.setSureButtonOnclickListener(new OnClickListener() {
+			// public void onClick(View v) {
+			// dialog.dismiss();
+			// gotToModifyPassword(activityFinal);
+			// }
+			// });
+			// dialog.setCancelButtonOnclickListener(new OnClickListener() {
+			// public void onClick(View v) {
+			// dialog.dismiss();
+			// nextPage(activityFinal);
+			// }
+			// });
+			// dialog.setCancelable(false);
+			// dialog.show();
+			//
+			// }
+			// return true;
+			// }
 		}
 		return false;
 
@@ -147,22 +149,22 @@ public class LoginCallBackHelper {
 		activity.getAppContext().setAttribute(
 				RuntimeAttrNames.IMAGE_CACHE_MANAGE, manager);
 	}
-	
-	private static PayTxnInfo queryTxnInfo(ExceptionPayTxnInfo expInfo, TiActivity activity) {
-		
-		PayTxnInfoDao payTxnInfoDao = RoboGuiceUtil
-				.getInjectObject(PayTxnInfoDao.class,
-						activity.getApplicationContext());
-		
+
+	private static PayTxnInfo queryTxnInfo(ExceptionPayTxnInfo expInfo,
+			TiActivity activity) {
+
+		PayTxnInfoDao payTxnInfoDao = RoboGuiceUtil.getInjectObject(
+				PayTxnInfoDao.class, activity.getApplicationContext());
+
 		QueryPayTxnInfoCond cond = new QueryPayTxnInfoCond();
 		cond.setTermTraceNo(expInfo.getTermTraceNo());
 		cond.setTermTxnTime(expInfo.getTermTxnTime());
 		List<PayTxnInfo> payList = payTxnInfoDao.query(cond, 0, 1);
-		PayTxnInfo payTxnInfo =  null;
-		if(payList.size()>0) {
+		PayTxnInfo payTxnInfo = null;
+		if (payList.size() > 0) {
 			payTxnInfo = payList.get(0);
 		}
-		
+
 		return payTxnInfo;
 	}
 
@@ -178,17 +180,15 @@ public class LoginCallBackHelper {
 		ExceptionPayTxnInfoDao exceptionPayTxnInfoDao = RoboGuiceUtil
 				.getInjectObject(ExceptionPayTxnInfoDao.class,
 						activity.getApplicationContext());
-		PayTxnInfoDao payTxnInfoDao = RoboGuiceUtil
-				.getInjectObject(PayTxnInfoDao.class,
-						activity.getApplicationContext());
-		
+		PayTxnInfoDao payTxnInfoDao = RoboGuiceUtil.getInjectObject(
+				PayTxnInfoDao.class, activity.getApplicationContext());
+
 		if (exceptionPayTxnInfoDao == null || payTxnInfoDao == null) {
 			return false;
 		}
-		
+
 		PartyInfo partyInfo = (PartyInfo) activity.getAppContext()
 				.getAttribute(RuntimeAttrNames.PARTY_INFO);
-		
 
 		QueryExceptionPayTxnInfoCond cond = new QueryExceptionPayTxnInfoCond();
 		Set<String> statuses = new HashSet<String>();
@@ -196,31 +196,31 @@ public class LoginCallBackHelper {
 		statuses.add(ExceptionPayTxnInfo.EXP_STATUS_WAIT_SIGN);
 		cond.setExpcetionStatuses(statuses);
 		cond.setTxnPartyId(partyInfo.getPartyId());
-		
+
 		List<ExceptionPayTxnInfo> exceptionPayTxnInfos = exceptionPayTxnInfoDao
 				.query(cond, 0, -1);
 		if (exceptionPayTxnInfos != null && exceptionPayTxnInfos.size() > 0) {
 
 			final ExceptionPayTxnInfo expInfo = exceptionPayTxnInfos.get(0);
-			
-			//IC卡交易，非等待签名的，直接发送冲正
-			if(expInfo.getIsICCardTxn()&&!expInfo.getExpcetionStatus().equals(ExceptionPayTxnInfo.EXP_STATUS_WAIT_SIGN)) {
-				//IC卡交易直接冲正
+
+			// IC卡交易，非等待签名的，直接发送冲正
+			if (expInfo.getIsICCardTxn()
+					&& !expInfo.getExpcetionStatus().equals(
+							ExceptionPayTxnInfo.EXP_STATUS_WAIT_SIGN)) {
+				// IC卡交易直接冲正
 				expInfo.setExpcetionStatus(ExceptionPayTxnInfo.EXP_STATUS_WAIT_REVERSE);
 				exceptionPayTxnInfoDao.update(expInfo);
-				
-				//原交易跟新失败
+
+				// 原交易跟新失败
 				PayTxnInfo payTxnInfo = queryTxnInfo(expInfo, activity);
-				if(partyInfo != null) {
+				if (partyInfo != null) {
 					payTxnInfo.setTxnStatus(PayTxnInfoStatus.STATUS_FAIL);
 					payTxnInfo.setTxnFlagMessage("失败");
 					payTxnInfoDao.update(payTxnInfo);
 				}
-				
-			}else {
-				
-			
-				
+
+			} else {
+
 				// 启动异常交易
 				TxnContext txnContext = new TxnContext();
 				txnContext.setTxnType(expInfo.getTxnType());
@@ -231,7 +231,7 @@ public class LoginCallBackHelper {
 				txnActionResponse.setTxnAddress(expInfo.getTxnAddress());
 				txnContext.setIcCardTxn(expInfo.getIsICCardTxn());
 				txnActionResponse.setExPayInfoIdTxn(expInfo.getIdTxn());
-				
+
 				String txnMsg = "";
 				String outButtonName = "";
 				String buttonName = "";
@@ -247,26 +247,29 @@ public class LoginCallBackHelper {
 					txnMsg = "退款";
 					outButtonName = "退出交易";
 				}
-				
+
 				String statusMsg = "";
 				String title = null;
-				if(expInfo.getExpcetionStatus().equals(ExceptionPayTxnInfo.EXP_STATUS_WAIT_RETRY)) {
+				if (expInfo.getExpcetionStatus().equals(
+						ExceptionPayTxnInfo.EXP_STATUS_WAIT_RETRY)) {
 					statusMsg = "未完成";
 					buttonName = "完成交易";
-				}else if (expInfo.getExpcetionStatus().equals(ExceptionPayTxnInfo.EXP_STATUS_WAIT_SIGN)) {
+				} else if (expInfo.getExpcetionStatus().equals(
+						ExceptionPayTxnInfo.EXP_STATUS_WAIT_SIGN)) {
 					statusMsg = "未完成签名";
 					buttonName = "完成签名";
 					title = "签名补入";
 
 				}
-				
+
 				String promptMsg = "您在"
-						+ StringUtil.format(
-								"yyyy-MM-dd HH:mm:ss",
-								StringUtil.parseToDate("yyyyMMddHHmmss",
-										expInfo.getTermTxnTime())) + "有一笔金额为"
-						+ StringConvertor.convert2Currency(expInfo.getSalesAmt())
-						+ "的" + txnMsg + "交易"+statusMsg+",请重新完成交易。";
+						+ StringUtil.format("yyyy-MM-dd HH:mm:ss", StringUtil
+								.parseToDate("yyyyMMddHHmmss",
+										expInfo.getTermTxnTime()))
+						+ "有一笔金额为"
+						+ StringConvertor.convert2Currency(expInfo
+								.getSalesAmt()) + "的" + txnMsg + "交易"
+						+ statusMsg + ",请重新完成交易。";
 
 				Map<String, String> intentData = new HashMap<String, String>();
 				intentData.put("message", promptMsg);
@@ -278,8 +281,9 @@ public class LoginCallBackHelper {
 
 				TiFlowControlImpl.instanceControl().startFlow(activity,
 						FlowNames.COM_TXN_RECOVER_FLOW, intentData);
-				TiFlowControlImpl.instanceControl().setFlowContextData(txnContext);
-				
+				TiFlowControlImpl.instanceControl().setFlowContextData(
+						txnContext);
+
 				return true;
 			}
 		}
@@ -290,8 +294,9 @@ public class LoginCallBackHelper {
 	public static void goHome(TiActivity activity) {
 
 		if (OrderPayUtil.isOrderPay(activity.getAppContext())) {
-			OrderPayUtil.submitTxn(activity, RoboGuiceUtil.getInjectObject(TxnControl.class, activity));
-			//OrderPayUtil.goToOrderCheck(activity);
+			OrderPayUtil.submitTxn(activity,
+					RoboGuiceUtil.getInjectObject(TxnControl.class, activity));
+			// OrderPayUtil.goToOrderCheck(activity);
 			return;
 		}
 

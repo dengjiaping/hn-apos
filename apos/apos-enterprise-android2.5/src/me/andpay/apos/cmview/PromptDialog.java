@@ -54,12 +54,13 @@ public class PromptDialog {
 
 	public void dismiss() {
 		dialog.dismiss();
-		
+
 	}
-	public void setCancelable(boolean flag)  {
+
+	public void setCancelable(boolean flag) {
 		dialog.setCancelable(flag);
 	}
-	
+
 	public void setButtonText(String text) {
 		sureButton.setText(text);
 	}

@@ -20,7 +20,6 @@ public class ProductInfoDao extends
 
 	private final static String DELETE_WHERE = "merchPartyId=?";
 
-
 	public ProductInfoDao(Context context, String name, CursorFactory factory,
 			int version, Class<? extends ProductInfo> t) {
 		super(context, name, factory, version, t);
@@ -75,7 +74,8 @@ public class ProductInfoDao extends
 	 * @return
 	 */
 	@SuppressLint("UseValueOf")
-	public ProductStatisticsInfo getPartyValiProductStatisticsInfo(String partyId) {
+	public ProductStatisticsInfo getPartyValiProductStatisticsInfo(
+			String partyId) {
 		ProductStatisticsInfo info = new ProductStatisticsInfo();
 		QueryProductInfoCond cond = new QueryProductInfoCond();
 		cond.setMerchPartyId(partyId);
@@ -99,8 +99,8 @@ public class ProductInfoDao extends
 	 * @param partyId
 	 */
 	public void deleteAllProductByPartyId(String partyId) {
-		this.getWritableDatabase()
-				.delete(TB_NAME, DELETE_WHERE, new String[] { partyId });
+		this.getWritableDatabase().delete(TB_NAME, DELETE_WHERE,
+				new String[] { partyId });
 	}
 
 	/**

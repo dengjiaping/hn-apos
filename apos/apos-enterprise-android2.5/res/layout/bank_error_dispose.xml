@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical" >
+
+    <RelativeLayout style="@style/com_native_top_style" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/bank_error_dispose_return_apply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/com_button_selector"
+                android:gravity="center"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dip"
+                android:text="退货申请"
+                android:textColor="@drawable/com_text_color_selector"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/bank_error_dispose_order_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:background="@drawable/com_button_selector"
+                android:gravity="center"
+                android:paddingLeft="5dip"
+                android:paddingRight="5dip"
+                android:text="调单上报"
+                android:textColor="@drawable/com_text_color_selector"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/bank_error_dispose_back"
+            style="@style/com_top_return_button_style" />
+
+        <Button
+            android:id="@+id/bank_error_dispose_add"
+            style="@style/com_top_right_button_style"
+            android:layout_width="60dp"
+            android:text="添加" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/bank_error_dispose_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@color/com_no_color"
+        android:divider="@drawable/scm_solid_line_img"
+        android:dividerHeight="1dip"
+        android:listSelector="@color/com_no_color" >
+    </ListView>
+
+</LinearLayout>

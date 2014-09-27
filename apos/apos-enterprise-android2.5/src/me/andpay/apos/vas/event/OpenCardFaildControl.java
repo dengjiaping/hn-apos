@@ -11,16 +11,18 @@ import android.view.View;
 public class OpenCardFaildControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
-		OpenCardFaildActivity openCardFaildActivity = (OpenCardFaildActivity)activity;
-		
-		if(openCardFaildActivity.backBtn.getId() == view.getId()) {
-			TiFlowControlImpl.instanceControl().previousSetup(openCardFaildActivity);
+
+		OpenCardFaildActivity openCardFaildActivity = (OpenCardFaildActivity) activity;
+
+		if (openCardFaildActivity.backBtn.getId() == view.getId()) {
+			TiFlowControlImpl.instanceControl().previousSetup(
+					openCardFaildActivity);
 			return;
 		}
-		
-		if(openCardFaildActivity.outBtn.getId() == view.getId()) {
-			TiFlowControlImpl.instanceControl().nextSetup(openCardFaildActivity, FlowConstants.FINISH);
+
+		if (openCardFaildActivity.outBtn.getId() == view.getId()) {
+			TiFlowControlImpl.instanceControl().nextSetup(
+					openCardFaildActivity, FlowConstants.FINISH);
 			return;
 		}
 	}

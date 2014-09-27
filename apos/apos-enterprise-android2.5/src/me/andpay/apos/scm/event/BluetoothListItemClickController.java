@@ -46,27 +46,28 @@ public class BluetoothListItemClickController extends AbstractEventController {
 						cardReaderInfo.getmName());
 
 	}
-//	public void setCardreader(CardReaderInfo cardReaderInfo) {
-//		setCardreaderContent(aposContext, cardReaderInfo.getmIdentifier(), cardReaderInfo.getmName());
-//	}
-//	
-	//TODO应该是UTIL吧
-	public static void setCardreaderContent(AposContext aposContext, String identifier, String name){
+
+	// public void setCardreader(CardReaderInfo cardReaderInfo) {
+	// setCardreaderContent(aposContext, cardReaderInfo.getmIdentifier(),
+	// cardReaderInfo.getmName());
+	// }
+	//
+	// TODO应该是UTIL吧
+	public static void setCardreaderContent(AposContext aposContext,
+			String identifier, String name) {
 		if (CardReaderTypes.NEW_LAND_BL == CardReaderManager
 				.getCardReaderType()) {
 			aposContext.getAppConfig().setAttribute(
 					ConfigAttrNames.NEWLAND_DEFAULT_BLUETOOTH_IDENTIFIER,
 					identifier);
 			aposContext.getAppConfig().setAttribute(
-					ConfigAttrNames.NEWLAND_DEFAULT_BLUETOOTH_NAME,
-					name);
+					ConfigAttrNames.NEWLAND_DEFAULT_BLUETOOTH_NAME, name);
 		} else {
 			aposContext.getAppConfig().setAttribute(
 					ConfigAttrNames.LANDI_DEFAULT_BLUETOOTH_IDENTIFIER,
 					identifier);
 			aposContext.getAppConfig().setAttribute(
-					ConfigAttrNames.LANDI_DEFAULT_BLUETOOTH_NAME,
-					name);
+					ConfigAttrNames.LANDI_DEFAULT_BLUETOOTH_NAME, name);
 		}
 	}
 

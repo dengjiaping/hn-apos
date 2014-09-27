@@ -14,54 +14,54 @@ import me.andpay.timobileframework.mvc.anno.CallBackHandler;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-
 @CallBackHandler
 public class GetCouponCallbackImpl implements GetCouponCallback {
-	
-	
+
 	private CouponDeailActivity activity;
-	
+
 	public GetCouponCallbackImpl(CouponDeailActivity activity) {
 		this.activity = activity;
 	}
 
 	public void getCouponSuccess(Coupon coupon) {
 		activity.showCoupon();
-		
-		PartyInfo partyInfo = (PartyInfo)activity.getAppContext().getAttribute(RuntimeAttrNames.PARTY_INFO);
+
+		PartyInfo partyInfo = (PartyInfo) activity.getAppContext()
+				.getAttribute(RuntimeAttrNames.PARTY_INFO);
 		activity.partyNameText.setText(partyInfo.getPartyName());
 		CouponSubAcct couponSubAcct = coupon.getSubAccts().get(0);
 		activity.couponNameText.setText(coupon.getCouponName());
-		if(coupon.getExpiryDate() == null) {
+		if (coupon.getExpiryDate() == null) {
 			activity.couponExpireText.setText("永久有效");
-		}else {
-			activity.couponExpireText.setText(StringUtil.format("yyyy-MM-dd", coupon.getExpiryDate()));
+		} else {
+			activity.couponExpireText.setText(StringUtil.format("yyyy-MM-dd",
+					coupon.getExpiryDate()));
 		}
-		
-		//抵扣劵
-		if(couponSubAcct.getCouponType().equals("2")) {
+
+		// 抵扣劵
+		if (couponSubAcct.getCouponType().equals("2")) {
 			String amt = couponSubAcct.getAmt().toString();
 			String[] amtArry = amt.split("\\.");
-			if("00".equals(amtArry[1])) {
+			if ("00".equals(amtArry[1])) {
 				amt = amtArry[0];
 			}
 			activity.couponDetailText.setText(amt);
 			activity.couponDetail2Text.setText("元");
-		}else if(couponSubAcct.getCouponType().equals("1")){
-			
+		} else if (couponSubAcct.getCouponType().equals("1")) {
+
 			String discount = couponSubAcct.getDiscount().toString();
 			discount = discount.split("\\.")[1].replace("0", "");
-			
+
 			activity.couponDetailText.setText(discount);
 			activity.couponDetail2Text.setText("折");
 		}
-		
-		
+
 	}
 
 	public void getCouponFaild(String errorMsg) {
-		
-		final PromptDialog promptDialog = new PromptDialog(activity, "失败", errorMsg);
+
+		final PromptDialog promptDialog = new PromptDialog(activity, "失败",
+				errorMsg);
 		promptDialog.setSureButtonOnclickListener(new OnClickListener() {
 			public void onClick(View v) {
 				promptDialog.dismiss();
@@ -73,8 +73,8 @@ public class GetCouponCallbackImpl implements GetCouponCallback {
 	}
 
 	public void getCouponNetworkError(String errorMsg) {
-		final OperationDialog dialog = new OperationDialog(activity,
-				"提示", errorMsg);
+		final OperationDialog dialog = new OperationDialog(activity, "提示",
+				errorMsg);
 		dialog.setCancelable(false);
 		dialog.setCancelButtonOnclickListener(new OnClickListener() {
 
@@ -96,7 +96,5 @@ public class GetCouponCallbackImpl implements GetCouponCallback {
 		dialog.setCancelable(false);
 		dialog.show();
 	}
-	
-	
 
 }

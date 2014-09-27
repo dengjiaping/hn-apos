@@ -22,8 +22,6 @@ public class GenMsrKeysAction extends MultiAction {
 
 	private TermSecurityService termSecurityService;
 
-
-
 	public ModelAndView genWorkkeys(ActionRequest request) {
 
 		String ksn = (String) request.getParameterValue("ksn");
@@ -32,8 +30,9 @@ public class GenMsrKeysAction extends MultiAction {
 		ModelAndView modelAndView = new ModelAndView();
 
 		try {
-			GenMsrKeyResponse genMsrKeyResponse = termSecurityService.genMsrKeys(
-					ksn, keyTypes.toArray(new String[keyTypes.size()]));
+			GenMsrKeyResponse genMsrKeyResponse = termSecurityService
+					.genMsrKeys(ksn,
+							keyTypes.toArray(new String[keyTypes.size()]));
 
 			modelAndView.addModelValue("mrsKeys",
 					genMsrKeyResponse.getMsrKeys());
@@ -41,11 +40,11 @@ public class GenMsrKeysAction extends MultiAction {
 		} catch (AppBizException e) {
 			return modelAndView;
 		} catch (Exception ex) {
-			if(!ErrorMsgUtil.isNetworkError(ex)) {
+			if (!ErrorMsgUtil.isNetworkError(ex)) {
 				modelAndView.addModelValue("errorMsg", "获取密钥失败,请联系和付。");
-				Crashlytics.log("get msrKey error ksn="+ksn);
+				Crashlytics.log("get msrKey error ksn=" + ksn);
 				Crashlytics.logException(ex);
-			}else {
+			} else {
 				modelAndView.addModelValue("errorMsg", "网络异常，请稍后再试。");
 			}
 			return modelAndView;

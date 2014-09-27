@@ -26,16 +26,15 @@ public class LbsAction extends MultiAction {
 	 */
 	public void queryLbsInfo(ActionRequest request) {
 
-		
 		LbsCallback callback = (LbsCallback) request.getHandler();
 		try {
-			
+
 			LocateRequest lbsRequest = (LocateRequest) request
 					.getParameterValue(LBS_INFO_REQUEST);
 			LocateResult result = locationService.locate(lbsRequest);
 			callback.dealResult(result);
 		} catch (Throwable e) {
-			//处理所有异常
+			// 处理所有异常
 			callback.excptionHandle();
 		}
 

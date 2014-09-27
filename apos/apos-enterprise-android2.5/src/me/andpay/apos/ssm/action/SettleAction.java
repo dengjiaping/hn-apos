@@ -15,8 +15,8 @@ public class SettleAction extends SessionKeepAction {
 	private TxnBatchService batchService;
 
 	public ModelAndView settle(ActionRequest request) throws RuntimeException {
-		
-		ModelAndView modelAndView =  new ModelAndView();
+
+		ModelAndView modelAndView = new ModelAndView();
 		TxnBatch batch;
 		try {
 			batch = batchService.batch();

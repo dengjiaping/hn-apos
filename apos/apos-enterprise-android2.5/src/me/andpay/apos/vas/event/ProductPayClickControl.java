@@ -17,20 +17,20 @@ import android.view.View;
  */
 public class ProductPayClickControl extends AbstractEventController {
 
-	
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
-		
-		if(ShoppingCartCenter.isEmpty()) {
+
+		if (ShoppingCartCenter.isEmpty()) {
 			return;
 		}
-		
+
 		TiFlowControlImpl.instanceControl().startFlow(
 				activity,
 				ProductSalesFlowFactory.getFlow(ShoppingCartCenter
 						.getShoppingCart().getProductType()));
 		ProductSalesContext productSalesContext = new ProductSalesContext();
-		TiFlowControlImpl.instanceControl().setFlowContextData(productSalesContext);
-		productSalesContext.setShoppingCart(ShoppingCartCenter.getShoppingCart());
+		TiFlowControlImpl.instanceControl().setFlowContextData(
+				productSalesContext);
+		productSalesContext.setShoppingCart(ShoppingCartCenter
+				.getShoppingCart());
 	}
 }

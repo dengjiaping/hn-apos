@@ -40,7 +40,7 @@ public class DataUpdateCallbackHandler extends AfterProcessWithErrorHandler {
 		stopListView();
 		showError();
 	}
-	
+
 	@Override
 	public void processOtherError() {
 		stopListView();
@@ -56,10 +56,10 @@ public class DataUpdateCallbackHandler extends AfterProcessWithErrorHandler {
 	}
 
 	private void showError() {
-//		ToastTools.toast(refActivty.getApplicationContext(), refActivty
-//				.getApplicationContext().getString(R.string.com_net_error_str),
-//				null, null, 0, 0);
-		
+		// ToastTools.toast(refActivty.getApplicationContext(), refActivty
+		// .getApplicationContext().getString(R.string.com_net_error_str),
+		// null, null, 0, 0);
+
 		ToastTools.topToast(refActivty,
 				ResourceUtil.getString(refActivty, R.string.com_net_error_str),
 				ToastTools.LIST_VIEW_TOAST_HEIGHT);
@@ -70,9 +70,7 @@ public class DataUpdateCallbackHandler extends AfterProcessWithErrorHandler {
 				R.string.tqm_txn_list_no_refresh_str) : String.format(
 				refActivty.getApplicationContext().getString(
 						R.string.tqm_txn_list_refresh_str), size);
-		ToastTools.topToast(refActivty,
-				str,
-				ToastTools.LIST_VIEW_TOAST_HEIGHT);
+		ToastTools.topToast(refActivty, str, ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
 	private void addDataByRefreshFlag(LinkedList<PayTxnInfo> infos) {

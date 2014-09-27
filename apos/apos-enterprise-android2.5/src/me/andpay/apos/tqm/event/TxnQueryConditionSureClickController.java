@@ -14,16 +14,15 @@ public class TxnQueryConditionSureClickController extends
 		AbstractEventController {
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
 		Intent resultItent = new Intent();
-		QueryConditionForm form = (QueryConditionForm)formBean.getData();
-		if(!StringUtil.isEmpty(form.getAmount())) {
+		QueryConditionForm form = (QueryConditionForm) formBean.getData();
+		if (!StringUtil.isEmpty(form.getAmount())) {
 			form.setAmount(StringConvertor.convertCurrency2Str(form.getAmount()));
 		}
 		resultItent.putExtra(
 				"queryConditionForm",
 				JacksonSerializer.newPrettySerializer().serialize(
 						QueryConditionForm.class, formBean.getData()));
-		refActivty
-				.setResult(Activity.RESULT_OK, resultItent);
+		refActivty.setResult(Activity.RESULT_OK, resultItent);
 		refActivty.finish();
 	}
 }

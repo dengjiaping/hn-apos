@@ -1,4 +1,4 @@
-package me.andpay.apos.lft.view;
+package me.andpay.apos.base.view;
 
 import me.andpay.apos.R;
 import android.app.Dialog;
@@ -58,15 +58,14 @@ public class CustomDialog extends Dialog {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
-		
 
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			switch (type){
-				case 0:
-					return super.onKeyDown(keyCode, event);
-	
-				case 1:
-					return true;
+			switch (type) {
+			case 0:
+				return super.onKeyDown(keyCode, event);
+
+			case 1:
+				return true;
 			}
 
 		}

@@ -41,8 +41,8 @@ import android.widget.RelativeLayout;
 
 @ContentView(R.layout.tqm_txn_list_condition_layout)
 @FormBind(formBean = QueryConditionForm.class)
-public class TxnQueryConditionActivity extends AposBaseActivity implements ValueContainer,
-		OnKeyboardListener {
+public class TxnQueryConditionActivity extends AposBaseActivity implements
+		ValueContainer, OnKeyboardListener {
 
 	private SolfKeyBoardView solfKeyBoard;
 
@@ -110,8 +110,8 @@ public class TxnQueryConditionActivity extends AposBaseActivity implements Value
 		if (isTxnTypeHide) {
 			txnTypeLayout.setVisibility(View.GONE);
 		}
-		solfKeyBoard = SolfKeyBoardView.instance(getApplicationContext(), footLayout,
-				this);
+		solfKeyBoard = SolfKeyBoardView.instance(getApplicationContext(),
+				footLayout, this);
 		if (getIntent() == null || getIntent().getExtras() == null) {
 			return;
 		}
@@ -139,7 +139,8 @@ public class TxnQueryConditionActivity extends AposBaseActivity implements Value
 			txnIdEdit.setText(form.getTxnId());
 			// txnTypeSpinner.setSelection(index)
 			if (StringUtil.isNotBlank(form.getTxnType())) {
-				Map<Integer, String> itemValues = txnTypeSpinner.getItemValues();
+				Map<Integer, String> itemValues = txnTypeSpinner
+						.getItemValues();
 				for (Integer valueKey : itemValues.keySet()) {
 					if (form.getTxnType().equals(itemValues.get(valueKey))) {
 						txnTypeSpinner.showSelect(valueKey);
@@ -152,32 +153,49 @@ public class TxnQueryConditionActivity extends AposBaseActivity implements Value
 	}
 
 	private void initTxnTypeSpinner() {
-		txnTypeSpinner.setLayoutAndInit(R.layout.com_types_spinner_layout, new TiSpinnerInit() {
-			
-			public void initData(Map<Integer, Integer> itemIds, Map<Integer, Integer> itemImgs,
-					Map<Integer, String> itemValues, Map<Integer, Integer> itemStrs) {
+		txnTypeSpinner.setLayoutAndInit(R.layout.com_types_spinner_layout,
+				new TiSpinnerInit() {
 
-				itemIds.put(R.id.com_txntypes_all_layout, R.id.com_txntypes_all_str);
-				itemIds.put(R.id.com_txntypes_purchase_layout, R.id.com_txntypes_purchase_str);
-				itemIds.put(R.id.com_txntypes_refund_layout, R.id.com_txntypes_refund_str);
-				itemIds.put(R.id.com_txntypes_void_layout, R.id.com_txntypes_void_str);
-				itemImgs.put(R.id.com_txntypes_all_layout, R.id.com_txntypes_all_img);
-				itemImgs.put(R.id.com_txntypes_purchase_layout, R.id.com_txntypes_purchase_img);
-				itemImgs.put(R.id.com_txntypes_refund_layout, R.id.com_txntypes_refund_img);
-				itemImgs.put(R.id.com_txntypes_void_layout, R.id.com_txntypes_void_img);
-				itemValues.put(R.id.com_txntypes_all_layout, null);
-				itemValues.put(R.id.com_txntypes_purchase_layout, TxnTypes.PURCHASE);
-				itemValues.put(R.id.com_txntypes_refund_layout, TxnTypes.REFUND);
-				itemValues.put(R.id.com_txntypes_void_layout, TxnTypes.VOID_PURCHASE);
-				itemStrs.put(R.id.com_txntypes_all_layout, R.string.tqm_txn_types_all_str);
-				itemStrs.put(R.id.com_txntypes_purchase_layout,
-						R.string.tqm_txn_types_purchase_str);
-				itemStrs.put(R.id.com_txntypes_refund_layout, R.string.tqm_txn_types_refund_str);
-				itemStrs.put(R.id.com_txntypes_void_layout, R.string.tqm_txn_types_void_str);
-				
-			}
-		});
-		
+					public void initData(Map<Integer, Integer> itemIds,
+							Map<Integer, Integer> itemImgs,
+							Map<Integer, String> itemValues,
+							Map<Integer, Integer> itemStrs) {
+
+						itemIds.put(R.id.com_txntypes_all_layout,
+								R.id.com_txntypes_all_str);
+						itemIds.put(R.id.com_txntypes_purchase_layout,
+								R.id.com_txntypes_purchase_str);
+						itemIds.put(R.id.com_txntypes_refund_layout,
+								R.id.com_txntypes_refund_str);
+						itemIds.put(R.id.com_txntypes_void_layout,
+								R.id.com_txntypes_void_str);
+						itemImgs.put(R.id.com_txntypes_all_layout,
+								R.id.com_txntypes_all_img);
+						itemImgs.put(R.id.com_txntypes_purchase_layout,
+								R.id.com_txntypes_purchase_img);
+						itemImgs.put(R.id.com_txntypes_refund_layout,
+								R.id.com_txntypes_refund_img);
+						itemImgs.put(R.id.com_txntypes_void_layout,
+								R.id.com_txntypes_void_img);
+						itemValues.put(R.id.com_txntypes_all_layout, null);
+						itemValues.put(R.id.com_txntypes_purchase_layout,
+								TxnTypes.PURCHASE);
+						itemValues.put(R.id.com_txntypes_refund_layout,
+								TxnTypes.REFUND);
+						itemValues.put(R.id.com_txntypes_void_layout,
+								TxnTypes.VOID_PURCHASE);
+						itemStrs.put(R.id.com_txntypes_all_layout,
+								R.string.tqm_txn_types_all_str);
+						itemStrs.put(R.id.com_txntypes_purchase_layout,
+								R.string.tqm_txn_types_purchase_str);
+						itemStrs.put(R.id.com_txntypes_refund_layout,
+								R.string.tqm_txn_types_refund_str);
+						itemStrs.put(R.id.com_txntypes_void_layout,
+								R.string.tqm_txn_types_void_str);
+
+					}
+				});
+
 	}
 
 	public void sureClick() {

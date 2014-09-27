@@ -11,13 +11,13 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
  * @author cpz
  *
  */
-public class ExceptionPayTxnInfoDao extends GenSqLiteDao<ExceptionPayTxnInfo, QueryExceptionPayTxnInfoCond, Integer> {
+public class ExceptionPayTxnInfoDao
+		extends
+		GenSqLiteDao<ExceptionPayTxnInfo, QueryExceptionPayTxnInfoCond, Integer> {
 
-	
-	public ExceptionPayTxnInfoDao(Context context, String name, CursorFactory factory,
-			int version) {
+	public ExceptionPayTxnInfoDao(Context context, String name,
+			CursorFactory factory, int version) {
 		super(context, name, factory, version, ExceptionPayTxnInfo.class);
 	}
-	
 
 }

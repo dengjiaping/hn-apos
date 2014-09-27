@@ -48,7 +48,7 @@ public class TxnFlagMapping {
 		}
 		return flags;
 	}
-	
+
 	public static Set<String> getSuccessFlags() {
 		Set<String> flags = new HashSet<String>();
 		flags.add(TxnFlags.SUCCESS);
@@ -59,21 +59,21 @@ public class TxnFlagMapping {
 		return flags;
 	}
 
-//	public static Set<String> getFlagsByStatus(String status,
-//			Boolean isRefundEnable) {
-//		if (isRefundEnable == null) {
-//			return getFlagsByStatus(status);
-//			
-//		}
-//		Set<String> flags = new HashSet<String>();
-//		if (isRefundEnable) {
-//			flags.add(TxnFlags.SUCCESS);
-//			flags.add(TxnFlags.SAF);
-//			flags.add(TxnFlags.WAITING_SETTLE);
-//			flags.add(TxnFlags.APPROVING);
-//		} else {
-//			flags.add(TxnFlags.VOIDED);
-//		}
-//		return flags;
-//	}
+	// public static Set<String> getFlagsByStatus(String status,
+	// Boolean isRefundEnable) {
+	// if (isRefundEnable == null) {
+	// return getFlagsByStatus(status);
+	//
+	// }
+	// Set<String> flags = new HashSet<String>();
+	// if (isRefundEnable) {
+	// flags.add(TxnFlags.SUCCESS);
+	// flags.add(TxnFlags.SAF);
+	// flags.add(TxnFlags.WAITING_SETTLE);
+	// flags.add(TxnFlags.APPROVING);
+	// } else {
+	// flags.add(TxnFlags.VOIDED);
+	// }
+	// return flags;
+	// }
 }

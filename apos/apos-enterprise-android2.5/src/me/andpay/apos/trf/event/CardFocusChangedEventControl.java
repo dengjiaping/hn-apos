@@ -11,12 +11,12 @@ public class CardFocusChangedEventControl extends AbstractEventController {
 			View view, boolean hasFocus) {
 		PayeeInfomationActivity payeeActivity = (PayeeInfomationActivity) activity;
 		if (!hasFocus) {
-			
+
 		}
 		return true;
 	}
-	
-	private boolean checkCardNo(String cardNo){
+
+	private boolean checkCardNo(String cardNo) {
 		return false;
 	}
 }

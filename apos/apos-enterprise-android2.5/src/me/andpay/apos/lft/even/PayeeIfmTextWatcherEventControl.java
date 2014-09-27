@@ -17,8 +17,7 @@ public class PayeeIfmTextWatcherEventControl extends AbstractEventController {
 	public void onTextChanged(Activity activity, FormBean formBean,
 			CharSequence s, int start, int before, int count) {
 		PayeeInformationActivity lactivity = (PayeeInformationActivity) activity;
-		if (lactivity.money.length() > 0
-				&& lactivity.number.length() > 0) {
+		if (lactivity.money.length() > 0 && lactivity.number.length() > 0) {
 			lactivity.sure.setEnabled(true);
 		} else {
 			lactivity.sure.setEnabled(false);

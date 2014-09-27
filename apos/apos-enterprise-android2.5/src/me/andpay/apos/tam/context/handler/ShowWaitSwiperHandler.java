@@ -32,31 +32,31 @@ public class ShowWaitSwiperHandler extends GenChangeStatusHander {
 
 			activity.topTextView.setText(R.string.tam_top_input_pass_str);
 
-			APOSGifUtil.startGif(activity.gifDrawable, activity.gifView, activity
-					.getResources(), CardReaderResourceSelector.selectGit(
-					CardReaderManager.getCardReaderType(),
-					CardReaderResourceSelector.INPUTPW));
+			APOSGifUtil.startGif(activity.gifDrawable, activity.gifView,
+					activity.getResources(), CardReaderResourceSelector
+							.selectGit(CardReaderManager.getCardReaderType(),
+									CardReaderResourceSelector.INPUTPW));
 		} else {
 			DisplayMetrics metric = new DisplayMetrics();
 			activity.getWindowManager().getDefaultDisplay().getMetrics(metric);
 
-
 			if (ExtTypes.EXT_TYPE_TXN_GET.equals(txnControl.getTxnContext()
 					.getExtType())) {
 
-
-				APOSGifUtil.startGif(activity.gifDrawable, activity.gifView, activity
-						.getResources(), CardReaderResourceSelector.selectGit(
-						CardReaderManager.getCardReaderType(),
-						CardReaderResourceSelector.GETTXN));
+				APOSGifUtil.startGif(activity.gifDrawable, activity.gifView,
+						activity.getResources(), CardReaderResourceSelector
+								.selectGit(
+										CardReaderManager.getCardReaderType(),
+										CardReaderResourceSelector.GETTXN));
 				activity.topTextView.setText("交易获取中...");
 
 			} else {
 
-				APOSGifUtil.startGif(activity.gifDrawable, activity.gifView, activity
-						.getResources(), CardReaderResourceSelector.selectGit(
-						CardReaderManager.getCardReaderType(),
-						CardReaderResourceSelector.SWIPER));
+				APOSGifUtil.startGif(activity.gifDrawable, activity.gifView,
+						activity.getResources(), CardReaderResourceSelector
+								.selectGit(
+										CardReaderManager.getCardReaderType(),
+										CardReaderResourceSelector.SWIPER));
 
 				activity.topTextView.setText("请刷卡或插入IC卡");
 

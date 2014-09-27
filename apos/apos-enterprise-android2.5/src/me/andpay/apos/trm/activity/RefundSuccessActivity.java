@@ -14,20 +14,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 @ContentView(R.layout.tam_txn_success_layout)
-public class RefundSuccessActivity  extends TiActivity{
-	
-	
+public class RefundSuccessActivity extends TiActivity {
+
 	@InjectView(R.id.com_msg_content)
 	public TextView msgContent;
-	
+
 	@InjectView(R.id.com_event_btn)
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegateClass = OnClickListener.class, toEventController = ReundSuccessControl.class)
 	public Button returnHomeBtn;
-	
+
 	private String message;
-	
+
 	private String buttonName;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

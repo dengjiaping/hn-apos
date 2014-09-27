@@ -37,28 +37,28 @@ public class QueryPurchaseOrderInfoCond extends Sorts implements Serializable {
 
 	@Expression(paraName = "orderId", operater = ">")
 	private Long minOrderId;
-	
+
 	@Expression(paraName = "orderTime", operater = "<=")
 	private Date maxOrderTime;
 
 	@Expression(paraName = "orderTime", operater = ">=")
 	private Date minOrderTime;
-	
-	@Expression 
+
+	@Expression
 	private String paymentMethod;
-	
+
 	@Expression(paraName = "updateTime", operater = "<=")
 	private Date startUpdateTime;
 
 	@Expression(paraName = "orderTime", operater = "<=")
 	private Date endUpdateTime;
-	
+
 	/**
 	 * 销售金额
 	 */
 	@Expression
 	private BigDecimal salesAmt;
-	
+
 	private boolean isHasViewCond;
 
 	public String getCompositeQueryField() {
@@ -164,6 +164,5 @@ public class QueryPurchaseOrderInfoCond extends Sorts implements Serializable {
 	public void setEndUpdateTime(Date endUpdateTime) {
 		this.endUpdateTime = endUpdateTime;
 	}
-	
-	
+
 }

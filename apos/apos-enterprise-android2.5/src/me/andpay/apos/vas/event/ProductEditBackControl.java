@@ -10,6 +10,5 @@ public class ProductEditBackControl extends AbstractEventController {
 	public void onClick(Activity activity, FormBean formBean, View view) {
 		activity.finish();
 	}
-		
 
 }

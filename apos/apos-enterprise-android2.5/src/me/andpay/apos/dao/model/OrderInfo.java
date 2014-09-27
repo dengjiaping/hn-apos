@@ -12,9 +12,9 @@ import me.andpay.timobileframework.sqlite.anno.TableName;
  * @author cpz
  *
  */
-@TableName(name = "OrderInfo",version=1)
+@TableName(name = "OrderInfo", version = 1)
 public class OrderInfo {
-	
+
 	/**
 	 * 主键编号
 	 */
@@ -31,66 +31,65 @@ public class OrderInfo {
 	 */
 	@Column
 	private String orderId;
-	
+
 	/**
 	 * 订单金额
 	 */
 	@Column
-	private Double orderAmt; 
-	
+	private Double orderAmt;
+
 	/**
 	 * 订单状态
 	 */
-    @Column
+	@Column
 	private String orderStatus;
-    
-    /**
-     * 同步时间
-     */
-    @Column
-    private String synDate;
-    
-    /**
-     * 创建时间
-     */
-    @Column
-    private String createDate;
-    
-    /**
-     * 过期时间
-     */
-    @Column
-    private String expiredTime;
-   
+
+	/**
+	 * 同步时间
+	 */
+	@Column
+	private String synDate;
+
+	/**
+	 * 创建时间
+	 */
+	@Column
+	private String createDate;
+
+	/**
+	 * 过期时间
+	 */
+	@Column
+	private String expiredTime;
+
 	/**
 	 * 订单属性1
 	 */
-    @Column
+	@Column
 	private List<OrderAttrNameValue> orderAttrs1;
 
 	/**
 	 * 订单属性2
 	 */
-    @Column
+	@Column
 	private List<OrderAttrNameValue> orderAttrs2;
-    
-    /**
-     * 机构编号
-     */
-    @Column
-    private String partyId;
-    
-    /**
-     * 用户名称
-     */
-    @Column
-    private String userName;
-    /**
-     * 交易编号
-     */
-    @Column
-    private String txnId;
-	
+
+	/**
+	 * 机构编号
+	 */
+	@Column
+	private String partyId;
+
+	/**
+	 * 用户名称
+	 */
+	@Column
+	private String userName;
+	/**
+	 * 交易编号
+	 */
+	@Column
+	private String txnId;
 
 	public Integer getIdOrder() {
 		return idOrder;
@@ -139,7 +138,6 @@ public class OrderInfo {
 	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
-
 
 	public String getExpiredTime() {
 		return expiredTime;
@@ -197,5 +195,4 @@ public class OrderInfo {
 		this.orderRecordId = orderRecordId;
 	}
 
-	
 }

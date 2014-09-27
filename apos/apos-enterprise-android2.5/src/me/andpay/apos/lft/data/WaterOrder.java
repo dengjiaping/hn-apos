@@ -1,6 +1,6 @@
 package me.andpay.apos.lft.data;
 
-public class WaterOrder implements BaseData{
+public class WaterOrder implements BaseData {
 	private String time;// 时间
 	private String oweCost;// 欠费
 	private String breachCost;// 违约
@@ -37,6 +37,5 @@ public class WaterOrder implements BaseData{
 	public void setShouldbeCost(String shouldbeCost) {
 		this.shouldbeCost = shouldbeCost;
 	}
-
 
 }

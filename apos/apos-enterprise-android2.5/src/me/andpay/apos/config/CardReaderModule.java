@@ -14,7 +14,6 @@ public class CardReaderModule extends TiMobileModule {
 	@Override
 	protected void configure() {
 
-		
 		bind(SearchCardreaderCallBack.class).in(Scopes.SINGLETON);
 		bind(CardreaderSetSearchCallback.class).in(Scopes.SINGLETON);
 		bind(DefaultCardReaderCallBack.class).in(Scopes.SINGLETON);

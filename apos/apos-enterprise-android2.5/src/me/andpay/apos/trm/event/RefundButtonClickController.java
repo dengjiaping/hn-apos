@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class RefundButtonClickController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
-		
+
 		final TiActivity tiActivity = (TiActivity) refActivty;
 		final Dialog pwdDialog = new Dialog(refActivty,
 				R.style.Theme_dialog_style);
@@ -41,36 +41,38 @@ public class RefundButtonClickController extends AbstractEventController {
 						pwdDialog.dismiss();
 					}
 				});
-		
-		EditText editText = (EditText)pwdDialog.findViewById(R.id.trm_refund_dialog_pwd_ev);
-		
-		
+
+		EditText editText = (EditText) pwdDialog
+				.findViewById(R.id.trm_refund_dialog_pwd_ev);
+
 		pwdDialog.show();
 		editText.requestFocus();
-		InputMethodManager inputMethodManager = ((InputMethodManager)tiActivity.getSystemService(Context.INPUT_METHOD_SERVICE));
+		InputMethodManager inputMethodManager = ((InputMethodManager) tiActivity
+				.getSystemService(Context.INPUT_METHOD_SERVICE));
 		inputMethodManager.showSoftInput(editText, 0);
 	}
 
-//	public Dialog createRefundDialog(Activity refActivty) {
-//		// final Dialog dialog = new Dialog(refActivty,
-//		// R.style.Theme_dialog_style);
-//		// dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//		// dialog.setContentView(R.layout.trm_refund_dialog_layout);
-//		// //
-//		// dialog.findViewById(R.id.trm_txn_refund_sure_btn).setOnClickListener(
-//		// // new RefundDialogSureClick((TiActivity) refActivty, dialog));
-//		//
-//		// dialog.findViewById(R.id.trm_txn_refund_sure_btn).setOnClickListener(
-//		// new RefundDialogSureClick((TiActivity) refActivty, dialog));
-//		// dialog.findViewById(R.id.trm_txn_refund_cancel_btn).setOnClickListener(
-//		// new OnClickListener() {
-//		//
-//		// public void onClick(View v) {
-//		// dialog.dismiss();
-//		// }
-//		// });
-//		// return dialog;
-//
-//	
-//	}
+	// public Dialog createRefundDialog(Activity refActivty) {
+	// // final Dialog dialog = new Dialog(refActivty,
+	// // R.style.Theme_dialog_style);
+	// // dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+	// // dialog.setContentView(R.layout.trm_refund_dialog_layout);
+	// // //
+	// // dialog.findViewById(R.id.trm_txn_refund_sure_btn).setOnClickListener(
+	// // // new RefundDialogSureClick((TiActivity) refActivty, dialog));
+	// //
+	// // dialog.findViewById(R.id.trm_txn_refund_sure_btn).setOnClickListener(
+	// // new RefundDialogSureClick((TiActivity) refActivty, dialog));
+	// //
+	// dialog.findViewById(R.id.trm_txn_refund_cancel_btn).setOnClickListener(
+	// // new OnClickListener() {
+	// //
+	// // public void onClick(View v) {
+	// // dialog.dismiss();
+	// // }
+	// // });
+	// // return dialog;
+	//
+	//
+	// }
 }

@@ -9,8 +9,8 @@ import android.view.View;
 public class OpenCardClickControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
-		OpenCardRegisterActivity openCardRegisterActivity = (OpenCardRegisterActivity)activity;
+
+		OpenCardRegisterActivity openCardRegisterActivity = (OpenCardRegisterActivity) activity;
 		openCardRegisterActivity.openCardSubmit(formBean);
 	}
 

@@ -3,6 +3,7 @@ package me.andpay.apos.vas.flow.transfer;
 import java.io.Serializable;
 import java.util.Map;
 
+import android.app.Activity;
 import me.andpay.ac.consts.PaymentMethods;
 import me.andpay.ac.consts.TxnTypes;
 import me.andpay.apos.common.activity.AposBaseActivity;
@@ -16,7 +17,6 @@ import me.andpay.apos.vas.spcart.ShoppingCart;
 import me.andpay.timobileframework.flow.TiFlowNodeComplete;
 import me.andpay.timobileframework.flow.TiFlowNodeDataTransfer;
 import me.andpay.timobileframework.util.RoboGuiceUtil;
-import android.app.Activity;
 
 /**
  * 预付费卡充值流程交易子流程参数初始化
@@ -26,11 +26,13 @@ import android.app.Activity;
  */
 public class SvcDepositeTxnTransfer implements TiFlowNodeDataTransfer {
 
-	public Map<String, String> transfterData(Activity activity, Map<String, String> data,
-			TiFlowNodeComplete complete, Map<String, Serializable> subFlowContext) {
+	public Map<String, String> transfterData(Activity activity,
+			Map<String, String> data, TiFlowNodeComplete complete,
+			Map<String, Serializable> subFlowContext) {
 
 		AposBaseActivity payActivity = (AposBaseActivity) activity;
-		String paymentMethod = payActivity.getFlowContextData(SvcDepositeContext.class).getPaymentMethod();
+		String paymentMethod = payActivity.getFlowContextData(
+				SvcDepositeContext.class).getPaymentMethod();
 		if (PaymentMethods.CASH.equals(paymentMethod)) {
 			configContextByCash(payActivity);
 		}
@@ -57,7 +59,8 @@ public class SvcDepositeTxnTransfer implements TiFlowNodeDataTransfer {
 		TxnContext txnContext = new TxnContext();
 		payActivity.setFlowContextData(txnContext);
 
-		ShoppingCart shoppingCart = payActivity.getFlowContextData(ShoppingCart.class);
+		ShoppingCart shoppingCart = payActivity
+				.getFlowContextData(ShoppingCart.class);
 
 		txnControl.init();
 		txnControl.setCurrActivity(payActivity);
@@ -65,7 +68,8 @@ public class SvcDepositeTxnTransfer implements TiFlowNodeDataTransfer {
 		txnContext.setNeedPin(true);
 		txnContext.setSignUplaod(true);
 		txnContext.setSalesAmt(shoppingCart.getTotalAmt());
-		txnContext.setReceiptNo(TxnUtil.getReceipNo(payActivity.getAppConfig()));
+		txnContext
+				.setReceiptNo(TxnUtil.getReceipNo(payActivity.getAppConfig()));
 		txnContext.setTxnType(TxnTypes.PURCHASE);
 		txnContext.setRePostFlag(false);
 		txnContext.setHasNewTxnButton(false);

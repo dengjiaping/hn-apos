@@ -25,7 +25,7 @@ public class AudioFileUploadService {
 		File file = findFile(traceNo);
 		if (file != null) {
 			return uploadLogFileHandler.synUpload(new File[] { file },
-					TermStatsDataTypes.MSR_AUDIO_DATA,traceNo);
+					TermStatsDataTypes.MSR_AUDIO_DATA, traceNo);
 		}
 		return false;
 	}
@@ -34,7 +34,7 @@ public class AudioFileUploadService {
 		File file = findFile(traceNo);
 		if (file != null) {
 			uploadLogFileHandler.asynUpload(new File[] { file },
-					TermStatsDataTypes.MSR_AUDIO_DATA,traceNo);
+					TermStatsDataTypes.MSR_AUDIO_DATA, traceNo);
 		}
 	}
 
@@ -64,5 +64,4 @@ public class AudioFileUploadService {
 		return null;
 	}
 
-	
 }

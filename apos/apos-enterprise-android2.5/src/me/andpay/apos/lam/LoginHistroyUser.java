@@ -28,8 +28,8 @@ public class LoginHistroyUser {
 		for (String user : oldUserArray) {
 			users.add(user);
 		}
-		
-		if(users.contains(newUser)) {
+
+		if (users.contains(newUser)) {
 			return;
 		}
 
@@ -47,8 +47,7 @@ public class LoginHistroyUser {
 		for (String user : users) {
 			buf.append(user).append(SEPARATOR);
 		}
-		return buf.deleteCharAt(buf.length()-1).toString();
+		return buf.deleteCharAt(buf.length() - 1).toString();
 	}
 
-	
 }

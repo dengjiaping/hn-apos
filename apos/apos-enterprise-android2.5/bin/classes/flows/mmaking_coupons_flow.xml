@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram
+    begin-node="start"
+    version="1.0" >
+
+    <flow-node
+        node-name="start"
+        ref-activity="me.andpay.apos.merchantsmaking.activity.CouponsActivity" >
+
+        <node-complete
+            identity="add_back_order"
+            next-node="second_node" />
+    </flow-node>
+
+    <flow-node
+        node-name="second_node"
+        ref-activity="me.andpay.apos.merchantsmaking.activity.CouponsActivity" >
+
+        <node-complete
+            identity="add_back_order"
+            next-node="second_node" />
+    </flow-node>
+
+</flow-diagram>

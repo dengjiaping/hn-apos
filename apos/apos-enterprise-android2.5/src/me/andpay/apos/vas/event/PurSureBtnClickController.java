@@ -25,19 +25,26 @@ public class PurSureBtnClickController extends AbstractEventController {
 		PurchaseQueryCondActivity activity = (PurchaseQueryCondActivity) refActivty;
 		QueryPurchaseOrderInfoCond cond = new QueryPurchaseOrderInfoCond();
 		Boolean isHasCond = false;
-		if (!StringUtil.isEmpty((String) activity.getStartDateView().getWidgetValue())) {
+		if (!StringUtil.isEmpty((String) activity.getStartDateView()
+				.getWidgetValue())) {
 			isHasCond = true;
-			String dateStr = (String) activity.getStartDateView().getWidgetValue();
-			cond.setMinOrderTime(DateUtil.parse(VasProvider.VAS_CONST_DATETIME_PARTTERN,
-					dateStr + " " + VasProvider.VAS_CONST_BEGINTIMES));
+			String dateStr = (String) activity.getStartDateView()
+					.getWidgetValue();
+			cond.setMinOrderTime(DateUtil.parse(
+					VasProvider.VAS_CONST_DATETIME_PARTTERN, dateStr + " "
+							+ VasProvider.VAS_CONST_BEGINTIMES));
 		}
-		if (!StringUtil.isEmpty((String) activity.getEndPickerView().getWidgetValue())) {
+		if (!StringUtil.isEmpty((String) activity.getEndPickerView()
+				.getWidgetValue())) {
 			isHasCond = true;
-			String dateStr = (String) activity.getEndPickerView().getWidgetValue();
-			cond.setMaxOrderTime(DateUtil.parse(VasProvider.VAS_CONST_DATETIME_PARTTERN,
-					dateStr + " " + VasProvider.VAS_CONST_ENDTIMES));
+			String dateStr = (String) activity.getEndPickerView()
+					.getWidgetValue();
+			cond.setMaxOrderTime(DateUtil.parse(
+					VasProvider.VAS_CONST_DATETIME_PARTTERN, dateStr + " "
+							+ VasProvider.VAS_CONST_ENDTIMES));
 		}
-		if (!StringUtil.isEmpty((String) activity.getAmtEditText().getWidgetValue())) {
+		if (!StringUtil.isEmpty((String) activity.getAmtEditText()
+				.getWidgetValue())) {
 			isHasCond = true;
 			cond.setSalesAmt(new BigDecimal(StringConvertor
 					.convertCurrency2Str((String) activity.getAmtEditText()
@@ -45,9 +52,10 @@ public class PurSureBtnClickController extends AbstractEventController {
 		}
 		if (!StringUtil.isEmpty((String) activity.payMethodSp.getWidgetValue())) {
 			isHasCond = true;
-			cond.setPaymentMethod(activity.payMethodSp.getWidgetValue().toString());
+			cond.setPaymentMethod(activity.payMethodSp.getWidgetValue()
+					.toString());
 		}
-		
+
 		cond.setHasViewCond(isHasCond);
 		activity.getControl().setFlowContextData(cond);
 		activity.getControl().previousSetup(activity);

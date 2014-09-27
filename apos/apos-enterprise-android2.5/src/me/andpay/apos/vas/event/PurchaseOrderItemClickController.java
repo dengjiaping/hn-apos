@@ -15,7 +15,7 @@ import android.widget.AdapterView;
  * @author tinyliu
  * 
  */
-public class PurchaseOrderItemClickController extends AbstractEventController{
+public class PurchaseOrderItemClickController extends AbstractEventController {
 
 	public void onItemClick(Activity refActivty, FormBean formBean,
 			AdapterView<?> adapterView, View view, int position, long id) {
@@ -23,9 +23,10 @@ public class PurchaseOrderItemClickController extends AbstractEventController{
 		if (position >= activity.getAdapter().getCount()) {
 			return;
 		}
-		PurchaseOrderInfo info = (PurchaseOrderInfo) activity.getAdapter().getItem(
-				position);
+		PurchaseOrderInfo info = (PurchaseOrderInfo) activity.getAdapter()
+				.getItem(position);
 		activity.getControl().setFlowContextData(info);
-		activity.getControl().nextSetup(activity, VasProvider.VAS_FLOWS_QUERY_COMPLETE_DETAIL);
+		activity.getControl().nextSetup(activity,
+				VasProvider.VAS_FLOWS_QUERY_COMPLETE_DETAIL);
 	}
 }

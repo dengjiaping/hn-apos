@@ -19,11 +19,11 @@ public class ProductCashPayActivity extends AposBaseActivity {
 
 	@InjectView(R.id.vas_title_tv)
 	public TextView titleText;
-	
-	
+
 	@Override
 	protected void onCreate(android.os.Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		titleText.setText(StringConvertor.convert2Currency(ShoppingCartCenter.getShoppingCart().getTotalAmt()));
+		titleText.setText(StringConvertor.convert2Currency(ShoppingCartCenter
+				.getShoppingCart().getTotalAmt()));
 	};
 }

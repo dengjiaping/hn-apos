@@ -23,8 +23,7 @@ public class WaitCardReaderHandler extends GenChangeStatusHander {
 	@Override
 	protected void changeUI(TxnControl txnControl) {
 		TxnAcitivty activity = (TxnAcitivty) txnControl.getCurrActivity();
-	
-		
+
 		APOSGifUtil.startGif(activity.gifDrawable, activity.gifView, activity
 				.getResources(), CardReaderResourceSelector.selectGit(
 				CardReaderManager.getCardReaderType(),

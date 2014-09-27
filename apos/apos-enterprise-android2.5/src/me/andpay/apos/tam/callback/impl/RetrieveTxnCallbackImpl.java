@@ -22,7 +22,7 @@ import me.andpay.timobileframework.util.RoboGuiceUtil;
 public class RetrieveTxnCallbackImpl implements TxnCallback {
 
 	private TxnTimeoutActivity txnTimeoutActivity;
-	
+
 	public TxnControl txnControl;
 
 	public RetrieveTxnCallbackImpl(TxnTimeoutActivity txnTimeoutActivity) {
@@ -32,13 +32,13 @@ public class RetrieveTxnCallbackImpl implements TxnCallback {
 	public void txnSuccess(TxnActionResponse actionResponse) {
 		clear();
 		TxnCallbackHelper.convertResponse(actionResponse);
-		
+
 		// IC卡二次授权
-		if (actionResponse.isIcCardTxn() && txnControl!=null) {
+		if (actionResponse.isIcCardTxn() && txnControl != null) {
 			CardReaderManager.secondIssuance(actionResponse
 					.getAposICCardDataInfo());
-			CardReaderManager.setCurrCallback(txnControl.getSwipCardReaderCallBack()
-					);
+			CardReaderManager.setCurrCallback(txnControl
+					.getSwipCardReaderCallBack());
 			return;
 		}
 
@@ -97,9 +97,6 @@ public class RetrieveTxnCallbackImpl implements TxnCallback {
 				FlowConstants.FAILED, intentData);
 
 	}
-	
-	
-	
 
 	public void networkError(TxnActionResponse actionResponse) {
 		txnTimeoutActivity.retrySubmit("网络不稳定,");
@@ -123,19 +120,16 @@ public class RetrieveTxnCallbackImpl implements TxnCallback {
 	public void initCallBack(TxnControl txnControl) {
 		// ignore
 	}
-	
-	
+
 	private void secondIssuance(TxnActionResponse actionResponse) {
 		// IC卡二次授权
-		if(actionResponse.getAposICCardDataInfo() != null) {
+		if (actionResponse.getAposICCardDataInfo() != null) {
 			CardReaderManager.setDefaultCallBack();
 			CardReaderManager.secondIssuance(actionResponse
 					.getAposICCardDataInfo());
-		}else {
+		} else {
 			CardReaderManager.clearScreen();
 		}
 	}
-
-
 
 }

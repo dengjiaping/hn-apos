@@ -117,12 +117,13 @@ public class DynamicFieldHelper {
 				TiApplication tiApplication = (TiApplication) application;
 				TiContext tiContext = tiApplication.getContextProvider()
 						.provider(TiContext.CONTEXT_SCOPE_APPLICATION);
-				
-				Field field = ClassTypes.class.getField(ClassTypes.FLEX_FIELD_NAME);
-				
-				Object fieldDefineObj = tiContext
-						.getAttribute(field.getGenericType(),RuntimeAttrNames.FIELD_DEFINE);
-				setFieldDefines((List<FlexFieldDefine>)fieldDefineObj);
+
+				Field field = ClassTypes.class
+						.getField(ClassTypes.FLEX_FIELD_NAME);
+
+				Object fieldDefineObj = tiContext.getAttribute(
+						field.getGenericType(), RuntimeAttrNames.FIELD_DEFINE);
+				setFieldDefines((List<FlexFieldDefine>) fieldDefineObj);
 			} catch (Exception e) {
 				Log.i("acti", "acti", e);
 			}
@@ -132,7 +133,7 @@ public class DynamicFieldHelper {
 	}
 
 	public void setFieldDefines(List<FlexFieldDefine> fieldDefines) {
-		if(fieldDefines == null) { 
+		if (fieldDefines == null) {
 			return;
 		}
 		this.fieldDefines.clear();

@@ -10,8 +10,9 @@ import android.view.View;
 public class CashPaymentSuccessNextControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-	
-		TiFlowControlImpl.instanceControl().nextSetup(activity, FlowConstants.SUCCESS);
+
+		TiFlowControlImpl.instanceControl().nextSetup(activity,
+				FlowConstants.SUCCESS);
 
 	}
 

@@ -28,7 +28,7 @@ public class UpdateSettleCallbackImpl extends AfterProcessWithErrorHandler {
 	public void processNetworkError() {
 		stopListView();
 		showError();
-		
+
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class UpdateSettleCallbackImpl extends AfterProcessWithErrorHandler {
 				addDataByRefreshFlag(infos);
 				settleListActivity.settleListAdapter.notifyDataSetChanged();
 			}
-			
+
 		}
 
 	}
@@ -77,24 +77,26 @@ public class UpdateSettleCallbackImpl extends AfterProcessWithErrorHandler {
 				settleListActivity.settleListAdapter.addValue(
 						infos.get(infos.size() - i), true);
 			} else {
-				settleListActivity.settleListAdapter.addValue(infos.get(i - 1), false);
+				settleListActivity.settleListAdapter.addValue(infos.get(i - 1),
+						false);
 			}
 		}
 	}
 
 	public void showError() {
-		ToastTools.topToast(settleListActivity,
-				ResourceUtil.getString(settleListActivity, R.string.com_net_error_str),
+		ToastTools.topToast(settleListActivity, ResourceUtil.getString(
+				settleListActivity, R.string.com_net_error_str),
 				ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
 	private void showPrompt(int size) {
-		String str = size == 0 ? settleListActivity.getApplicationContext().getString(
-				R.string.stl_settle_data_no_refresh_str) : String.format(
-						settleListActivity.getApplicationContext().getString(
+		String str = size == 0 ? settleListActivity.getApplicationContext()
+				.getString(R.string.stl_settle_data_no_refresh_str) : String
+				.format(settleListActivity.getApplicationContext().getString(
 						R.string.stl_settle_data_no_refresh_str), size);
 
-		ToastTools.topToast(settleListActivity, str, ToastTools.LIST_VIEW_TOAST_HEIGHT);
+		ToastTools.topToast(settleListActivity, str,
+				ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
 	@Override

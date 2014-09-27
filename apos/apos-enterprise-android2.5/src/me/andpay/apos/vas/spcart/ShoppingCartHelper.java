@@ -8,7 +8,6 @@ import me.andpay.apos.dao.model.ProductInfo;
 
 public class ShoppingCartHelper {
 
-	
 	public static ProductItem productInfoConvertItem(ProductInfo productInfo) {
 		ProductItem iProductItem = new ProductItem();
 		iProductItem.setProductType(productInfo.getProductType());
@@ -23,14 +22,14 @@ public class ShoppingCartHelper {
 		iProductItem.setProductId(productInfo.getProductId());
 		iProductItem.setUnit(1);
 		iProductItem.setSkuNo(productInfo.getSkuNo());
-		
+
 		iProductItem.setProductName(productInfo.getName());
 		iProductItem.setExclusive(productInfo.getExclusive());
 		return iProductItem;
 	}
-	
-	public static String getProductUnit(int unit){
-		if(unit > 99) {
+
+	public static String getProductUnit(int unit) {
+		if (unit > 99) {
 			return "99+";
 		}
 		return Integer.valueOf(unit).toString();

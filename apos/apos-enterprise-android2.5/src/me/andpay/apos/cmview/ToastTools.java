@@ -16,8 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ToastTools {
-	
-	
+
 	public static final int LIST_VIEW_TOAST_HEIGHT = 45;
 
 	private static Toast toast;
@@ -53,39 +52,42 @@ public class ToastTools {
 			toast.setGravity(Gravity.CENTER, 0, 0);
 		toast.show();
 	}
-	
-	public static void topToast(Activity activity,String msg,int topHigh) {
+
+	public static void topToast(Activity activity, String msg, int topHigh) {
 		LayoutInflater inflater = activity.getLayoutInflater();
 		View layout = inflater.inflate(R.layout.com_toast_layout,
 				(ViewGroup) activity.findViewById(R.id.com_toast_layout_root));
-		TextView textView =  (TextView)layout.findViewById(R.id.com_toast_textview);
+		TextView textView = (TextView) layout
+				.findViewById(R.id.com_toast_textview);
 		textView.setText(msg);
 		DisplayMetrics metric = new DisplayMetrics();
 		activity.getWindowManager().getDefaultDisplay().getMetrics(metric);
 		Toast toast = new Toast(activity);
-		
-		toast.setGravity(Gravity.TOP|Gravity.FILL_HORIZONTAL, 0, Float.valueOf((topHigh*metric.density)).intValue());
+
+		toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, Float
+				.valueOf((topHigh * metric.density)).intValue());
 		toast.setDuration(Toast.LENGTH_SHORT);
 		toast.setView(layout);
 		toast.show();
 	}
-	
-	public static void toastMsg(Activity activity,String msg,int topHigh) {
+
+	public static void toastMsg(Activity activity, String msg, int topHigh) {
 		LayoutInflater inflater = activity.getLayoutInflater();
 		View layout = inflater.inflate(R.layout.com_toast_layout,
 				(ViewGroup) activity.findViewById(R.id.com_toast_layout_root));
-		TextView textView =  (TextView)layout.findViewById(R.id.com_toast_textview);
+		TextView textView = (TextView) layout
+				.findViewById(R.id.com_toast_textview);
 		textView.setText(msg);
 		textView.setBackgroundColor(Color.parseColor("#e34d39"));
 		DisplayMetrics metric = new DisplayMetrics();
 		activity.getWindowManager().getDefaultDisplay().getMetrics(metric);
 		Toast toast = new Toast(activity);
-		
-		toast.setGravity(Gravity.TOP|Gravity.FILL_HORIZONTAL, 0, Float.valueOf((topHigh*metric.density)).intValue());
+
+		toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, Float
+				.valueOf((topHigh * metric.density)).intValue());
 		toast.setDuration(Toast.LENGTH_SHORT);
 		toast.setView(layout);
 		toast.show();
 	}
-	
 
 }

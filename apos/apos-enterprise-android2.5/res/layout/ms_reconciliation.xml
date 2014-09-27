@@ -40,17 +40,113 @@
                 android:textSize="15sp" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/ms_reconciliation_query"
+            style="@style/com_top_right_button_style"
+            android:layout_width="60dp"
+            android:text="@string/tqm_txn_list_condition_str" />
+
         <ImageView
             android:id="@+id/ms_reconciliation_back"
             style="@style/com_top_return_button_style" />
     </RelativeLayout>
 
-    <ExpandableListView
-        android:id="@+id/ms_reliation_expandable_listview"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/com_button_top_col"
+        android:orientation="vertical"
+        android:paddingBottom="7dip"
+        android:paddingLeft="5dip"
+        android:paddingRight="5dip"
+        android:paddingTop="7dip" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/ms_reconciliation_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="易宝支付有限公司"
+                android:textColor="#666666"
+                android:textSize="13sp" />
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="0dip"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/ms_reconciliation_user_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="商户代码 1010002545"
+                android:textColor="#666666"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2010-09-07 至 2010-09-07 "
+                android:textColor="@color/main_show_font_color"
+                android:textSize="10sp" />
+
+            <View
+                android:layout_width="0dip"
+                android:layout_height="0dip"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:id="@+id/ms_reconciliation_statistical_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/ms_reconciliation_statistical_showtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/com_no_color"
+                    android:text="按终端统计  "
+                    android:textColor="@color/main_show_font_color"
+                    android:textSize="13sp" />
+
+                <ImageButton
+                    android:id="@+id/ms_reconciliation_statistical_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dip"
+                    android:background="@color/com_no_color"
+                    android:paddingLeft="5dip"
+                    android:paddingRight="5dip"
+                    android:src="@drawable/down" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@drawable/scm_solid_line_img" />
+
+    <ListView
+        android:id="@+id/ms_reliation_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:cacheColorHint="@color/com_no_color"
         android:listSelector="@color/com_no_color" >
-    </ExpandableListView>
+    </ListView>
 
 </LinearLayout>

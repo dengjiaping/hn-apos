@@ -78,7 +78,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 	public TxnControl txnControl;
 
 	private MenuViewController viewController;
-	
+
 	@Inject
 	private DownloadICCardParamsService downloadICCardParamsService;
 
@@ -86,7 +86,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 	 * 刷头类型选择的是云POS，隐藏余额查询
 	 */
 	@Override
-	protected void onResumeProcess(){
+	protected void onResumeProcess() {
 		// 云pos不支持余额查询操作
 		filterCloudPosMenu();
 	}
@@ -96,11 +96,11 @@ public class HomePageActivity extends AposBaseTabActivity implements
 
 		super.onCreate(savedInstanceState);
 		downloadICCardParamsService.downloadICparams();
-		//初始化apos调试日志
+		// 初始化apos调试日志
 		if (!MemoryRecorder.isRecordMemory()) {
 			MemoryRecorder.reset(this);
 		} else {
-			mMenuDrawer = MenuDrawer.attach(this,MenuDrawer.MENU_DRAG_WINDOW);
+			mMenuDrawer = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW);
 			mMenuDrawer.setMenuView(R.layout.com_menu_slider_layout);
 			viewController = new MenuViewController(this);
 			filterCloudPosMenu();
@@ -113,7 +113,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 	}
 
 	private void filterCloudPosMenu() {
-		if (CloudPosUtil.isCloudPosCardReader(this.getAppConfig())) {//如果是云pos
+		if (CloudPosUtil.isCloudPosCardReader(this.getAppConfig())) {// 如果是云pos
 			viewController.hideMenu(Privileges.INQUIRY_BALANCE);
 			viewController.hideMenu(Privileges.ORDER_PURCHASE);
 		} else {
@@ -159,57 +159,53 @@ public class HomePageActivity extends AposBaseTabActivity implements
 
 		if (tagName.endsWith(TabNames.BALANCE_PAGE)) {
 			return;
-		} 
-		else if(tagName.endsWith(TabNames.MSERVICE_PAGE)){
+		} else if (tagName.endsWith(TabNames.MSERVICE_PAGE)) {
 			if (ts12 == null) {
 				ts12 = mth.newTabSpec(TabNames.MSERVICE_PAGE).setIndicator(
 						TabNames.MSERVICE_PAGE);
 				ts12.setContent(new Intent(this, MerchantsServiceActivity.class)
 						.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				mth.addTab(ts12);
-			} 
+			}
 			getTabHost().setCurrentTabByTag(TabNames.MSERVICE_PAGE);
-		}else if(tagName.endsWith(TabNames.MMAKING_PAGE)){
+		} else if (tagName.endsWith(TabNames.MMAKING_PAGE)) {
 			if (ts13 == null) {
 				ts13 = mth.newTabSpec(TabNames.MMAKING_PAGE).setIndicator(
 						TabNames.MMAKING_PAGE);
 				ts13.setContent(new Intent(this, MerchantsMakingActivity.class)
 						.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				mth.addTab(ts13);
-			} 
+			}
 			getTabHost().setCurrentTabByTag(TabNames.MMAKING_PAGE);
-		}
-		else if(tagName.endsWith(TabNames.MESSAGE_PAGE)){
+		} else if (tagName.endsWith(TabNames.MESSAGE_PAGE)) {
 			if (ts11 == null) {
 				ts11 = mth.newTabSpec(TabNames.MESSAGE_PAGE).setIndicator(
 						TabNames.MESSAGE_PAGE);
 				ts11.setContent(new Intent(this, MessageActivity.class)
 						.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				mth.addTab(ts11);
-			} 
+			}
 			getTabHost().setCurrentTabByTag(TabNames.MESSAGE_PAGE);
-		}
-		else if(tagName.endsWith(TabNames.LEFT_PAGE)){
+		} else if (tagName.endsWith(TabNames.LEFT_PAGE)) {
 			if (ts10 == null) {
 				ts10 = mth.newTabSpec(TabNames.LEFT_PAGE).setIndicator(
 						TabNames.LEFT_PAGE);
 				ts10.setContent(new Intent(this, LeftServeActivity.class)
 						.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				mth.addTab(ts10);
-			} 
+			}
 			getTabHost().setCurrentTabByTag(TabNames.LEFT_PAGE);
-		}
-		else if (tagName.endsWith(TabNames.TXN_PAGE)) {
+		} else if (tagName.endsWith(TabNames.TXN_PAGE)) {
 			if (ts1 == null) {
 				ts1 = mth.newTabSpec(TabNames.TXN_PAGE).setIndicator(
 						TabNames.TXN_PAGE);
 				ts1.setContent(new Intent(this, PurchaseFirstActivity.class)
 						.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				mth.addTab(ts1);
-			} 
+			}
 			getTabHost().setCurrentTabByTag(TabNames.TXN_PAGE);
 
-		} else if (tagName.endsWith(TabNames.TRANSFER_PAGE)){
+		} else if (tagName.endsWith(TabNames.TRANSFER_PAGE)) {
 			if (ts9 == null) {
 				ts9 = mth.newTabSpec(TabNames.TRANSFER_PAGE).setIndicator(
 						TabNames.TRANSFER_PAGE);
@@ -242,7 +238,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 			getTabHost().setCurrentTabByTag(TabNames.QUERY_PAGE);
 
 		}
-		if (tagName.endsWith(TabNames.MORE_PAGE)){
+		if (tagName.endsWith(TabNames.MORE_PAGE)) {
 
 			if (ts4 == null) {
 				ts4 = mth.newTabSpec(TabNames.MORE_PAGE).setIndicator(

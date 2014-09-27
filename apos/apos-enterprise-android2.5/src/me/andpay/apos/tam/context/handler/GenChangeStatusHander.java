@@ -6,16 +6,16 @@ import me.andpay.apos.tam.context.TxnControl;
 public class GenChangeStatusHander {
 
 	public void processHandle(TxnControl txnControl) {
-		
-		if( txnControl.getCurrActivity()!=null){
+
+		if (txnControl.getCurrActivity() != null) {
 			ResetActivityStatus resetActivityStatus = (ResetActivityStatus) txnControl
 					.getCurrActivity();
-			resetActivityStatus.resetActivity();	
-		}else {
+			resetActivityStatus.resetActivity();
+		} else {
 			return;
 		}
-		
-		if(preAction(txnControl) ) {
+
+		if (preAction(txnControl)) {
 			return;
 		}
 		changeUI(txnControl);
@@ -38,15 +38,12 @@ public class GenChangeStatusHander {
 	protected void changeAction(TxnControl txnControl) {
 
 	}
-	
+
 	/**
 	 * 前置处理器
 	 */
 	protected boolean preAction(TxnControl txnControl) {
 		return false;
 	}
-	
-
-
 
 }

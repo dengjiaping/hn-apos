@@ -42,9 +42,9 @@ public class PurchaseOrderFaildActivity extends AposBaseActivity {
 	private String errorMsg;
 
 	// private String buttonName;
-	
+
 	public CommonDialog postDialog;
-	
+
 	private PurchaseOrderFaildContext orderFaildContext;
 
 	@Override
@@ -53,10 +53,13 @@ public class PurchaseOrderFaildActivity extends AposBaseActivity {
 		retryBtn.setText("重新提交订单");
 		topTitle.setText("网络异常");
 		outButton.setText("退出交易");
-		orderFaildContext = TiFlowControlImpl.instanceControl().getFlowContextData(PurchaseOrderFaildContext.class);
-		outButton.setVisibility(orderFaildContext.isShowOutButton()?View.VISIBLE:View.GONE);
+		orderFaildContext = TiFlowControlImpl.instanceControl()
+				.getFlowContextData(PurchaseOrderFaildContext.class);
+		outButton
+				.setVisibility(orderFaildContext.isShowOutButton() ? View.VISIBLE
+						: View.GONE);
 		msgContent.setText(orderFaildContext.getMsgContent());
-		
+
 	}
 
 	public void sumbitPurchaseOrder() {

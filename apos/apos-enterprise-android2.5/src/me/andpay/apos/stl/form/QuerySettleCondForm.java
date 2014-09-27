@@ -3,8 +3,6 @@ package me.andpay.apos.stl.form;
 import java.util.Date;
 
 public class QuerySettleCondForm {
-	
-	
 
 	/**
 	 * 结算指令编号

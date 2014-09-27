@@ -12,15 +12,19 @@ import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import android.app.Activity;
 
 public class CardSalesCashPaymentTransfer implements TiFlowNodeDataTransfer {
-	public Map<String, String> transfterData(Activity activity, Map<String, String> data,
-			TiFlowNodeComplete complete, Map<String, Serializable> subFlowContext) {
+	public Map<String, String> transfterData(Activity activity,
+			Map<String, String> data, TiFlowNodeComplete complete,
+			Map<String, Serializable> subFlowContext) {
 
-		ProductSalesContext productSalesContext = TiFlowControlImpl.instanceControl()
+		ProductSalesContext productSalesContext = TiFlowControlImpl
+				.instanceControl()
 				.getFlowContextData(ProductSalesContext.class);
 		productSalesContext.setPaymeneMethed(PaymentMethods.CASH);
 		CashPaymentContext cashPaymentContext = new CashPaymentContext();
-		TiFlowControlImpl.instanceControl().setFlowContextData(cashPaymentContext);
-		cashPaymentContext.setShoppingCart(productSalesContext.getShoppingCart());
+		TiFlowControlImpl.instanceControl().setFlowContextData(
+				cashPaymentContext);
+		cashPaymentContext.setShoppingCart(productSalesContext
+				.getShoppingCart());
 		return null;
 	}
 

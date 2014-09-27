@@ -9,23 +9,21 @@ public class CardReaderSetContext implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int cardReaderType;
-	
+
 	private String ksn;
-	
+
 	/**
 	 * 设备页面是否有返回按钮
 	 */
-	private boolean showBackButton=true;
-	
-	private boolean showSkipButton;
-	
+	private boolean showBackButton = true;
 
-	
+	private boolean showSkipButton;
+
 	/**
 	 * 是否已经选择读卡器
 	 */
 	private boolean hasSelectCardreader;
-	
+
 	/**
 	 * 是否提示过杜比
 	 */
@@ -33,18 +31,16 @@ public class CardReaderSetContext implements Serializable {
 	/**
 	 * 是否在成功页面可继续向导
 	 */
-	private boolean showCardreaderGuide=true;
+	private boolean showCardreaderGuide = true;
 	/**
 	 * 操作跟踪号
 	 */
 	private String opTraceNo;
-	
 
-	private Map<String,String> opLogData = new HashMap<String, String>();
-	
-	//重试次数
+	private Map<String, String> opLogData = new HashMap<String, String>();
+
+	// 重试次数
 	private int tryTimes;
-
 
 	public int getCardReaderType() {
 		return cardReaderType;
@@ -70,7 +66,6 @@ public class CardReaderSetContext implements Serializable {
 		this.showBackButton = showBackButton;
 	}
 
-
 	public boolean isShowSkipButton() {
 		return showSkipButton;
 	}
@@ -78,7 +73,6 @@ public class CardReaderSetContext implements Serializable {
 	public void setShowSkipButton(boolean showSkipButton) {
 		this.showSkipButton = showSkipButton;
 	}
-
 
 	public boolean isHasSelectCardreader() {
 		return hasSelectCardreader;
@@ -127,8 +121,5 @@ public class CardReaderSetContext implements Serializable {
 	public void setTryTimes(int tryTimes) {
 		this.tryTimes = tryTimes;
 	}
-	
-	
-
 
 }

@@ -61,7 +61,7 @@ public class InputValueCardTxnAmtActivity extends AposBaseActivity implements
 		String couponResult = (String) getIntent().getExtras().get(
 				"couponResult");
 
-//		CardValueTxnHelper.sendTxn(txnAmt, couponResult, txnControl, this);
+		// CardValueTxnHelper.sendTxn(txnAmt, couponResult, txnControl, this);
 
 	}
 

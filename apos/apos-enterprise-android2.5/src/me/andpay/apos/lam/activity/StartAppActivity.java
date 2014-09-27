@@ -49,8 +49,6 @@ import com.google.inject.Inject;
 public class StartAppActivity extends AposBaseActivity implements
 		ValueContainer, AfterUpdateCallback {
 
-
-
 	@Inject
 	private DefaultCardReaderCallBack callback;
 
@@ -60,8 +58,8 @@ public class StartAppActivity extends AposBaseActivity implements
 	@Inject
 	private AposNetworkChangeReceiver aposNetworkChangeReceiver;
 
-//	@Inject
-//	private TiNetworkStatusChecker tiNetworkStatusChecker;
+	// @Inject
+	// private TiNetworkStatusChecker tiNetworkStatusChecker;
 
 	@Inject
 	private DolbyService dolbyService;
@@ -73,17 +71,17 @@ public class StartAppActivity extends AposBaseActivity implements
 	private InitMsrKeyServiceImpl initMsrKeyServiceImpl;
 	@Inject
 	private DefaultCardReaderCallBack defaultCardReaderCallBack;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
+
 		Log.e(this.getClass().getName(), "start robguice");
 
 		super.onCreate(savedInstanceState);
 		Log.e(this.getClass().getName(), "end robguice");
 
 		APOSAlarmUtil.startMainAlarm(this.getApplicationContext());
-	
+
 		if (AudioUtil.isDolbymobile()) {
 			dolbyService.createDolbyAudioProcessing();
 		}
@@ -117,7 +115,6 @@ public class StartAppActivity extends AposBaseActivity implements
 
 		String onceInstall = (String) getAppConfig().getAttribute(
 				ConfigAttrNames.ONCE_INSTALL_USE);
-		
 
 		// 是否安装
 		if (ConfigAttrValues.ONCE_INSTALL_USE_VALUE.equals(onceInstall)) {
@@ -135,16 +132,17 @@ public class StartAppActivity extends AposBaseActivity implements
 				ConfigAttrNames.LOGIN_HIS_USER);
 		String hisPassword = (String) getAppConfig().getAttribute(
 				ConfigAttrNames.LOGIN_HIS_PASSWORD);
-		long autoLoginDate = StringConvertor.parseInt((String)getAppConfig().getAttribute(
-				ConfigAttrNames.AUTOLOGIN_START_TIME));
-		
+		long autoLoginDate = StringConvertor.parseInt((String) getAppConfig()
+				.getAttribute(ConfigAttrNames.AUTOLOGIN_START_TIME));
+
 		long betweenDays = 0;
-		if(autoLoginDate > 0){
+		if (autoLoginDate > 0) {
 			long currentDate = DateUtil.getToday();
 			betweenDays = currentDate - autoLoginDate;
 		}
-		
-		if (StringUtil.isEmpty(hisUser) || StringUtil.isEmpty(hisPassword) || betweenDays >= 15) {
+
+		if (StringUtil.isEmpty(hisUser) || StringUtil.isEmpty(hisPassword)
+				|| betweenDays >= 15) {
 			return false;
 		}
 		LoginUserForm form = new LoginUserForm();

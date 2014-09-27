@@ -184,13 +184,11 @@ public class TxnContext implements Serializable {
 	 * 是否是IC卡交易
 	 */
 	private boolean icCardTxn;
-	
+
 	/**
 	 * mac数据
 	 */
 	private String mac;
-	
-	
 
 	public String getMac() {
 		return mac;
@@ -446,8 +444,6 @@ public class TxnContext implements Serializable {
 		this.signUplaod = signUplaod;
 	}
 
-	
-
 	public void setHasTrack(boolean hasTrack) {
 		this.hasTrack = hasTrack;
 	}
@@ -476,7 +472,6 @@ public class TxnContext implements Serializable {
 		this.txnCancelFlag = txnCancelFlag;
 	}
 
-	
 	public String getOpTraceNo() {
 		return opTraceNo;
 	}
@@ -504,7 +499,5 @@ public class TxnContext implements Serializable {
 	public boolean isHasTrack() {
 		return hasTrack;
 	}
-	
-	
 
 }

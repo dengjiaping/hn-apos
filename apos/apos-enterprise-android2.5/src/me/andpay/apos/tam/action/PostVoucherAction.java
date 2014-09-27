@@ -48,25 +48,26 @@ public class PostVoucherAction extends SessionKeepAction {
 			dests.add(dest);
 
 		}
-//
-//		if (StringUtil.isNotBlank(postForm.getMicroblog())) {
-//			DeliverDest dest = new DeliverDest();
-//			dest.setDeliverType(DeliverDest.TYPE_WEIBO_SINA);
-//			dest.setDestInfo(postForm.getMicroblog());
-//			dests.add(dest);
-//		}
+		//
+		// if (StringUtil.isNotBlank(postForm.getMicroblog())) {
+		// DeliverDest dest = new DeliverDest();
+		// dest.setDeliverType(DeliverDest.TYPE_WEIBO_SINA);
+		// dest.setDestInfo(postForm.getMicroblog());
+		// dests.add(dest);
+		// }
 
 		DeliverDest dest = new DeliverDest();
 		dest.setDeliverType(DeliverDest.TYPE_EMAIL);
-		PostVoucherCallback callBack =  (PostVoucherCallback)request.getHandler();
+		PostVoucherCallback callBack = (PostVoucherCallback) request
+				.getHandler();
 
 		try {
-			txnService.sendReceipt(dests,postForm.getTxnId());
+			txnService.sendReceipt(dests, postForm.getTxnId());
 			callBack.dealResponse();
-		}catch(Exception  ex) {
+		} catch (Exception ex) {
 			Log.e(this.getClass().getName(), "postvoicher error", ex);
 			callBack.netWorkerror();
-			
+
 		}
 	}
 }

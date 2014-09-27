@@ -71,18 +71,18 @@ public class DownloadICCardParamsService {
 
 		Object icCardParamsObject = aposContext.getAppContext().getAttribute(
 				RuntimeAttrNames.IC_CARD_PARAMS);
-		
+
 		List<AposICAppParam> aposICAppParams = new ArrayList<AposICAppParam>();
 		if (icCardParamsObject == null) {
-			
+
 			String hasSaved = (String) aposContext.getAppConfig().getAttribute(
 					ConfigAttrNames.IC_CARD_PARAMS_SAVED);
 			List<ICCardParamsInfo> icCardParamsInfos = icCardParamsInfoDao
 					.query(new QueryICCardParamsInfoCond(), 0, 100);
-			
+
 			if (icCardParamsInfos.size() == 0 || StringUtil.isBlank(hasSaved)) {
-				
-				//清空不完整的数据
+
+				// 清空不完整的数据
 				if (icCardParamsInfos.size() > 0) {
 					for (ICCardParamsInfo icCardParamsInfo : icCardParamsInfos) {
 						icCardParamsInfoDao.delete(icCardParamsInfo
@@ -164,9 +164,8 @@ public class DownloadICCardParamsService {
 			List<ICCardPublicKeyInfo> icPublicKeyInfos = icCardPublicKeyInfoDao
 					.query(new QueryICCardPublicKeyInfoCond(), 0, 100);
 			if (icPublicKeyInfos.size() == 0 || StringUtil.isBlank(hasSaved)) {
-				
-				
-				//清空不完整的数据
+
+				// 清空不完整的数据
 				if (icPublicKeyInfos.size() > 0) {
 					for (ICCardPublicKeyInfo icCardPublicKeyInfo : icPublicKeyInfos) {
 						icCardPublicKeyInfoDao.delete(icCardPublicKeyInfo

@@ -11,12 +11,12 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
 
-public abstract class TiSectionListAdapter<T> extends BaseAdapter implements SectionIndexer,
-		OnScrollListener {
-	
+public abstract class TiSectionListAdapter<T> extends BaseAdapter implements
+		SectionIndexer, OnScrollListener {
+
 	public static final String TAG = TiSectionListAdapter.class.getSimpleName();
-	
-	protected LinkedList<Pair<String, LinkedList<T>>> all = new LinkedList<Pair<String,LinkedList<T>>>();
+
+	protected LinkedList<Pair<String, LinkedList<T>>> all = new LinkedList<Pair<String, LinkedList<T>>>();
 
 	public interface HasMorePagesListener {
 		void noMorePages();
@@ -97,8 +97,8 @@ public abstract class TiSectionListAdapter<T> extends BaseAdapter implements Sec
 		this.page++;
 	}
 
-	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-			int totalItemCount) {
+	public void onScroll(AbsListView view, int firstVisibleItem,
+			int visibleItemCount, int totalItemCount) {
 		if (view instanceof TiSectionListView) {
 			((TiSectionListView) view).configureHeaderView(firstVisibleItem);
 		}
@@ -164,7 +164,8 @@ public abstract class TiSectionListAdapter<T> extends BaseAdapter implements Sec
 		final int section = getSectionForPosition(position);
 		boolean displaySectionHeaders = (getPositionForSection(section) == position);
 
-		bindSectionHeader(res, getSectionForPosition(position), displaySectionHeaders);
+		bindSectionHeader(res, getSectionForPosition(position),
+				displaySectionHeaders);
 
 		return res;
 	}
@@ -175,7 +176,8 @@ public abstract class TiSectionListAdapter<T> extends BaseAdapter implements Sec
 	}
 
 	public long getItemId(int position) {
-		return getItemId(getSectionForPosition(position), getSectionItemIndex(position));
+		return getItemId(getSectionForPosition(position),
+				getSectionItemIndex(position));
 	}
 
 	public void notifyNoMorePages() {
@@ -201,7 +203,8 @@ public abstract class TiSectionListAdapter<T> extends BaseAdapter implements Sec
 	 *            fading of the header view, between 0 and 255.
 	 */
 	public void configurePinnedHeader(View header, int position, int alpha) {
-		this.configureSectionView(header, getSectionForPosition(position), alpha);
+		this.configureSectionView(header, getSectionForPosition(position),
+				alpha);
 	}
 
 	/**
@@ -218,11 +221,10 @@ public abstract class TiSectionListAdapter<T> extends BaseAdapter implements Sec
 	public int getSectionCount() {
 		return all.size();
 	}
-	
+
 	public int getSectionItemCount(int section) {
 		return all.get(section).second.size();
 	}
-	
 
 	public T getSectionItem(int sectionIndex, int itemIndex) {
 		return all.get(sectionIndex).second.get(itemIndex);
@@ -231,7 +233,7 @@ public abstract class TiSectionListAdapter<T> extends BaseAdapter implements Sec
 	public void configureSectionView(View header, int section, int alpha) {
 
 	}
-	
+
 	public void addValues(List<T> infos) {
 		for (T info : infos) {
 			this.addValue(info, false);
@@ -267,14 +269,14 @@ public abstract class TiSectionListAdapter<T> extends BaseAdapter implements Sec
 			all.addLast(pair);
 		}
 	}
-	
+
 	public void destory() {
 		for (Pair<String, LinkedList<T>> infos : all) {
 			infos.second.clear();
 		}
 		all.clear();
 	}
-	
+
 	public Object[] getSections() {
 		String[] sectionInfos = new String[all.size()];
 		for (int i = 0; i < all.size(); i++) {
@@ -282,7 +284,6 @@ public abstract class TiSectionListAdapter<T> extends BaseAdapter implements Sec
 		}
 		return sectionInfos;
 	}
-	
 
 	/**
 	 * Configure the view (a listview item) to display headers or not based on
@@ -292,13 +293,11 @@ public abstract class TiSectionListAdapter<T> extends BaseAdapter implements Sec
 	protected abstract void bindSectionHeader(View view, int sectionIdex,
 			boolean displaySectionHeader);
 
-
 	public abstract long getItemId(int section, int itemIndex);
-	
+
 	public abstract String getSectionDesc(T info);
 
 	public abstract View getSectionItemView(int sectionIndex, int itemIndex,
 			View convertView, ViewGroup parent);
-
 
 }

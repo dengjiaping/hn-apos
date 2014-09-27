@@ -10,21 +10,22 @@ import android.view.View;
 
 /**
  * 增值服务主页控制器
+ * 
  * @author cpz
  *
  */
-public class VasMainEventControl  extends AbstractEventController {
+public class VasMainEventControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
-		VasMainActivity mainActivity = (VasMainActivity)activity;
-		
-		if(mainActivity.salesLayout.getId() == view.getId()) {
+
+		VasMainActivity mainActivity = (VasMainActivity) activity;
+
+		if (mainActivity.salesLayout.getId() == view.getId()) {
 			Intent intent = new Intent();
 			intent.setAction(VasProvider.VAS_PRODUCTSALES_ACTIVITY);
 			mainActivity.startActivity(intent);
 		}
-		
+
 	}
 
 }

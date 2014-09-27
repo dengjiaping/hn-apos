@@ -99,7 +99,7 @@ public class PullListViewFooter extends LinearLayout {
 		lp.height = android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 		mContentView.setLayoutParams(lp);
 	}
-	
+
 	public boolean isLoading() {
 		return loadMoreBtn.getVisibility() == View.GONE;
 	}
@@ -110,7 +110,8 @@ public class PullListViewFooter extends LinearLayout {
 				.inflate(footerViewId, null);
 		addView(moreView);
 		moreView.setLayoutParams(new LinearLayout.LayoutParams(
-				android.view.ViewGroup.LayoutParams.FILL_PARENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
+				android.view.ViewGroup.LayoutParams.FILL_PARENT,
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT));
 
 		mContentView = moreView.findViewById(R.id.xlistview_footer_content);
 		mProgressBar = moreView.findViewById(R.id.xlistview_footer_progressbar);

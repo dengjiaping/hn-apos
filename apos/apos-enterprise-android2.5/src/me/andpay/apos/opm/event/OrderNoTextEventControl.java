@@ -8,17 +8,15 @@ import android.text.Editable;
 
 public class OrderNoTextEventControl extends AbstractEventController {
 
-	
 	public void onTextChanged(Activity activity, FormBean formBean,
 			CharSequence s, int start, int before, int count) {
-		InputOrderNoActivity inputOrderNoActivity = (InputOrderNoActivity)activity;
-		
-		if(inputOrderNoActivity.orderNoText.length() > 0) {
+		InputOrderNoActivity inputOrderNoActivity = (InputOrderNoActivity) activity;
+
+		if (inputOrderNoActivity.orderNoText.length() > 0) {
 			inputOrderNoActivity.queryBtn.setEnabled(true);
-		}else {
+		} else {
 			inputOrderNoActivity.queryBtn.setEnabled(false);
 		}
-		
 
 	}
 

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * 签名上下文
+ * 
  * @author cpz
  *
  */
@@ -13,7 +14,7 @@ public class SignContext implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -2873723288419286346L;
-	
+
 	/**
 	 * 显示金额
 	 */
@@ -22,7 +23,7 @@ public class SignContext implements Serializable {
 	 * 金额显示的颜色
 	 */
 	private int amtTextColor;
-	
+
 	/**
 	 * 比划数
 	 */
@@ -32,7 +33,7 @@ public class SignContext implements Serializable {
 	 * 比划长度
 	 */
 	private int gesturesLength;
-	
+
 	/**
 	 * 终端流水号
 	 */
@@ -49,7 +50,7 @@ public class SignContext implements Serializable {
 	 * 签名路径
 	 */
 	private String signFileURL;
-	
+
 	private boolean showBackBtn;
 
 	public String getShowAmt() {
@@ -123,7 +124,5 @@ public class SignContext implements Serializable {
 	public void setIdUnderType(String idUnderType) {
 		this.idUnderType = idUnderType;
 	}
-	
-	
-	
+
 }

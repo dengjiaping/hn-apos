@@ -17,10 +17,10 @@ public class CardNoTextEventController extends AbstractEventController {
 
 	public boolean onTouch(Activity activity, FormBean formBean, View view,
 			MotionEvent motionEvent) {
-		ScrollView scrollView = BeanUtils.getFieldValue(activity, ScrollView.class,
-				"scrollView");
-		SolfKeyBoardDialog solfKeyBoardDialog = BeanUtils.getFieldValue(activity,
-				SolfKeyBoardDialog.class, "solfKeyBoardDialog");
+		ScrollView scrollView = BeanUtils.getFieldValue(activity,
+				ScrollView.class, "scrollView");
+		SolfKeyBoardDialog solfKeyBoardDialog = BeanUtils.getFieldValue(
+				activity, SolfKeyBoardDialog.class, "solfKeyBoardDialog");
 		if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
 
 			DisplayMetrics metric = new DisplayMetrics();
@@ -38,11 +38,11 @@ public class CardNoTextEventController extends AbstractEventController {
 		return true;
 	}
 
-	public boolean onFocusChange(Activity activity, FormBean formBean, View view,
-			boolean hasFocus) {
-		SolfKeyBoardDialog solfKeyBoardDialog = BeanUtils.getFieldValue(activity,
-				SolfKeyBoardDialog.class, "solfKeyBoardDialog");
-		if(solfKeyBoardDialog == null) {
+	public boolean onFocusChange(Activity activity, FormBean formBean,
+			View view, boolean hasFocus) {
+		SolfKeyBoardDialog solfKeyBoardDialog = BeanUtils.getFieldValue(
+				activity, SolfKeyBoardDialog.class, "solfKeyBoardDialog");
+		if (solfKeyBoardDialog == null) {
 			return true;
 		}
 		if (!hasFocus) {

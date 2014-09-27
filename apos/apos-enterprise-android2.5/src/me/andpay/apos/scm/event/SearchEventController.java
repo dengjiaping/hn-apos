@@ -8,12 +8,11 @@ import android.view.View;
 
 public class SearchEventController extends AbstractEventController {
 
-
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
 
-		BluetoothListActivity bluetoothListActivity = (BluetoothListActivity)refActivty;
+		BluetoothListActivity bluetoothListActivity = (BluetoothListActivity) refActivty;
 		bluetoothListActivity.startSearch();
-		
+
 	}
-	
+
 }

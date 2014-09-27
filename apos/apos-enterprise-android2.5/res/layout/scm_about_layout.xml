@@ -45,7 +45,7 @@
                     android:layout_alignBottom="@+id/com_net_tv"
                     android:layout_alignLeft="@+id/scm_dotted_img"
                     android:scaleType="fitXY"
-                    android:src="@drawable/com_icon_about_app_img" />
+                    android:src="@drawable/app" />
                 <TextView
                     android:id="@+id/com_pname_tv"
                     android:layout_width="wrap_content"
@@ -188,7 +188,7 @@
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>
-
+<!-- 
     <ImageView
         android:id="@+id/com_andpay_logo_imgv"
         style="@style/com_copyright_img_style"
@@ -197,5 +197,5 @@
     <TextView
         android:id="@+id/com_app_copyright_textv"
         style="@style/com_copyright_text_style" />
-
+ -->
 </RelativeLayout>

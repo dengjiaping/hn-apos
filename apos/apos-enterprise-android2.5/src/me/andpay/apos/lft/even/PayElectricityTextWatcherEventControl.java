@@ -17,9 +17,9 @@ public class PayElectricityTextWatcherEventControl extends
 	public void onTextChanged(Activity activity, FormBean formBean,
 			CharSequence s, int start, int before, int count) {
 		PayElectricityCostActivity payElectricity = (PayElectricityCostActivity) activity;
-		if (payElectricity.city.length() > 0 && payElectricity.company.length() > 0
-				&&payElectricity.customer.length()>0
-				) {
+		if (payElectricity.city.length() > 0
+				&& payElectricity.company.length() > 0
+				&& payElectricity.customer.length() > 0) {
 			payElectricity.next.setEnabled(true);
 		} else {
 			payElectricity.next.setEnabled(false);

@@ -20,7 +20,8 @@ import android.widget.ImageView;
 
 @FormBind(formBean = ChangePasswordForm.class)
 @ContentView(R.layout.scm_changepwd_layout)
-public class ScmChangePwdActivity extends AposBaseActivity implements ValueContainer {
+public class ScmChangePwdActivity extends AposBaseActivity implements
+		ValueContainer {
 
 	@InjectView(R.id.lam_old_password_edit)
 	@EventDelegate(delegateClass = TextWatcher.class, delegate = "addTextChangedListener", toEventController = PwdTextChangeEventController.class)
@@ -41,7 +42,7 @@ public class ScmChangePwdActivity extends AposBaseActivity implements ValueConta
 	@InjectView(R.id.com_back_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = BackBtnOnclickController.class)
 	ImageView backBtn;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,7 +51,7 @@ public class ScmChangePwdActivity extends AposBaseActivity implements ValueConta
 
 	public Button getSureButton() {
 		return sureButton;
-		
+
 	}
 
 	public EditText getOldPwd() {

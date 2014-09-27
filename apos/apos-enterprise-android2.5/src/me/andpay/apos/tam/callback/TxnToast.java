@@ -9,8 +9,7 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
 
 public class TxnToast {
-	
-	
+
 	public static void showSuccess(Activity activity) {
 
 		Toast toast = Toast.makeText(activity, "", Toast.LENGTH_SHORT);
@@ -21,13 +20,12 @@ public class TxnToast {
 		ImageView imageCodeProject = new ImageView(activity);
 		imageCodeProject.setImageResource(R.drawable.com_tips_succeed_img);
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		toastView.addView(imageCodeProject, params);
 		toast.show();
 	}
-	
-	
-	
+
 	public static void showFailed(Activity activity) {
 
 		Toast toast = Toast.makeText(activity, "", Toast.LENGTH_SHORT);
@@ -36,9 +34,11 @@ public class TxnToast {
 		toastView.setBackgroundColor(activity.getResources().getColor(
 				R.color.com_translucent_col));
 		ImageView imageCodeProject = new ImageView(activity);
-		imageCodeProject.setImageResource(R.drawable.com_tips_unsuccessfully_img);
+		imageCodeProject
+				.setImageResource(R.drawable.com_tips_unsuccessfully_img);
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				android.view.ViewGroup.LayoutParams.WRAP_CONTENT, android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT,
+				android.view.ViewGroup.LayoutParams.WRAP_CONTENT);
 		toastView.addView(imageCodeProject, params);
 		toast.show();
 	}

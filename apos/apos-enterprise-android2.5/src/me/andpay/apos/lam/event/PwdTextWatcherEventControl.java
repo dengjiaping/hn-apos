@@ -10,16 +10,19 @@ public class PwdTextWatcherEventControl extends AbstractEventController {
 
 	public void onTextChanged(Activity activity, FormBean formBean,
 			CharSequence s, int start, int before, int count) {
-		
-		ChangePasswordActivity chActivity = (ChangePasswordActivity)activity;
-		if(chActivity.oldPwd.length() > 0 && chActivity.newPassword.length() > 0 && chActivity.rePassword.length() > 0
-				&& chActivity.newPassword.length() == chActivity.rePassword.length()) {
+
+		ChangePasswordActivity chActivity = (ChangePasswordActivity) activity;
+		if (chActivity.oldPwd.length() > 0
+				&& chActivity.newPassword.length() > 0
+				&& chActivity.rePassword.length() > 0
+				&& chActivity.newPassword.length() == chActivity.rePassword
+						.length()) {
 			chActivity.changePassword.setEnabled(true);
-		}else {
+		} else {
 			chActivity.changePassword.setEnabled(false);
 
 		}
-		
+
 	}
 
 	public void beforeTextChanged(Activity activity, FormBean formBean,

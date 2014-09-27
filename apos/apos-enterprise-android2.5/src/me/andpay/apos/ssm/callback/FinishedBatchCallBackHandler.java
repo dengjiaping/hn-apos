@@ -27,7 +27,7 @@ public class FinishedBatchCallBackHandler extends AfterProcessWithErrorHandler {
 		super(mainActivity);
 		this.mainActivity = mainActivity;
 		this.dao = dao;
-		
+
 	}
 
 	@Override
@@ -36,9 +36,9 @@ public class FinishedBatchCallBackHandler extends AfterProcessWithErrorHandler {
 				true);
 		mainActivity.getDialog().cancel();
 		Object batchObject = mv.getValue("batch");
-		
+
 		if (batchObject != null) {
-			TxnBatch batch = (TxnBatch)batchObject;
+			TxnBatch batch = (TxnBatch) batchObject;
 			TiContext context = mainActivity.getAppContext();
 			PartyInfo party = (PartyInfo) context
 					.getAttribute(RuntimeAttrNames.PARTY_INFO);
@@ -49,8 +49,7 @@ public class FinishedBatchCallBackHandler extends AfterProcessWithErrorHandler {
 							"update PayTxnInfo set termBatchNo = ? where termBatchNo is null and txnStatus = ?  and operNo = ? and txnPartyId = ?",
 							new Object[] { batch.getTermBatchNo(),
 									PayTxnInfoStatus.STATUS_SUCCESS,
-									info.getUserName(),
-									party.getPartyId() });
+									info.getUserName(), party.getPartyId() });
 			Intent sendMailIntent = new Intent(
 					SsmProvider.SSM_ACTIVITY_SEND_MAIL);
 			sendMailIntent.putExtra("batchId", batch.getId());
@@ -59,7 +58,7 @@ public class FinishedBatchCallBackHandler extends AfterProcessWithErrorHandler {
 
 			mainActivity.startActivity(sendMailIntent);
 		} else {
-			String errorMsg = (String)mv.getValue("errorMsg");
+			String errorMsg = (String) mv.getValue("errorMsg");
 			PromptDialog dialog = new PromptDialog(mainActivity, mainActivity
 					.getResources().getString(R.string.scm_settle_error_str),
 					errorMsg);

@@ -50,19 +50,19 @@ public class InitMsrKeyServiceImpl implements InitCardReaderService {
 	@Inject
 	private DownloadICCardParamsService downloadICCardParamsService;
 
-	
 	private boolean hasMacKey(String version) {
-		if(StringUtil.isBlank(version)) {
+		if (StringUtil.isBlank(version)) {
 			return false;
 		}
-		
-		if(CardReaderTypes.NEW_LAND_BL == CardReaderManager.getCardReaderType() && "1.41".compareTo(version) <0) {
+
+		if (CardReaderTypes.NEW_LAND_BL == CardReaderManager
+				.getCardReaderType() && "1.41".compareTo(version) < 0) {
 			return true;
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * 
 	 * @param tiActivity
@@ -70,11 +70,12 @@ public class InitMsrKeyServiceImpl implements InitCardReaderService {
 	 */
 	public InitMsrKeyResult initMsrKey(String identifier) {
 		InitMsrKeyResult initMsrKeyResult = new InitMsrKeyResult();
-//		if (CardReaderInitManager.checkAllKeyIsInit(aposContext.getAppConfig(),
-//				identifier)) {
-//			initMsrKeyResult.setSuccess(true);
-//			return initMsrKeyResult;
-//		}
+		// if
+		// (CardReaderInitManager.checkAllKeyIsInit(aposContext.getAppConfig(),
+		// identifier)) {
+		// initMsrKeyResult.setSuccess(true);
+		// return initMsrKeyResult;
+		// }
 
 		DeviceInfo deviceInfo = CardReaderManager.getDeviceInfo();
 		if (deviceInfo == null
@@ -82,8 +83,8 @@ public class InitMsrKeyServiceImpl implements InitCardReaderService {
 			initMsrKeyResult.setErrorMsg("无法获取设备信息,请确认设备正常后重试。");
 			return initMsrKeyResult;
 		}
-		
-		if(!hasMacKey(deviceInfo.getAppVersion())) {
+
+		if (!hasMacKey(deviceInfo.getAppVersion())) {
 			deviceInfo.setInitMacKey(true);
 			CardReaderInitManager.setParamInit(aposContext.getAppConfig(),
 					identifier, MsrKeyTypes.MAC_KEY);
@@ -279,24 +280,23 @@ public class InitMsrKeyServiceImpl implements InitCardReaderService {
 				for (AposICAppParam aposICAppParam : aposICAppParams) {
 					AposResultData aposResultData = CardReaderManager
 							.addICAppParam(aposICAppParam);
-					
-				
-					//重试3次
+
+					// 重试3次
 					if (!aposResultData.isSuccess()) {
 						for (int i = 0; i < 3; i++) {
 							aposResultData = CardReaderManager
 									.addICAppParam(aposICAppParam);
-							if(aposResultData.isSuccess()) {
+							if (aposResultData.isSuccess()) {
 								break;
 							}
 						}
 					}
-			
+
 					if (!aposResultData.isSuccess()) {
 						initIcCardResult.setErrorMsg("初始化参数失败。");
 						initIcCardResult.setSuccess(false);
 						return initIcCardResult;
-						
+
 					}
 				}
 
@@ -310,19 +310,18 @@ public class InitMsrKeyServiceImpl implements InitCardReaderService {
 				for (AposIcPublicKey aposIcPublicKey : aposIcPublicKeys) {
 					AposResultData aposResultData = CardReaderManager
 							.addICPublicKey(aposIcPublicKey);
-					
-					
-					//重试3次
+
+					// 重试3次
 					if (!aposResultData.isSuccess()) {
 						for (int i = 0; i < 3; i++) {
 							aposResultData = CardReaderManager
 									.addICPublicKey(aposIcPublicKey);
-							if(aposResultData.isSuccess()) {
+							if (aposResultData.isSuccess()) {
 								break;
 							}
 						}
 					}
-					
+
 					if (!aposResultData.isSuccess()) {
 						initIcCardResult.setErrorMsg("初始化公钥失败。");
 						initIcCardResult.setSuccess(false);

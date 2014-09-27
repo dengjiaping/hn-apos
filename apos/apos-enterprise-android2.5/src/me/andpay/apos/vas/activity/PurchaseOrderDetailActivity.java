@@ -36,8 +36,8 @@ public class PurchaseOrderDetailActivity extends AposBaseActivity {
 		super.onCreate(savedInstanceState);
 		PurchaseOrderInfo info = this.getControl().getFlowContextData(
 				PurchaseOrderInfo.class);
-		//只有PO在支付完成状态才允许后续履约
-		if(info.getStatus().equals(PurchaseOrder.STATUS_PAID)) {
+		// 只有PO在支付完成状态才允许后续履约
+		if (info.getStatus().equals(PurchaseOrder.STATUS_PAID)) {
 			fulfillBtn.setVisibility(View.VISIBLE);
 		} else {
 			fulfillBtn.setVisibility(View.GONE);

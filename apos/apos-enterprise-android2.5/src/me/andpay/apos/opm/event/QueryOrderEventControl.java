@@ -7,14 +7,12 @@ import android.app.Activity;
 import android.view.View;
 
 public class QueryOrderEventControl extends AbstractEventController {
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-			
-		InputOrderNoActivity inputOrderNoActivity = (InputOrderNoActivity)activity;
+
+		InputOrderNoActivity inputOrderNoActivity = (InputOrderNoActivity) activity;
 		inputOrderNoActivity.queryOrder();
-		
-		
+
 	}
-	
-	
+
 }

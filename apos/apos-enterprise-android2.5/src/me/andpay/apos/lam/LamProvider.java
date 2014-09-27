@@ -1,6 +1,5 @@
 package me.andpay.apos.lam;
 
-
 public class LamProvider {
 
 	/**
@@ -30,15 +29,12 @@ public class LamProvider {
 	 * 读卡器设置界面
 	 */
 	public static final String LAM_CARDREADER_SET_ACTIVITY = "lam.cardReaderSet.activity";
-	
-	
 
 	/**
 	 * 读卡器设置界面
 	 */
 	public static final String LAM_ACTIVATE_CODE_ACTIVITY = "lam.activate.code.activity";
-	
-	
+
 	/**
 	 * 帮助界面
 	 */
@@ -49,7 +45,6 @@ public class LamProvider {
 	 */
 	public static final String LAM_RISK_PROMPT_ACTIVITY = "lam.riskPrompt.activity";
 
-	
 	/**
 	 * 首次修改密码
 	 */
@@ -58,10 +53,9 @@ public class LamProvider {
 	public static final String LAM_DOMAIN_LOGIN = "/lam/login.action";
 
 	public static final String LAM_ACTION_LOGIN_DEFAULT = "login";
-	
+
 	public static final String LAM_ACTION_LOGIN_RELOGIN = "reLogin";
-	
+
 	public static final String LAM_FORM_LOGIN_NAME = "loginUserForm";
-	
 
 }

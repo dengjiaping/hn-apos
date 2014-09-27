@@ -18,20 +18,18 @@ public class QueryProductInfoCond extends Sorts {
 	 */
 	@Expression
 	private String merchPartyId;
-	
 
-//	/**
-//	 * 名称
-//	 */
-//	@Expression(operater = "like", logicSymbol = "or")
-//	private String name;
-//
-//
-//	@Expression(operater = "like", logicSymbol = "or")
-//	private String namePinyin;
-	
-	
-    @Expression(paraName = "namePinyin", sqlformat="( namePinyin like '%${value}%' or name  like '%${value}%')")
+	// /**
+	// * 名称
+	// */
+	// @Expression(operater = "like", logicSymbol = "or")
+	// private String name;
+	//
+	//
+	// @Expression(operater = "like", logicSymbol = "or")
+	// private String namePinyin;
+
+	@Expression(paraName = "namePinyin", sqlformat = "( namePinyin like '%${value}%' or name  like '%${value}%')")
 	private String nameLike;
 
 	@Expression
@@ -47,8 +45,6 @@ public class QueryProductInfoCond extends Sorts {
 	public void setProductId(Long productId) {
 		this.productId = productId;
 	}
-
-
 
 	public Date getUpdataTime() {
 		return updataTime;
@@ -82,6 +78,4 @@ public class QueryProductInfoCond extends Sorts {
 		this.nameLike = nameLike;
 	}
 
-	
-	
 }

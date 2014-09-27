@@ -13,15 +13,15 @@ import android.widget.TextView;
 public class OftenPersonController extends BaseAdapterController<OftenUser> {
 
 	private LayoutInflater flater = null;
+
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
 		// TODO Auto-generated method stub
 		Holder holder = null;
 		if (arg1 == null) {
 			holder = new Holder();
-			if(flater==null){
-				flater=LayoutInflater.from(getAdpter()
-						.getContext());
+			if (flater == null) {
+				flater = LayoutInflater.from(getAdpter().getContext());
 
 			}
 			arg1 = flater.inflate(R.layout.lft_often_person_item, null);
@@ -44,16 +44,17 @@ public class OftenPersonController extends BaseAdapterController<OftenUser> {
 	}
 
 	@Override
-	public void getEvent(View view,final int position) {
+	public void getEvent(View view, final int position) {
 		// TODO Auto-generated method stub
 		view.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				AdpterEventListener listener = getAdpter().getAdpterEventListener();
-				if(listener!=null){
+				AdpterEventListener listener = getAdpter()
+						.getAdpterEventListener();
+				if (listener != null) {
 					OftenUser oftenUser = getAdpter().getList().get(position);
-					listener.onEventListener(new Object[]{oftenUser});
+					listener.onEventListener(new Object[] { oftenUser });
 				}
 			}
 		});

@@ -28,7 +28,7 @@ public class SettleSendAction extends SessionKeepAction {
 			throws RuntimeException {
 		ModelAndView mv = new ModelAndView();
 		SendForm sendForm = (SendForm) request.getParameterValue("sendForm");
-		
+
 		List<DeliverDest> dests = new ArrayList<DeliverDest>();
 		if (!StringUtil.isEmpty(sendForm.getEmail())) {
 			DeliverDest dest = new DeliverDest();
@@ -40,10 +40,9 @@ public class SettleSendAction extends SessionKeepAction {
 			DeliverDest dest = new DeliverDest();
 			dest.setDeliverType(DeliverDest.TYPE_SMS);
 			dest.setDestInfo(sendForm.getPhone());
-			dests.add(dest); 
+			dests.add(dest);
 		}
-		txnBatchService.sendBatch(dests,
-				sendForm.getBatchId());
+		txnBatchService.sendBatch(dests, sendForm.getBatchId());
 		return mv.addModelValue("sendFlag", true);
 	}
 }

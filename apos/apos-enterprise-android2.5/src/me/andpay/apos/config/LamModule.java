@@ -19,11 +19,10 @@ import me.andpay.apos.lam.event.UserNameAutoTextEventControl;
 import me.andpay.apos.scm.event.SureUseClickController;
 import me.andpay.timobileframework.config.TiMobileModule;
 
-
-public class LamModule extends TiMobileModule{
+public class LamModule extends TiMobileModule {
 
 	@Override
-	protected void configure() {	
+	protected void configure() {
 		bindEventController(IntroduceStartPageChangeEventControl.class);
 		bindEventController(LoginSumitButtonEventControl.class);
 		bindEventController(UseBeginButtonEventControl.class);
@@ -42,5 +41,5 @@ public class LamModule extends TiMobileModule{
 		bindAction(ActivateCodeAction.class);
 		bindAction(GenMsrKeysAction.class);
 	}
-	
+
 }

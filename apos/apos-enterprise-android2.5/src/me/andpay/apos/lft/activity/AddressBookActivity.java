@@ -43,7 +43,7 @@ public class AddressBookActivity extends AposBaseActivity {
 	private PhoneNumberController controller;// 控制器
 
 	private ArrayList<PhoneNumber> list;// 手机联系人数组
-	
+
 	@InjectView(R.id.lft_address_book_listview)
 	private ListView listView;
 
@@ -60,9 +60,8 @@ public class AddressBookActivity extends AposBaseActivity {
 
 			public boolean onEventListener(Object... objects) {
 				// TODO Auto-generated method stub
-				
-				
-				selected((PhoneNumber)objects[0]);
+
+				selected((PhoneNumber) objects[0]);
 				return false;
 			}
 		};
@@ -73,13 +72,15 @@ public class AddressBookActivity extends AposBaseActivity {
 		updatePhone();
 
 	}
+
 	/**
 	 * 选中
 	 */
-	private void selected(PhoneNumber phoneNumber){
-		TiFlowControlImpl.instanceControl().getFlowContext().put(PhoneNumber.class.getName(),phoneNumber);
+	private void selected(PhoneNumber phoneNumber) {
+		TiFlowControlImpl.instanceControl().getFlowContext()
+				.put(PhoneNumber.class.getName(), phoneNumber);
 		TiFlowControlImpl.instanceControl().previousSetup(this);
-		
+
 	}
 
 	/**

@@ -1,15 +1,15 @@
 package me.andpay.apos.ssm.action;
 
 public class QuerySettleCondition {
-	
+
 	private Long batch_no;
-	
+
 	private String batch_status;
-	
+
 	private Integer max_record_size;
-	
+
 	private String max_ref_no;
-	
+
 	private String min_ref_no;
 
 	public Long getBatch_no() {
@@ -52,6 +52,4 @@ public class QuerySettleCondition {
 		this.min_ref_no = min_ref_no;
 	}
 
-
-	
 }

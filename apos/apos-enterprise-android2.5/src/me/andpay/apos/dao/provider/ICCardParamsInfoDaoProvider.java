@@ -16,8 +16,7 @@ public class ICCardParamsInfoDaoProvider implements
 
 	public ICCardParamsInfoDao get() {
 
-		TableName table = ICCardParamsInfo.class
-				.getAnnotation(TableName.class);
+		TableName table = ICCardParamsInfo.class.getAnnotation(TableName.class);
 		return new ICCardParamsInfoDao(application.getApplicationContext(),
 				null, null, table.version());
 	}

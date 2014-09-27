@@ -30,7 +30,7 @@ public class ScmFeedbackActivity extends AposBaseActivity {
 	@InjectView(R.id.com_send_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = FeedBackSendButtonController.class)
 	Button sendButton;
-	
+
 	@InjectResource(R.string.scm_feedback_hint_str)
 	String errorMsg;
 
@@ -42,7 +42,7 @@ public class ScmFeedbackActivity extends AposBaseActivity {
 
 	@InjectResource(R.string.scm_feedback_succ_str)
 	String succSendMsg;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -62,7 +62,7 @@ public class ScmFeedbackActivity extends AposBaseActivity {
 
 	public String getErrorMsg() {
 		return errorMsg;
-	
+
 	}
 
 	public String getOperationMsg() {

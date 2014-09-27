@@ -30,8 +30,8 @@ public class CleanDataService {
 	@Inject
 	public PayTxnInfoDao payTxnDao;
 
-//	@Inject
-//	public OrderInfoDao orderInfoDao;
+	// @Inject
+	// public OrderInfoDao orderInfoDao;
 
 	@Inject
 	private PurchaseOrderInfoDao purchaseOrderInfoDao;
@@ -51,26 +51,26 @@ public class CleanDataService {
 	 */
 	public class CleanRunner implements Runnable {
 		public void run() {
-			try{
+			try {
 				clearPayTxnInfo();
-//				cleanOrdrInfo();
+				// cleanOrdrInfo();
 				cleanPurchaseOrder();
-			}catch (Throwable ex){
+			} catch (Throwable ex) {
 				Crashlytics.log("clean data error");
 				Crashlytics.logException(ex);
 			}
 		}
 
-//		private void cleanOrdrInfo() {
-//			OrderInfoCond orderCond = new OrderInfoCond();
-//			orderCond.setEndSynDate(StringUtil.format("yyyyMMddHHmmss",
-//					me.andpay.ti.util.DateUtil.roundDate(new Date(),
-//							Calendar.DATE)));
-//			List<OrderInfo> orderInfos = orderInfoDao.query(orderCond, 0, -1);
-//			for (OrderInfo orderInfo : orderInfos) {
-//				orderInfoDao.delete(orderInfo.getIdOrder());
-//			}
-//		}
+		// private void cleanOrdrInfo() {
+		// OrderInfoCond orderCond = new OrderInfoCond();
+		// orderCond.setEndSynDate(StringUtil.format("yyyyMMddHHmmss",
+		// me.andpay.ti.util.DateUtil.roundDate(new Date(),
+		// Calendar.DATE)));
+		// List<OrderInfo> orderInfos = orderInfoDao.query(orderCond, 0, -1);
+		// for (OrderInfo orderInfo : orderInfos) {
+		// orderInfoDao.delete(orderInfo.getIdOrder());
+		// }
+		// }
 	}
 
 	private void cleanPurchaseOrder() {

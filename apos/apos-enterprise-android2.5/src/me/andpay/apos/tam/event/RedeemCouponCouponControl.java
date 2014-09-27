@@ -9,8 +9,8 @@ import android.view.View;
 public class RedeemCouponCouponControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		CouponDeailActivity aCouponDeailActivity = (CouponDeailActivity)activity;
-		aCouponDeailActivity.redeemCoupon();	
+		CouponDeailActivity aCouponDeailActivity = (CouponDeailActivity) activity;
+		aCouponDeailActivity.redeemCoupon();
 	}
 
 }

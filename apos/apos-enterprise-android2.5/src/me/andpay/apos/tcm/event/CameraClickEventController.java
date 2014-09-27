@@ -52,7 +52,7 @@ public class CameraClickEventController extends AbstractEventController
 					.setImageResource(R.drawable.camera_light_img);
 			Parameters params = viewfinderActivity.camera.getParameters();
 			CameraConfigurationUtils.setTorch(params, false);
-			//params.setFlashMode("off");
+			// params.setFlashMode("off");
 			viewfinderActivity.camera.setParameters(params);
 		}
 	}
@@ -67,7 +67,7 @@ public class CameraClickEventController extends AbstractEventController
 		public void run() {
 			Parameters params = activity.camera.getParameters();
 			CameraConfigurationUtils.setTorch(params, true);
-			//params.setFlashMode("torch");
+			// params.setFlashMode("torch");
 			activity.camera.setParameters(params);
 		}
 	}

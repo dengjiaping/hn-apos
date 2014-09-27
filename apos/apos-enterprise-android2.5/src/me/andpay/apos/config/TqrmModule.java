@@ -8,7 +8,7 @@ public class TqrmModule extends TiMobileModule {
 
 	@Override
 	protected void configure() {
-		
+
 		bindAction(QueryCouponAction.class);
 		bindEventController(QueryCouponRefreshController.class);
 	}

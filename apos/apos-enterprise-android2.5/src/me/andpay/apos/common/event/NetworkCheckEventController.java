@@ -8,7 +8,7 @@ import android.app.Activity;
 
 /**
  * 在事件被响应之前检查网络设置
- *   
+ * 
  * @author tinyliu
  * 
  */

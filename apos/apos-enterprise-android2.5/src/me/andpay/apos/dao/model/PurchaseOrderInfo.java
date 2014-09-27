@@ -60,7 +60,7 @@ public class PurchaseOrderInfo implements Serializable {
 	/**
 	 * 销售金额
 	 */
-	@Column(dataConverter=BigDecimalConverter.class)
+	@Column(dataConverter = BigDecimalConverter.class)
 	private BigDecimal salesAmt;
 
 	/**

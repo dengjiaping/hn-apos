@@ -44,7 +44,7 @@ import android.widget.TextView;
 public class TxnTimeoutActivity extends AposBaseActivity {
 
 	private static final String TAG = TxnTimeoutActivity.class.getName();
-	
+
 	@InjectView(R.id.com_title_tv)
 	public TextView topTitle;
 
@@ -62,7 +62,7 @@ public class TxnTimeoutActivity extends AposBaseActivity {
 	public Button retryBtn;
 
 	public CommonDialog retryDialog;
-	
+
 	@InjectView(R.id.tam_success_img)
 	public ImageView iconImge;
 
@@ -83,7 +83,6 @@ public class TxnTimeoutActivity extends AposBaseActivity {
 	private boolean isRecover;
 	@Inject
 	private TxnControl txnControl;
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -110,31 +109,29 @@ public class TxnTimeoutActivity extends AposBaseActivity {
 		if (!StringUtil.isBlank(buttonName)) {
 			retryBtn.setText(buttonName);
 		}
-		
-		if(isRecover) {
+
+		if (isRecover) {
 			retryBtn.setVisibility(View.VISIBLE);
 			iconImge.setVisibility(View.VISIBLE);
-		}else {
+		} else {
 			retryBtn.setVisibility(View.GONE);
 			iconImge.setVisibility(View.GONE);
 			startRetryTxn("网络不稳定，");
 		}
-	
+
 	}
 
-	
-
 	public void startRetryTxn(String dialogMsg) {
-		this.retryDialog = new CommonDialog(this, dialogMsg+"正在查询交易结果("
+		this.retryDialog = new CommonDialog(this, dialogMsg + "正在查询交易结果("
 				+ retryCount + ")...");
 		this.retryDialog.show();
 		retrySubmit(dialogMsg);
 	}
 
 	public void retrySubmit(final String dialogMsg) {
-		Log.e(TAG, "retryCount ="+retryCount);
+		Log.e(TAG, "retryCount =" + retryCount);
 		SleepUtil.sleep(3000);
-		this.retryDialog.setMsg(dialogMsg+"正在查询交易结果(" + retryCount + ")...");
+		this.retryDialog.setMsg(dialogMsg + "正在查询交易结果(" + retryCount + ")...");
 		retryCount++;
 		startTime = System.currentTimeMillis();
 
@@ -152,7 +149,6 @@ public class TxnTimeoutActivity extends AposBaseActivity {
 		Log.e(TAG, "submit retry");
 		request.submit(submitData);
 	}
-
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -21,9 +21,9 @@ public class TqmProvider {
 	public static String TQM_ACTION_QUERY_GETTXNLIST_STORAGE = "queryTxnListAndStorageRemote";
 
 	public static String TQM_ACTION_QUERY_REMOTE_GETTXNLIST_REMOTE = "queryTxnListByRemote";
-	
+
 	public static String TQM_ACTION_QUERY_REMOTE_GETTXNLIST_STORAGE_REMOTE = "queryTxnListAndStorgeByRemote";
-	
+
 	public static String TQM_ACTION_QUERY_REMOTE_SINGETXN_REMOTE = "querySingleTxnByRemote";
 
 	public static Integer TQM_CONST_MAX_COUNTS = 10;
@@ -31,7 +31,7 @@ public class TqmProvider {
 	 * 交易查询条件页面屏蔽txntype选项
 	 */
 	public static String TQM_CONST_HIDE_TXNTYPE = "txnTypeHide";
-	
+
 	public static String TQM_QUERY_COND_FORM = "queryCondForm";
 
 	public static String TQM_PARTTERN_DATE = "yyyy/MM/dd";
@@ -39,7 +39,7 @@ public class TqmProvider {
 	public static String TQM_PARTTERN_DATETIME = "yyyy/MM/dd HH:mm:ss";
 
 	public static String TQM_PARTTERN_COMMOM_DATE = "yyyyMMddHHmmss";
-	
+
 	public static String TQM_PARTTERN_COMMOM_TIME = "HH:mm:ss";
 
 	public static Integer TQM_RESULT_CODE_CONDITION = 100;

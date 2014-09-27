@@ -24,7 +24,8 @@ public class SessionKeepService {
 	private Thread thread = null;
 
 	public void keepSession() {
-		if (!NetWorkUtil.isNetworkConnected(application.getApplicationContext())) {
+		if (!NetWorkUtil
+				.isNetworkConnected(application.getApplicationContext())) {
 			return;
 		}
 		if (thread != null) {

@@ -15,27 +15,28 @@ import me.andpay.timobileframework.util.RoboGuiceUtil;
 import android.app.Activity;
 
 public class OrderPayHelper {
-	
-	
-	public static void sendTxn(Activity activity,OrderInfo orderInfo) {
-		
-		TxnControl txnControl = RoboGuiceUtil.getInjectObject(TxnControl.class, activity);		
+
+	public static void sendTxn(Activity activity, OrderInfo orderInfo) {
+
+		TxnControl txnControl = RoboGuiceUtil.getInjectObject(TxnControl.class,
+				activity);
 		TxnContext txnContext = txnControl.init();
 		txnControl.setTxnCallback(new TxnCallbackImpl());
 		txnContext.setNeedPin(true);
 		txnContext.setTxnType(TxnTypes.PURCHASE);
 		txnContext.setGoodsUpload(false);
 		txnContext.setSignUplaod(true);
-		txnContext.setSalesAmt(new BigDecimal(orderInfo
-				.getOrderAmt().toString()));
+		txnContext.setSalesAmt(new BigDecimal(orderInfo.getOrderAmt()
+				.toString()));
 		txnContext.setExtTraceNo(orderInfo.getOrderId());
 		txnContext.setExtType(ExtTypes.EXT_TYPE_ORDER_QUERY);
 
 		// 可回主页
 		txnContext.setBackTagName(TabNames.ORDERPAY_PAGE);
 		txnContext.setTxnType(TxnTypes.PURCHASE);
-		
-		TiFlowControlImpl.instanceControl().startFlow(activity, FlowNames.TXN_FLOW);
+
+		TiFlowControlImpl.instanceControl().startFlow(activity,
+				FlowNames.TXN_FLOW);
 		TiFlowControlImpl.instanceControl().setFlowContextData(txnContext);
 	}
 }

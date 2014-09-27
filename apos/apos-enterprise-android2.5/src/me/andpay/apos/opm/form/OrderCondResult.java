@@ -5,10 +5,11 @@ import me.andpay.apos.dao.model.OrderInfoCond;
 
 /**
  * 查询对象转换结果
+ * 
  * @author cpz
  *
  */
-public class OrderCondResult {	
+public class OrderCondResult {
 	/**
 	 * 本地查询对象
 	 */
@@ -17,13 +18,13 @@ public class OrderCondResult {
 	 * 远端查询对象
 	 */
 	private QueryOrderRecordCond queryOrderRecordCond;
-	
+
 	private long firstResult;
-	
+
 	private long maxResults;
 
 	public OrderInfoCond getQueryInfoCond() {
-		if(queryInfoCond == null) {
+		if (queryInfoCond == null) {
 			queryInfoCond = new OrderInfoCond();
 		}
 		return queryInfoCond;
@@ -34,13 +35,14 @@ public class OrderCondResult {
 	}
 
 	public QueryOrderRecordCond getQueryOrderRecordCond() {
-		if(queryOrderRecordCond == null) {
+		if (queryOrderRecordCond == null) {
 			queryOrderRecordCond = new QueryOrderRecordCond();
 		}
 		return queryOrderRecordCond;
 	}
 
-	public void setQueryOrderRecordCond(QueryOrderRecordCond queryOrderRecordCond) {
+	public void setQueryOrderRecordCond(
+			QueryOrderRecordCond queryOrderRecordCond) {
 		this.queryOrderRecordCond = queryOrderRecordCond;
 	}
 
@@ -53,15 +55,15 @@ public class OrderCondResult {
 	}
 
 	public long getMaxResults() {
-		if(maxResults==0) {
+		if (maxResults == 0) {
 			return 10;
 		}
 		return maxResults;
 	}
-	
+
 	public Integer getIntegerMaxResults() {
-		
-		if(maxResults==0) {
+
+		if (maxResults == 0) {
 			return 20;
 		}
 		return Integer.valueOf(String.valueOf(maxResults));

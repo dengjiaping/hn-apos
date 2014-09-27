@@ -15,9 +15,11 @@ public class RePostVoucherOnclickController extends AbstractEventController {
 		PostVoucherContext postVoucherContext = new PostVoucherContext();
 		postVoucherContext.setRePostFlag(true);
 		postVoucherContext.setHasNewTxnButton(false);
-		postVoucherContext.setTxnId(((TxnDetailActivity) refActivty).txnInfo.getTxnId());
+		postVoucherContext.setTxnId(((TxnDetailActivity) refActivty).txnInfo
+				.getTxnId());
 		TiFlowControlImpl.instanceControl().startFlow(refActivty,
 				FlowNames.COM_RESEND_VOUCHER_FLOW);
-		TiFlowControlImpl.instanceControl().setFlowContextData(postVoucherContext);
+		TiFlowControlImpl.instanceControl().setFlowContextData(
+				postVoucherContext);
 	}
 }

@@ -18,10 +18,11 @@ public class ProductLocalQueryCallbackImpl implements ProductLocalQueryCallback 
 
 	public void querySuccess(List<ProductInfo> productInfos) {
 
-		if(productSalesActivity.allProductInfos == null || productSalesActivity.allProductInfos.isEmpty()) {
+		if (productSalesActivity.allProductInfos == null
+				|| productSalesActivity.allProductInfos.isEmpty()) {
 			productSalesActivity.allProductInfos = productInfos;
 		}
-	
+
 		productSalesActivity.showList(productInfos);
 	}
 

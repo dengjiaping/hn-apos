@@ -24,14 +24,16 @@ public class ChangePasswordCallbackImpl implements ChangePasswordCallback {
 
 	private Activity activity;
 
-	public ChangePasswordCallbackImpl(Activity activity, FormBean formBean, View view) {
+	public ChangePasswordCallbackImpl(Activity activity, FormBean formBean,
+			View view) {
 		this.activity = activity;
 	}
 
 	public void changeSuccess() {
 
 		Toast.makeText(activity.getApplicationContext(),
-				R.string.lam_change_password_success_str, Toast.LENGTH_LONG).show();
+				R.string.lam_change_password_success_str, Toast.LENGTH_LONG)
+				.show();
 		TiActivity tiActivity = (TiActivity) activity;
 		LoginCallBackHelper.nextPage(tiActivity);
 	}

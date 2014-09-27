@@ -26,7 +26,7 @@ public class InfoChallengeFailedActivity extends AposBaseActivity {
 	@InjectView(R.id.tam_infochallenge_failure_quit_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = BackBtnOnclickController.class)
 	public Button backButton;
-	
+
 	@InjectView(R.id.tcm_infochallenge_failure_modify_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = DealErrorMsgEventController.class)
 	public Button nextButton;

@@ -17,12 +17,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 @ContentView(R.layout.stl_settle_detail_layout)
-public class SettleDetailActivity extends AposBaseActivity  {
-	
+public class SettleDetailActivity extends AposBaseActivity {
+
 	public SettleOrder settleOrder;
-	
+
 	@InjectView(R.id.stl_settle_amt_tv)
 	public TextView settleAmtText;
 	@InjectView(R.id.stl_settle_time_tv)
@@ -35,11 +34,11 @@ public class SettleDetailActivity extends AposBaseActivity  {
 	public TextView txnFeeText;
 	@InjectView(R.id.stl_txn_count_tv)
 	public TextView txnCountText;
-	
+
 	@InjectView(R.id.com_top_back_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = BackBtnOnclickController.class)
 	ImageView backBtn;
-	
+
 	@InjectView(R.id.stl_txn_list_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = ShowTxnListOnclickController.class)
 	public Button showTxnListBtn;
@@ -47,21 +46,24 @@ public class SettleDetailActivity extends AposBaseActivity  {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	
+
 		byte[] infoBytes = this.getIntent().getByteArrayExtra("settleOrder");
 		settleOrder = JacksonSerializer.newPrettySerializer().deserialize(
-					SettleOrder.class, infoBytes);
-		settleAmtText.setText(StringConvertor.convert2Currency(settleOrder.getSettleAmt()));
-//		TextPaint tp = settleAmtText.getPaint(); 
-//		tp.setFakeBoldText(true);
-		
+				SettleOrder.class, infoBytes);
+		settleAmtText.setText(StringConvertor.convert2Currency(settleOrder
+				.getSettleAmt()));
+		// TextPaint tp = settleAmtText.getPaint();
+		// tp.setFakeBoldText(true);
+
 		settleTimeText.setText(DateUtil.format("yyyy-MM-dd",
 				settleOrder.getSettleTime()));
-		salesText.setText(StringConvertor.convert2Currency(settleOrder.getSalesTxnAmtTotal()));
-		refundText.setText(StringConvertor.convert2Currency(settleOrder.getRefundTxnAmtTotal()));
-		txnFeeText.setText(StringConvertor.convert2Currency(settleOrder.getTxnFee().add(settleOrder.getSrvFee())));
-		txnCountText.setText(String.valueOf(settleOrder.getTxnCount()) );
+		salesText.setText(StringConvertor.convert2Currency(settleOrder
+				.getSalesTxnAmtTotal()));
+		refundText.setText(StringConvertor.convert2Currency(settleOrder
+				.getRefundTxnAmtTotal()));
+		txnFeeText.setText(StringConvertor.convert2Currency(settleOrder
+				.getTxnFee().add(settleOrder.getSrvFee())));
+		txnCountText.setText(String.valueOf(settleOrder.getTxnCount()));
 
-		
 	}
 }

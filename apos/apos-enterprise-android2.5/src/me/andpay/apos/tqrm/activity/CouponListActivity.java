@@ -78,21 +78,17 @@ public class CouponListActivity extends AposBaseActivity {
 		refreshLayout.initView();
 		queryAll();
 	}
-	
-	
+
 	@Override
 	protected void onResumeProcess() {
 		Object flag = getAppContext().getAttribute(
 				RuntimeAttrNames.FRESH_COUPON_FLAG);
 		if (flag != null && StringUtil.isNotBlank(flag.toString())) {
-			getAppContext().removeAttribute(
-					RuntimeAttrNames.FRESH_COUPON_FLAG);
+			getAppContext().removeAttribute(RuntimeAttrNames.FRESH_COUPON_FLAG);
 			queryAll();
 		}
-	
+
 	}
-
-
 
 	public void queryAll() {
 		refreshLayout.setPullRefreshEnable(true);

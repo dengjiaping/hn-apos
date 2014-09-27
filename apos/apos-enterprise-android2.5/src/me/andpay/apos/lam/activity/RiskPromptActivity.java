@@ -14,12 +14,10 @@ import android.widget.Button;
 @ContentView(R.layout.lam_risk_prompt_layout)
 public class RiskPromptActivity extends TiActivity {
 
-	
 	@InjectView(R.id.lam_call_phone_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = PhoneBtnClickController.class)
 	public Button callPhoneBtn;
 
-	
 	@InjectView(R.id.lam_sure_use_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = SureUseClickController.class)
 	public Button sureBtn;

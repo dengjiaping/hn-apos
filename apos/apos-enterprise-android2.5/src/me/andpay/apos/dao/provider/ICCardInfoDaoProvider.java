@@ -8,15 +8,16 @@ import android.app.Application;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-public class ICCardInfoDaoProvider  implements Provider<ICCardInfoDao> {
-	
+public class ICCardInfoDaoProvider implements Provider<ICCardInfoDao> {
+
 	@Inject
 	private Application application;
-	
+
 	public ICCardInfoDao get() {
-		 
-		TableName table = ICCardInfo.class.getAnnotation(TableName.class);	
-		return new ICCardInfoDao(application.getApplicationContext(),null,null,table.version());
+
+		TableName table = ICCardInfo.class.getAnnotation(TableName.class);
+		return new ICCardInfoDao(application.getApplicationContext(), null,
+				null, table.version());
 	}
 
 }

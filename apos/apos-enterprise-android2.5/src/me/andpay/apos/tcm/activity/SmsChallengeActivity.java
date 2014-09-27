@@ -34,7 +34,7 @@ import android.widget.TextView;
 
 @ContentView(R.layout.tcm_smschallenge_layout)
 public class SmsChallengeActivity extends AposBaseActivity {
-	
+
 	public static final String TIME_SUFFIX = "$TIME$";
 
 	@InjectView(R.id.tcm_smschallenge_info_txtView)
@@ -87,9 +87,9 @@ public class SmsChallengeActivity extends AposBaseActivity {
 		codeButton.setText(buffer.toString());
 		codeButton.startTimer(60);
 	}
-	
+
 	@Override
-	protected void onDestroy(){
+	protected void onDestroy() {
 		super.onDestroy();
 	}
 

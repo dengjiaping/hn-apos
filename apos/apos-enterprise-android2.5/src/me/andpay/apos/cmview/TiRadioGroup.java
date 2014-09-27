@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.RadioGroup;
 
 public class TiRadioGroup extends RadioGroup implements WidgetValueHolder {
-	
+
 	private int NOT_CHECK_RADIO = -1;
 
 	public TiRadioGroup(Context context, AttributeSet attrs) {
@@ -15,7 +15,7 @@ public class TiRadioGroup extends RadioGroup implements WidgetValueHolder {
 
 	public Object getWidgetValue() {
 		int checkedId = this.getCheckedRadioButtonId();
-		if(checkedId == NOT_CHECK_RADIO) {
+		if (checkedId == NOT_CHECK_RADIO) {
 			return null;
 		}
 		return ((TiRadioButton) this.findViewById(checkedId)).getWidgetValue();

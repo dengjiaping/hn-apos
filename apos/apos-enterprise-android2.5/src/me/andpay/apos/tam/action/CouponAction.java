@@ -73,7 +73,7 @@ public class CouponAction extends SessionKeepAction {
 					.getParameterValue("couponInfo");
 			RedeemCouponRequest redeemCouponRequest = new RedeemCouponRequest();
 			redeemCouponRequest.setCode2d(couponInfo);
-			
+
 			// 设置位置信息
 			if (locationService.hasLocation()) {
 
@@ -91,12 +91,12 @@ public class CouponAction extends SessionKeepAction {
 			}
 
 			int count = couponService.redeemCoupon(redeemCouponRequest);
-		
+
 			request.getContext(TiContext.CONTEXT_SCOPE_APPLICATION)
 					.setAttribute(RuntimeAttrNames.FRESH_COUPON_FLAG,
 							RuntimeAttrNames.FRESH_COUPON_FLAG);
 			redeemCouponCaillback.redeemSuccess(count);
-			
+
 		} catch (AppBizException e) {
 			Log.e(this.getClass().getName(), "get coupon error!", e);
 			redeemCouponCaillback.redeemFail(e.getLocalizedMessage());

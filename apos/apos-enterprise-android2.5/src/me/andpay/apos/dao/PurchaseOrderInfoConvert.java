@@ -4,13 +4,15 @@ import me.andpay.ac.term.api.shop.QueryPurchaseOrderCond;
 import me.andpay.apos.dao.model.QueryPurchaseOrderInfoCond;
 
 public class PurchaseOrderInfoConvert {
-	
+
 	/**
 	 * 转换本地查询对象
+	 * 
 	 * @param cond
 	 * @return
 	 */
-	public static QueryPurchaseOrderCond convert2RemoteCond(QueryPurchaseOrderInfoCond cond) {
+	public static QueryPurchaseOrderCond convert2RemoteCond(
+			QueryPurchaseOrderInfoCond cond) {
 		QueryPurchaseOrderCond condition = new QueryPurchaseOrderCond();
 		condition.setMaxOrderId(cond.getMaxOrderId());
 		condition.setMinOrderId(cond.getMinOrderId());
@@ -20,5 +22,5 @@ public class PurchaseOrderInfoConvert {
 		condition.setEndOrderDate(cond.getMaxOrderTime());
 		return condition;
 	}
-	
+
 }

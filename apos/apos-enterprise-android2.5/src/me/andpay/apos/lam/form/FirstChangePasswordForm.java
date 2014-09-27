@@ -7,11 +7,10 @@ import me.andpay.timobileframework.mvc.form.validation.anno.FieldErrorMsgTransla
 import me.andpay.timobileframework.mvc.form.validation.anno.FieldErrorMsgTranslate.TRANSTYPE;
 import me.andpay.timobileframework.mvc.form.validation.anno.FieldValidate;
 
-
 @FormInfo(domain = "/lam/changepwd.action", action = "firstChangePassword", formName = "firstChangePasswordForm")
 @FieldErrorMsgTranslate(transType = TRANSTYPE.RESOURCE, resouceInfo = "properties/changePwdErrorMsg.properties")
 public class FirstChangePasswordForm {
-	
+
 	/**
 	 * 新密码
 	 */
@@ -26,7 +25,7 @@ public class FirstChangePasswordForm {
 	@ParamId(R.id.lam_old_password_edit)
 	@FieldValidate.REQUIRED
 	private String oldPasswod;
-	
+
 	/**
 	 * 重复密码
 	 */

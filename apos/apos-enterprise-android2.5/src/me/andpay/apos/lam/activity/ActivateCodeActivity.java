@@ -75,7 +75,7 @@ public class ActivateCodeActivity extends TiActivity implements ValueContainer,
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		retryCodeBtn.setEnabled(false);
-		
+
 		final Activity activityFinal = this;
 		retryCodeBtn.setOnTimeoutListener(new OnTimeoutListener() {
 			public void onTimeout() {
@@ -83,21 +83,19 @@ public class ActivateCodeActivity extends TiActivity implements ValueContainer,
 					return;
 				}
 				retryCodeBtn.setEnabled(true);
-				retryCodeBtn.setText(getResources().getString(R.string.lam_resend_str));
+				retryCodeBtn.setText(getResources().getString(
+						R.string.lam_resend_str));
 			}
 		});
 		retryCodeBtn.startTimer(60);
-
 
 		solfKeyBoard = SolfKeyBoardView.instance(getApplicationContext(),
 				footLayout, this);
 		solfKeyBoard.getHintImgeBtn().setVisibility(View.GONE);
 		solfKeyBoard.setSureButtonFlag(false);
 		solfKeyBoard.showKeyboard(activateCodeText);
-		
+
 	}
-	
-	
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -114,8 +112,7 @@ public class ActivateCodeActivity extends TiActivity implements ValueContainer,
 	}
 
 	public void submitActivateCode() {
-		
-	
+
 		EventRequest request = this.generateSubmitRequest(this);
 		FormBean formBean = null;
 		try {
@@ -131,10 +128,10 @@ public class ActivateCodeActivity extends TiActivity implements ValueContainer,
 		submitDialog.setCancelable(false);
 		submitDialog.show();
 		submitDialog.setCancelable(false);
-	
-		if(OrderPayUtil.isOrderPay(getAppContext())) {
+
+		if (OrderPayUtil.isOrderPay(getAppContext())) {
 			request.callBack(new MOPMActivateCodeCallbackImpl(this));
-		}else {
+		} else {
 			request.callBack(new ActivateCodeCallbackImpl(this));
 		}
 		request.submit();

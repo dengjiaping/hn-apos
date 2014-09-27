@@ -23,15 +23,17 @@ public class TxnPurchaseOrderCallback implements PurchaseOrderCallback {
 
 	public void networkError() {
 		clear();
-		TiFlowControlImpl.instanceControl().nextSetup(tiActivity, FlowConstants.FAILED);
+		TiFlowControlImpl.instanceControl().nextSetup(tiActivity,
+				FlowConstants.FAILED);
 	}
-
 
 	public void placeOrderSuccess(PurchaseOrder purchaseOrder) {
 		clear();
-		TxnContext txnContext = TiFlowControlImpl.instanceControl().getFlowContextData(TxnContext.class);
+		TxnContext txnContext = TiFlowControlImpl.instanceControl()
+				.getFlowContextData(TxnContext.class);
 		txnContext.setOrderId(purchaseOrder.getOrderId());
-		TiFlowControlImpl.instanceControl().nextSetup(tiActivity, FlowConstants.SUCCESS);
+		TiFlowControlImpl.instanceControl().nextSetup(tiActivity,
+				FlowConstants.SUCCESS);
 	}
 
 	public void clear() {

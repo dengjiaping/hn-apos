@@ -12,21 +12,21 @@ import me.andpay.timobileframework.config.TiMobileModule;
 
 import com.google.inject.Scopes;
 
-public class OpmModule  extends TiMobileModule{
+public class OpmModule extends TiMobileModule {
 
 	@Override
 	protected void configure() {
-		
+
 		requestInjection(OrderInfoDaoProvider.class);
 		bind(OrderInfoDao.class).toProvider(OrderInfoDaoProvider.class).in(
-				Scopes.SINGLETON); 
-		
+				Scopes.SINGLETON);
+
 		bindEventController(QueryOrderRefreshController.class);
 		bindEventController(QueryClickItemController.class);
 		bindEventController(QueryStatusSelectorController.class);
 		bindEventController(OrderDetailBackController.class);
 		bindEventController(OrderDetailPayController.class);
 		bindAction(QueryOrderAction.class);
-		
+
 	}
 }

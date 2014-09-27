@@ -14,73 +14,70 @@ import android.app.Application;
 
 import com.google.inject.Inject;
 
-
 public class TxnConfirmService {
-	
+
 	@Inject
 	private TxnConfirmDao txnConfirmDao;
-	
+
 	private TxnService txnService;
 	@Inject
 	private Application application;
-	
+
 	private Thread thread = null;
-	
-	
-	
+
 	public void addCpmfirmTxn(String txnId) {
-		
-		
+
 		TxnConfirm txnConfirm = new TxnConfirm();
-		txnConfirm.setCreateTime(DateUtil.format("yyyyMMddHHmmss",
-				new Date()));
+		txnConfirm.setCreateTime(DateUtil.format("yyyyMMddHHmmss", new Date()));
 		txnConfirm.setTxnId(txnId);
 		txnConfirm.setRetryCount(0);
 		txnConfirmDao.insert(txnConfirm);
 	}
 
-
 	public void sendConfirmTxn() {
-		
-		if (!NetWorkUtil.isNetworkConnected(application.getApplicationContext())) {
+
+		if (!NetWorkUtil
+				.isNetworkConnected(application.getApplicationContext())) {
 			return;
 		}
-		
+
 		if (thread != null) {
 			thread.interrupt();
 		}
 		thread = new Thread(new SendRunner());
 		thread.start();
 	}
-	
-	
+
 	public class SendRunner implements Runnable {
 		public void run() {
-			try{
-				List<TxnConfirm> tnxList =  txnConfirmDao.query(new QueryTxnConfirmCond(), 0, -1);
+			try {
+				List<TxnConfirm> tnxList = txnConfirmDao.query(
+						new QueryTxnConfirmCond(), 0, -1);
 				txnConfirm(tnxList);
-			}catch(Throwable e) {
-				
+			} catch (Throwable e) {
+
 			}
 		}
 
-		private void txnConfirm(List<TxnConfirm> txnList)  {
+		private void txnConfirm(List<TxnConfirm> txnList) {
 			for (TxnConfirm txnConfirm : txnList) {
 				try {
 					txnService.acknowledgeTxnResponse(txnConfirm.getTxnId());
 					txnConfirmDao.delete(txnConfirm.getId());
-				}catch(Exception e) {
-					txnConfirm.setUpdateTime(DateUtil.format("yyyyMMddHHmmss", new Date()));
-					txnConfirm.setRetryCount(txnConfirm.getRetryCount()+1);
+				} catch (Exception e) {
+					txnConfirm.setUpdateTime(DateUtil.format("yyyyMMddHHmmss",
+							new Date()));
+					txnConfirm.setRetryCount(txnConfirm.getRetryCount() + 1);
 					txnConfirmDao.update(txnConfirm);
 				}
 			}
-			List<TxnConfirm> txnListTemp =  txnConfirmDao.query(new QueryTxnConfirmCond(), 0, -1);
-			if(txnListTemp.size()>0) {
+			List<TxnConfirm> txnListTemp = txnConfirmDao.query(
+					new QueryTxnConfirmCond(), 0, -1);
+			if (txnListTemp.size() > 0) {
 				SleepUtil.sleep(20000);
 				txnConfirm(txnListTemp);
 			}
 		}
-		
+
 	}
 }

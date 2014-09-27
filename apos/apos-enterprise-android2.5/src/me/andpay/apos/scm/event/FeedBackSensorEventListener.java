@@ -121,5 +121,4 @@ public class FeedBackSensorEventListener implements SensorEventListener {
 		return getParent(activityParent);
 	}
 
-
 }

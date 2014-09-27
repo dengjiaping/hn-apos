@@ -63,28 +63,28 @@ public class SalesCardMainActivity extends AposBaseActivity {
 
 	@InjectView(R.id.vas_product_price_text)
 	public TextView priceTextView;
-	
 
 	@InjectView(R.id.vas_cash_payment_lay)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = CardSalesPaymentMethodEventControl.class)
 	public RelativeLayout cashPayLay;
-	
+
 	@InjectView(R.id.vas_card_payment_lay)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = CardSalesPaymentMethodEventControl.class)
 	public RelativeLayout cardPayLay;
 
 	@Inject
 	private LocationService locationService;
-	
+
 	private ProductSalesContext productSalesContext;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		locationService.requestLocation();
-		productSalesContext = TiFlowControlImpl.instanceControl().getFlowContextData(ProductSalesContext.class);
-		
+		productSalesContext = TiFlowControlImpl.instanceControl()
+				.getFlowContextData(ProductSalesContext.class);
+
 		// 售卡购物车只有一种产品
 		ProductItem productItem = productSalesContext.getShoppingCart()
 				.getItemsList().get(0);
@@ -97,10 +97,11 @@ public class SalesCardMainActivity extends AposBaseActivity {
 				.convert2Currency(ShoppingCartCenter.getShoppingCart()
 						.getTotalAmt()));
 
-		productQuantityText.setFilters(new InputFilter[] {new InputFilter.LengthFilter(2)});
+		productQuantityText
+				.setFilters(new InputFilter[] { new InputFilter.LengthFilter(2) });
 
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -108,9 +109,9 @@ public class SalesCardMainActivity extends AposBaseActivity {
 		ShoppingCartCenter.clearShoppingCard();
 	}
 
-	/*@Override
-	protected void onResume() {
-		super.onResume();
-
-	}*/
+	/*
+	 * @Override protected void onResume() { super.onResume();
+	 * 
+	 * }
+	 */
 }

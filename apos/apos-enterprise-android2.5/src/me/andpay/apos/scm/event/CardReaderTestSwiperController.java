@@ -8,15 +8,16 @@ import me.andpay.timobileframework.mvc.form.FormBean;
 import android.app.Activity;
 import android.view.View;
 
-public class CardReaderTestSwiperController  extends AbstractEventController {
+public class CardReaderTestSwiperController extends AbstractEventController {
 
 	public void onClick(Activity refActivty, FormBean formBean, View v) {
 		CardReaderSetContext cardReaderSetContext = TiFlowControlImpl
 				.instanceControl().getFlowContextData(
 						CardReaderSetContext.class);
-		
-		TiFlowControlImpl.instanceControl().nextSetup(refActivty, FlowConstants.SUCCESS_STEP2);
-		
+
+		TiFlowControlImpl.instanceControl().nextSetup(refActivty,
+				FlowConstants.SUCCESS_STEP2);
+
 	}
 
 }

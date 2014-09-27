@@ -35,7 +35,8 @@ public class CardSalesPaymentMethodEventControl extends AbstractEventController 
 			PromptDialog daDialog = new PromptDialog(salesActivity, "提示",
 					"您无法购买数量为0的"
 							+ ShoppingCartCenter.getShoppingCart()
-									.getItemsList().get(0).getProductName()+"。");
+									.getItemsList().get(0).getProductName()
+							+ "。");
 			daDialog.show();
 			return;
 		}

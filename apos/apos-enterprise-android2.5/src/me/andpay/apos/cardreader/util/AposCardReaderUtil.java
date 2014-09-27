@@ -17,14 +17,13 @@ public class AposCardReaderUtil {
 
 		AposSwiperContext siRequest = new AposSwiperContext();
 
- 		siRequest.setCardNo(txnContext.getParseBinResp().getCardNo());
+		siRequest.setCardNo(txnContext.getParseBinResp().getCardNo());
 		siRequest.setExtType(txnContext.getExtType());
 		siRequest.setNeedPin(txnContext.isNeedPin());
 		siRequest.setPinErrorCount(txnContext.getPinErrorCount());
 		siRequest.setSalesAmt(txnContext.getSalesAmt());
 		siRequest.setTermTraceNo(TxnUtil.getTermTraceNo(tiConfig));
-		siRequest.setIcCardTxn(	txnContext.isIcCardTxn());
-	
+		siRequest.setIcCardTxn(txnContext.isIcCardTxn());
 
 		siRequest.setCardInfo(txnContext.getCardInfo());
 
@@ -81,6 +80,5 @@ public class AposCardReaderUtil {
 
 		return null;
 	}
-	
-	
+
 }

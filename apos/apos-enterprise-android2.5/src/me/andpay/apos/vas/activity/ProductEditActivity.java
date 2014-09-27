@@ -72,8 +72,6 @@ public class ProductEditActivity extends AposBaseActivity {
 		super.onCreate(savedInstanceState);
 		productId = (Long) getIntent().getExtras().get("productId");
 
-		
-	
 	}
 
 	@Override
@@ -81,28 +79,30 @@ public class ProductEditActivity extends AposBaseActivity {
 		ProductItem productItem = ShoppingCartCenter.getProduct(productId);
 		productQuantityText.setText(Integer.valueOf(productItem.getUnit())
 				.toString());
-		productQuantityText.setSelection(productQuantityText.getText().length());
+		productQuantityText
+				.setSelection(productQuantityText.getText().length());
 		vasTopTexView.setText(productItem.getProductName());
-		
-//		productQuantityText.setFilters(new InputFilter[] { new InputFilter() {
-//
-//			public CharSequence filter(CharSequence source, int start, int end,
-//					Spanned dest, int dstart, int dend) {
-//				
-//				if(dest.length()<=0) {
-//					if(source.equals("0")||StringUtil.isBlank(source.toString())) {
-//						return "1";
-//					}
-//				}
-//				
-//				if(dest.length() == 1& StringUtil.isBlank(source.toString())) {
-//					return dest.subSequence(dstart, dend);
-//				}
-//				
-//				return source;
-//				
-//				
-//			}
-//		} });
+
+		// productQuantityText.setFilters(new InputFilter[] { new InputFilter()
+		// {
+		//
+		// public CharSequence filter(CharSequence source, int start, int end,
+		// Spanned dest, int dstart, int dend) {
+		//
+		// if(dest.length()<=0) {
+		// if(source.equals("0")||StringUtil.isBlank(source.toString())) {
+		// return "1";
+		// }
+		// }
+		//
+		// if(dest.length() == 1& StringUtil.isBlank(source.toString())) {
+		// return dest.subSequence(dstart, dend);
+		// }
+		//
+		// return source;
+		//
+		//
+		// }
+		// } });
 	}
 }

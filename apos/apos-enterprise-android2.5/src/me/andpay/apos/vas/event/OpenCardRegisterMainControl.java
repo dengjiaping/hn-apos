@@ -32,7 +32,7 @@ public class OpenCardRegisterMainControl extends AbstractEventController {
 			ValidateHelper.showErrorMsg(activity, validateErrorInfo);
 			return;
 		}
-		
+
 		OpenCardContext openCardContext = openCardRegisterMainActivity.openCardContext;
 		openCardContext
 				.setStartBlankPartCardNo(openCardRegisterMainActivity.startBlankPartCardNo
@@ -42,7 +42,8 @@ public class OpenCardRegisterMainControl extends AbstractEventController {
 						.getWidgetValue().toString());
 
 		OpenCardForm openCardForm = new OpenCardForm();
-		openCardForm.setOrderId(openCardRegisterMainActivity.openCardContext.getOrderId());
+		openCardForm.setOrderId(openCardRegisterMainActivity.openCardContext
+				.getOrderId());
 		openCardForm.setEndBlankPartCardNo(openCardContext
 				.getEndBlankPartCardNo());
 		openCardForm.setStartBlankPartCardNo(openCardContext
@@ -51,12 +52,13 @@ public class OpenCardRegisterMainControl extends AbstractEventController {
 		EventRequest request = this.generateSubmitRequest(activity);
 		request.open(OpenCardAction.DOMAIN_NAME,
 				OpenCardAction.VALIDATE_BLANK_CARD, Pattern.async);
-		openCardRegisterMainActivity.diCommonDialog = new CommonDialog(activity, "处理中...");
+		openCardRegisterMainActivity.diCommonDialog = new CommonDialog(
+				activity, "处理中...");
 		openCardRegisterMainActivity.diCommonDialog.show();
-		request.callBack(new ValidateBlankCardCallbackImpl(openCardRegisterMainActivity));
+		request.callBack(new ValidateBlankCardCallbackImpl(
+				openCardRegisterMainActivity));
 		request.getSubmitData().put("OpenCardForm", openCardForm);
 		request.submit();
-
 
 	}
 
@@ -66,7 +68,8 @@ public class OpenCardRegisterMainControl extends AbstractEventController {
 		ValidateErrorInfo validateErrorInfo = new ValidateErrorInfo(null, null);
 		String productType = openCardRegisterMainActivity.openCardContext
 				.getProductType();
-		int cardQuantity = openCardRegisterMainActivity.openCardContext.getCardQuantity();
+		int cardQuantity = openCardRegisterMainActivity.openCardContext
+				.getCardQuantity();
 
 		if (ShopProductTypes.PHYSICAL_SVC.equals(productType)) {
 			if (cardQuantity == 1) {

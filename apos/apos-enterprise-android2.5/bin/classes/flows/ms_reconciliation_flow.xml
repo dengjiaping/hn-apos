@@ -5,12 +5,42 @@
 
     <flow-node
         node-name="start"
-        
         ref-activity="me.andpay.apos.merchantservice.activity.MsReconciliationActivity" >
 
         <node-complete
-            identity="success"
-            ref-activity="me.andpay.apos.message.activity.MessageDeatailActivity" />
+            identity="conditions_query"
+            next-node="conditions_query" />
+
+        <node-complete
+            identity="settlement_deatail_list"
+            next-node="settlement_list_note" />
+    </flow-node>
+
+    <flow-node
+        node-name="conditions_query"
+        ref-activity="me.andpay.apos.merchantservice.activity.MserviceQueryActivity" >
+
+        <node-complete
+            identity="settlement_deatail"
+            next-node="settlement_note" />
+    </flow-node>
+
+    <flow-node
+        node-name="settlement_note"
+        ref-activity="me.andpay.apos.merchantservice.activity.SettleMentDeatailActivity" >
+
+        <node-complete
+            identity="settlement_deatail"
+            next-node="settlement_note" />
+    </flow-node>
+
+    <flow-node
+        node-name="settlement_list_note"
+        ref-activity="me.andpay.apos.merchantservice.activity.SettleMentDetailListActivity" >
+
+        <node-complete
+            identity="settlement_deatail"
+            next-node="settlement_note" />
     </flow-node>
 
 </flow-diagram>

@@ -154,15 +154,13 @@ public class TxnForm implements Serializable {
 	 * 交易响应
 	 */
 	private TxnActionResponse response = new TxnActionResponse();
-	
+
 	/**
 	 * 数卡器mac数据
 	 */
 	private String mac;
 
 	private boolean icCardTxn;
-
-
 
 	public boolean isIcCardTxn() {
 		return icCardTxn;
@@ -421,7 +419,5 @@ public class TxnForm implements Serializable {
 	public void setInputPinType(int inputPinType) {
 		this.inputPinType = inputPinType;
 	}
-	
-	
 
 }

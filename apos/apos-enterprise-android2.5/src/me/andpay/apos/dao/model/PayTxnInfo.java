@@ -13,7 +13,7 @@ import me.andpay.timobileframework.sqlite.convert.BigDecimalConverter;
  * 
  * @author cpz
  */
-@TableName(name = "PayTxnInfo",version=4)
+@TableName(name = "PayTxnInfo", version = 4)
 public class PayTxnInfo implements Serializable {
 
 	/**
@@ -69,7 +69,7 @@ public class PayTxnInfo implements Serializable {
 	/**
 	 * 金额
 	 */
-	@Column(dataConverter=BigDecimalConverter.class)
+	@Column(dataConverter = BigDecimalConverter.class)
 	private BigDecimal salesAmt;
 	/**
 	 * 终端批次号
@@ -248,7 +248,7 @@ public class PayTxnInfo implements Serializable {
 	/**
 	 * 退货金额
 	 */
-	@Column(dataConverter=BigDecimalConverter.class)
+	@Column(dataConverter = BigDecimalConverter.class)
 	private BigDecimal refundAmt;
 	/**
 	 * 机构编号
@@ -278,13 +278,13 @@ public class PayTxnInfo implements Serializable {
 	 */
 	@Column
 	private String salesCur;
-	
+
 	/**
 	 * 是否允许退款
 	 */
 	@Column
 	private Boolean isRefundEnable;
-	
+
 	/**
 	 * 加密经度
 	 */
@@ -306,15 +306,14 @@ public class PayTxnInfo implements Serializable {
 	@Column
 	public String deviceId;
 	/**
-	 * 更新时间 
+	 * 更新时间
 	 */
 	@Column
 	public String updateTime;
-	
+
 	@Column
 	private String origTxnId;
-	
-	
+
 	/**
 	 * 交易图片路径
 	 */
@@ -325,18 +324,18 @@ public class PayTxnInfo implements Serializable {
 	 */
 	@Column
 	private String signPicPath;
-	
+
 	/**
 	 * 云订单标示
 	 */
 	@Column
 	private Boolean isCloudOrder;
-	
-//	/**
-//	 * 输入模式
-//	 */
-//	@Column
-//	private String serviceEntryMode;
+
+	// /**
+	// * 输入模式
+	// */
+	// @Column
+	// private String serviceEntryMode;
 
 	public String getUpdateTime() {
 		return updateTime;
@@ -370,8 +369,6 @@ public class PayTxnInfo implements Serializable {
 		this.txnStatus = txnStatus;
 	}
 
-
-
 	public String getSalesCur() {
 		return salesCur;
 	}
@@ -379,7 +376,6 @@ public class PayTxnInfo implements Serializable {
 	public void setSalesCur(String salesCur) {
 		this.salesCur = salesCur;
 	}
-
 
 	public String getTermBatchNo() {
 		return termBatchNo;
@@ -644,7 +640,6 @@ public class PayTxnInfo implements Serializable {
 	public void setIdTxn(Integer idTxn) {
 		this.idTxn = idTxn;
 	}
-
 
 	public String getIssuerId() {
 		return issuerId;

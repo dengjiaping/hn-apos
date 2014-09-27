@@ -223,7 +223,7 @@ public class TxnControl {
 	/**
 	 * 提交交易
 	 */
-	public void submitTxn(String pin, final TiActivity txnctivity){
+	public void submitTxn(String pin, final TiActivity txnctivity) {
 		if (isDead(currActivity)) {
 			return;
 		}

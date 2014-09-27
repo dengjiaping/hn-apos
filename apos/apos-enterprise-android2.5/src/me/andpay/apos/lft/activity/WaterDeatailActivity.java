@@ -33,7 +33,7 @@ public class WaterDeatailActivity extends AposBaseActivity {
 	private ImageView back;// 返回
 
 	@InjectView(R.id.lft_water_deatail_listview)
-	private ListView listView;//列表
+	private ListView listView;// 列表
 
 	@Inject
 	BaseAdapter<WaterOrder> adapter;

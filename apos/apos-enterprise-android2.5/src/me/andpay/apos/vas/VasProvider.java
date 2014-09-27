@@ -7,11 +7,11 @@ public class VasProvider {
 	public static String VAS_DOMAIN_QUERY_REMOTE = "/vas/queryRemote.action";
 
 	public static String VAS_DOMAIN_OPEN_CARD = "/vas/opencard.action";
-	
+
 	public static String VAS_DOMAIN_SVC_DEPOSITE = "/vas/svcDeposite.action";
-	
+
 	public static String VAS_ACTION_SVC_DEPOSITE = "deposite";
-	
+
 	public static String VAS_ACTION_SVC_VALIDATE = "validateCard";
 
 	public static String VAS_ACTION_OPEN_CARD_VALIDATE_CARD = "validateCardNo";

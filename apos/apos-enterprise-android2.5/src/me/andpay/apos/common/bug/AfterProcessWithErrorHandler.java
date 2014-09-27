@@ -25,9 +25,9 @@ public abstract class AfterProcessWithErrorHandler implements
 		AfterProcessCallBackHandler, ThrowableHandler {
 
 	public abstract void afterRequest(ModelAndView mv);
-	
+
 	public Activity activity;
-	
+
 	public AfterProcessWithErrorHandler(Activity activity) {
 		this.activity = activity;
 	}
@@ -48,7 +48,7 @@ public abstract class AfterProcessWithErrorHandler implements
 	 */
 	protected void processNetworkError() {
 		final Activity activity = this.activity;
-		if(activity.isFinishing()) {
+		if (activity.isFinishing()) {
 			return;
 		}
 		OperationDialog dialog = initDialog(ResourceUtil.getString(activity,
@@ -61,7 +61,7 @@ public abstract class AfterProcessWithErrorHandler implements
 	 */
 	protected void processOtherError() {
 		final Activity activity = this.activity;
-		if(activity.isFinishing()) {
+		if (activity.isFinishing()) {
 			return;
 		}
 		OperationDialog dialog = initDialog(ResourceUtil.getString(activity,
@@ -74,9 +74,9 @@ public abstract class AfterProcessWithErrorHandler implements
 	}
 
 	protected OperationDialog initDialog(String errorMsg) {
-		
+
 		final Activity activity = this.activity;
-		
+
 		final OperationDialog dialog = new OperationDialog(activity,
 				ResourceUtil.getString(activity, R.string.com_error_title),
 				errorMsg, ResourceUtil.getString(activity,

@@ -80,12 +80,12 @@ public class QueryConditionForm {
 	@ParamId(R.id.tqm_txn_list_condition_amount_ev)
 	@FieldValidate.DOUBLE
 	private String amount;
-	
+
 	/**
 	 * 界面是否有条件
 	 */
 	private boolean hasViewCond;
-	
+
 	private Long settleOrderId;
 
 	public String getBeginDate() {
@@ -223,7 +223,5 @@ public class QueryConditionForm {
 	public void setSettleOrderId(Long settleOrderId) {
 		this.settleOrderId = settleOrderId;
 	}
-	
-	
 
 }

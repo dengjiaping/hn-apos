@@ -20,7 +20,8 @@ public class TrmExtInfoClickController extends AbstractEventController {
 				trmActivity.dyHelper, TxnTypes.REFUND);
 		dialog.setDelegate(trmActivity);
 		Map<String, String> values = new HashMap<String, String>();
-		values.put(FlexFieldDefine.FIELD_NAME_EXT_TRACE_NO, trmActivity.extTraceNo);
+		values.put(FlexFieldDefine.FIELD_NAME_EXT_TRACE_NO,
+				trmActivity.extTraceNo);
 		values.put(FlexFieldDefine.FIELD_NAME_MEMO, trmActivity.memo);
 		dialog.setFieldValue(values);
 		dialog.show();

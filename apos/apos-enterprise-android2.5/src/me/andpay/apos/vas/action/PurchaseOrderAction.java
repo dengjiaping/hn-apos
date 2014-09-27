@@ -56,14 +56,15 @@ public class PurchaseOrderAction extends SessionKeepAction {
 
 		PurchaseOrderCallback placeOrderCallback = (PurchaseOrderCallback) request
 				.getHandler();
-		PurchaseOrderForm foOrderForm = (PurchaseOrderForm)request.getParameterValue("PurchaseOrderForm");
-		
+		PurchaseOrderForm foOrderForm = (PurchaseOrderForm) request
+				.getParameterValue("PurchaseOrderForm");
+
 		try {
 			PurchaseOrder purchaseOrder = createPuraseOrder(foOrderForm);
 			purchaseOrder = purchaseOrderService.placeOrder(purchaseOrder);
 			storePurchaseOrder(purchaseOrder);
 			placeOrderCallback.placeOrderSuccess(purchaseOrder);
-			
+
 		} catch (Exception ex) {
 			Log.e(this.getClass().getName(), "placeOrder error!", ex);
 			placeOrderCallback.networkError();
@@ -80,7 +81,7 @@ public class PurchaseOrderAction extends SessionKeepAction {
 		purchaseOrderInfoDao.insert(purchaseOrderInfo);
 	}
 
-	private PurchaseOrder createPuraseOrder(PurchaseOrderForm foOrderForm ) {
+	private PurchaseOrder createPuraseOrder(PurchaseOrderForm foOrderForm) {
 
 		ShoppingCart shoppingCart = foOrderForm.getShoppingCart();
 		PurchaseOrder purchaseOrder = new PurchaseOrder();
@@ -96,7 +97,6 @@ public class PurchaseOrderAction extends SessionKeepAction {
 			purchaseOrder.setLocation(location.getAddress());
 		}
 
-		
 		List<PurchaseOrderItem> items = new ArrayList<PurchaseOrderItem>();
 		for (ProductItem productItem : shoppingCart.getItemsList()) {
 			PurchaseOrderItem purchaseOrderItem = BeanUtils.copyProperties(

@@ -9,8 +9,8 @@ import android.app.Application;
 
 import com.google.inject.Inject;
 
-public class OrderInfoDaoProvider  implements Provider<OrderInfoDao> {
-	
+public class OrderInfoDaoProvider implements Provider<OrderInfoDao> {
+
 	@Inject
 	private Application application;
 

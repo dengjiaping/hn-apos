@@ -44,7 +44,6 @@ public class ProductInfo {
 	@Column
 	private String skuNo;
 
-
 	/**
 	 * 名称
 	 */
@@ -92,9 +91,7 @@ public class ProductInfo {
 	 */
 	@Column
 	private List<ProductPrice> prices;
-	
-	
-	
+
 	/**
 	 * 产品购买排它标志
 	 */
@@ -106,15 +103,13 @@ public class ProductInfo {
 	 */
 	@Column(dataConverter = DateConverter.class)
 	private Date updataTime;
-	
+
 	/**
 	 * 价格
 	 */
 	@Column(dataConverter = BigDecimalConverter.class)
 	private BigDecimal price;
 
-	
-	
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -162,7 +157,6 @@ public class ProductInfo {
 	public void setSkuNo(String skuNo) {
 		this.skuNo = skuNo;
 	}
-
 
 	public String getName() {
 		return name;

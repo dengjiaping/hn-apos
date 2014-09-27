@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author cpz
  *
  */
-public class CardInfo implements Serializable {
+public class CardInfo implements Serializable{
 
 	
 	/**

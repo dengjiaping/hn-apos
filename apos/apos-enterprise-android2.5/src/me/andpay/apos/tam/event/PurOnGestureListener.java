@@ -44,13 +44,13 @@ public class PurOnGestureListener implements OnGestureListener {
 		final int FLING_MIN_VELOCITY = 200;// x或者y轴上的移动速度(像素/秒)
 		if ((e1.getX() - e2.getX()) > FLING_MIN_DISTANCE
 				&& Math.abs(velocityX) > FLING_MIN_VELOCITY) {
-			if(activity.amtEditText.isBank()) {
+			if (activity.amtEditText.isBank()) {
 				return false;
 			}
 			activity.txnSunmit();
 		} else if ((e2.getX() - e1.getX()) > FLING_MIN_DISTANCE
 				&& Math.abs(velocityX) > FLING_MIN_VELOCITY) {
-			//activity.txnSunmit();
+			// activity.txnSunmit();
 		}
 
 		return false;

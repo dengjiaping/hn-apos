@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 
 /**
  * 开卡流程上下文
+ * 
  * @author cpz
  *
  */
@@ -14,32 +15,30 @@ public class OpenCardContext implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 3406551852780573432L;
-	
-	
+
 	private Long orderId;
-	
+
 	private String productType;
-	
+
 	private BigDecimal cardSalesAmt;
-	
+
 	/**
 	 * 持卡人手机号
 	 */
 	private String phoneNo;
-	
+
 	/**
 	 * 开卡数量
 	 */
 	private int cardQuantity;
-	
-	
+
 	private String startBlankPartCardNo;
 
 	/**
 	 * 截至空白卡部分卡号
 	 */
 	private String endBlankPartCardNo;
-	
+
 	/**
 	 * 主键编号
 	 */
@@ -48,7 +47,6 @@ public class OpenCardContext implements Serializable {
 	 * 是否包含返回按钮
 	 */
 	private boolean isBack;
-	
 
 	public Long getOrderId() {
 		return orderId;
@@ -121,6 +119,5 @@ public class OpenCardContext implements Serializable {
 	public void setBack(boolean isBack) {
 		this.isBack = isBack;
 	}
-	
 
 }

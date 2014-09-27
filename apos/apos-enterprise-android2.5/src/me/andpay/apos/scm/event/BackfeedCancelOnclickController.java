@@ -7,11 +7,10 @@ import android.app.Activity;
 import android.view.View;
 
 public class BackfeedCancelOnclickController extends AbstractEventController {
-	
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		ScmFeedBackAlertActivity feedbackActivity = (ScmFeedBackAlertActivity)activity;
+		ScmFeedBackAlertActivity feedbackActivity = (ScmFeedBackAlertActivity) activity;
 		feedbackActivity.finish();
 	}
-	
+
 }

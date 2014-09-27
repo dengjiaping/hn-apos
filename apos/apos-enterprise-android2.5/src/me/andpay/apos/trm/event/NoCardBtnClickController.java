@@ -82,7 +82,7 @@ public class NoCardBtnClickController extends AbstractEventController {
 			dialog.show();
 			return;
 		}
-		
+
 		RefundInputContext refundInputContext = TiFlowControlImpl
 				.instanceControl().getFlowContextData(RefundInputContext.class);
 

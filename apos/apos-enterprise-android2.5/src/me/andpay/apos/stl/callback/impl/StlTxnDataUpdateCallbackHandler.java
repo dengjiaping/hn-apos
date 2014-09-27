@@ -11,7 +11,8 @@ import me.andpay.apos.stl.activity.StlTxnQueryActivity;
 import me.andpay.apos.tqm.activity.TxnListAdapter;
 import me.andpay.timobileframework.mvc.ModelAndView;
 
-public class StlTxnDataUpdateCallbackHandler extends AfterProcessWithErrorHandler {
+public class StlTxnDataUpdateCallbackHandler extends
+		AfterProcessWithErrorHandler {
 
 	private TxnListAdapter adapter;
 
@@ -39,9 +40,9 @@ public class StlTxnDataUpdateCallbackHandler extends AfterProcessWithErrorHandle
 	public void processNetworkError() {
 		stopListView();
 		showError();
-		
+
 	}
-	
+
 	@Override
 	protected void processOtherError() {
 		stopListView();
@@ -58,7 +59,6 @@ public class StlTxnDataUpdateCallbackHandler extends AfterProcessWithErrorHandle
 
 	private void showError() {
 
-		
 		ToastTools.topToast(refActivty,
 				ResourceUtil.getString(refActivty, R.string.com_net_error_str),
 				ToastTools.LIST_VIEW_TOAST_HEIGHT);
@@ -70,9 +70,7 @@ public class StlTxnDataUpdateCallbackHandler extends AfterProcessWithErrorHandle
 				refActivty.getApplicationContext().getString(
 						R.string.tqm_txn_list_refresh_str), size);
 
-		ToastTools.topToast(refActivty,
-				str,
-				ToastTools.LIST_VIEW_TOAST_HEIGHT);
+		ToastTools.topToast(refActivty, str, ToastTools.LIST_VIEW_TOAST_HEIGHT);
 	}
 
 	private void addDataByRefreshFlag(LinkedList<PayTxnInfo> infos) {
@@ -95,17 +93,16 @@ public class StlTxnDataUpdateCallbackHandler extends AfterProcessWithErrorHandle
 				adapter.notifyDataSetChanged();
 			}
 		}
-		/*if (infos.size() < TqmProvider.TQM_CONST_MAX_COUNTS) {
-			refActivty.getRefresh_layout().setPullLoadEnable(false);
-		}*/
-		
+		/*
+		 * if (infos.size() < TqmProvider.TQM_CONST_MAX_COUNTS) {
+		 * refActivty.getRefresh_layout().setPullLoadEnable(false); }
+		 */
+
 	}
 
 	@Override
 	public boolean isSupport(Thread thread, Throwable ex) {
 		return true;
 	}
-	
-	
 
 }

@@ -14,6 +14,7 @@ import android.os.Bundle;
 
 public class MerchantOrderPayActivity extends Activity {
 	private final static String STARTED_APOS = "startedApos";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

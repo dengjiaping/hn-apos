@@ -1,6 +1,5 @@
 package me.andpay.apos.tam.event;
 
-
 import me.andpay.apos.tam.activity.PurchaseFirstActivity;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.timobileframework.mvc.AbstractEventController;

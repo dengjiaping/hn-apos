@@ -10,8 +10,7 @@ public interface ParseBinCallback {
 	 * @param result
 	 */
 	public void dealSuccess(ParseBinResponse reponse);
-	
+
 	public void dealFailed(String msg);
-	
-	
+
 }

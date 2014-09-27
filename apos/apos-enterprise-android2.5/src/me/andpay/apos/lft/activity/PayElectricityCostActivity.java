@@ -7,14 +7,14 @@ import java.util.Map;
 import me.andpay.apos.R;
 import me.andpay.apos.base.adapter.AdpterEventListener;
 import me.andpay.apos.base.adapter.BaseAdapter;
+import me.andpay.apos.base.tools.ShowUtil;
+import me.andpay.apos.base.view.CustomDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.lft.controller.CitySelectController;
 import me.andpay.apos.lft.even.PayElectricityTextWatcherEventControl;
 import me.andpay.apos.lft.flow.CityTable;
 import me.andpay.apos.lft.flow.FlowConstants;
 import me.andpay.apos.lft.flow.PayCostType;
-import me.andpay.apos.lft.tools.ShowUtil;
-import me.andpay.apos.lft.view.CustomDialog;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
@@ -116,8 +116,8 @@ public class PayElectricityCostActivity extends AposBaseActivity {
 	 * 下一步
 	 */
 	public void next(View v) {
-		if(!isCorrectCustom()){
-			ShowUtil.showShortToast(this,"客户单号不合法");
+		if (!isCorrectCustom()) {
+			ShowUtil.showShortToast(this, "客户单号不合法");
 			return;
 		}
 
@@ -152,7 +152,7 @@ public class PayElectricityCostActivity extends AposBaseActivity {
 		} catch (Exception ex) {
 			return false;
 		}
-		if(!((number>=11&&number<=24)||(number>=61&&number<=74))){
+		if (!((number >= 11 && number <= 24) || (number >= 61 && number <= 74))) {
 			return false;
 		}
 		return true;

@@ -73,23 +73,21 @@ public class ProductSalesActivity extends AposBaseActivity {
 	@InjectView(R.id.vas_top_back_btn)
 	@EventDelegate(delegateClass = OnClickListener.class, toEventController = ProductCommonBackControl.class)
 	public ImageView backBtn;
-	
+
 	@Inject
 	private ProductInfoDao productInfoDao;
 
 	public ProductListAdapter productListAdapter;
-	
 
 	@InjectView(R.id.vas_query_content_edt)
 	@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = ProductQueryEditWatcherEventControl.class)
 	public EditText queryEditText;
-	
-	
+
 	@InjectView(R.id.com_no_data_layout)
 	public RelativeLayout noDatalayout;
 
 	public List<ProductInfo> allProductInfos;
-	
+
 	@Inject
 	public TxnControl txnControl;
 
@@ -97,15 +95,15 @@ public class ProductSalesActivity extends AposBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ShoppingCartCenter.clearShoppingCard();
-		//暂时隐藏按钮
+		// 暂时隐藏按钮
 		nextImView.setVisibility(View.GONE);
 		productTotal.setVisibility(View.GONE);
 		productTotalLay.setVisibility(View.GONE);
-		
+
 		nextImView.setEnabled(false);
-		QueryProductInfoCond cond =	new QueryProductInfoCond();
-		PartyInfo partyInfo = (PartyInfo) getAppContext()
-				.getAttribute(RuntimeAttrNames.PARTY_INFO);
+		QueryProductInfoCond cond = new QueryProductInfoCond();
+		PartyInfo partyInfo = (PartyInfo) getAppContext().getAttribute(
+				RuntimeAttrNames.PARTY_INFO);
 		cond.setMerchPartyId(partyInfo.getPartyId());
 		queryProduct(cond);
 	}
@@ -125,34 +123,32 @@ public class ProductSalesActivity extends AposBaseActivity {
 		noDatalayout.setVisibility(View.GONE);
 		productList.setVisibility(View.GONE);
 	}
+
 	public void showList(List<ProductInfo> productInfos) {
-		
-		if(productInfos == null || productInfos.isEmpty()) {
+
+		if (productInfos == null || productInfos.isEmpty()) {
 			showNoDate();
 			return;
 		}
-		if(productListAdapter ==null) {
+		if (productListAdapter == null) {
 			productListAdapter = new ProductListAdapter(productInfos, this);
 			productList.setAdapter(productListAdapter);
-		}else {
+		} else {
 			productListAdapter.setProductInfos(productInfos);
 		}
-		
+
 		progress.setVisibility(View.GONE);
 		noDatalayout.setVisibility(View.GONE);
 		productList.setVisibility(View.VISIBLE);
 		productListAdapter.notifyDataSetChanged();
 	}
-	
 
-	
 	public void showNoDate() {
 		progress.setVisibility(View.GONE);
 		noDatalayout.setVisibility(View.VISIBLE);
 		productList.setVisibility(View.GONE);
-		
-	}
 
+	}
 
 	public ProductListAdapter getProductListAdapter() {
 		return productListAdapter;
@@ -163,7 +159,7 @@ public class ProductSalesActivity extends AposBaseActivity {
 		super.onDestroy();
 		ShoppingCartCenter.clearShoppingCard();
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {

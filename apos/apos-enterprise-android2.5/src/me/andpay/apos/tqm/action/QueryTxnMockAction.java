@@ -14,7 +14,7 @@ import me.andpay.timobileframework.mvc.action.ActionRequest;
 import me.andpay.timobileframework.mvc.action.MultiAction;
 
 @ActionMapping(domain = "/tqm/query.action")
-public class QueryTxnMockAction extends MultiAction{
+public class QueryTxnMockAction extends MultiAction {
 
 	private Integer idTxn = 100000;
 
@@ -28,7 +28,7 @@ public class QueryTxnMockAction extends MultiAction{
 		LinkedList<PayTxnInfo> results = new LinkedList<PayTxnInfo>();
 		ModelAndView mv = new ModelAndView();
 		try {
-			Thread.sleep(3*1000);
+			Thread.sleep(3 * 1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,7 +39,7 @@ public class QueryTxnMockAction extends MultiAction{
 			if (i % 2 == 0) {
 				info.setCardOrg("招商银行");
 				info.setShortPan("622588******2092");
-				//info.setSalesAmt(new Random().nextDouble());
+				// info.setSalesAmt(new Random().nextDouble());
 				info.setMerchantName("星巴克咖啡");
 				info.setTxnTime(DateUtil.format("yyyy/MM/dd HH:mm:ss",
 						new Date()));
@@ -47,14 +47,14 @@ public class QueryTxnMockAction extends MultiAction{
 				info.setTxnType(TxnTypes.PURCHASE);
 				info.setExTraceNO("CZZ099" + idTxn);
 				info.setTranPic("http://www.test");
-				//info.setRefundFlag(true);
+				// info.setRefundFlag(true);
 				info.setLatitude(121.2943);
 				info.setLongitude(31.1430);
 				info.setPositionDesc("上海市浦东新区东方明珠塔32号601");
 			} else {
 				info.setCardOrg("浦发银行");
 				info.setShortPan("622118******2092");
-				//info.setSalesAmt(new Random().nextDouble());
+				// info.setSalesAmt(new Random().nextDouble());
 				info.setMerchantName("上海和付信息技术有限公司");
 				info.setTxnTime(DateUtil.format("yyyy/MM/dd HH:mm:ss",
 						new Date()));
@@ -69,6 +69,7 @@ public class QueryTxnMockAction extends MultiAction{
 			idTxn++;
 			results.add(info);
 		}
-		return mv.addModelValue("txnList", results).addModelValue("queryConditionForm", new QueryConditionForm());
+		return mv.addModelValue("txnList", results).addModelValue(
+				"queryConditionForm", new QueryConditionForm());
 	}
 }

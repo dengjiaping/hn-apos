@@ -1,6 +1,5 @@
 package me.andpay.apos.tam.event;
 
-
 import me.andpay.apos.R;
 import me.andpay.apos.cmview.OperationDialog;
 import me.andpay.apos.common.util.ResourceUtil;
@@ -22,24 +21,23 @@ public class CameraGoodsButtonEventControl extends AbstractEventController {
 	public void onClick(Activity activity, FormBean formBean, View view) {
 
 		final PurchaseFirstActivity tiActivity = (PurchaseFirstActivity) activity;
-		
-		final OperationDialog dialog = new OperationDialog(activity, 	ResourceUtil.getString(tiActivity, R.string.com_show_str),
-				ResourceUtil.getString(tiActivity, R.string.tam_delete_pic_str),true);
-		dialog.setSureButtonOnclickListener(
-				new OnClickListener() {
-					public void onClick(View v) {
-						dialog.dismiss();
-						tiActivity.goodsImgbt.setImageBitmap(null);
-						tiActivity.goodsLay.setVisibility(View.GONE);
-						tiActivity.cameraImgView.setVisibility(View.VISIBLE);
-						tiActivity.cleanPic();
-					}
-				}
-		);
 
-		dialog.show();	
-		
-		
-	
+		final OperationDialog dialog = new OperationDialog(
+				activity,
+				ResourceUtil.getString(tiActivity, R.string.com_show_str),
+				ResourceUtil.getString(tiActivity, R.string.tam_delete_pic_str),
+				true);
+		dialog.setSureButtonOnclickListener(new OnClickListener() {
+			public void onClick(View v) {
+				dialog.dismiss();
+				tiActivity.goodsImgbt.setImageBitmap(null);
+				tiActivity.goodsLay.setVisibility(View.GONE);
+				tiActivity.cameraImgView.setVisibility(View.VISIBLE);
+				tiActivity.cleanPic();
+			}
+		});
+
+		dialog.show();
+
 	}
 }

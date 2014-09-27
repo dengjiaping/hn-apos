@@ -34,29 +34,30 @@ public class ShoppingCartCenter {
 		return shoppingCart.getItemMap().get(proLong);
 	}
 
-	
 	public static boolean addProduct(ProductItem productItem) {
 		return addProduct(productItem, 1);
 	}
-	
+
 	/**
 	 * 添加产品
 	 * 
 	 * @param productItem
 	 * @return 产品是否可添加到购物车
 	 */
-	public static boolean addProduct(ProductItem productItem,int count) {
+	public static boolean addProduct(ProductItem productItem, int count) {
 
 		if (shoppingCart.getItemsList().size() == 0) {
 			shoppingCart.setProductType(productItem.getProductType());
-		}else {
-			//排他加入
-			if(productItem.isExclusive() && !shoppingCart.getProductIds().contains(productItem.getProductId())) {
+		} else {
+			// 排他加入
+			if (productItem.isExclusive()
+					&& !shoppingCart.getProductIds().contains(
+							productItem.getProductId())) {
 				return false;
 			}
-			
+
 		}
-		
+
 		ProductItem pitem = shoppingCart.getItemMap().get(
 				productItem.getProductId());
 		if (pitem == null) {
@@ -115,9 +116,9 @@ public class ShoppingCartCenter {
 			shoppingCart.setTotalAmt(shoppingCart.getTotalAmt().subtract(
 					pitem.getPrice().multiply(new BigDecimal(count))));
 
-//			int putil = pitem.getUnit() - count;
+			// int putil = pitem.getUnit() - count;
 			pitem.setUnit(pitem.getUnit() - count);
-			
+
 			return pitem;
 		}
 
@@ -134,12 +135,12 @@ public class ShoppingCartCenter {
 	public static ProductItem subProduct(Long productId) {
 		return subProduct(productId, 1);
 	}
-	
+
 	public static boolean isEmpty() {
-		if(shoppingCart.getItemsList().isEmpty()) {
+		if (shoppingCart.getItemsList().isEmpty()) {
 			return true;
 		}
-		
+
 		return false;
 	}
 

@@ -18,17 +18,18 @@ import me.andpay.timobileframework.mvc.anno.CallBackHandler;
 public class ParseBinCallbackImpl implements ParseBinCallback {
 
 	public TxnAcitivty txnAcitivty;
-	
+
 	public CardReaderCallback cardReaderCallback;
 
-	public ParseBinCallbackImpl(TxnAcitivty txnAcitivty, CardReaderCallback cardReaderCallback) {
+	public ParseBinCallbackImpl(TxnAcitivty txnAcitivty,
+			CardReaderCallback cardReaderCallback) {
 		this.txnAcitivty = txnAcitivty;
 		this.cardReaderCallback = cardReaderCallback;
 	}
 
 	public void dealSuccess(ParseBinResponse parseResponse) {
-		
-		if(txnAcitivty == null || txnAcitivty.isFinishing()) {
+
+		if (txnAcitivty == null || txnAcitivty.isFinishing()) {
 			return;
 		}
 

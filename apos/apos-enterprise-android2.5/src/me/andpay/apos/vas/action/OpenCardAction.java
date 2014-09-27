@@ -43,7 +43,8 @@ public class OpenCardAction extends SessionKeepAction {
 
 		OpenSvcRequest openReq = new OpenSvcRequest();
 
-		OpenCardForm oprCardForm = (OpenCardForm)request.getParameterValue("OpenCardForm");
+		OpenCardForm oprCardForm = (OpenCardForm) request
+				.getParameterValue("OpenCardForm");
 		openReq.setStartBlankPartCardNo(oprCardForm.getStartBlankPartCardNo());
 		openReq.setEndBlankPartCardNo(oprCardForm.getEndBlankPartCardNo());
 		openReq.setHolderName(oprCardForm.getHolderName());
@@ -54,7 +55,8 @@ public class OpenCardAction extends SessionKeepAction {
 
 		try {
 			svcLifecycleService.openSvc(openReq);
-			purchaseOrderInfoDao.updatePayTxnInfo2Fulfill(oprCardForm.getOrderId());
+			purchaseOrderInfoDao.updatePayTxnInfo2Fulfill(oprCardForm
+					.getOrderId());
 
 			openCardCallback.openCardSuccess();
 		} catch (AppBizException ex) {
@@ -72,8 +74,6 @@ public class OpenCardAction extends SessionKeepAction {
 
 		return null;
 	}
-
-
 
 	public ModelAndView sendSvcEcard(ActionRequest request) {
 

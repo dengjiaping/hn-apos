@@ -11,20 +11,20 @@ import android.view.View;
 public class OpenCardSuccessControl extends AbstractEventController {
 
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
-		OpenCardSuccessActivity openCardSuccessActivity = (OpenCardSuccessActivity)activity;
-		
-		if(view.getId() == openCardSuccessActivity.sureBtn.getId() ) {
-			TiFlowControlImpl.instanceControl().nextSetup(openCardSuccessActivity, FlowConstants.SUCCESS);
+
+		OpenCardSuccessActivity openCardSuccessActivity = (OpenCardSuccessActivity) activity;
+
+		if (view.getId() == openCardSuccessActivity.sureBtn.getId()) {
+			TiFlowControlImpl.instanceControl().nextSetup(
+					openCardSuccessActivity, FlowConstants.SUCCESS);
 			return;
 		}
-		
-		if(view.getId() == openCardSuccessActivity.resendBtn.getId()) {
+
+		if (view.getId() == openCardSuccessActivity.resendBtn.getId()) {
 			openCardSuccessActivity.sendSvcEcard();
 			return;
 		}
-		
+
 	}
-		
 
 }

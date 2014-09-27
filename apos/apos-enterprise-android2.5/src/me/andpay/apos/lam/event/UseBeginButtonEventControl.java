@@ -7,13 +7,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 
-public class UseBeginButtonEventControl extends
-AbstractEventController {
-	
-	
+public class UseBeginButtonEventControl extends AbstractEventController {
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		
-		//显示登录页面
+
+		// 显示登录页面
 		Intent intent = new Intent();
 		intent.setAction(LamProvider.LAM_LOGIN_ACTIVITY);
 		activity.startActivity(intent);

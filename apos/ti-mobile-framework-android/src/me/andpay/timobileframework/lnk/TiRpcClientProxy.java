@@ -10,7 +10,6 @@ import me.andpay.ti.lnk.rpc.RemoteCallExceptionListener;
 import me.andpay.ti.lnk.sc.SimpleClientBuilder;
 import me.andpay.ti.lnk.sc.SimpleClientConfig;
 import me.andpay.ti.lnk.transport.wsock.client.WebSockAddress;
-import android.app.Application;
 import android.content.Context;
 
 /**
@@ -60,7 +59,7 @@ public class TiRpcClientProxy implements TiRpcClient {
 	public void loadConfig() {
 		Properties prop = new Properties();
 		try {
-			System.setProperty("java.net.preferIPv6Addresses", "false");
+			System.setProperty("java.net.preferIPv6Addresses","false");
 			isConfigSSL = false;
 			prop.load(Thread
 					.currentThread()
@@ -79,12 +78,12 @@ public class TiRpcClientProxy implements TiRpcClient {
 			// 测试模式
 			Boolean testModeProp = Boolean.valueOf((String) prop
 					.get("test.mode"));
-			if (testModeProp) {
+			if (testModeProp){
 				testMode = true;
 			}
 			param = new RpcParam(prop);
 			conn_address = param.getAddressInfo();
-
+			
 			remoteParamsReader = new TiRemoteParamsReader();
 			remoteParamsReader.setRpcParam(param);
 			remoteParamsReader.checkRemoteUrlAndChange(mContext);
@@ -128,7 +127,7 @@ public class TiRpcClientProxy implements TiRpcClient {
 		isConfigSSL = false;
 	}
 
-	private void startImpl() {
+	private void startImpl(){
 		builder = new SimpleClientBuilder();
 		config = new SimpleClientConfig();
 		config.setServerAddressByServiceGroup(conn_address.getServiceGroups());

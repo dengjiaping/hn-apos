@@ -14,8 +14,6 @@ import android.app.Activity;
 
 public class TxnFlowSignTransfer implements TiFlowNodeDataTransfer {
 
-
-
 	public Map<String, String> transfterData(Activity activity,
 			Map<String, String> data, TiFlowNodeComplete complete,
 			Map<String, Serializable> subFlowContext) {
@@ -34,9 +32,11 @@ public class TxnFlowSignTransfer implements TiFlowNodeDataTransfer {
 			signContext.setAmtTextColor(activity.getResources().getColor(
 					R.color.com_title_red_color));
 		}
-		
-		signContext.setTermTraceNo(txnContext.getTxnActionResponse().getTermTraceNo());
-		signContext.setTermTxnTime(txnContext.getTxnActionResponse().getTermTxnTime());
+
+		signContext.setTermTraceNo(txnContext.getTxnActionResponse()
+				.getTermTraceNo());
+		signContext.setTermTxnTime(txnContext.getTxnActionResponse()
+				.getTermTxnTime());
 		return null;
 	}
 

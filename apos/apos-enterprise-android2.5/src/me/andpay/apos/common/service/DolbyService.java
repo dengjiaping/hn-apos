@@ -51,14 +51,14 @@ public class DolbyService {
 	}
 
 	public void openDolby() {
-		if(mDolbyAudioProcessing!=null) {
+		if (mDolbyAudioProcessing != null) {
 			mDolbyAudioProcessing.setEnabled(true);
 
 		}
 	}
 
 	public void closeDolby() {
-		if(mDolbyAudioProcessing!=null) {
+		if (mDolbyAudioProcessing != null) {
 			mDolbyAudioProcessing.setEnabled(false);
 		}
 	}

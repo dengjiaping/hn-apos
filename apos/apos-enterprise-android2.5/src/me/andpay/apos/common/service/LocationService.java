@@ -221,7 +221,7 @@ public class LocationService {
 								.coordinateConvert(srcCoord, GeoCooTypes.BD_09);
 						tiLocation.setSpecLatitude(resultL.getLatitude());
 						tiLocation.setSpecLongitude(resultL.getLongitude());
-						
+
 					}
 
 				} catch (Throwable e) {

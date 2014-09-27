@@ -15,24 +15,23 @@ import me.andpay.ti.util.StringUtil;
 import me.andpay.timobileframework.util.tlv.TlvUtil;
 
 public class MockPurchseResponse extends PurchaseResponse {
-	
-	
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	public MockPurchseResponse(TxnForm txnForm) {
-		
+
 		setTermTraceNo(txnForm.getTermTraceNo());
-		setTermTxnTime(StringUtil.parseToDate("yyyyMMddHHmmss", txnForm.getTermTxnTime()));
+		setTermTxnTime(StringUtil.parseToDate("yyyyMMddHHmmss",
+				txnForm.getTermTxnTime()));
 		setAuthAmt(txnForm.getSalesAmt());
-		setTxnId(txnForm.getTermTraceNo()+txnForm.getTermTraceNo());
+		setTxnId(txnForm.getTermTraceNo() + txnForm.getTermTraceNo());
 		setAuthCode(txnForm.getTermTraceNo());
 		setCardName("招商银行");
-		setIssuerName("招商银行"); 
-		setAuthCur(CurrencyCodes.CNY);		
+		setIssuerName("招商银行");
+		setAuthCur(CurrencyCodes.CNY);
 		setRespCode(ResponseCodes.SUCCESS);
 		setSalesAmt(txnForm.getSalesAmt());
 		setRespMessage("交易成功");
@@ -45,23 +44,20 @@ public class MockPurchseResponse extends PurchaseResponse {
 		setEncCardNo("4693801138029348");
 		setICCardInfo(txnForm.getAposICCardDataInfo());
 	}
-	
-	
+
 	private void setICCardInfo(AposICCardDataInfo aposICCardDataInfo) {
 		if (aposICCardDataInfo == null) {
 			return;
 		}
 		Map<String, String> extAttrs = this.getExtAttrs();
-		if(extAttrs == null) {
-			extAttrs  = new HashMap<String, String>();
+		if (extAttrs == null) {
+			extAttrs = new HashMap<String, String>();
 			this.setExtAttrs(extAttrs);
 		}
-		
-		String tlvString = TlvUtil.encodeTvl(aposICCardDataInfo);
-	
-		extAttrs.put(TxnExtAttrNames.IC_DATA_BASE64, tlvString);
 
-		
+		String tlvString = TlvUtil.encodeTvl(aposICCardDataInfo);
+
+		extAttrs.put(TxnExtAttrNames.IC_DATA_BASE64, tlvString);
 
 	}
 

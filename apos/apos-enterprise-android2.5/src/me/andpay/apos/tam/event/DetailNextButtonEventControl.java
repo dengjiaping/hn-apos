@@ -10,12 +10,12 @@ import android.view.View;
 import com.google.inject.Inject;
 
 public class DetailNextButtonEventControl extends AbstractEventController {
-	
+
 	@Inject
 	private UpLoadFileServce upLoadFileServce;
-	
+
 	public void onClick(Activity activity, FormBean formBean, View view) {
-		TxnDetailActivity detailActivity = (TxnDetailActivity)activity;
+		TxnDetailActivity detailActivity = (TxnDetailActivity) activity;
 		detailActivity.txnControl.backHomePage(activity);
 		upLoadFileServce.uploadFile();
 	}

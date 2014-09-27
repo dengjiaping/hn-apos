@@ -27,7 +27,7 @@ public class FinishSendCallBackHandler implements AfterProcessCallBackHandler {
 				dialog.dismiss();
 				Intent homePageIntent = new Intent(
 						CommonProvider.COM_HOMEPAGE_ACTIVITY);
-				
+
 				sendActivity.startActivity(homePageIntent);
 				sendActivity.finish();
 			}

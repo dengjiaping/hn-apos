@@ -35,13 +35,13 @@ public class PayTxnInfoConvert {
 		info.setSpecCoordType(record.getSpecCoordType());
 		info.setSpecLatitude(record.getSpecLatitude());
 		info.setSpecLongitude(record.getSpecLongitude());
-		
+
 		if (record.getTermTxnTime() != null) {
 			info.setTermTxnTime(DateUtil.format(
 					TqmProvider.TQM_PARTTERN_COMMOM_DATE,
 					record.getTermTxnTime()));
 		}
-//		info.setMemo(record.getAttribute1());
+		// info.setMemo(record.getAttribute1());
 		if (record.getSalesAmt() != null)
 			info.setSalesAmt(record.getSalesAmt().abs());
 		info.setShortPan(TxnUtil.hidePan(record.getShortCardNo()));
@@ -93,8 +93,7 @@ public class PayTxnInfoConvert {
 		}
 		info.setTermBatchNo(record.getTermBatchNo() != null ? String
 				.valueOf(record.getTermBatchNo()) : null);
-		info.setUpdateTime(StringUtil.format("yyyyMMddHHmmss",
-				new Date()));
+		info.setUpdateTime(StringUtil.format("yyyyMMddHHmmss", new Date()));
 		return info;
 	}
 
@@ -137,17 +136,19 @@ public class PayTxnInfoConvert {
 	public static QueryTxnCond convertCondtion2RemoteCond(
 			QueryConditionForm condition) {
 		QueryTxnCond cond = new QueryTxnCond();
-//		if (!StringUtil.isEmpty(condition.getStatus())) {
-//			cond.setTxnFlags(TxnFlagMapping.getFlagsByStatus(
-//					condition.getStatus(), condition.isRefundEnableFlag()));
-//		}
-//		
-//		cond.setHasRefundableAmount(hasRefundableAmount)
-		if(condition.isRefundEnableFlag()!=null && condition.isRefundEnableFlag()) {
+		// if (!StringUtil.isEmpty(condition.getStatus())) {
+		// cond.setTxnFlags(TxnFlagMapping.getFlagsByStatus(
+		// condition.getStatus(), condition.isRefundEnableFlag()));
+		// }
+		//
+		// cond.setHasRefundableAmount(hasRefundableAmount)
+		if (condition.isRefundEnableFlag() != null
+				&& condition.isRefundEnableFlag()) {
 			cond.setHasRefundableAmount(true);
 			cond.setTxnFlags(TxnFlagMapping.getSuccessFlags());
-		}else {
-			cond.setTxnFlags(TxnFlagMapping.getFlagsByStatus(condition.getStatus()));
+		} else {
+			cond.setTxnFlags(TxnFlagMapping.getFlagsByStatus(condition
+					.getStatus()));
 		}
 		if (!StringUtil.isEmpty(condition.getMaxTxnId()))
 			cond.setMaxTxnId(condition.getMaxTxnId());
@@ -161,7 +162,7 @@ public class PayTxnInfoConvert {
 		if (!StringUtil.isEmpty(condition.getOrderno())) {
 			cond.setExtTraceNo(condition.getOrderno());
 		}
-	
+
 		cond.setStartTxnTime(getTime(condition.getBeginDate(),
 				condition.getBeginTime()));
 		if (!StringUtil.isEmpty(condition.getTxnType())) {

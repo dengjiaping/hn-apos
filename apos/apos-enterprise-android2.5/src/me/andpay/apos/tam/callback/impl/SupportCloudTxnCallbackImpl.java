@@ -27,35 +27,39 @@ public class SupportCloudTxnCallbackImpl implements CloudPosCallback {
 
 	public void pushOrderSucc(String cloudOrderId) {
 		TxnContext context = txnControl.getTxnContext();
-		if (txnControl.getTxnDialog() != null && txnControl.getTxnDialog().isShowing()) {
+		if (txnControl.getTxnDialog() != null
+				&& txnControl.getTxnDialog().isShowing()) {
 			txnControl.getTxnDialog().cancel();
 		}
-		
-		Log.i(this.getClass().getName(), "couldOrderId is [" + cloudOrderId + "]");
+
+		Log.i(this.getClass().getName(), "couldOrderId is [" + cloudOrderId
+				+ "]");
 		context.setCloudOrderId(cloudOrderId);
 		DisplayMetrics metric = new DisplayMetrics();
 		TxnAcitivty activity = (TxnAcitivty) txnControl.getCurrActivity();
-//		activity.getWindowManager().getDefaultDisplay().getMetrics(metric);
-//		activity.gifView.setShowDimension(metric.widthPixels,
-//				Float.valueOf((260 * metric.density)).intValue());
-//		activity.gifView.setGifImage(R.drawable.tam_cardreader_apos3_gif);
-		
-		APOSGifUtil.startGif(activity.gifDrawable, activity.gifView, activity.getResources(),
-				R.drawable.tam_cardreader_apos3_gif);
-		
+		// activity.getWindowManager().getDefaultDisplay().getMetrics(metric);
+		// activity.gifView.setShowDimension(metric.widthPixels,
+		// Float.valueOf((260 * metric.density)).intValue());
+		// activity.gifView.setGifImage(R.drawable.tam_cardreader_apos3_gif);
+
+		APOSGifUtil.startGif(activity.gifDrawable, activity.gifView,
+				activity.getResources(), R.drawable.tam_cardreader_apos3_gif);
+
 		activity.gifView.setVisibility(View.VISIBLE);
 		activity.topTextView.setText(R.string.tam_top_cloud_order_waitpay_str);
 	}
 
 	public void pushOrderNetworkError(String errorMsg) {
-		if (txnControl.getTxnDialog() != null && txnControl.getTxnDialog().isShowing()) {
+		if (txnControl.getTxnDialog() != null
+				&& txnControl.getTxnDialog().isShowing()) {
 			txnControl.getTxnDialog().cancel();
 		}
 		Map<String, String> intentData = new HashMap<String, String>();
 		intentData.put("errorMsg", errorMsg);
 		intentData.put("buttonName", "重新刷卡");
 
-		TiFlowControlImpl.instanceControl().nextSetup(txnControl.getCurrActivity(),
+		TiFlowControlImpl.instanceControl().nextSetup(
+				txnControl.getCurrActivity(),
 				me.andpay.apos.common.flow.FlowConstants.FAILED, intentData);
 	}
 
