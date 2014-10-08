@@ -1,6 +1,7 @@
 package me.andpay.apos.config;
 
 import me.andpay.ac.consts.TxnTypes;
+import me.andpay.apos.base.TxnType;
 import me.andpay.apos.dao.ExceptionPayTxnInfoDao;
 import me.andpay.apos.dao.PayTxnInfoDao;
 import me.andpay.apos.dao.provider.ExceptionPayTxnDaoProvider;
@@ -12,6 +13,7 @@ import me.andpay.apos.tam.action.PostVoucherAction;
 import me.andpay.apos.tam.action.TxnAction;
 import me.andpay.apos.tam.action.txn.CardBalanceProcessor;
 import me.andpay.apos.tam.action.txn.RefundProcessor;
+import me.andpay.apos.tam.action.txn.TopupProcessor;
 import me.andpay.apos.tam.action.txn.TxnProcessorFactory;
 import me.andpay.apos.tam.action.txn.cloud.SupportCloudPosPurchaseProcessor;
 import me.andpay.apos.tam.context.HandlerStatus;
@@ -132,8 +134,11 @@ public class TamModule extends TiMobileModule {
 
 		TxnProcessorFactory.registerProcessor(TxnTypes.INQUIRY_BALANCE,
 				CardBalanceProcessor.class);
+		
+		TxnProcessorFactory.registerProcessor(TxnType.MPOS_TOPUP,
+				TopupProcessor.class);
 
-		requestInjection(PayTxnDaoProvider.class);
+		requestInjection(PayTxnDaoProvider.class);  
 		bind(PayTxnInfoDao.class).toProvider(PayTxnDaoProvider.class).in(
 				Scopes.SINGLETON);
 		requestInjection(ExceptionPayTxnDaoProvider.class);

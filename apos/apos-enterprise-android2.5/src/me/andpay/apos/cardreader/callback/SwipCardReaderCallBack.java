@@ -181,8 +181,8 @@ public class SwipCardReaderCallBack implements CardReaderCallback {
 			return;
 		}
 		final TxnContext txnContext = txnControl.getTxnContext();
-
-		if (!setMac(txnContext, cardInfo, null)) {
+		/* 加密银行卡和交易金额 */
+		if (!setMac(txnContext,cardInfo, null)) {
 			return;
 		}
 

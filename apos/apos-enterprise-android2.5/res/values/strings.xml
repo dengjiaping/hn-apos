@@ -209,6 +209,9 @@
     <string name="tam_sure_text_str">确认</string>
     <string name="tam_txn_submit_btn_str">交易提交</string>
     <string name="tam_query_balance_tips_str">余额查询功能支持所有银联卡</string>
+    
+    <string name="tam_topup_tips_str">话费充值功能支持所有银联卡</string>
+    
     <string name="tam_balance_amt_str">余额</string>
     <string name="tam_balance_result_str">查询结果</string>
     <string name="tam_card_reader_error_str">设备未插紧,不匹配或者异常,请确认设备正常后，再点击确认按钮重试！</string>

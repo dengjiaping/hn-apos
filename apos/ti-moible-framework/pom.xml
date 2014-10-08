@@ -20,11 +20,8 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.jackson</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.0.5</version>
-		</dependency>
+		<!-- <dependency> <groupId>com.jackson</groupId> <artifactId>jackson-databind</artifactId> 
+			<version>2.0.5</version> </dependency> -->
 		<dependency>
 			<groupId>me.andpay.ti.ti-lnk</groupId>
 			<artifactId>ti-lnk-transport-wsock-client</artifactId>
@@ -78,9 +75,9 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>me.andpay</groupId>
+			<groupId>me.andpay.ti</groupId>
 			<artifactId>ti-util</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -95,7 +92,7 @@
 			<version>4.0-beta</version> <classifier>no_aop</classifier> </dependency> -->
 		<!-- <dependency> <groupId>com.google.inject</groupId> <artifactId>guice</artifactId> 
 			<version>4.0-beta</version> <classifier>no_aop</classifier> </dependency> -->
-		 
+
 		<dependency>
 			<groupId>org.roboguice</groupId>
 			<artifactId>roboguice</artifactId>
@@ -107,7 +104,7 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>me.andpay.ti</groupId>
 			<artifactId>ti-base</artifactId>

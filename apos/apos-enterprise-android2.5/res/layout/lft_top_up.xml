@@ -94,7 +94,7 @@
             android:background="@color/transparent"
             android:phoneNumber="true"
             android:singleLine="true"
-            android:text="50元"
+            android:text="50"
             android:textColor="@color/com_title_normal_col"
             android:textSize="20sp" />
     </RelativeLayout>

@@ -15,7 +15,7 @@ public class GenChangeStatusHander {
 			return;
 		}
 
-		if (preAction(txnControl)) {
+		if (preAction(txnControl)){
 			return;
 		}
 		changeUI(txnControl);

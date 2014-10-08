@@ -61,12 +61,15 @@ public class TxnControl {
 	private TiActivity currActivity;
 
 	private String currStatus;
+	
+	
+	
 
 	/**
 	 * 交易回调函数
 	 */
-	private TxnCallback txnCallback;
 
+	private TxnCallback txnCallback;
 	public CommonDialog txnDialog;
 
 	/**
@@ -237,14 +240,19 @@ public class TxnControl {
 
 		EventRequest request = txnAcitivty.generateSubmitRequest(txnAcitivty);
 		request.open(TxnAction.DOMAIN_NAME, TxnAction.TXN_ACTION, Pattern.async);
-		txnDialog = new CommonDialog(txnAcitivty, txnAcitivty.getResources()
-				.getString(R.string.tam_txn_submit_str));
+		String promStr = getTxnContext().getPromptStr();
+		if(me.andpay.apos.base.tools.StringUtil.isEmpty(promStr)){
+			promStr = txnAcitivty.getResources()
+					.getString(R.string.tam_txn_submit_str);
+		}
+		txnDialog = new CommonDialog(txnAcitivty,promStr);
 
 		txnDialog.show();
 		txnCallback.initCallBack(this);
 		request.callBack(txnCallback);
 
 		Map submitData = new HashMap();
+		/*复制TxnContext 交易上下文*/
 		TxnForm txnForm = BeanUtils.copyProperties(TxnForm.class,
 				getTxnContext());
 		submitData.put("txnForm", txnForm);
@@ -405,5 +413,8 @@ public class TxnControl {
 	public SwipCardReaderCallBack getSwipCardReaderCallBack() {
 		return swipCardReaderCallBack;
 	}
+
+	
+	
 
 }

@@ -1,7 +1,7 @@
 package me.andpay.apos.lft.activity;
 
-import me.andpay.ac.consts.TxnTypes;
 import me.andpay.apos.R;
+import me.andpay.apos.base.TxnType;
 import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.base.view.CustomDialog;
 import me.andpay.apos.common.TabNames;
@@ -9,13 +9,14 @@ import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.lft.data.PhoneNumber;
 import me.andpay.apos.lft.even.TopupTextWatcherEventControl;
 import me.andpay.apos.lft.flow.FlowConstants;
-import me.andpay.apos.tam.callback.impl.QueryBalanceCallBackImpl;
+import me.andpay.apos.tam.callback.impl.TopUpCallBackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
 import me.andpay.timobileframework.flow.TiFlowCallback;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import me.andpay.timobileframework.util.StringConvertor;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.text.TextWatcher;
@@ -87,13 +88,18 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 	TxnControl txnControl;
 
 	public void sure(View v) {
+	
 		TxnContext txnContext = txnControl.init();
 
-		txnContext.setNeedPin(false);
-		txnContext.setTxnType(TxnTypes.INQUIRY_BALANCE);
-		txnContext.setBackTagName(TabNames.BALANCE_PAGE);
-		txnControl.setTxnCallback(new QueryBalanceCallBackImpl());
-		TiFlowControlImpl.instanceControl().setFlowContextData(txnContext);
+		txnContext.setNeedPin(true);
+		txnContext.setTxnType(TxnType.MPOS_TOPUP);
+		txnContext.setBackTagName(TabNames.LEFT_PAGE);
+		txnControl.setTxnCallback(new TopUpCallBackImpl());
+		String amountStr = "￥"+amount.getText().toString();
+		//amountStr = "￥"+amountStr.substring(0,amountStr.length()-1);
+		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));
+		txnContext.setPromptStr("充值中...");
+		setFlowContextData(txnContext);
 		TiFlowControlImpl.instanceControl().nextSetup(this,
 				FlowConstants.TOPUP_TXN);
 	}

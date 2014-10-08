@@ -64,6 +64,10 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 	 */
 	@InjectView(R.id.tam_content_query_show_lay)
 	public RelativeLayout queryShowLayout;
+	
+	
+	@InjectView(R.id.tam_content_topup_show_lay)
+	public RelativeLayout topupShowLayout;
 
 	@InjectView(R.id.tam_issuer_query_lay)
 	public RelativeLayout queryPanLayout;

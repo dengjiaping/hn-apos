@@ -8,7 +8,7 @@ public class BeanUtils {
 
 	private static HashMap<Class<?>, Method[]> beanMethodCache = new HashMap<Class<?>, Method[]>();
 	private static HashMap<Class<?>, HashMap<String, Method>> fromBeanMethodCache = new HashMap<Class<?>, HashMap<String, Method>>();
-
+   /*为beanClass 类 设置一个参数 的函数 */
 	public static <T> T copyProperties(Class<T> beanClass, Object fromBean) {
 
 		Object[] objects = new Object[0];

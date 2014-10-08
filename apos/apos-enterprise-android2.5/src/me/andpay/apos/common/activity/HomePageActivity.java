@@ -100,7 +100,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 		if (!MemoryRecorder.isRecordMemory()) {
 			MemoryRecorder.reset(this);
 		} else {
-			mMenuDrawer = MenuDrawer.attach(this, MenuDrawer.MENU_DRAG_WINDOW);
+			mMenuDrawer = MenuDrawer.attach(this,MenuDrawer.MENU_DRAG_WINDOW);
 			mMenuDrawer.setMenuView(R.layout.com_menu_slider_layout);
 			viewController = new MenuViewController(this);
 			filterCloudPosMenu();

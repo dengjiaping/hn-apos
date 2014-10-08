@@ -231,7 +231,7 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 			}
 		}
 
-		if (CardReaderManager.getInputType() == AposSwiperContext.INPUT_KEY_BOARD) {
+		if (CardReaderManager.getInputType() == AposSwiperContext.INPUT_KEY_BOARD){
 			if (txnForm.getPin() != null) {
 				PinblockAndProtectedSecretKey pinAndKey = S3Client.encryptPin(
 						txnForm.getPin(),

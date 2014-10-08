@@ -155,7 +155,8 @@ public class PurchaseProcessor extends GenTxnProcessor {
 		PurchaseRequest purRequest = BeanUtils.copyProperties(
 				PurchaseRequest.class, txnForm);
 
-		if (locationService.hasLocation()) {
+		if (locationService.hasLocation()){
+			/**/
 			TiLocation tiLocation = locationService.getLocation();
 
 			purRequest.setLatitude(tiLocation.getLatitude());

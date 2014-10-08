@@ -54,9 +54,10 @@ public class WaitSwiperHandler extends GenChangeStatusHander {
 
 	@Override
 	protected void changeAction(TxnControl txnControl) {
-
+		/* 设置读卡器回调 */
 		CardReaderManager.setCurrCallback(txnControl
 				.getSwipCardReaderCallBack());
+		/*读卡器传递*/
 		CardReaderManager.startSwiper(AposCardReaderUtil.convertSwiperRequest(
 				txnControl.getTxnContext(), txnControl.getCurrActivity()
 						.getAppConfig()));

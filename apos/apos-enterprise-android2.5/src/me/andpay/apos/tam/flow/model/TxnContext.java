@@ -21,6 +21,10 @@ import me.andpay.ti.util.StringUtil;
  * @author cpz
  */
 public class TxnContext implements Serializable {
+	/**
+	 * 提示
+	 */
+	private String promptStr="";
 
 	/**
 	 * 
@@ -189,6 +193,16 @@ public class TxnContext implements Serializable {
 	 * mac数据
 	 */
 	private String mac;
+	
+	
+
+	public String getPromptStr() {
+		return promptStr;
+	}
+
+	public void setPromptStr(String promptStr) {
+		this.promptStr = promptStr;
+	}
 
 	public String getMac() {
 		return mac;

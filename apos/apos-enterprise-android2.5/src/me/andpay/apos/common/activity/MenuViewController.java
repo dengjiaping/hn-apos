@@ -392,7 +392,7 @@ public class MenuViewController implements OnClickListener,
 				.getAttribute(RuntimeAttrNames.PARTY_INFO);
 		Map<String, String> privileges = partyInfo.getPrivileges();
 
-		if (privileges.containsKey(Privileges.QUERY_SETTLE_ORDER)) {
+		if (privileges.containsKey(Privileges.QUERY_SETTLE_ORDER)){
 			if (privilegeMaps.get(Privileges.QUERY_SETTLE_ORDER)
 					.getVisibility() == View.VISIBLE)
 				firstLayout = this.settleLayout;

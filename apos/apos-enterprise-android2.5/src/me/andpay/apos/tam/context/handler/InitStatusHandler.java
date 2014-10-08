@@ -2,6 +2,7 @@ package me.andpay.apos.tam.context.handler;
 
 import me.andpay.ac.consts.TxnTypes;
 import me.andpay.apos.R;
+import me.andpay.apos.base.TxnType;
 import me.andpay.apos.cardreader.util.AposCardReaderUtil;
 import me.andpay.apos.cdriver.CardReaderManager;
 import me.andpay.apos.cdriver.DeviceCommunicationTypes;
@@ -46,15 +47,19 @@ public class InitStatusHandler extends GenChangeStatusHander {
 			activity.queryShowLayout.setVisibility(View.VISIBLE);
 			activity.txnBottomImage.setVisibility(View.GONE);
 			activity.queryLayout.setVisibility(View.GONE);
-		} else {
+		}
+		else {
 			activity.purLayout.setVisibility(View.VISIBLE);
 			activity.txnContentLay.setVisibility(View.VISIBLE);
 			activity.txnBottomImage.setVisibility(View.VISIBLE);
+			if(txnControl.getTxnContext().getTxnType().equals(TxnType.MPOS_TOPUP)){
+				activity.topupShowLayout.setVisibility(View.VISIBLE);
+			}
 		}
 
 		TxnContext txnContext = txnControl.getTxnContext();
 
-		if (txnContext.getTxnType().equals(TxnTypes.PURCHASE)) {
+		if (txnContext.getTxnType().equals(TxnTypes.PURCHASE)||txnContext.getTxnType().equals(TxnType.MPOS_TOPUP)) {
 			activity.amtTxnView.setTextColor(activity.getResources().getColor(
 					R.color.tqm_list_item_amount_col));
 		} else {
