@@ -106,8 +106,8 @@
         android:layout_marginTop="60dp"
         android:background="@drawable/com_button_selector"
         android:enabled="false"
-        android:paddingBottom="5dip"
-        android:paddingTop="5dip"
+        android:paddingBottom="10dip"
+        android:paddingTop="10dip"
         android:text="下一步"
         android:textColor="@drawable/com_text_color_selector"
         android:textSize="20sp" />

@@ -2,6 +2,7 @@ package me.andpay.apos.tam.form;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Map;
 
 import me.andpay.ac.term.api.txn.ParseBinResponse;
 import me.andpay.ac.term.api.txn.TxnRequest;
@@ -36,7 +37,12 @@ public class TxnForm implements Serializable {
 	 */
 	private volatile int processStatus = PRSTATUS_INTI;
 
-	// 输入数据
+	/**
+	 * 额外数据
+	 */
+    private Map<String,String> map;
+    
+    
 	/**
 	 * 销售金额
 	 */
@@ -204,6 +210,14 @@ public class TxnForm implements Serializable {
 
 	public PayTxnInfo getOrigPayTxnInfo() {
 		return origPayTxnInfo;
+	}
+
+	public Map<String, String> getMap() {
+		return map;
+	}
+
+	public void setMap(Map<String, String> map) {
+		this.map = map;
 	}
 
 	public void setOrigPayTxnInfo(PayTxnInfo origPayTxnInfo) {

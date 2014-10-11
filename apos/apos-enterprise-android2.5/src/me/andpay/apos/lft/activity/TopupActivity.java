@@ -1,17 +1,23 @@
 package me.andpay.apos.lft.activity;
 
+import java.util.Map;
+
+import me.andpay.ac.term.api.vas.txn.VasTxnPropNames;
 import me.andpay.apos.R;
 import me.andpay.apos.base.TxnType;
 import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.base.view.CustomDialog;
 import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.common.constant.RuntimeAttrNames;
+import me.andpay.apos.common.contextdata.LoginUserInfo;
 import me.andpay.apos.lft.data.PhoneNumber;
 import me.andpay.apos.lft.even.TopupTextWatcherEventControl;
 import me.andpay.apos.lft.flow.FlowConstants;
 import me.andpay.apos.tam.callback.impl.TopUpCallBackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
+import me.andpay.timobileframework.cache.HashMap;
 import me.andpay.timobileframework.flow.TiFlowCallback;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
@@ -91,6 +97,13 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 	
 		TxnContext txnContext = txnControl.init();
 
+		
+        Map<String,String> map = new HashMap();
+        LoginUserInfo user = (LoginUserInfo)getAppContext().getAttribute(RuntimeAttrNames.LOGIN_USER);
+        map.put(VasTxnPropNames.USER_NAME,user.getUserName());
+        map.put(VasTxnPropNames.MOBILE_PHONE, phoneNumber.getText().toString());
+        
+        txnContext.setMap(map);
 		txnContext.setNeedPin(true);
 		txnContext.setTxnType(TxnType.MPOS_TOPUP);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);

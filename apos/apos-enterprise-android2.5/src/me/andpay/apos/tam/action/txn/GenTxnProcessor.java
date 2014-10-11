@@ -8,15 +8,19 @@ import java.util.List;
 import java.util.Map;
 
 import me.andpay.ac.consts.AttachmentTypes;
+import me.andpay.ac.consts.CurrencyCodes;
 import me.andpay.ac.consts.GeoCooTypes;
 import me.andpay.ac.consts.PinEncryptMethods;
 import me.andpay.ac.consts.TxnFlags;
+import me.andpay.ac.consts.VasTxnTypes;
 import me.andpay.ac.term.api.sec.PublicKey;
 import me.andpay.ac.term.api.txn.ParseBinResponse;
 import me.andpay.ac.term.api.txn.TxnExtAttrNames;
 import me.andpay.ac.term.api.txn.TxnRequest;
 import me.andpay.ac.term.api.txn.TxnResponse;
 import me.andpay.ac.term.api.txn.TxnService;
+import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
+import me.andpay.ac.term.api.vas.txn.PaymentCardInfo;
 import me.andpay.apos.R;
 import me.andpay.apos.cdriver.AposSwiperContext;
 import me.andpay.apos.cdriver.CardReaderManager;
@@ -35,6 +39,7 @@ import me.andpay.apos.common.service.UpLoadFileServce;
 import me.andpay.apos.common.service.model.TiLocation;
 import me.andpay.apos.common.util.ItemConvertUtil;
 import me.andpay.apos.common.util.ResourceUtil;
+import me.andpay.apos.common.util.TxnUtil;
 import me.andpay.apos.dao.ExceptionPayTxnInfoDao;
 import me.andpay.apos.dao.OrderInfoDao;
 import me.andpay.apos.dao.PayTxnInfoDao;
@@ -51,6 +56,7 @@ import me.andpay.apos.tam.callback.TxnCallback;
 import me.andpay.apos.tam.flow.model.TxnContext;
 import me.andpay.apos.tam.form.TxnActionResponse;
 import me.andpay.apos.tam.form.TxnForm;
+import me.andpay.apos.trm.event.ReundSuccessControl;
 import me.andpay.ti.lnk.transport.websock.common.NetworkErrorException;
 import me.andpay.ti.lnk.transport.websock.common.NetworkOpPhase;
 import me.andpay.ti.lnk.transport.websock.common.WebSockTimeoutException;
@@ -75,6 +81,7 @@ import com.crashlytics.android.Crashlytics;
 import com.google.inject.Inject;
 
 public abstract class GenTxnProcessor implements TxnProcessor {
+	
 
 	@Inject
 	protected TxnConfirmDao txnConfirmDao;
@@ -129,6 +136,82 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 				.getContext(TiContext.CONTEXT_SCOPE_APPLICATION_CONFIG);
 	}
 
+	public CommonTermTxnRequest createTermTxnRequest(TxnForm txnForm,String type,Map<String,String> map) {
+		CommonTermTxnRequest txnRequest = new CommonTermTxnRequest();
+				//BeanUtils.copyProperties(
+				//CommonTermTxnRequest.class,txnForm);
+        /*设置地理位置*/
+		if (locationService.hasLocation()) {
+			
+			TiLocation tiLocation = locationService.getLocation();
+			txnRequest.setLatitude(tiLocation.getLatitude());
+			txnRequest.setLongitude(tiLocation.getLongitude());
+			if (tiLocation.getSpecLatitude() != 0) {
+				txnRequest.setSpecCoordType(GeoCooTypes.BD_09);
+				txnRequest.setSpecLatitude(tiLocation.getSpecLatitude());
+				txnRequest.setSpecLongitude(tiLocation.getSpecLongitude());
+				txnRequest.setLocation(tiLocation.getAddress());
+			}
+
+		}
+
+		
+
+		/*设置银行卡信息*/
+		PaymentCardInfo cardInfo = new PaymentCardInfo();
+		if (txnForm.isIcCardTxn()) {
+			cardInfo.setCardNo(txnForm.getAposICCardDataInfo().getCardNo());
+		}
+
+		// cardInfo.setCvv2(txnForm.getCardInfo().get);
+		// cardInfo.setExpirationDate(expirationDate);
+		cardInfo.setPinblock(txnForm.getCardInfo().getPin());
+		cardInfo.setPinEncryptAdditionData(HexUtils
+				.hexStringToBytes(txnForm.getCardInfo()
+						.getPinRandNumber()));
+		cardInfo.setPinEncryptMethod(PinEncryptMethods.PINPAD);
+
+		cardInfo.setTrack2(txnForm
+				.getCardInfo()
+				.getEncTracks()
+				.substring(txnForm.getCardInfo().getTrack2Length(),
+						txnForm.getCardInfo().getTrack3Length()));
+		cardInfo.setTrack3(txnForm.getCardInfo().getEncTracks()
+				.substring(txnForm.getCardInfo().getTrack3Length()));
+		cardInfo.setTrackAll(txnForm.getCardInfo().getEncTracks());
+		cardInfo.setTrackRandomFactor(txnForm.getCardInfo().getRandomNumber());
+		txnRequest.setPaymentCardInfo(cardInfo);
+		txnRequest.setKsn(txnForm.getCardInfo().getKsn());
+
+		// txnRequest.setTerminalId(terminalId);
+        /*设置接口类型*/
+		txnRequest.setVasTxnType(type);
+
+		/*交易金额*/
+		txnRequest.setAmt(txnForm.getSalesAmt());
+		txnRequest.setCur(CurrencyCodes.CNY);
+        
+		/*终端编号*/
+		txnRequest.setTermTraceNo(TxnUtil.getTermTraceNo(tiConfig));
+		TxnUtil.updateTermTraceNo(tiConfig);
+		txnForm.setTermTraceNo(txnRequest.getTermTraceNo());
+
+		/*交易时间*/
+		txnRequest.setTermTxnTime(new Date());
+		txnForm.setTermTxnTime(StringUtil.format("yyyyMMddHHmmss",
+				txnRequest.getTermTxnTime()));
+		
+		/*额外数据*/
+		
+		txnRequest.setVasRequestContentObj(map);
+
+		//PinData pinData = genPinData(txnForm);
+		//setServiceEntryModes(txnForm, txnRequest, pinData);
+		
+		return txnRequest;
+	}
+	
+	
 	protected void setMac(String mac, TxnRequest purRequest) {
 		if (StringUtil.isBlank(mac)) {
 			return;
@@ -155,6 +238,11 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 		attachmentItemTypes.add(AttachmentTypes.LOCATION_PICTURE);
 
 		return attachmentItemTypes;
+	}
+	
+	/*创建额外数据*/
+	protected Map<String,String> creatContentObject(TxnForm txnForm){
+		return new HashMap<String, String>();
 	}
 
 	protected ExceptionPayTxnInfo genPayTxnInfo(TxnRequest txnRequest,

@@ -7,6 +7,12 @@ public class FlowConstants {
 	 */
 	public static final String PAY_COST_QUERY = "pay_cost_query";
 	/**
+	 * 缴费确认
+	 */
+	public static final String PAY_COST_SURE = "pay_cost_sure";
+	
+	
+	/**
 	 * 水费详情
 	 */
 	public static final String WATER_DEATAIL = "water_deatail";

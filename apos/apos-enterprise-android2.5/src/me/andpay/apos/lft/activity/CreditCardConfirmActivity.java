@@ -1,11 +1,19 @@
 package me.andpay.apos.lft.activity;
 
+import com.google.inject.Inject;
+
 import me.andpay.apos.R;
+import me.andpay.apos.base.TxnType;
+import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.lft.flow.FlowConstants;
+import me.andpay.apos.tam.callback.impl.TopUpCallBackImpl;
+import me.andpay.apos.tam.context.TxnControl;
+import me.andpay.apos.tam.flow.model.TxnContext;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import me.andpay.timobileframework.util.StringConvertor;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectExtra;
 import roboguice.inject.InjectView;
@@ -75,7 +83,20 @@ public class CreditCardConfirmActivity extends AposBaseActivity {
 	 * 
 	 * @param v
 	 */
+	@Inject TxnControl txnControl;
 	public void cardPayTxn(View v) {
+		TxnContext txnContext = txnControl.init();
+
+		txnContext.setNeedPin(true);
+		txnContext.setTxnType(TxnType.MPOS_PAY_CREDIT_CARD);
+		txnContext.setBackTagName(TabNames.LEFT_PAGE);
+		txnControl.setTxnCallback(new TopUpCallBackImpl());
+		String amountStr = "￥"+moneyStr;
+		//amountStr = "￥"+amountStr.substring(0,amountStr.length()-1);
+		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));
+		txnContext.setPromptStr("还款中...");
+		setFlowContextData(txnContext);
+		
 		TiFlowControlImpl.instanceControl().nextSetup(this,
 				FlowConstants.LFT_CARD_PAY_TXN);
 	}

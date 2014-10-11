@@ -212,6 +212,14 @@
     
     <string name="tam_topup_tips_str">话费充值功能支持所有银联卡</string>
     
+    <string name="tam_pay_ele_tips_str">电费缴纳仅限于省内,支持所有银联卡</string>
+    
+    <string name="tam_pay_water_tips_str">水费缴纳仅限于省内,支持所有银联卡</string>
+    
+    <string name="tam_pay_crite_card_tips_str">信用卡还款功能支持所有银联卡</string>
+    
+    <string name="tam_transfer_account_tips_str">转账功能支持所有银联卡</string>
+    
     <string name="tam_balance_amt_str">余额</string>
     <string name="tam_balance_result_str">查询结果</string>
     <string name="tam_card_reader_error_str">设备未插紧,不匹配或者异常,请确认设备正常后，再点击确认按钮重试！</string>

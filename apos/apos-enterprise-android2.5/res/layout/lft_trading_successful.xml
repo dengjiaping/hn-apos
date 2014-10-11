@@ -5,13 +5,15 @@
     android:background="#f0f0f0"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="45dip"
-        android:background="@drawable/com_navtop_bg_img"
-        android:gravity="center"
-        android:text="完成"
-        android:textColor="#666666"
-        android:textSize="18dp" />
+    <RelativeLayout style="@style/com_native_top_style" >
+
+        <TextView 
+            android:id="@+id/lft_trading_successful_showtxt"
+            style="@style/com_top_text_style" />
+
+        <ImageView
+            android:id="@+id/lft_trading_successful_back"
+            style="@style/com_top_return_button_style" />
+    </RelativeLayout>
 
 </LinearLayout>

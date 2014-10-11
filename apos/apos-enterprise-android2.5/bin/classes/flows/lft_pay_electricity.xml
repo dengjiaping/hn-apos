@@ -18,7 +18,11 @@
 
         <node-complete
             identity="electricity_deatail"
-            next-node="electricity_deatail"/>
+            next-node="electricity_deatail" />
+
+        <node-complete
+            identity="pay_cost_sure"
+            sub-flow="com_txn_flow" />
     </flow-node>
 
     <flow-node

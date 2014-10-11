@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
+import java.util.Map;
 
 import me.andpay.ac.term.api.txn.ParseBinResponse;
 import me.andpay.apos.cdriver.CardInfo;
@@ -21,6 +22,10 @@ import me.andpay.ti.util.StringUtil;
  * @author cpz
  */
 public class TxnContext implements Serializable {
+	/**
+	 * 额外数据
+	 */
+	private Map<String,String> map;
 	/**
 	 * 提示
 	 */
@@ -513,5 +518,14 @@ public class TxnContext implements Serializable {
 	public boolean isHasTrack() {
 		return hasTrack;
 	}
+
+	public Map<String, String> getMap() {
+		return map;
+	}
+
+	public void setMap(Map<String, String> map) {
+		this.map = map;
+	}
+	
 
 }

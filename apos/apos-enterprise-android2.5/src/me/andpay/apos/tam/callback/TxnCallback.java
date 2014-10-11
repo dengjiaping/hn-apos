@@ -3,7 +3,7 @@ package me.andpay.apos.tam.callback;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.form.TxnActionResponse;
 
-public interface TxnCallback {
+public interface TxnCallback{
 
 	/**
 	 * 提示交易成功

@@ -105,7 +105,7 @@ public class TiFlowControlImpl implements TiFlowControl {
 			getNodeContrl().getFlowContext().clear();
 		}
 		// 如果只设置了finish标签,则结束流程，并且结束所有activity. 自己是子流程
-		if (complete.isFinishFlow()) {
+		if (complete.isFinishFlow()){
 			if (processFlowFinished(activity, controlNode, sendData)) {
 				return;
 			}
@@ -186,7 +186,7 @@ public class TiFlowControlImpl implements TiFlowControl {
 		// 如果子流程结束后，发现子流程结束节点或者父流程的最后跳转节点设置了"hold-sub-finish"属性，则只是结束子流程，重新恢复到父流程跳转子流程节点
 		if ((complete != null && complete.isHoldAfterSubFlowFinished())
 				|| subComplete == null
-				|| subComplete.isHoldAfterSubFlowFinished()) {
+				|| subComplete.isHoldAfterSubFlowFinished()){
 			// node.popActivity();
 			if (controlNode.getParentNode() != null) {
 				return processFlowFinished(activity, node.getParentNode(),

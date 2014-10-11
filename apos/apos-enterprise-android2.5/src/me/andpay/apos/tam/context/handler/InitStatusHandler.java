@@ -54,6 +54,18 @@ public class InitStatusHandler extends GenChangeStatusHander {
 			activity.txnBottomImage.setVisibility(View.VISIBLE);
 			if(txnControl.getTxnContext().getTxnType().equals(TxnType.MPOS_TOPUP)){
 				activity.topupShowLayout.setVisibility(View.VISIBLE);
+			}else if(txnControl.getTxnContext().getTxnType().equals(TxnType.MPOS_PAYCOST_ELE)){
+				activity.payCostShowLayout.setVisibility(View.VISIBLE);
+				activity.payCostxt.setText(activity.getResources().getString(R.string.tam_pay_ele_tips_str));
+			}else if(txnControl.getTxnContext().getTxnType().equals(TxnType.MPOS_PAYCOST_WATER)){
+				activity.payCostShowLayout.setVisibility(View.VISIBLE);
+				activity.payCostxt.setText(activity.getResources().getString(R.string.tam_pay_water_tips_str));
+			}else if(txnControl.getTxnContext().getTxnType().equals(TxnType.MPOS_PAY_CREDIT_CARD)){
+				activity.payCostShowLayout.setVisibility(View.VISIBLE);
+				activity.payCostxt.setText(activity.getResources().getString(R.string.tam_pay_crite_card_tips_str));
+			}else if(txnControl.getTxnContext().getTxnType().equals(TxnType.MPOS_TRANSFER_ACCOUNT)){
+				activity.payCostShowLayout.setVisibility(View.VISIBLE);
+				activity.payCostxt.setText(activity.getResources().getString(R.string.tam_transfer_account_tips_str));
 			}
 		}
 

@@ -242,6 +242,39 @@
             android:textColor="#666666"
             android:textSize="13dp" />
     </RelativeLayout>
+    
+    <!-- 缴费 -->
+
+    <RelativeLayout
+        android:id="@+id/tam_content_paycost_show_lay"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_below="@id/tam_bottom_pur_imgview"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginTop="5dip"
+     
+        android:background="@drawable/com_tips_box_img"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/com_icon_tips_img" />
+
+        <TextView
+            android:id="@+id/tam_content_paycost_show_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="56dp"
+            android:background="#00000000"
+            android:text="@string/tam_topup_tips_str"
+            android:textColor="#666666"
+            android:textSize="13dp" />
+    </RelativeLayout>
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/tam_gif_view"
