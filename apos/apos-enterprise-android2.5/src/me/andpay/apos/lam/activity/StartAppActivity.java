@@ -1,5 +1,6 @@
 package me.andpay.apos.lam.activity;
 
+
 import me.andpay.apos.R;
 import me.andpay.apos.cardreader.InitMsrKeyServiceImpl;
 import me.andpay.apos.cardreader.callback.DefaultCardReaderCallBack;

@@ -19,6 +19,7 @@
 		<httpclient.version>4.2.1</httpclient.version>
 		<httpmime.version>4.2.1</httpmime.version>
 		<ti-base.version>1.0.0</ti-base.version>
+	
 		
 	</properties>
 

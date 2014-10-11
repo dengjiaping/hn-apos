@@ -159,7 +159,7 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 
 		/*设置银行卡信息*/
 		PaymentCardInfo cardInfo = new PaymentCardInfo();
-		if (txnForm.isIcCardTxn()) {
+		if (txnForm.isIcCardTxn()){
 			cardInfo.setCardNo(txnForm.getAposICCardDataInfo().getCardNo());
 		}
 
@@ -203,7 +203,7 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 		
 		/*额外数据*/
 		
-		txnRequest.setVasRequestContentObj(map);
+		txnRequest.setTxnRequestContentObj(map);
 
 		//PinData pinData = genPinData(txnForm);
 		//setServiceEntryModes(txnForm, txnRequest, pinData);
