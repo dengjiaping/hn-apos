@@ -3,7 +3,7 @@ package me.andpay.apos.lam.action;
 import java.util.List;
 
 import me.andpay.ac.term.api.auth.Party;
-import me.andpay.ac.term.api.auth.PartyAuthService;
+import me.andpay.ac.term.api.auth.UserPartyAuthService;
 import me.andpay.ac.term.api.base.FlexFieldDefine;
 import me.andpay.ac.term.api.cif.PartyInfoService;
 import me.andpay.ac.term.api.sec.PublicKey;
@@ -26,7 +26,7 @@ import com.google.inject.Inject;
 
 public class ClientInitHelper {
 
-	private PartyAuthService partyAuthService;
+	private UserPartyAuthService partyAuthService;
 
 	private PartyInfoService partyInfoService;
 
@@ -87,7 +87,7 @@ public class ClientInitHelper {
 	 */
 	private PartyInfo bindParty(String partyId) throws AppBizException {
 
-		Party party = partyAuthService.bindTxnParty(partyId);
+		Party party = partyAuthService.bindParty(partyId);
 		return partyInfoInit(party);
 
 	}

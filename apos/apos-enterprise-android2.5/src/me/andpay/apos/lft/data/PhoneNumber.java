@@ -1,5 +1,9 @@
 package me.andpay.apos.lft.data;
 
+import java.util.Map;
+
+import me.andpay.apos.base.BaseData;
+
 public class PhoneNumber implements BaseData {
 	private String displayName = "";// 显示姓名
 	private String displayNumber = "";// 显示号码
@@ -18,6 +22,16 @@ public class PhoneNumber implements BaseData {
 
 	public void setDisplayNumber(String displayNumber) {
 		this.displayNumber = displayNumber;
+	}
+
+	public void parse(Map map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Map page() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

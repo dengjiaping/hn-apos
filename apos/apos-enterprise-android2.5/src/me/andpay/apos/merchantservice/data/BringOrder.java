@@ -1,6 +1,8 @@
 package me.andpay.apos.merchantservice.data;
 
-import me.andpay.apos.lft.data.BaseData;
+import java.util.Map;
+
+import me.andpay.apos.base.BaseData;
 
 /*调单*/
 public class BringOrder implements BaseData {
@@ -43,5 +45,15 @@ public class BringOrder implements BaseData {
 
 	public void setDescrible(String describle) {
 		this.describle = describle;
+	}
+
+	public void parse(Map map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Map page() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

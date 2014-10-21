@@ -7,7 +7,7 @@
 
     <RelativeLayout style="@style/com_native_top_style" >
 
-        <TextView 
+        <TextView
             android:id="@+id/lft_trading_successful_showtxt"
             style="@style/com_top_text_style" />
 
@@ -15,5 +15,23 @@
             android:id="@+id/lft_trading_successful_back"
             style="@style/com_top_return_button_style" />
     </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/lft_trading_successful_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dip"
+        android:src="@drawable/com_salesslip_succeed_img" />
+
+    <TextView
+        android:id="@+id/lft_trading_successful_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dip"
+        android:text="充值成功"
+        android:textColor="@color/main_show_font_color"
+        android:textSize="25sp" />
 
 </LinearLayout>

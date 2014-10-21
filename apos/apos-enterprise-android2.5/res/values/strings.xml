@@ -516,7 +516,7 @@
     <string name="lft_address_book">手机通讯录</string>
     <string name="lft_credit_card_sure_title_str">信用卡信息确认</string>
     <string name="lft_electricity_deatail_str">电费详情</string>
-    <string name="lft_water_deatail_str">电费详情</string>
+    <string name="lft_water_deatail_str">水费详情</string>
     <string name="lft_cost_query_str">缴费查询</string>
     <!-- 通知公告 -->
     <string name="msg_home_title_str">活动管理</string>

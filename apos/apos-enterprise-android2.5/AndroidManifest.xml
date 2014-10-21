@@ -70,7 +70,28 @@
             </intent-filter>
         </activity>
         -->
-        <!-- 商户服务 -->
+        
+        <activity
+            android:name=".merchantsmaking.activity.MerchantsJoinCommitDetailActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantsmaking.activity.MerchantsJoinCommitDetailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <!-- 商户加盟 -->
+        
+        <activity
+            android:name=".merchantsmaking.activity.MerchantsJoinActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="merchantsmaking.activity.MerchantsJoinActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         
         
         <activity

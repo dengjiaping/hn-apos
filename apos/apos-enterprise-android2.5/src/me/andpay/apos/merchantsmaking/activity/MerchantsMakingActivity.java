@@ -22,6 +22,12 @@ public class MerchantsMakingActivity extends AposBaseActivity {
 	@EventDelegate(type = DelegateType.method, toMethod = "coupons", delegateClass = OnClickListener.class)
 	@InjectView(R.id.merchants_making_coupons_layout)
 	private View coupons;
+	
+	/*商户加盟*/
+	@EventDelegate(type = DelegateType.method, toMethod = "join", delegateClass = OnClickListener.class)
+	@InjectView(R.id.merchants_making_merchants_joinin_layout)
+	private View merchantsJoin;
+	
 
 	public void back(View view) {
 		HomePageActivity hp = (HomePageActivity) this.getParent();
@@ -34,6 +40,14 @@ public class MerchantsMakingActivity extends AposBaseActivity {
 		TiFlowControlImpl.instanceControl().startFlow(this,
 				FlowNames.MMAKING_COUPONS);
 
+	}
+	
+	/*商家加盟*/
+	public void join(View view){
+		TiFlowControlImpl.instanceControl().startFlow(this,
+				FlowNames.MMAKING_JOIN);
+		
+		
 	}
 
 }

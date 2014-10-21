@@ -1,6 +1,8 @@
 package me.andpay.apos.message.data;
 
-import me.andpay.apos.lft.data.BaseData;
+import java.util.Map;
+
+import me.andpay.apos.base.BaseData;
 
 /**
  * 消息对象
@@ -53,6 +55,16 @@ public class Message implements BaseData {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public void parse(Map map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Map page() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

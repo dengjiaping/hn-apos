@@ -12,8 +12,11 @@ import me.andpay.apos.tam.action.CouponAction;
 import me.andpay.apos.tam.action.PostVoucherAction;
 import me.andpay.apos.tam.action.TxnAction;
 import me.andpay.apos.tam.action.txn.CardBalanceProcessor;
+import me.andpay.apos.tam.action.txn.CreditPaymentProcessor;
+import me.andpay.apos.tam.action.txn.PayCostProcessor;
 import me.andpay.apos.tam.action.txn.RefundProcessor;
 import me.andpay.apos.tam.action.txn.TopupProcessor;
+import me.andpay.apos.tam.action.txn.TransferAccountProcessor;
 import me.andpay.apos.tam.action.txn.TxnProcessorFactory;
 import me.andpay.apos.tam.action.txn.cloud.SupportCloudPosPurchaseProcessor;
 import me.andpay.apos.tam.context.HandlerStatus;
@@ -137,6 +140,21 @@ public class TamModule extends TiMobileModule {
 		
 		TxnProcessorFactory.registerProcessor(TxnType.MPOS_TOPUP,
 				TopupProcessor.class);
+		
+		TxnProcessorFactory.registerProcessor(TxnType.MPOS_PAYCOST_ELE,
+				PayCostProcessor.class);
+		
+		TxnProcessorFactory.registerProcessor(TxnType.MPOS_PAYCOST_WATER,
+				PayCostProcessor.class);
+		
+		TxnProcessorFactory.registerProcessor(TxnType.MPOS_TRANSFER_ACCOUNT,
+				TransferAccountProcessor.class);
+		
+		TxnProcessorFactory.registerProcessor(TxnType.MPOS_PAY_CREDIT_CARD,
+				CreditPaymentProcessor.class);
+		
+		
+		
 
 		requestInjection(PayTxnDaoProvider.class);  
 		bind(PayTxnInfoDao.class).toProvider(PayTxnDaoProvider.class).in(

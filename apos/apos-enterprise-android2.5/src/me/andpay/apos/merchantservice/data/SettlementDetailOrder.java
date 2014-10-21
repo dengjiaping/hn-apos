@@ -1,6 +1,8 @@
 package me.andpay.apos.merchantservice.data;
 
-import me.andpay.apos.lft.data.BaseData;
+import java.util.Map;
+
+import me.andpay.apos.base.BaseData;
 
 /**
  * 结算详细订单
@@ -59,6 +61,16 @@ public class SettlementDetailOrder implements BaseData {
 
 	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public void parse(Map map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Map page() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

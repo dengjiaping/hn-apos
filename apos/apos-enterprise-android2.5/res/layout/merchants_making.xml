@@ -17,6 +17,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/merchants_making_coupons_layout"
         style="@style/scm_layout_style" >
 
@@ -26,6 +27,25 @@
             android:layout_centerVertical="true"
             android:padding="10dip"
             android:text="持卡人领用优惠券"
+            android:textColor="#666666"
+            android:textSize="15sp" />
+
+        <ImageView
+            style="@style/scm_right_icon_style"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        
+        android:id="@+id/merchants_making_merchants_joinin_layout"
+        style="@style/scm_layout_style" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dip"
+            android:text="商家加盟"
             android:textColor="#666666"
             android:textSize="15sp" />
 

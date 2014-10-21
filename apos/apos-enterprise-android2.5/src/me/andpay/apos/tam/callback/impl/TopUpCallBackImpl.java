@@ -5,7 +5,7 @@ import java.util.Map;
 
 import me.andpay.ac.consts.VasTxnTypes;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnResponse;
-import me.andpay.apos.tam.callback.TxnCallback;
+import me.andpay.apos.base.TxnType;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.form.CtResponseAdapterTxnActionResponse;
 import me.andpay.apos.tam.form.TxnActionResponse;
@@ -30,7 +30,7 @@ public class TopUpCallBackImpl extends TxnCallbackImpl{
 		CommonTermTxnResponse cm = ((CtResponseAdapterTxnActionResponse)actionResponse).getCommonTermResponse();
 		Map<String,Serializable> context=TiFlowControlImpl.instanceControl().getFlowContext();
 		context.put(CommonTermTxnResponse.class.getName(),cm);
-		context.put("txnType",VasTxnTypes.MOBILE_RECHARGE);
+		context.put("txnType",TxnType.MPOS_TOPUP);
 		TiFlowControlImpl.instanceControl().nextSetup(txnControl.getCurrActivity(), me.andpay.apos.common.flow.FlowConstants.FINISH);
 		
 		

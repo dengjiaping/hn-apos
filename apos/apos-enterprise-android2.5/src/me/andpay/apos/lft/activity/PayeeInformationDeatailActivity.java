@@ -1,13 +1,13 @@
 package me.andpay.apos.lft.activity;
 
-import com.google.inject.Inject;
-
 import me.andpay.apos.R;
 import me.andpay.apos.base.TxnType;
 import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.lam.event.LoginTextWatcherEventControl;
+import me.andpay.apos.lft.controller.TransferAccountVertyController;
 import me.andpay.apos.lft.flow.FlowConstants;
-import me.andpay.apos.tam.callback.impl.TopUpCallBackImpl;
+import me.andpay.apos.tam.callback.impl.TransferAccountCallBackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
@@ -20,9 +20,12 @@ import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.inject.Inject;
 
 /**
  * 收款人详情界面
@@ -32,6 +35,7 @@ import android.widget.TextView;
  */
 @ContentView(R.layout.lft_transfer_accounts_payee_information_deatail)
 public class PayeeInformationDeatailActivity extends AposBaseActivity {
+
 	@InjectExtra("money")
 	private String moneyStr;// 金钱
 
@@ -86,14 +90,14 @@ public class PayeeInformationDeatailActivity extends AposBaseActivity {
 	TxnControl txnControl;
 
 	public void tranfTxn(View v) {
+
 		TxnContext txnContext = txnControl.init();
 
 		txnContext.setNeedPin(true);
 		txnContext.setTxnType(TxnType.MPOS_TRANSFER_ACCOUNT);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
-		txnControl.setTxnCallback(new TopUpCallBackImpl());
+		txnControl.setTxnCallback(new TransferAccountCallBackImpl());
 		String amountStr = "￥" + moneyStr;
-		// amountStr = "￥"+amountStr.substring(0,amountStr.length()-1);
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));
 		txnContext.setPromptStr("转账中...");
 		setFlowContextData(txnContext);

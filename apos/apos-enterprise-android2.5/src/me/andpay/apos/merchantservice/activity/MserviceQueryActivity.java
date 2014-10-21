@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import me.andpay.apos.R;
+import me.andpay.apos.base.tools.ShowUtil;
+import me.andpay.apos.base.tools.StringUtil;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
@@ -50,7 +52,7 @@ public class MserviceQueryActivity extends AposBaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		cancel.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				cancel(null);
@@ -65,6 +67,7 @@ public class MserviceQueryActivity extends AposBaseActivity {
 	 * @param view
 	 */
 	public void back(View view) {
+
 		TiFlowControlImpl.instanceControl().previousSetup(this);
 	}
 
@@ -74,7 +77,8 @@ public class MserviceQueryActivity extends AposBaseActivity {
 	 * @param view
 	 */
 	public void clear(View view) {
-
+		beginTime.setText("");
+		endTime.setText("");
 	}
 
 	/**
@@ -92,7 +96,18 @@ public class MserviceQueryActivity extends AposBaseActivity {
 	 * @param view
 	 */
 	public void sure(View view) {
-
+        String beginTimeStr = beginTime.getText().toString();
+        String endTimeStr = endTime.getText().toString();
+        if(StringUtil.isEmpty(beginTimeStr)||StringUtil.isEmpty(endTimeStr)){
+        	ShowUtil.showLongToast(this,"未选择好时间区间");
+        	return;
+        }
+        
+		TiFlowControlImpl.instanceControl().getFlowContext()
+				.put("beginTime",beginTimeStr);
+		TiFlowControlImpl.instanceControl().getFlowContext()
+				.put("endTime", endTimeStr);
+		TiFlowControlImpl.instanceControl().previousSetup(this);
 	}
 
 }

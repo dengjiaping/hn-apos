@@ -1,5 +1,9 @@
 package me.andpay.apos.lft.data;
 
+import java.util.Map;
+
+import me.andpay.apos.base.BaseData;
+
 public class WaterOrder implements BaseData {
 	private String time;// 时间
 	private String oweCost;// 欠费
@@ -36,6 +40,16 @@ public class WaterOrder implements BaseData {
 
 	public void setShouldbeCost(String shouldbeCost) {
 		this.shouldbeCost = shouldbeCost;
+	}
+
+	public void parse(Map map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Map page() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

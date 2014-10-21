@@ -13,7 +13,6 @@ import me.andpay.apos.tam.flow.model.TxnContext;
 import me.andpay.apos.trm.activity.RefundInputActivity;
 import me.andpay.apos.trm.callback.NoCardRefundTxnCallback;
 import me.andpay.apos.trm.flow.model.RefundInputContext;
-import me.andpay.timobileframework.flow.activity.TiFlowActivity;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.AbstractEventController;
 import me.andpay.timobileframework.mvc.form.FormBean;

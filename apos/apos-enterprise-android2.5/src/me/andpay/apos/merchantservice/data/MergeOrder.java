@@ -1,60 +1,60 @@
 package me.andpay.apos.merchantservice.data;
 
-import me.andpay.apos.lft.data.BaseData;
+import java.util.Map;
+
+import me.andpay.apos.base.BaseData;
 
 /*并账订单*/
 public class MergeOrder implements BaseData {
-	/* 标题 */
-	private String title;
-	/* 描述 */
-	private String describe;
-	/* 时间 */
-	private String time;
+	private String acctDate="";// 并账日期
+	private String jAmt="";// 借方金额
+	private String dAmt="";// 贷方金额
+	private String memo="";// 并账说明
 
-	/* 借款 */
-	private String borrowing;
-
-	/* 贷款 */
-	private String loan;
-
-	public String getTitle() {
-		return title;
+	public String getAcctDate() {
+		return acctDate;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setAcctDate(String acctDate) {
+		this.acctDate = acctDate;
 	}
 
-	public String getDescribe() {
-		return describe;
+	public String getjAmt() {
+		return jAmt;
 	}
 
-	public void setDescribe(String describe) {
-		this.describe = describe;
+	public void setjAmt(String jAmt) {
+		this.jAmt = jAmt;
 	}
 
-	public String getTime() {
-		return time;
+	public String getdAmt() {
+		return dAmt;
 	}
 
-	public void setTime(String time) {
-		this.time = time;
+	public void setdAmt(String dAmt) {
+		this.dAmt = dAmt;
 	}
 
-	public String getBorrowing() {
-		return borrowing;
+	public String getMemo() {
+		return memo;
 	}
 
-	public void setBorrowing(String borrowing) {
-		this.borrowing = borrowing;
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 
-	public String getLoan() {
-		return loan;
+	public void parse(Map map) {
+		// TODO Auto-generated method stub
+		acctDate = (String) map.get("acctDate");// 并账日期
+		jAmt = (String) map.get("jAmt");// 借方金额
+		dAmt = (String) map.get("dAmt");// 贷方金额
+		memo = (String) map.get("memo");// 并账说明
+
 	}
 
-	public void setLoan(String loan) {
-		this.loan = loan;
+	public Map page() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

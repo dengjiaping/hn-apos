@@ -61,7 +61,7 @@ import com.google.inject.matcher.Matchers;
 public class CommonModule extends TiMobileModule {
 
 	@Override
-	protected void configure() {
+	protected void configure(){
 
 		// Log.e(this.getClass().getName(), "start commonCofig");
 
@@ -99,6 +99,7 @@ public class CommonModule extends TiMobileModule {
 		bindEventController(BackHomeEventControl.class);
 		bindEventController(HomeTabEventControl.class);
 		bindEventController(ShowSliderControl.class);
+		
 		bind(UpLoadFileServce.class).in(Scopes.SINGLETON);
 		bind(TxnReversalService.class).in(Scopes.SINGLETON);
 		bind(AposReportPersistenceThrowService.class).in(Scopes.SINGLETON);

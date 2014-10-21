@@ -261,7 +261,7 @@ public class TxnAcitivty extends AposBaseActivity implements ValueContainer,
 				.getTxnStatus())
 				|| TxnStatus.WAIT_BROWSER_PHONENO.equals(txnControl
 						.getTxnContext().getTxnStatus())) {
-			txnControl.submitTxn(pwdTextView.getText().toString(), this);
+			txnControl.submitTxn(pwdTextView.getText().toString(),this);
 		}
 
 	}

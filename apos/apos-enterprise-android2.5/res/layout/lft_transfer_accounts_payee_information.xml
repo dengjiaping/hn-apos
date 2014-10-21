@@ -9,7 +9,7 @@
 
         <TextView
             style="@style/com_top_text_style"
-            android:text="@string/lft_serve_transfer_accounts_collection_person_title_str" />
+            android:text="转账收款人信息" />
 
         <ImageView
             android:id="@+id/lft_transfer_accounts_payee_information_back"

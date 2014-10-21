@@ -38,14 +38,16 @@
 
         <node-complete
             identity="lft_transtf_txn"
-            sub-finish-cpl="finished"
+            sub-finish-cpl="result"
             sub-flow="com_txn_flow" />
 
-        <node-complete-finished
+        <node-complete
+            identity="result"
+            ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
+
+        <node-complete
             finish-flow="true"
-            flush-context="true"
-            identity="finish"
-            ref-activity="me.andpay.apos.common.activity.HomePageActivity" />
+            identity="finish" />
     </flow-node>
 
 </flow-diagram>

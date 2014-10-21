@@ -13,13 +13,16 @@
 
         <node-complete
             identity="topup_txn"
-            sub-flow="com_txn_flow" 
-            sub-finish-cpl="finish"
-            />
+            sub-finish-cpl="result"
+            sub-flow="com_txn_flow" />
+
         <node-complete
-            identity="finish"
-            ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity"
-            />
+            identity="result"
+            ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
+
+        <node-complete
+            finish-flow="true"
+            identity="finish" />
     </flow-node>
 
     <flow-node

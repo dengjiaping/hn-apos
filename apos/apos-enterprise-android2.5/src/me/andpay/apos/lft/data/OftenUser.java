@@ -1,5 +1,9 @@
 package me.andpay.apos.lft.data;
 
+import java.util.Map;
+
+import me.andpay.apos.base.BaseData;
+
 /**
  * 常用联系人
  * 
@@ -33,6 +37,16 @@ public class OftenUser implements BaseData {
 
 	public void setBankName(String bankName) {
 		this.bankName = bankName;
+	}
+
+	public void parse(Map map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Map page() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

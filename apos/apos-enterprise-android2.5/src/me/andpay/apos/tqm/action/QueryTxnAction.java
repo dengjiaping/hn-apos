@@ -66,7 +66,7 @@ public class QueryTxnAction extends SessionKeepAction {
 						.getDispatcher()
 						.forward(
 								TqmProvider.TQM_DOMAIN_QUERY_REMOTE,
-								isStorage ? TqmProvider.TQM_ACTION_QUERY_REMOTE_GETTXNLIST_STORAGE_REMOTE
+								isStorage ? TqmProvider.TQM_ACTION_QUERY_REMOTE_GETTXNLIST_STORAGE_REMOTE 
 										: TqmProvider.TQM_ACTION_QUERY_REMOTE_GETTXNLIST_REMOTE,
 								request);
 				List<PayTxnInfo> remoteTxnList = (List<PayTxnInfo>) forwardRefundMv

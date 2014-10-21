@@ -92,7 +92,7 @@ public class CreditCardConfirmActivity extends AposBaseActivity {
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
 		txnControl.setTxnCallback(new TopUpCallBackImpl());
 		String amountStr = "￥"+moneyStr;
-		//amountStr = "￥"+amountStr.substring(0,amountStr.length()-1);
+		
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));
 		txnContext.setPromptStr("还款中...");
 		setFlowContextData(txnContext);

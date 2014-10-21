@@ -5,6 +5,7 @@ import java.util.Map;
 
 import me.andpay.apos.R;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.lft.controller.TransferAccountVertyController;
 import me.andpay.apos.lft.data.OftenUser;
 import me.andpay.apos.lft.even.PayeeBankNumberTextWatcherEventControl;
 import me.andpay.apos.lft.even.PayeeIfmTextWatcherEventControl;
@@ -20,6 +21,8 @@ import roboguice.inject.InjectView;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.ViewTreeObserver.OnTouchModeChangeListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,9 +44,11 @@ public class PayeeInformationActivity extends AposBaseActivity implements
 	private ImageView back;
 
 	@InjectView(R.id.lft_transfer_accounts_payee_information_poundage)
-	private TextView poundage;// 手续费
+	public TextView poundage;// 手续费
 
-	@EventDelegate(type = DelegateType.eventController, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = PayeeIfmTextWatcherEventControl.class)
+	@EventDelegateArray({
+			@EventDelegate(type = DelegateType.eventController, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = PayeeIfmTextWatcherEventControl.class),
+			@EventDelegate(type = DelegateType.eventController, delegateClass = OnFocusChangeListener.class, toEventController = TransferAccountVertyController.class) })
 	@InjectView(R.id.lft_transfer_accounts_payee_information_money)
 	public EditText money;// 金额
 

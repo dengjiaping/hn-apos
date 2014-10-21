@@ -19,8 +19,17 @@
             identity="water_deatail"
             next-node="water_deatail"/>
         <node-complete
+            finish="result"
             identity="pay_cost_sure"
             sub-flow="com_txn_flow" />
+        <node-complete
+            identity="result"
+            ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
+
+        <node-complete
+            finish-flow="true"
+            identity="finish" />
+        
     </flow-node>
     <flow-node
         node-name="water_deatail"

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow-diagram
+    begin-node="start"
+    version="1.0" >
+    <flow-node
+        node-name="start"
+        ref-activity="me.andpay.apos.merchantsmaking.activity.MerchantsJoinActivity" >
+
+        <node-complete
+            identity="mc_commit_detail"
+            next-node="mc_commit_detail"/>
+    </flow-node>
+
+    <flow-node
+        node-name="mc_commit_detail"
+        ref-activity="me.andpay.apos.merchantsmaking.activity.MerchantsJoinCommitDetailActivity" >
+
+       <node-complete
+        	identity="finish"
+            finish-flow="true" />
+    </flow-node>
+
+</flow-diagram>

@@ -13,17 +13,14 @@ import me.andpay.apos.tam.form.TxnForm;
 import me.andpay.timobileframework.mvc.action.ActionRequest;
 
 /**
- * 充值 
+ * 充值
+ * 
  * @author Administrator
  */
 
 public class TopupProcessor extends GenTxnProcessor {
-	
+
 	protected VasTxnService txnService;
-
-
-
-
 
 	public void processTxn(ActionRequest request) {
 		// TODO Auto-generated method stub
@@ -31,44 +28,40 @@ public class TopupProcessor extends GenTxnProcessor {
 
 		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");
 		txnForm.setTimeoutTime(System.currentTimeMillis());
-		
-		/*创建请求*/
-		
+
+		/* 创建请求 */
+
 		super.processTxn(request);
-		CommonTermTxnRequest txnRequest = createTermTxnRequest(txnForm,VasTxnTypes.MOBILE_RECHARGE,creatContentObject(txnForm));
-		
-		
-		/*请求应答*/
-		
+		CommonTermTxnRequest txnRequest = createTermTxnRequest(txnForm,
+				"", creatContentObject(txnForm));
+
+		/* 请求应答 */
+
 		CommonTermTxnResponse txnResponse = txnService
 				.processCommonTxn(txnRequest);
-		/*应答处理*/
-		CtResponseAdapterTxnActionResponse response = new CtResponseAdapterTxnActionResponse(txnResponse);
+		/* 应答处理 */
+		CtResponseAdapterTxnActionResponse response = new CtResponseAdapterTxnActionResponse(
+				txnResponse);
 		TxnCallback callBack = (TxnCallback) request.getHandler();
-		if(txnResponse!=null){
+		if (txnResponse != null) {
 			callBack.txnSuccess(response);
-		}else{
+		} else {
 			callBack.showFaild(response);
 		}
-	
 
 	}
+
 	@Override
 	protected Map<String, String> creatContentObject(TxnForm txnForm) {
 		// TODO Auto-generated method stub
 		return txnForm.getMap();
 	}
 
-	
-
 	public void retrieveTxn(ActionRequest request) {
 		// TODO Auto-generated method stub
 
 	}
 
-	
-
-	
 	@Override
 	public void dealResponse(TxnResponse purResponse, TxnForm txnForm,
 			TxnCallback callBack, String errorMsg) {
@@ -85,9 +78,7 @@ public class TopupProcessor extends GenTxnProcessor {
 	@Override
 	public void txnTimeout(TxnForm txnForm, TxnCallback txnCallback) {
 		// TODO Auto-generated method stub
-		
-	}
 
-	
+	}
 
 }

@@ -1,6 +1,8 @@
 package me.andpay.apos.merchantservice.data;
 
-import me.andpay.apos.lft.data.BaseData;
+import java.util.Map;
+
+import me.andpay.apos.base.BaseData;
 
 /*描述*/
 public class Describe implements BaseData {
@@ -23,6 +25,16 @@ public class Describe implements BaseData {
 
 	public void setDescribe(String describe) {
 		this.describe = describe;
+	}
+
+	public void parse(Map map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Map page() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

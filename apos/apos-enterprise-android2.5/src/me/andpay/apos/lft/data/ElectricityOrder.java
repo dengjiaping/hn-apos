@@ -1,5 +1,9 @@
 package me.andpay.apos.lft.data;
 
+import java.util.Map;
+
+import me.andpay.apos.base.BaseData;
+
 /**
  * 电费账单
  * 
@@ -42,6 +46,16 @@ public class ElectricityOrder implements BaseData {
 
 	public void setShouldbeCost(String shouldbeCost) {
 		this.shouldbeCost = shouldbeCost;
+	}
+
+	public void parse(Map map) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Map page() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

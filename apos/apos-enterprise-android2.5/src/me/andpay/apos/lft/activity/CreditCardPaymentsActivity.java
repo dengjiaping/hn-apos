@@ -33,7 +33,7 @@ public class CreditCardPaymentsActivity extends AposBaseActivity {
 	private ImageView back;
 
 	@InjectView(R.id.lft_credit_card_payment_poundage)
-	private TextView poundage;// 手续费
+	public TextView poundage;// 手续费
 
 	@EventDelegate(type = DelegateType.eventController, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = CardPayTextWatcherEventControl.class)
 	@InjectView(R.id.lft_credit_card_payment_money)

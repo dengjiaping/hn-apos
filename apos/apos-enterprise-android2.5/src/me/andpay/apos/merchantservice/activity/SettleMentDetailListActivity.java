@@ -66,7 +66,7 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements Ad
 		state=(Integer)TiFlowControlImpl.instanceControl().getFlowContext().get("state");
 		switch (state) {
 		case 0:
-			titleTxt.setText("终端号"+order.getTitle());
+			titleTxt.setText("终端号");
 			break;
 
 		case 1:

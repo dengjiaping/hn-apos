@@ -13,5 +13,7 @@
 			<item>me.andpay.apos.config.TqrmModule</item>
 			<item>me.andpay.apos.config.VasModule</item>
 			<item>me.andpay.apos.config.StlModule</item>
+			<!-- 生活服务配置 -->
+			<item>me.andpay.apos.config.LftModule</item>
 	    </string-array>
 </resources>

@@ -24,10 +24,16 @@
             sub-flow="com_txn_flow" />
 
         <node-complete-finished
-            finish-flow="true"
-            flush-context="true"
-            identity="finish"
+            identity="result"
             ref-activity="me.andpay.apos.common.activity.HomePageActivity" />
+
+        <node-complete
+            identity="result"
+            ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
+
+        <node-complete
+            finish-flow="true"
+            identity="finish" />
     </flow-node>
 
 </flow-diagram>
