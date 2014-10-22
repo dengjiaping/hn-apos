@@ -1,29 +1,36 @@
 package me.andpay.apos.merchantservice.activity;
 
-import java.util.ArrayList;
-
-import com.crashlytics.android.internal.ad;
-import com.google.inject.Inject;
-
+import me.andpay.ac.consts.VasOptTypes;
+import me.andpay.ac.consts.ac.vas.ops.VasOptPropNames;
+import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
+import me.andpay.ac.term.api.vas.operation.CommonTermOptResponse;
+import me.andpay.apos.R;
+import me.andpay.apos.base.adapter.BaseAdapter;
+import me.andpay.apos.base.requestmanage.FinishRequestInterface;
+import me.andpay.apos.base.requestmanage.RequestManager;
+import me.andpay.apos.base.tools.ShowUtil;
+import me.andpay.apos.cmview.CommonDialog;
+import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.merchantservice.controller.DescribeController;
+import me.andpay.apos.merchantservice.data.Describe;
+import me.andpay.timobileframework.cache.HashMap;
+import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
+import me.andpay.timobileframework.mvc.anno.EventDelegate;
+import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectExtra;
+import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectView;
-import me.andpay.apos.R;
-import me.andpay.apos.base.adapter.BaseAdapter;
-import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.merchantservice.controller.DescribeController;
-import me.andpay.apos.merchantservice.data.Describe;
-import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
-import me.andpay.timobileframework.mvc.anno.EventDelegate;
-import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+
+import com.google.inject.Inject;
 
 /*结算明细*/
 @ContentView(R.layout.ms_settlement_deatail)
-public class SettleMentDeatailActivity extends AposBaseActivity {
+public class SettleMentDeatailActivity extends AposBaseActivity implements FinishRequestInterface{
 	/* 详情视图 */
 	@InjectView(R.id.ms_settlement_deatail_listview)
 	private ListView listView;
@@ -35,6 +42,18 @@ public class SettleMentDeatailActivity extends AposBaseActivity {
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.ms_settlement_deatail_back)
 	private ImageView back;
+	
+	@Inject RequestManager requestManager;
+	
+	@InjectExtra("ssn")
+	private String ssn;
+	
+	@InjectExtra("txnTime")
+	private String txnTime;
+	
+	
+	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +62,26 @@ public class SettleMentDeatailActivity extends AposBaseActivity {
 		adapter = new BaseAdapter<Describe>();
 		adapter.setContext(this);
 		adapter.setController(describeController);
-		adapter.setList(getList());
-
 		listView.setAdapter(adapter);
+		getDetail();
+	}
+	private CommonDialog txnDialog;
+	private void getDetail(){
+		
+		CommonTermOptRequest optRequest = new CommonTermOptRequest();
+		HashMap<String,Object> parameter = new HashMap<String, Object>();
+		parameter.put(VasOptPropNames.UNRPT_SSN,ssn);
+		parameter.put(VasOptPropNames.UNRPT_TXN_TIME,txnTime);
+		optRequest.setVasRequestContentObj(parameter);
+		optRequest.setMerchantNo("888430179110001");
+		optRequest.setOperateType(VasOptTypes.SETTLE_REPORT_QUERY_STAT_INFO);
+		requestManager.setOptRequest(optRequest);
+		requestManager.addFinishRequestResponse(this);
+		txnDialog = new CommonDialog(this, "请求中...");
+		txnDialog.show();
+		
+		requestManager.startService();
+		
 	}
 
 	String[][] dateStr = new String[][] { { "系统参考号", "104100" },
@@ -56,23 +92,24 @@ public class SettleMentDeatailActivity extends AposBaseActivity {
 
 	};
 
-	/* 获得数据 */
-
-	private ArrayList<Describe> getList() {
-		ArrayList<Describe> list = new ArrayList<Describe>();
-		for (int i = 0; i < dateStr.length; i++) {
-			Describe dc = new Describe();
-			dc.setTitle(dateStr[i][0]);
-			dc.setDescribe(dateStr[i][1]);
-			list.add(dc);
-		}
-		return list;
-
-	}
+	
 
 	public void back(View view) {
 
 		TiFlowControlImpl.instanceControl().previousSetup(this);
+	}
+
+
+
+	public void callBack(Object response) {
+		// TODO Auto-generated method stub
+		if(txnDialog!=null&&txnDialog.isShowing()){
+			txnDialog.cancel();
+		}
+		CommonTermOptResponse optResponse = (CommonTermOptResponse)response;
+		String jsonStr = (String)optResponse.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+		ShowUtil.showLongToast(this, jsonStr);
+		
 	}
 
 }

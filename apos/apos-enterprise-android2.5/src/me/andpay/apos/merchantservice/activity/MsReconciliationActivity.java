@@ -6,22 +6,22 @@ import me.andpay.ac.consts.VasOptTypes;
 import me.andpay.ac.consts.ac.vas.ops.VasOptPropNames;
 import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
 import me.andpay.ac.term.api.vas.operation.CommonTermOptResponse;
-import me.andpay.ac.term.api.vas.operation.VasOptService;
-import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
 import me.andpay.apos.R;
 import me.andpay.apos.base.adapter.AdpterEventListener;
 import me.andpay.apos.base.adapter.BaseAdapter;
 import me.andpay.apos.base.requestmanage.FinishRequestInterface;
 import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.base.tools.ShowUtil;
+import me.andpay.apos.base.tools.StringUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.common.constant.RuntimeAttrNames;
-import me.andpay.apos.common.contextdata.PartyInfo;
 import me.andpay.apos.merchantservice.controller.MergeAccountsControler;
-import me.andpay.apos.merchantservice.controller.SettleMentController;
+import me.andpay.apos.merchantservice.controller.SettleMentByTxntypeController;
+import me.andpay.apos.merchantservice.controller.SettleMentBytermController;
 import me.andpay.apos.merchantservice.data.MergeOrder;
 import me.andpay.apos.merchantservice.data.SelementOrder;
+import me.andpay.apos.merchantservice.data.SelementOrderByTxntype;
+import me.andpay.apos.merchantservice.data.SelementOrderByterm;
 import me.andpay.apos.merchantservice.flow.FlowNote;
 import me.andpay.timobileframework.cache.HashMap;
 import me.andpay.timobileframework.flow.TiFlowCallback;
@@ -42,7 +42,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.inject.Inject;
-
 
 /*银行对账*/
 
@@ -94,10 +93,17 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	@Inject
 	private MergeAccountsControler mergeAccountController;
 
-	private BaseAdapter<SelementOrder> settlementsAdapter;
+	/*终端清算*/
+	private BaseAdapter<SelementOrderByterm> settlementsBytermAdapter;
+	@Inject
+	private SettleMentBytermController settlementBytermController;
+	/*交易类型清算*/
+	private BaseAdapter<SelementOrderByTxntype> settlementsBytxntypeAdapter;
+	@Inject
+	private SettleMentByTxntypeController settlementBytxntypeController;
 
 	@Inject
-	private SettleMentController settlementController;
+	private RequestManager requestManager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -106,14 +112,16 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		/* 并账明细适配初始 */
 		mergeAccountsAdapter = new BaseAdapter<MergeOrder>();
 		mergeAccountsAdapter.setController(mergeAccountController);
-
-		mergeAccountsAdapter.setAdpterEventListener(this);
+        mergeAccountsAdapter.setAdpterEventListener(this);
 
 		/* 结算明细适配初始化 */
-		settlementsAdapter = new BaseAdapter<SelementOrder>();
-		settlementsAdapter.setController(settlementController);
-
-		settlementsAdapter.setAdpterEventListener(this);
+        settlementsBytermAdapter = new BaseAdapter<SelementOrderByterm>();
+        settlementsBytermAdapter.setController(settlementBytermController);
+        settlementsBytermAdapter.setAdpterEventListener(this);
+        
+        settlementsBytxntypeAdapter = new BaseAdapter<SelementOrderByTxntype>();
+        settlementsBytxntypeAdapter.setController(settlementBytxntypeController);
+        settlementsBytxntypeAdapter.setAdpterEventListener(this);
 		/* 试图初始化 */
 
 		listView.setDivider(getResources().getDrawable(
@@ -122,7 +130,7 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		time.setText("全部");
 
 		mergeAcccounts(null);
-		//getMergeOrders(PAGE_SIZE, currentMergePage);
+		
 
 	}
 
@@ -193,27 +201,30 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	 */
 	private void getMergeOrders(int pageSize, int page) {
 
-		CommonTermTxnRequest txnRequest = new CommonTermTxnRequest();
-		Map<String, String> mapData = new HashMap();
-		mapData.put("beginDate", beginTime);
-		mapData.put("endDate", endTime);
-		PartyInfo partyInfo = (PartyInfo) this.getAppContext().getAttribute(
-				RuntimeAttrNames.PARTY_INFO);
+		CommonTermOptRequest optRequest = new CommonTermOptRequest();
+		Map<String, Object> mapData = new HashMap();
+		if (!StringUtil.isEmpty(beginTime)) {
+			mapData.put(VasOptPropNames.UNRPT_BEGIN_DATE, beginTime);
+		}
+		if (!StringUtil.isEmpty(endTime)) {
+			mapData.put(VasOptPropNames.UNRPT_END_DATE, endTime);
+		}
+		// PartyInfo partyInfo = (PartyInfo) this.getAppContext().getAttribute(
+		// RuntimeAttrNames.PARTY_INFO);
+		optRequest.setMerchantNo("888430179110001");
+		optRequest.setPageSize(pageSize);
+		optRequest.setCurPageNo(page);
 
-		mapData.put("mchtNo", partyInfo.getPartyId());
-		mapData.put("pageSize", String.valueOf(pageSize));
-		mapData.put("page", String.valueOf(page));
+		optRequest.setOperateType(VasOptTypes.MERGE_REPORT_QUERY_ACCT_INFO);
 
-		txnRequest.setTxnRequestContentObj(mapData);
-		txnRequest.setVasTxnType("bzmx");
+		optRequest.setVasRequestContentObj(mapData);
 
-		RequestManager manager = new RequestManager();
-		manager.setRequest(txnRequest);
-		manager.addFinishRequestResponse(this);
+		requestManager.setOptRequest(optRequest);
+		requestManager.addFinishRequestResponse(this);
 
 		txnDialog = new CommonDialog(this, "读取中...");
 		txnDialog.show();
-		manager.startService();
+		requestManager.startService();
 
 	}
 
@@ -223,43 +234,46 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	 * @param pageSize
 	 * @param page
 	 */
-	protected VasOptService optService;
+
 	private void getSettleMentOrders(int pageSize, int page) {
 
-		final CommonTermOptRequest txnRequest = new CommonTermOptRequest();
+		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		Map<String, Object> mapData = new HashMap();
-		
-		mapData.put(VasOptPropNames.UNRPT_BEGIN_DATE, beginTime);
-		mapData.put(VasOptPropNames.UNRPT_END_DATE, endTime);
-		PartyInfo partyInfo = (PartyInfo) this.getAppContext().getAttribute(
-				RuntimeAttrNames.PARTY_INFO);
-		txnRequest.setMerchantNo(partyInfo.getPartyId());
-		txnRequest.setPageSize(pageSize);
-		txnRequest.setCurPageNo(page);
-		
-        txnRequest.setVasRequestContentObj(mapData);
-		txnRequest.setOperateType(VasOptTypes.SETTLE_REPORT_QUERY_STAT_BY_TERM);
+		if (!StringUtil.isEmpty(beginTime)) {
+			mapData.put(VasOptPropNames.UNRPT_BEGIN_DATE, beginTime);
+		}
+
+		if (!StringUtil.isEmpty(endTime)) {
+			mapData.put(VasOptPropNames.UNRPT_END_DATE, endTime);
+		}
+
+		// PartyInfo partyInfo = (PartyInfo) this.getAppContext().getAttribute(
+		// RuntimeAttrNames.PARTY_INFO);
+		optRequest.setMerchantNo("888430179110001");
+		optRequest.setPageSize(pageSize);
+		optRequest.setCurPageNo(page);
+
+		optRequest.setVasRequestContentObj(mapData);
+		switch (statisticalState){
+		case 0:// 终端
+			optRequest
+					.setOperateType(VasOptTypes.SETTLE_REPORT_QUERY_STAT_BY_TERM);
+			break;
+
+		case 1:// 交易类型
+			optRequest
+					.setOperateType(VasOptTypes.SETTLE_REPORT_QUERY_STAT_BY_TXNTYPE);
+			break;
+		}
+
+		requestManager.setOptRequest(optRequest);
+		requestManager.addFinishRequestResponse(this);
+
+		txnDialog = new CommonDialog(this, "读取中...");
+		txnDialog.show();
+		requestManager.startService();
 
 		
-		new Thread(new Runnable() {
-			
-			public void run() {
-				// TODO Auto-generated method stub
-				System.out.print("调用前");
-				CommonTermOptResponse reponse = optService.processCommonOpt(txnRequest);
-				System.out.print("调用后");
-			
-			}
-		}).start();
-		
-		
-//		RequestManager manager = new RequestManager();
-//		manager.setRequest1(txnRequest);
-//		manager.addFinishRequestResponse(this);
-//
-//		txnDialog = new CommonDialog(this, "读取中...");
-//		txnDialog.show();
-//		manager.startService();
 
 	}
 
@@ -294,9 +308,9 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 				android.R.color.darker_gray));
 
 		listView.setAdapter(mergeAccountsAdapter);
-//		if (mergeAccountsAdapter.getList().size() <= 0) {
-//			getMergeOrders(PAGE_SIZE, currentMergePage);
-//		}
+		if (mergeAccountsAdapter.getList().size() <= 0) {
+		    getMergeOrders(PAGE_SIZE, currentMergePage);
+		}
 
 	}
 
@@ -313,11 +327,22 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 				R.drawable.com_button_img));
 		mergeAccount.setTextColor(getResources().getColor(
 				android.R.color.darker_gray));
-		listView.setAdapter(settlementsAdapter);
-		if (settlementsAdapter.getList().size() <= 0) {
-			getSettleMentOrders(PAGE_SIZE,currentSettlePage);
-		}
+		switch (statisticalState) {
+		case 0://终端
+			listView.setAdapter(settlementsBytermAdapter);
+			if (settlementsBytermAdapter.getList().size() <= 0) {
+				getSettleMentOrders(PAGE_SIZE, currentSettlePage);
+			}
+			break;
 
+		case 1://交易类型
+			listView.setAdapter(settlementsBytxntypeAdapter);
+			if (settlementsBytxntypeAdapter.getList().size() <= 0) {
+				getSettleMentOrders(PAGE_SIZE, currentSettlePage);
+			}
+			break;
+		}
+		
 	}
 
 	/**
@@ -365,25 +390,31 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 
 	}
 
-	
-
-	public void callBack(Object response) {
+	public void callBack(Object response){
 		// TODO Auto-generated method stub
-		if (txnDialog.isShowing()) {
+		if (txnDialog.isShowing()){
 			txnDialog.cancel();
 		}
-		switch (getState) {
+		CommonTermOptResponse optResponse = (CommonTermOptResponse)response;
+		String resultStr = (String)optResponse.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+		
+		
+		switch (getState){
 		case 0:// 并账
-
+			mergeAccountsAdapter.setList(MergeOrder.getArrays(resultStr));
+			mergeAccountsAdapter.notifyDataSetChanged();
 			break;
 
 		case 1:// 清算
 			switch (statisticalState) {
 			case 0:// 按终端
-
+				settlementsBytermAdapter.setList(SelementOrderByterm.getArrays(resultStr));
+				settlementsBytermAdapter.notifyDataSetChanged();
 				break;
 
 			case 1:// 按交易类型
+				settlementsBytxntypeAdapter.setList(SelementOrderByTxntype.getArrays(resultStr));
+				settlementsBytxntypeAdapter.notifyDataSetChanged();
 				break;
 			}
 			break;

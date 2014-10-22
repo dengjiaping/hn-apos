@@ -2,13 +2,10 @@ package me.andpay.apos.base.requestmanage;
 
 import java.util.ArrayList;
 
-import com.google.inject.Inject;
-
-import roboguice.inject.InjectView;
 import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
-import me.andpay.ac.term.api.vas.txn.CommonTermTxnResponse;
-import me.andpay.ac.term.api.vas.txn.VasTxnService;
+
+import com.google.inject.Inject;
 
 /**
  * 请求管理
@@ -17,24 +14,35 @@ import me.andpay.ac.term.api.vas.txn.VasTxnService;
  *
  */
 public class RequestManager {
-	
-	
 	/**
 	 * 异步服务
 	 */
-	@Inject AsyncRequesTask serviceAsyTask;
+	@Inject
+	AsyncRequesTask serviceAsyTask;
 
 	/* 请求数据 */
-	private CommonTermTxnRequest request;
-	
-	private CommonTermOptRequest request1;
-	public CommonTermOptRequest getRequest1() {
-		return request1;
+	private CommonTermTxnRequest txnRequest;
+
+	private CommonTermOptRequest optRequest;
+
+	public CommonTermTxnRequest getTxnRequest() {
+		return txnRequest;
 	}
 
-	public void setRequest1(CommonTermOptRequest request1) {
-		this.request1 = request1;
+	public void setTxnRequest(CommonTermTxnRequest txnRequest) {
+		this.txnRequest = txnRequest;
+		this.optRequest = null;
 	}
+
+	public CommonTermOptRequest getOptRequest() {
+		return optRequest;
+	}
+
+	public void setOptRequest(CommonTermOptRequest optRequest) {
+		this.optRequest = optRequest;
+		this.txnRequest = null;
+	}
+
 	/* 相应接口 */
 	private ArrayList<FinishRequestInterface> list;
 
@@ -45,35 +53,27 @@ public class RequestManager {
 		list.add(response);
 	}
 
-	public CommonTermTxnRequest getRequest() {
-		return request;
-	}
-
-	public void setRequest(CommonTermTxnRequest request) {
-		this.request = request;
-	}
-
-	
 	/**
 	 * 开启服务调用
 	 */
-	public void startService(){
-		if(request!=null){
-			serviceAsyTask.setTxnRequest(request);
-		}else{
-			serviceAsyTask.setTxnRequest1(request1);
+	public void startService() {
+		if (txnRequest != null) {
+			serviceAsyTask.setTxnRequest(txnRequest);
+		} else {
+			serviceAsyTask.setOptRequest(optRequest);
 		}
-		
+
 		serviceAsyTask.setManager(this);
 		serviceAsyTask.execute();
 	}
+
 	/**
 	 * 异步执行后的响应
 	 * 
 	 * @param response
 	 */
 	public void callBack(Object response) {
-		for(int i=0;i<list.size();i++){
+		for (int i = 0; i < list.size(); i++) {
 			FinishRequestInterface fi = list.get(i);
 			fi.callBack(response);
 		}

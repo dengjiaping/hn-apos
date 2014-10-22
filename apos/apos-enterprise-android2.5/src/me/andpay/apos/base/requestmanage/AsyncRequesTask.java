@@ -3,7 +3,6 @@ package me.andpay.apos.base.requestmanage;
 import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
 import me.andpay.ac.term.api.vas.operation.VasOptService;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
-import me.andpay.ac.term.api.vas.txn.CommonTermTxnResponse;
 import me.andpay.ac.term.api.vas.txn.VasTxnService;
 import android.os.AsyncTask;
 
@@ -14,15 +13,7 @@ public class AsyncRequesTask extends AsyncTask<Void, Void, Object> {
 
 	private CommonTermTxnRequest txnRequest;
 
-	private CommonTermOptRequest txnRequest1;
-
-	public CommonTermOptRequest getTxnRequest1() {
-		return txnRequest1;
-	}
-
-	public void setTxnRequest1(CommonTermOptRequest txnRequest1) {
-		this.txnRequest1 = txnRequest1;
-	}
+	private CommonTermOptRequest optRequest;
 
 	public CommonTermTxnRequest getTxnRequest() {
 		return txnRequest;
@@ -30,6 +21,14 @@ public class AsyncRequesTask extends AsyncTask<Void, Void, Object> {
 
 	public void setTxnRequest(CommonTermTxnRequest txnRequest) {
 		this.txnRequest = txnRequest;
+	}
+
+	public CommonTermOptRequest getOptRequest() {
+		return optRequest;
+	}
+
+	public void setOptRequest(CommonTermOptRequest optRequest) {
+		this.optRequest = optRequest;
 	}
 
 	private RequestManager manager;
@@ -48,7 +47,7 @@ public class AsyncRequesTask extends AsyncTask<Void, Void, Object> {
 		if (txnRequest != null) {
 			return txnService.processCommonTxn(txnRequest);
 		} else {
-			return optService.processCommonOpt(txnRequest1);
+			return optService.processCommonOpt(optRequest);
 		}
 	}
 
