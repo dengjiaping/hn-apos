@@ -21,6 +21,7 @@ import roboguice.inject.ContentView;
 import roboguice.inject.InjectExtra;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -106,8 +107,13 @@ public class SettleMentDeatailActivity extends AposBaseActivity implements Finis
 		if(txnDialog!=null&&txnDialog.isShowing()){
 			txnDialog.cancel();
 		}
+		if(response==null){
+			ShowUtil.showShortToast(this,getResources().getString(R.string.conection_exception));
+		    return;
+		}
 		CommonTermOptResponse optResponse = (CommonTermOptResponse)response;
 		String jsonStr = (String)optResponse.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+		Log.e("输出", jsonStr);
 		ShowUtil.showLongToast(this, jsonStr);
 		
 	}

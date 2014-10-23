@@ -16,5 +16,8 @@
     <color name="white">#ffffff</color>
     <!-- 基本底色 -->
     <color name="baseBackGround">#f0f0f0</color>
+    <!-- 辅助颜色 -->
+    <color name="auxiliary">#666666</color>
+    
 
 </resources>

@@ -55,7 +55,7 @@ public class QueryTxnMockAction extends MultiAction {
 				info.setCardOrg("浦发银行");
 				info.setShortPan("622118******2092");
 				// info.setSalesAmt(new Random().nextDouble());
-				info.setMerchantName("上海和付信息技术有限公司");
+				info.setMerchantName("湖南银联");
 				info.setTxnTime(DateUtil.format("yyyy/MM/dd HH:mm:ss",
 						new Date()));
 				info.setTxnTypeDesc("消费");

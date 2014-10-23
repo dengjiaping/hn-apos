@@ -27,7 +27,7 @@ public class PayCostProcessor extends GenTxnProcessor{
 
 		super.processTxn(request);
 		CommonTermTxnRequest txnRequest = createTermTxnRequest(txnForm,
-				"", creatContentObject(txnForm));
+				VasTxnTypes.LIFE_PAY_CONFIRM, creatContentObject(txnForm));
 
 		/* 请求应答 */
 

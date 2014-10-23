@@ -60,7 +60,7 @@ public class MockCloudOrderService {
 		response.setSignTxnFlag(false);
 		response.setEncCardNo("6225********2092");
 		response.setCardAssoc(CardAssoces.VISA);
-		response.setMerchantName("和付测试信息");
+		response.setMerchantName("湖南银联测试信息");
 		response.setCardName("招商银行信用卡");
 		response.setShortCardNo("6225********2092");
 		response.setRespMessage("交易成功");

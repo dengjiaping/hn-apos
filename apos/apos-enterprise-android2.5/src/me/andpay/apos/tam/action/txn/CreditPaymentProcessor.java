@@ -29,7 +29,7 @@ public class CreditPaymentProcessor extends GenTxnProcessor{
 
 		super.processTxn(request);
 		CommonTermTxnRequest txnRequest = createTermTxnRequest(txnForm,
-				"", creatContentObject(txnForm));
+				VasTxnTypes.CREDIT_CARD_CONFIRM, creatContentObject(txnForm));
 
 		/* 请求应答 */
 

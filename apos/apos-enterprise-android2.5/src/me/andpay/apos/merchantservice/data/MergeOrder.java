@@ -23,15 +23,15 @@ public class MergeOrder implements BaseDataJson {
 	public void parse(JSONObject jo) {
 		// TODO Auto-generated method stub
 		try {
-			mchtNo = jo.getString(mchtNo);
-			acctDate = jo.getString(acctDate);
-			mchtName = jo.getString(mchtName);
-			beginSdate = jo.getString(beginSdate);
-			endSdate = jo.getString(endSdate);
-			createDate = jo.getString(createDate);
-			jAmt = jo.getString(jAmt);
-			dAmt = jo.getString(dAmt);
-			memo = jo.getString(memo);
+			mchtNo = jo.getString("mchtNo");
+			acctDate = jo.getString("acctDate");
+			mchtName = jo.getString("mchtName");
+			beginSdate = jo.getString("beginSdate");
+			endSdate = jo.getString("endSdate");
+			createDate = jo.getString("createDate");
+			jAmt = jo.getString("jAmt");
+			dAmt = jo.getString("dAmt");
+			memo = jo.getString("memo");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

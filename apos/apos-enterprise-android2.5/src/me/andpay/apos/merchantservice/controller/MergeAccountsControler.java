@@ -46,8 +46,8 @@ public class MergeAccountsControler extends
 		MergeOrder order = getAdpter().getList().get(arg0);
 		//holder.title.setText(order.getTitle());
 		holder.describe.setText(order.getMemo());
-		holder.borrowing.setText(order.getjAmt());
-		holder.loan.setText(order.getjAmt());
+		holder.borrowing.setText("借:"+order.getjAmt());
+		holder.loan.setText("贷:"+order.getjAmt());
 
 		return arg1;
 	}

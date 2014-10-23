@@ -2,14 +2,19 @@ package me.andpay.apos.message.activity;
 
 import java.util.ArrayList;
 
+import me.andpay.ac.consts.VasOptTypes;
+import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
 import me.andpay.apos.R;
 import me.andpay.apos.base.adapter.AdpterEventListener;
 import me.andpay.apos.base.adapter.BaseAdapter;
+import me.andpay.apos.base.requestmanage.FinishRequestInterface;
+import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.common.activity.HomePageActivity;
 import me.andpay.apos.message.controller.MessageAdapterController;
 import me.andpay.apos.message.data.Message;
 import me.andpay.apos.message.flow.FlowNames;
+import me.andpay.timobileframework.cache.HashMap;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
@@ -30,7 +35,8 @@ import com.google.inject.Inject;
  * 
  */
 @ContentView(R.layout.msg_message_home)
-public class MessageActivity extends AposBaseActivity {
+public class MessageActivity extends AposBaseActivity implements
+		FinishRequestInterface {
 	@EventDelegate(type = DelegateType.method, toMethod = "backMenu", delegateClass = OnClickListener.class)
 	@InjectView(R.id.msg_home_show_silder_btn)
 	private ImageView menu;// 返回主菜单
@@ -96,5 +102,44 @@ public class MessageActivity extends AposBaseActivity {
 	public void backMenu(View v) {
 		HomePageActivity hp = (HomePageActivity) this.getParent();
 		hp.showSlider();
+	}
+
+	/**
+	 * 获取通知
+	 */
+	@Inject
+	RequestManager requestManager;
+
+	private void getMessages(String annoType) {
+		CommonTermOptRequest optReques = new CommonTermOptRequest();
+		HashMap<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("annoType", annoType);
+		optReques.setVasRequestContentObj(dataMap);
+		optReques.setUserName("13838380439");
+		optReques.setOperateType(VasOptTypes.OSS_ANNOUNCEMENT_LIST_QUERY);
+		requestManager.setOptRequest(optReques);
+		requestManager.addFinishRequestResponse(this);
+		requestManager.startService();
+		// OSS-ANNO-SYS：系统通知, OSS-ANNO-ACT:活动公告
+
+	}
+
+	private void selectMessage(String id, String action) {
+		CommonTermOptRequest optRequest = new CommonTermOptRequest();
+		HashMap<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("id", id);
+		dataMap.put("action", action);
+		optRequest.setVasRequestContentObj(dataMap);
+		optRequest.setUserName("13838380439");
+		optRequest.setOperateType(VasOptTypes.OSS_ANNOUNCEMENT_OPERATE_NOTES);
+		requestManager.setOptRequest(optRequest);
+		requestManager.addFinishRequestResponse(this);
+
+		requestManager.startService();
+	}
+
+	public void callBack(Object response) {
+		// TODO Auto-generated method stub
+
 	}
 }

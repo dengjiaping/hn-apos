@@ -27,7 +27,7 @@ public class TransferAccountProcessor extends GenTxnProcessor{
 
 		super.processTxn(request);
 		CommonTermTxnRequest txnRequest = createTermTxnRequest(txnForm,
-				"", creatContentObject(txnForm));
+				VasTxnTypes.TRANSFER_CONFIRM, creatContentObject(txnForm));
 
 		/* 请求应答 */
 

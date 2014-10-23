@@ -15,6 +15,7 @@ import me.andpay.apos.base.adapter.AdpterEventListener;
 import me.andpay.apos.base.adapter.BaseExpandableAdapter;
 import me.andpay.apos.base.requestmanage.FinishRequestInterface;
 import me.andpay.apos.base.requestmanage.RequestManager;
+import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.base.tools.TimeUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
@@ -104,6 +105,7 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		listView.setChildDivider(getResources().getDrawable(
 				R.drawable.scm_solid_line_img));
 		listView.setAdapter(adapter);
+		getSettlementDetail(pageSize, page);
 		// expandGroup(-1);
 	}
 
@@ -111,6 +113,8 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 	 * 获得清算详情
 	 */
 	private CommonDialog txnDialog;
+	private int pageSize = 10;
+	private int page = 1;
 
 	private void getSettlementDetail(int pageSize, int page) {
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
@@ -173,6 +177,10 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		// TODO Auto-generated method stub
 		if (txnDialog != null && txnDialog.isShowing()) {
 			txnDialog.cancel();
+		}
+		if(response==null){
+			ShowUtil.showShortToast(this,getResources().getString(R.string.conection_exception));
+		    return;
 		}
 		CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
 		String jsonStr = (String) optResponse

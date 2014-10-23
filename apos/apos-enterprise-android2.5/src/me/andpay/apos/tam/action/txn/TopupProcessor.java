@@ -33,7 +33,7 @@ public class TopupProcessor extends GenTxnProcessor {
 
 		super.processTxn(request);
 		CommonTermTxnRequest txnRequest = createTermTxnRequest(txnForm,
-				"", creatContentObject(txnForm));
+				VasTxnTypes.MOBILE_RECHARGE_ALL, creatContentObject(txnForm));
 
 		/* 请求应答 */
 

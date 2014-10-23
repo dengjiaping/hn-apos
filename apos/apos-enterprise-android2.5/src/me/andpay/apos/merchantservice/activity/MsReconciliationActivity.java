@@ -308,7 +308,7 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 				android.R.color.darker_gray));
 
 		listView.setAdapter(mergeAccountsAdapter);
-		if (mergeAccountsAdapter.getList().size() <= 0) {
+		if(mergeAccountsAdapter.getList().size() <= 0){
 		    getMergeOrders(PAGE_SIZE, currentMergePage);
 		}
 
@@ -394,6 +394,10 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		// TODO Auto-generated method stub
 		if (txnDialog.isShowing()){
 			txnDialog.cancel();
+		}
+		if(response==null){
+			ShowUtil.showShortToast(this,getResources().getString(R.string.conection_exception));
+		    return;
 		}
 		CommonTermOptResponse optResponse = (CommonTermOptResponse)response;
 		String resultStr = (String)optResponse.getVasRespContentObj(VasOptPropNames.UNRPT_RES);

@@ -69,7 +69,7 @@ public class SettleMentDetailListExpandableController extends
 					R.layout.head_data_item);
 		}
 		TextView time = (TextView) arg2.findViewById(R.id.head_data_item_time);
-		SettlementDetailOrder order = getAdapter().getList().get(0).get(0);
+		SettlementDetailOrder order = getAdapter().getList().get(arg0).get(0);
 		Date tempDate = TimeUtil.getInstance().formatString(
 				order.getCreateDate(), TimeUtil.DATE_PATTERN_11);
 		String transferTime = TimeUtil.getInstance().formatDate(tempDate,

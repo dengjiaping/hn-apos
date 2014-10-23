@@ -126,12 +126,12 @@ public class InitMsrKeyServiceImpl implements InitCardReaderService {
 
 			if (!loadMastKey(keyTypes, mrsKeys, aposContext.getAppConfig(),
 					identifier)) {
-				initMsrKeyResult.setErrorMsg("初始化主密钥失败,请联系和付。");
+				initMsrKeyResult.setErrorMsg("初始化主密钥失败,请联系湖南银联。");
 				return initMsrKeyResult;
 			}
 			if (!loadOtherKeys(keyTypes, mrsKeys, aposContext.getAppConfig(),
 					identifier)) {
-				initMsrKeyResult.setErrorMsg("初始化工作密钥失败,请联系和付。");
+				initMsrKeyResult.setErrorMsg("初始化工作密钥失败,请联系湖南银联。");
 				return initMsrKeyResult;
 			}
 		} else {

@@ -3,16 +3,25 @@ package me.andpay.apos.merchantservice.activity;
 import java.io.File;
 import java.util.ArrayList;
 
+import com.google.inject.Inject;
+
+import me.andpay.ac.consts.VasOptTypes;
+import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
+import me.andpay.ac.term.api.vas.operation.CommonTermOptResponse;
 import me.andpay.apos.R;
 import me.andpay.apos.base.adapter.AdpterEventListener;
 import me.andpay.apos.base.adapter.BaseAdapter;
 import me.andpay.apos.base.inteface.PhotoResponse;
+import me.andpay.apos.base.requestmanage.FinishRequestInterface;
+import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.base.tools.FileUtil;
 import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.base.view.CustomDialog;
+import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.merchantservice.controller.SelectImageController;
 import me.andpay.apos.merchantservice.flow.FlowContants;
+import me.andpay.timobileframework.cache.HashMap;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
@@ -22,6 +31,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -29,7 +39,7 @@ import android.widget.ImageView;
 /*添加退单界面*/
 @ContentView(R.layout.add_back_order)
 public class AddBackOrderActivity extends AposBaseActivity implements
-		AdpterEventListener, PhotoResponse {
+		AdpterEventListener, PhotoResponse, FinishRequestInterface {
 	/* 返回 */
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.add_back_order_back)
@@ -46,6 +56,11 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 	/* 添加图片 */
 	@InjectView(R.id.add_back_order_photo)
 	private GridView gridView;
+
+	/* 添加按钮 */
+	@EventDelegate(type = DelegateType.method, toMethod = "addbackOrder", delegateClass = OnClickListener.class)
+	@InjectView(R.id.add_back_order_btn)
+	private Button addBtn;
 
 	private BaseAdapter<String> addImageAdapter;
 
@@ -82,6 +97,7 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 		}
 		return false;
 	}
+
 	public void selectAlbum() {
 		// TODO Auto-generated method stub
 		ShowUtil.selectAlbum(this, FlowContants.SELECT_ALBUM);
@@ -116,4 +132,42 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 		addImageAdapter.notifyDataSetChanged();
 	}
 
+	private CommonDialog txnDialog = new CommonDialog(this, "添加中...");
+	@Inject
+	RequestManager requetManager;
+
+	/* 添加退单 */
+
+	public void addbackOrder(View view) {
+		CommonTermOptRequest optRequest = new CommonTermOptRequest();
+		HashMap<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("subject", titleEdit.getText().toString());
+		dataMap.put("description", describeEdit.getText().toString());
+		dataMap.put("imagePaths", "image1,image2,image3");
+		optRequest.setVasRequestContentObj(dataMap);
+		optRequest.setUserName("13838380439");
+		optRequest.setOperateType(VasOptTypes.OSS_ERROR_HANDLR_RETURN_ADD);
+		requetManager.setOptRequest(optRequest);
+		requetManager.addFinishRequestResponse(this);
+		txnDialog.show();
+		requetManager.startService();
+
+	}
+
+	public void callBack(Object response) {
+		// TODO Auto-generated method stub
+		if (txnDialog != null && txnDialog.isShowing()) {
+			txnDialog.cancel();
+		}
+		if (response == null) {
+			ShowUtil.showShortToast(this, "添加失败");
+		} else {
+			CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
+			if (optResponse.isSuccess()) {
+				ShowUtil.showShortToast(this, "添加成功");
+			} else {
+				ShowUtil.showShortToast(this, "添加失败");
+			}
+		}
+	}
 }

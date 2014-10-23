@@ -3,14 +3,14 @@ package me.andpay.apos.merchantservice.controller;
 import me.andpay.apos.R;
 import me.andpay.apos.base.adapter.BaseAdapterController;
 import me.andpay.apos.base.tools.ShowUtil;
-import me.andpay.apos.merchantservice.data.BringOrder;
+import me.andpay.apos.merchantservice.data.BringAndBackOrder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 /*调单控制器*/
-public class BringOrderController extends BaseAdapterController<BringOrder> {
+public class BringAndBackOrderController extends BaseAdapterController<BringAndBackOrder> {
 
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
@@ -29,10 +29,17 @@ public class BringOrderController extends BaseAdapterController<BringOrder> {
 
 			holder = (Holder) arg1.getTag();
 		}
-		BringOrder order = getAdpter().getList().get(arg0);
-		holder.title.setText(order.getTitle());
-		holder.time.setText(order.getTime());
-		holder.dispose.setText(order.getDispose());
+		BringAndBackOrder order = getAdpter().getList().get(arg0);
+		holder.title.setText(order.getSubject());
+		holder.time.setText(order.getCreateTime());
+		if(order.getDispose().equals("0")){
+			holder.dispose.setTextColor(getAdpter().getContext().getResources().getColor(R.color.main_show_font_color));
+			holder.dispose.setText("未处理");
+		}else{
+			holder.dispose.setTextColor(getAdpter().getContext().getResources().getColor(R.color.red));
+			holder.dispose.setText("已处理");
+		}
+		
 		return arg1;
 	}
 
@@ -45,8 +52,8 @@ public class BringOrderController extends BaseAdapterController<BringOrder> {
 				// TODO Auto-generated method stub
 				getAdpter().getAdpterEventListener()
 				.onEventListener(
-						new Object[] { 1,
-								getAdpter().getList().get(position) });
+						new Object[]{0,
+								getAdpter().getList().get(position)});
 				
 			}
 		});

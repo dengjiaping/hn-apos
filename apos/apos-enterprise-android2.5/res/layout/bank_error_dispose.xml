@@ -51,14 +51,33 @@
             android:text="添加" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/bank_error_dispose_listview"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="@color/com_no_color"
-        android:divider="@drawable/scm_solid_line_img"
-        android:dividerHeight="1dip"
-        android:listSelector="@color/com_no_color" >
-    </ListView>
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/bank_error_dispose_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/com_no_color"
+            android:divider="@drawable/scm_solid_line_img"
+            android:dividerHeight="1dip"
+            android:listSelector="@color/com_no_color" >
+        </ListView>
+
+        <include
+            android:visibility="gone"
+            android:id="@+id/bank_error_dispose_faile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/connection_exception_layout" />
+        <include
+            android:visibility="gone"
+            android:id="@+id/bank_error_dispose_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/empty_data_layout" />
+        
+    </RelativeLayout>
 
 </LinearLayout>

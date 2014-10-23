@@ -41,7 +41,7 @@ public class GenMsrKeysAction extends MultiAction {
 			return modelAndView;
 		} catch (Exception ex) {
 			if (!ErrorMsgUtil.isNetworkError(ex)) {
-				modelAndView.addModelValue("errorMsg", "获取密钥失败,请联系和付。");
+				modelAndView.addModelValue("errorMsg", "获取密钥失败,请联系湖南银联。");
 				Crashlytics.log("get msrKey error ksn=" + ksn);
 				Crashlytics.logException(ex);
 			} else {

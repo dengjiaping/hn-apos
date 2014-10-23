@@ -3,7 +3,9 @@ package me.andpay.apos.base.requestmanage;
 import java.util.ArrayList;
 
 import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
+import me.andpay.ac.term.api.vas.operation.VasOptService;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
+import me.andpay.ac.term.api.vas.txn.VasTxnService;
 
 import com.google.inject.Inject;
 
@@ -17,13 +19,15 @@ public class RequestManager {
 	/**
 	 * 异步服务
 	 */
-	@Inject
-	AsyncRequesTask serviceAsyTask;
 
 	/* 请求数据 */
 	private CommonTermTxnRequest txnRequest;
 
 	private CommonTermOptRequest optRequest;
+
+	protected VasTxnService txnService;
+
+	protected VasOptService optService;
 
 	public CommonTermTxnRequest getTxnRequest() {
 		return txnRequest;
@@ -57,10 +61,13 @@ public class RequestManager {
 	 * 开启服务调用
 	 */
 	public void startService() {
+		AsyncRequesTask serviceAsyTask = new AsyncRequesTask();
 		if (txnRequest != null) {
 			serviceAsyTask.setTxnRequest(txnRequest);
+			serviceAsyTask.setTxnService(txnService);
 		} else {
 			serviceAsyTask.setOptRequest(optRequest);
+			serviceAsyTask.setOptService(optService);
 		}
 
 		serviceAsyTask.setManager(this);

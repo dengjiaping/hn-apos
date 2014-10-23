@@ -26,23 +26,59 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/order_information_report_dispose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
+        android:text="已处理"
+        android:textColor="#666666"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/order_information_report_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dip"
+        android:paddingLeft="10dip"
+        android:text="2014-09-50"
+        android:textColor="#666666"
+        android:textSize="14sp" />
+
+    <TextView
         android:id="@+id/order_information_report_describle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:layout_marginRight="10dip"
+        android:layout_margin="10dip"
         android:text="这里是描述，但我不知道写什么"
         android:textColor="#666666"
         android:textSize="14sp" />
 
-    <GridView
-        android:id="@+id/order_information_report_gridview"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dip"
-        android:horizontalSpacing="5dip"
-        android:numColumns="4"
-        android:verticalSpacing="5dip" >
-    </GridView>
+        android:layout_height="match_parent" >
+
+        <Button
+            android:visibility="gone"
+            android:layout_marginBottom="10dip"
+            android:id="@+id/order_information_report_btn"
+            style="@style/com_button_style"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:layout_marginTop="30dp"
+            android:text="上报" />
+
+        <GridView
+            android:id="@+id/order_information_report_gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/order_information_report_btn"
+            android:layout_margin="10dip"
+            android:horizontalSpacing="5dip"
+            android:numColumns="4"
+            android:verticalSpacing="5dip" >
+        </GridView>
+    </RelativeLayout>
 
 </LinearLayout>

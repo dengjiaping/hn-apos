@@ -85,7 +85,7 @@ public class TxnTimeoutEventControl extends AbstractEventController {
 
 	public void refundTxnOut(final TxnTimeoutActivity timeoutActivity) {
 		final OperationDialog operationDialog = new OperationDialog(
-				timeoutActivity, "提示", "此交易状态未明,请联系和付公司4007-288-100。");
+				timeoutActivity, "提示", "此交易状态未明,请联系湖南银联公司4007-288-100。");
 		operationDialog.setCancelButtonOnclickListener(new OnClickListener() {
 			public void onClick(View v) {
 				operationDialog.dismiss();

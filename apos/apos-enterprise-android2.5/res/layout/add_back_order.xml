@@ -31,14 +31,31 @@
         android:layout_marginRight="10dip"
         android:hint="请输入描述" />
 
-    <GridView
-        android:id="@+id/add_back_order_photo"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dip"
-        android:horizontalSpacing="5dip"
-        android:numColumns="4"
-        android:verticalSpacing="3dip" >
-    </GridView>
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/add_back_order_btn"
+            style="@style/com_button_style"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dip"
+            android:layout_marginLeft="33dp"
+            android:layout_marginRight="33dp"
+            android:layout_marginTop="30dp"
+            android:text="添加退货申请" />
+
+        <GridView
+            android:id="@+id/add_back_order_photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/add_back_order_btn"
+            android:layout_margin="10dip"
+            android:horizontalSpacing="5dip"
+            android:numColumns="4"
+            android:verticalSpacing="5dip" >
+        </GridView>
+    </RelativeLayout>
 
 </LinearLayout>
