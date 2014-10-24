@@ -1,17 +1,13 @@
 package me.andpay.apos.lft.activity;
 
-import java.io.Serializable;
-import java.util.Map;
-
-import me.andpay.ac.term.api.vas.txn.CommonTermTxnResponse;
 import me.andpay.apos.R;
 import me.andpay.apos.base.TxnType;
 import me.andpay.apos.common.activity.AposBaseActivity;
-import me.andpay.apos.common.flow.FlowConstants;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
 import roboguice.inject.ContentView;
+import roboguice.inject.InjectExtra;
 import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.view.View;
@@ -44,19 +40,18 @@ public class LftTradingSuccessfulActivity extends AposBaseActivity {
 	@InjectView(R.id.lft_trading_successful_status)
 	private TextView statusTxt;
 
+	@InjectExtra("txnType")
+	private String type;
+
+	@InjectExtra("isSuccess")
+	private String success;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
-		Map<String, Serializable> context = TiFlowControlImpl.instanceControl()
-				.getFlowContext();
-		String type = (String) context.get("txnType");
-
-		CommonTermTxnResponse response = (CommonTermTxnResponse) context
-				.get(CommonTermTxnResponse.class.getName());
-
-		boolean isSuccess = response.isSuccess();
+		boolean isSuccess = Boolean.valueOf(success);
 		if (isSuccess) {
 			img.setImageResource(R.drawable.com_salesslip_succeed_img);
 		} else {
@@ -73,30 +68,29 @@ public class LftTradingSuccessfulActivity extends AposBaseActivity {
 				statusTxt.setText("充值失败");
 			}
 
-		}else if(type.equals(TxnType.MPOS_PAYCOST_ELE)){
+		} else if (type.equals(TxnType.MPOS_PAYCOST_ELE)) {
 			showTxt.setText("缴电费");
 			if (isSuccess) {
 				statusTxt.setText("缴费成功");
 			} else {
 				statusTxt.setText("缴费失败");
 			}
-			
-			
-		}else if(type.equals(TxnType.MPOS_PAYCOST_WATER)){
+
+		} else if (type.equals(TxnType.MPOS_PAYCOST_WATER)) {
 			showTxt.setText("缴水费");
 			if (isSuccess) {
 				statusTxt.setText("缴费成功");
 			} else {
 				statusTxt.setText("缴费失败");
 			}
-		}else if(type.equals(TxnType.MPOS_TRANSFER_ACCOUNT)){
+		} else if (type.equals(TxnType.MPOS_TRANSFER_ACCOUNT)) {
 			showTxt.setText("转账");
 			if (isSuccess) {
 				statusTxt.setText("转账成功");
 			} else {
 				statusTxt.setText("转账失败");
 			}
-		}else if(type.equals(TxnType.MPOS_PAY_CREDIT_CARD)){
+		} else if (type.equals(TxnType.MPOS_PAY_CREDIT_CARD)) {
 			showTxt.setText("信用卡还款");
 			if (isSuccess) {
 				statusTxt.setText("信用卡还款成功");
@@ -107,8 +101,8 @@ public class LftTradingSuccessfulActivity extends AposBaseActivity {
 
 	}
 
-	public void back(View view){
-		TiFlowControlImpl.instanceControl().nextSetup(this,
-				FlowConstants.FINISH);
+	public void back(View view) {
+		finish();
+		// TiFlowControlImpl.instanceControl().previousSetup(this);
 	}
 }

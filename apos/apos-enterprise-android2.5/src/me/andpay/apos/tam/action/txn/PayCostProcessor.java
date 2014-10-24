@@ -1,12 +1,16 @@
 package me.andpay.apos.tam.action.txn;
 
 import java.util.Map;
+
+import com.google.inject.Inject;
+
 import me.andpay.ac.consts.VasTxnTypes;
 import me.andpay.ac.term.api.txn.TxnResponse;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnResponse;
 import me.andpay.ac.term.api.vas.txn.VasTxnService;
 import me.andpay.apos.tam.callback.TxnCallback;
+import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.form.CtResponseAdapterTxnActionResponse;
 import me.andpay.apos.tam.form.TxnForm;
 import me.andpay.timobileframework.mvc.action.ActionRequest;
@@ -17,6 +21,8 @@ import me.andpay.timobileframework.mvc.action.ActionRequest;
  */
 public class PayCostProcessor extends GenTxnProcessor{
 	protected VasTxnService txnService;
+	@Inject 
+	TxnControl txnControl;
 	@Override
 	public void processTxn(ActionRequest request) {
 		// TODO Auto-generated method stub
@@ -36,7 +42,7 @@ public class PayCostProcessor extends GenTxnProcessor{
 		/* 应答处理 */
 		CtResponseAdapterTxnActionResponse response = new CtResponseAdapterTxnActionResponse(
 				txnResponse);
-		TxnCallback callBack = (TxnCallback) request.getHandler();
+		TxnCallback callBack = txnControl.getTxnCallback();
 		if (txnResponse != null) {
 			callBack.txnSuccess(response);
 		} else {

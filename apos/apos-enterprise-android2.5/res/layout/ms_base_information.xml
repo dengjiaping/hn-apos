@@ -17,6 +17,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/ms_base_information_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -43,6 +44,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/ms_base_information_phonenumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -69,6 +71,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/ms_base_information_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -95,6 +98,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/ms_base_information_idcard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -122,6 +126,7 @@
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/ms_base_information_adress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

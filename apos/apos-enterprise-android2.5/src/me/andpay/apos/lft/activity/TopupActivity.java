@@ -92,7 +92,8 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 	 */
 	@Inject
 	TxnControl txnControl;
-
+	@Inject
+	TopUpCallBackImpl topUpCallBackImpl;
 	public void sure(View v) {
 	
 		TxnContext txnContext = txnControl.init();
@@ -107,7 +108,7 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 		txnContext.setNeedPin(true);
 		txnContext.setTxnType(TxnType.MPOS_TOPUP);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
-		txnControl.setTxnCallback(new TopUpCallBackImpl());
+		txnControl.setTxnCallback(topUpCallBackImpl);
 		String amountStr = "￥"+amount.getText().toString();
 		//amountStr = "￥"+amountStr.substring(0,amountStr.length()-1);
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));

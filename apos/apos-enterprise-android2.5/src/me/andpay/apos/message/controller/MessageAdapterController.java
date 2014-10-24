@@ -6,6 +6,7 @@ import me.andpay.apos.message.data.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -39,15 +40,15 @@ public class MessageAdapterController extends BaseAdapterController<Message> {
 			holder = (Holder) arg1.getTag();
 		}
 		Message msg = getAdpter().getList().get(arg0);
-		holder.title.setText(msg.getTitle());
-		holder.time.setText(msg.getTime());
+		holder.title.setText(msg.getSubject());
+		holder.time.setText(msg.getStartTime());
 		holder.isReader.setTextColor(getAdpter()
 				.getContext()
 				.getResources()
 				.getColor(
-						msg.isReader() ? R.color.tqm_list_item_amount_col
+						msg.getAction().equals("1") ? R.color.tqm_list_item_amount_col
 								: R.color.com_red_color));
-		holder.isReader.setText(msg.isReader() ? "已读" : "未读");
+		holder.isReader.setText(msg.getAction().equals("1") ? "已读" : "未读");
 
 		return arg1;
 	}
@@ -62,9 +63,22 @@ public class MessageAdapterController extends BaseAdapterController<Message> {
 				if (getAdpter().getAdpterEventListener() != null) {
 					getAdpter().getAdpterEventListener()
 							.onEventListener(
-									new Object[] { getAdpter().getList().get(
+									new Object[] { 0,getAdpter().getList().get(
 											position) });
 				}
+			}
+		});
+		view.setOnLongClickListener(new OnLongClickListener() {
+			
+			public boolean onLongClick(View v) {
+				// TODO Auto-generated method stub
+				if (getAdpter().getAdpterEventListener() != null) {
+					getAdpter().getAdpterEventListener()
+							.onEventListener(
+									new Object[] { 1,getAdpter().getList().get(
+											position) });
+				}
+				return true;
 			}
 		});
 	}

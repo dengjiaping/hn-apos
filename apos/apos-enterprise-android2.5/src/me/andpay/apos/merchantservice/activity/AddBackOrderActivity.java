@@ -70,6 +70,7 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		txnDialog = new CommonDialog(this, "添加中...");
 		addImageAdapter = new BaseAdapter<String>();
 		addImageAdapter.setContext(this);
 		ArrayList<String> list = new ArrayList<String>();
@@ -132,7 +133,7 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 		addImageAdapter.notifyDataSetChanged();
 	}
 
-	private CommonDialog txnDialog = new CommonDialog(this, "添加中...");
+	private CommonDialog txnDialog;
 	@Inject
 	RequestManager requetManager;
 
@@ -164,7 +165,10 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 		} else {
 			CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
 			if (optResponse.isSuccess()) {
+				
 				ShowUtil.showShortToast(this, "添加成功");
+				TiFlowControlImpl.instanceControl().previousSetup(this);
+				
 			} else {
 				ShowUtil.showShortToast(this, "添加失败");
 			}

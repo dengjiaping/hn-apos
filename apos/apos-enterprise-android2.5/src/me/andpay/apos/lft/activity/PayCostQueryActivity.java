@@ -88,7 +88,7 @@ public class PayCostQueryActivity extends AposBaseActivity {
 		unit.setText(unitStr);
 		serialNumber.setText(serialNumberStr);
 		
-		getDeatail();
+		//getDeatail();
 		
 	}
 	
@@ -146,6 +146,9 @@ public class PayCostQueryActivity extends AposBaseActivity {
 	 */
 	@Inject
 	TxnControl txnControl;
+	
+	@Inject 
+	PayCostTxnCallbackImpl payCostTxnCallbackImpl;
 
 	public void paySure(View view){
 		
@@ -161,7 +164,7 @@ public class PayCostQueryActivity extends AposBaseActivity {
 				.getFlowContext().get("type");
 		txnContext.setTxnType(type==PayCostType.ELECTRICITY?TxnType.MPOS_PAYCOST_ELE:TxnType.MPOS_PAYCOST_WATER);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
-		txnControl.setTxnCallback(new PayCostTxnCallbackImpl());
+		txnControl.setTxnCallback(payCostTxnCallbackImpl);
 		String amountStr = "￥" + trueMoney.getText().toString();
 	
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));

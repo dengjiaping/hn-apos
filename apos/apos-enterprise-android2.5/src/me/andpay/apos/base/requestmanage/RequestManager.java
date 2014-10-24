@@ -54,6 +54,12 @@ public class RequestManager {
 		if (list == null) {
 			list = new ArrayList<FinishRequestInterface>();
 		}
+		for(int i=0;i<list.size();i++){
+			FinishRequestInterface fi = list.get(i);
+			if(fi==response){
+				return;
+			}
+		}
 		list.add(response);
 	}
 

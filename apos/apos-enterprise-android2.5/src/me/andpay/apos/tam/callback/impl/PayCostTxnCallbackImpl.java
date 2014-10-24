@@ -7,10 +7,13 @@ import com.google.inject.Inject;
 
 import me.andpay.ac.consts.VasTxnTypes;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnResponse;
+import me.andpay.apos.base.TxnType;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.form.CtResponseAdapterTxnActionResponse;
 import me.andpay.apos.tam.form.TxnActionResponse;
+import me.andpay.timobileframework.cache.HashMap;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
+import me.andpay.timobileframework.mvc.anno.CallBackHandler;
 
 /**
  * 缴费
@@ -18,6 +21,7 @@ import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
  * @author Administrator
  *
  */
+@CallBackHandler
 public class PayCostTxnCallbackImpl extends TxnCallbackImpl {
 	@Inject
 	TxnControl txnControl;
@@ -32,14 +36,14 @@ public class PayCostTxnCallbackImpl extends TxnCallbackImpl {
 
 		CommonTermTxnResponse cm = ((CtResponseAdapterTxnActionResponse) actionResponse)
 				.getCommonTermResponse();
-		Map<String, Serializable> context = TiFlowControlImpl.instanceControl()
-				.getFlowContext();
-		context.put(CommonTermTxnResponse.class.getName(), cm);
+		Map<String, String> context = new HashMap<String, String>();
+
+		context.put("isSuccess", cm.isSuccess() ? "true" : "false");
 
 		context.put("txnType", txnControl.getTxnContext().getTxnType());
 		TiFlowControlImpl.instanceControl().nextSetup(
 				txnControl.getCurrActivity(),
-				me.andpay.apos.common.flow.FlowConstants.FINISH);
+				me.andpay.apos.common.flow.FlowConstants.FINISH,context);
 
 	}
 }

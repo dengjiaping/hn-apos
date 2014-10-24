@@ -14,7 +14,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static boolean isEmpty(String str) {
-		if ("".equals(str) || " ".equals(str)) {
+		if (str==null||"".equals(str) || " ".equals(str)||"[]".equals(str)) {
 			return true;
 		}
 		return false;

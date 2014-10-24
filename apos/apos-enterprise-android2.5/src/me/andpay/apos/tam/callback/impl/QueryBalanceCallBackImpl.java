@@ -11,7 +11,7 @@ public class QueryBalanceCallBackImpl extends TxnCallbackImpl implements
 		TxnCallback {
 
 	@Override
-	public void txnSuccess(TxnActionResponse txnActionResponse) {
+	public void txnSuccess(TxnActionResponse txnActionResponse){
 		if (txnControl.getTxnDialog().isShowing()) {
 			TxnCallbackHelper.clearAc(txnControl);
 		}

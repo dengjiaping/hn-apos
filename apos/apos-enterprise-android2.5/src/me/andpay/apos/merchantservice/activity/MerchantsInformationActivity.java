@@ -1,5 +1,8 @@
 package me.andpay.apos.merchantservice.activity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.google.inject.Inject;
 
 import android.annotation.SuppressLint;
@@ -21,6 +24,7 @@ import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.merchantservice.data.UserBaseInformation;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
@@ -33,7 +37,8 @@ import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
  */
 
 @ContentView(R.layout.merchants_information)
-public class MerchantsInformationActivity extends AposBaseActivity implements FinishRequestInterface {
+public class MerchantsInformationActivity extends AposBaseActivity implements
+		FinishRequestInterface {
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.merchants_information_back)
 	private ImageView back;
@@ -50,16 +55,52 @@ public class MerchantsInformationActivity extends AposBaseActivity implements Fi
 	private LinearLayout content;
 
 	private View baseView;
+	private TextView baseTitle;
+	private TextView phoneNumber;
+	private TextView userName;
+	private TextView idCard;
+	private TextView adress;
+
 	private View settlementView;
+	private TextView openName;
+	private TextView openBank;
+	private TextView openBrachBank;
+	private TextView openAccount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		txnDialog = new CommonDialog(this, "获取中...");
 		baseView = ShowUtil.LoadXmlView(this, R.layout.ms_base_information);
+		baseTitle = (TextView) baseView
+				.findViewById(R.id.ms_base_information_title);
+		phoneNumber = (TextView) baseView
+				.findViewById(R.id.ms_base_information_phonenumber);
+
+		userName = (TextView) baseView
+				.findViewById(R.id.ms_base_information_username);
+
+		idCard = (TextView) baseView
+				.findViewById(R.id.ms_base_information_idcard);
+
+		adress = (TextView) baseView
+				.findViewById(R.id.ms_base_information_adress);
+
 		settlementView = ShowUtil.LoadXmlView(this,
 				R.layout.ms_settlement_information);
+
+		openName = (TextView) settlementView
+				.findViewById(R.id.ms_settlement_information_open_name);
+		openBank = (TextView) settlementView
+				.findViewById(R.id.ms_settlement_information_open_bank);
+		openBrachBank = (TextView) settlementView
+				.findViewById(R.id.ms_settlement_information_open_branch_name);
+		openAccount = (TextView) settlementView
+				.findViewById(R.id.ms_settlement_information_open_account);
+
 		base(null);
+		getBaseInformation();
 	}
 
 	@SuppressLint("NewApi")
@@ -89,12 +130,15 @@ public class MerchantsInformationActivity extends AposBaseActivity implements Fi
 		content.addView(settlementView);
 
 	}
+
 	/**
 	 * 获得商户基本信息
 	 */
-	@Inject RequestManager requestManager;
-	private CommonDialog txnDialog=new CommonDialog(this,"获取中...");
-	public void getBaseInformation(){
+	@Inject
+	RequestManager requestManager;
+	private CommonDialog txnDialog;
+
+	public void getBaseInformation() {
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		optRequest.setUserName("13838380439");
 		optRequest.setOperateType(VasOptTypes.OSS_MERCHANT_BASE_INFO_QUERY);
@@ -104,7 +148,7 @@ public class MerchantsInformationActivity extends AposBaseActivity implements Fi
 		requestManager.startService();
 	}
 
-	public void back(View view){
+	public void back(View view) {
 		TiFlowControlImpl.instanceControl().previousSetup(this);
 	}
 
@@ -114,16 +158,30 @@ public class MerchantsInformationActivity extends AposBaseActivity implements Fi
 			txnDialog.cancel();
 		}
 		if(response==null){
-			ShowUtil.showShortToast(this,"获取失败");
+			ShowUtil.showShortToast(this,"获取用户信息失败");
 		}else{
 			CommonTermOptResponse optResponse = (CommonTermOptResponse)response;
 			if(!optResponse.isSuccess()){
-				ShowUtil.showShortToast(this,"数据为空");
+				ShowUtil.showShortToast(this,"获取用户信息失败");
 			}else{
 				String jsonStr = (String)optResponse.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+			    UserBaseInformation userInformation = new UserBaseInformation();
+			    try {
+					userInformation.parse(new JSONObject(jsonStr));
+					baseTitle.setText(userInformation.getMerchantName());
+					phoneNumber.setText(userInformation.getPhoneNumber());
+					userName.setText(userInformation.getName());
+					idCard.setText(userInformation.getIdCard());
+					adress.setText(userInformation.getAdress());
+					
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			    
+			 
 			}
 		}
 		
 	}
-
 }

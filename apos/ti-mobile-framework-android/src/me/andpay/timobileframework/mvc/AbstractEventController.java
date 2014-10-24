@@ -34,7 +34,7 @@ public abstract class AbstractEventController implements EventController {
 						TiContext.CONTEXT_SCOPE_APPLICATION_CONFIG);
 	}
 
-	protected TiContext getAppContext(Activity refActivty) {
+	protected TiContext getAppContext(Activity refActivty){
 		return ((TiApplication) refActivty.getApplication())
 				.getContextProvider().provider(
 						TiContext.CONTEXT_SCOPE_APPLICATION);

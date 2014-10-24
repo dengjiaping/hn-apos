@@ -40,7 +40,7 @@ public class MessageDeatailActivity extends AposBaseActivity {
 		}
 	}
 
-	public void back(View v) {
+	public void back(View v){
 
 		TiFlowControlImpl.instanceControl().previousSetup(this);
 	}

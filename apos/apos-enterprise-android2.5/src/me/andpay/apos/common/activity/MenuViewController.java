@@ -36,10 +36,10 @@ public class MenuViewController implements OnClickListener,
 	public RelativeLayout orderLayout;
 	public RelativeLayout queryLayout;
 	public RelativeLayout refundLayout;
-	public RelativeLayout balanceLayout;
+	//public RelativeLayout balanceLayout;
 	// public RelativeLayout vaserviceLayout;
 	// public RelativeLayout couponLayout;
-	public RelativeLayout settleLayout;
+	//public RelativeLayout settleLayout;
 
 	private RelativeLayout leftServeLayout;// 生活服务
 	private RelativeLayout messageLayout;// 通知公告
@@ -156,23 +156,24 @@ public class MenuViewController implements OnClickListener,
 		// homeActivity.changeView(TabNames.COUPON_PAGE);
 		// changeViewState(v);
 		// }
-		else if (v.getId() == balanceLayout.getId()) {
-
-			TxnContext txnContext = homeActivity.txnControl.init();
-
-			txnContext.setNeedPin(false);
-			txnContext.setTxnType(TxnTypes.INQUIRY_BALANCE);
-			txnContext.setBackTagName(TabNames.BALANCE_PAGE);
-			homeActivity.txnControl
-					.setTxnCallback(new QueryBalanceCallBackImpl());
-
-			TiFlowControlImpl.instanceControl().startFlow(homeActivity,
-					FlowNames.TAM_BALANCE_QUERY_FLOW);
-			TiFlowControlImpl.instanceControl().setFlowContextData(txnContext);
-		} else if (v.getId() == settleLayout.getId()) {
-			homeActivity.changeView(TabNames.SETTLE_PAGE);
-			changeViewState(v);
-		}
+//		else if (v.getId() == balanceLayout.getId()) {
+//
+//			TxnContext txnContext = homeActivity.txnControl.init();
+//
+//			txnContext.setNeedPin(false);
+//			txnContext.setTxnType(TxnTypes.INQUIRY_BALANCE);
+//			txnContext.setBackTagName(TabNames.BALANCE_PAGE);
+//			homeActivity.txnControl
+//					.setTxnCallback(new QueryBalanceCallBackImpl());
+//
+//			TiFlowControlImpl.instanceControl().startFlow(homeActivity,
+//					FlowNames.TAM_BALANCE_QUERY_FLOW);
+//			TiFlowControlImpl.instanceControl().setFlowContextData(txnContext);
+//		} else 
+//		else if (v.getId() == settleLayout.getId()) {
+//			homeActivity.changeView(TabNames.SETTLE_PAGE);
+//			changeViewState(v);
+//		}
 
 	}
 
@@ -200,12 +201,12 @@ public class MenuViewController implements OnClickListener,
 				.findViewById(R.id.com_menu_query_lay);
 		refundLayout = (RelativeLayout) menuView
 				.findViewById(R.id.com_menu_refund_lay);
-		balanceLayout = (RelativeLayout) menuView
-				.findViewById(R.id.com_menu_balance_lay);
+//		balanceLayout = (RelativeLayout) menuView
+//				.findViewById(R.id.com_menu_balance_lay);
 		// couponLayout = (RelativeLayout) menuView
 		// .findViewById(R.id.com_menu_coupon_lay);
-		settleLayout = (RelativeLayout) menuView
-				.findViewById(R.id.com_menu_settle_lay);
+//		settleLayout = (RelativeLayout) menuView
+//				.findViewById(R.id.com_menu_settle_lay);
 
 		// vaserviceLayout = (RelativeLayout) menuView
 		// .findViewById(R.id.com_menu_vaserivce_lay);
@@ -219,7 +220,7 @@ public class MenuViewController implements OnClickListener,
 		// layoutMaps.put(TabNames.MORE_PAGE, moreLayout);
 		// layoutMaps.put(TabNames.COUPON_PAGE, couponLayout);
 		// layoutMaps.put(TabNames.VA_SERVICE, vaserviceLayout);
-		layoutMaps.put(TabNames.SETTLE_PAGE, settleLayout);
+		//layoutMaps.put(TabNames.SETTLE_PAGE, settleLayout);
 
 		messageImageView = (ImageView) menuView
 				.findViewById(R.id.com_memu_message_img);
@@ -243,8 +244,8 @@ public class MenuViewController implements OnClickListener,
 				.findViewById(R.id.com_memu_refund_line_img);
 		// vaserviceImageView = (ImageView) menuView
 		// .findViewById(R.id.com_memu_vaservice_line_img);
-		balanceImageView = (ImageView) menuView
-				.findViewById(R.id.com_memu_balance_line_img);
+//		balanceImageView = (ImageView) menuView
+//				.findViewById(R.id.com_memu_balance_line_img);
 		// couponImageView = (ImageView) menuView
 		// .findViewById(R.id.com_memu_coupon_line_img);
 		settleImageView = (ImageView) menuView
@@ -303,9 +304,9 @@ public class MenuViewController implements OnClickListener,
 		queryLayout.setOnClickListener(this);
 		refundLayout.setOnClickListener(this);
 		// vaserviceLayout.setOnClickListener(this);
-		balanceLayout.setOnClickListener(this);
+		//balanceLayout.setOnClickListener(this);
 		// couponLayout.setOnClickListener(this);
-		settleLayout.setOnClickListener(this);
+		//settleLayout.setOnClickListener(this);
 		leftServeLayout.setOnClickListener(this);
 		messageLayout.setOnClickListener(this);
 
@@ -319,23 +320,23 @@ public class MenuViewController implements OnClickListener,
 				.getAttribute(RuntimeAttrNames.PARTY_INFO);
 		Map<String, String> privileges = partyInfo.getPrivileges();
 
-		if (!privileges.containsKey(Privileges.QUERY_SETTLE_ORDER)) {
-			settleLayout.setVisibility(View.GONE);
-			settleImageView.setVisibility(View.GONE);
-		} else {
-			privilegeMaps.put(Privileges.QUERY_SETTLE_ORDER, settleLayout);
-			imagesMaps.put(Privileges.QUERY_SETTLE_ORDER, settleImageView);
-			firstTab = TabNames.SETTLE_PAGE;
-		}
-		if (!privileges.containsKey(Privileges.INQUIRY_BALANCE)) {
-			balanceLayout.setVisibility(View.GONE);
-			balanceImageView.setVisibility(View.GONE);
-		} else {
-			privilegeMaps.put(Privileges.INQUIRY_BALANCE, balanceLayout);
-			imagesMaps.put(Privileges.INQUIRY_BALANCE, balanceImageView);
-			firstTab = TabNames.BALANCE_PAGE;
-
-		}
+//		if (!privileges.containsKey(Privileges.QUERY_SETTLE_ORDER)) {
+//			settleLayout.setVisibility(View.GONE);
+//			settleImageView.setVisibility(View.GONE);
+//		} else {
+//			privilegeMaps.put(Privileges.QUERY_SETTLE_ORDER, settleLayout);
+//			imagesMaps.put(Privileges.QUERY_SETTLE_ORDER, settleImageView);
+//			firstTab = TabNames.SETTLE_PAGE;
+//		}
+//		if (!privileges.containsKey(Privileges.INQUIRY_BALANCE)) {
+//			balanceLayout.setVisibility(View.GONE);
+//			balanceImageView.setVisibility(View.GONE);
+//		} else {
+//			privilegeMaps.put(Privileges.INQUIRY_BALANCE, balanceLayout);
+//			imagesMaps.put(Privileges.INQUIRY_BALANCE, balanceImageView);
+//			firstTab = TabNames.BALANCE_PAGE;
+//
+//		}
 
 		if (!privileges.containsKey(Privileges.REFUND)) {
 			refundLayout.setVisibility(View.GONE);
@@ -392,23 +393,23 @@ public class MenuViewController implements OnClickListener,
 				.getAttribute(RuntimeAttrNames.PARTY_INFO);
 		Map<String, String> privileges = partyInfo.getPrivileges();
 
-		if (privileges.containsKey(Privileges.QUERY_SETTLE_ORDER)){
-			if (privilegeMaps.get(Privileges.QUERY_SETTLE_ORDER)
-					.getVisibility() == View.VISIBLE)
-				firstLayout = this.settleLayout;
-		}
+//		if (privileges.containsKey(Privileges.QUERY_SETTLE_ORDER)){
+//			if (privilegeMaps.get(Privileges.QUERY_SETTLE_ORDER)
+//					.getVisibility() == View.VISIBLE)
+//				firstLayout = this.settleLayout;
+//		}
 
-		if (privileges.containsKey(Privileges.INQUIRY_BALANCE)) {
-			if (privilegeMaps.get(Privileges.INQUIRY_BALANCE).getVisibility() == View.VISIBLE)
-				firstLayout = this.balanceLayout;
-		}
+//		if (privileges.containsKey(Privileges.INQUIRY_BALANCE)) {
+//			if (privilegeMaps.get(Privileges.INQUIRY_BALANCE).getVisibility() == View.VISIBLE)
+//				firstLayout = this.balanceLayout;
+//		}
 
 		if (privileges.containsKey(Privileges.REFUND)) {
 			if (privilegeMaps.get(Privileges.REFUND).getVisibility() == View.VISIBLE)
 				firstLayout = refundLayout;
 		}
 
-		if (privileges.containsKey(Privileges.QUERY_TXN)) {
+		if (privileges.containsKey(Privileges.QUERY_TXN)){
 			if (privilegeMaps.get(Privileges.QUERY_TXN).getVisibility() == View.VISIBLE)
 				firstLayout = queryLayout;
 		}

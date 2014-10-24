@@ -7,6 +7,7 @@ import me.andpay.apos.base.TxnType;
 import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.lft.flow.FlowConstants;
+import me.andpay.apos.tam.callback.impl.CreditPaymentCallBackImpl;
 import me.andpay.apos.tam.callback.impl.TopUpCallBackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
@@ -84,13 +85,14 @@ public class CreditCardConfirmActivity extends AposBaseActivity {
 	 * @param v
 	 */
 	@Inject TxnControl txnControl;
+	@Inject CreditPaymentCallBackImpl creditPaymentCallBackImpl;
 	public void cardPayTxn(View v) {
 		TxnContext txnContext = txnControl.init();
 
 		txnContext.setNeedPin(true);
 		txnContext.setTxnType(TxnType.MPOS_PAY_CREDIT_CARD);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
-		txnControl.setTxnCallback(new TopUpCallBackImpl());
+		txnControl.setTxnCallback(creditPaymentCallBackImpl);
 		String amountStr = "￥"+moneyStr;
 		
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));

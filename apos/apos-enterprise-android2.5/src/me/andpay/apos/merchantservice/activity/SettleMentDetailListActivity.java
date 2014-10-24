@@ -164,11 +164,10 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 	public boolean onEventListener(Object... objects) {
 		// TODO Auto-generated method stub
 		SettlementDetailOrder order = (SettlementDetailOrder) objects[0];
-		Map<String, String> data = new HashMap();
-		data.put("ssn", order.getSsn());
-		data.put("txnTime", order.getTxnTime());
+
+		TiFlowControlImpl.instanceControl().getFlowContext().put("order", order);
 		TiFlowControlImpl.instanceControl().nextSetup(this,
-				FlowNote.SETTLEMENT_DEATAIL, data);
+				FlowNote.SETTLEMENT_DEATAIL);
 
 		return false;
 	}

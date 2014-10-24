@@ -58,27 +58,44 @@
         android:layout_height="match_parent" >
 
         <Button
-            android:visibility="gone"
-            android:layout_marginBottom="10dip"
             android:id="@+id/order_information_report_btn"
             style="@style/com_button_style"
             android:layout_width="match_parent"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dip"
             android:layout_marginLeft="33dp"
             android:layout_marginRight="33dp"
             android:layout_marginTop="30dp"
-            android:text="上报" />
+            android:text="上报"
+            android:visibility="gone" />
 
-        <GridView
-            android:id="@+id/order_information_report_gridview"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_above="@id/order_information_report_btn"
-            android:layout_margin="10dip"
-            android:horizontalSpacing="5dip"
-            android:numColumns="4"
-            android:verticalSpacing="5dip" >
-        </GridView>
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:text="请添加附件"
+                android:textColor="@color/main_show_font_color"
+                android:textSize="15sp" />
+
+            <GridView
+                android:id="@+id/order_information_report_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="4dip"
+                android:horizontalSpacing="5dip"
+                android:numColumns="4"
+                android:verticalSpacing="5dip" >
+            </GridView>
+        </LinearLayout>
     </RelativeLayout>
 
 </LinearLayout>

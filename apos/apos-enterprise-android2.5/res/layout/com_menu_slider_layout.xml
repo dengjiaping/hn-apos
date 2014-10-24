@@ -102,7 +102,6 @@
             </RelativeLayout>
 
             <ImageView
-                
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="@drawable/com_left_menu_solid_line_img" />
@@ -204,7 +203,7 @@
                 android:id="@+id/com_memu_transfer_line_img"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
+                android:background="@drawable/com_left_menu_solid_line_img" />
             -->
 
             <RelativeLayout
@@ -296,14 +295,14 @@
                     style="@style/com_menu_text_style"
                     android:layout_toRightOf="@+id/com_memu_vaservice_img"
                     android:text="增值服务" />
-            </RelativeLayout>
+            </RelativeLayout>
             -->
             <!--
             <ImageView
                 android:id="@+id/com_memu_vaservice_line_img"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
+                android:background="@drawable/com_left_menu_solid_line_img" />
             -->
             <!--
             <RelativeLayout
@@ -329,7 +328,7 @@
                 android:id="@+id/com_memu_more_line_img"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
+                android:background="@drawable/com_left_menu_solid_line_img" />
             -->
             <!--
             <RelativeLayout
@@ -348,21 +347,22 @@
                     style="@style/com_menu_text_style"
                     android:layout_toRightOf="@+id/com_memu_coupon_img"
                     android:text="@string/tam_coupon_query_str" />
-            </RelativeLayout>
+            </RelativeLayout>
             -->
             <!--
             <ImageView
                 android:id="@+id/com_memu_coupon_line_img"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
+                android:background="@drawable/com_left_menu_solid_line_img" />
             -->
-
+<!-- 
             <RelativeLayout
                 android:id="@+id/com_menu_balance_lay"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
-                android:background="@drawable/com_menu_background_selector" >
+                android:background="@drawable/com_menu_background_selector"
+                android:visibility="gone" >
 
                 <ImageView
                     android:id="@+id/com_memu_balance_img"
@@ -388,13 +388,15 @@
                 android:id="@+id/com_memu_balance_line_img"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
+                android:background="@drawable/com_left_menu_solid_line_img"
+                android:visibility="gone" /> -->
 
-            <RelativeLayout
+           <!--  <RelativeLayout
                 android:id="@+id/com_menu_settle_lay"
                 android:layout_width="match_parent"
                 android:layout_height="49dp"
-                android:background="@drawable/com_menu_background_selector" >
+                android:background="@drawable/com_menu_background_selector"
+                android:visibility="gone" >
 
                 <ImageView
                     android:id="@+id/com_memu_settle_img"
@@ -410,10 +412,10 @@
             </RelativeLayout>
 
             <ImageView
-               
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="@drawable/com_left_menu_solid_line_img" />
+                android:background="@drawable/com_left_menu_solid_line_img"
+                android:visibility="gone" /> -->
 
             <RelativeLayout
                 android:id="@+id/com_menu_last_lay"

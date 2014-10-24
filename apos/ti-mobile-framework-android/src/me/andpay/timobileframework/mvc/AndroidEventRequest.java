@@ -72,8 +72,8 @@ public class AndroidEventRequest implements EventRequest {
 		return this.open(formBean.getDomain(), formBean.getAction(), pattern);
 	}
 
-	public EventRequest callBack(Object callback) {
-		if (callback.getClass().isAnnotationPresent(CallBackHandler.class)) {
+	public EventRequest callBack(Object callback){
+		if (callback.getClass().isAnnotationPresent(CallBackHandler.class)){
 			this.callback = CallBackProxyFactory.generateProxy(callback);
 			return this;
 		}

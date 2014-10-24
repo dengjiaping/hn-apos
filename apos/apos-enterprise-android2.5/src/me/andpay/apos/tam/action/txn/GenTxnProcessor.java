@@ -81,7 +81,6 @@ import com.crashlytics.android.Crashlytics;
 import com.google.inject.Inject;
 
 public abstract class GenTxnProcessor implements TxnProcessor {
-	
 
 	@Inject
 	protected TxnConfirmDao txnConfirmDao;
@@ -136,13 +135,14 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 				.getContext(TiContext.CONTEXT_SCOPE_APPLICATION_CONFIG);
 	}
 
-	public CommonTermTxnRequest createTermTxnRequest(TxnForm txnForm,String type,Map<String,String> map) {
+	public CommonTermTxnRequest createTermTxnRequest(TxnForm txnForm,
+			String type, Map<String, String> map) {
 		CommonTermTxnRequest txnRequest = new CommonTermTxnRequest();
-				//BeanUtils.copyProperties(
-				//CommonTermTxnRequest.class,txnForm);
-        /*设置地理位置*/
+		// BeanUtils.copyProperties(
+		// CommonTermTxnRequest.class,txnForm);
+		/* 设置地理位置 */
 		if (locationService.hasLocation()) {
-			
+
 			TiLocation tiLocation = locationService.getLocation();
 			txnRequest.setLatitude(tiLocation.getLatitude());
 			txnRequest.setLongitude(tiLocation.getLongitude());
@@ -155,63 +155,52 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 
 		}
 
-		
-
-		/*设置银行卡信息*/
+		/* 设置银行卡信息 */
 		PaymentCardInfo cardInfo = new PaymentCardInfo();
-		if (txnForm.isIcCardTxn()){
+		if (txnForm.isIcCardTxn()) {
 			cardInfo.setCardNo(txnForm.getAposICCardDataInfo().getCardNo());
 		}
 
 		// cardInfo.setCvv2(txnForm.getCardInfo().get);
 		// cardInfo.setExpirationDate(expirationDate);
 		cardInfo.setPinblock(txnForm.getCardInfo().getPin());
-		cardInfo.setPinEncryptAdditionData(HexUtils
-				.hexStringToBytes(txnForm.getCardInfo()
-						.getPinRandNumber()));
+		cardInfo.setPinEncryptAdditionData(HexUtils.hexStringToBytes(txnForm
+				.getCardInfo().getPinRandNumber()));
 		cardInfo.setPinEncryptMethod(PinEncryptMethods.PINPAD);
-
-		cardInfo.setTrack2(txnForm
-				.getCardInfo()
-				.getEncTracks()
-				.substring(txnForm.getCardInfo().getTrack2Length(),
-						txnForm.getCardInfo().getTrack3Length()));
-		cardInfo.setTrack3(txnForm.getCardInfo().getEncTracks()
-				.substring(txnForm.getCardInfo().getTrack3Length()));
+		
 		cardInfo.setTrackAll(txnForm.getCardInfo().getEncTracks());
 		cardInfo.setTrackRandomFactor(txnForm.getCardInfo().getRandomNumber());
 		txnRequest.setPaymentCardInfo(cardInfo);
 		txnRequest.setKsn(txnForm.getCardInfo().getKsn());
 
 		// txnRequest.setTerminalId(terminalId);
-        /*设置接口类型*/
+		/* 设置接口类型 */
 		txnRequest.setVasTxnType(type);
 
-		/*交易金额*/
+		/* 交易金额 */
 		txnRequest.setAmt(txnForm.getSalesAmt());
 		txnRequest.setCur(CurrencyCodes.CNY);
-        
-		/*终端编号*/
+
+		/* 终端编号 */
 		txnRequest.setTermTraceNo(TxnUtil.getTermTraceNo(tiConfig));
 		TxnUtil.updateTermTraceNo(tiConfig);
 		txnForm.setTermTraceNo(txnRequest.getTermTraceNo());
 
-		/*交易时间*/
+		/* 交易时间 */
 		txnRequest.setTermTxnTime(new Date());
 		txnForm.setTermTxnTime(StringUtil.format("yyyyMMddHHmmss",
 				txnRequest.getTermTxnTime()));
-		
-		/*额外数据*/
-		
+
+		/* 额外数据 */
+
 		txnRequest.setTxnRequestContentObj(map);
 
-		//PinData pinData = genPinData(txnForm);
-		//setServiceEntryModes(txnForm, txnRequest, pinData);
-		
+		// PinData pinData = genPinData(txnForm);
+		// setServiceEntryModes(txnForm, txnRequest, pinData);
+
 		return txnRequest;
 	}
-	
-	
+
 	protected void setMac(String mac, TxnRequest purRequest) {
 		if (StringUtil.isBlank(mac)) {
 			return;
@@ -239,9 +228,9 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 
 		return attachmentItemTypes;
 	}
-	
-	/*创建额外数据*/
-	protected Map<String,String> creatContentObject(TxnForm txnForm){
+
+	/* 创建额外数据 */
+	protected Map<String, String> creatContentObject(TxnForm txnForm) {
 		return new HashMap<String, String>();
 	}
 
@@ -319,7 +308,7 @@ public abstract class GenTxnProcessor implements TxnProcessor {
 			}
 		}
 
-		if (CardReaderManager.getInputType() == AposSwiperContext.INPUT_KEY_BOARD){
+		if (CardReaderManager.getInputType() == AposSwiperContext.INPUT_KEY_BOARD) {
 			if (txnForm.getPin() != null) {
 				PinblockAndProtectedSecretKey pinAndKey = S3Client.encryptPin(
 						txnForm.getPin(),

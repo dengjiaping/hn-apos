@@ -104,6 +104,7 @@
             android:textSize="20sp" />
 
         <ImageView
+            android:visibility="invisible"
             android:id="@+id/lft_credit_card_payment_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

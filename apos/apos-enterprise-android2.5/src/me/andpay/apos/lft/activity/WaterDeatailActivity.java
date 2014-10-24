@@ -23,7 +23,7 @@ import com.google.inject.Inject;
 /**
  * 缴纳水费详情
  * 
- * @author Administrator
+ * @author shanxiaoping
  * 
  */
 @ContentView(R.layout.lft_water_deatail)

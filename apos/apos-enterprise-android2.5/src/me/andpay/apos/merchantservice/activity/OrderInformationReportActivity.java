@@ -3,20 +3,7 @@ package me.andpay.apos.merchantservice.activity;
 import java.io.File;
 import java.util.ArrayList;
 
-import com.google.inject.Inject;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectView;
 import me.andpay.ac.consts.VasOptTypes;
-import me.andpay.ac.consts.VasTxnTypes;
 import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
 import me.andpay.ac.term.api.vas.operation.CommonTermOptResponse;
 import me.andpay.apos.R;
@@ -36,6 +23,18 @@ import me.andpay.timobileframework.cache.HashMap;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.google.inject.Inject;
 
 /**
  * 调单信息上报详情
@@ -80,6 +79,7 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		txnDialog = new CommonDialog(this, "上报中...");
 		adapter = new BaseAdapter<String>();
 		adapter.setContext(this);
 		adapter.setAdpterEventListener(this);
@@ -107,9 +107,10 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 
 	@Inject
 	RequestManager requestManager;
-	private CommonDialog txnDialog = new CommonDialog(this, "上报中...");
+	
+	private CommonDialog txnDialog;
 
-	private void reportOrder() {
+	public void reportOrder(View view) {
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("id", order.getId());
@@ -178,8 +179,10 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 		} else {
 			CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
 			if (optResponse.isSuccess()) {
+				TiFlowControlImpl.instanceControl().previousSetup(this);
 				ShowUtil.showShortToast(this, "上报成功");
 			} else {
+				
 				ShowUtil.showShortToast(this, "上报失败");
 			}
 		}

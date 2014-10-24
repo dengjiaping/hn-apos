@@ -37,7 +37,7 @@ import com.google.inject.Inject;
 /*银联差错处理*/
 @ContentView(R.layout.bank_error_dispose)
 public class BankErrorDisposeActivity extends AposBaseActivity implements
-		AdpterEventListener, FinishRequestInterface {
+		AdpterEventListener, FinishRequestInterface, OnClickListener {
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.bank_error_dispose_back)
 	private ImageView back;
@@ -46,13 +46,12 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	@InjectView(R.id.bank_error_dispose_return_apply)
 	private TextView apply;
 
-	@EventDelegate(type = DelegateType.method, toMethod = "report", delegateClass = OnClickListener.class)
-	@InjectView(R.id.bank_error_dispose_order_report)
+	
 	private TextView report;
 
 	@EventDelegate(type = DelegateType.method, toMethod = "add", delegateClass = OnClickListener.class)
 	@InjectView(R.id.bank_error_dispose_add)
-	private TextView add;
+    TextView add;
 
 	@InjectView(R.id.bank_error_dispose_listview)
 	private ListView listView;
@@ -60,10 +59,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	private BaseAdapter<BringAndBackOrder> applyAdapter;
 	private BaseAdapter<BringAndBackOrder> bringAdapter;
 
-	@Inject
 	private BringAndBackOrderController backOrderController;
-
-	@Inject
 	private BringAndBackOrderController bringOrderController;
 
 	/**
@@ -74,21 +70,21 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	/**
 	 * 链接失败
 	 */
-	@InjectView(R.id.bank_error_dispose_faile)
+
 	private View faile;
 
 	/**
 	 * 数据为空
 	 */
-	@InjectView(R.id.bank_error_dispose_empty)
+
 	private View empty;
 
 	/**
 	 * 刷新
 	 */
-	@EventDelegate(type = DelegateType.method, toMethod = "refreshData", delegateClass = OnClickListener.class)
-	@InjectView(R.id.refresh_btn)
-	private Button refreshBtn;
+
+	private Button refreshBtn1;
+	private Button refreshBtn2;
 
 	@Inject
 	RequestManager requestManager;
@@ -97,14 +93,33 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+
+		txnDialog = new CommonDialog(this, "读取中...");
+		faile = findViewById(R.id.bank_error_dispose_faile);
+		empty = findViewById(R.id.bank_error_dispose_empty);
+		refreshBtn1 = (Button) faile.findViewById(R.id.refresh_btn);
+		refreshBtn2 = (Button) empty.findViewById(R.id.refresh_btn);
+		
+		refreshBtn1.setOnClickListener(this);
+		refreshBtn2.setOnClickListener(this);
+		
+		apply = (TextView)findViewById(R.id.bank_error_dispose_return_apply);
+		report = (TextView)findViewById(R.id.bank_error_dispose_order_report);
+		apply.setOnClickListener(this);
+		report.setOnClickListener(this);
+
+	
+
 		applyAdapter = new BaseAdapter<BringAndBackOrder>();
 		applyAdapter.setContext(this);
+		backOrderController = new BringAndBackOrderController();
 		applyAdapter.setController(backOrderController);
 
 		applyAdapter.setAdpterEventListener(this);
 
 		bringAdapter = new BaseAdapter<BringAndBackOrder>();
 		bringAdapter.setContext(this);
+		bringOrderController = new BringAndBackOrderController();
 		bringAdapter.setController(bringOrderController);
 
 		bringAdapter.setAdpterEventListener(this);
@@ -118,7 +133,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	 * 
 	 * @param view
 	 */
-	public void refreshData(View view) {
+	public void refreshData() {
 
 		switch (currentState) {
 		case 0:
@@ -142,7 +157,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	private int pageSize = 10;
 	private int applyPage = 1;
 	private int reportPage = 1;
-	private CommonDialog txnDialog = new CommonDialog(this,"读取中...");
+	private CommonDialog txnDialog;
 
 	private void getOrders(int pageSize, int page, String queryType) {
 
@@ -178,9 +193,9 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 		report.setTextColor(getResources()
 				.getColor(android.R.color.darker_gray));
 		listView.setAdapter(applyAdapter);
-		if(applyAdapter.getList().size()<=0){
+		if (applyAdapter.getList().size() <= 0) {
 			txnDialog.show();
-			getOrders(pageSize, applyPage=1, "OSS-ERROR-R");
+			getOrders(pageSize, applyPage = 1, "OSS-ERROR-R");
 		}
 
 	}
@@ -196,9 +211,9 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 				R.drawable.com_button_img));
 		apply.setTextColor(getResources().getColor(android.R.color.darker_gray));
 		listView.setAdapter(bringAdapter);
-		if(bringAdapter.getList().size()<=0){
+		if (bringAdapter.getList().size() <= 0) {
 			txnDialog.show();
-			getOrders(pageSize, reportPage=1, "OSS-ERROR-A");
+			getOrders(pageSize, reportPage = 1, "OSS-ERROR-A");
 		}
 	}
 
@@ -211,16 +226,19 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 
 	public boolean onEventListener(Object... objects) {
 		// TODO Auto-generated method stub
-		BringAndBackOrder order = (BringAndBackOrder)objects[1];
-		TiFlowControlImpl.instanceControl().getFlowContext().put(BringAndBackOrder.class.getName(),order);
-		TiFlowControlImpl.instanceControl().nextSetup(this,
-				currentState==0?FlowNote.BACK_ORDER_DETAIL:FlowNote.REPORT_ORDER_DETAIL);
+		BringAndBackOrder order = (BringAndBackOrder) objects[1];
+		TiFlowControlImpl.instanceControl().getFlowContext()
+				.put(BringAndBackOrder.class.getName(), order);
+		TiFlowControlImpl.instanceControl().nextSetup(
+				this,
+				currentState == 0 ? FlowNote.BACK_ORDER_DETAIL
+						: FlowNote.REPORT_ORDER_DETAIL);
 		return false;
 	}
 
 	public void callBack(Object response) {
 		// TODO Auto-generated method stub
-		if(txnDialog!=null&&txnDialog.isShowing()){
+		if (txnDialog != null && txnDialog.isShowing()) {
 			txnDialog.cancel();
 		}
 		if (response == null
@@ -245,15 +263,15 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 					ArrayList<BringAndBackOrder> dataList = BringAndBackOrder
 							.getArrays(jsonStr);
 					switch (currentState) {
-						case 0:
-							applyAdapter.getList().addAll(dataList);
-							applyAdapter.notifyDataSetChanged();
-							break;
-	
-						case 1:
-							bringAdapter.getList().addAll(dataList);
-							bringAdapter.notifyDataSetChanged();
-							break;
+					case 0:
+						applyAdapter.getList().addAll(dataList);
+						applyAdapter.notifyDataSetChanged();
+						break;
+
+					case 1:
+						bringAdapter.getList().addAll(dataList);
+						bringAdapter.notifyDataSetChanged();
+						break;
 					}
 				}
 			}
@@ -292,4 +310,16 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 
 	}
 
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		if (v.getId() == R.id.refresh_btn) {
+			
+			refreshData();
+		}else if(v.getId() == R.id.bank_error_dispose_return_apply){
+			apply(null);
+			
+		}else if(v.getId() == R.id.bank_error_dispose_order_report){
+			report(null);
+		}
+	}
 }

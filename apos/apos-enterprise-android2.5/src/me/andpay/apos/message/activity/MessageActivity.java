@@ -3,12 +3,16 @@ package me.andpay.apos.message.activity;
 import java.util.ArrayList;
 
 import me.andpay.ac.consts.VasOptTypes;
+import me.andpay.ac.consts.ac.vas.ops.VasOptPropNames;
 import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
+import me.andpay.ac.term.api.vas.operation.CommonTermOptResponse;
 import me.andpay.apos.R;
 import me.andpay.apos.base.adapter.AdpterEventListener;
 import me.andpay.apos.base.adapter.BaseAdapter;
 import me.andpay.apos.base.requestmanage.FinishRequestInterface;
 import me.andpay.apos.base.requestmanage.RequestManager;
+import me.andpay.apos.base.tools.StringUtil;
+import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.common.activity.HomePageActivity;
 import me.andpay.apos.message.controller.MessageAdapterController;
@@ -20,11 +24,15 @@ import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.inject.Inject;
 
@@ -36,7 +44,7 @@ import com.google.inject.Inject;
  */
 @ContentView(R.layout.msg_message_home)
 public class MessageActivity extends AposBaseActivity implements
-		FinishRequestInterface {
+		FinishRequestInterface, OnClickListener {
 	@EventDelegate(type = DelegateType.method, toMethod = "backMenu", delegateClass = OnClickListener.class)
 	@InjectView(R.id.msg_home_show_silder_btn)
 	private ImageView menu;// 返回主菜单
@@ -44,28 +52,114 @@ public class MessageActivity extends AposBaseActivity implements
 	@InjectView(R.id.msg_message_home_listview)
 	private ListView listview;// 通知列表
 
-	@Inject
-	BaseAdapter<Message> adapter;// 适配器
+	@EventDelegate(type = DelegateType.method, toMethod = "selectMessage", delegateClass = OnClickListener.class)
+	@InjectView(R.id.msg_message_home_message)
+	private TextView message;
+
+	@EventDelegate(type = DelegateType.method, toMethod = "selectNote", delegateClass = OnClickListener.class)
+	@InjectView(R.id.msg_message_home_note)
+	private TextView note;
+
+	private View faile;
+
+	private View empty;
+
+	private Button refreshBtn1;
+	private Button refreshBtn2;
 
 	@Inject
-	MessageAdapterController controller;// 控制器
+	BaseAdapter<Message> messageAdapter;// 适配器
+	@Inject
+	MessageAdapterController messageController;// 控制器
+
+	@Inject
+	BaseAdapter<Message> noteAdapter;
+	@Inject
+	MessageAdapterController noteController;
+
+	private int currentState = 0;// 0系统，1活动公告
+
+	public void selectMessage(View view) {
+		currentState = 0;
+		message.setBackgroundDrawable(getResources().getDrawable(
+				R.drawable.com_button_blue_img));
+		message.setTextColor(getResources().getColor(android.R.color.white));
+
+		note.setBackgroundDrawable(getResources().getDrawable(
+				R.drawable.com_button_img));
+		note.setTextColor(getResources().getColor(android.R.color.darker_gray));
+		listview.setAdapter(messageAdapter);
+		if (messageAdapter.getList().size() <= 0) {
+			messagePage = 1;
+			txnDialog.show();
+			selectDataStatus(1);
+			getMessages(pageSize, messagePage, "OSS-ANNO-ACT");
+		} else {
+			selectDataStatus(1);
+		}
+
+	}
+
+	public void selectNote(View view) {
+		currentState = 1;
+		note.setBackgroundDrawable(getResources().getDrawable(
+				R.drawable.com_button_blue_img));
+		note.setTextColor(getResources().getColor(android.R.color.white));
+
+		message.setBackgroundDrawable(getResources().getDrawable(
+				R.drawable.com_button_img));
+		message.setTextColor(getResources().getColor(
+				android.R.color.darker_gray));
+		listview.setAdapter(noteAdapter);
+		if (noteAdapter.getList().size() <= 0) {
+			notePage = 1;
+			txnDialog.show();
+			selectDataStatus(1);
+			getMessages(pageSize, notePage, "OSS-ANNO-SYS");
+		} else {
+			selectDataStatus(1);
+		}
+
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		adapter.setContext(this);
-		adapter.setList(getList());
-		adapter.setAdpterEventListener(new AdpterEventListener() {
+		txnDialog = new CommonDialog(this, "获取中...");
+
+		faile = findViewById(R.id.msg_message_home_faile);
+
+		empty = findViewById(R.id.msg_message_home_empty);
+
+		refreshBtn1 = (Button) faile.findViewById(R.id.refresh_btn);
+		refreshBtn2 = (Button) empty.findViewById(R.id.refresh_btn);
+		refreshBtn1.setOnClickListener(this);
+		refreshBtn2.setOnClickListener(this);
+		messageAdapter.setContext(this);
+
+		messageAdapter.setAdpterEventListener(new AdpterEventListener() {
 
 			public boolean onEventListener(Object... objects) {
 				// TODO Auto-generated method stub
-				lookMessageDeatail((Message) objects[0]);
+				lookMessageDeatail((Integer) objects[0], (Message) objects[1]);
 				return false;
 			}
 		});
-		adapter.setController(controller);
-		listview.setAdapter(adapter);
+		messageAdapter.setController(messageController);
+
+		noteAdapter.setContext(this);
+		noteAdapter.setAdpterEventListener(new AdpterEventListener() {
+
+			public boolean onEventListener(Object... objects) {
+				// TODO Auto-generated method stub
+				lookMessageDeatail((Integer) objects[0], (Message) objects[1]);
+				return false;
+			}
+		});
+		noteAdapter.setController(noteController);
+		// selectNote(null);
+		selectMessage(null);
 
 	}
 
@@ -74,29 +168,42 @@ public class MessageActivity extends AposBaseActivity implements
 	 * 
 	 * @param msg
 	 */
-	private void lookMessageDeatail(Message msg) {
+	private void lookMessageDeatail(int state, final Message msg) {
+		switch (state) {
+		case 0:
 
-		TiFlowControlImpl.instanceControl().startFlow(this,
-				FlowNames.MSG_LOOK_MESSAGE);
-		TiFlowControlImpl.instanceControl().getFlowContext()
-				.put(Message.class.getName(), msg);
-	}
+			TiFlowControlImpl.instanceControl().startFlow(this,
+					FlowNames.MSG_LOOK_MESSAGE);
+			TiFlowControlImpl.instanceControl().getFlowContext()
+					.put(Message.class.getName(), msg);
+			selectMessage(msg.getId(), "OSS-ANNO-R");
+			break;
 
-	private ArrayList<Message> getList() {
-		ArrayList<Message> list = new ArrayList<Message>();
-		for (int i = 0; i < 10; i++) {
-			Message msg = new Message();
-			msg.setTitle("开会了");
-			msg.setTime("2014-02-17");
-			msg.setId(i + "");
-			if (i % 2 == 0) {
-				msg.setReader(true);
-			} else {
-				msg.setReader(false);
-			}
-			list.add(msg);
+		case 1:
+			new AlertDialog.Builder(this)
+					.setTitle("你确定要删除这条消息吗？")
+					.setPositiveButton("确定",
+							new DialogInterface.OnClickListener() {
+
+								public void onClick(DialogInterface dialog,
+										int which) {
+									// TODO Auto-generated method stub
+									dialog.dismiss();
+									selectMessage(msg.getId(), "OSS-ANNO-D");
+								}
+							})
+					.setNegativeButton("取消",
+							new DialogInterface.OnClickListener() {
+
+								public void onClick(DialogInterface dialog,
+										int which) {
+									// TODO Auto-generated method stub
+									dialog.dismiss();
+								}
+							}).create().show();
+			break;
 		}
-		return list;
+
 	}
 
 	public void backMenu(View v) {
@@ -109,16 +216,23 @@ public class MessageActivity extends AposBaseActivity implements
 	 */
 	@Inject
 	RequestManager requestManager;
+	private CommonDialog txnDialog;
+	private int pageSize = 10;
+	private int messagePage = 1;
+	private int notePage = 1;
 
-	private void getMessages(String annoType) {
+	private void getMessages(int pageSize, int page, String annoType) {
 		CommonTermOptRequest optReques = new CommonTermOptRequest();
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("annoType", annoType);
 		optReques.setVasRequestContentObj(dataMap);
 		optReques.setUserName("13838380439");
+		optReques.setPageSize(pageSize);
+
 		optReques.setOperateType(VasOptTypes.OSS_ANNOUNCEMENT_LIST_QUERY);
 		requestManager.setOptRequest(optReques);
 		requestManager.addFinishRequestResponse(this);
+		txnDialog.show();
 		requestManager.startService();
 		// OSS-ANNO-SYS：系统通知, OSS-ANNO-ACT:活动公告
 
@@ -133,13 +247,100 @@ public class MessageActivity extends AposBaseActivity implements
 		optRequest.setUserName("13838380439");
 		optRequest.setOperateType(VasOptTypes.OSS_ANNOUNCEMENT_OPERATE_NOTES);
 		requestManager.setOptRequest(optRequest);
-		requestManager.addFinishRequestResponse(this);
-
 		requestManager.startService();
+	}
+
+	/**
+	 * 0 空数据1有数据 -1 失败
+	 * 
+	 * @param state
+	 */
+	private void selectDataStatus(int state) {
+		switch (state) {
+		case 0:
+			empty.setVisibility(View.VISIBLE);
+			faile.setVisibility(View.GONE);
+			break;
+
+		case 1:
+			empty.setVisibility(View.GONE);
+			faile.setVisibility(View.GONE);
+			break;
+		case -1:
+			empty.setVisibility(View.GONE);
+			faile.setVisibility(View.VISIBLE);
+			break;
+		}
+	}
+
+	/**
+	 * 刷新
+	 * 
+	 * @param view
+	 */
+	public void refresh() {
+		selectDataStatus(1);
+		switch (currentState) {
+		case 0:
+			txnDialog.show();
+			messagePage = 1;
+			getMessages(pageSize, messagePage, "OSS-ANNO-ACT");
+			break;
+
+		case 1:
+			txnDialog.show();
+			notePage = 1;
+			getMessages(pageSize, notePage, "OSS-ANNO-SYS");
+			break;
+		}
+
 	}
 
 	public void callBack(Object response) {
 		// TODO Auto-generated method stub
+		if (txnDialog != null && txnDialog.isShowing()) {
+			txnDialog.cancel();
+		}
+		if (response == null) {
+			selectDataStatus(-1);
+			return;
+		}
+		CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
+		if (!optResponse.isSuccess()) {
+			selectDataStatus(-1);
+			return;
+		}
+		String jsonStr = (String) optResponse
+				.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+		if (StringUtil.isEmpty(jsonStr)
+				&& (currentState == 0 ? messagePage : notePage) == 1) {
+			selectDataStatus(0);
+		} else if (StringUtil.isEmpty(jsonStr)) {
+
+			selectDataStatus(1);
+		} else {
+			selectDataStatus(1);
+			ArrayList<Message> list = Message.getArrays(jsonStr);
+			switch (currentState) {
+			case 0:
+				messageAdapter.getList().addAll(list);
+				messageAdapter.notifyDataSetChanged();
+				break;
+
+			case 1:
+				noteAdapter.getList().addAll(list);
+				noteAdapter.notifyDataSetChanged();
+				break;
+			}
+		}
 
 	}
+
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		if (v.getId() == R.id.refresh_btn) {
+			refresh();
+		}
+	}
+
 }

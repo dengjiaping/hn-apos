@@ -88,6 +88,9 @@ public class PayeeInformationDeatailActivity extends AposBaseActivity {
 	 */
 	@Inject
 	TxnControl txnControl;
+	
+	@Inject
+	TransferAccountCallBackImpl transferAccountCallBackImpl;
 
 	public void tranfTxn(View v) {
 
@@ -96,7 +99,7 @@ public class PayeeInformationDeatailActivity extends AposBaseActivity {
 		txnContext.setNeedPin(true);
 		txnContext.setTxnType(TxnType.MPOS_TRANSFER_ACCOUNT);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
-		txnControl.setTxnCallback(new TransferAccountCallBackImpl());
+		txnControl.setTxnCallback(transferAccountCallBackImpl);
 		String amountStr = "￥" + moneyStr;
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));
 		txnContext.setPromptStr("转账中...");
