@@ -15,7 +15,7 @@ import me.andpay.apos.base.adapter.AdpterEventListener;
 import me.andpay.apos.base.adapter.BaseExpandableAdapter;
 import me.andpay.apos.base.requestmanage.FinishRequestInterface;
 import me.andpay.apos.base.requestmanage.RequestManager;
-import me.andpay.apos.base.tools.ShowUtil;
+import me.andpay.apos.base.tools.StringUtil;
 import me.andpay.apos.base.tools.TimeUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
@@ -34,6 +34,7 @@ import roboguice.inject.InjectView;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
@@ -50,7 +51,7 @@ import com.google.inject.Inject;
 
 @ContentView(R.layout.settlement_detail_list)
 public class SettleMentDetailListActivity extends AposBaseActivity implements
-		AdpterEventListener, FinishRequestInterface {
+		AdpterEventListener, FinishRequestInterface, OnClickListener {
 
 	/* 返回 */
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
@@ -78,10 +79,25 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 	@Inject
 	RequestManager requestManager;
 
+	private View faile;
+	private View empty;
+	private Button refreshBtn1;
+	private Button refreshBtn2;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		txnDialog = new CommonDialog(this, "读取中...");
+		faile = findViewById(R.id.ms_settlement_deatail_list_faile);
+		empty = findViewById(R.id.ms_settlement_deatail_list_empty);
+
+		refreshBtn1 = (Button) faile.findViewById(R.id.refresh_btn);
+		refreshBtn2 = (Button) empty.findViewById(R.id.refresh_btn);
+
+		refreshBtn1.setOnClickListener(this);
+		refreshBtn2.setOnClickListener(this);
+
 		order = (SelementOrder) TiFlowControlImpl.instanceControl()
 				.getFlowContext().get(SelementOrder.class.getName());
 		state = (Integer) TiFlowControlImpl.instanceControl().getFlowContext()
@@ -105,8 +121,35 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		listView.setChildDivider(getResources().getDrawable(
 				R.drawable.scm_solid_line_img));
 		listView.setAdapter(adapter);
-		getSettlementDetail(pageSize, page);
+		txnDialog.show();
+		selectStatus(1);
+		txnDialog.show();
+		getSettlementDetail(pageSize, page=1);
 		// expandGroup(-1);
+	}
+
+	/**
+	 * 
+	 * @param state
+	 *            0空数据 1有数据 -1失败
+	 */
+	private void selectStatus(int state) {
+		switch (state) {
+		case 0:
+			empty.setVisibility(View.VISIBLE);
+			faile.setVisibility(View.GONE);
+			break;
+
+		case 1:
+			empty.setVisibility(View.GONE);
+			faile.setVisibility(View.GONE);
+			break;
+		case -1:
+			empty.setVisibility(View.GONE);
+			faile.setVisibility(View.VISIBLE);
+			break;
+		}
+
 	}
 
 	/**
@@ -117,6 +160,7 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 	private int page = 1;
 
 	private void getSettlementDetail(int pageSize, int page) {
+		
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		Map<String, Object> mapData = new HashMap();
 
@@ -133,8 +177,8 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		requestManager.setOptRequest(optRequest);
 		requestManager.addFinishRequestResponse(this);
 
-		txnDialog = new CommonDialog(this, "读取中...");
-		txnDialog.show();
+		
+	
 		requestManager.startService();
 
 	}
@@ -165,7 +209,8 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		// TODO Auto-generated method stub
 		SettlementDetailOrder order = (SettlementDetailOrder) objects[0];
 
-		TiFlowControlImpl.instanceControl().getFlowContext().put("order", order);
+		TiFlowControlImpl.instanceControl().getFlowContext()
+				.put("order", order);
 		TiFlowControlImpl.instanceControl().nextSetup(this,
 				FlowNote.SETTLEMENT_DEATAIL);
 
@@ -177,16 +222,39 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		if (txnDialog != null && txnDialog.isShowing()) {
 			txnDialog.cancel();
 		}
-		if(response==null){
-			ShowUtil.showShortToast(this,getResources().getString(R.string.conection_exception));
-		    return;
+		if (response == null&&page==1) {
+			selectStatus(-1);
+			return;
+		}
+		if(response == null){
+			selectStatus(1);
+			return;
 		}
 		CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
+		if(!optResponse.isSuccess()&&page==1){
+			selectStatus(-1);
+			return;
+		}
+		if(!optResponse.isSuccess()){
+			selectStatus(1);
+			return;
+		}
+		
 		String jsonStr = (String) optResponse
 				.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+		if(StringUtil.isEmpty(jsonStr)&&page==1){
+			selectStatus(0);
+			return;
+		}
+		if(StringUtil.isEmpty(jsonStr)){
+			selectStatus(1);
+			return;
+		}
+		selectStatus(1);
 		adapter.setList(detailOrderScreening(SettlementDetailOrder
 				.getArrays(jsonStr)));
 		adapter.notifyDataSetChanged();
+		page++;
 
 	}
 
@@ -216,5 +284,21 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 			resultList.add(dataMap.get(key));
 		}
 		return resultList;
+	}
+
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		if (v.getId() == R.id.refresh_btn) {
+			refreshData();
+		}
+	}
+
+	/**
+	 * 数据刷新
+	 */
+	private void refreshData() {
+		selectStatus(1);
+		txnDialog.show();
+		getSettlementDetail(pageSize, page = 1);
 	}
 }

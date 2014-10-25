@@ -80,6 +80,7 @@ public class MessageActivity extends AposBaseActivity implements
 	private int currentState = 0;// 0系统，1活动公告
 
 	public void selectMessage(View view) {
+		selectDataStatus(1);
 		currentState = 0;
 		message.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.com_button_blue_img));
@@ -92,15 +93,14 @@ public class MessageActivity extends AposBaseActivity implements
 		if (messageAdapter.getList().size() <= 0) {
 			messagePage = 1;
 			txnDialog.show();
-			selectDataStatus(1);
+
 			getMessages(pageSize, messagePage, "OSS-ANNO-ACT");
-		} else {
-			selectDataStatus(1);
 		}
 
 	}
 
 	public void selectNote(View view) {
+		selectDataStatus(1);
 		currentState = 1;
 		note.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.com_button_blue_img));
@@ -114,10 +114,7 @@ public class MessageActivity extends AposBaseActivity implements
 		if (noteAdapter.getList().size() <= 0) {
 			notePage = 1;
 			txnDialog.show();
-			selectDataStatus(1);
 			getMessages(pageSize, notePage, "OSS-ANNO-SYS");
-		} else {
-			selectDataStatus(1);
 		}
 
 	}
@@ -232,7 +229,6 @@ public class MessageActivity extends AposBaseActivity implements
 		optReques.setOperateType(VasOptTypes.OSS_ANNOUNCEMENT_LIST_QUERY);
 		requestManager.setOptRequest(optReques);
 		requestManager.addFinishRequestResponse(this);
-		txnDialog.show();
 		requestManager.startService();
 		// OSS-ANNO-SYS：系统通知, OSS-ANNO-ACT:活动公告
 
@@ -301,37 +297,54 @@ public class MessageActivity extends AposBaseActivity implements
 		if (txnDialog != null && txnDialog.isShowing()) {
 			txnDialog.cancel();
 		}
-		if (response == null) {
+		if (response == null
+				&& (currentState == 0 ? messagePage : notePage) == 1) {
 			selectDataStatus(-1);
+			return;
+		}
+		if (response == null) {
+			selectDataStatus(1);
 			return;
 		}
 		CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
-		if (!optResponse.isSuccess()) {
+		if (!optResponse.isSuccess()
+				&& (currentState == 0 ? messagePage : notePage) == 1) {
 			selectDataStatus(-1);
 			return;
 		}
+		if (!optResponse.isSuccess()) {
+			selectDataStatus(1);
+			return;
+		}
+
 		String jsonStr = (String) optResponse
 				.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
 		if (StringUtil.isEmpty(jsonStr)
 				&& (currentState == 0 ? messagePage : notePage) == 1) {
 			selectDataStatus(0);
-		} else if (StringUtil.isEmpty(jsonStr)) {
+			return;
+		}
+
+		if (StringUtil.isEmpty(jsonStr)) {
 
 			selectDataStatus(1);
-		} else {
-			selectDataStatus(1);
-			ArrayList<Message> list = Message.getArrays(jsonStr);
-			switch (currentState) {
-			case 0:
-				messageAdapter.getList().addAll(list);
-				messageAdapter.notifyDataSetChanged();
-				break;
+			return;
+		}
 
-			case 1:
-				noteAdapter.getList().addAll(list);
-				noteAdapter.notifyDataSetChanged();
-				break;
-			}
+		selectDataStatus(1);
+		ArrayList<Message> list = Message.getArrays(jsonStr);
+		switch (currentState) {
+		case 0:
+			messagePage++;
+			messageAdapter.getList().addAll(list);
+			messageAdapter.notifyDataSetChanged();
+			break;
+
+		case 1:
+			notePage++;
+			noteAdapter.getList().addAll(list);
+			noteAdapter.notifyDataSetChanged();
+			break;
 		}
 
 	}

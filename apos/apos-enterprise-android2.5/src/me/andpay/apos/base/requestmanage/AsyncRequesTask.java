@@ -1,5 +1,7 @@
 package me.andpay.apos.base.requestmanage;
 
+import java.util.ArrayList;
+
 import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
 import me.andpay.ac.term.api.vas.operation.VasOptService;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
@@ -11,9 +13,22 @@ public class AsyncRequesTask extends AsyncTask<Void, Void, Object> {
 	protected VasTxnService txnService;
 
 	protected VasOptService optService;
-	
-	
-	
+
+	private ArrayList<FinishRequestInterface> list;
+
+	public void addFinishRequestInterface(FinishRequestInterface fi) {
+		if (list == null) {
+			list = new ArrayList<FinishRequestInterface>();
+		}
+		for (int i = 0; i < list.size(); i++) {
+			FinishRequestInterface fint = list.get(i);
+			if (fint == fi) {
+				return;
+			}
+		}
+		list.add(fi);
+
+	}
 
 	public VasTxnService getTxnService() {
 		return txnService;
@@ -51,35 +66,29 @@ public class AsyncRequesTask extends AsyncTask<Void, Void, Object> {
 		this.optRequest = optRequest;
 	}
 
-	private RequestManager manager;
-
-	public RequestManager getManager() {
-		return manager;
-	}
-
-	public void setManager(RequestManager manager) {
-		this.manager = manager;
-	}
-
 	@Override
 	protected Object doInBackground(Void... params) {
 		// TODO Auto-generated method stub
-		try{
+		try {
 			if (txnRequest != null) {
 				return txnService.processCommonTxn(txnRequest);
 			} else {
 				return optService.processCommonOpt(optRequest);
 			}
-		}catch(NetworkErrorException e){
+		} catch (NetworkErrorException e) {
 			return null;
 		}
-		
+
 	}
 
 	@Override
 	protected void onPostExecute(Object result) {
 		// TODO Auto-generated method stub
-		manager.callBack(result);
+		for (int i = 0; i < list.size(); i++) {
+			FinishRequestInterface fi = list.get(i);
+			fi.callBack(result);
+		}
+
 	}
 
 }

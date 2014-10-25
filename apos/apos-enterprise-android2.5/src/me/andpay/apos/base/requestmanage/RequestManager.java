@@ -7,8 +7,6 @@ import me.andpay.ac.term.api.vas.operation.VasOptService;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
 import me.andpay.ac.term.api.vas.txn.VasTxnService;
 
-import com.google.inject.Inject;
-
 /**
  * 请求管理
  * 
@@ -54,9 +52,9 @@ public class RequestManager {
 		if (list == null) {
 			list = new ArrayList<FinishRequestInterface>();
 		}
-		for(int i=0;i<list.size();i++){
+		for (int i = 0; i < list.size(); i++) {
 			FinishRequestInterface fi = list.get(i);
-			if(fi==response){
+			if (fi == response) {
 				return;
 			}
 		}
@@ -76,21 +74,12 @@ public class RequestManager {
 			serviceAsyTask.setOptService(optService);
 		}
 
-		serviceAsyTask.setManager(this);
-		serviceAsyTask.execute();
-	}
-
-	/**
-	 * 异步执行后的响应
-	 * 
-	 * @param response
-	 */
-	public void callBack(Object response) {
 		for (int i = 0; i < list.size(); i++) {
 			FinishRequestInterface fi = list.get(i);
-			fi.callBack(response);
+			serviceAsyTask.addFinishRequestInterface(fi);
 		}
-
+		list.clear();
+		serviceAsyTask.execute();
 	}
 
 }

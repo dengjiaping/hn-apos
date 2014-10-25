@@ -21,7 +21,7 @@
     <ListView
         android:id="@+id/ms_settlement_deatail_listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:cacheColorHint="@color/com_no_color"
         android:divider="@drawable/scm_solid_line_img"
         android:dividerHeight="1dip"

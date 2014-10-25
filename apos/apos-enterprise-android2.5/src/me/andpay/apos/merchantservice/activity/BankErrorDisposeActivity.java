@@ -12,6 +12,7 @@ import me.andpay.apos.base.adapter.AdpterEventListener;
 import me.andpay.apos.base.adapter.BaseAdapter;
 import me.andpay.apos.base.requestmanage.FinishRequestInterface;
 import me.andpay.apos.base.requestmanage.RequestManager;
+import me.andpay.apos.base.tools.StringUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.merchantservice.controller.BringAndBackOrderController;
@@ -46,12 +47,11 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	@InjectView(R.id.bank_error_dispose_return_apply)
 	private TextView apply;
 
-	
 	private TextView report;
 
 	@EventDelegate(type = DelegateType.method, toMethod = "add", delegateClass = OnClickListener.class)
 	@InjectView(R.id.bank_error_dispose_add)
-    TextView add;
+	TextView add;
 
 	@InjectView(R.id.bank_error_dispose_listview)
 	private ListView listView;
@@ -99,16 +99,14 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 		empty = findViewById(R.id.bank_error_dispose_empty);
 		refreshBtn1 = (Button) faile.findViewById(R.id.refresh_btn);
 		refreshBtn2 = (Button) empty.findViewById(R.id.refresh_btn);
-		
+
 		refreshBtn1.setOnClickListener(this);
 		refreshBtn2.setOnClickListener(this);
-		
-		apply = (TextView)findViewById(R.id.bank_error_dispose_return_apply);
-		report = (TextView)findViewById(R.id.bank_error_dispose_order_report);
+
+		apply = (TextView) findViewById(R.id.bank_error_dispose_return_apply);
+		report = (TextView) findViewById(R.id.bank_error_dispose_order_report);
 		apply.setOnClickListener(this);
 		report.setOnClickListener(this);
-
-	
 
 		applyAdapter = new BaseAdapter<BringAndBackOrder>();
 		applyAdapter.setContext(this);
@@ -134,7 +132,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	 * @param view
 	 */
 	public void refreshData() {
-
+		selectShowState(1);
 		switch (currentState) {
 		case 0:
 			applyPage = 1;
@@ -184,6 +182,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 
 	@SuppressLint("NewApi")
 	public void apply(View view) {
+		selectShowState(1);
 		currentState = 0;
 		apply.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.com_button_blue_img));
@@ -203,6 +202,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	/* 订单上报 */
 	@SuppressLint("NewApi")
 	public void report(View view) {
+		selectShowState(1);
 		currentState = 1;
 		report.setBackgroundDrawable(getResources().getDrawable(
 				R.drawable.com_button_blue_img));
@@ -245,45 +245,57 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 				&& (currentState == 0 ? applyPage : reportPage) == 1) {
 			/* 异常 */
 			selectShowState(-1);
-
-		} else {
-			CommonTermOptResponse optResonpse = (CommonTermOptResponse) response;
-			if (!optResonpse.isSuccess()) {// 不成功
-				selectShowState(-1);
-			} else {
-				String jsonStr = (String) optResonpse
-						.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
-				if (jsonStr == null
-						&& (currentState == 0 ? applyPage : reportPage) == 1) {
-					selectShowState(0);
-				} else if (jsonStr == null) {
-					selectShowState(1);
-				} else {
-					selectShowState(1);
-					ArrayList<BringAndBackOrder> dataList = BringAndBackOrder
-							.getArrays(jsonStr);
-					switch (currentState) {
-					case 0:
-						applyAdapter.getList().addAll(dataList);
-						applyAdapter.notifyDataSetChanged();
-						break;
-
-					case 1:
-						bringAdapter.getList().addAll(dataList);
-						bringAdapter.notifyDataSetChanged();
-						break;
-					}
-				}
-			}
+			return;
 
 		}
-		// 3.4退货清单
-		// {"pageSize":5,"currentPage":1,"totalPageCount":1,"totalRowCount":3,"partyId":"1017911000000001","errorType":"OSS-ERROR-R","errorHandleList":[{"subject":"标题1","createTime":"20141022161828","description":"描述1","dispose":"0","imagePaths":["image1","image2","image3"],"id":5},{"subject":"标题1","createTime":"20141022161511","description":"描述1","dispose":"0","imagePaths":["image1","image2","image3"],"id":4},{"subject":"标题1","createTime":"20141022161324","description":"描述1","dispose":"0","imagePaths":["image1","image2","image3"],"id":3}]}
+		if (response == null) {
+			selectShowState(1);
+			return;
+		}
 
-		// 3.4调单清单{"pageSize":5,"currentPage":1,"totalPageCount":1,"totalRowCount":1,"partyId":"1017911000000001","errorType":"OSS-ERROR-A","errorHandleList":[{"subject":"调单1","createTime":"20141023005719","description":"调单1调单1","dispose":"0","imagePaths":[],"id":6}]}
-		// 基本信息
-		// {"merchantName":"测试","name":"杭赣修","idCard":"220183197904228470","adress":"湖南省长沙市芙蓉区解放西路","phoneNumber":"13838380439"}
-		// 通知{"pageSize":5,"currentPage":1,"totalPageCount":1,"totalRowCount":1,"userPartyId":"17","annoType":"OSS-ANNO-ACT","announcementList":[{"id":12,"author":"17","subject":"测试1","content":"测试1测试1测试1","annoType":"OSS-ANNO-ACT","order":0,"startTime":"20141022021138","endTime":"20141031021138","receiver":"PG:17","status":"1","createTime":"20141023021138"}]}
+		CommonTermOptResponse optResonpse = (CommonTermOptResponse) response;
+		if (!optResonpse.isSuccess()
+				&& (currentState == 0 ? applyPage : reportPage) == 1) {// 不成功
+			selectShowState(-1);
+			return;
+		}
+
+		if (!optResonpse.isSuccess()) {
+			selectShowState(1);
+			return;
+		}
+
+		String jsonStr = (String) optResonpse
+				.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+		if (StringUtil.isEmpty(jsonStr)
+				&& (currentState == 0 ? applyPage : reportPage) == 1) {
+			selectShowState(0);
+			return;
+		}
+		if (StringUtil.isEmpty(jsonStr)) {
+			selectShowState(1);
+			return;
+		}
+
+		
+
+		selectShowState(1);
+		ArrayList<BringAndBackOrder> dataList = BringAndBackOrder
+				.getArrays(jsonStr);
+		switch (currentState) {
+		case 0:
+			applyPage++;
+			applyAdapter.getList().addAll(dataList);
+			applyAdapter.notifyDataSetChanged();
+			break;
+
+		case 1:
+			reportPage++;
+			bringAdapter.getList().addAll(dataList);
+			bringAdapter.notifyDataSetChanged();
+			break;
+		}
+
 	}
 
 	/**
@@ -313,12 +325,12 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		if (v.getId() == R.id.refresh_btn) {
-			
+
 			refreshData();
-		}else if(v.getId() == R.id.bank_error_dispose_return_apply){
+		} else if (v.getId() == R.id.bank_error_dispose_return_apply) {
 			apply(null);
-			
-		}else if(v.getId() == R.id.bank_error_dispose_order_report){
+
+		} else if (v.getId() == R.id.bank_error_dispose_order_report) {
 			report(null);
 		}
 	}

@@ -7,7 +7,7 @@
 
     <RelativeLayout style="@style/com_native_top_style" >
 
-        <TextView 
+        <TextView
             android:id="@+id/settlement_detail_list_title"
             style="@style/com_top_text_style" />
 
@@ -15,13 +15,32 @@
             android:id="@+id/settlement_detail_list_back"
             style="@style/com_top_return_button_style" />
     </RelativeLayout>
-    
-    <ExpandableListView
-        android:id="@+id/settlement_detail_list_listview"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:cacheColorHint="@color/com_no_color"
-        android:listSelector="@color/com_no_color" >
-    </ExpandableListView>
+        android:layout_height="match_parent" >
+
+        <ExpandableListView
+            android:id="@+id/settlement_detail_list_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/com_no_color"
+            android:listSelector="@color/com_no_color" >
+        </ExpandableListView>
+
+        <include
+            android:id="@+id/ms_settlement_deatail_list_faile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/connection_exception_layout"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/ms_settlement_deatail_list_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/empty_data_layout"
+            android:visibility="gone" />
+    </RelativeLayout>
 
 </LinearLayout>

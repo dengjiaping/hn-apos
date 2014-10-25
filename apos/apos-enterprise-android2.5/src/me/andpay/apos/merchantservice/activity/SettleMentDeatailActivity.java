@@ -47,11 +47,7 @@ public class SettleMentDeatailActivity extends AposBaseActivity implements
 	@Inject
 	RequestManager requestManager;
 
-	// @InjectExtra("ssn")
-	// private String ssn;
-
-	// @InjectExtra("txnTime")
-	// private String txnTime;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -47,7 +47,8 @@ import com.google.inject.Inject;
 
 @ContentView(R.layout.ms_reconciliation)
 public class MsReconciliationActivity extends AposBaseActivity implements
-		AdpterEventListener, TiFlowCallback, FinishRequestInterface {
+		AdpterEventListener, TiFlowCallback, FinishRequestInterface,
+		OnClickListener {
 	/* 返回 */
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.ms_reconciliation_back)
@@ -93,11 +94,11 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	@Inject
 	private MergeAccountsControler mergeAccountController;
 
-	/*终端清算*/
+	/* 终端清算 */
 	private BaseAdapter<SelementOrderByterm> settlementsBytermAdapter;
 	@Inject
 	private SettleMentBytermController settlementBytermController;
-	/*交易类型清算*/
+	/* 交易类型清算 */
 	private BaseAdapter<SelementOrderByTxntype> settlementsBytxntypeAdapter;
 	@Inject
 	private SettleMentByTxntypeController settlementBytxntypeController;
@@ -105,23 +106,44 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	@Inject
 	private RequestManager requestManager;
 
+	/**
+	 * 失败
+	 */
+	private View faile;
+	/**
+	 * 空
+	 */
+	private View empty;
+
+	private Button refreshBtn1;
+	private Button refreshBtn2;
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		txnDialog = new CommonDialog(this, "读取中...");
+		faile = findViewById(R.id.ms_reconciliation_faile);
+		empty = findViewById(R.id.ms_reconciliation_empty);
+		refreshBtn1 = (Button) faile.findViewById(R.id.refresh_btn);
+		refreshBtn2 = (Button) empty.findViewById(R.id.refresh_btn);
+		refreshBtn1.setOnClickListener(this);
+		refreshBtn2.setOnClickListener(this);
 		/* 并账明细适配初始 */
 		mergeAccountsAdapter = new BaseAdapter<MergeOrder>();
 		mergeAccountsAdapter.setController(mergeAccountController);
-        mergeAccountsAdapter.setAdpterEventListener(this);
+		mergeAccountsAdapter.setAdpterEventListener(this);
 
 		/* 结算明细适配初始化 */
-        settlementsBytermAdapter = new BaseAdapter<SelementOrderByterm>();
-        settlementsBytermAdapter.setController(settlementBytermController);
-        settlementsBytermAdapter.setAdpterEventListener(this);
-        
-        settlementsBytxntypeAdapter = new BaseAdapter<SelementOrderByTxntype>();
-        settlementsBytxntypeAdapter.setController(settlementBytxntypeController);
-        settlementsBytxntypeAdapter.setAdpterEventListener(this);
+		settlementsBytermAdapter = new BaseAdapter<SelementOrderByterm>();
+		settlementsBytermAdapter.setController(settlementBytermController);
+		settlementsBytermAdapter.setAdpterEventListener(this);
+
+		settlementsBytxntypeAdapter = new BaseAdapter<SelementOrderByTxntype>();
+		settlementsBytxntypeAdapter
+				.setController(settlementBytxntypeController);
+		settlementsBytxntypeAdapter.setAdpterEventListener(this);
 		/* 试图初始化 */
 
 		listView.setDivider(getResources().getDrawable(
@@ -130,8 +152,30 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		time.setText("全部");
 
 		mergeAcccounts(null);
-		
 
+	}
+
+	/**
+	 * 0空 1有数据-1 失败
+	 * 
+	 * @param state
+	 */
+	private void selectStatus(int state) {
+		switch (state) {
+		case 0:
+            empty.setVisibility(View.VISIBLE);
+            faile.setVisibility(View.GONE);
+			break;
+
+		case 1:
+			empty.setVisibility(View.GONE);
+            faile.setVisibility(View.GONE);
+			break;
+		case -1:
+			empty.setVisibility(View.GONE);
+            faile.setVisibility(View.VISIBLE);
+			break;
+		}
 	}
 
 	/**
@@ -160,6 +204,8 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 							showTxt.setText("按终端统计");
 							selectBtn.setImageDrawable(getResources()
 									.getDrawable(R.drawable.down));
+							txnDialog.show();
+							getSettleMentOrders(PAGE_SIZE,currentSettlePage=1);
 						}
 					});
 			popView.findViewById(
@@ -174,6 +220,8 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 							showTxt.setText("按交易类型统计");
 							selectBtn.setImageDrawable(getResources()
 									.getDrawable(R.drawable.down));
+							txnDialog.show();
+							getSettleMentOrders(PAGE_SIZE,currentSettlePage=1);
 						}
 					});
 		}
@@ -222,8 +270,8 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		requestManager.setOptRequest(optRequest);
 		requestManager.addFinishRequestResponse(this);
 
-		txnDialog = new CommonDialog(this, "读取中...");
-		txnDialog.show();
+	
+		
 		requestManager.startService();
 
 	}
@@ -254,7 +302,7 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		optRequest.setCurPageNo(page);
 
 		optRequest.setVasRequestContentObj(mapData);
-		switch (statisticalState){
+		switch (statisticalState) {
 		case 0:// 终端
 			optRequest
 					.setOperateType(VasOptTypes.SETTLE_REPORT_QUERY_STAT_BY_TERM);
@@ -269,11 +317,9 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		requestManager.setOptRequest(optRequest);
 		requestManager.addFinishRequestResponse(this);
 
-		txnDialog = new CommonDialog(this, "读取中...");
-		txnDialog.show();
-		requestManager.startService();
-
+	
 		
+		requestManager.startService();
 
 	}
 
@@ -293,6 +339,7 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	/* 并账明细 */
 	@SuppressLint("NewApi")
 	public void mergeAcccounts(View view) {
+	    selectStatus(1);
 		getState = 0;
 		statisticalType.setVisibility(View.GONE);
 		mergeAccount.setBackgroundDrawable(getResources().getDrawable(
@@ -308,8 +355,9 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 				android.R.color.darker_gray));
 
 		listView.setAdapter(mergeAccountsAdapter);
-		if(mergeAccountsAdapter.getList().size() <= 0){
-		    getMergeOrders(PAGE_SIZE, currentMergePage);
+		if (mergeAccountsAdapter.getList().size() <= 0){
+			txnDialog.show();
+			getMergeOrders(PAGE_SIZE, currentMergePage=1);
 		}
 
 	}
@@ -317,6 +365,7 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	/* 结算明细 */
 	@SuppressLint("NewApi")
 	public void settleMentDeatail(View view) {
+		selectStatus(1);
 		getState = 1;
 		statisticalType.setVisibility(View.VISIBLE);
 		settleMentDeatail.setBackgroundDrawable(getResources().getDrawable(
@@ -328,21 +377,23 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		mergeAccount.setTextColor(getResources().getColor(
 				android.R.color.darker_gray));
 		switch (statisticalState) {
-		case 0://终端
+		case 0:// 终端
 			listView.setAdapter(settlementsBytermAdapter);
 			if (settlementsBytermAdapter.getList().size() <= 0) {
-				getSettleMentOrders(PAGE_SIZE, currentSettlePage);
+				txnDialog.show();
+				getSettleMentOrders(PAGE_SIZE, currentSettlePage=1);
 			}
 			break;
 
-		case 1://交易类型
+		case 1:// 交易类型
 			listView.setAdapter(settlementsBytxntypeAdapter);
 			if (settlementsBytxntypeAdapter.getList().size() <= 0) {
-				getSettleMentOrders(PAGE_SIZE, currentSettlePage);
+				txnDialog.show();
+				getSettleMentOrders(PAGE_SIZE, currentSettlePage=1);
 			}
 			break;
 		}
-		
+
 	}
 
 	/**
@@ -390,21 +441,47 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 
 	}
 
-	public void callBack(Object response){
+	public void callBack(Object response) {
 		// TODO Auto-generated method stub
-		if (txnDialog.isShowing()){
+		if (txnDialog.isShowing()) {
 			txnDialog.cancel();
 		}
-		if(response==null){
-			ShowUtil.showShortToast(this,getResources().getString(R.string.conection_exception));
-		    return;
+		if (response == null&&(getState==0?currentMergePage:currentSettlePage)==1) {
+			selectStatus(-1);
+		
+			return;
 		}
-		CommonTermOptResponse optResponse = (CommonTermOptResponse)response;
-		String resultStr = (String)optResponse.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
-		
-		
-		switch (getState){
+		if(response == null){
+			selectStatus(1);
+			
+			return;
+		}
+		CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
+		if(!optResponse.isSuccess()&&(getState==0?currentMergePage:currentSettlePage)==1){
+			selectStatus(-1);
+			return;
+		}
+		if(!optResponse.isSuccess()){
+			selectStatus(1);
+			return;
+		}
+		String resultStr = (String) optResponse
+				.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+        if(StringUtil.isEmpty(resultStr)&&(getState==0?currentMergePage:currentSettlePage)==1){
+        	selectStatus(0);
+        	return;
+        }
+        if(StringUtil.isEmpty(resultStr)){
+        	selectStatus(1);
+        	return;
+        }
+        
+        
+        selectStatus(1);
+        
+		switch (getState) {
 		case 0:// 并账
+			currentMergePage++;
 			mergeAccountsAdapter.setList(MergeOrder.getArrays(resultStr));
 			mergeAccountsAdapter.notifyDataSetChanged();
 			break;
@@ -412,15 +489,43 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		case 1:// 清算
 			switch (statisticalState) {
 			case 0:// 按终端
-				settlementsBytermAdapter.setList(SelementOrderByterm.getArrays(resultStr));
+				currentSettlePage++;
+				settlementsBytermAdapter.setList(SelementOrderByterm
+						.getArrays(resultStr));
 				settlementsBytermAdapter.notifyDataSetChanged();
 				break;
 
 			case 1:// 按交易类型
-				settlementsBytxntypeAdapter.setList(SelementOrderByTxntype.getArrays(resultStr));
+				currentSettlePage++;
+				settlementsBytxntypeAdapter.setList(SelementOrderByTxntype
+						.getArrays(resultStr));
 				settlementsBytxntypeAdapter.notifyDataSetChanged();
 				break;
 			}
+			break;
+		}
+	}
+
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+       if(v.getId()==R.id.refresh_btn){
+    	   refreshData();
+       }
+	}
+	/**
+	 * 刷新数据
+	 */
+	private void refreshData(){
+		selectStatus(1);
+		switch (getState) {
+		case 0://并账
+			txnDialog.show();
+			getMergeOrders(PAGE_SIZE, currentMergePage=1);
+			break;
+
+		case 1://清算
+			txnDialog.show();
+			getSettleMentOrders(PAGE_SIZE, currentSettlePage=1);
 			break;
 		}
 	}
