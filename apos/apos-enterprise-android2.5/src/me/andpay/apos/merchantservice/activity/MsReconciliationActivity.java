@@ -118,7 +118,6 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	private Button refreshBtn1;
 	private Button refreshBtn2;
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -151,7 +150,8 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 
 		time.setText("全部");
 
-		mergeAcccounts(null);
+		//mergeAcccounts(null);
+		settleMentDeatail(null);
 
 	}
 
@@ -163,17 +163,17 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	private void selectStatus(int state) {
 		switch (state) {
 		case 0:
-            empty.setVisibility(View.VISIBLE);
-            faile.setVisibility(View.GONE);
+			empty.setVisibility(View.VISIBLE);
+			faile.setVisibility(View.GONE);
 			break;
 
 		case 1:
 			empty.setVisibility(View.GONE);
-            faile.setVisibility(View.GONE);
+			faile.setVisibility(View.GONE);
 			break;
 		case -1:
 			empty.setVisibility(View.GONE);
-            faile.setVisibility(View.VISIBLE);
+			faile.setVisibility(View.VISIBLE);
 			break;
 		}
 	}
@@ -205,7 +205,8 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 							selectBtn.setImageDrawable(getResources()
 									.getDrawable(R.drawable.down));
 							txnDialog.show();
-							getSettleMentOrders(PAGE_SIZE,currentSettlePage=1);
+							getSettleMentOrders(PAGE_SIZE,
+									currentSettlePage = 1);
 						}
 					});
 			popView.findViewById(
@@ -221,7 +222,8 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 							selectBtn.setImageDrawable(getResources()
 									.getDrawable(R.drawable.down));
 							txnDialog.show();
-							getSettleMentOrders(PAGE_SIZE,currentSettlePage=1);
+							getSettleMentOrders(PAGE_SIZE,
+									currentSettlePage = 1);
 						}
 					});
 		}
@@ -270,8 +272,6 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		requestManager.setOptRequest(optRequest);
 		requestManager.addFinishRequestResponse(this);
 
-	
-		
 		requestManager.startService();
 
 	}
@@ -317,8 +317,6 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		requestManager.setOptRequest(optRequest);
 		requestManager.addFinishRequestResponse(this);
 
-	
-		
 		requestManager.startService();
 
 	}
@@ -339,7 +337,7 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	/* 并账明细 */
 	@SuppressLint("NewApi")
 	public void mergeAcccounts(View view) {
-	    selectStatus(1);
+		selectStatus(1);
 		getState = 0;
 		statisticalType.setVisibility(View.GONE);
 		mergeAccount.setBackgroundDrawable(getResources().getDrawable(
@@ -355,9 +353,9 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 				android.R.color.darker_gray));
 
 		listView.setAdapter(mergeAccountsAdapter);
-		if (mergeAccountsAdapter.getList().size() <= 0){
+		if (mergeAccountsAdapter.getList().size() <= 0) {
 			txnDialog.show();
-			getMergeOrders(PAGE_SIZE, currentMergePage=1);
+			getMergeOrders(PAGE_SIZE, currentMergePage = 1);
 		}
 
 	}
@@ -381,7 +379,7 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 			listView.setAdapter(settlementsBytermAdapter);
 			if (settlementsBytermAdapter.getList().size() <= 0) {
 				txnDialog.show();
-				getSettleMentOrders(PAGE_SIZE, currentSettlePage=1);
+				getSettleMentOrders(PAGE_SIZE, currentSettlePage = 1);
 			}
 			break;
 
@@ -389,7 +387,7 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 			listView.setAdapter(settlementsBytxntypeAdapter);
 			if (settlementsBytxntypeAdapter.getList().size() <= 0) {
 				txnDialog.show();
-				getSettleMentOrders(PAGE_SIZE, currentSettlePage=1);
+				getSettleMentOrders(PAGE_SIZE, currentSettlePage = 1);
 			}
 			break;
 		}
@@ -437,7 +435,9 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 				.getFlowContext().get("beginTime");
 		endTime = (String) TiFlowControlImpl.instanceControl().getFlowContext()
 				.get("endTime");
-		time.setText(beginTime + "至" + endTime);
+		if (!StringUtil.isEmpty(beginTime) && !StringUtil.isEmpty(endTime)) {
+			time.setText(beginTime + "至" + endTime);
+		}
 
 	}
 
@@ -446,39 +446,41 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 		if (txnDialog.isShowing()) {
 			txnDialog.cancel();
 		}
-		if (response == null&&(getState==0?currentMergePage:currentSettlePage)==1) {
+		if (response == null
+				&& (getState == 0 ? currentMergePage : currentSettlePage) == 1) {
 			selectStatus(-1);
-		
+
 			return;
 		}
-		if(response == null){
+		if (response == null) {
 			selectStatus(1);
-			
+
 			return;
 		}
 		CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
-		if(!optResponse.isSuccess()&&(getState==0?currentMergePage:currentSettlePage)==1){
+		if (!optResponse.isSuccess()
+				&& (getState == 0 ? currentMergePage : currentSettlePage) == 1) {
 			selectStatus(-1);
 			return;
 		}
-		if(!optResponse.isSuccess()){
+		if (!optResponse.isSuccess()) {
 			selectStatus(1);
 			return;
 		}
 		String resultStr = (String) optResponse
 				.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
-        if(StringUtil.isEmpty(resultStr)&&(getState==0?currentMergePage:currentSettlePage)==1){
-        	selectStatus(0);
-        	return;
-        }
-        if(StringUtil.isEmpty(resultStr)){
-        	selectStatus(1);
-        	return;
-        }
-        
-        
-        selectStatus(1);
-        
+		if (StringUtil.isEmpty(resultStr)
+				&& (getState == 0 ? currentMergePage : currentSettlePage) == 1) {
+			selectStatus(0);
+			return;
+		}
+		if (StringUtil.isEmpty(resultStr)) {
+			selectStatus(1);
+			return;
+		}
+
+		selectStatus(1);
+
 		switch (getState) {
 		case 0:// 并账
 			currentMergePage++;
@@ -508,24 +510,25 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-       if(v.getId()==R.id.refresh_btn){
-    	   refreshData();
-       }
+		if (v.getId() == R.id.refresh_btn) {
+			refreshData();
+		}
 	}
+
 	/**
 	 * 刷新数据
 	 */
-	private void refreshData(){
+	private void refreshData() {
 		selectStatus(1);
 		switch (getState) {
-		case 0://并账
+		case 0:// 并账
 			txnDialog.show();
-			getMergeOrders(PAGE_SIZE, currentMergePage=1);
+			getMergeOrders(PAGE_SIZE, currentMergePage = 1);
 			break;
 
-		case 1://清算
+		case 1:// 清算
 			txnDialog.show();
-			getSettleMentOrders(PAGE_SIZE, currentSettlePage=1);
+			getSettleMentOrders(PAGE_SIZE, currentSettlePage = 1);
 			break;
 		}
 	}

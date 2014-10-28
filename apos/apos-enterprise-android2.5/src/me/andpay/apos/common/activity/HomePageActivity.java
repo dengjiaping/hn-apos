@@ -109,6 +109,7 @@ public class HomePageActivity extends AposBaseTabActivity implements
 			this.getAppContext().removeAttribute(RuntimeAttrNames.OLD_PASSWORD);
 			// aposNetworkChangeReceiver.register(getApplicationContext());
 		}
+		showSlider();
 
 	}
 

@@ -48,6 +48,7 @@
             android:layout_toLeftOf="@id/lft_top_up_phonenumber_select"
             android:background="@color/transparent"
             android:hint="充值的手机号码"
+            android:maxLength="11"
             android:phoneNumber="true"
             android:singleLine="true"
             android:textColor="@color/com_title_normal_col"
@@ -85,6 +86,7 @@
         </LinearLayout>
 
         <EditText
+            
             android:id="@+id/lft_top_up_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

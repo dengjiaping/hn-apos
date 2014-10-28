@@ -2,7 +2,6 @@ package me.andpay.timobileframework.flow;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 
 import me.andpay.timobileframework.flow.forward.TiFlowDefaultForward;
 import me.andpay.timobileframework.flow.forward.TiFlowWaitForResultForward;
@@ -13,7 +12,6 @@ import me.andpay.timobileframework.flow.persistence.TiFlowControlJsonPersitencer
 import me.andpay.timobileframework.flow.persistence.TiFlowControlPersistDataOperator;
 import me.andpay.timobileframework.flow.persistence.TiFlowControlPersistencer;
 import me.andpay.timobileframework.flow.transfer.TiFlowStringResourceTransfer;
-import android.app.Activity;
 import android.content.Context;
 
 /**

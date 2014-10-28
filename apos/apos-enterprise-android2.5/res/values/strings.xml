@@ -111,7 +111,7 @@
     <string name="lam_logo_txn_str">移动POS机，随时随地支付</string>
     <string name="lam_service_introduce_str">服务介绍</string>
     <string name="lam_forget_password_str">忘记密码？</string>
-    <string name="lam_login_copyright_text_str">服务电话 4007-288-100 银联商户移动综合服务平台$VERSION$版</string>
+    <string name="lam_login_copyright_text_str">服务电话 95516 银联商户移动综合服务平台$VERSION$版</string>
     <string name="lam_copyright_text_str">Copyright @ 2013 AndPay,Inc.All Rights Reserved</string>
     <string name="lam_logining_dialog_str">正在登录...</string>
     <string name="lam_cardreader_type1_str">1型</string>

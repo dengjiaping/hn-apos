@@ -24,6 +24,8 @@ import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.common.constant.RuntimeAttrNames;
+import me.andpay.apos.common.contextdata.LoginUserInfo;
 import me.andpay.apos.merchantservice.data.UserBaseInformation;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
@@ -140,7 +142,9 @@ public class MerchantsInformationActivity extends AposBaseActivity implements
 
 	public void getBaseInformation() {
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
-		optRequest.setUserName("13838380439");
+		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
+				.getAttribute(RuntimeAttrNames.LOGIN_USER);
+		optRequest.setUserName(logInfo.getUserName());
 		optRequest.setOperateType(VasOptTypes.OSS_MERCHANT_BASE_INFO_QUERY);
 		requestManager.setOptRequest(optRequest);
 		requestManager.addFinishRequestResponse(this);

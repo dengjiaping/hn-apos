@@ -1,6 +1,7 @@
 package me.andpay.apos.merchantservice.activity;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
@@ -116,16 +117,17 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		adapter = new BaseExpandableAdapter<SettlementDetailOrder>();
 		adapter.setController(controller);
 		adapter.setListener(this);
-		listView.setGroupIndicator(null);
 
+		listView.setGroupIndicator(null);
+		
 		listView.setChildDivider(getResources().getDrawable(
 				R.drawable.scm_solid_line_img));
 		listView.setAdapter(adapter);
-		txnDialog.show();
+	
 		selectStatus(1);
 		txnDialog.show();
-		getSettlementDetail(pageSize, page=1);
-		// expandGroup(-1);
+		getSettlementDetail(pageSize, page = 1);
+		expandGroup(0);
 	}
 
 	/**
@@ -160,7 +162,7 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 	private int page = 1;
 
 	private void getSettlementDetail(int pageSize, int page) {
-		
+
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		Map<String, Object> mapData = new HashMap();
 
@@ -177,8 +179,6 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		requestManager.setOptRequest(optRequest);
 		requestManager.addFinishRequestResponse(this);
 
-		
-	
 		requestManager.startService();
 
 	}
@@ -222,31 +222,31 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		if (txnDialog != null && txnDialog.isShowing()) {
 			txnDialog.cancel();
 		}
-		if (response == null&&page==1) {
+		if (response == null && page == 1) {
 			selectStatus(-1);
 			return;
 		}
-		if(response == null){
+		if (response == null) {
 			selectStatus(1);
 			return;
 		}
 		CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
-		if(!optResponse.isSuccess()&&page==1){
+		if (!optResponse.isSuccess() && page == 1) {
 			selectStatus(-1);
 			return;
 		}
-		if(!optResponse.isSuccess()){
+		if (!optResponse.isSuccess()) {
 			selectStatus(1);
 			return;
 		}
-		
+
 		String jsonStr = (String) optResponse
 				.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
-		if(StringUtil.isEmpty(jsonStr)&&page==1){
+		if (StringUtil.isEmpty(jsonStr) && page == 1) {
 			selectStatus(0);
 			return;
 		}
-		if(StringUtil.isEmpty(jsonStr)){
+		if (StringUtil.isEmpty(jsonStr)) {
 			selectStatus(1);
 			return;
 		}
@@ -261,7 +261,12 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 	/* 订单按日期进行筛选 */
 	private ArrayList<ArrayList<SettlementDetailOrder>> detailOrderScreening(
 			ArrayList<SettlementDetailOrder> list) {
-		TreeMap<String, ArrayList<SettlementDetailOrder>> dataMap = new TreeMap<String, ArrayList<SettlementDetailOrder>>();
+		TreeMap<String, ArrayList<SettlementDetailOrder>> dataMap = new TreeMap<String, ArrayList<SettlementDetailOrder>>(
+				new Comparator<String>() {
+					public int compare(String lhs, String rhs) {
+						return rhs.compareTo(lhs);
+					};
+				});
 		for (int i = 0; i < list.size(); i++) {
 			SettlementDetailOrder detailOrder = list.get(i);
 			String time = detailOrder.getCreateDate();

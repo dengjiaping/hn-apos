@@ -45,4 +45,20 @@ public class MathUtil {
 		return m.matches();
 
 	}
+
+	/**
+	 * 判断字符串是否为数字
+	 * 
+	 * @param str
+	 *            字符串
+	 * @return
+	 */
+	public static boolean isIntNumber(String str) {
+		try {
+			Integer.valueOf(str);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 }

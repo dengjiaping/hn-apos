@@ -59,7 +59,7 @@ public class UpLoadFileServce {
 			}
 			highDefinition = NetWorkUtil.isHighNetWork(application
 					.getApplicationContext());
-			for (WaitUploadImage waitUploadImage : imges) {
+			for(WaitUploadImage waitUploadImage : imges){
 
 				// 垃圾数据
 				if (waitUploadImage.getItemId() == null
@@ -68,7 +68,7 @@ public class UpLoadFileServce {
 					continue;
 				}
 				File file = new File(waitUploadImage.getFilePath());
-				if (!file.exists()) {
+				if (!file.exists()){
 					waitImageDao.delete(waitUploadImage.getId());
 					continue;
 				}
@@ -88,6 +88,7 @@ public class UpLoadFileServce {
 	private void doUpload(WaitUploadImage waitUploadImage) throws Exception {
 
 		StringBuffer uploadUrl = new StringBuffer(tiRpcClient.getUploadUrl());
+		
 
 		if (uploadUrl.indexOf("?") == -1) {
 			uploadUrl.append("?");
@@ -96,6 +97,7 @@ public class UpLoadFileServce {
 		}
 		uploadUrl.append("type=").append(waitUploadImage.getItemType());
 		uploadUrl.append("&id=").append(waitUploadImage.getItemId());
+		Log.e("上传的地址:", uploadUrl.toString());
 
 		int code = HttpServiveProvider.get(application.getApplicationContext())
 				.simplUpload(uploadUrl.toString(),
@@ -107,7 +109,6 @@ public class UpLoadFileServce {
 		} else {
 			waitUploadImage.setTimes(waitUploadImage.getTimes() + 1);
 			waitImageDao.update(waitUploadImage);
-
 		}
 
 	}

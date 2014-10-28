@@ -6,7 +6,6 @@ import java.util.Map;
  * 客户端Rpc服务接口
  * 
  * @author tinyliu
- * 
  */
 public interface TiRpcClient{
 	/**
@@ -56,6 +55,7 @@ public interface TiRpcClient{
 	 */
 	public boolean isConn();
 
+	
 	/**
 	 * 判断是否配置SSL
 	 * 

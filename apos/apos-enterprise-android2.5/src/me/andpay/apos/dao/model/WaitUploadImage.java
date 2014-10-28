@@ -1,5 +1,6 @@
 package me.andpay.apos.dao.model;
 
+import me.andpay.apos.base.upimage.UploadImageCallback;
 import me.andpay.timobileframework.sqlite.anno.Column;
 import me.andpay.timobileframework.sqlite.anno.ID;
 import me.andpay.timobileframework.sqlite.anno.TableName;
@@ -12,6 +13,19 @@ import me.andpay.timobileframework.sqlite.anno.TableName;
  */
 @TableName(name = "WaitUploadImage", version = 2)
 public class WaitUploadImage {
+
+	
+	private UploadImageCallback callback;
+	
+	
+	
+	public UploadImageCallback getCallback() {
+		return callback;
+	}
+
+	public void setCallback(UploadImageCallback callback) {
+		this.callback = callback;
+	}
 
 	/**
 	 * 主键编号

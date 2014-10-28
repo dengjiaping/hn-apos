@@ -1,14 +1,19 @@
 package me.andpay.apos.merchantservice.activity;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import me.andpay.apos.R;
+import me.andpay.apos.base.adapter.BaseAdapter;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.merchantservice.controller.SelectImageController;
 import me.andpay.apos.merchantservice.data.BringAndBackOrder;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
@@ -38,28 +43,55 @@ public class BackOrderDetailActivity extends AposBaseActivity {
 	@InjectView(R.id.back_order_detail_describle)
 	private TextView describle;
 
+	@InjectView(R.id.back_order_detail_gridview)
+	private GridView gridView;
+
+	private BaseAdapter<String> imageAdapter;
+
+	private SelectImageController imageController;
+
 	public void back(View view) {
 		TiFlowControlImpl.instanceControl().previousSetup(this);
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
-		BringAndBackOrder order = (BringAndBackOrder)TiFlowControlImpl.instanceControl().getFlowContext().get(BringAndBackOrder.class.getName());
+
+		BringAndBackOrder order = (BringAndBackOrder) TiFlowControlImpl
+				.instanceControl().getFlowContext()
+				.get(BringAndBackOrder.class.getName());
 		title.setText(order.getSubject());
-		if(order.getDispose().equals("0")){
+		if (order.getDispose().equals("0")) {
 			dispose.setTextColor(getResources().getColor(R.color.red));
 			dispose.setText("未处理");
-		}else{
+		} else {
 			dispose.setTextColor(getResources().getColor(R.color.auxiliary));
 			dispose.setText("已处理");
 		}
 		time.setText(order.getCreateTime());
 		describle.setText(order.getDescription());
+
+	
+		String sqlitStr[] = order.getImagePaths().split(",");
+		if (sqlitStr == null) {
+			gridView.setVisibility(View.GONE);
+		} else {
+			imageAdapter = new BaseAdapter<String>();
+			imageAdapter.setContext(this);
+			ArrayList<String> list = new ArrayList<String>();
+			for (int i = 0; i < sqlitStr.length; i++) {
+				list.add(sqlitStr[i]);
+			}
+
+			imageAdapter.setList(list);
+
+			imageController = new SelectImageController();
+			imageController.setState(1);
+			imageAdapter.setController(imageController);
+			gridView.setAdapter(imageAdapter);
+		}
 	}
-	
-	
 
 }

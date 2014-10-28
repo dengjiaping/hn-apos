@@ -15,6 +15,8 @@ import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.base.tools.StringUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.common.constant.RuntimeAttrNames;
+import me.andpay.apos.common.contextdata.LoginUserInfo;
 import me.andpay.apos.merchantservice.controller.BringAndBackOrderController;
 import me.andpay.apos.merchantservice.data.BringAndBackOrder;
 import me.andpay.apos.merchantservice.flow.FlowNote;
@@ -163,7 +165,9 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 		Map<String, Object> dataMap = new HashMap();
 		dataMap.put("action", queryType);
 		optRequest.setVasRequestContentObj(dataMap);
-		optRequest.setUserName("13838380439");
+		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
+				.getAttribute(RuntimeAttrNames.LOGIN_USER);
+		optRequest.setUserName(logInfo.getUserName());
 		optRequest.setPageSize(pageSize);
 		optRequest.setCurPageNo(page);
 		optRequest.setOperateType(VasOptTypes.OSS_ERROR_HANDLE_LIST_QUERY);
@@ -182,6 +186,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 
 	@SuppressLint("NewApi")
 	public void apply(View view) {
+		add.setVisibility(View.VISIBLE);
 		selectShowState(1);
 		currentState = 0;
 		apply.setBackgroundDrawable(getResources().getDrawable(
@@ -192,7 +197,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 		report.setTextColor(getResources()
 				.getColor(android.R.color.darker_gray));
 		listView.setAdapter(applyAdapter);
-		if (applyAdapter.getList().size() <= 0) {
+		if (applyAdapter.getList().size() <= 0){
 			txnDialog.show();
 			getOrders(pageSize, applyPage = 1, "OSS-ERROR-R");
 		}
@@ -202,6 +207,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 	/* 订单上报 */
 	@SuppressLint("NewApi")
 	public void report(View view) {
+		add.setVisibility(View.GONE);
 		selectShowState(1);
 		currentState = 1;
 		report.setBackgroundDrawable(getResources().getDrawable(

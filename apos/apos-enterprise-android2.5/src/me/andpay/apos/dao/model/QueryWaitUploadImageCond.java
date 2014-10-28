@@ -32,8 +32,8 @@ public class QueryWaitUploadImageCond extends Sorts {
 	 */
 	@Expression
 	private String itemType;
-
 	/**
+
 	 * 上传编号
 	 */
 	@Expression

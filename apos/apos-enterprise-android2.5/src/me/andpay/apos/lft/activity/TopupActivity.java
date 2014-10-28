@@ -5,6 +5,7 @@ import java.util.Map;
 import me.andpay.ac.term.api.vas.txn.VasTxnPropNames;
 import me.andpay.apos.R;
 import me.andpay.apos.base.TxnType;
+import me.andpay.apos.base.tools.MathUtil;
 import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.base.view.CustomDialog;
 import me.andpay.apos.common.TabNames;
@@ -94,8 +95,15 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 	TxnControl txnControl;
 	@Inject
 	TopUpCallBackImpl topUpCallBackImpl;
-	public void sure(View v) {
-	
+	public void sure(View v){
+		
+		
+		String phStr= phoneNumber.getText().toString();
+		if(!MathUtil.isMobileNumber(phStr)){
+	        ShowUtil.showShortToast(this,"请输入正确的手机号");
+			return;
+		}
+		
 		TxnContext txnContext = txnControl.init();
 
 		
@@ -157,7 +165,7 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 		PhoneNumber phoneNumberStr = (PhoneNumber) TiFlowControlImpl
 				.instanceControl().getFlowContext()
 				.get(PhoneNumber.class.getName());
-		if (phoneNumberStr != null) {
+		if (phoneNumberStr != null){
 			phoneNumber.setText(phoneNumberStr.getDisplayNumber());
 		}
 	}

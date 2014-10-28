@@ -9,7 +9,7 @@ import java.util.Set;
  * @author cpz
  * 
  */
-public class PartyInfo {
+public class PartyInfo{
 
 	/**
 	 * 机构编号

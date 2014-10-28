@@ -15,6 +15,8 @@ import me.andpay.apos.base.tools.StringUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.common.activity.HomePageActivity;
+import me.andpay.apos.common.constant.RuntimeAttrNames;
+import me.andpay.apos.common.contextdata.LoginUserInfo;
 import me.andpay.apos.message.controller.MessageAdapterController;
 import me.andpay.apos.message.data.Message;
 import me.andpay.apos.message.flow.FlowNames;
@@ -223,7 +225,9 @@ public class MessageActivity extends AposBaseActivity implements
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("annoType", annoType);
 		optReques.setVasRequestContentObj(dataMap);
-		optReques.setUserName("13838380439");
+		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
+				.getAttribute(RuntimeAttrNames.LOGIN_USER);
+		optReques.setUserName(logInfo.getUserName());
 		optReques.setPageSize(pageSize);
 
 		optReques.setOperateType(VasOptTypes.OSS_ANNOUNCEMENT_LIST_QUERY);
@@ -240,7 +244,9 @@ public class MessageActivity extends AposBaseActivity implements
 		dataMap.put("id", id);
 		dataMap.put("action", action);
 		optRequest.setVasRequestContentObj(dataMap);
-		optRequest.setUserName("13838380439");
+		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
+				.getAttribute(RuntimeAttrNames.LOGIN_USER);
+		optRequest.setUserName(logInfo.getUserName());
 		optRequest.setOperateType(VasOptTypes.OSS_ANNOUNCEMENT_OPERATE_NOTES);
 		requestManager.setOptRequest(optRequest);
 		requestManager.startService();
@@ -351,7 +357,7 @@ public class MessageActivity extends AposBaseActivity implements
 
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		if (v.getId() == R.id.refresh_btn) {
+		if (v.getId() == R.id.refresh_btn){
 			refresh();
 		}
 	}

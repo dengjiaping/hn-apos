@@ -42,7 +42,7 @@ public class FileUtil {
 				}
 				if (bos != null) {
 					bos.close();
-				}
+				} 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -96,8 +96,8 @@ public class FileUtil {
 		UUID uuid = UUID.randomUUID();
 		String uniqueId = uuid.toString();
 		return uniqueId;
-
 	}
+	
 
 	public static void doCopyFile(File srcFile, File destFile) {
 

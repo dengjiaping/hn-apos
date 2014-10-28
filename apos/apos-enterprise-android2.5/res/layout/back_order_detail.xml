@@ -53,4 +53,27 @@
         android:textColor="#666666"
         android:textSize="14sp" />
 
+    <TextView
+       
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:text="附件:"
+        android:textColor="#666666"
+        android:textSize="14sp" />
+
+    <GridView
+        android:id="@+id/back_order_detail_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="4dip"
+        android:horizontalSpacing="5dip"
+        android:numColumns="4"
+        android:verticalSpacing="5dip" >
+    </GridView>
+
 </LinearLayout>

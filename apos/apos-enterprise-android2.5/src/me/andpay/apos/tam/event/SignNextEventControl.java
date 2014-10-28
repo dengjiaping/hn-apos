@@ -24,8 +24,6 @@ import me.andpay.timobileframework.mvc.form.FormBean;
 import me.andpay.timobileframework.util.FileUtil;
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
 import android.view.View;
 import android.widget.Toast;
 
@@ -79,11 +77,16 @@ public class SignNextEventControl extends AbstractEventController {
 		// activity.signature.draw(cv);
 		// activity.signature.setBackgroundColor(activity.getResources().getColor(
 		// android.R.color.transparent));
+
+		/* 获得位图，和存储的临时文件 */
 		Bitmap bitMap = activity.signature.getSignatureBitmap();
 		String fileName = FileUtil.getMyUUID() + ".jpg";
+
 		String filePath = FileUtil.bitMapSaveFile(bitMap,
 				activity.getApplicationContext(), fileName, 10);
-
+		/**
+		 * 回收位图
+		 */
 		if (!bitMap.isRecycled()) {
 			bitMap.recycle();
 			System.gc();

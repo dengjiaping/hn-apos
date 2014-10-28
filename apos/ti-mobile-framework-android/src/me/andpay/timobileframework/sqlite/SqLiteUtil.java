@@ -125,6 +125,11 @@ public class SqLiteUtil {
 
 	}
 
+	/**
+	 * 获得数据库模型
+	 * @param modelClass 
+	 * @return
+	 */
 	public static ModelDbProp getModelDbProp(Class<?> modelClass) {
 
 		ModelDbProp dpPorp = dbPropCache.get(modelClass.getName());
@@ -150,27 +155,27 @@ public class SqLiteUtil {
 			colList.add(colName);
 
 			dpPorp.getFields().put(colName, field);
-			
+
 			String setName = null;
-			if(Character.isUpperCase(field.getName().charAt(1))) {
-				setName = "set"
-						+ field.getName();
-			}else {
-				setName = "set"
-						+ field.getName().substring(0, 1).toUpperCase()
+			if (Character.isUpperCase(field.getName().charAt(1))) {
+				setName = "set" + field.getName();
+			} else {
+				setName = "set" + field.getName().substring(0, 1).toUpperCase()
 						+ field.getName().substring(1);
 			}
-		
+
 			Method setMethod = null;
 			try {
 				setMethod = modelClass.getMethod(setName, field.getType());
 			} catch (NoSuchMethodException e) {
-				
-			}catch (Exception e) {
+
+			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
 			setMethods.put(colName, setMethod);
-
+			/**
+			 * 获得主键
+			 */
 			ID id = field.getAnnotation(ID.class);
 			if (id != null) {
 				dpPorp.setIdFiledName(field.getName());

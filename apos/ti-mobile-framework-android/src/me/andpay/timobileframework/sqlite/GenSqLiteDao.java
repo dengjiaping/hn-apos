@@ -29,9 +29,9 @@ import android.util.Log;
  * 
  * @author cpz
  * 
- * @param <T>
+ * @param <T> 表对象
  * @param <Q>
- * @param <K>
+ * @param <K> 查询键值
  */
 public abstract class GenSqLiteDao<T, Q, K> extends SQLiteOpenHelper implements
 		SqLiteDao<T, Q, K> {
@@ -48,9 +48,12 @@ public abstract class GenSqLiteDao<T, Q, K> extends SQLiteOpenHelper implements
 				version);
 		clazz = t;
 		genContext = context;
-
+        /**
+         * 判断是否有存在的表
+         */
 		if (!isTableExist()) {
 			SQLiteDatabase sqlDb = getWritableDatabase();
+			/*创建表*/
 			onCreate(sqlDb);
 		}
 
@@ -69,6 +72,9 @@ public abstract class GenSqLiteDao<T, Q, K> extends SQLiteOpenHelper implements
 			}
 		}
 		return false;
+		
+		
+		
 	}
 
 	protected Class<? extends T> clazz;
@@ -92,8 +98,8 @@ public abstract class GenSqLiteDao<T, Q, K> extends SQLiteOpenHelper implements
 	public List<T> query(Q cond, long firstResult, long maxResults) {
 
 		SQLiteDatabase sqlDb = getWritableDatabase();
-		Class<?> condClass = cond.getClass();
-		ModelDbProp dpProp = SqLiteUtil.getModelDbProp(clazz);
+		Class<?> condClass = cond.getClass();//查询字段
+		ModelDbProp dpProp = SqLiteUtil.getModelDbProp(clazz);//表模型
 
 		StringBuffer whereSql = new StringBuffer();
 		List<String> whereArgs = new ArrayList<String>();
@@ -107,7 +113,7 @@ public abstract class GenSqLiteDao<T, Q, K> extends SQLiteOpenHelper implements
 
 				try {
 					
-					String colFieldName = expression.paraName();
+					String colFieldName = expression.paraName();//要查询的数据库字段名
 					String colName = SqLiteUtil.getFieldName(field,
 							colFieldName, clazz);
 					field.setAccessible(true);
@@ -124,7 +130,9 @@ public abstract class GenSqLiteDao<T, Q, K> extends SQLiteOpenHelper implements
 					}
 
 					
-					
+					/**
+					 * 获得查询字段的转化器,进行转化
+					 */
 					DataConverter dataConverter = getDataConverter(expression, condClass, field);
 					if(dataConverter!=null) {
 						value = dataConverter.convertToString(value);

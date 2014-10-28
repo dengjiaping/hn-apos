@@ -15,19 +15,19 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:id="@+id/ms_reliation_merge_accounts"
+                android:id="@+id/ms_reliation_settlement_deatail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/com_button_selector"
                 android:gravity="center"
                 android:paddingLeft="5dip"
                 android:paddingRight="5dip"
-                android:text="并账明细"
+                android:text="结算明细"
                 android:textColor="@drawable/com_text_color_selector"
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/ms_reliation_settlement_deatail"
+                android:id="@+id/ms_reliation_merge_accounts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
@@ -35,7 +35,7 @@
                 android:gravity="center"
                 android:paddingLeft="5dip"
                 android:paddingRight="5dip"
-                android:text="结算明细"
+                android:text="并账明细"
                 android:textColor="@drawable/com_text_color_selector"
                 android:textSize="15sp" />
         </LinearLayout>

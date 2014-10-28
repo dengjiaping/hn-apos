@@ -1,6 +1,7 @@
 package me.andpay.apos.base.tools;
 
 import java.io.File;
+import java.util.UUID;
 
 import android.R.bool;
 import android.os.Environment;
@@ -73,6 +74,12 @@ public class FileUtil {
 			return false;
 		}
 
+	}
+	public static String getMyUUID() {
+
+		UUID uuid = UUID.randomUUID();
+		String uniqueId = uuid.toString();
+		return uniqueId;
 	}
 
 }

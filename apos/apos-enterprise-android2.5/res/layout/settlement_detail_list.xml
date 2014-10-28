@@ -21,10 +21,12 @@
         android:layout_height="match_parent" >
 
         <ExpandableListView
+            android:divider="@color/com_no_color"
             android:id="@+id/settlement_detail_list_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:cacheColorHint="@color/com_no_color"
+            android:dividerHeight="4px"
             android:listSelector="@color/com_no_color" >
         </ExpandableListView>
 

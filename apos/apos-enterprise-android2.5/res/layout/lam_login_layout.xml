@@ -62,6 +62,7 @@
             </LinearLayout>
 
             <Button
+                
                 android:id="@+id/lam_login_btn"
                 style="@style/com_button_style"
                 android:layout_width="match_parent"
@@ -119,6 +120,7 @@
     </ScrollView>
 
     <RelativeLayout
+        
         android:id="@+id/lam_foot_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -130,15 +132,7 @@
             style="@style/com_copyright_text_style"
             android:text="@string/lam_login_copyright_text_str" />
 
-        <ImageView
-            android:id="@+id/com_andpay_logo_imgv"
-            style="@style/com_copyright_img_style"
-            android:layout_width="253dp"
-            android:layout_height="33dp"
-            android:layout_above="@id/com_app_copyright_textv"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="6dp"
-            android:src="@drawable/com_bankcard_img" />
+        
     </RelativeLayout>
 
     <pl.droidsonroids.gif.GifImageView
