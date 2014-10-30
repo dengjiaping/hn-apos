@@ -52,7 +52,7 @@ public class SignNextEventControl extends AbstractEventController {
 				.getFlowContextData(SignContext.class);
 
 		if (signContext.getGesturesCount() < 2
-				|| signContext.getGesturesLength() < 16) {
+				|| signContext.getGesturesLength() < 16){
 
 			Toast.makeText(
 					signActivity.getApplicationContext(),
@@ -104,7 +104,7 @@ public class SignNextEventControl extends AbstractEventController {
 		cond.setTermTraceNo(signContext.getTermTraceNo());
 		cond.setTermTxnTime(signContext.getTermTxnTime());
 		List<WaitUploadImage> imges = waitUploadImageDao.query(cond, 0, -1);
-		if (!imges.isEmpty()) {
+		if (!imges.isEmpty()){
 			WaitUploadImage waitImge = imges.get(0);
 			waitImge.setFilePath(filePath);
 			waitImge.setReadyUpload(true);

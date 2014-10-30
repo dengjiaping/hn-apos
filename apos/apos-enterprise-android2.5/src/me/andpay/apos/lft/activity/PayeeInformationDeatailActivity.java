@@ -34,7 +34,7 @@ import com.google.inject.Inject;
  * 
  */
 @ContentView(R.layout.lft_transfer_accounts_payee_information_deatail)
-public class PayeeInformationDeatailActivity extends AposBaseActivity {
+public class PayeeInformationDeatailActivity extends AposBaseActivity{
 
 	@InjectExtra("money")
 	private String moneyStr;// 金钱
@@ -66,8 +66,12 @@ public class PayeeInformationDeatailActivity extends AposBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		moneyView.setText(moneyStr);
-		poundageView.setText(poundageStr);
+		
+		int pound = Integer.valueOf(poundageView.getText().toString());
+		
+		moneyView.setText(Integer.valueOf(moneyStr)+pound+"");
+		poundageView.setText("手续费:"+poundageView.getText().toString());
+		
 		bankNumber.setText(bankNumberStr);
 
 	}
@@ -100,7 +104,7 @@ public class PayeeInformationDeatailActivity extends AposBaseActivity {
 		txnContext.setTxnType(TxnType.MPOS_TRANSFER_ACCOUNT);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
 		txnControl.setTxnCallback(transferAccountCallBackImpl);
-		String amountStr = "￥" + moneyStr;
+		String amountStr = "￥" + moneyView.getText().toString();
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));
 		txnContext.setPromptStr("转账中...");
 		setFlowContextData(txnContext);

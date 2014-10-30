@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import me.andpay.apos.R;
+import me.andpay.apos.base.tools.MathUtil;
+import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.lft.controller.TransferAccountVertyController;
 import me.andpay.apos.lft.data.OftenUser;
@@ -109,6 +111,14 @@ public class PayeeInformationActivity extends AposBaseActivity implements
 	 * @param v
 	 */
 	public void sure(View v) {
+		if(!MathUtil.isfloatNumber(money.getText().toString())){
+			ShowUtil.showShortToast(this,"请输入合法的金额数");
+			return;
+		}
+		if(Float.valueOf(money.getText().toString())==0){
+			ShowUtil.showShortToast(this,"金额数不能为0");
+			return;
+		}
 		Map<String, String> senData = new HashMap<String, String>();
 		senData.put("money", money.getText().toString());
 		senData.put("poundage", poundage.getText().toString());

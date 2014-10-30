@@ -73,12 +73,15 @@ public class RequestManager {
 			serviceAsyTask.setOptRequest(optRequest);
 			serviceAsyTask.setOptService(optService);
 		}
+		if (list != null && list.size() > 0) {
+			for (int i = 0; i < list.size(); i++) {
+				FinishRequestInterface fi = list.get(i);
+				serviceAsyTask.addFinishRequestInterface(fi);
+			}
+			list.clear();
 
-		for (int i = 0; i < list.size(); i++) {
-			FinishRequestInterface fi = list.get(i);
-			serviceAsyTask.addFinishRequestInterface(fi);
 		}
-		list.clear();
+
 		serviceAsyTask.execute();
 	}
 

@@ -41,7 +41,7 @@ public class DownloadICCardParamsService {
 	private AposContext aposContext;
 
 	public void downloadICparams() {
-		Thread thread = new Thread(new Runnable() {
+		Thread thread = new Thread(new Runnable(){
 
 			public void run() {
 				try {

@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:gravity="center"
-            android:text="手续费1%"
+            android:text="15"
             android:textColor="@color/com_title_normal_col"
             android:textSize="18sp" />
 
@@ -48,7 +48,7 @@
             android:textColor="@color/com_title_normal_col"
             android:textSize="18sp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -58,23 +58,25 @@
             android:orientation="horizontal" >
 
             <TextView
+                android:id="@+id/lft_transfer_accounts_payee_information_deatail_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@color/transparent"
+                android:text="0.00"
+                android:textColor="@color/trf_info_amt_col"
+                android:textSize="40sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/lft_transfer_accounts_payee_information_deatail_money"
+                android:layout_toLeftOf="@id/lft_transfer_accounts_payee_information_deatail_money"
                 android:background="@color/transparent"
                 android:text="￥"
                 android:textColor="@color/trf_info_amt_col"
-                android:textSize="60sp" />
-
-            <TextView
-                android:id="@+id/lft_transfer_accounts_payee_information_deatail_money"
-                android:layout_width="120dip"
-                android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:gravity="right"
-                android:text="0.00"
-                android:textColor="@color/trf_info_amt_col"
-                android:textSize="60sp" />
-        </LinearLayout>
+                android:textSize="40sp" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <LinearLayout

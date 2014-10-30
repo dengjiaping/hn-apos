@@ -17,6 +17,15 @@ import android.widget.TextView;
  */
 public class CitySelectController extends BaseAdapterController<String> {
 	private LayoutInflater inflater = null;
+	private int state=0;//0电费 1水费
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
 
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
@@ -34,12 +43,12 @@ public class CitySelectController extends BaseAdapterController<String> {
 		} else {
 			holder = (Holder) arg1.getTag();
 		}
-		holder.cityName.setText(CityTable.city[arg0][0]);
+		holder.cityName.setText(CityTable.city[state==0?arg0:arg0+14][0]);
 		return arg1;
 	}
 
 	@Override
-	public void getEvent(View view, final int position) {
+	public void getEvent(View view, final int position){
 		// TODO Auto-generated method stub
 		view.setOnClickListener(new OnClickListener() {
 

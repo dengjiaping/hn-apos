@@ -119,11 +119,11 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		adapter.setListener(this);
 
 		listView.setGroupIndicator(null);
-		
+
 		listView.setChildDivider(getResources().getDrawable(
 				R.drawable.scm_solid_line_img));
 		listView.setAdapter(adapter);
-	
+
 		selectStatus(1);
 		txnDialog.show();
 		getSettlementDetail(pageSize, page = 1);
@@ -166,9 +166,20 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		Map<String, Object> mapData = new HashMap();
 
-		mapData.put(VasOptPropNames.UNRPT_BEGIN_DATE, order.getBeginDate());
-
-		mapData.put(VasOptPropNames.UNRPT_END_DATE, order.getEndDate());
+		mapData.put(
+				VasOptPropNames.UNRPT_BEGIN_DATE,
+				TimeUtil.getInstance()
+						.formatDate(
+								TimeUtil.getInstance().formatString(
+										order.getBeginDate(),
+										TimeUtil.DATE_PATTERN_11),
+								TimeUtil.DATE_PATTERN_2));
+		mapData.put(
+				VasOptPropNames.UNRPT_END_DATE,
+				TimeUtil.getInstance().formatDate(
+						TimeUtil.getInstance().formatString(order.getEndDate(),
+								TimeUtil.DATE_PATTERN_11),
+						TimeUtil.DATE_PATTERN_2));
 		optRequest.setVasRequestContentObj(mapData);
 		optRequest.setMerchantNo("888430179110001");
 		optRequest.setPageSize(pageSize);
@@ -254,6 +265,7 @@ public class SettleMentDetailListActivity extends AposBaseActivity implements
 		adapter.setList(detailOrderScreening(SettlementDetailOrder
 				.getArrays(jsonStr)));
 		adapter.notifyDataSetChanged();
+		expandGroup(0);
 		page++;
 
 	}

@@ -54,7 +54,7 @@ public class UpLoadFileServce {
 			cond.setReadyUpload(true);
 			cond.setSorts("id-");
 			List<WaitUploadImage> imges = waitImageDao.query(cond, 0, -1);
-			if (imges.size() == 0) {
+			if (imges.size() == 0){
 				return;
 			}
 			highDefinition = NetWorkUtil.isHighNetWork(application
@@ -90,7 +90,7 @@ public class UpLoadFileServce {
 		StringBuffer uploadUrl = new StringBuffer(tiRpcClient.getUploadUrl());
 		
 
-		if (uploadUrl.indexOf("?") == -1) {
+		if (uploadUrl.indexOf("?") == -1){
 			uploadUrl.append("?");
 		} else {
 			uploadUrl.append("&");

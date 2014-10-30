@@ -35,7 +35,8 @@
             android:gravity="center"
             android:text="手续费15%"
             android:textColor="@color/com_title_normal_col"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/lft_transfer_accounts_payee_information_money_title"
@@ -48,7 +49,7 @@
             android:textColor="@color/com_title_normal_col"
             android:textSize="18sp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -57,25 +58,29 @@
             android:background="@color/transparent"
             android:orientation="horizontal" >
 
-            <TextView
+            <EditText
+                android:minWidth="10dip"
+                android:maxLength="9"
+                android:id="@+id/lft_transfer_accounts_payee_information_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
                 android:background="@color/transparent"
-                android:text="￥"
-                android:textColor="@color/trf_info_amt_col"
-                android:textSize="60sp" />
-
-            <EditText
-                android:id="@+id/lft_transfer_accounts_payee_information_money"
-                android:layout_width="120dip"
-                android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:gravity="right"
                 android:singleLine="true"
                 android:text="0.00"
                 android:textColor="@color/trf_info_amt_col"
-                android:textSize="60sp" />
-        </LinearLayout>
+                android:textSize="40sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/lft_transfer_accounts_payee_information_money"
+                android:layout_toLeftOf="@id/lft_transfer_accounts_payee_information_money"
+                android:background="@color/transparent"
+                android:text="￥"
+                android:textColor="@color/trf_info_amt_col"
+                android:textSize="40sp" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout

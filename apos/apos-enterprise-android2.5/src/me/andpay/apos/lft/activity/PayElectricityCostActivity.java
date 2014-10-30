@@ -88,7 +88,7 @@ public class PayElectricityCostActivity extends AposBaseActivity {
 
 			title.setText("请选择城市");
 			ArrayList<String> list = new ArrayList<String>();
-			for (int i = 0; i < CityTable.city.length; i++) {
+			for (int i = 0; i < CityTable.city.length-2; i++) {
 				list.add(i + "");
 			}
 			BaseAdapter<String> adapter = new BaseAdapter<String>();

@@ -79,7 +79,8 @@ public class FileUtil {
 
 		UUID uuid = UUID.randomUUID();
 		String uniqueId = uuid.toString();
-		return uniqueId;
+		String resultStr = uniqueId.replaceAll("-","");
+		return resultStr;
 	}
 
 }

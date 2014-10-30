@@ -1,14 +1,11 @@
 package me.andpay.apos.lft.activity;
 
-import com.google.inject.Inject;
-
 import me.andpay.apos.R;
 import me.andpay.apos.base.TxnType;
 import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.lft.flow.FlowConstants;
 import me.andpay.apos.tam.callback.impl.CreditPaymentCallBackImpl;
-import me.andpay.apos.tam.callback.impl.TopUpCallBackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
@@ -24,6 +21,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.inject.Inject;
 
 /**
  * 信用卡确认界面
@@ -64,8 +63,10 @@ public class CreditCardConfirmActivity extends AposBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		moneyView.setText(moneyStr);
-		poundageView.setText(poundageStr);
+		
+		
+		moneyView.setText(Integer.valueOf(poundageView.getText().toString())+Integer.valueOf(moneyStr)+"");
+		poundageView.setText("手续费:"+poundageView.getText().toString());
 		bankNumber.setText(bankNumberStr);
 
 	}
@@ -93,7 +94,7 @@ public class CreditCardConfirmActivity extends AposBaseActivity {
 		txnContext.setTxnType(TxnType.MPOS_PAY_CREDIT_CARD);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
 		txnControl.setTxnCallback(creditPaymentCallBackImpl);
-		String amountStr = "￥"+moneyStr;
+		String amountStr = "￥"+moneyView.getText().toString();
 		
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));
 		txnContext.setPromptStr("还款中...");

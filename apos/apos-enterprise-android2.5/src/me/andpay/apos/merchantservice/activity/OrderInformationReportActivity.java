@@ -16,6 +16,7 @@ import me.andpay.apos.base.requestmanage.FinishRequestInterface;
 import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.base.tools.FileUtil;
 import me.andpay.apos.base.tools.ShowUtil;
+import me.andpay.apos.base.tools.StringUtil;
 import me.andpay.apos.base.upimage.UpLoadImage;
 import me.andpay.apos.base.upimage.UploadAllImageCallback;
 import me.andpay.apos.base.upimage.UploadImageManager;
@@ -35,6 +36,7 @@ import roboguice.inject.InjectView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -89,7 +91,7 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 	private TextView fujian;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState){
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		uploadDialog = new CommonDialog(this, "上传附件...");
@@ -105,25 +107,60 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 		order = (BringAndBackOrder) TiFlowControlImpl.instanceControl()
 				.getFlowContext().get(BringAndBackOrder.class.getName());
 		title.setText(order.getSubject());
-		if (order.getDispose().equals("0")) {
-			fujian.setText("添加附件");
+		if(order.getDispose().equals("0")){
+			dispose.setTextColor(getResources().getColor(R.color.auxiliary));
+			dispose.setText("待审核");
+		}else if(order.getDispose().equals("1")){
+			dispose.setTextColor(getResources().getColor(R.color.auxiliary));
+			dispose.setText("已通过");
+		}else{
 			dispose.setTextColor(getResources().getColor(R.color.red));
-			dispose.setText("未处理");
-			reportBtn.setVisibility(View.VISIBLE);
-			list.add(SelectImageController.TAG);
-			selectController.setState(0);
+			dispose.setText("已拒绝");
+		}
+		
+		if (order.getDispose().equals("0")){
+			if(StringUtil.isJsonEmpty(order.getImagePaths())){
+				gridView.setColumnWidth(4);
+				fujian.setText("添加附件");
+				
+			
+				reportBtn.setVisibility(View.VISIBLE);
+				list.add(SelectImageController.TAG);
+				selectController.setState(0);
+			}else{
+				gridView.setColumnWidth(1);
+				fujian.setText("附件");
+				
+			
+				reportBtn.setVisibility(View.GONE);
+				selectController.setState(1);
+				
+				
+				gridView.setVisibility(View.VISIBLE);
+				String str[] =  order.getImagePaths().split(",");
+				for(int i=0;i<str.length;i++){
+					list.add(str[i]);
+				}
+				
+			}
+			
+			
+		
 			
 		} else {
+			gridView.setColumnWidth(1);
 			fujian.setText("附件");
-			dispose.setTextColor(getResources().getColor(R.color.auxiliary));
-			dispose.setText("已处理");
+			
 			reportBtn.setVisibility(View.GONE);
 			selectController.setState(1);
-			String str[] =  order.getImagePaths().split(",");
-			if(str==null){
+			
+			if(StringUtil.isJsonEmpty(order.getImagePaths())){
 				gridView.setVisibility(View.GONE);
+				fujian.setTextColor(getResources().getColor(R.color.red));
+				fujian.setText("无附件");
 			}else{
 				gridView.setVisibility(View.VISIBLE);
+				String str[] =  order.getImagePaths().split(",");
 				for(int i=0;i<str.length;i++){
 					list.add(str[i]);
 				}
@@ -170,7 +207,7 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 	public void uploadFujian(View view) {
 		/* 添加附件 */
 		if (adapter.getList().size() > 1) {
-			for (int i = 0; i < adapter.getList().size(); i++) {
+			for (int i = 0; i < adapter.getList().size()-1; i++) {
 				UpLoadImage image = new UpLoadImage();
 				image.setTitle("图片" + i);
 				image.setType(AttachmentTypes.FEEDBACK_PICTURE);
@@ -259,26 +296,33 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 
 	private StringBuffer uploadSuccessBuffer = new StringBuffer();
 
-	public void callback(Set<UpLoadImage> images) {
+	public void callback(final Set<UpLoadImage> images) {
 		// TODO Auto-generated method stub
-		uploadDialog.cancel();
+		new Handler(getMainLooper()).post(new Runnable() {
+			
+			public void run() {
+				// TODO Auto-generated method stub
+				uploadDialog.cancel();
 
-		StringBuffer proBuffer = new StringBuffer();
+				StringBuffer proBuffer = new StringBuffer();
 
-		for (UpLoadImage image : images) {
-			if (!image.isSuccess()) {
-				proBuffer.append(image.getTitle() + "上传失败\n");
-			} else if (image.getUpCount() <= 1) {
+				for (UpLoadImage image : images) {
+					if (!image.isSuccess()) {
+						proBuffer.append(image.getTitle() + "上传失败\n");
+					} else if (image.getUpCount() <= 1) {
 
-				proBuffer.append(image.getTitle() + "上传成功\n");
-				uploadSuccessBuffer.append(image.getHttpName() + ",");
+						proBuffer.append(image.getTitle() + "上传成功\n");
+						uploadSuccessBuffer.append(image.getHttpName() + ",");
+
+					}
+				}
+				uploadSuccessBuffer.deleteCharAt(uploadSuccessBuffer.length() - 1);
+
+				ShowUtil.showShortToast(OrderInformationReportActivity.this, proBuffer.toString());
 
 			}
-		}
-		uploadSuccessBuffer.deleteCharAt(uploadSuccessBuffer.length() - 1);
-
-		ShowUtil.showShortToast(this, proBuffer.toString());
-
+		});
+		
 	}
 
 }

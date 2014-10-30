@@ -73,6 +73,7 @@
             <ImageView style="@style/scm_line_image_style" />
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/scm_settle_layout"
                 style="@style/scm_layout_style" >
 

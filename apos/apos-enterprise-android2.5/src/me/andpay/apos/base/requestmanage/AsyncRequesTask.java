@@ -6,7 +6,6 @@ import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
 import me.andpay.ac.term.api.vas.operation.VasOptService;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
 import me.andpay.ac.term.api.vas.txn.VasTxnService;
-import me.andpay.ti.lnk.transport.websock.common.NetworkErrorException;
 import android.os.AsyncTask;
 
 public class AsyncRequesTask extends AsyncTask<Void, Void, Object> {
@@ -75,7 +74,7 @@ public class AsyncRequesTask extends AsyncTask<Void, Void, Object> {
 			} else {
 				return optService.processCommonOpt(optRequest);
 			}
-		} catch (NetworkErrorException e) {
+		} catch (Exception e) {
 			return null;
 		}
 
@@ -84,11 +83,12 @@ public class AsyncRequesTask extends AsyncTask<Void, Void, Object> {
 	@Override
 	protected void onPostExecute(Object result) {
 		// TODO Auto-generated method stub
-		for (int i = 0; i < list.size(); i++) {
-			FinishRequestInterface fi = list.get(i);
-			fi.callBack(result);
+		if (list != null && list.size() > 0) {
+			for (int i = 0; i < list.size(); i++) {
+				FinishRequestInterface fi = list.get(i);
+				fi.callBack(result);
+			}
 		}
-
 	}
 
 }

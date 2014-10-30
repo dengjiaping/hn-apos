@@ -20,4 +20,14 @@ public class StringUtil {
 		return false;
 
 	}
+	
+	public static boolean isJsonEmpty(String str){
+		if(isEmpty(str)){
+			return true;
+		}
+		if(str.equals("\"\"")){
+			return true;
+		}
+		return false;
+	}
 }

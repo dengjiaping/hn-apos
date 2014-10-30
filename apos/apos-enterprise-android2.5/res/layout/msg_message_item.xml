@@ -6,6 +6,8 @@
     android:padding="10dip" >
 
     <TextView
+        android:layout_marginTop="5dip"
+        android:layout_marginLeft="10dip"
         android:id="@+id/msg_message_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,6 +15,8 @@
         android:textColor="@color/tqm_list_item_amount_col" />
 
     <TextView
+        android:layout_marginLeft="5dip"
+        android:layout_marginTop="5dip"
         android:id="@+id/msg_message_item_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,5 +32,11 @@
         android:layout_alignParentRight="true"
         android:text="已读"
         android:textColor="@color/tqm_list_item_amount_col" />
+
+    <ImageView
+        android:id="@+id/msg_message_isReader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hong" />
 
 </RelativeLayout>

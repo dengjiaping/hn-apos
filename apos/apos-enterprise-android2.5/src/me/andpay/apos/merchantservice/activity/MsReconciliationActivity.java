@@ -13,6 +13,7 @@ import me.andpay.apos.base.requestmanage.FinishRequestInterface;
 import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.base.tools.StringUtil;
+import me.andpay.apos.base.tools.TimeUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.merchantservice.controller.MergeAccountsControler;
@@ -150,7 +151,7 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 
 		time.setText("全部");
 
-		//mergeAcccounts(null);
+		// mergeAcccounts(null);
 		settleMentDeatail(null);
 
 	}
@@ -435,7 +436,15 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 				.getFlowContext().get("beginTime");
 		endTime = (String) TiFlowControlImpl.instanceControl().getFlowContext()
 				.get("endTime");
+
 		if (!StringUtil.isEmpty(beginTime) && !StringUtil.isEmpty(endTime)) {
+
+			beginTime = TimeUtil.getInstance().formatDate(
+					TimeUtil.getInstance().formatString(beginTime,
+							TimeUtil.DATE_PATTERN_1), TimeUtil.DATE_PATTERN_2);
+			endTime = TimeUtil.getInstance().formatDate(
+					TimeUtil.getInstance().formatString(endTime,
+							TimeUtil.DATE_PATTERN_1), TimeUtil.DATE_PATTERN_2);
 			time.setText(beginTime + "至" + endTime);
 		}
 

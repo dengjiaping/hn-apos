@@ -17,6 +17,7 @@ import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.common.constant.RuntimeAttrNames;
 import me.andpay.apos.common.contextdata.LoginUserInfo;
+import me.andpay.apos.merchantservice.activity.AddBackOrderActivity.AddSuccessCallBack;
 import me.andpay.apos.merchantservice.controller.BringAndBackOrderController;
 import me.andpay.apos.merchantservice.data.BringAndBackOrder;
 import me.andpay.apos.merchantservice.flow.FlowNote;
@@ -40,7 +41,7 @@ import com.google.inject.Inject;
 /*银联差错处理*/
 @ContentView(R.layout.bank_error_dispose)
 public class BankErrorDisposeActivity extends AposBaseActivity implements
-		AdpterEventListener, FinishRequestInterface, OnClickListener {
+		AdpterEventListener, FinishRequestInterface, OnClickListener,AddSuccessCallBack {
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.bank_error_dispose_back)
 	private ImageView back;
@@ -163,7 +164,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		Map<String, Object> dataMap = new HashMap();
-		dataMap.put("action", queryType);
+		dataMap.put("queryType", queryType);
 		optRequest.setVasRequestContentObj(dataMap);
 		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
 				.getAttribute(RuntimeAttrNames.LOGIN_USER);
@@ -225,6 +226,7 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 
 	/* 添加退单 */
 	public void add(View view) {
+		AddBackOrderActivity.setOnSuccessCallBack(this);
 		TiFlowControlImpl.instanceControl().nextSetup(this,
 				FlowNote.ADD_BACK_ORDER);
 
@@ -339,5 +341,12 @@ public class BankErrorDisposeActivity extends AposBaseActivity implements
 		} else if (v.getId() == R.id.bank_error_dispose_order_report) {
 			report(null);
 		}
+	}
+
+	public void onAddSuccessCallBack(BringAndBackOrder order) {
+		// TODO Auto-generated method stub
+		
+		applyAdapter.getList().add(0,order);
+		applyAdapter.notifyDataSetChanged();
 	}
 }

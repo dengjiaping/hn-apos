@@ -1,8 +1,16 @@
 package me.andpay.apos.message.activity;
 
+import com.google.inject.Inject;
+
+import me.andpay.ac.consts.VasOptTypes;
+import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
 import me.andpay.apos.R;
+import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.common.constant.RuntimeAttrNames;
+import me.andpay.apos.common.contextdata.LoginUserInfo;
 import me.andpay.apos.message.data.Message;
+import me.andpay.timobileframework.cache.HashMap;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
@@ -38,10 +46,30 @@ public class MessageDeatailActivity extends AposBaseActivity {
 		if (message != null) {
 			content.setText(message.getContent());
 		}
+		selectMessage(message.getId(), "OSS-ANNO-R");
+
 	}
 
-	public void back(View v){
+	public void back(View v) {
 
 		TiFlowControlImpl.instanceControl().previousSetup(this);
+	}
+
+	@Inject
+	RequestManager requestManager;
+
+	private void selectMessage(String id, String action) {
+
+		CommonTermOptRequest optRequest = new CommonTermOptRequest();
+		HashMap<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("id", id);
+		dataMap.put("action", action);
+		optRequest.setVasRequestContentObj(dataMap);
+		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
+				.getAttribute(RuntimeAttrNames.LOGIN_USER);
+		optRequest.setUserName(logInfo.getUserName());
+		optRequest.setOperateType(VasOptTypes.OSS_ANNOUNCEMENT_OPERATE_NOTES);
+		requestManager.setOptRequest(optRequest);
+		requestManager.startService();
 	}
 }

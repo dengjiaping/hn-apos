@@ -147,6 +147,14 @@
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/com_memu_message_img"
                     android:text="通知公告" />
+                
+                <ImageView 
+                    android:layout_marginTop="5dip"
+                    android:layout_marginLeft="5dip"
+                    android:src="@drawable/hong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
             </RelativeLayout>
 
             <ImageView

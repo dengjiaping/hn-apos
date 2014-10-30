@@ -12,6 +12,7 @@ import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import me.andpay.apos.R;
 import me.andpay.apos.base.adapter.BaseAdapter;
+import me.andpay.apos.base.tools.StringUtil;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.merchantservice.controller.SelectImageController;
 import me.andpay.apos.merchantservice.data.BringAndBackOrder;
@@ -45,6 +46,9 @@ public class BackOrderDetailActivity extends AposBaseActivity {
 
 	@InjectView(R.id.back_order_detail_gridview)
 	private GridView gridView;
+	
+	@InjectView(R.id.back_order_detail_fujian)
+	private TextView fujian;
 
 	private BaseAdapter<String> imageAdapter;
 
@@ -74,14 +78,18 @@ public class BackOrderDetailActivity extends AposBaseActivity {
 		describle.setText(order.getDescription());
 
 	
-		String sqlitStr[] = order.getImagePaths().split(",");
-		if (sqlitStr == null) {
+		
+		if (StringUtil.isJsonEmpty(order.getImagePaths())) {
 			gridView.setVisibility(View.GONE);
+			fujian.setText("无附件");
+			fujian.setTextColor(getResources().getColor(R.color.red));
 		} else {
 			imageAdapter = new BaseAdapter<String>();
 			imageAdapter.setContext(this);
+			String sqlitStr[] = order.getImagePaths().split(",");
 			ArrayList<String> list = new ArrayList<String>();
 			for (int i = 0; i < sqlitStr.length; i++) {
+			
 				list.add(sqlitStr[i]);
 			}
 

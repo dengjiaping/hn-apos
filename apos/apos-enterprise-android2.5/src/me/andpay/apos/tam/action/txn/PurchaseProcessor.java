@@ -51,7 +51,11 @@ import me.andpay.timobileframework.util.BeanUtils;
 import android.util.Log;
 
 import com.google.inject.Inject;
-
+/**
+ * 消费交易
+ * @author Administrator
+ *
+ */
 public class PurchaseProcessor extends GenTxnProcessor {
 
 	private final String TAG = PurchaseProcessor.class.getName();
@@ -286,7 +290,7 @@ public class PurchaseProcessor extends GenTxnProcessor {
 		QueryPayTxnInfoCond cond = new QueryPayTxnInfoCond();
 		cond.setTermTraceNo(exPayTxnInfo.getTermTraceNo());
 		cond.setTermTxnTime(exPayTxnInfo.getTermTxnTime());
-		List<PayTxnInfo> dbInfoList = payTxnInfoDao.query(cond, 0, -1);
+		List<PayTxnInfo> dbInfoList = payTxnInfoDao.query(cond,0, -1);
 		if (dbInfoList.size() > 0) {
 			PayTxnInfo dbTxnInfo = dbInfoList.get(0);
 			dbTxnInfo.setUpdateTime(StringUtil.format("yyyyMMddHHmmss",

@@ -170,12 +170,15 @@ public class MessageActivity extends AposBaseActivity implements
 	private void lookMessageDeatail(int state, final Message msg) {
 		switch (state) {
 		case 0:
-
+            msg.setAction("1");
+            messageAdapter.notifyDataSetChanged();
+            noteAdapter.notifyDataSetChanged();
 			TiFlowControlImpl.instanceControl().startFlow(this,
 					FlowNames.MSG_LOOK_MESSAGE);
 			TiFlowControlImpl.instanceControl().getFlowContext()
+			
 					.put(Message.class.getName(), msg);
-			selectMessage(msg.getId(), "OSS-ANNO-R");
+			//selectMessage(msg.getId(), "OSS-ANNO-R");
 			break;
 
 		case 1:
@@ -188,6 +191,7 @@ public class MessageActivity extends AposBaseActivity implements
 										int which) {
 									// TODO Auto-generated method stub
 									dialog.dismiss();
+									
 									selectMessage(msg.getId(), "OSS-ANNO-D");
 								}
 							})
@@ -239,6 +243,8 @@ public class MessageActivity extends AposBaseActivity implements
 	}
 
 	private void selectMessage(String id, String action) {
+		
+		
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("id", id);

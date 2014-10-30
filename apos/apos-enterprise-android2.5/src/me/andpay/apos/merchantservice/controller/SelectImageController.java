@@ -21,6 +21,7 @@ import com.squareup.picasso.Picasso;
 public class SelectImageController extends BaseAdapterController<String> {
 	public static final String TAG = "add";// 添加图片标志
 	private int state = 0;// 0添加图片 1 http图片展示
+	
 
 	public int getState() {
 		return state;
@@ -51,18 +52,24 @@ public class SelectImageController extends BaseAdapterController<String> {
 			switch (state) {
 			case 0:
 				Picasso.with(TiApplication.getContext())
-						.load(new File(getAdpter().getList().get(arg0)))
+						.load(new File(getAdpter().getList().get(arg0))).error(R.drawable.com_loading_none_img)
 						.resize(MathUtil.diptoPx(getAdpter().getContext(), 90),
 								MathUtil.diptoPx(getAdpter().getContext(), 80))
 						.into(show);
 				break;
 
 			case 1:
-
+                String imageStr = getAdpter().getList().get(arg0);
+                if(imageStr.startsWith("\"")){
+                	imageStr=imageStr.substring(1);
+                }
+                if(imageStr.endsWith("\"")){
+                	imageStr=imageStr.substring(0,imageStr.length()-1);
+                }
 				Picasso.with(TiApplication.getContext())
-						.load(getAdpter().getList().get(arg0))
-						.resize(MathUtil.diptoPx(getAdpter().getContext(), 90),
-								MathUtil.diptoPx(getAdpter().getContext(), 80))
+						.load(imageStr).error(R.drawable.com_loading_none_img)
+						.resize(MathUtil.diptoPx(getAdpter().getContext(), 200),
+								MathUtil.diptoPx(getAdpter().getContext(), 150))
 						.into(show);
 				break;
 			}

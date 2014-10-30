@@ -42,7 +42,7 @@ public class UploadImageManager {
 	private Set<UpLoadImage> images;
 
 	public void addImage(UpLoadImage image) {
-		if (images == null){
+		if (images == null) {
 			images = new HashSet<UpLoadImage>();
 		}
 		images.add(image);
@@ -53,32 +53,34 @@ public class UploadImageManager {
 
 			public void run() {
 				// TODO Auto-generated method stub
-				if(images==null&&images.isEmpty()){
+				if (images == null && images.isEmpty()) {
 					return;
 				}
 				for (UpLoadImage image : images) {
-					if(image.isSuccess()){
+					if (image.isSuccess()) {
 						continue;
-					}else{
+					} else {
 						doUpload(image);
 					}
 				}
-				if(callBacks!=null&&!callBacks.isEmpty()){
-					for(UploadAllImageCallback callBack:callBacks){
+				if (callBacks != null && !callBacks.isEmpty()) {
+					for (UploadAllImageCallback callBack : callBacks) {
 						callBack.callback(images);
-						
+
 					}
 				}
-				
 
 			}
 		}).start();
 
 	}
 
-	private void doUpload(UpLoadImage image){
+	private void doUpload(UpLoadImage image) {
 
-		StringBuffer uploadUrl = new StringBuffer(tiRpcClient.getUploadUrl());
+		// StringBuffer uploadUrl = new
+		// StringBuffer(tiRpcClient.getUploadUrl());
+		StringBuffer uploadUrl = new StringBuffer(
+				"http://172.19.25.121:9090/internal-blob");
 
 		if (uploadUrl.indexOf("?") == -1) {
 			uploadUrl.append("?");
@@ -88,28 +90,35 @@ public class UploadImageManager {
 
 		uploadUrl.append("type=").append(image.getType());
 		uploadUrl.append("&id=").append(image.getId());
+		try {
+			int code = HttpServiveProvider.get(
+					application.getApplicationContext()).simplUpload(
+					uploadUrl.toString(),
+					new File[] { new File(image.getFileName()) });
+			Log.e("上传的图片地址:", uploadUrl.toString());
 
-		int code = HttpServiveProvider.get(application.getApplicationContext())
-				.simplUpload(uploadUrl.toString(),
-						new File[] { new File(image.getFileName())});
-		Log.e("上传的图片地址:", uploadUrl.toString());
-		if (code == 200) {//上传成功
-			image.setSuccess(true);
-			image.setHttpName(uploadUrl.toString());
-			image.callBack();
+			if (code == 200) {// 上传成功
+				image.setSuccess(true);
+				image.setHttpName(uploadUrl.toString());
+				image.callBack();
+
+			} else {
+				image.callBack();
+			}
 			
-		
-		} else {
+		} catch (Exception e) {
 			image.callBack();
+		}finally{
+			image.addUpCount();
 		}
-		image.addUpCount();
 
 	}
+
 	/**
 	 * 清理
 	 */
-	public void clear(){
-	    images.clear();
+	public void clear() {
+		images.clear();
 		callBacks.clear();
 	}
 

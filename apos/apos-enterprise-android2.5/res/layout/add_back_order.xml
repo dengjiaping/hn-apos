@@ -62,18 +62,18 @@
                 android:textColor="@color/main_show_font_color"
                 android:textSize="15sp" />
 
-            <GridView
+            <me.andpay.apos.base.view.CustomGridView
                 android:layout_marginTop="4dip"
                 android:id="@+id/add_back_order_photo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dip"
                 android:layout_marginRight="10dip"
                 android:layout_marginBottom="10dip"
                 android:horizontalSpacing="5dip"
                 android:numColumns="4"
-                android:verticalSpacing="5dip" >
-            </GridView>
+                android:verticalSpacing="5dip" />
+          
         </LinearLayout>
     </RelativeLayout>
 

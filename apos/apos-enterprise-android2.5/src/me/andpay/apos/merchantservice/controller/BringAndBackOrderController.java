@@ -34,10 +34,13 @@ public class BringAndBackOrderController extends BaseAdapterController<BringAndB
 		holder.time.setText(order.getCreateTime());
 		if(order.getDispose().equals("0")){
 			holder.dispose.setTextColor(getAdpter().getContext().getResources().getColor(R.color.red));
-			holder.dispose.setText("未处理");
-		}else{
+			holder.dispose.setText("待审核");
+		}else if(order.getDispose().equals("1")){
 			holder.dispose.setTextColor(getAdpter().getContext().getResources().getColor(R.color.main_show_font_color));
-			holder.dispose.setText("已处理");
+			holder.dispose.setText("已通过");
+		}else{
+			holder.dispose.setTextColor(getAdpter().getContext().getResources().getColor(R.color.red));
+			holder.dispose.setText("已拒绝");
 		}
 		
 		return arg1;

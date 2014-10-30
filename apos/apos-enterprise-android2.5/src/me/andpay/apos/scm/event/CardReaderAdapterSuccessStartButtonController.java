@@ -23,8 +23,8 @@ public class CardReaderAdapterSuccessStartButtonController extends
 		//
 		//
 		Map<String, String> intentData = new HashMap<String, String>();
-		intentData.put(CommonProvider.TAGNAME, TabNames.TXN_PAGE);
-
+		//intentData.put(CommonProvider.TAGNAME, TabNames.TXN_PAGE);
+		intentData.put(CommonProvider.TAGNAME, TabNames.MSERVICE_PAGE);
 		TiFlowControlImpl.instanceControl().nextSetup(activity,
 				FlowConstants.FINISH, intentData);
 

@@ -2,7 +2,9 @@ package me.andpay.apos.merchantservice.activity;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import me.andpay.ac.consts.AttachmentTypes;
 import me.andpay.ac.consts.VasOptTypes;
@@ -16,6 +18,8 @@ import me.andpay.apos.base.requestmanage.FinishRequestInterface;
 import me.andpay.apos.base.requestmanage.RequestManager;
 import me.andpay.apos.base.tools.FileUtil;
 import me.andpay.apos.base.tools.ShowUtil;
+import me.andpay.apos.base.tools.StringUtil;
+import me.andpay.apos.base.tools.TimeUtil;
 import me.andpay.apos.base.upimage.UpLoadImage;
 import me.andpay.apos.base.upimage.UploadAllImageCallback;
 import me.andpay.apos.base.upimage.UploadImageManager;
@@ -25,6 +29,7 @@ import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.common.constant.RuntimeAttrNames;
 import me.andpay.apos.common.contextdata.LoginUserInfo;
 import me.andpay.apos.merchantservice.controller.SelectImageController;
+import me.andpay.apos.merchantservice.data.BringAndBackOrder;
 import me.andpay.apos.merchantservice.flow.FlowContants;
 import me.andpay.timobileframework.cache.HashMap;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
@@ -35,6 +40,7 @@ import roboguice.inject.InjectView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -50,6 +56,19 @@ import com.google.inject.Inject;
 public class AddBackOrderActivity extends AposBaseActivity implements
 		AdpterEventListener, PhotoResponse, FinishRequestInterface,
 		UploadAllImageCallback {
+	public static AddSuccessCallBack onSuccessCallBack;
+	
+	public static AddSuccessCallBack getOnSuccessCallBack() {
+		return onSuccessCallBack;
+	}
+
+	public static void setOnSuccessCallBack(AddSuccessCallBack onSuccessCallBack) {
+		AddBackOrderActivity.onSuccessCallBack = onSuccessCallBack;
+	}
+
+	public interface AddSuccessCallBack{
+		public void onAddSuccessCallBack(BringAndBackOrder order);
+	}
 	/* 返回 */
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.add_back_order_back)
@@ -85,7 +104,7 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		uploadDialog = new CommonDialog(this,"图片上传中...");
+		uploadDialog = new CommonDialog(this, "图片上传中...");
 		txnDialog = new CommonDialog(this, "添加中...");
 		addImageAdapter = new BaseAdapter<String>();
 		addImageAdapter.setContext(this);
@@ -149,7 +168,7 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 			}
 			break;
 		}
-		if (addImageAdapter.getList().size() > 1){
+		if (addImageAdapter.getList().size() > 1) {
 			addForecheadFile.setText("上传附件");
 			addForecheadFile
 					.setTextColor(getResources().getColor(R.color.blue));
@@ -172,8 +191,8 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 
 	public void addForecheadFile(View view) {
 		/* 添加附件 */
-		if (addImageAdapter.getList().size() > 1){
-			for (int i = 0; i < addImageAdapter.getList().size(); i++) {
+		if (addImageAdapter.getList().size() > 1) {
+			for (int i = 0; i < addImageAdapter.getList().size() - 1; i++) {
 				UpLoadImage image = new UpLoadImage();
 				image.setTitle("图片" + i);
 				image.setType(AttachmentTypes.FEEDBACK_PICTURE);
@@ -191,12 +210,25 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 	/* 添加退单 */
 
 	public void addbackOrder(View view) {
-	
+		String titStr = titleEdit.getText().toString();
+		String desStr = describeEdit.getText().toString();
+		if(StringUtil.isEmpty(titStr)){
+			ShowUtil.showShortToast(this,"请填写标题");
+			return;
+		}
+		if(StringUtil.isEmpty(desStr)){
+			ShowUtil.showShortToast(this,"请填写描述");
+			return;
+		}
+        if(StringUtil.isEmpty(uploadSuccessBuffer.toString())){
+        	ShowUtil.showShortToast(this,"请上传附件");
+			return;
+        }
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("subject", titleEdit.getText().toString());
 		dataMap.put("description", describeEdit.getText().toString());
-		dataMap.put("imagePaths",uploadSuccessBuffer.toString());
+		dataMap.put("imagePaths", uploadSuccessBuffer.toString());
 		optRequest.setVasRequestContentObj(dataMap);
 		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
 				.getAttribute(RuntimeAttrNames.LOGIN_USER);
@@ -221,6 +253,15 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 			if (optResponse.isSuccess()) {
 
 				ShowUtil.showShortToast(this, "添加成功");
+				if(onSuccessCallBack!=null){
+					BringAndBackOrder order = new BringAndBackOrder();
+					order.setDispose("0");
+					order.setSubject(titleEdit.getText().toString());
+					order.setDescription(describeEdit.getText().toString());
+					order.setImagePaths(uploadSuccessBuffer.toString());
+					order.setCreateTime(TimeUtil.getInstance().formatDate(new Date(), TimeUtil.DATE_PATTERN_11));
+					onSuccessCallBack.onAddSuccessCallBack(order);
+				}
 				TiFlowControlImpl.instanceControl().previousSetup(this);
 
 			} else {
@@ -232,25 +273,35 @@ public class AddBackOrderActivity extends AposBaseActivity implements
 	/**
 	 * 全部上传完回调
 	 */
-	StringBuffer uploadSuccessBuffer  = new StringBuffer();
-	public void callback(Set<UpLoadImage> images) {
+	StringBuffer uploadSuccessBuffer = new StringBuffer();
+
+	public void callback(final Set<UpLoadImage> images) {
 		// TODO Auto-generated method stub
-		uploadDialog.cancel();
-	
-		StringBuffer proBuffer = new StringBuffer();
-		
-		for(UpLoadImage image:images){
-			if(!image.isSuccess()){
-				proBuffer.append(image.getTitle()+"上传失败\n");
-			}else if(image.getUpCount()<=1){
-				
-				proBuffer.append(image.getTitle()+"上传成功\n");
-				uploadSuccessBuffer.append(image.getHttpName()+",");
-				
+		new Handler(getMainLooper()).post(new Runnable() {
+
+			public void run() {
+				// TODO Auto-generated method stub
+				uploadDialog.cancel();
+
+				StringBuffer proBuffer = new StringBuffer();
+
+				for (UpLoadImage image : images) {
+					if (!image.isSuccess()) {
+						proBuffer.append(image.getTitle() + "上传失败\n");
+					} else if (image.getUpCount() <= 1) {
+
+						proBuffer.append(image.getTitle() + "上传成功\n");
+						uploadSuccessBuffer.append(image.getHttpName() + ",");
+
+					}
+				}
+				if(!StringUtil.isEmpty(uploadSuccessBuffer.toString())){
+				   uploadSuccessBuffer.deleteCharAt(uploadSuccessBuffer.length() - 1);
+				}
+
+				ShowUtil.showShortToast(AddBackOrderActivity.this, proBuffer.toString());
 			}
-		}
-		uploadSuccessBuffer.deleteCharAt(uploadSuccessBuffer.length()-1);
-		
-		ShowUtil.showShortToast(this, proBuffer.toString());
+		});
+
 	}
 }

@@ -70,13 +70,13 @@ public class ScmMainActivity extends AposBaseActivity {
 				RuntimeAttrNames.PARTY_INFO);
 		Map<String, String> privileges = partyInfo.getPrivileges();
 
-		if (privileges.containsKey(Privileges.BATCH_TXN)) {
-			settleView.setVisibility(View.VISIBLE);
-			settleImageView.setVisibility(View.VISIBLE);
-		} else {
-			settleView.setVisibility(View.GONE);
-			settleImageView.setVisibility(View.GONE);
-		}
+//		if (privileges.containsKey(Privileges.BATCH_TXN)) {
+//			settleView.setVisibility(View.VISIBLE);
+//			settleImageView.setVisibility(View.VISIBLE);
+//		} else {
+//			settleView.setVisibility(View.GONE);
+//			settleImageView.setVisibility(View.GONE);
+//		}
 
 	}
 

@@ -1,9 +1,12 @@
 package me.andpay.apos.merchantsmaking.activity;
 
+import android.os.Bundle;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -71,6 +74,33 @@ public class MerchantsJoinActivity extends AposBaseActivity {
 	@EventDelegate(type = DelegateType.method, toMethod = "commit", delegateClass = OnClickListener.class)
 	@InjectView(R.id.merchants_join_commit)
 	public Button commit;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+
+		integralMc.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				// TODO Auto-generated method stub
+
+				couponsMc.setChecked(!isChecked);
+
+			}
+		});
+		couponsMc.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				// TODO Auto-generated method stub
+
+				integralMc.setChecked(!isChecked);
+
+			}
+		});
+	}
 
 	public void back(View view) {
 		TiFlowControlImpl.instanceControl().previousSetup(this);

@@ -88,6 +88,17 @@ public class PayCostQueryActivity extends AposBaseActivity {
 		unit.setText(unitStr);
 		serialNumber.setText(serialNumberStr);
 		
+		
+		PayCostType type = (PayCostType) TiFlowControlImpl.instanceControl()
+				.getFlowContext().get("type");
+		if (type == PayCostType.ELECTRICITY) {// 电费详情
+			money.setText("138");
+			trueMoney.setText("138");
+		} else if (type == PayCostType.WATER) {// 水费详情
+			money.setText("205");
+			trueMoney.setText("205");
+		}
+		
 		//getDeatail();
 		
 	}

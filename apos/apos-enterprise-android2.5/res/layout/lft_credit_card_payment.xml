@@ -33,9 +33,9 @@
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:gravity="center"
-            android:text="手续费15%"
             android:textColor="@color/com_title_normal_col"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/lft_credit_card_payment_money_title"
@@ -48,34 +48,37 @@
             android:textColor="@color/com_title_normal_col"
             android:textSize="18sp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@id/lft_credit_card_payment_money_title"
             android:layout_marginTop="20dip"
-            android:background="@color/transparent"
-            android:orientation="horizontal" >
+            android:background="@color/transparent" >
+
+            <EditText
+                android:minWidth="10dip"
+                android:maxLength="9"
+                android:id="@+id/lft_credit_card_payment_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@color/transparent"
+                android:singleLine="true"
+                android:text="0.00"
+                android:textColor="@color/trf_info_amt_col"
+                android:textSize="40sp" />
 
             <TextView
+                android:layout_toLeftOf="@id/lft_credit_card_payment_money"
+                android:layout_alignTop="@id/lft_credit_card_payment_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
                 android:text="￥"
                 android:textColor="@color/trf_info_amt_col"
-                android:textSize="60sp" />
-
-            <EditText
-                android:id="@+id/lft_credit_card_payment_money"
-                android:layout_width="120dip"
-                android:layout_height="wrap_content"
-                android:background="@color/transparent"
-                android:gravity="right"
-                android:singleLine="true"
-                android:text="0.00"
-                android:textColor="@color/trf_info_amt_col"
-                android:textSize="60sp" />
-        </LinearLayout>
+                android:textSize="40sp" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -104,14 +107,14 @@
             android:textSize="20sp" />
 
         <ImageView
-            android:visibility="invisible"
             android:id="@+id/lft_credit_card_payment_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@color/transparent"
-            android:src="@drawable/com_icon_payee_img" />
+            android:src="@drawable/com_icon_payee_img"
+            android:visibility="invisible" />
 
         <EditText
             android:id="@+id/lft_credit_card_payment_number"

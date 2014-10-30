@@ -122,7 +122,7 @@ public class SignActivity extends AposBaseActivity implements ValueContainer {
 		return super.onKeyDown(keyCode, event);
 	}
 
-	public void onSigned() {
+	public void onSigned(){
 		SignContext signContext = TiFlowControlImpl.instanceControl()
 				.getFlowContextData(SignContext.class);
 		signContext.setGesturesCount(signContext.getGesturesCount() + 1);

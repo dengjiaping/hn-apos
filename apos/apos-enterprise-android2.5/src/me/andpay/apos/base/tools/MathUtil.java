@@ -61,4 +61,13 @@ public class MathUtil {
 		}
 		return true;
 	}
+	
+	public static boolean isfloatNumber(String str) {
+		try {
+			Float.valueOf(str);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 }

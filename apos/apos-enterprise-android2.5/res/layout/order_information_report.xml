@@ -93,7 +93,7 @@
                 android:layout_marginRight="10dip"
                 android:layout_marginTop="4dip"
                 android:horizontalSpacing="5dip"
-                android:numColumns="4"
+                android:numColumns="1"
                 android:verticalSpacing="5dip" >
             </GridView>
         </LinearLayout>

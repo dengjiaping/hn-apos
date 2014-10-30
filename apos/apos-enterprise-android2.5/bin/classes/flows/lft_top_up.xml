@@ -17,12 +17,42 @@
             sub-flow="com_txn_flow" />
 
         <node-complete
+            identity="success"
+            next-node="txnSign"/>
+
+        <node-complete
             identity="result"
             ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
 
         <node-complete
             finish-flow="true"
             identity="finish" />
+    </flow-node>
+
+    <!-- 交易签名 -->
+
+    <flow-node
+        node-name="txnSign"
+        ref-activity="me.andpay.apos.tam.activity.SignActivity" >
+
+        <node-complete
+            identity="success"
+            next-node="postVoucher"
+            transfer="Com.TxnFlow.VoucherTransfer" />
+    </flow-node>
+    <!-- 发送凭证 -->
+
+    <flow-node
+        node-name="postVoucher"
+        ref-activity="me.andpay.apos.tam.activity.PostVoucherActivity" >
+
+        <node-complete
+            finish-flow="true"
+            identity="finish" />
+
+        <node-complete
+            finish-flow="true"
+            identity="success" />
     </flow-node>
 
     <flow-node

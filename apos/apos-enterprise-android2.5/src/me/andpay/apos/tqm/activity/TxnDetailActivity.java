@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import me.andpay.ac.consts.AttachmentTypes;
-import me.andpay.ac.consts.TxnFlags;
 import me.andpay.ac.consts.TxnTypes;
 import me.andpay.ac.term.api.base.FlexFieldDefine;
 import me.andpay.apos.R;
@@ -26,7 +25,6 @@ import me.andpay.apos.dao.model.PayTxnInfo;
 import me.andpay.apos.dao.model.QueryPayTxnInfoCond;
 import me.andpay.apos.tam.CardOrgImageMap;
 import me.andpay.apos.tam.context.TxnControl;
-import me.andpay.apos.tam.context.TxnStatus;
 import me.andpay.apos.tqm.TqmProvider;
 import me.andpay.apos.tqm.event.FillSignController;
 import me.andpay.apos.tqm.event.MapLayoutOnclickController;

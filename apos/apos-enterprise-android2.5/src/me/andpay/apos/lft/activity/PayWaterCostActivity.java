@@ -79,7 +79,7 @@ public class PayWaterCostActivity extends AposBaseActivity {
 
 			title.setText("请选择城市");
 			ArrayList<String> list = new ArrayList<String>();
-			for (int i = 0; i < CityTable.city.length; i++) {
+			for (int i = 14; i < CityTable.city.length; i++) {
 				list.add(i + "");
 			}
 			BaseAdapter<String> adapter = new BaseAdapter<String>();
@@ -90,13 +90,14 @@ public class PayWaterCostActivity extends AposBaseActivity {
 				public boolean onEventListener(Object... objects) {
 					// TODO Auto-generated method stub
 					dialog.dismiss();
-					int index = (Integer) objects[0];
+					int index = (Integer) objects[0]+14;
 					city.setText(CityTable.city[index][0]);
 					company.setText(CityTable.city[index][1]);
 					return true;
 				}
 			});
 			CitySelectController controller = new CitySelectController();
+			controller.setState(1);
 			adapter.setController(controller);
 			listView.setAdapter(adapter);
 		}

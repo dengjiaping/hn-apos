@@ -74,6 +74,13 @@ public class BringAndBackOrder implements BaseDataJson {
 			description = jo.getString("description");
 			dispose = jo.getString("dispose");
 			imagePaths = jo.getString("imagePaths");
+			if(imagePaths.startsWith("[")){
+				imagePaths=imagePaths.substring(1);
+			}
+			if(imagePaths.endsWith("]")){
+				imagePaths=imagePaths.substring(0,imagePaths.length()-1);
+			}
+			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
