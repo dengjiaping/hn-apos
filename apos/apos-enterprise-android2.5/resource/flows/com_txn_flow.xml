@@ -2,7 +2,7 @@
 <flow-diagram version="1.0" begin-node="swipeAndTxn">
     <!-- 刷卡交易 -->
     <flow-node node-name ="swipeAndTxn" ref-activity="me.andpay.apos.tam.activity.TxnAcitivty" >
-         <node-complete  identity = "success"  next-node="txnSign" transfer = "Com.TxnFlow.SignTransfer"/>
+        <node-complete  identity = "success"  next-node="txnSign" transfer = "Com.TxnFlow.SignTransfer"/>
         <node-complete  identity = "success2"  next-node="postVoucher" transfer = "Com.TxnFlow.VoucherTransfer"/>
         <node-complete  identity = "success4"  sub-flow="tcm_info_challenge_flow" sub-finish-cpl="finished"/>
         <node-complete  identity = "success3"  sub-flow="tcm_photo_challenge_flow" sub-finish-cpl="finished"/>

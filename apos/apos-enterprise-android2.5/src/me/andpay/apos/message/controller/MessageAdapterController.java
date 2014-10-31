@@ -52,10 +52,9 @@ public class MessageAdapterController extends BaseAdapterController<Message> {
 						.getContext()
 						.getResources()
 						.getColor(
-								msg.getAction().equals("1") ? R.color.tqm_list_item_amount_col
+								msg.getAction().equals("OSS-ANNO-R") ? R.color.tqm_list_item_amount_col
 										: R.color.com_red_color));
-		holder.isReader.setText(msg.getAction().equals("1") ? "已读" : "未读");
-
+		holder.isReader.setText(msg.getAction().equals("OSS-ANNO-R") ? "已读" : "未读");
 		return arg1;
 	}
 

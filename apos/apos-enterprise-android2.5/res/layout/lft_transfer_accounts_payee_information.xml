@@ -109,6 +109,7 @@
             android:textSize="20sp" />
 
         <ImageView
+            android:visibility="invisible"
             android:id="@+id/lft_transfer_accounts_payee_information_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

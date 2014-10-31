@@ -91,85 +91,48 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 	private TextView fujian;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState){
+	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		/* 加载条 */
 		uploadDialog = new CommonDialog(this, "上传附件...");
 		txnDialog = new CommonDialog(this, "上报中...");
-		adapter = new BaseAdapter<String>();
-		adapter.setContext(this);
-		adapter.setAdpterEventListener(this);
-		ArrayList<String> list = new ArrayList<String>();
-		
-		adapter.setList(list);
-		adapter.setController(selectController);
-		
+		/* 设置文本内容 */
 		order = (BringAndBackOrder) TiFlowControlImpl.instanceControl()
 				.getFlowContext().get(BringAndBackOrder.class.getName());
 		title.setText(order.getSubject());
-		if(order.getDispose().equals("0")){
+		time.setText(order.getCreateTime());
+		describle.setText(order.getDescription());
+		/* 设置状态 */
+		if (order.getDispose().equals("0")) {
 			dispose.setTextColor(getResources().getColor(R.color.auxiliary));
 			dispose.setText("待审核");
-		}else if(order.getDispose().equals("1")){
+		} else if (order.getDispose().equals("1")) {
 			dispose.setTextColor(getResources().getColor(R.color.auxiliary));
 			dispose.setText("已通过");
-		}else{
+		} else {
 			dispose.setTextColor(getResources().getColor(R.color.red));
 			dispose.setText("已拒绝");
 		}
-		
-		if (order.getDispose().equals("0")){
-			if(StringUtil.isJsonEmpty(order.getImagePaths())){
-				gridView.setColumnWidth(4);
-				fujian.setText("添加附件");
-				
-			
-				reportBtn.setVisibility(View.VISIBLE);
-				list.add(SelectImageController.TAG);
-				selectController.setState(0);
-			}else{
-				gridView.setColumnWidth(1);
-				fujian.setText("附件");
-				
-			
-				reportBtn.setVisibility(View.GONE);
-				selectController.setState(1);
-				
-				
-				gridView.setVisibility(View.VISIBLE);
-				String str[] =  order.getImagePaths().split(",");
-				for(int i=0;i<str.length;i++){
-					list.add(str[i]);
-				}
-				
-			}
-			
-			
-		
-			
-		} else {
-			gridView.setColumnWidth(1);
-			fujian.setText("附件");
-			
-			reportBtn.setVisibility(View.GONE);
-			selectController.setState(1);
-			
-			if(StringUtil.isJsonEmpty(order.getImagePaths())){
-				gridView.setVisibility(View.GONE);
-				fujian.setTextColor(getResources().getColor(R.color.red));
-				fujian.setText("无附件");
-			}else{
-				gridView.setVisibility(View.VISIBLE);
-				String str[] =  order.getImagePaths().split(",");
-				for(int i=0;i<str.length;i++){
-					list.add(str[i]);
-				}
-			}
-			
-		}
+
+		/* 图片适配器设置 */
+		adapter = new BaseAdapter<String>();
+		adapter.setContext(this);
+		adapter.setAdpterEventListener(this);
+		adapter.setController(selectController);
 		gridView.setAdapter(adapter);
-		time.setText(order.getCreateTime());
-		describle.setText(order.getDescription());
+
+		if (order.getDispose().equals("0")) {// 待审核
+			if (StringUtil.isJsonEmpty(order.getImagePaths())) {// 申请
+				noAttachment(0);
+			} else {
+				havaAttachment();
+			}
+		}else if (StringUtil.isJsonEmpty(order.getImagePaths())) {
+			noAttachment(1);
+		}else {
+			havaAttachment();
+		}
 
 	}
 
@@ -182,7 +145,7 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 		CommonTermOptRequest optRequest = new CommonTermOptRequest();
 		HashMap<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("id", order.getId());
-		dataMap.put("imagePaths",uploadSuccessBuffer.toString());
+		dataMap.put("imagePaths", uploadSuccessBuffer.toString());
 		optRequest.setVasRequestContentObj(dataMap);
 		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
 				.getAttribute(RuntimeAttrNames.LOGIN_USER);
@@ -207,7 +170,7 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 	public void uploadFujian(View view) {
 		/* 添加附件 */
 		if (adapter.getList().size() > 1) {
-			for (int i = 0; i < adapter.getList().size()-1; i++) {
+			for (int i = 0; i < adapter.getList().size() - 1; i++) {
 				UpLoadImage image = new UpLoadImage();
 				image.setTitle("图片" + i);
 				image.setType(AttachmentTypes.FEEDBACK_PICTURE);
@@ -299,30 +262,77 @@ public class OrderInformationReportActivity extends AposBaseActivity implements
 	public void callback(final Set<UpLoadImage> images) {
 		// TODO Auto-generated method stub
 		new Handler(getMainLooper()).post(new Runnable() {
-			
+
 			public void run() {
 				// TODO Auto-generated method stub
 				uploadDialog.cancel();
-
 				StringBuffer proBuffer = new StringBuffer();
 
 				for (UpLoadImage image : images) {
-					if (!image.isSuccess()) {
+					if (!image.isSuccess()){
 						proBuffer.append(image.getTitle() + "上传失败\n");
 					} else if (image.getUpCount() <= 1) {
-
 						proBuffer.append(image.getTitle() + "上传成功\n");
 						uploadSuccessBuffer.append(image.getHttpName() + ",");
 
 					}
 				}
+				
 				uploadSuccessBuffer.deleteCharAt(uploadSuccessBuffer.length() - 1);
 
-				ShowUtil.showShortToast(OrderInformationReportActivity.this, proBuffer.toString());
+				ShowUtil.showShortToast(OrderInformationReportActivity.this,
+						proBuffer.toString());
 
 			}
 		});
-		
+
+	}
+
+	/**
+	 * 无附件
+	 * @param state 0添加 1无           
+	 */
+	private void noAttachment(int state) {
+		switch (state) {
+		case 0:// 添加附件
+			gridView.setNumColumns(4);
+			gridView.setVisibility(View.VISIBLE);
+			fujian.setText("添加附件");
+			reportBtn.setVisibility(View.VISIBLE);
+			selectController.setState(0);
+			ArrayList<String> attachmentList = new ArrayList<String>();
+			attachmentList.add(SelectImageController.TAG);
+			adapter.setList(attachmentList);
+			adapter.notifyDataSetChanged();
+
+			break;
+
+		case 1:// 无附件
+
+			gridView.setVisibility(View.GONE);
+			fujian.setTextColor(getResources().getColor(R.color.red));
+			fujian.setText("无附件");
+			reportBtn.setVisibility(View.GONE);
+			break;
+		}
+	}
+
+	/**
+	 * 拥有附件
+	 */
+	private void havaAttachment() {
+		gridView.setNumColumns(1);
+		gridView.setVisibility(View.VISIBLE);
+		fujian.setText("附件");
+		reportBtn.setVisibility(View.GONE);
+		selectController.setState(1);
+		ArrayList<String> attachmentList = new ArrayList<String>();
+		String imageStrs[] = order.getImagePaths().split(",");
+		for (int i = 0; i < imageStrs.length; i++) {
+			attachmentList.add(imageStrs[i]);
+		}
+		adapter.setList(attachmentList);
+		adapter.notifyDataSetChanged();
 	}
 
 }

@@ -1,9 +1,10 @@
 package me.andpay.apos.tam.action.txn;
 
+import java.awt.List;
+import java.util.ArrayList;
 import java.util.Map;
 
-import com.google.inject.Inject;
-
+import me.andpay.ac.consts.AttachmentTypes;
 import me.andpay.ac.consts.VasTxnTypes;
 import me.andpay.ac.term.api.txn.TxnResponse;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
@@ -14,6 +15,8 @@ import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.form.CtResponseAdapterTxnActionResponse;
 import me.andpay.apos.tam.form.TxnForm;
 import me.andpay.timobileframework.mvc.action.ActionRequest;
+
+import com.google.inject.Inject;
 
 /**
  * 充值
@@ -33,14 +36,17 @@ public class TopupProcessor extends GenTxnProcessor {
 		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");
 		txnForm.setTimeoutTime(System.currentTimeMillis());
 
-		/* 创建请求 */
+		/*创建请求*/
 
 		super.processTxn(request);
 		CommonTermTxnRequest txnRequest = createTermTxnRequest(txnForm,
 				VasTxnTypes.MOBILE_RECHARGE_ALL, creatContentObject(txnForm));
-
+		ArrayList<String> attachList = new ArrayList<String>();
+		attachList.add(AttachmentTypes.SIGNATURE_PICTURE);
+		attachList.add(AttachmentTypes.TXN_RECEIPT_PICTURE);
+		txnRequest.setAttachmentTypes(attachList);
 		/* 请求应答 */
-
+		
 		CommonTermTxnResponse txnResponse = txnService
 				.processCommonTxn(txnRequest);
 		/* 应答处理 */

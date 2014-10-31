@@ -20,17 +20,29 @@
 
         <node-complete
             identity="lft_card_pay_txn"
-            sub-finish-cpl="result"
             sub-flow="com_txn_flow" />
 
         <node-complete
-          
+            identity="success"
+            next-node="txnSign"
+            transfer="Llf.Topup.SignTransfer" />
+
+        <node-complete
             identity="result"
             ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
 
-        <node-complete
-            finish-flow="true"
-            identity="finish" />
     </flow-node>
+    
+     <!-- 交易签名 -->
+
+    <flow-node
+        node-name="txnSign"
+        ref-activity="me.andpay.apos.tam.activity.SignActivity" >
+
+       <node-complete
+            identity="result"
+            ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
+    </flow-node>
+    
 
 </flow-diagram>

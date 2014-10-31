@@ -16,6 +16,9 @@ import me.andpay.apos.base.tools.StringUtil;
 import me.andpay.apos.base.tools.TimeUtil;
 import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.common.constant.RuntimeAttrNames;
+import me.andpay.apos.common.contextdata.LoginUserInfo;
+import me.andpay.apos.common.contextdata.PartyInfo;
 import me.andpay.apos.merchantservice.controller.MergeAccountsControler;
 import me.andpay.apos.merchantservice.controller.SettleMentByTxntypeController;
 import me.andpay.apos.merchantservice.controller.SettleMentBytermController;
@@ -88,6 +91,17 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	@InjectView(R.id.ms_reconciliation_time)
 	private TextView time;
 
+	/**
+	 * 商户名称
+	 */
+	@InjectView(R.id.ms_reconciliation_company)
+	private TextView merchanName;
+	/**
+	 * 商户号
+	 */
+	@InjectView(R.id.ms_reconciliation_user_code)
+	private TextView merchanNo;
+
 	/* 统计类型 0按终端 1按交易类型 */
 	private int statisticalState = 0;
 
@@ -123,6 +137,14 @@ public class MsReconciliationActivity extends AposBaseActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
+				.getAttribute(RuntimeAttrNames.LOGIN_USER);
+		PartyInfo partyInfo = (PartyInfo) this.getAppContext().getAttribute(
+				RuntimeAttrNames.PARTY_INFO);
+
+		merchanName.setText("商户名称" + partyInfo.getPartyName());
+		merchanNo.setText("商户名称" + logInfo.getUserName());
+
 		txnDialog = new CommonDialog(this, "读取中...");
 		faile = findViewById(R.id.ms_reconciliation_faile);
 		empty = findViewById(R.id.ms_reconciliation_empty);

@@ -92,6 +92,7 @@ public class Message implements BaseDataJson {
 
 			startTime = jo.getString("startTime");
 			endTime = jo.getString("endTime");
+			action=jo.getString("action");
 
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

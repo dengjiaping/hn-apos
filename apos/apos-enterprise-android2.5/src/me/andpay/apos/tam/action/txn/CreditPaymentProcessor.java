@@ -1,9 +1,11 @@
 package me.andpay.apos.tam.action.txn;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import com.google.inject.Inject;
 
+import me.andpay.ac.consts.AttachmentTypes;
 import me.andpay.ac.consts.VasTxnTypes;
 import me.andpay.ac.term.api.txn.TxnResponse;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
@@ -35,6 +37,10 @@ public class CreditPaymentProcessor extends GenTxnProcessor{
 		super.processTxn(request);
 		CommonTermTxnRequest txnRequest = createTermTxnRequest(txnForm,
 				VasTxnTypes.CREDIT_CARD_CONFIRM, creatContentObject(txnForm));
+		ArrayList<String> attachList = new ArrayList<String>();
+		attachList.add(AttachmentTypes.SIGNATURE_PICTURE);
+		attachList.add(AttachmentTypes.TXN_RECEIPT_PICTURE);
+		txnRequest.setAttachmentTypes(attachList);
 
 		/* 请求应答 */
 

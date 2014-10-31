@@ -46,7 +46,9 @@ public class MessageDeatailActivity extends AposBaseActivity {
 		if (message != null) {
 			content.setText(message.getContent());
 		}
+		if(!message.getAction().endsWith("OSS-ANNO-R")){
 		selectMessage(message.getId(), "OSS-ANNO-R");
+		}
 
 	}
 

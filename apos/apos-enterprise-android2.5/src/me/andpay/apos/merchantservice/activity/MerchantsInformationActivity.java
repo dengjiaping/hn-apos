@@ -65,7 +65,6 @@ public class MerchantsInformationActivity extends AposBaseActivity implements
 
 	private View settlementView;
 	private TextView openName;
-	private TextView openBank;
 	private TextView openBrachBank;
 	private TextView openAccount;
 
@@ -94,8 +93,7 @@ public class MerchantsInformationActivity extends AposBaseActivity implements
 
 		openName = (TextView) settlementView
 				.findViewById(R.id.ms_settlement_information_open_name);
-		openBank = (TextView) settlementView
-				.findViewById(R.id.ms_settlement_information_open_bank);
+
 		openBrachBank = (TextView) settlementView
 				.findViewById(R.id.ms_settlement_information_open_branch_name);
 		openAccount = (TextView) settlementView
@@ -158,34 +156,37 @@ public class MerchantsInformationActivity extends AposBaseActivity implements
 
 	public void callBack(Object response) {
 		// TODO Auto-generated method stub
-		if(txnDialog!=null&&txnDialog.isShowing()){
+		if (txnDialog != null && txnDialog.isShowing()) {
 			txnDialog.cancel();
 		}
-		if(response==null){
-			ShowUtil.showShortToast(this,"获取用户信息失败");
-		}else{
-			CommonTermOptResponse optResponse = (CommonTermOptResponse)response;
-			if(!optResponse.isSuccess()){
-				ShowUtil.showShortToast(this,"获取用户信息失败");
-			}else{
-				String jsonStr = (String)optResponse.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
-			    UserBaseInformation userInformation = new UserBaseInformation();
-			    try {
+		if (response == null) {
+			ShowUtil.showShortToast(this, "获取用户信息失败");
+		} else {
+			CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
+			if (!optResponse.isSuccess()) {
+				ShowUtil.showShortToast(this, "获取用户信息失败");
+			} else {
+				// {"merchantName":"王氏集团","name":"王中凯","idCard":"330722197202061413","adress":"湖南省长沙市芙蓉区解放西路","phoneNumber":"13838380439","accountBank":"招商银行股份有限公司长沙芙蓉支行","accountNo":"6225882118603926","accountHolder":"王中凯"}
+				String jsonStr = (String) optResponse
+						.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+				UserBaseInformation userInformation = new UserBaseInformation();
+				try {
 					userInformation.parse(new JSONObject(jsonStr));
 					baseTitle.setText(userInformation.getMerchantName());
 					phoneNumber.setText(userInformation.getPhoneNumber());
 					userName.setText(userInformation.getName());
 					idCard.setText(userInformation.getIdCard());
 					adress.setText(userInformation.getAdress());
-					
+					openName.setText(userInformation.getAccountHolder());
+					openBrachBank.setText(userInformation.getAccountBank());
+					openAccount.setText(userInformation.getAccountNo());
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			    
-			 
+
 			}
 		}
-		
+
 	}
 }

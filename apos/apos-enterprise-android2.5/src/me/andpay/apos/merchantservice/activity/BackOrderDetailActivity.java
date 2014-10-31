@@ -2,14 +2,6 @@ package me.andpay.apos.merchantservice.activity;
 
 import java.util.ArrayList;
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import roboguice.inject.ContentView;
-import roboguice.inject.InjectView;
 import me.andpay.apos.R;
 import me.andpay.apos.base.adapter.BaseAdapter;
 import me.andpay.apos.base.tools.StringUtil;
@@ -19,6 +11,14 @@ import me.andpay.apos.merchantservice.data.BringAndBackOrder;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 /**
  * 退货申请详情
@@ -46,7 +46,7 @@ public class BackOrderDetailActivity extends AposBaseActivity {
 
 	@InjectView(R.id.back_order_detail_gridview)
 	private GridView gridView;
-	
+
 	@InjectView(R.id.back_order_detail_fujian)
 	private TextView fujian;
 
@@ -66,19 +66,22 @@ public class BackOrderDetailActivity extends AposBaseActivity {
 		BringAndBackOrder order = (BringAndBackOrder) TiFlowControlImpl
 				.instanceControl().getFlowContext()
 				.get(BringAndBackOrder.class.getName());
+		/* 内容设置 */
 		title.setText(order.getSubject());
-		if (order.getDispose().equals("0")) {
-			dispose.setTextColor(getResources().getColor(R.color.red));
-			dispose.setText("未处理");
-		} else {
-			dispose.setTextColor(getResources().getColor(R.color.auxiliary));
-			dispose.setText("已处理");
-		}
 		time.setText(order.getCreateTime());
 		describle.setText(order.getDescription());
+		/* 设置状态 */
+		if (order.getDispose().equals("0")) {
+			dispose.setTextColor(getResources().getColor(R.color.auxiliary));
+			dispose.setText("待审核");
+		} else if (order.getDispose().equals("1")) {
+			dispose.setTextColor(getResources().getColor(R.color.auxiliary));
+			dispose.setText("已通过");
+		} else {
+			dispose.setTextColor(getResources().getColor(R.color.red));
+			dispose.setText("已拒绝");
+		}
 
-	
-		
 		if (StringUtil.isJsonEmpty(order.getImagePaths())) {
 			gridView.setVisibility(View.GONE);
 			fujian.setText("无附件");
@@ -89,7 +92,7 @@ public class BackOrderDetailActivity extends AposBaseActivity {
 			String sqlitStr[] = order.getImagePaths().split(",");
 			ArrayList<String> list = new ArrayList<String>();
 			for (int i = 0; i < sqlitStr.length; i++) {
-			
+
 				list.add(sqlitStr[i]);
 			}
 

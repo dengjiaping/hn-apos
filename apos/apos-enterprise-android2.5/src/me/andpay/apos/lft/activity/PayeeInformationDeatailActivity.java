@@ -1,15 +1,26 @@
 package me.andpay.apos.lft.activity;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import me.andpay.ac.term.api.vas.txn.CommonTermTxnResponse;
 import me.andpay.apos.R;
 import me.andpay.apos.base.TxnType;
+import me.andpay.apos.base.tools.TimeUtil;
 import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.dao.WaitUploadImageDao;
+import me.andpay.apos.dao.model.WaitUploadImage;
 import me.andpay.apos.lam.event.LoginTextWatcherEventControl;
 import me.andpay.apos.lft.controller.TransferAccountVertyController;
 import me.andpay.apos.lft.flow.FlowConstants;
 import me.andpay.apos.tam.callback.impl.TransferAccountCallBackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
+import me.andpay.ti.util.AttachmentItem;
+import me.andpay.timobileframework.flow.TiFlowSubFinishAware;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
@@ -34,7 +45,8 @@ import com.google.inject.Inject;
  * 
  */
 @ContentView(R.layout.lft_transfer_accounts_payee_information_deatail)
-public class PayeeInformationDeatailActivity extends AposBaseActivity{
+public class PayeeInformationDeatailActivity extends AposBaseActivity implements
+		TiFlowSubFinishAware {
 
 	@InjectExtra("money")
 	private String moneyStr;// 金钱
@@ -66,12 +78,12 @@ public class PayeeInformationDeatailActivity extends AposBaseActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
-		int pound = Integer.valueOf(poundageView.getText().toString());
-		
-		moneyView.setText(Integer.valueOf(moneyStr)+pound+"");
-		poundageView.setText("手续费:"+poundageView.getText().toString());
-		
+
+		float pound = Float.valueOf(poundageView.getText().toString());
+
+		moneyView.setText(Float.valueOf(moneyStr) + pound + "");
+		poundageView.setText("手续费:" + poundageView.getText().toString() + "元");
+
 		bankNumber.setText(bankNumberStr);
 
 	}
@@ -92,7 +104,7 @@ public class PayeeInformationDeatailActivity extends AposBaseActivity{
 	 */
 	@Inject
 	TxnControl txnControl;
-	
+
 	@Inject
 	TransferAccountCallBackImpl transferAccountCallBackImpl;
 
@@ -111,6 +123,48 @@ public class PayeeInformationDeatailActivity extends AposBaseActivity{
 
 		TiFlowControlImpl.instanceControl().nextSetup(this,
 				FlowConstants.LFT_TRANSFER_TXN);
+	}
+
+	@Inject
+	WaitUploadImageDao waitUploadImageDao;
+
+	public void subFlowFinished(Map<String, Serializable> subFlowContext) {
+		// TODO Auto-generated method stub
+		CommonTermTxnResponse cm = (CommonTermTxnResponse) subFlowContext
+				.get(CommonTermTxnResponse.class.getName());
+
+		if (cm.isSuccess()) {// 交易成功
+
+			TiFlowControlImpl
+					.instanceControl()
+					.getFlowContext()
+					.put(TxnContext.class.getName(), txnControl.getTxnContext());
+			TiFlowControlImpl.instanceControl().getFlowContext()
+					.put(CommonTermTxnResponse.class.getName(), cm);
+			for (AttachmentItem item : cm.getAttachmentItems()) {
+				WaitUploadImage waitImg = new WaitUploadImage();
+				waitImg.setCreateDate(TimeUtil.getInstance().formatDate(
+						new Date(), TimeUtil.DATE_PATTERN_11));
+				String itemType = item.getAttachmentType();
+				waitImg.setItemType(itemType);
+				waitImg.setTermTraceNo(cm.getTermTraceNo());
+				waitImg.setTermTxnTime(TimeUtil.getInstance().formatDate(
+						cm.getTermTxnTime(), TimeUtil.DATE_PATTERN_11));
+				waitImg.setItemId(item.getIdUnderType());
+				waitImg.setTimes(0);
+				waitImg.setReadyUpload(false);
+				waitUploadImageDao.insert(waitImg);
+			}
+			TiFlowControlImpl.instanceControl().nextSetup(this, "success");
+
+		} else {// 交易失败
+
+			Map<String, String> dateMap = new HashMap();
+			dateMap.put("txnType", TxnType.MPOS_TRANSFER_ACCOUNT);
+			dateMap.put("isSuccess", "false");
+			TiFlowControlImpl.instanceControl().nextSetup(
+					txnControl.getCurrActivity(), "result", dateMap);
+		}
 	}
 
 }

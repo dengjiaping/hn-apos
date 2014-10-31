@@ -11,18 +11,24 @@
             identity="pay_cost_query"
             next-node="pay_cost_query" />
     </flow-node>
+
     <flow-node
         node-name="pay_cost_query"
         ref-activity="me.andpay.apos.lft.activity.PayCostQueryActivity" >
 
         <node-complete
             identity="water_deatail"
-            next-node="water_deatail"/>
+            next-node="water_deatail" />
+
         <node-complete
-            sub-finish-cpl="result"
-           
             identity="pay_cost_sure"
             sub-flow="com_txn_flow" />
+
+        <node-complete
+            identity="success"
+            next-node="txnSign"
+            transfer="Llf.Topup.SignTransfer" />
+
         <node-complete
             identity="result"
             ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
@@ -30,8 +36,19 @@
         <node-complete
             finish-flow="true"
             identity="finish" />
-        
     </flow-node>
+
+    <!-- 交易签名 -->
+
+    <flow-node
+        node-name="txnSign"
+        ref-activity="me.andpay.apos.tam.activity.SignActivity" >
+
+        <node-complete
+            identity="result"
+            ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
+    </flow-node>
+
     <flow-node
         node-name="water_deatail"
         ref-activity="me.andpay.apos.lft.activity.WaterDeatailActivity" >

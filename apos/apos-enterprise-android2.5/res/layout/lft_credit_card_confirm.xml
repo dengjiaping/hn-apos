@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:background="@color/transparent"
             android:gravity="center"
-            android:text="20"
+            android:text="2"
             android:textColor="@color/com_title_normal_col"
             android:textSize="18sp" />
 

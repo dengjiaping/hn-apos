@@ -70,7 +70,7 @@
                 android:id="@+id/ms_reconciliation_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="易宝支付有限公司"
+               
                 android:textColor="#666666"
                 android:textSize="13sp" />
 
@@ -84,7 +84,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="商户代码 1010002545"
+                
                 android:textColor="#666666"
                 android:textSize="13sp" />
         </LinearLayout>

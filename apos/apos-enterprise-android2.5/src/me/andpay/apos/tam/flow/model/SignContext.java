@@ -14,6 +14,10 @@ public class SignContext implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -2873723288419286346L;
+	/**
+	 * 签名类型
+	 */
+	private String signType;
 
 	/**
 	 * 显示金额
@@ -52,6 +56,17 @@ public class SignContext implements Serializable {
 	private String signFileURL;
 
 	private boolean showBackBtn;
+	
+	
+	
+
+	public String getSignType() {
+		return signType;
+	}
+
+	public void setSignType(String signType) {
+		this.signType = signType;
+	}
 
 	public String getShowAmt() {
 		return showAmt;

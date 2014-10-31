@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="主题"
+            android:text="商户名称"
             android:textColor="#666666"
             android:textSize="15sp" />
 
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="主题"
+          
             android:textColor="#666666"
             android:textSize="15sp" />
     </RelativeLayout>
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="13667355464"
+           
             android:textColor="#666666"
             android:textSize="15sp" />
     </RelativeLayout>
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="单小萍"
+           
             android:textColor="#666666"
             android:textSize="15sp" />
     </RelativeLayout>
@@ -102,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="430223198911168317"
+           
             android:textColor="#666666"
             android:textSize="15sp" />
     </RelativeLayout>
@@ -130,7 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="开福区东成大厦"
+           
             android:textColor="#666666"
             android:textSize="15sp" />
     </RelativeLayout>

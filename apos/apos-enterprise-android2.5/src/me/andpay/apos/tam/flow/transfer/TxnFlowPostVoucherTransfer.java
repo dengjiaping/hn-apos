@@ -15,7 +15,7 @@ public class TxnFlowPostVoucherTransfer implements TiFlowNodeDataTransfer {
 
 	public Map<String, String> transfterData(Activity activity,
 			Map<String, String> data, TiFlowNodeComplete complete,
-			Map<String, Serializable> subFlowContext) {
+			Map<String, Serializable> subFlowContext){
 
 		TxnContext txnContext = TiFlowControlImpl.instanceControl()
 				.getFlowContextData(TxnContext.class);

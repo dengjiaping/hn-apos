@@ -1,5 +1,10 @@
 package me.andpay.apos.merchantsmaking.activity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.google.inject.Inject;
+
 import android.os.Bundle;
 import android.text.TextWatcher;
 import android.view.View;
@@ -12,9 +17,20 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import me.andpay.ac.consts.VasOptTypes;
+import me.andpay.ac.consts.ac.vas.ops.VasOptPropNames;
+import me.andpay.ac.term.api.vas.operation.CommonTermOptRequest;
+import me.andpay.ac.term.api.vas.operation.CommonTermOptResponse;
 import me.andpay.apos.R;
+import me.andpay.apos.base.requestmanage.FinishRequestInterface;
+import me.andpay.apos.base.requestmanage.RequestManager;
+import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.base.tools.StringUtil;
+import me.andpay.apos.cmview.CommonDialog;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.common.constant.RuntimeAttrNames;
+import me.andpay.apos.common.contextdata.LoginUserInfo;
+import me.andpay.apos.merchantservice.data.UserBaseInformation;
 import me.andpay.apos.merchantsmaking.event.CouponsEventController;
 import me.andpay.apos.merchantsmaking.event.MerchantsJoinEventController;
 import me.andpay.apos.merchantsmaking.flow.FlowContants;
@@ -29,7 +45,8 @@ import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
  *
  */
 @ContentView(R.layout.merchants_join_layout)
-public class MerchantsJoinActivity extends AposBaseActivity {
+public class MerchantsJoinActivity extends AposBaseActivity implements
+		FinishRequestInterface {
 	/**
 	 * 返回
 	 */
@@ -100,6 +117,7 @@ public class MerchantsJoinActivity extends AposBaseActivity {
 
 			}
 		});
+		getBaseInformation();
 	}
 
 	public void back(View view) {
@@ -114,6 +132,55 @@ public class MerchantsJoinActivity extends AposBaseActivity {
 	public void commit(View view) {
 		TiFlowControlImpl.instanceControl().nextSetup(this,
 				FlowContants.MCCOMMIT_DETAIL);
+
+	}
+
+	/**
+	 * 获得商户基本信息
+	 */
+	@Inject
+	RequestManager requestManager;
+
+	public void getBaseInformation() {
+		CommonTermOptRequest optRequest = new CommonTermOptRequest();
+		LoginUserInfo logInfo = (LoginUserInfo) this.getAppContext()
+				.getAttribute(RuntimeAttrNames.LOGIN_USER);
+		optRequest.setUserName(logInfo.getUserName());
+		optRequest.setOperateType(VasOptTypes.OSS_MERCHANT_BASE_INFO_QUERY);
+		requestManager.setOptRequest(optRequest);
+		requestManager.addFinishRequestResponse(this);
+
+		requestManager.startService();
+	}
+
+	public void callBack(Object response) {
+		// TODO Auto-generated method stub
+
+		if (response == null) {
+			return;
+		}
+
+		CommonTermOptResponse optResponse = (CommonTermOptResponse) response;
+		if (!optResponse.isSuccess()) {
+			return;
+		}
+
+		String jsonStr = (String) optResponse
+				.getVasRespContentObj(VasOptPropNames.UNRPT_RES);
+
+		if (StringUtil.isJsonEmpty(jsonStr)) {
+			return;
+		}
+
+		try {
+			UserBaseInformation userInformation = new UserBaseInformation();
+			userInformation.parse(new JSONObject(jsonStr));
+			name.setText(userInformation.getMerchantName());
+			phoneNumber.setText(userInformation.getPhoneNumber());
+			adress.setText(userInformation.getAdress());
+		} catch (Exception e) {
+			return;
+		}
 
 	}
 }

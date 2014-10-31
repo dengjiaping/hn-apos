@@ -2,10 +2,13 @@ package me.andpay.apos.tam.event;
 
 import java.io.File;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
+import roboguice.inject.InjectExtra;
 import me.andpay.ac.consts.AttachmentTypes;
 import me.andpay.apos.R;
+import me.andpay.apos.base.TxnType;
 import me.andpay.apos.common.flow.FlowConstants;
 import me.andpay.apos.common.service.ExceptionPayTxnInfoService;
 import me.andpay.apos.common.service.UpLoadFileServce;
@@ -52,7 +55,7 @@ public class SignNextEventControl extends AbstractEventController {
 				.getFlowContextData(SignContext.class);
 
 		if (signContext.getGesturesCount() < 2
-				|| signContext.getGesturesLength() < 16){
+				|| signContext.getGesturesLength() < 16) {
 
 			Toast.makeText(
 					signActivity.getApplicationContext(),
@@ -104,7 +107,7 @@ public class SignNextEventControl extends AbstractEventController {
 		cond.setTermTraceNo(signContext.getTermTraceNo());
 		cond.setTermTxnTime(signContext.getTermTxnTime());
 		List<WaitUploadImage> imges = waitUploadImageDao.query(cond, 0, -1);
-		if (!imges.isEmpty()){
+		if (!imges.isEmpty()) {
 			WaitUploadImage waitImge = imges.get(0);
 			waitImge.setFilePath(filePath);
 			waitImge.setReadyUpload(true);
@@ -131,7 +134,21 @@ public class SignNextEventControl extends AbstractEventController {
 		exceptionPayTxnInfoService.removeExceptionTxn(
 				signContext.getTermTraceNo(), signContext.getTermTxnTime());
 
-		TiFlowControlImpl.instanceControl().nextSetup(activity,
-				FlowConstants.SUCCESS);
+		String signType = signContext.getSignType();
+		if (signType.endsWith(TxnType.MPOS_TOPUP)
+				|| signType.endsWith(TxnType.MPOS_PAYCOST_ELE)
+				|| signType.endsWith(TxnType.MPOS_PAYCOST_WATER)
+				|| signType.endsWith(TxnType.MPOS_PAY_CREDIT_CARD)
+				|| signType.endsWith(TxnType.MPOS_TRANSFER_ACCOUNT)) {
+			HashMap<String, String> dataMap = new HashMap<String, String>();
+			dataMap.put("txnType", signType);
+			dataMap.put("isSuccess", "true");
+			TiFlowControlImpl.instanceControl().nextSetup(activity, "result",
+					dataMap);
+		} else {
+
+			TiFlowControlImpl.instanceControl().nextSetup(activity,
+					FlowConstants.SUCCESS);
+		}
 	}
 }

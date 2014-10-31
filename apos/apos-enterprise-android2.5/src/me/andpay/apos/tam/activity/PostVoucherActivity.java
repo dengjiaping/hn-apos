@@ -49,7 +49,7 @@ import com.google.inject.Inject;
 @ContentView(R.layout.tam_send_credentials_layout)
 @FormBind(formBean = PostVoucherForm.class)
 public class PostVoucherActivity extends AposBaseActivity implements
-		ValueContainer {
+		ValueContainer{
 
 	@EventDelegateArray({
 			@EventDelegate(type = DelegateType.eventController, isNeedFormBean = false, delegate = "addTextChangedListener", delegateClass = TextWatcher.class, toEventController = PostVcEditWatcherEventControl.class),

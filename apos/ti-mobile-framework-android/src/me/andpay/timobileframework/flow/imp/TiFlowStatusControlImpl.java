@@ -78,7 +78,7 @@ public class TiFlowStatusControlImpl implements TiFlowStatusControl,
 	public TiFlowNodeComplete nextStepWithIdentity(String identity) {
 		TiFlowNodeComplete complete = this.diagram.getNodeByName(controlStack.peek())
 				.getComplete(identity);
-		if (complete == null) {
+		if (complete == null){
 			throw new TiFlowException(TiFlowException.TIFLOWEX_GROUP_PROCESS,
 					TiFlowErrorCode.PROCESS_IDENTITY_NOTFOUND_ERROR,
 					"complete is not found, the identity is " + identity);

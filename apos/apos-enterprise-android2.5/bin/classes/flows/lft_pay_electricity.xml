@@ -21,7 +21,11 @@
             next-node="electricity_deatail" />
 
         <node-complete
-            sub-finish-cpl="result"
+            identity="success"
+            next-node="txnSign"
+            transfer="Llf.Topup.SignTransfer" />
+
+        <node-complete
             identity="pay_cost_sure"
             sub-flow="com_txn_flow" />
 
@@ -34,6 +38,19 @@
             identity="finish" />
     </flow-node>
 
+    
+     <!-- 交易签名 -->
+
+    <flow-node
+        node-name="txnSign"
+        ref-activity="me.andpay.apos.tam.activity.SignActivity" >
+
+         <node-complete
+            identity="result"
+            ref-activity="me.andpay.apos.lft.activity.LftTradingSuccessfulActivity" />
+    </flow-node>
+   
+    
     <flow-node
         node-name="electricity_deatail"
         ref-activity="me.andpay.apos.lft.activity.ElectricityDeatailActivity" >

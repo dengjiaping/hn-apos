@@ -36,14 +36,11 @@ public class PayCostTxnCallbackImpl extends TxnCallbackImpl {
 
 		CommonTermTxnResponse cm = ((CtResponseAdapterTxnActionResponse) actionResponse)
 				.getCommonTermResponse();
-		Map<String, String> context = new HashMap<String, String>();
-
-		context.put("isSuccess", cm.isSuccess() ? "true" : "false");
-
-		context.put("txnType", txnControl.getTxnContext().getTxnType());
+		TiFlowControlImpl.instanceControl().getFlowContext()
+				.put(CommonTermTxnResponse.class.getName(), cm);
 		TiFlowControlImpl.instanceControl().nextSetup(
 				txnControl.getCurrActivity(),
-				me.andpay.apos.common.flow.FlowConstants.FINISH,context);
+				me.andpay.apos.common.flow.FlowConstants.FINISH);
 
 	}
 }

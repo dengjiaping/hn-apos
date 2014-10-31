@@ -17,7 +17,7 @@ import android.util.Log;
 import com.google.inject.Inject;
 
 @ActionMapping(domain = PostVoucherAction.DOMAIN_NAME)
-public class PostVoucherAction extends SessionKeepAction {
+public class PostVoucherAction extends SessionKeepAction{
 
 	public final static String DOMAIN_NAME = "/tam/postvc.action";
 	public final static String POSTVC_ACTION = "postVoucher";
@@ -62,7 +62,7 @@ public class PostVoucherAction extends SessionKeepAction {
 				.getHandler();
 
 		try {
-			txnService.sendReceipt(dests, postForm.getTxnId());
+			txnService.sendReceipt(dests,postForm.getTxnId());
 			callBack.dealResponse();
 		} catch (Exception ex) {
 			Log.e(this.getClass().getName(), "postvoicher error", ex);

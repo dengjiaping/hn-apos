@@ -25,10 +25,12 @@ public class TransferAccountCallBackImpl extends TxnCallbackImpl {
 		}
 		
 		
-		CommonTermTxnResponse cm = ((CtResponseAdapterTxnActionResponse)actionResponse).getCommonTermResponse();
-		HashMap<String,String> dataMap = new HashMap<String, String>();
-		dataMap.put("isSuccess", cm.isSuccess()?"true":"false");
-		dataMap.put("txnType",TxnType.MPOS_TRANSFER_ACCOUNT);
-		TiFlowControlImpl.instanceControl().nextSetup(txnControl.getCurrActivity(), me.andpay.apos.common.flow.FlowConstants.FINISH,dataMap);
+		CommonTermTxnResponse cm = ((CtResponseAdapterTxnActionResponse) actionResponse)
+				.getCommonTermResponse();
+		TiFlowControlImpl.instanceControl().getFlowContext()
+		.put(CommonTermTxnResponse.class.getName(), cm);
+		TiFlowControlImpl.instanceControl().nextSetup(
+				txnControl.getCurrActivity(),
+				me.andpay.apos.common.flow.FlowConstants.FINISH);
 	}
 }

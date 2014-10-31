@@ -62,7 +62,7 @@
                 android:textColor="@color/main_show_font_color"
                 android:textSize="15sp" />
 
-            <me.andpay.apos.base.view.CustomGridView
+            <GridView
                 android:layout_marginTop="4dip"
                 android:id="@+id/add_back_order_photo"
                 android:layout_width="match_parent"

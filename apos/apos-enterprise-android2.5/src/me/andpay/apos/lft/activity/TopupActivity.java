@@ -1,7 +1,11 @@
 package me.andpay.apos.lft.activity;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
 
+import me.andpay.ac.term.api.vas.operation.CommonTermOptResponse;
+import me.andpay.ac.term.api.vas.txn.CommonTermTxnResponse;
 import me.andpay.ac.term.api.vas.txn.VasTxnPropNames;
 import me.andpay.apos.R;
 import me.andpay.apos.base.TxnType;
@@ -12,14 +16,19 @@ import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
 import me.andpay.apos.common.constant.RuntimeAttrNames;
 import me.andpay.apos.common.contextdata.LoginUserInfo;
+import me.andpay.apos.dao.WaitUploadImageDao;
+import me.andpay.apos.dao.model.WaitUploadImage;
 import me.andpay.apos.lft.data.PhoneNumber;
 import me.andpay.apos.lft.even.TopupTextWatcherEventControl;
 import me.andpay.apos.lft.flow.FlowConstants;
 import me.andpay.apos.tam.callback.impl.TopUpCallBackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
+import me.andpay.ti.util.AttachmentItem;
+import me.andpay.ti.util.StringUtil;
 import me.andpay.timobileframework.cache.HashMap;
 import me.andpay.timobileframework.flow.TiFlowCallback;
+import me.andpay.timobileframework.flow.TiFlowSubFinishAware;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
@@ -43,7 +52,7 @@ import com.google.inject.Inject;
  */
 @ContentView(R.layout.lft_top_up)
 public class TopupActivity extends AposBaseActivity implements OnClickListener,
-		TiFlowCallback {
+		TiFlowCallback, TiFlowSubFinishAware {
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.lft_top_up_back)
 	private ImageView back;// 返回
@@ -95,30 +104,30 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 	TxnControl txnControl;
 	@Inject
 	TopUpCallBackImpl topUpCallBackImpl;
-	public void sure(View v){
-		
-		
-		String phStr= phoneNumber.getText().toString();
-		if(!MathUtil.isMobileNumber(phStr)){
-	        ShowUtil.showShortToast(this,"请输入正确的手机号");
+
+	public void sure(View v) {
+
+		String phStr = phoneNumber.getText().toString();
+		if (!MathUtil.isMobileNumber(phStr)) {
+			ShowUtil.showShortToast(this, "请输入正确的手机号");
 			return;
 		}
-		
+
 		TxnContext txnContext = txnControl.init();
 
-		
-        Map<String,String> map = new HashMap();
-        LoginUserInfo user = (LoginUserInfo)getAppContext().getAttribute(RuntimeAttrNames.LOGIN_USER);
-        map.put(VasTxnPropNames.USER_NAME,user.getUserName());
-        map.put(VasTxnPropNames.MOBILE_PHONE, phoneNumber.getText().toString());
-        
-        txnContext.setMap(map);
+		Map<String, String> map = new HashMap();
+		LoginUserInfo user = (LoginUserInfo) getAppContext().getAttribute(
+				RuntimeAttrNames.LOGIN_USER);
+		map.put(VasTxnPropNames.USER_NAME, user.getUserName());
+		map.put(VasTxnPropNames.MOBILE_PHONE, phoneNumber.getText().toString());
+
+		txnContext.setMap(map);
 		txnContext.setNeedPin(true);
 		txnContext.setTxnType(TxnType.MPOS_TOPUP);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
 		txnControl.setTxnCallback(topUpCallBackImpl);
-		String amountStr = "￥"+amount.getText().toString();
-		//amountStr = "￥"+amountStr.substring(0,amountStr.length()-1);
+		String amountStr = "￥" + amount.getText().toString();
+		// amountStr = "￥"+amountStr.substring(0,amountStr.length()-1);
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));
 		txnContext.setPromptStr("充值中...");
 		setFlowContextData(txnContext);
@@ -165,7 +174,7 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 		PhoneNumber phoneNumberStr = (PhoneNumber) TiFlowControlImpl
 				.instanceControl().getFlowContext()
 				.get(PhoneNumber.class.getName());
-		if (phoneNumberStr != null){
+		if (phoneNumberStr != null) {
 			phoneNumber.setText(phoneNumberStr.getDisplayNumber());
 		}
 	}
@@ -195,5 +204,52 @@ public class TopupActivity extends AposBaseActivity implements OnClickListener,
 			amount.setText("500");
 			break;
 		}
+	}
+
+	/**
+	 * 刷卡结束后
+	 */
+	@Inject
+	protected WaitUploadImageDao waitUploadImageDao;
+	public void subFlowFinished(Map<String, Serializable> subFlowContext) {
+		// TODO Auto-generated method stub
+		CommonTermTxnResponse cm = (CommonTermTxnResponse) subFlowContext
+				.get(CommonTermTxnResponse.class.getName());
+
+		if (cm.isSuccess()){//交易成功
+
+			TiFlowControlImpl
+					.instanceControl()
+					.getFlowContext()
+					.put(TxnContext.class.getName(), txnControl.getTxnContext());
+			TiFlowControlImpl.instanceControl().getFlowContext()
+					.put(CommonTermTxnResponse.class.getName(), cm);
+			for (AttachmentItem item : cm.getAttachmentItems()) {
+				WaitUploadImage waitImg = new WaitUploadImage();
+				waitImg.setCreateDate(StringUtil.format("yyyyMMddHHmmss",
+						new Date()));
+				String itemType = item.getAttachmentType();
+				waitImg.setItemType(itemType);
+				waitImg.setTermTraceNo(cm.getTermTraceNo());
+				waitImg.setTermTxnTime(StringUtil.format("yyyyMMddHHmmss",
+						cm.getTermTxnTime()));
+				waitImg.setItemId(item.getIdUnderType());
+				waitImg.setTimes(0);
+				waitImg.setReadyUpload(false);
+				waitUploadImageDao.insert(waitImg);
+			}
+			TiFlowControlImpl.instanceControl().nextSetup(this, "success");
+			
+			
+
+		} else {// 交易失败
+
+			Map<String, String> dateMap = new HashMap();
+			dateMap.put("txnType", TxnType.MPOS_TOPUP);
+			dateMap.put("isSuccess", "false");
+			TiFlowControlImpl.instanceControl().nextSetup(
+					txnControl.getCurrActivity(), "result", dateMap);
+		}
+
 	}
 }

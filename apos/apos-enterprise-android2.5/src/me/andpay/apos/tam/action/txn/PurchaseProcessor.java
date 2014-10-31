@@ -82,7 +82,7 @@ public class PurchaseProcessor extends GenTxnProcessor {
 	}
 
 	@Override
-	public void processTxn(ActionRequest request) {
+	public void processTxn(ActionRequest request){
 
 		Log.e(this.getClass().getName(), "txn start");
 		TxnForm txnForm = (TxnForm) request.getParameterValue("txnForm");

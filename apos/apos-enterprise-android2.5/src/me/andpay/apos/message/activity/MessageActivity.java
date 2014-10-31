@@ -96,7 +96,7 @@ public class MessageActivity extends AposBaseActivity implements
 			messagePage = 1;
 			txnDialog.show();
 
-			getMessages(pageSize, messagePage, "OSS-ANNO-ACT");
+			getMessages(pageSize, messagePage, "OSS-ANNO-SYS");
 		}
 
 	}
@@ -116,7 +116,7 @@ public class MessageActivity extends AposBaseActivity implements
 		if (noteAdapter.getList().size() <= 0) {
 			notePage = 1;
 			txnDialog.show();
-			getMessages(pageSize, notePage, "OSS-ANNO-SYS");
+			getMessages(pageSize, notePage, "OSS-ANNO-ACT");
 		}
 
 	}
@@ -170,7 +170,7 @@ public class MessageActivity extends AposBaseActivity implements
 	private void lookMessageDeatail(int state, final Message msg) {
 		switch (state) {
 		case 0:
-            msg.setAction("1");
+            msg.setAction("OSS-ANNO-R");
             messageAdapter.notifyDataSetChanged();
             noteAdapter.notifyDataSetChanged();
 			TiFlowControlImpl.instanceControl().startFlow(this,
@@ -178,7 +178,7 @@ public class MessageActivity extends AposBaseActivity implements
 			TiFlowControlImpl.instanceControl().getFlowContext()
 			
 					.put(Message.class.getName(), msg);
-			//selectMessage(msg.getId(), "OSS-ANNO-R");
+			
 			break;
 
 		case 1:

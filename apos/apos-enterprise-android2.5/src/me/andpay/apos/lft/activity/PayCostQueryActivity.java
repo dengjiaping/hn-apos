@@ -1,6 +1,9 @@
 package me.andpay.apos.lft.activity;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import me.andpay.ac.consts.VasTxnTypes;
 import me.andpay.ac.term.api.vas.txn.CommonTermTxnRequest;
@@ -11,15 +14,20 @@ import me.andpay.apos.R;
 import me.andpay.apos.base.TxnType;
 import me.andpay.apos.base.tools.ShowUtil;
 import me.andpay.apos.base.tools.StringUtil;
+import me.andpay.apos.base.tools.TimeUtil;
 import me.andpay.apos.common.TabNames;
 import me.andpay.apos.common.activity.AposBaseActivity;
+import me.andpay.apos.dao.WaitUploadImageDao;
+import me.andpay.apos.dao.model.WaitUploadImage;
 import me.andpay.apos.lft.data.PayInformation;
 import me.andpay.apos.lft.flow.FlowConstants;
 import me.andpay.apos.lft.flow.PayCostType;
 import me.andpay.apos.tam.callback.impl.PayCostTxnCallbackImpl;
 import me.andpay.apos.tam.context.TxnControl;
 import me.andpay.apos.tam.flow.model.TxnContext;
+import me.andpay.ti.util.AttachmentItem;
 import me.andpay.timobileframework.cache.HashMap;
+import me.andpay.timobileframework.flow.TiFlowSubFinishAware;
 import me.andpay.timobileframework.flow.imp.TiFlowControlImpl;
 import me.andpay.timobileframework.mvc.anno.EventDelegate;
 import me.andpay.timobileframework.mvc.anno.EventDelegate.DelegateType;
@@ -44,7 +52,8 @@ import com.google.inject.Inject;
  * 
  */
 @ContentView(R.layout.lft_paycost_query)
-public class PayCostQueryActivity extends AposBaseActivity {
+public class PayCostQueryActivity extends AposBaseActivity implements
+		TiFlowSubFinishAware {
 	@EventDelegate(type = DelegateType.method, toMethod = "back", delegateClass = OnClickListener.class)
 	@InjectView(R.id.lft_lft_paycost_query_back)
 	private ImageView back;
@@ -77,7 +86,7 @@ public class PayCostQueryActivity extends AposBaseActivity {
 
 	@InjectExtra("serialNumber")
 	private String serialNumberStr;// 单号
-	
+
 	protected VasTxnService vasTxnService;
 
 	@Override
@@ -87,8 +96,7 @@ public class PayCostQueryActivity extends AposBaseActivity {
 
 		unit.setText(unitStr);
 		serialNumber.setText(serialNumberStr);
-		
-		
+
 		PayCostType type = (PayCostType) TiFlowControlImpl.instanceControl()
 				.getFlowContext().get("type");
 		if (type == PayCostType.ELECTRICITY) {// 电费详情
@@ -98,36 +106,34 @@ public class PayCostQueryActivity extends AposBaseActivity {
 			money.setText("205");
 			trueMoney.setText("205");
 		}
-		
-		//getDeatail();
-		
+
+		// getDeatail();
+
 	}
-	
-	/*拉取详情*/
-	private void getDeatail(){
-		/*请求缴纳详细信息*/
+
+	/* 拉取详情 */
+	private void getDeatail() {
+		/* 请求缴纳详细信息 */
 		PayCostType type = (PayCostType) TiFlowControlImpl.instanceControl()
 				.getFlowContext().get("type");
 		CommonTermTxnRequest txnRequest = new CommonTermTxnRequest();
-		Map<String,String> map = new HashMap();
-		map.put(VasTxnPropNames.MERCHANT_TYPE, type == PayCostType.ELECTRICITY?"1800":"1866");
-	    map.put(VasTxnPropNames.LIFEPAY_CUST_NO, serialNumberStr);
+		Map<String, String> map = new HashMap();
+		map.put(VasTxnPropNames.MERCHANT_TYPE,
+				type == PayCostType.ELECTRICITY ? "1800" : "1866");
+		map.put(VasTxnPropNames.LIFEPAY_CUST_NO, serialNumberStr);
 		txnRequest.setVasTxnType(VasTxnTypes.LIFE_PAY_QUERY);
 		txnRequest.setTxnRequestContentObj(map);
-		CommonTermTxnResponse response = vasTxnService.processCommonTxn(txnRequest);
-		
-		/*设置信息*/
+		CommonTermTxnResponse response = vasTxnService
+				.processCommonTxn(txnRequest);
+
+		/* 设置信息 */
 		setInformation(response.getTxnResponseContentObj());
-		
-		
-		
-		
-		
-		
+
 	}
-	/*设置详细信息*/
-	public void setInformation(Map map){
-		PayInformation payInformation  = new PayInformation();
+
+	/* 设置详细信息 */
+	public void setInformation(Map map) {
+		PayInformation payInformation = new PayInformation();
 		payInformation.parse(map);
 		serialNumber.setText(payInformation.getUnitCode());
 		money.setText(payInformation.getTotalBills());
@@ -157,32 +163,81 @@ public class PayCostQueryActivity extends AposBaseActivity {
 	 */
 	@Inject
 	TxnControl txnControl;
-	
-	@Inject 
+
+	@Inject
 	PayCostTxnCallbackImpl payCostTxnCallbackImpl;
 
-	public void paySure(View view){
-		
-		if(StringUtil.isEmpty(trueMoney.getText().toString())){
-			ShowUtil.showLongToast(this,"未输入缴费金额");
+	public void paySure(View view) {
+
+		if (StringUtil.isEmpty(trueMoney.getText().toString())) {
+			ShowUtil.showLongToast(this, "未输入缴费金额");
 			return;
 		}
-		
+
 		TxnContext txnContext = txnControl.init();
 
 		txnContext.setNeedPin(true);
 		PayCostType type = (PayCostType) TiFlowControlImpl.instanceControl()
 				.getFlowContext().get("type");
-		txnContext.setTxnType(type==PayCostType.ELECTRICITY?TxnType.MPOS_PAYCOST_ELE:TxnType.MPOS_PAYCOST_WATER);
+		txnContext
+				.setTxnType(type == PayCostType.ELECTRICITY ? TxnType.MPOS_PAYCOST_ELE
+						: TxnType.MPOS_PAYCOST_WATER);
 		txnContext.setBackTagName(TabNames.LEFT_PAGE);
 		txnControl.setTxnCallback(payCostTxnCallbackImpl);
 		String amountStr = "￥" + trueMoney.getText().toString();
-	
+
 		txnContext.setAmtFomat(StringConvertor.filterEmptyString(amountStr));
-		txnContext.setPromptStr(type==PayCostType.ELECTRICITY?"电费缴纳中...":"水费缴纳中...");
+		txnContext.setPromptStr(type == PayCostType.ELECTRICITY ? "电费缴纳中..."
+				: "水费缴纳中...");
 		setFlowContextData(txnContext);
 		TiFlowControlImpl.instanceControl().nextSetup(this,
 				FlowConstants.PAY_COST_SURE);
 
+	}
+
+	@Inject
+	WaitUploadImageDao waitUploadImageDao;
+
+	public void subFlowFinished(Map<String, Serializable> subFlowContext) {
+		// TODO Auto-generated method stub
+		CommonTermTxnResponse cm = (CommonTermTxnResponse) subFlowContext
+				.get(CommonTermTxnResponse.class.getName());
+
+		if (cm.isSuccess()) {// 交易成功
+
+			TiFlowControlImpl
+					.instanceControl()
+					.getFlowContext()
+					.put(TxnContext.class.getName(), txnControl.getTxnContext());
+			TiFlowControlImpl.instanceControl().getFlowContext()
+					.put(CommonTermTxnResponse.class.getName(), cm);
+			for (AttachmentItem item : cm.getAttachmentItems()) {
+				WaitUploadImage waitImg = new WaitUploadImage();
+				waitImg.setCreateDate(TimeUtil.getInstance().formatDate(
+						new Date(), TimeUtil.DATE_PATTERN_11));
+				String itemType = item.getAttachmentType();
+				waitImg.setItemType(itemType);
+				waitImg.setTermTraceNo(cm.getTermTraceNo());
+				waitImg.setTermTxnTime(TimeUtil.getInstance().formatDate(
+						cm.getTermTxnTime(), TimeUtil.DATE_PATTERN_11));
+				waitImg.setItemId(item.getIdUnderType());
+				waitImg.setTimes(0);
+				waitImg.setReadyUpload(false);
+				waitUploadImageDao.insert(waitImg);
+			}
+			TiFlowControlImpl.instanceControl().nextSetup(this, "success");
+
+		} else {// 交易失败
+			PayCostType type = (PayCostType) TiFlowControlImpl
+					.instanceControl().getFlowContext().get("type");
+
+			Map<String, String> dateMap = new HashMap();
+			dateMap.put("txnType",
+					type == PayCostType.ELECTRICITY ? TxnType.MPOS_PAYCOST_ELE
+							: TxnType.MPOS_PAYCOST_WATER);
+			dateMap.put("isSuccess", "false");
+			TiFlowControlImpl.instanceControl().nextSetup(
+					txnControl.getCurrActivity(), "result", dateMap);
+		}
 	}
 }

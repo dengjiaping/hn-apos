@@ -91,12 +91,12 @@ public class TiFlowControlImpl implements TiFlowControl {
 	 * @param identity
 	 */
 	public void nextSetup(Activity activity, String identity,
-			Map<String,String> sendData) {
+			Map<String, String> sendData) {
 		nextSetup(activity, identity, sendData, null);
 	}
 
 	private void nextSetup(Activity activity, String identity,
-			Map<String, String> sendData, Map<String, Serializable> subContext){
+			Map<String, String> sendData, Map<String, Serializable> subContext) {
 		TiFlowAdmin admin = TiFlowAdmin.singletonInstance();
 		TiFlowNodeComplete complete = getNodeContrl().nextSetup(activity,
 				identity);
@@ -105,7 +105,7 @@ public class TiFlowControlImpl implements TiFlowControl {
 			getNodeContrl().getFlowContext().clear();
 		}
 		// 如果只设置了finish标签,则结束流程，并且结束所有activity. 自己是子流程
-		if (complete.isFinishFlow()){
+		if (complete.isFinishFlow()) {
 			if (processFlowFinished(activity, controlNode, sendData)) {
 				return;
 			}
@@ -130,11 +130,11 @@ public class TiFlowControlImpl implements TiFlowControl {
 		// 下一个节点 或 属性activity的跳转
 		Intent forwardIntent = new Intent(activity.getApplicationContext(),
 				getClassByStr(complete.getRefForwardClass()));
-		if (!StringUtil.isEmpty(complete.getRefClass())){
+		if (!StringUtil.isEmpty(complete.getRefClass())) {
 			forwardIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		}
 
-		if (transferData != null && !transferData.isEmpty()){
+		if (transferData != null && !transferData.isEmpty()) {
 			for (String key : transferData.keySet()) {
 				forwardIntent.putExtra(key, transferData.get(key));
 			}
@@ -144,8 +144,8 @@ public class TiFlowControlImpl implements TiFlowControl {
 		if (complete.isRemoveNode()) {// 如果有移除标志,跳转后移除当前节点，包括所在activity
 			activity.finish();
 		}
-		
-		if (!StringUtil.isEmpty(complete.getRefClass())){ //???????????
+
+		if (!StringUtil.isEmpty(complete.getRefClass())) { // ???????????
 			releaseNode(controlNode);
 			this.controlNode = null;
 		}
@@ -166,14 +166,17 @@ public class TiFlowControlImpl implements TiFlowControl {
 			return false;
 		}
 		// 结束子流程
+
 		TiFlowNodeComplete complete = node.getParentNode()
 				.getLastNodeComplete();// 父流程最后一个节点行为
 		TiFlowNodeComplete subComplete = node.getLastNodeComplete();
 		Map<String, Serializable> subContext = new HashMap<String, Serializable>();
 		subContext.putAll(node.getFlowContext());
+		node.getParentNode().getFlowContext().putAll(subContext);
 		node.releaseActivity();
 		node.finishFlow();
 		this.controlNode = node.getParentNode();
+		
 		Activity lastActivity = node.getParentNode().getLastActivity();
 		// 通知子流程结束事件
 		if (lastActivity != null
@@ -186,7 +189,7 @@ public class TiFlowControlImpl implements TiFlowControl {
 		// 如果子流程结束后，发现子流程结束节点或者父流程的最后跳转节点设置了"hold-sub-finish"属性，则只是结束子流程，重新恢复到父流程跳转子流程节点
 		if ((complete != null && complete.isHoldAfterSubFlowFinished())
 				|| subComplete == null
-				|| subComplete.isHoldAfterSubFlowFinished()){
+				|| subComplete.isHoldAfterSubFlowFinished()) {
 			// node.popActivity();
 			if (controlNode.getParentNode() != null) {
 				return processFlowFinished(activity, node.getParentNode(),
@@ -199,7 +202,7 @@ public class TiFlowControlImpl implements TiFlowControl {
 				|| StringUtil.isEmpty(complete.getSubFinishToComplete())) {
 			return processFlowFinished(activity, node.getParentNode(), sendData);
 		}
-		this.nextSetup(lastActivity,complete.getSubFinishToComplete(),
+		this.nextSetup(lastActivity, complete.getSubFinishToComplete(),
 				sendData, subContext);
 		return true;
 	}
